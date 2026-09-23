@@ -366,6 +366,7 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
     if sz and price >= sz["low"]: t.append(15); why.append("Near 90-day high (sell zone)")
     if ind("bollinger"):
         bb = bollinger(c)
+        if bb: ex["_pb"] = bb["pb"]
         if bb:
             t.append(80 if bb["pb"] < 0.05 else 65 if bb["pb"] < 0.2 else 25 if bb["pb"] > 0.95 else 40 if bb["pb"] > 0.8 else 50)
             if bb["pb"] < 0.05: why.append("At the lower Bollinger band (stretched down)")
@@ -381,7 +382,7 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
         if dv == "bullish": t.append(82); why.append("Bullish RSI divergence: lower price low, higher RSI low")
         elif dv == "bearish": t.append(20); why.append("Bearish RSI divergence: higher price high, lower RSI high")
     if ind("relative_strength") and MACRO.get("btc_close") and sym != "BTC" and len(c) >= 31:
-        b = MACRO["btc_close"]; rs30 = (c[-1] / c[-31] - b[-1] / b[-31]) * 100
+        b = MACRO["btc_close"]; rs30 = (c[-1] / c[-31] - b[-1] / b[-31]) * 100; ex["_rs30"] = rs30
         t.append(lin(rs30, -25, 25)); why.append(f"{'Outperforming' if rs30 > 0 else 'Underperforming'} Bitcoin by {abs(rs30):.0f}% over 30 days")
     parts["technical"] = sum(t) / len(t) if t else None
     ratio = None
@@ -410,6 +411,9 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
             dp.append(65 if oc > 0.05 and pc > 0 else 35 if oc > 0.05 and pc < 0 else 55 if oc < -0.05 and pc < 0 else 50)
             why.append(f"Open interest {oc*100:+.0f}% in 7 days while price {pc*100:+.0f}%" + (" (new money confirming the move)" if oc > 0.05 and pc > 0 else " (shorts piling in)" if oc > 0.05 and pc < 0 else ""))
     parts["derivatives"] = sum(dp) / len(dp) if dp else None
+    wv = ex.get("wallets")
+    parts["wallets"] = wv["score"] if wv else None                 # followed wallets ("smart money"); only counts when they traded it
+    if wv: why.append(wv["why"])
     parts["macro"] = MACRO.get("score")
     if news:
         flag = sum(n["flag"] for n in news[:15]); pos = sum(n["pos"] for n in news); neg = sum(n["neg"] for n in news)
@@ -425,21 +429,37 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
         why.append(f"No betting markets for {sym}; Bitcoin odds used as backdrop ({backdrop['score']:.0f}/100)")
     else: parts["markets"] = None
     W = {**DEFAULT_W, **(CFG.get("weights") or {})}
+    W = {k: v * (LEARN.get("mult") or {}).get(k, 1.0) for k, v in W.items()}      # tuned by learning from past calls
     have = {k: v for k, v in parts.items() if v is not None and W.get(k, 0) > 0}; ws = sum(W[k] for k in have)
     score = sum(v * W[k] for k, v in have.items()) / ws if ws else None
+    m_ = m
+    feat_ = {"rsi": r, "zone": "in" if in_zone else ("above" if bz and price > bz["high"] else "below" if bz and price < bz["low"] else None),
+             "pb": ex.get("_pb"), "rs30": ex.get("_rs30"), "macd": None if not m_ else m_["cross"] or ("improving" if m_["hist"] > m_["prev"] else "fading"),
+             "vs200": (price / s200 - 1) if s200 else None, "chg7": (price / c[-8] - 1) if len(c) >= 8 else None,
+             "macro": MACRO.get("score"), "btc_bull": MACRO.get("btc_bull"), "buy_ratio": ratio, "wallets": parts.get("wallets"),
+             "risk": (dd or {}).get("level"), "source": ex.get("_source")}
+    adj, lwhy, blocked = learned_adjust(feat_) if score is not None else (0, [], False)
+    if adj: score = max(0, min(100, score + adj)); why += lwhy
     signal = ("STRONG BUY ZONE" if score >= 72 else "ACCUMULATE" if score >= 60 else "HOLD" if score >= 45
               else "TRIM" if score >= 33 else "SELL / AVOID") if score is not None else "NO DATA"
+    # Guardrails: never call it a buy while it's in the sell zone or overbought - wait for the pullback
+    in_sell = bool(sz and price >= sz["low"])
+    if signal in BUY_SIGNALS and (in_sell or (r is not None and r > 70)):
+        signal = "HOLD"; why.insert(0, "Capped at HOLD: " + ("price is in the sell zone" if in_sell else f"RSI {r:.0f} is overbought") + " - wait for a pullback toward the buy zone")
+    if signal in BUY_SIGNALS and blocked:
+        signal = "HOLD"; why.insert(0, "Capped at HOLD: this setup has lost money repeatedly in past calls (see Learned)")
     if dd and dd["level"] == "HIGH":
         signal = "AVOID (SCAM RISK)"; why.insert(0, "High scam risk: " + "; ".join(dd["flags"][:3]))
     return {"symbol": sym, "price": price, "rsi": r, "macd": m, "atr": a, "sma50": s50, "sma200": s200, "buy_zone": bz,
             "sell_zone": sz, "in_zone": in_zone, "parts": parts, "score": score, "signal": signal, "why": why,
-            "buy_ratio": ratio, "src": data.get("src"), "markets": mv}
+            "buy_ratio": ratio, "src": data.get("src"), "markets": mv, "pb": ex.get("_pb"), "rs30": ex.get("_rs30"),
+            "in_sell": in_sell, "blocked": blocked}
 
 # ================================================================ extra indicators (all free, all optional)
 DEFAULT_IND = {"bollinger": True, "obv": True, "rsi_divergence": True, "relative_strength": True,
                "derivatives": True, "fear_greed": True, "market_regime": True, "stablecoin_liquidity": True,
-               "tvl_trend": True, "betting_markets": True}
-DEFAULT_W = {"technical": .30, "flows": .15, "derivatives": .10, "macro": .10, "news": .05, "markets": .05, "fundamental": .25}
+               "tvl_trend": True, "betting_markets": True, "wallets": True}
+DEFAULT_W = {"technical": .30, "flows": .15, "derivatives": .10, "macro": .10, "news": .05, "markets": .05, "fundamental": .25, "wallets": .10}
 def ind(k): return (CFG.get("indicators") or {}).get(k, DEFAULT_IND[k])
 MACRO = {}
 
@@ -528,6 +548,7 @@ def load_macro():
             c = btc["close"]; MACRO["btc_close"] = c; s50, s200 = sma(c, 50), sma(c, 200)
             if s50 and s200:
                 sc = 75 if c[-1] > s50 > s200 else 55 if c[-1] > s200 else 40 if s50 > s200 else 25
+                MACRO["btc_bull"] = c[-1] > s200
                 parts.append(sc); why.append(f"Market regime: BTC {'above' if c[-1] > s200 else 'below'} its 200-day average" + (" (bull trend)" if sc == 75 else " (bear trend)" if sc == 25 else ""))
     if ind("fear_greed"):
         fg = try_get("Fear & Greed", lambda: get_json("https://api.alternative.me/fng/?limit=1")["data"][0])
@@ -550,7 +571,7 @@ def load_macro():
 
 # ================================================================ track record
 def stamp_call(calls, res, cg_id, dd, source):
-    if res["signal"] not in BUY_SIGNALS and not res["in_zone"]: return None
+    if not is_buy(res): return None
     if res["rsi"] is not None and res["rsi"] > 70: return None   # don't stamp buys into overbought moves
     if dd and dd["level"] == "HIGH": return None
     cool = CFG.get("call_cooldown_days", 7) * DAY
@@ -576,6 +597,13 @@ def ret(c): return (c["last"] / c["entry"] - 1) * 100
 
 def report_text(calls):
     if not calls: return "No buy calls recorded yet."
+    mine = [c for c in calls if c.get("source") != "discovery"]; found = [c for c in calls if c.get("source") == "discovery"]
+    out = []
+    for title, grp in (("⭐ YOUR COINS", mine), ("🔎 COINS THE SCANNER FOUND", found)):
+        out.append(title + "\n" + (report_block(grp) if grp else "No calls yet."))
+    return "\n\n".join(out) + ("\n\n" + lessons_text() if LEARN.get("graded") else "")
+
+def report_block(calls):
     rs = [ret(c) for c in calls]; wins = sum(1 for x in rs if x > 0)
     lines = [f"Track record: {len(calls)} buy calls, {wins} in profit ({wins/len(calls)*100:.0f}%), average {sum(rs)/len(rs):+.1f}%"]
     for d in ("7", "30", "90"):
@@ -600,6 +628,7 @@ def alert_allowed(kind, sym=None):
     if PREFS.get("paused"): return False
     if kind == "discovery": return a["discovered"]
     if kind == "report": return a["weekly_report"]
+    if kind == "wallet" and not (sym and sym in PREFS["starred"]): return a.get("wallets", True)
     if sym and sym in PREFS["starred"]: return True          # starred: always
     return a["watchlist"]
 
@@ -651,7 +680,7 @@ def links_text(res, dd):
     s = f"\nTicker: {res['symbol']}" + (f" ({name})" if name else "")
     s += f"\nContract ({L['chain']}): {L['contract']}" if L["contract"] else "\nContract: none (native coin)"
     return s + f"\nCoinGecko: {L['coingecko']}\nDexScreener: {L['dexscreener']}"
-def is_buy(res): return res["signal"] in BUY_SIGNALS or res.get("in_zone")
+def is_buy(res): return res["signal"] in BUY_SIGNALS or (res.get("in_zone") and not res.get("in_sell") and not res.get("blocked") and res["signal"] not in ("SELL / AVOID", "AVOID (SCAM RISK)", "TRIM"))
 
 def z(zn): return f"${zn['low']:.4g}-${zn['high']:.4g}" if zn else "n/a"
 def summary(res, dd=None, links=False):
@@ -729,13 +758,20 @@ def check_token(tok, cache, state, calls, source="watchlist", grade=None):
     ex = {}
     if ind("derivatives"): ex["deriv"] = try_get("funding/open interest", lambda: derivatives(sym))
     if ind("tvl_trend"): ex["tvl"] = try_get("TVL", lambda: tvl_trend(cg_id))
+    if ind("wallets"):
+        plats = list((((dd or {}).get("facts") or {}).get("platforms") or {}).values())
+        ex["wallets"] = wallet_view(sym, plats)
     if ind("betting_markets") and (CFG.get("prediction_markets") or {}).get("enabled", True):
         name = ((dd or {}).get("facts") or {}).get("name") or tok.get("name") or ""
         pm = try_get("betting markets", lambda: polymarket(sym, name))
         mv = market_view(pm, data["close"][-1]) if pm else None
+    ex["_source"] = source
     res = analyse(sym, data, depth, news, whales, tok.get("fundamental_grade") or grade, dd, mv, None if sym == "BTC" else BACKDROP.get("btc"), ex)
     res["cg_id"] = cg_id
     call = None if source == "adhoc" else stamp_call(calls, res, cg_id, dd, source)
+    if call:
+        call["feat"] = features(res, data, source, dd); call["starred"] = sym in PREFS.get("starred", [])
+        call["links"] = token_links(sym, cg_id, dd)
     print(summary(res, dd))
     if source == "watchlist": check_alerts(tok, res, news, dd, state, call)
     if source == "watchlist" and mv: odds_alerts(sym, mv, state)
@@ -778,6 +814,419 @@ def discover(cache, state, calls, skip):
             found.append(r)
     return found
 
+# ================================================================ learning from its own calls
+# Every buy call saves a snapshot of what the model saw. After `learning.grade_days` (7) the call is graded.
+# Losers get a post-mortem (which warning signs were there at entry) sent to Telegram. Across all graded calls the
+# model then (1) tunes the weight of each signal group toward what has actually predicted returns and (2) learns
+# rules like "entries with RSI above 65 lost 6 of 8 times" that lower future scores or block the buy call.
+# Everything is bounded and needs a minimum number of examples, so a few unlucky trades can't wreck the model.
+LEARN = {}
+WARN_SIGNS = [   # key, test on the entry snapshot, plain-English description
+    ("rsi_high", lambda f: (f.get("rsi") or 0) > 65, "RSI was already high (>65) - buying after a run-up"),
+    ("above_zone", lambda f: f.get("zone") == "above", "Price was above the buy zone - chasing instead of waiting for a pullback"),
+    ("macd_weak", lambda f: f.get("macd") in ("down", "fading"), "MACD momentum was fading or turning down"),
+    ("below_200", lambda f: f.get("vs200") is not None and f["vs200"] < 0, "Price was below its 200-day average (longer-term downtrend)"),
+    ("weak_market", lambda f: f.get("macro") is not None and f["macro"] < 45, "Weak market backdrop (Bitcoin trend, Fear & Greed, stablecoin flows)"),
+    ("btc_bear", lambda f: f.get("btc_bull") is False, "Bitcoin was below its 200-day average (bear regime)"),
+    ("upper_band", lambda f: (f.get("pb") or 0) > 0.8, "Price was near the upper Bollinger band (stretched)"),
+    ("ran_up", lambda f: (f.get("chg7") or 0) > 0.2, "Had already jumped more than 20% in 7 days"),
+    ("lagging_btc", lambda f: f.get("rs30") is not None and f["rs30"] < -10, "Lagging Bitcoin by more than 10% over 30 days"),
+    ("sell_pressure", lambda f: f.get("buy_ratio") is not None and f["buy_ratio"] < 0.48, "More selling than buying in the last 7 days"),
+    ("scam_medium", lambda f: f.get("risk") in ("MEDIUM", "HIGH"), "Scam check was MEDIUM risk"),
+    ("wallets_selling", lambda f: f.get("wallets") is not None and f["wallets"] < 45, "Followed wallets were selling it"),
+    ("found_coin", lambda f: f.get("source") == "discovery", "A coin the scanner found (not one you picked)"),
+]
+
+def features(res, data, source, dd):
+    """Snapshot of what the model saw at a buy call (used later to learn)."""
+    c = data["close"]; p = c[-1]; bz = res.get("buy_zone")
+    zone = "in" if res.get("in_zone") else ("above" if bz and p > bz["high"] else "below" if bz and p < bz["low"] else None)
+    m = res.get("macd")
+    return {"rsi": res.get("rsi"), "zone": zone, "pb": res.get("pb"), "rs30": res.get("rs30"),
+            "macd": None if not m else m["cross"] or ("improving" if m["hist"] > m["prev"] else "fading"),
+            "vs200": (p / res["sma200"] - 1) if res.get("sma200") else None, "vs50": (p / res["sma50"] - 1) if res.get("sma50") else None,
+            "chg7": (p / c[-8] - 1) if len(c) >= 8 else None, "chg30": (p / c[-31] - 1) if len(c) >= 31 else None,
+            "macro": MACRO.get("score"), "btc_bull": MACRO.get("btc_bull"), "buy_ratio": res.get("buy_ratio"),
+            "wallets": (res.get("parts") or {}).get("wallets"), "risk": (dd or {}).get("level"), "source": source,
+            "parts": {k: (round(v, 1) if v is not None else None) for k, v in (res.get("parts") or {}).items()},
+            "btc": LIVE.get("bitcoin")}
+
+def learned_adjust(f):
+    """Score change (+/-) and reasons from rules learned on past calls. Returns (points, [reasons], blocked)."""
+    hits, block = [], False
+    for r in LEARN.get("rules", []):
+        test = next((t for k, t, _ in WARN_SIGNS if k == r["key"]), None)
+        if test and test(f): hits.append(r); block = block or r.get("block", False)
+    if not hits: return 0.0, [], False
+    hits.sort(key=lambda r: r["points"])                     # overlapping signs (e.g. high RSI + big run-up) count only partly
+    pts = max(-(CFG.get("learning") or {}).get("max_penalty", 15), hits[0]["points"] + 0.25 * sum(r["points"] for r in hits[1:]))
+    why = [f"Learned from past calls ({pts:+.0f} pts): " + "; ".join(f"{r['text'].split(' - ')[0]} won {r['wins']}/{r['n']}" for r in hits[:3])]
+    return pts, why, block
+
+def grade(c):
+    r7 = (c.get("checkpoints") or {}).get("7")
+    if r7 is None: return None
+    dd = (c["min"] / c["entry"] - 1) * 100
+    return "loss" if r7 < -5 or (dd < -15 and r7 < 0) else "win" if r7 > 5 else "flat"
+
+def learn(calls, state):
+    """Grade finished calls, write post-mortems for losers, rebuild the learned rules and weights."""
+    lc = CFG.get("learning") or {}
+    if not lc.get("enabled", True): LEARN.clear(); return
+    fresh = []
+    for c in calls:
+        if not c.get("feat") or c.get("outcome"): continue
+        g = grade(c)
+        if not g: continue
+        c["outcome"] = g; fresh.append(c)
+        if g == "loss":
+            f = c["feat"]; signs = [d for k, t, d in WARN_SIGNS if k != "found_coin" and t(f)]
+            btc_now = LIVE.get("bitcoin"); btc_chg = (btc_now / f["btc"] - 1) * 100 if btc_now and f.get("btc") else None
+            c["postmortem"] = {"signs": signs, "btc_chg": btc_chg, "r7": c["checkpoints"]["7"], "dd": (c["min"] / c["entry"] - 1) * 100}
+    graded = [c for c in calls if c.get("outcome") and c.get("feat")]
+    n_min = lc.get("min_examples", 5)
+    # 1) rules from warning signs
+    rules = []
+    for k, t, d in WARN_SIGNS:
+        hit = [c for c in graded if t(c["feat"])]
+        if len(hit) < n_min: continue
+        rets = [c["checkpoints"]["7"] for c in hit]; wins = sum(c["outcome"] == "win" for c in hit)
+        wr, avg = wins / len(hit), sum(rets) / len(rets)
+        if wr <= 0.35 and avg < 0:
+            pts = -min(12, 4 + (0.35 - wr) * 30 + min(4, -avg / 3))
+            rules.append({"key": k, "text": d, "n": len(hit), "wins": wins, "avg": avg, "points": round(pts, 1),
+                          "block": len(hit) >= lc.get("block_after", 8) and wr <= 0.25})
+        elif wr >= 0.65 and avg > 0 and k not in ("rsi_high", "above_zone", "ran_up"):
+            continue                                        # a "warning sign" that keeps working isn't rewarded, just not punished
+    # 2) weight tuning: does each signal group's score at entry line up with the 7-day return?
+    mult = {}
+    for part in DEFAULT_W:
+        xs = [(c["feat"]["parts"].get(part), c["checkpoints"]["7"]) for c in graded if (c["feat"].get("parts") or {}).get(part) is not None]
+        if len(xs) < lc.get("min_examples_weights", 10): continue
+        mx, my = sum(x for x, _ in xs) / len(xs), sum(y for _, y in xs) / len(xs)
+        sx = sum((x - mx) ** 2 for x, _ in xs) ** .5; sy = sum((y - my) ** 2 for _, y in xs) ** .5
+        corr = sum((x - mx) * (y - my) for x, y in xs) / (sx * sy) if sx and sy else 0
+        mult[part] = round(max(0.6, min(1.4, 1 + corr * 0.6)), 2)
+    old = LEARN.get("rules", [])
+    LEARN.clear(); LEARN.update({"rules": rules, "mult": mult, "graded": len(graded), "t": iso(),
+                                 "wins": sum(c["outcome"] == "win" for c in graded), "losses": sum(c["outcome"] == "loss" for c in graded)})
+    save("learning.json", LEARN)
+    new_rules = [r for r in rules if r["key"] not in {o["key"] for o in old}]
+    for c in fresh:
+        if c["outcome"] != "loss": continue
+        pm = c["postmortem"]
+        msg = (f"📉 POST-MORTEM {c['symbol']} ({'found by scanner' if c.get('source') == 'discovery' else 'your coin'})\n"
+               f"Buy call {c['date'][:10]} at ${c['entry']:.4g} is {pm['r7']:+.1f}% after 7 days (worst {pm['dd']:+.0f}%).\n"
+               + ("Warning signs that were already there:\n" + "\n".join("• " + s for s in pm["signs"]) if pm["signs"] else "No obvious warning signs at entry - likely news or market-driven.")
+               + (f"\nBitcoin moved {pm['btc_chg']:+.1f}% over the same time" + (" - the whole market fell, which the model can't fully avoid." if pm["btc_chg"] < -8 else ".") if pm["btc_chg"] is not None else ""))
+        send(msg, "report", c["symbol"])
+    if new_rules:
+        send("🧠 The model learned from its past calls:\n" + "\n".join(f"• {r['text']}: {r['wins']}/{r['n']} won, avg {r['avg']:+.1f}% → {r['points']:+.0f} pts" + (" and no more buy calls when this shows up" if r["block"] else "") for r in new_rules), "report")
+
+def lessons_text():
+    if not LEARN.get("graded"): return "No graded calls yet. Each buy call is graded 7 days after it's made; the model starts adjusting after 5 similar examples."
+    s = f"🧠 Learned from {LEARN['graded']} graded calls ({LEARN['wins']} wins, {LEARN['losses']} losses):"
+    s += "".join(f"\n• {r['text']}: {r['wins']}/{r['n']} won, avg {r['avg']:+.1f}% → {r['points']:+.0f} pts" + (" (blocks buy calls)" if r["block"] else "") for r in LEARN.get("rules", [])) or "\nNo rules yet - no warning sign has lost often enough to act on."
+    if LEARN.get("mult"): s += "\nWeight tuning: " + ", ".join(f"{k} ×{v}" for k, v in LEARN["mult"].items())
+    return s
+
+# ================================================================ followed wallets ("smart money")
+# Solana: Helius (free key). Ethereum/Arbitrum/Polygon: Etherscan V2 (free key). Base: Blockscout (free, no key).
+# Prices, liquidity and links: DexScreener (free, no key). Contract safety: GoPlus (free, no key).
+QUOTE_MINTS = {"So11111111111111111111111111111111111111112", "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+               "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB", "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
+               "2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo"}
+EVM_QUOTES = {"WETH", "ETH", "USDC", "USDC.E", "USDBC", "USDT", "USDT0", "DAI", "WBTC", "CBBTC", "WMATIC", "WPOL", "POL", "FDUSD",
+              "USDE", "USDS", "PYUSD", "STETH", "WSTETH", "CBETH", "RETH", "WEETH", "FRAX", "LUSD", "GHO", "CRVUSD", "USD0", "EURC"}
+EVM_CHAINS = [("ethereum", "1"), ("arbitrum", "42161"), ("polygon", "137"), ("base", "base")]   # base -> Blockscout
+BLOCKSCOUT = {"base": "https://base.blockscout.com/api"}
+GOPLUS_NUM = {"ethereum": "1", "arbitrum": "42161", "polygon": "137", "base": "8453", "bsc": "56"}
+WTRADES = []      # recent trades by followed wallets (data/wallet_trades.json)
+WSTATS = {}       # address -> track record of that wallet's buys
+DEXS = {}         # this run's DexScreener lookups: "chain:address" -> info
+
+def wkind(a):
+    if re.fullmatch(r"0x[0-9a-fA-F]{40}", a or ""): return "evm"
+    if re.fullmatch(r"[1-9A-HJ-NP-Za-km-z]{32,44}", a or ""): return "sol"
+    return None
+
+def followed():
+    """Wallets from config.json ("wallets") plus ones added with /follow, minus /unfollow."""
+    out, seen = [], set()
+    for w in (CFG.get("wallets") or []) + PREFS.get("wallets", []):
+        if isinstance(w, str): w = {"address": w}
+        a = (w.get("address") or "").strip(); k = wkind(a)
+        key = a.lower() if k == "evm" else a
+        if not k or key in seen or key in {x.lower() if wkind(x) == "evm" else x for x in PREFS.get("unfollowed", [])}: continue
+        seen.add(key); out.append({"address": a, "name": w.get("name") or f"Wallet {a[:4]}…{a[-4:]}", "kind": k})
+    return out
+
+def post_json(url, body, timeout=30):
+    req = urllib.request.Request(url, data=json.dumps(body).encode(), headers={**UA, "Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=timeout) as r: return json.loads(r.read().decode())
+
+def dex_info(chain, addrs):
+    """DexScreener: best-liquidity pair for each token -> symbol, name, price, liquidity, fdv, link. Up to 30 per call."""
+    need = [a for a in dict.fromkeys(addrs) if f"{chain}:{a.lower() if chain != 'solana' else a}" not in DEXS]
+    for i in range(0, len(need), 30):
+        chunk = need[i:i+30]
+        pairs = try_get("DexScreener", lambda: get_json(f"https://api.dexscreener.com/tokens/v1/{chain}/{','.join(chunk)}")) or []
+        best = {}
+        for p in pairs if isinstance(pairs, list) else []:
+            b = p.get("baseToken") or {}; ad = b.get("address") or ""
+            k = ad if chain == "solana" else ad.lower()
+            liq = ((p.get("liquidity") or {}).get("usd")) or 0
+            if k and (k not in best or liq > best[k]["liquidity"]):
+                best[k] = {"symbol": (b.get("symbol") or "?").upper(), "name": b.get("name") or "", "price": float(p.get("priceUsd") or 0),
+                           "liquidity": liq, "fdv": p.get("fdv") or p.get("marketCap") or 0, "url": p.get("url"),
+                           "chg24": ((p.get("priceChange") or {}).get("h24")), "created": p.get("pairCreatedAt")}
+        for a in chunk:
+            k = a if chain == "solana" else a.lower()
+            DEXS[f"{chain}:{k}"] = best.get(k)
+    return {a: DEXS.get(f"{chain}:{a if chain == 'solana' else a.lower()}") for a in addrs}
+
+def helius_budget(state, cost):
+    """Stay inside the free 1M credits a month (stops at 'helius_monthly_credits', default 900k)."""
+    m = datetime.now(timezone.utc).strftime("%Y-%m"); h = state.setdefault("_helius", {"month": m, "used": 0})
+    if h["month"] != m: h.update(month=m, used=0)
+    if h["used"] + cost > (CFG.get("wallet_tracking") or {}).get("helius_monthly_credits", 900000): return False
+    h["used"] += cost; return True
+
+def sol_trades(w, st, state, first):
+    key = CFG.get("helius_api_key")
+    if not key: return []
+    if not helius_budget(state, 1): return []
+    q = {"limit": 50}
+    if st.get("sig") and not first: q["until"] = st["sig"]
+    r = post_json(f"https://mainnet.helius-rpc.com/?api-key={key}", {"jsonrpc": "2.0", "id": 1, "method": "getSignaturesForAddress", "params": [w["address"], q]})
+    sigs = [x["signature"] for x in (r.get("result") or []) if not x.get("err")]
+    if not sigs: return []
+    if first: sigs = sigs[:25]
+    every = (CFG.get("wallet_tracking") or {}).get("solana_decode_every_minutes", 30) * 60
+    if not first and now() - st.get("decoded_t", 0) < every: return []       # decode later (saves credits); nothing is lost
+    if not helius_budget(state, 100): print("  Helius monthly budget reached; Solana wallets paused until next month"); return []
+    txs = None
+    for base in ("https://api-mainnet.helius-rpc.com", "https://api.helius.xyz"):
+        try: txs = post_json(f"{base}/v0/transactions/?api-key={key}", {"transactions": sigs[:100]}); break
+        except Exception as e: err = e
+    if txs is None: raise err
+    st["sig"] = sigs[0]; st["decoded_t"] = now()
+    out = []
+    for tx in txs or []:
+        if tx.get("transactionError"): continue
+        legs = {}
+        for tt in tx.get("tokenTransfers") or []:
+            m = tt.get("mint"); amt = float(tt.get("tokenAmount") or 0)
+            if not m or m in QUOTE_MINTS or not amt: continue
+            if tt.get("toUserAccount") == w["address"]: legs[m] = legs.get(m, 0) + amt
+            elif tt.get("fromUserAccount") == w["address"]: legs[m] = legs.get(m, 0) - amt
+        for m, amt in legs.items():
+            out.append({"chain": "solana", "token": m, "amount": abs(amt), "side": "buy" if amt > 0 else "sell",
+                        "t": tx.get("timestamp") or int(now()), "tx": tx.get("signature")})
+    return out
+
+def evm_trades(w, st, state, first):
+    out, a = [], w["address"].lower()
+    probe = first or not st.get("active") or now() - st.get("probe_t", 0) > 6 * 3600
+    if probe: st["probe_t"] = now()
+    for chain, cid in EVM_CHAINS:
+        if not probe and chain not in st.get("active", []): continue
+        cs = st.setdefault("blocks", {})
+        start = int(cs.get(chain, 0)) + 1 if cs.get(chain) else 0
+        if chain in BLOCKSCOUT: url = f"{BLOCKSCOUT[chain]}?module=account&action=tokentx&address={a}&sort=desc&page=1&offset=100&startblock={start}"
+        else:
+            key = CFG.get("etherscan_api_key")
+            if not key: continue
+            url = f"https://api.etherscan.io/v2/api?chainid={cid}&module=account&action=tokentx&address={a}&sort=desc&page=1&offset=100&startblock={start}&apikey={key}"
+            time.sleep(0.4)                                 # free tier: 3 calls/second
+        d = try_get(f"{chain} transfers", lambda url=url: get_json(url))
+        rows = (d or {}).get("result")
+        if not isinstance(rows, list) or not rows: continue
+        st.setdefault("active", []); chain in st["active"] or st["active"].append(chain)
+        cs[chain] = max(int(r.get("blockNumber") or 0) for r in rows)
+        if first: rows = [r for r in rows if now() - int(r.get("timeStamp") or 0) < 3 * DAY]
+        by = {}
+        for r in rows:
+            sym = (r.get("tokenSymbol") or "").upper()
+            if sym in EVM_QUOTES: continue
+            try: amt = int(r.get("value") or 0) / 10 ** int(r.get("tokenDecimal") or 18)
+            except ValueError: continue
+            k = (r.get("hash"), r.get("contractAddress", "").lower())
+            sign = 1 if r.get("to", "").lower() == a else -1 if r.get("from", "").lower() == a else 0
+            if sign: by[k] = (by.get(k, (0, r))[0] + sign * amt, r)
+        for (h, ca), (amt, r) in by.items():
+            if amt: out.append({"chain": chain, "token": ca, "amount": abs(amt), "side": "buy" if amt > 0 else "sell",
+                                "t": int(r.get("timeStamp") or now()), "tx": h, "sym_hint": (r.get("tokenSymbol") or "").upper()})
+    return out
+
+def token_risk(chain, addr):
+    """Quick GoPlus contract check for wallet-trade alerts. Returns a list of red flags (cached 3 days)."""
+    key = f"gp:{chain}:{addr}"; c = CTX.get("cache") if CTX else None
+    if c is not None and key in c and now() - c[key]["t"] < 3 * DAY: return c[key]["v"]
+    flags = []
+    if chain == "solana":
+        g = get_json(f"https://api.gopluslabs.io/api/v1/solana/token_security?contract_addresses={addr}")
+        r = ((g or {}).get("result") or {}).get(addr) or {}
+        st = lambda k: str((r.get(k) or {}).get("status", "0")) == "1" if isinstance(r.get(k), dict) else False
+        if st("mintable"): flags.append("Mint authority still active (more tokens can be created)")
+        if st("freezable"): flags.append("Can freeze holders' tokens")
+        if st("balance_mutable_authority"): flags.append("Owner can change balances")
+        if st("non_transferable"): flags.append("Token can't be transferred")
+    elif chain in GOPLUS_NUM:
+        g = get_json(f"https://api.gopluslabs.io/api/v1/token_security/{GOPLUS_NUM[chain]}?contract_addresses={addr}")
+        r = ((g or {}).get("result") or {}).get(addr.lower()) or {}
+        one = lambda k: str(r.get(k, "0")) == "1"
+        if one("is_honeypot") or one("cannot_sell_all"): flags.append("HONEYPOT - holders can't sell")
+        try:
+            if float(r.get("sell_tax") or 0) > 0.1: flags.append(f"Sell tax {float(r['sell_tax'])*100:.0f}%")
+        except ValueError: pass
+        if one("owner_change_balance") or one("hidden_owner"): flags.append("Owner can change balances / hidden owner")
+        if one("is_mintable"): flags.append("Owner can mint new tokens")
+    if c is not None: c[key] = {"t": now(), "v": flags}
+    return flags
+
+def wallet_stats():
+    """Each wallet's record: how its tracked buys have done since (price now vs price when bought)."""
+    WSTATS.clear()
+    for tr in WTRADES:
+        if tr["side"] != "buy" or not tr.get("price"): continue
+        s = WSTATS.setdefault(tr["wallet"], {"buys": 0, "wins": 0, "sum": 0.0, "name": tr["wname"]})
+        s["name"] = tr["wname"]
+        cur = tr.get("last") or tr["price"]; r = (cur / tr["price"] - 1) * 100
+        if now() - tr["t"] < DAY: continue                   # judge a buy after at least a day
+        s["buys"] += 1; s["sum"] += r; s["wins"] += r > 0
+    for s in WSTATS.values():
+        s["win"] = (s["wins"] + 1) / (s["buys"] + 2)        # shrunk toward 50% until there's a real record
+        s["avg"] = s["sum"] / s["buys"] if s["buys"] else 0.0
+        s["weight"] = max(0.5, min(1.6, 0.4 + 1.2 * s["win"] + max(-0.2, min(0.2, s["avg"] / 200))))
+
+def wline(addr):
+    s = WSTATS.get(addr)
+    if not s or not s["buys"]: return "Wallet record: new (no finished buys tracked yet)"
+    return f"Wallet record: {s['buys']} buys tracked, {s['wins']/s['buys']*100:.0f}% in profit, avg {s['avg']:+.0f}%"
+
+def sync_wallets(state):
+    """Pull new trades for every followed wallet, price them, alert, and keep a track record per wallet."""
+    WTRADES[:] = load("wallet_trades.json", [])
+    ws = followed()
+    if not ws: wallet_stats(); return
+    wt = CFG.get("wallet_tracking") or {}
+    min_usd, min_liq, look = wt.get("min_trade_usd", 500), wt.get("min_liquidity_usd", 25000), wt.get("cluster_hours", 48) * 3600
+    have = {tr["id"] for tr in WTRADES}; new = []
+    for w in ws:
+        st = state.setdefault("_wallets", {}).setdefault(w["address"], {})
+        first = not st.get("synced")
+        try: raw = (sol_trades if w["kind"] == "sol" else evm_trades)(w, st, state, first)
+        except Exception as e: print(f"  [skip] wallet {w['name']}: {e}"); continue
+        st["synced"] = True
+        for chain in {r["chain"] for r in raw}: dex_info(chain, [r["token"] for r in raw if r["chain"] == chain])
+        for r in raw:
+            info = DEXS.get(f"{r['chain']}:{r['token'] if r['chain'] == 'solana' else r['token'].lower()}")
+            if not info or not info["price"] or info["liquidity"] < min_liq: continue    # skips spam airdrops and dust
+            usd = r["amount"] * info["price"]
+            if usd < min_usd: continue
+            tid = f"{r['tx']}:{r['token']}"
+            if tid in have: continue
+            have.add(tid)
+            tr = {"id": tid, "wallet": w["address"], "wname": w["name"], "chain": r["chain"], "token": r["token"],
+                  "symbol": info["symbol"], "name": info["name"], "side": r["side"], "usd": round(usd), "price": info["price"],
+                  "last": info["price"], "t": int(r["t"]), "url": info["url"], "quiet": first}
+            WTRADES.append(tr); new.append(tr)
+    # refresh prices of recent buys (for each wallet's track record)
+    recent = [tr for tr in WTRADES if tr["side"] == "buy" and now() - tr["t"] < 45 * DAY]
+    for chain in {tr["chain"] for tr in recent}:
+        info = dex_info(chain, [tr["token"] for tr in recent if tr["chain"] == chain])
+        for tr in recent:
+            i = info.get(tr["token"]) if tr["chain"] == chain else None
+            if i and i["price"]: tr["last"] = i["price"]
+    WTRADES[:] = sorted([tr for tr in WTRADES if now() - tr["t"] < 60 * DAY], key=lambda x: x["t"])[-3000:]
+    wallet_stats()
+    for tr in sorted(new, key=lambda x: x["t"]):
+        if tr.get("quiet") or now() - tr["t"] > look: continue
+        wallet_alert(tr, look)
+    for tr in WTRADES: tr.pop("quiet", None)
+    save("wallet_trades.json", WTRADES)
+
+def cluster(chain, token, look, side="buy"):
+    k = token if chain == "solana" else token.lower()
+    hits = [tr for tr in WTRADES if tr["side"] == side and tr["chain"] == chain and (tr["token"] if chain == "solana" else tr["token"].lower()) == k and now() - tr["t"] < look]
+    names = {}
+    for tr in hits: names[tr["wallet"]] = tr["wname"]
+    return names
+
+def wallet_alert(tr, look):
+    info = DEXS.get(f"{tr['chain']}:{tr['token'] if tr['chain'] == 'solana' else tr['token'].lower()}") or {}
+    who = cluster(tr["chain"], tr["token"], look, tr["side"])
+    if tr["side"] == "sell":
+        mine = [b for b in WTRADES if b["side"] == "buy" and b["wallet"] == tr["wallet"] and b["token"] == tr["token"]]
+        if not mine: return                                  # only report sells of something we saw them buy
+        r = (tr["price"] / mine[-1]["price"] - 1) * 100
+        send(f"🐋 {tr['wname']} SOLD {tr['symbol']} (${tr['usd']:,})\nBought {datetime.fromtimestamp(mine[-1]['t'], timezone.utc):%b %d} at ${mine[-1]['price']:.4g}, now ${tr['price']:.4g} ({r:+.0f}%)"
+             + (f"\n{len(who)} of your wallets sold it in the last {look//3600}h: {', '.join(who.values())}" if len(who) > 1 else "")
+             + f"\nDexScreener: {tr['url']}", "wallet", tr["symbol"])
+        return
+    try: flags = token_risk(tr["chain"], tr["token"])
+    except Exception: flags = None
+    age = ""
+    if info.get("created"):
+        days = (now() - info["created"] / 1000) / DAY; age = f" · pair {days:.0f}d old" if days >= 1 else f" · pair {days*24:.0f}h old"
+    head = "🔥 CLUSTER BUY" if len(who) > 1 else "🐋 Wallet buy"
+    L = {"coingecko": "https://www.coingecko.com/en/search?query=" + urllib.parse.quote(tr["symbol"]), "dexscreener": tr["url"]}
+    msg = (f"{head}: {tr['wname']} bought ${tr['usd']:,} of {tr['symbol']}" + (f" ({tr['name']})" if tr["name"] else "") + f" on {tr['chain']}"
+           + f"\nPrice ${tr['price']:.4g} · Liquidity ${info.get('liquidity', 0)/1e3:,.0f}K · FDV ${(info.get('fdv') or 0)/1e6:,.1f}M"
+           + (f" · 24h {info['chg24']:+.0f}%" if info.get("chg24") is not None else "") + age
+           + f"\n{wline(tr['wallet'])}"
+           + (f"\n{len(who)} of your wallets bought it in the last {look//3600}h: {', '.join(who.values())}" if len(who) > 1 else "")
+           + ("\nScam check: " + ("; ".join(flags) if flags else "no red flags found in the contract") if flags is not None else "")
+           + f"\n\nTicker: {tr['symbol']}\nContract ({tr['chain']}): {tr['token']}\nCoinGecko: {L['coingecko']}\nDexScreener: {L['dexscreener']}"
+           + "\n\nCopying wallets is risky: they may sell before the next check. Verify before buying.")
+    send(msg, "wallet", tr["symbol"])
+
+def wallet_view(sym, contracts):
+    """Score (0-100) from followed wallets' recent net buying of this token, weighted by each wallet's record."""
+    if not WTRADES: return None
+    look = (CFG.get("wallet_tracking") or {}).get("cluster_hours", 48) * 3600
+    cs = {c.lower() for c in contracts if c} | {c for c in contracts if c}
+    hits = [tr for tr in WTRADES if now() - tr["t"] < look and (tr["token"] in cs or tr["token"].lower() in cs or (not contracts and tr["symbol"] == sym))]
+    if not hits: return None
+    net = {}
+    for tr in hits: net[tr["wallet"]] = net.get(tr["wallet"], 0) + (tr["usd"] if tr["side"] == "buy" else -tr["usd"])
+    b = [a for a, v in net.items() if v > 0]; s = [a for a, v in net.items() if v < 0]
+    wgt = lambda a: (WSTATS.get(a) or {}).get("weight", 1.0)
+    score = max(0, min(100, 50 + 16 * sum(wgt(a) for a in b) - 16 * sum(wgt(a) for a in s)))
+    nm = lambda xs: ", ".join((WSTATS.get(a) or {}).get("name") or next(tr["wname"] for tr in hits if tr["wallet"] == a) for a in xs[:3])
+    why = []
+    if b: why.append(f"🐋 {len(b)} followed wallet{'s' if len(b) > 1 else ''} bought in {look//3600}h ({nm(b)})")
+    if s: why.append(f"🐋 {len(s)} followed wallet{'s' if len(s) > 1 else ''} sold in {look//3600}h ({nm(s)})")
+    return {"score": score, "why": "; ".join(why), "buyers": len(b), "sellers": len(s)}
+
+def wallets_text():
+    ws = followed()
+    if not ws: return "You're not following any wallets. Send /follow <address> <nickname>. Find good ones on the Fomo leaderboard, DexScreener's Top Traders tab, or GMGN."
+    rows = sorted(ws, key=lambda w: -((WSTATS.get(w["address"]) or {}).get("weight", 1)))
+    out = ["Wallets you follow (best record first):"]
+    for w in rows:
+        s = WSTATS.get(w["address"]) or {}
+        out.append(f"• {w['name']} ({'Solana' if w['kind'] == 'sol' else 'EVM'}): " + (f"{s['buys']} buys, {s['wins']/s['buys']*100:.0f}% in profit, avg {s['avg']:+.0f}%" if s.get("buys") else "no finished buys yet"))
+    last = [tr for tr in reversed(WTRADES) if tr["side"] == "buy"][:5]
+    if last: out += ["", "Latest buys:"] + [f"• {tr['wname']}: {tr['symbol']} ${tr['usd']:,} ({(tr['last']/tr['price']-1)*100:+.0f}% since)" for tr in last]
+    return "\n".join(out)
+
+def wallets_export():
+    board = []
+    for w in followed():
+        s = WSTATS.get(w["address"]) or {}
+        board.append({"name": w["name"], "address": w["address"], "kind": w["kind"], "buys": s.get("buys", 0),
+                      "win": (s["wins"] / s["buys"] * 100) if s.get("buys") else None, "avg": s.get("avg") if s.get("buys") else None,
+                      "weight": s.get("weight", 1.0)})
+    board.sort(key=lambda b: -b["weight"])
+    look = (CFG.get("wallet_tracking") or {}).get("cluster_hours", 48) * 3600
+    recent = []
+    for tr in list(reversed(WTRADES))[:40]:
+        recent.append({**{k: tr[k] for k in ("wname", "chain", "token", "symbol", "name", "side", "usd", "price", "last", "t", "url")},
+                       "cluster": len(cluster(tr["chain"], tr["token"], look, tr["side"])) if tr["side"] == "buy" else 0})
+    return {"board": board, "recent": recent}
+
 # ================================================================ outputs
 def export(results, calls, full=True):
     out = {"generated": iso(), "tokens": [], "calls": calls}
@@ -796,6 +1245,9 @@ def export(results, calls, full=True):
             "volume_24h": (dd.get("facts") or {}).get("volume"), "is_buy": bool(is_buy(res)), "starred": False,
             "chart": {"c": [round(x, 10) for x in r["closes"]], "v": [round(x) for x in (r.get("vols") or [])]}})
     out["macro"] = {"score": MACRO.get("score"), "why": MACRO.get("why", [])}
+    out["wallets"] = wallets_export()
+    out["learning"] = {"rules": LEARN.get("rules", []), "mult": LEARN.get("mult", {}), "graded": LEARN.get("graded", 0),
+                       "wins": LEARN.get("wins", 0), "losses": LEARN.get("losses", 0)}
     if full: save("export.json", out)
     write_dashboard(out)
 
@@ -887,7 +1339,7 @@ button.copy{border:0;background:var(--acc);color:#fff;border-radius:8px;padding:
 .bar .tr{height:7px;border-radius:9px;background:var(--card2);overflow:hidden}.bar .fl{height:100%;border-radius:9px}
 .sect{font-weight:700;font-size:.85rem;margin:16px 0 2px}
 table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:.86rem}
-td,th{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;font-variant-numeric:tabular-nums}th{font-size:.72rem;color:var(--mut);font-weight:600}
+td,th{padding:9px 8px;white-space:nowrap;border-bottom:1px solid var(--line);text-align:left;font-variant-numeric:tabular-nums}th{font-size:.72rem;color:var(--mut);font-weight:600}
 tr:last-child td{border:0}
 .foot{font-size:.74rem;color:var(--mut);margin-top:18px;text-align:center}
 .addbox{margin:14px 0 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px}
@@ -904,7 +1356,9 @@ tr:last-child td{border:0}
 <div id=macro></div>
 <div class=tabs id=tabs></div>
 <div id=list></div>
+<h2>Wallets you follow</h2><div id=wallets></div>
 <h2>Track record</h2><div id=calls></div>
+<h2>What the model has learned</h2><div id=learn></div>
 <p class=foot>Not financial advice. Signals describe the past and are often wrong. Always check the team and contract yourself.</p>
 <div class=toast id=toast>Copied</div>
 <script>
@@ -917,7 +1371,7 @@ const big=n=>!n?"–":n>=1e9?"$"+(n/1e9).toFixed(2)+"B":n>=1e6?"$"+(n/1e6).toFix
 const SIG={"STRONG BUY ZONE":["var(--up)","#fff"],"ACCUMULATE":["var(--up-bg)","var(--up)"],"HOLD":["rgba(242,181,68,.16)","var(--warn)"],
 "TRIM":["var(--dn-bg)","var(--dn)"],"SELL / AVOID":["var(--dn)","#fff"],"AVOID (SCAM RISK)":["#7A1F1F","#fff"],"NO DATA":["var(--card2)","var(--mut)"]};
 const SHORT={"STRONG BUY ZONE":"STRONG BUY","AVOID (SCAM RISK)":"SCAM RISK","SELL / AVOID":"SELL"};
-const PART={technical:"Technicals",fundamental:"Fundamentals",flows:"Flows",derivatives:"Derivatives",macro:"Market",news:"News",markets:"Betting odds"};
+const PART={wallets:"Smart wallets",technical:"Technicals",fundamental:"Fundamentals",flows:"Flows",derivatives:"Derivatives",macro:"Market",news:"News",markets:"Betting odds"};
 const hue=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h};
 // ---------- indicator math
 const sma=(a,n)=>a.map((_,i)=>i<n-1?null:a.slice(i-n+1,i+1).reduce((x,y)=>x+y,0)/n);
@@ -1043,11 +1497,36 @@ cxl.setAttribute("x1",x(i));cxl.setAttribute("x2",x(i));cxl.setAttribute("opacit
 tip.style.display="block";tip.innerHTML=`<b>${dd.toLocaleDateString(undefined,{month:"short",day:"numeric"})}</b> ${fmt(c[i])}${rs[i]!=null?" · RSI "+Math.round(rs[i]):""}${s50[i]?" · 50d "+fmt(s50[i]):""}`};
 const out=()=>{cxl.setAttribute("opacity",0);tip.style.display="none"};
 sv.addEventListener("mousemove",mv);sv.addEventListener("touchmove",mv,{passive:true});sv.addEventListener("touchstart",mv,{passive:true});sv.addEventListener("mouseleave",out);sv.addEventListener("touchend",()=>setTimeout(out,1500))}
-// ---------- calls
-(function(){const C=$("#calls");if(!calls.length){C.innerHTML="<p class=mut>No buy calls yet. Every buy call gets stamped here with its date and price.</p>";return}
-const tk=Object.fromEntries(D.tokens.map(t=>[t.symbol,t]));
-C.innerHTML=`<table><tr><th>Date</th><th>Token</th><th>Entry</th><th>Now</th><th>Return</th></tr>${calls.slice(0,40).map(c=>{const r=(c.last/c.entry-1)*100,L=(tk[c.symbol]||{}).links;
-return `<tr><td>${esc(c.date.slice(5,10))}</td><td><b>${L?`<a href="${esc(L.dexscreener)}" target=_blank rel=noopener>${esc(c.symbol)}</a>`:esc(c.symbol)}</b></td><td>${fmt(c.entry)}</td><td>${fmt(c.last)}</td><td style="color:${r>=0?"var(--up)":"var(--dn)"};font-weight:700">${r>=0?"+":""}${r.toFixed(1)}%</td></tr>`}).join("")}</table>`})();
+// ---------- track record: your coins vs coins the scanner found
+(function(){const C=$("#calls"),tk=Object.fromEntries(D.tokens.map(t=>[t.symbol,t]));
+const OUT={win:["WIN","var(--up)"],loss:["LOSS","var(--dn)"],flat:["FLAT","var(--mut)"]};
+function block(title,list,empty){const w=el("div","");w.append(el("div","sect",title));
+if(!list.length){w.append(el("p","mut",empty));return w}
+const rs=list.map(c=>(c.last/c.entry-1)*100),win=rs.filter(x=>x>0).length;
+w.append(el("div","kpis",`<div class=kpi><b>${list.length}</b><small>calls</small></div><div class=kpi><b>${Math.round(win/list.length*100)}%</b><small>in profit</small></div><div class=kpi><b>${(rs.reduce((a,b)=>a+b,0)/rs.length).toFixed(1)}%</b><small>average</small></div>`));
+const tb=el("div","",`<table style="margin-top:8px"><tr><th>Date</th><th>Token</th><th>Entry</th><th>Now</th><th>Return</th></tr>${list.slice(0,40).map((c,i)=>{const r=(c.last/c.entry-1)*100,L=c.links||(tk[c.symbol]||{}).links,o=OUT[c.outcome];
+return `<tr class=crow data-i=${i}><td>${esc(c.date.slice(5,10))}</td><td><b>${c.starred?"⭐ ":""}${L?`<a href="${esc(L.dexscreener)}" target=_blank rel=noopener>${esc(c.symbol)}</a>`:esc(c.symbol)}</b>${o?`<br><small style="color:${o[1]};font-weight:700">${o[0]}${c.postmortem?" · tap":""}</small>`:""}</td><td>${fmt(c.entry)}</td><td>${fmt(c.last)}</td><td style="color:${r>=0?"var(--up)":"var(--dn)"};font-weight:700">${r>=0?"+":""}${r.toFixed(1)}%</td></tr>`+
+(c.postmortem?`<tr class=pm style="display:none"><td colspan=5 style="white-space:normal"><b>Post-mortem.</b> ${c.postmortem.signs.length?"Warning signs at entry: "+c.postmortem.signs.map(esc).join("; ")+".":"No obvious warning signs at entry."}${c.postmortem.btc_chg!=null?` Bitcoin moved ${c.postmortem.btc_chg.toFixed(1)}% over the same week.`:""}</td></tr>`:"")}).join("")}</table>`);
+tb.querySelectorAll(".crow").forEach(r=>r.onclick=()=>{const n=r.nextElementSibling;if(n&&n.classList.contains("pm"))n.style.display=n.style.display=="none"?"table-row":"none"});w.append(tb);return w}
+C.append(block("⭐ Your coins (starred & watchlist)",calls.filter(c=>c.source!="discovery"),"No buy calls on your coins yet."));
+C.append(block("🔎 Coins the scanner found",calls.filter(c=>c.source=="discovery"),"No buy calls on scanner finds yet."));
+// learning
+const Lr=D.learning||{};const L=$("#learn");
+if(!Lr.graded){L.append(el("p","mut","Each buy call is graded 7 days later. Losing calls get a post-mortem of the warning signs that were there at entry, and once a warning sign has lost money in 5+ calls the model lowers the score for it (or stops making those calls). Nothing graded yet."));return}
+L.append(el("div","kpis",`<div class=kpi><b>${Lr.graded}</b><small>calls graded</small></div><div class=kpi><b>${Lr.wins}</b><small>wins</small></div><div class=kpi><b>${Lr.losses}</b><small>losses</small></div>`));
+const u=el("ul","checks");(Lr.rules||[]).forEach(r=>u.append(el("li","",`<span class="dot r">${Math.round(r.points)}</span><span>${esc(r.text)} — ${r.wins}/${r.n} won, avg ${r.avg.toFixed(1)}%${r.block?" · <b>no more buy calls in this setup</b>":""}</span>`)));
+if(!(Lr.rules||[]).length)u.append(el("li","",`<span class="dot n">•</span><span>No warning sign has lost often enough yet to change the model.</span>`));L.append(u);
+const M=Object.entries(Lr.mult||{});if(M.length)L.append(el("p","mut","Weight tuning: "+M.map(([k,v])=>(PART[k]||k)+" ×"+v).join(", ")))})();
+// ---------- followed wallets
+(function(){const W=D.wallets||{board:[],recent:[]},C=$("#wallets"),ago=t=>{const h=(Date.now()/1000-t)/3600;return h<1?Math.round(h*60)+"m":h<48?Math.round(h)+"h":Math.round(h/24)+"d"};
+const f=el("div","addbox",`<div class=addrow><input id=win placeholder="Wallet address to follow" autocomplete=off spellcheck=false style="text-transform:none"><button class=abtn id=wbtn>Follow</button></div>
+<div class=addnote>Paste a Solana or 0x wallet (from the Fomo leaderboard, DexScreener "Top traders", GMGN…). Rename it in Telegram with /follow &lt;address&gt; &lt;nickname&gt;.</div>`);
+C.append(f);f.querySelector("#wbtn").onclick=()=>{const v=f.querySelector("#win").value.trim();if(!/^(0x[0-9a-fA-F]{40}|[1-9A-HJ-NP-Za-km-z]{32,44})$/.test(v)){f.querySelector("#win").focus();return}
+const u=D.bot?`https://t.me/${D.bot}?start=FOLLOW_${v}`:null;if(u)location.href=u;else alert("Send this to your bot: /follow "+v)};
+if(!W.board.length){C.append(el("p","mut","Not following any wallets yet. Followed wallets' buys feed the score (weighted by how well each wallet's buys have done) and send you alerts."));return}
+C.append(el("div","",`<table style="margin-top:10px"><tr><th>#</th><th>Wallet</th><th>Buys</th><th>In profit</th><th>Avg</th></tr>${W.board.map((b,i)=>`<tr><td>${i+1}</td><td><b>${esc(b.name)}</b><br><small>${b.kind=="sol"?"Solana":"EVM"} · ${esc(b.address.slice(0,4))}…${esc(b.address.slice(-4))}</small></td><td>${b.buys}</td><td>${b.win==null?"–":Math.round(b.win)+"%"}</td><td style="color:${(b.avg||0)>=0?"var(--up)":"var(--dn)"};font-weight:700">${b.avg==null?"–":(b.avg>=0?"+":"")+b.avg.toFixed(0)+"%"}</td></tr>`).join("")}</table>`));
+if(W.recent.length){C.append(el("div","sect","Latest wallet trades"));const u=el("ul","checks");W.recent.slice(0,15).forEach(r=>{const ch=(r.last/r.price-1)*100;
+u.append(el("li","",`<span class="dot ${r.side=="buy"?"g":"r"}">${r.side=="buy"?"B":"S"}</span><span style="flex:1"><b>${esc(r.wname)}</b> ${r.side=="buy"?"bought":"sold"} <a href="${esc(r.url)}" target=_blank rel=noopener><b>${esc(r.symbol)}</b></a> $${Number(r.usd).toLocaleString()} <small>· ${esc(r.chain)} · ${ago(r.t)} ago</small>${r.cluster>1?` <span class=pill style="background:var(--warn);color:#111">🔥 ${r.cluster} wallets</span>`:""}</span><small style="color:${ch>=0?"var(--up)":"var(--dn)"};font-weight:700">${ch>=0?"+":""}${ch.toFixed(0)}%</small>`))});C.append(u)}})();
 render();
 let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>document.querySelectorAll(".tok.open").forEach(w=>{const r=w.querySelector(".rg.on");r&&r.click()}),250)});
 setTimeout(()=>location.reload(),15*60*1000);
@@ -1082,6 +1561,12 @@ HELP = """Token Watch commands:
 /discovered on|off - alerts for coins the scanner finds
 /watchlist on|off - alerts for non-starred watchlist coins
 /report on|off - weekly track-record message
+/follow <address> <nickname> - follow a wallet (Solana or 0x)
+/unfollow <address or nickname> - stop following
+/wallets - the wallets you follow, their records, latest buys
+/wallets on|off - wallet-buy alerts
+/record - track record (your coins vs scanner finds)
+/lessons - what the model has learned from its past calls
 /pause - mute everything except replies
 /resume - unmute
 /status - show settings
@@ -1128,15 +1613,17 @@ def load_prefs(state):
     PREFS.update({
         "starred": sorted((starred | set(saved.get("star_add", []))) - set(saved.get("star_del", []))),
         "alerts": {"watchlist": cfg_alerts.get("watchlist", True), "discovered": cfg_alerts.get("discovered", False),
-                   "weekly_report": cfg_alerts.get("weekly_report", True), **saved.get("alerts", {})},
+                   "weekly_report": cfg_alerts.get("weekly_report", True), "wallets": cfg_alerts.get("wallets", True), **saved.get("alerts", {})},
         "paused": saved.get("paused", False), "added": saved.get("added", []), "removed": saved.get("removed", []),
+        "wallets": saved.get("wallets", []), "unfollowed": saved.get("unfollowed", []),
     })
 
 def save_prefs(state, base):
     base_star = set(s.upper() for s in CFG.get("starred", [])) | {t["symbol"] for t in CFG_WATCH if t.get("starred")}
     cur = set(PREFS["starred"])
     state["_prefs"] = {"star_add": sorted(cur - base_star), "star_del": sorted(base_star - cur),
-                       "alerts": PREFS["alerts"], "paused": PREFS["paused"], "added": PREFS["added"], "removed": PREFS["removed"]}
+                       "alerts": PREFS["alerts"], "paused": PREFS["paused"], "added": PREFS["added"], "removed": PREFS["removed"],
+                       "wallets": PREFS.get("wallets", []), "unfollowed": PREFS.get("unfollowed", [])}
 
 def reply(text):
     tok, chat = tg_creds()
@@ -1162,8 +1649,30 @@ def handle_commands(state, texts=None, wait=0):
     for t in texts:
         m = re.fullmatch(r"/start(?:@\w+)?\s+(ADD|STAR|UNSTAR|REMOVE|CHECK)_([A-Za-z0-9]{1,15})", t.strip(), re.I)
         if m: t = f"/{m.group(1).lower()} {m.group(2).upper()}"      # buttons on the dashboard open the bot with these
+        m = re.fullmatch(r"/start(?:@\w+)?\s+(FOLLOW|UNFOLLOW)_([A-Za-z0-9]{32,44})", t.strip(), re.I)
+        if m: t = f"/{m.group(1).lower()} {m.group(2)}"                # wallet addresses keep their exact letters
         parts = t.strip().split(); cmd = parts[0].lower().split("@")[0]; arg = parts[1].upper() if len(parts) > 1 else ""
         onoff = {"ON": True, "OFF": False}.get(arg)
+        raw = parts[1] if len(parts) > 1 else ""
+        if cmd == "/follow":
+            if not wkind(raw): reply("Send /follow <wallet address> <nickname>, e.g. /follow 7xKX…abc Sniper1 (Solana or 0x… EVM address)."); continue
+            name = " ".join(parts[2:])[:30] or f"Wallet {raw[:4]}…{raw[-4:]}"
+            PREFS["wallets"] = [w for w in PREFS.get("wallets", []) if w["address"].lower() != raw.lower()] + [{"address": raw, "name": name}]
+            PREFS["unfollowed"] = [x for x in PREFS.get("unfollowed", []) if x.lower() != raw.lower()]
+            need = "HELIUS_API_KEY" if wkind(raw) == "sol" else "ETHERSCAN_API_KEY"
+            reply(f"🐋 Following {name}. I'll alert you when it buys (from the next check) and track how its buys do."
+                  + ("" if CFG.get(need.lower()) or wkind(raw) == "evm" and CFG.get("etherscan_api_key") else f"\n⚠️ Add the {need} secret on GitHub so I can read this wallet." if need == "HELIUS_API_KEY" else ""))
+            continue
+        if cmd == "/unfollow" and raw:
+            hit = [w for w in followed() if raw.lower() in (w["address"].lower(), w["name"].lower())]
+            if not hit: reply("Not following that wallet. Send /wallets to see the list."); continue
+            for w in hit:
+                PREFS["wallets"] = [x for x in PREFS.get("wallets", []) if x["address"].lower() != w["address"].lower()]
+                PREFS.setdefault("unfollowed", []).append(w["address"])
+            reply(f"Unfollowed {', '.join(w['name'] for w in hit)}."); continue
+        if cmd == "/wallets" and onoff is None: reply(wallets_text()); continue
+        if cmd in ("/lessons", "/learned"): reply(lessons_text()); continue
+        if cmd == "/record": reply(report_text(CTX.get("calls") or load("calls.json", []))); continue
         if cmd == "/check":
             assess([a.upper().lstrip("$") for a in parts[1:]] or PREFS["starred"])
         elif not cmd.startswith("/") and len(parts) <= 5 and all(re.fullmatch(r"\$[A-Za-z0-9]{2,10}|[A-Z0-9]{2,10}", x) for x in parts):
@@ -1174,7 +1683,8 @@ def handle_commands(state, texts=None, wait=0):
             reply("Starred (always alert): " + (", ".join(PREFS["starred"]) or "none") +
                   f"\nOther watchlist alerts: {'on' if a['watchlist'] else 'off'}\nDiscovered-coin alerts: {'on' if a['discovered'] else 'off'}"
                   f"\nWeekly report: {'on' if a['weekly_report'] else 'off'}\nPaused: {'yes' if PREFS['paused'] else 'no'}"
-                  + ("\nAdded by command: " + ", ".join(PREFS["added"]) if PREFS["added"] else ""))
+                  + ("\nAdded by command: " + ", ".join(PREFS["added"]) if PREFS["added"] else "")
+                  + f"\nWallet-buy alerts: {'on' if a.get('wallets', True) else 'off'} ({len(followed())} wallets followed)")
         elif cmd in ("/star", "/unstar") and arg:
             st = set(PREFS["starred"]); (st.add if cmd == "/star" else st.discard)(arg); PREFS["starred"] = sorted(st)
             if cmd == "/star" and arg not in PREFS["added"] and arg not in {w["symbol"] for w in CFG_WATCH}: PREFS["added"].append(arg)
@@ -1190,8 +1700,8 @@ def handle_commands(state, texts=None, wait=0):
             if arg not in PREFS["removed"]: PREFS["removed"].append(arg)
             PREFS["starred"] = [x for x in PREFS["starred"] if x != arg]
             reply(f"Removed {arg}.")
-        elif cmd in ("/discovered", "/watchlist", "/report") and onoff is not None:
-            PREFS["alerts"][{"/discovered": "discovered", "/watchlist": "watchlist", "/report": "weekly_report"}[cmd]] = onoff
+        elif cmd in ("/discovered", "/watchlist", "/report", "/wallets") and onoff is not None:
+            PREFS["alerts"][{"/discovered": "discovered", "/watchlist": "watchlist", "/report": "weekly_report", "/wallets": "wallets"}[cmd]] = onoff
             reply(f"{cmd[1:].capitalize()} alerts turned {'on' if onoff else 'off'}.")
         elif cmd == "/pause": PREFS["paused"] = True; reply("Paused. Reply /resume to turn alerts back on.")
         elif cmd == "/resume": PREFS["paused"] = False; reply("Alerts are back on.")
@@ -1217,6 +1727,7 @@ def run_once():
     load_prefs(state)
     HIST.clear(); HIST.update(load_hist())
     CTX.clear(); CTX.update({"cache": cache, "state": state, "calls": calls})
+    LEARN.clear(); LEARN.update(load("learning.json", {}))
     have = {t["symbol"] for t in wl}
     wl = [t for t in wl if t["symbol"] not in PREFS["removed"]] + [norm(x) for x in PREFS["added"] if x not in have]
     save_prefs(state, None)
@@ -1234,6 +1745,7 @@ def run_once():
             bv = market_view(pm, btc_px)
             if bv: BACKDROP["btc"] = bv; print(f"Bitcoin betting backdrop {bv['score']:.0f}/100 from {bv['n']} markets")
     handle_commands(state)   # messages sent since the last run (applies /star, /check, etc.)
+    if ind("wallets"): try_get("followed wallets", lambda: sync_wallets(state))
     wl = [t for t in wl if t["symbol"] not in PREFS["removed"]] + [norm(x) for x in PREFS["added"] if x not in {t["symbol"] for t in wl}]
     results = []
     for tok in wl:
@@ -1245,6 +1757,7 @@ def run_once():
     except Exception as ex: print(f"  [discovery error] {ex}")
     prices = dict(LIVE); prices.update({r["res"]["symbol"]: r["res"]["price"] for r in results})
     update_calls(calls, prices)
+    try_get("learning", lambda: learn(calls, state))
     wk = datetime.now(timezone.utc).strftime("%G-W%V")
     if calls and state.get("_report_week") != wk:
         state["_report_week"] = wk; send(report_text(calls), "report")
@@ -1328,7 +1841,7 @@ def main():
     path = os.path.join(HERE, "config.json")
     if not os.path.exists(path): path = os.path.join(HERE, "config.example.json")
     CFG = json.load(open(path))
-    for _k in ("coingecko_api_key", "cryptopanic_api_key", "whale_alert_api_key"):  # keys from GitHub Secrets override config.json
+    for _k in ("coingecko_api_key", "cryptopanic_api_key", "whale_alert_api_key", "helius_api_key", "etherscan_api_key"):  # keys from GitHub Secrets override config.json
         if os.environ.get(_k.upper()): CFG[_k] = os.environ[_k.upper()]
     if a.demo:
         DEMO = True; DATA = os.path.join(HERE, "data-demo"); CFG["coingecko_min_seconds"] = 0; install_demo()

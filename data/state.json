@@ -142,7 +142,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 9,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
@@ -269,7 +269,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false
   },
@@ -353,7 +353,7 @@
   },
   "AKT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false
   },
@@ -366,7 +366,7 @@
   "ZEC": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false
   },
   "\u9f99\u867e": {
@@ -481,7 +481,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "HYPE": {
   "seen_news": [],

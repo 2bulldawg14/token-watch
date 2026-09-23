@@ -131,7 +131,7 @@
  "SEI": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "LOW",
   "signal": "HOLD",
   "in_zone2": false,
@@ -354,7 +354,7 @@
   "AKT": {
    "seen": true,
    "bad": true,
-   "in_sell": false,
+   "in_sell": true,
    "below": false
   },
   "HYPE": {
@@ -492,10 +492,10 @@
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
+   "Will Hyperliquid dip to $92 in September?": 100,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 4,
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 3,
-   "Will Hyperliquid dip to $20 by December 31, 2026?": 3
+   "Will Hyperliquid dip to $12 by December 31, 2026?": 3
   }
  },
  "ZEC": {
@@ -507,9 +507,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash reach $2000 by December 31, 2026?": 58,
-   "Will Zcash dip to $50 by December 31, 2026?": 3
+   "Will Zcash dip to $100 by December 31, 2026?": 4,
+   "Will Zcash dip to $50 by December 31, 2026?": 3,
+   "Will Zcash dip to $700 by December 31, 2026?": 30
   }
  },
  "SHIB": {

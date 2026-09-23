@@ -338,6 +338,50 @@ def zones(c, lows, highs, a):
     bz = {"low": max(below) - 0.25*a, "high": min(max(below) + 0.75*a, hi - a)} if below and a else None
     sz = {"low": hi - 0.75*a, "high": hi + 0.25*a} if a else None
     return bz, sz
+def volume_nodes(c, v, lows=None, highs=None, days=180, bins=48):
+    """Volume-by-price: where the most coins actually changed hands. Returns heavy-volume price levels (strongest first)."""
+    if not v or len(v) < 30: return []
+    n = min(days, len(c), len(v)); c, v = c[-n:], v[-n:]
+    lo_s = (lows or c)[-n:]; hi_s = (highs or c)[-n:]
+    lo, hi = min(lo_s), max(hi_s)
+    if hi <= lo: return []
+    step = (hi - lo) / bins; prof = [0.0] * bins
+    for i in range(n):                                   # spread each day's volume across that day's range
+        a_, b_ = int((lo_s[i] - lo) / step), int((hi_s[i] - lo) / step)
+        a_, b_ = max(0, min(bins - 1, a_)), max(0, min(bins - 1, b_))
+        for k in range(a_, b_ + 1): prof[k] += v[i] / (b_ - a_ + 1)
+    avg = sum(prof) / bins
+    nodes = [(lo + (k + 0.5) * step, prof[k] / avg) for k in range(bins)
+             if prof[k] > 1.3 * avg and prof[k] >= max(prof[max(0, k-2):k+3])]
+    return [{"price": p_, "strength": round(w, 2)} for p_, w in sorted(nodes, key=lambda x: -x[1])[:6]]
+
+def trade_plan(c, lows, highs, a, bz, sz, nodes):
+    """Two buy zones (scale in), a stop-loss and a take-profit level, using supports + heavy-volume levels."""
+    if not bz or not a: return {}
+    price = c[-1]; lo = lows or c
+    near = [n for n in nodes if abs(n["price"] - (bz["low"] + bz["high"]) / 2) <= 1.2 * a]
+    z1 = dict(bz); z1["strong"] = bool(near)
+    if near:                                             # heavy trading right at support = stronger floor
+        z1["vol_level"] = near[0]["price"]
+    # deeper support for zone 2: older lows, 200-day average and heavy-volume levels well below zone 1
+    cands = [min(lo[-w:]) for w in (90, 180, 365) if len(lo) >= w] + [x for x in (sma(c, 200),) if x] + [n["price"] for n in nodes]
+    deeper = [x for x in cands if x < z1["low"] - 0.75 * a and x > price * 0.35]
+    z2 = None
+    if deeper:
+        s2 = max(deeper)
+        z2 = {"low": s2 - 0.25 * a, "high": min(s2 + 0.5 * a, z1["low"] - 0.25 * a)}
+        vn = [n for n in nodes if abs(n["price"] - s2) <= 1.2 * a]
+        z2["strong"] = bool(vn)
+        if z2["high"] <= z2["low"]: z2 = None
+    floor = (z2 or z1)["low"]
+    under = [n["price"] for n in nodes if n["price"] < floor and n["price"] > floor - 2 * a]
+    stop = (min(under) if under else floor) - 0.5 * a
+    above = sorted(n["price"] for n in nodes if n["price"] > price * 1.02)
+    first_res = [x for x in above if not sz or x < sz["low"]]           # first heavy-volume ceiling before the sell zone
+    target = first_res[0] if first_res else ((sz["low"] + sz["high"]) / 2 if sz and sz["low"] > price else None)
+    return {"zone1": z1, "zone2": z2, "stop": stop, "target": target,
+            "resistance": [x for x in above[:3]], "support_levels": sorted([n["price"] for n in nodes if n["price"] < price], reverse=True)[:3]}
+
 def lin(x, bad, good): return max(0.0, min(100.0, (x - bad) / (good - bad) * 100))
 
 GRADE_SCORE = {"A": 90, "B": 75, "C": 55, "D": 40, "F": 20}
@@ -358,10 +402,16 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
     if s50 and s200:
         t.append(70 if price > s50 > s200 else 55 if price > s200 else 40 if s50 > s200 else 30)
         why.append(f"{'Above' if price > s200 else 'Below'} 200-day avg ${s200:.4g}")
+    nodes = volume_nodes(c, data.get("volume"), data.get("low"), data.get("high"))
+    plan = trade_plan(c, data.get("low"), data.get("high"), a, bz, sz, nodes)
+    z2 = plan.get("zone2")
     in_zone = bool(bz and bz["low"] <= price <= bz["high"])
+    in_zone2 = bool(z2 and z2["low"] <= price <= z2["high"])
     if bz:
-        if in_zone: t.append(90); why.append("Inside buy zone")
-        elif price < bz["low"]: t.append(45); why.append("Broke below buy zone")
+        if in_zone: t.append(92 if plan["zone1"].get("strong") else 88); why.append("Inside buy zone 1" + (" (heavy-volume support)" if plan["zone1"].get("strong") else ""))
+        elif in_zone2: t.append(90 if z2.get("strong") else 86); why.append("Inside deep buy zone 2" + (" (heavy-volume support)" if z2.get("strong") else ""))
+        elif plan.get("stop") and price < plan["stop"]: t.append(25); why.append(f"Below the stop-loss level ${plan['stop']:.4g} - support failed")
+        elif price < bz["low"]: t.append(50); why.append("Below buy zone 1" + (f"; next support is zone 2 ${z2['low']:.4g}-${z2['high']:.4g}" if z2 else ""))
         else: t.append(max(20, 80 - (price - bz["high"]) / (a or 1) * 15))
     if sz and price >= sz["low"]: t.append(15); why.append("Near 90-day high (sell zone)")
     if ind("bollinger"):
@@ -453,7 +503,7 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
     return {"symbol": sym, "price": price, "rsi": r, "macd": m, "atr": a, "sma50": s50, "sma200": s200, "buy_zone": bz,
             "sell_zone": sz, "in_zone": in_zone, "parts": parts, "score": score, "signal": signal, "why": why,
             "buy_ratio": ratio, "src": data.get("src"), "markets": mv, "pb": ex.get("_pb"), "rs30": ex.get("_rs30"),
-            "in_sell": in_sell, "blocked": blocked}
+            "in_sell": in_sell, "blocked": blocked, "plan": plan, "in_zone2": in_zone2, "vnodes": nodes}
 
 # ================================================================ extra indicators (all free, all optional)
 DEFAULT_IND = {"bollinger": True, "obv": True, "rsi_divergence": True, "relative_strength": True,
@@ -578,7 +628,7 @@ def stamp_call(calls, res, cg_id, dd, source):
     if any(c["symbol"] == res["symbol"] and now() - c["t"] < cool for c in calls): return None
     call = {"id": f"{res['symbol']}-{int(now())}", "symbol": res["symbol"], "cg_id": cg_id, "t": int(now()), "date": iso(),
             "entry": res["price"], "signal": res["signal"] if res["signal"] in BUY_SIGNALS else "IN BUY ZONE",
-            "score": round(res["score"] or 0), "buy_zone": res["buy_zone"], "risk": dd["level"] if dd else None,
+            "score": round(res["score"] or 0), "buy_zone": res["buy_zone"], "risk": dd["level"] if dd else None, "plan": res.get("plan"),
             "source": source, "last": res["price"], "max": res["price"], "min": res["price"], "checkpoints": {}}
     calls.append(call); return call
 
@@ -680,12 +730,17 @@ def links_text(res, dd):
     s = f"\nTicker: {res['symbol']}" + (f" ({name})" if name else "")
     s += f"\nContract ({L['chain']}): {L['contract']}" if L["contract"] else "\nContract: none (native coin)"
     return s + f"\nCoinGecko: {L['coingecko']}\nDexScreener: {L['dexscreener']}"
-def is_buy(res): return res["signal"] in BUY_SIGNALS or (res.get("in_zone") and not res.get("in_sell") and not res.get("blocked") and res["signal"] not in ("SELL / AVOID", "AVOID (SCAM RISK)", "TRIM"))
+def is_buy(res): return res["signal"] in BUY_SIGNALS or ((res.get("in_zone") or res.get("in_zone2")) and not res.get("in_sell") and not res.get("blocked") and res["signal"] not in ("SELL / AVOID", "AVOID (SCAM RISK)", "TRIM"))
 
 def z(zn): return f"${zn['low']:.4g}-${zn['high']:.4g}" if zn else "n/a"
 def summary(res, dd=None, links=False):
     s = f"{res['symbol']} ${res['price']:.4g} -> {res['signal']}" + (f" ({res['score']:.0f}/100)" if res['score'] is not None else "")
     s += f"\nBuy zone {z(res['buy_zone'])} | Sell zone {z(res['sell_zone'])}"
+    pl = res.get("plan") or {}
+    if pl.get("zone1"):
+        s += (f"\nPlan: buy ½ in zone 1 {z(pl['zone1'])}{' (strong)' if pl['zone1'].get('strong') else ''}"
+              + (f", ½ in zone 2 {z(pl['zone2'])}{' (strong)' if pl['zone2'].get('strong') else ''}" if pl.get("zone2") else "")
+              + (f"; stop below ${pl['stop']:.4g}" if pl.get("stop") else "") + (f"; take profit near ${pl['target']:.4g}" if pl.get("target") else ""))
     if res.get("markets"): s += "\nBetting markets:\n" + "\n".join("   " + l for l in res["markets"]["lines"][:3])
     if dd: s += f"\nScam risk {dd['level']}" + (": " + "; ".join(dd["flags"][:4]) if dd["flags"] else "")
     s += "\n" + "\n".join(" - " + w for w in res["why"]) + ("\nMarket: " + "; ".join(MACRO.get("why", [])) if MACRO.get("why") else "")
@@ -697,7 +752,12 @@ def check_alerts(tok, res, news, dd, state, call):
     if st.get("signal") and st["signal"] != res["signal"]: ev.append(f"Signal changed {st['signal']} -> {res['signal']}")
     if call: ev.append(f"BUY CALL stamped at ${call['entry']:.4g} (tracked in your record)")
     if res["in_zone"] and not st.get("in_zone") and not call: ev.append(f"Entered buy zone {z(res['buy_zone'])}")
-    if res["buy_zone"] and p < res["buy_zone"]["low"] and st.get("in_zone"): ev.append("Fell through the buy zone - support broke")
+    pl = res.get("plan") or {}
+    if res.get("in_zone2") and not st.get("in_zone2"): ev.append(f"Entered deep buy zone 2 {z(pl.get('zone2'))} - second half of the plan")
+    st["in_zone2"] = res.get("in_zone2")
+    if pl.get("stop") and p < pl["stop"] and not st.get("below_stop"): ev.append(f"Fell below the stop-loss level ${pl['stop']:.4g} - the setup failed")
+    st["below_stop"] = bool(pl.get("stop") and p < pl["stop"])
+    if res["buy_zone"] and p < res["buy_zone"]["low"] and st.get("in_zone") and not res.get("in_zone2"): ev.append("Fell through buy zone 1" + (f" - next support is zone 2 {z(pl['zone2'])}" if pl.get("zone2") else " - support broke"))
     st["in_zone"] = res["in_zone"]
     if res["rsi"] is not None:
         band = "low" if res["rsi"] < 30 else "high" if res["rsi"] > 70 else "mid"
@@ -805,7 +865,7 @@ def discover(cache, state, calls, skip):
         r = check_token(c, cache, state, calls, source="discovery")
         if not r: continue
         ok_risk = r["dd"] and r["dd"]["level"] in (("LOW",) if d.get("require_low_risk", True) else ("LOW", "MEDIUM"))
-        if ok_risk and (r["res"]["signal"] in BUY_SIGNALS or r["res"]["in_zone"]):
+        if ok_risk and is_buy(r["res"]):
             seen = state.setdefault("_disc_seen", {})
             if now() - seen.get(c["symbol"], 0) > 7 * DAY:
                 seen[c["symbol"]] = now()
@@ -1237,6 +1297,7 @@ def export(results, calls, full=True):
             "symbol": res["symbol"], "name": (dd.get("facts") or {}).get("name") or "", "source": r["source"],
             "price": res["price"], "prices": "\n".join(f"{x:.8g}" for x in r["closes"]),
             "signal": res["signal"], "score": res["score"], "buy_zone": res["buy_zone"], "sell_zone": res["sell_zone"],
+            "plan": res.get("plan"), "vnodes": res.get("vnodes"), "in_zone2": res.get("in_zone2"),
             "why": res["why"], "risk": dd.get("level"), "risk_flags": dd.get("flags", []), "checks": dd.get("checks", {}),
             "pressure": None if pr is None else (-2 if pr < .46 else -1 if pr < .49 else 0 if pr < .51 else 1 if pr < .54 else 2),
             "market_cap": (dd.get("facts") or {}).get("market_cap"),
@@ -1347,6 +1408,8 @@ tr:last-child td{border:0}
 .abtn{border:0;background:var(--acc);color:#fff;border-radius:10px;padding:8px 12px;font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;white-space:nowrap}
 .abtn.alt{background:var(--card2);color:var(--ink);border:1px solid var(--line)}.addnote{font-size:.76rem;color:var(--mut);margin-top:6px}
 .acts{display:flex;gap:8px;margin-top:10px}.acts a{flex:1;text-align:center;text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid var(--line);border-radius:10px;padding:7px;background:var(--card)}
+.plan{margin-top:10px;font-size:.84rem;line-height:1.45;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.mini{display:inline-block;font-size:.68rem;font-weight:700;text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin:3px 3px 0 0;background:var(--card2)}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none}
 </style></head><body>
 <header><div><h1>Token <span>Watch</span></h1></div><div class=upd id=upd></div></header>
@@ -1386,8 +1449,9 @@ D.tokens.forEach(t=>{t.starred=star.has(t.symbol);t.c=(t.chart&&t.chart.c&&t.cha
 $("#upd").innerHTML="Updated<br><b>"+esc(D.generated)+"</b>";
 const calls=[...(D.calls||[])].sort((a,b)=>b.t-a.t),rets=calls.map(c=>(c.last/c.entry-1)*100);
 const buys=D.tokens.filter(t=>t.is_buy&&!/AVOID/.test(t.signal));
-$("#kpis").innerHTML=[[buys.length,"buy setups now"],[rets.length?Math.round(rets.filter(x=>x>0).length/rets.length*100)+"%":"–","calls in profit"],
-[rets.length?(rets.reduce((a,b)=>a+b,0)/rets.length).toFixed(1)+"%":"–","avg call return"]].map(([b,s])=>`<div class=kpi><b>${b}</b><small>${s}</small></div>`).join("");
+$("#kpis").innerHTML=`<div class=kpi style="grid-column:1/-1;display:flex;justify-content:space-between;align-items:center"><div><small>Right now</small><b>${buys.length} buy setup${buys.length==1?"":"s"}</b></div><small style="text-align:right">of ${D.tokens.length} coin${D.tokens.length==1?"":"s"} checked<br>tap “Buy setups” to see them</small></div>`+
+[[calls.length,"past buy calls"],[rets.length?Math.round(rets.filter(x=>x>0).length/rets.length*100)+"%":"–","of past calls in profit"],
+[rets.length?(rets.reduce((a,b)=>a+b,0)/rets.length>=0?"+":"")+(rets.reduce((a,b)=>a+b,0)/rets.length).toFixed(1)+"%":"–","avg past call return"]].map(([b,s])=>`<div class=kpi><b>${b}</b><small>${s}</small></div>`).join("");
 if((D.macro||{}).why&&D.macro.why.length){const m=$("#macro");m.innerHTML=`<h2>Market backdrop${D.macro.score!=null?" · "+Math.round(D.macro.score)+"/100":""}</h2>`;const ch=el("div","chips");D.macro.why.forEach(w=>ch.append(el("span","chip",esc(w))));m.append(ch)}
 // ---------- add coins (opens your Telegram bot with the command ready; the next check picks it up)
 const botURL=(act,sym)=>D.bot?`https://t.me/${D.bot}?start=${act}_${encodeURIComponent(sym)}`:null;
@@ -1422,8 +1486,12 @@ function fill(b,t){const Lk=t.links||{},isB=t.is_buy&&!/AVOID/.test(t.signal),bz
 const box=el("div",isB?"buybox":"infobox");
 box.innerHTML=(isB?`<h3>Suggested buy · ${esc(t.symbol)}</h3>`:`<div class=sect style="margin:0 0 8px">Token info</div>`)+
 `<div class=kv><span>Ticker</span><b>${esc(t.symbol)}${t.name?" · "+esc(t.name):""}</b>
-<span>Price</span><b>${fmt(t.price)}</b><span>Buy zone</span><b>${bz?fmt(bz.low)+" – "+fmt(bz.high):"n/a"}</b>
+<span>Price</span><b>${fmt(t.price)}</b><span>Buy zone ${(t.plan||{}).zone2?"1":""}</span><b>${bz?fmt(bz.low)+" – "+fmt(bz.high):"n/a"}${(t.plan||{}).zone1&&t.plan.zone1.strong?" 💪":""}</b>
+${(t.plan||{}).zone2?`<span>Buy zone 2</span><b>${fmt(t.plan.zone2.low)+" – "+fmt(t.plan.zone2.high)}${t.plan.zone2.strong?" 💪":""}</b>`:""}
+${(t.plan||{}).stop?`<span>Stop-loss</span><b style="color:var(--dn)">below ${fmt(t.plan.stop)}</b>`:""}
+${(t.plan||{}).target?`<span>Take profit</span><b style="color:var(--up)">near ${fmt(t.plan.target)}</b>`:""}
 <span>Sell zone</span><b>${sz?fmt(sz.low)+" – "+fmt(sz.high):"n/a"}</b><span>Market cap</span><b>${big(t.market_cap)}</b><span>Scam risk</span><b style="color:${t.risk=="LOW"?"var(--up)":t.risk=="HIGH"?"var(--dn)":"var(--warn)"}">${esc(t.risk||"?")}</b></div>`;
+const TP=t.plan||{};if(TP.zone1){box.append(el("div","plan",`<b>Plan:</b> buy ${TP.zone2?"½":"your position"} in zone 1 (${fmt(TP.zone1.low)}–${fmt(TP.zone1.high)})${TP.zone2?`, ½ in zone 2 (${fmt(TP.zone2.low)}–${fmt(TP.zone2.high)})`:""}${TP.stop?`; exit if it closes below ${fmt(TP.stop)}`:""}${TP.target?`; take profit near ${fmt(TP.target)}`:""}. <span class=mut>💪 = heavy trading happened at that price (stronger support).</span>`))}
 const cs=(Lk.contracts&&Lk.contracts.length)?Lk.contracts:[];
 if(cs.length)cs.forEach(x=>{const a=el("div","addr",`<span class=ch>${esc(x.chain.replace(/-/g," "))}</span><code>${esc(x.address)}</code>`);const bt=el("button","copy","Copy");bt.onclick=e=>{e.stopPropagation();copy(x.address)};a.append(bt);box.append(a)});
 else box.append(el("div","addr",`<span class=ch>Contract</span><code>None — native coin of its own chain</code>`));
@@ -1449,7 +1517,7 @@ const vol=((t.chart||{}).v||[]).slice(-n).slice(st);
 const W=Math.max(300,h.clientWidth||340),PH=210,RH=74,MH=70,gap=16,H=PH+RH+MH+gap*2+18,padR=46,pw=W-padR,N=c.length;
 const x=i=>i/(N-1)*pw;
 let lo=Math.min(...c),hi=Math.max(...c);bb.forEach(v=>{if(v){lo=Math.min(lo,v[0]);hi=Math.max(hi,v[1])}});
-[t.buy_zone,t.sell_zone].forEach(z=>{if(z){lo=Math.min(lo,z.low);hi=Math.max(hi,z.high)}});const pad=(hi-lo)*.06;lo-=pad;hi+=pad;
+[t.buy_zone,t.sell_zone,(t.plan||{}).zone2].forEach(z=>{if(z){lo=Math.min(lo,z.low);hi=Math.max(hi,z.high)}});if((t.plan||{}).stop)lo=Math.min(lo,t.plan.stop*.99);const pad=(hi-lo)*.06;lo-=pad;hi+=pad;
 const y=v=>8+(hi-v)/(hi-lo)*(PH-16);
 const path=(a,f)=>{let d="",on=false;a.forEach((v,i)=>{if(v==null){on=false;return}d+=(on?"L":"M")+x(i).toFixed(1)+" "+f(v).toFixed(1);on=true});return d};
 let s=`<svg viewBox="0 0 ${W} ${H}" height="${H}">`;
@@ -1457,7 +1525,11 @@ let s=`<svg viewBox="0 0 ${W} ${H}" height="${H}">`;
 for(let k=0;k<=4;k++){const v=lo+(hi-lo)*k/4,yy=y(v);s+=`<line x1=0 x2=${pw} y1=${yy} y2=${yy} stroke="var(--grid)"/><text x=${pw+5} y=${yy+3} font-size=9.5 fill="var(--mut)">${fmt(v).replace("$","")}</text>`}
 // zones
 const band=(z,col,lab)=>{if(!z)return"";const a=y(Math.min(z.high,hi)),b2=y(Math.max(z.low,lo));return `<rect x=0 y=${a} width=${pw} height=${Math.max(2,b2-a)} fill="${col}"/><text x=6 y=${a+11} font-size=9.5 font-weight=700 fill="${col.replace(/,[.\d]+\)$/,",1)")}">${lab}</text>`};
-s+=band(t.sell_zone,"rgba(240,96,93,.16)","SELL ZONE")+band(t.buy_zone,"rgba(34,192,138,.18)","BUY ZONE");
+const PL=t.plan||{};s+=band(t.sell_zone,"rgba(240,96,93,.16)","SELL ZONE")+band(t.buy_zone,"rgba(34,192,138,.18)",PL.zone2?"BUY ZONE 1":"BUY ZONE")+(PL.zone2?band(PL.zone2,"rgba(34,192,138,.10)","BUY ZONE 2"):"");
+// volume-by-price bars (right side) - where the most coins changed hands
+(t.vnodes||[]).forEach(n=>{if(n.price<lo||n.price>hi)return;const yy=y(n.price),w=Math.min(pw*.28,pw*.07*n.strength);s+=`<rect x=${pw-w} y=${yy-3} width=${w} height=6 rx=2 fill="var(--warn)" opacity=.35><title>Heavy trading near ${fmt(n.price)}</title></rect>`});
+const hl=(v,col,lab,dash)=>{if(!v||v<lo||v>hi)return"";const yy=y(v);return `<line x1=0 x2=${pw} y1=${yy} y2=${yy} stroke="${col}" stroke-width=1.2 stroke-dasharray="${dash}"/><text x=${pw-4} y=${yy-3} text-anchor=end font-size=9 font-weight=700 fill="${col}">${lab} ${fmt(v)}</text>`};
+if(PL.stop){lo=Math.min(lo,PL.stop*0.98)}
 // bollinger
 const up=bb.map(v=>v&&v[1]),dn=bb.map(v=>v&&v[0]);const f0=bb.findIndex(v=>v);
 if(f0>=0){let d="M"+x(f0)+" "+y(up[f0]);for(let i=f0+1;i<N;i++)d+="L"+x(i).toFixed(1)+" "+y(up[i]).toFixed(1);for(let i=N-1;i>=f0;i--)d+="L"+x(i).toFixed(1)+" "+y(dn[i]).toFixed(1);s+=`<path d="${d}Z" fill="var(--bb)"/>`;
@@ -1472,6 +1544,7 @@ rs.forEach((r,i)=>{if(r==null)return;if(r>70)s+=`<circle cx=${x(i)} cy=${y(c[i])
 // buy calls
 const t0=Date.now()/1000-(N-1)*86400;(D.calls||[]).filter(k=>k.symbol==t.symbol).forEach(k=>{const i=Math.round((k.t-t0)/86400);if(i<0||i>=N)return;const xx=x(i),yy=y(k.entry)+14;
 s+=`<path d="M${xx} ${yy-9} l6 9 h-12z" fill="var(--up)" stroke="var(--card)" stroke-width=1.2><title>Buy call ${esc(k.date)} at ${fmt(k.entry)}</title></path>`});
+s+=hl(PL.stop,"var(--dn)","STOP","5 3")+hl(PL.target,"var(--up)","TARGET","2 3");
 // last price tag
 const ly=y(c[N-1]);s+=`<rect x=${pw+1} y=${ly-8} width=${padR-2} height=16 rx=4 fill="var(--acc)"/><text x=${pw+5} y=${ly+4} font-size=10 font-weight=700 fill="#fff">${fmt(c[N-1]).replace("$","")}</text>`;
 // RSI panel
@@ -1489,7 +1562,7 @@ s+=`<path d="${path(ml,my)}" fill=none stroke="var(--acc)" stroke-width=1.3 /><p
 s+=`<line id=cx x1=0 x2=0 y1=0 y2=${H} stroke="var(--mut)" stroke-width=.8 stroke-dasharray="2 2" opacity=0 /><rect id=hit x=0 y=0 width=${pw} height=${H} fill=transparent /></svg>`;
 const box=el("div","chart",s);const tip=el("div","tip");box.append(tip);h.append(box);
 h.append(el("div","legend",`<span><i style="background:var(--price)"></i>Price</span><span><i style="background:var(--s50)"></i>50-day avg</span><span><i style="background:var(--s200)"></i>200-day avg</span>
-<span><i class=box style="background:var(--bb);border:1px dashed var(--bbl)"></i>Bollinger bands</span><span><i class=box style="background:rgba(34,192,138,.35)"></i>Buy zone</span><span><i class=box style="background:rgba(240,96,93,.3)"></i>Sell zone</span>
+<span><i class=box style="background:var(--bb);border:1px dashed var(--bbl)"></i>Bollinger bands</span><span><i class=box style="background:rgba(34,192,138,.35)"></i>Buy zone 1</span><span><i class=box style="background:rgba(34,192,138,.18)"></i>Buy zone 2</span><span><i style="background:var(--dn)"></i>Stop</span><span><i style="background:var(--up)"></i>Target</span><span><i class=box style="background:var(--warn);opacity:.5"></i>Heavy volume</span><span><i class=box style="background:rgba(240,96,93,.3)"></i>Sell zone</span>
 <span><i class=box style="background:var(--dn);width:7px;height:7px;border-radius:50%"></i>RSI overbought</span><span><i class=box style="background:var(--up);width:7px;height:7px;border-radius:50%"></i>RSI oversold</span><span>▲ Buy call</span>`));
 const sv=box.querySelector("svg"),cxl=sv.querySelector("#cx");
 const mv=e=>{const r=sv.getBoundingClientRect(),p=(e.touches?e.touches[0]:e),px=(p.clientX-r.left)/r.width*W;if(px<0||px>pw)return;const i=Math.max(0,Math.min(N-1,Math.round(px/pw*(N-1))));
@@ -1505,7 +1578,7 @@ if(!list.length){w.append(el("p","mut",empty));return w}
 const rs=list.map(c=>(c.last/c.entry-1)*100),win=rs.filter(x=>x>0).length;
 w.append(el("div","kpis",`<div class=kpi><b>${list.length}</b><small>calls</small></div><div class=kpi><b>${Math.round(win/list.length*100)}%</b><small>in profit</small></div><div class=kpi><b>${(rs.reduce((a,b)=>a+b,0)/rs.length).toFixed(1)}%</b><small>average</small></div>`));
 const tb=el("div","",`<table style="margin-top:8px"><tr><th>Date</th><th>Token</th><th>Entry</th><th>Now</th><th>Return</th></tr>${list.slice(0,40).map((c,i)=>{const r=(c.last/c.entry-1)*100,L=c.links||(tk[c.symbol]||{}).links,o=OUT[c.outcome];
-return `<tr class=crow data-i=${i}><td>${esc(c.date.slice(5,10))}</td><td><b>${c.starred?"⭐ ":""}${L?`<a href="${esc(L.dexscreener)}" target=_blank rel=noopener>${esc(c.symbol)}</a>`:esc(c.symbol)}</b>${o?`<br><small style="color:${o[1]};font-weight:700">${o[0]}${c.postmortem?" · tap":""}</small>`:""}</td><td>${fmt(c.entry)}</td><td>${fmt(c.last)}</td><td style="color:${r>=0?"var(--up)":"var(--dn)"};font-weight:700">${r>=0?"+":""}${r.toFixed(1)}%</td></tr>`+
+return `<tr class=crow data-i=${i}><td>${esc(c.date.slice(5,10))}</td><td style="white-space:normal"><b>${c.starred?"⭐ ":""}${esc(c.symbol)}</b><br><a class=mini href="${esc((L&&L.coingecko)||(c.cg_id?"https://www.coingecko.com/en/coins/"+c.cg_id:"https://www.coingecko.com/en/search?query="+encodeURIComponent(c.symbol)))}" target=_blank rel=noopener onclick="event.stopPropagation()">CoinGecko</a><a class=mini href="${esc((L&&L.dexscreener)||"https://dexscreener.com/search?q="+encodeURIComponent(c.symbol))}" target=_blank rel=noopener onclick="event.stopPropagation()">DexScreener</a>${o?`<br><small style="color:${o[1]};font-weight:700">${o[0]}${c.postmortem?" · tap":""}</small>`:""}</td><td>${fmt(c.entry)}</td><td>${fmt(c.last)}</td><td style="color:${r>=0?"var(--up)":"var(--dn)"};font-weight:700">${r>=0?"+":""}${r.toFixed(1)}%</td></tr>`+
 (c.postmortem?`<tr class=pm style="display:none"><td colspan=5 style="white-space:normal"><b>Post-mortem.</b> ${c.postmortem.signs.length?"Warning signs at entry: "+c.postmortem.signs.map(esc).join("; ")+".":"No obvious warning signs at entry."}${c.postmortem.btc_chg!=null?` Bitcoin moved ${c.postmortem.btc_chg.toFixed(1)}% over the same week.`:""}</td></tr>`:"")}).join("")}</table>`);
 tb.querySelectorAll(".crow").forEach(r=>r.onclick=()=>{const n=r.nextElementSibling;if(n&&n.classList.contains("pm"))n.style.display=n.style.display=="none"?"table-row":"none"});w.append(tb);return w}
 C.append(block("⭐ Your coins (starred & watchlist)",calls.filter(c=>c.source!="discovery"),"No buy calls on your coins yet."));
@@ -1757,6 +1830,8 @@ def run_once():
     except Exception as ex: print(f"  [discovery error] {ex}")
     prices = dict(LIVE); prices.update({r["res"]["symbol"]: r["res"]["price"] for r in results})
     update_calls(calls, prices)
+    for cl in calls:                                     # older calls: add CoinGecko/DexScreener links
+        if not cl.get("links"): cl["links"] = token_links(cl["symbol"], cl.get("cg_id"), (cache.get("dd:" + (cl.get("cg_id") or "")) or {}).get("v"))
     try_get("learning", lambda: learn(calls, state))
     wk = datetime.now(timezone.utc).strftime("%G-W%V")
     if calls and state.get("_report_week") != wk:

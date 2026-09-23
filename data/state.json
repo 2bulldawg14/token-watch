@@ -72,8 +72,8 @@
   "signal": "HOLD",
   "odds": {
    "Will Solana dip to $30 in September?": 0,
-   "Will Solana dip to $10 in September?": 0,
    "Will Solana reach $200 in September?": 0,
+   "Will Solana dip to $10 in September?": 0,
    "Will Solana dip to $20 in September?": 0
   },
   "in_zone2": false,
@@ -86,9 +86,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $20 by December 31, 2026?": 25,
-   "Will Chainlink reach $16 by December 31, 2026?": 68,
-   "Will Chainlink reach $18 by December 31, 2026?": 49,
+   "Will Chainlink reach $20 by December 31, 2026?": 26,
+   "Will Chainlink reach $16 by December 31, 2026?": 70,
+   "Will Chainlink reach $18 by December 31, 2026?": 47,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
@@ -131,7 +131,7 @@
  "SEI": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "in_zone2": false,
@@ -203,8 +203,8 @@
   "odds": {
    "Will XRP dip to $0.20 in September?": 0,
    "Will XRP reach $5.00 by December 31, 2026?": 3,
-   "Will XRP reach $3.00 in September?": 0,
-   "Will XRP reach $2.80 in September?": 0
+   "Will XRP reach $3.00 in September?": 1,
+   "Will XRP dip to $0.40 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false

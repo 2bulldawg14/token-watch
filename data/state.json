@@ -457,10 +457,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "ACCUMULATE"
  },
  "UNI": {
   "seen_news": [],
@@ -507,10 +507,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash reach $2000 by December 31, 2026?": 50,
    "Will Zcash dip to $100 by December 31, 2026?": 4,
+   "Will Zcash reach $2000 by December 31, 2026?": 54,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $400 by December 31, 2026?": 12
+   "Will Zcash dip to $700 by December 31, 2026?": 30
   }
  },
  "SHIB": {

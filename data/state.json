@@ -25,7 +25,8 @@
   "alerts": {
    "watchlist": true,
    "discovered": false,
-   "weekly_report": true
+   "weekly_report": true,
+   "wallets": true
   },
   "paused": false,
   "added": [
@@ -46,7 +47,9 @@
    "ZCASH",
    "ATOM"
   ],
-  "removed": []
+  "removed": [],
+  "wallets": [],
+  "unfollowed": []
  },
  "INJ": {
   "seen_news": [],
@@ -77,9 +80,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $16 by December 31, 2026?": 74,
    "Will Chainlink reach $20 by December 31, 2026?": 25,
-   "Will Chainlink reach $18 by December 31, 2026?": 53,
+   "Will Chainlink reach $16 by December 31, 2026?": 74,
+   "Will Chainlink reach $18 by December 31, 2026?": 48,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   }
  },
@@ -93,11 +96,11 @@
  "_discovery_t": 1790164767.7296479,
  "_report_week": "2026-W39",
  "_export_t": 1790165132.9845643,
- "_tg_offset": 218529234,
+ "_tg_offset": 218529235,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD"
  },
@@ -154,7 +157,7 @@
  "TAO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD"
  },

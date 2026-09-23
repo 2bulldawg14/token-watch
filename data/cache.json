@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1790168242.7807808,
+  "t": 1790169046.7942097,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 818918786,
-    "fdv": 818918786,
-    "volume": 199596397,
+    "market_cap": 817738904,
+    "fdv": 817738904,
+    "volume": 200073030,
     "website": [
      "https://injective.com"
     ],
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1790168245.4141505,
+  "t": 1790169049.6937158,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 68605553004,
-    "fdv": 74096697510,
-    "volume": 4508994693,
+    "market_cap": 68351671805,
+    "fdv": 73822495821,
+    "volume": 4449337938,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1790168378.5605261,
+  "t": 1790169053.1013267,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 9499018668,
-    "fdv": 12697525790,
-    "volume": 586877384,
+    "market_cap": 9465166430,
+    "fdv": 12652274835,
+    "volume": 551224515,
     "website": [
      "https://chain.link/"
     ],
@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1790168250.0983307,
+  "t": 1790169055.5726707,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -237,9 +237,9 @@
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2091934961,
-    "fdv": 4296144815,
-    "volume": 246374296,
+    "market_cap": 2091503111,
+    "fdv": 4295257938,
+    "volume": 243535184,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -473,7 +473,7 @@
   }
  },
  "dd:bitcoin": {
-  "t": 1790168260.6379187,
+  "t": 1790169064.6949847,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -488,9 +488,9 @@
    },
    "facts": {
     "name": "Bitcoin",
-    "market_cap": 1716629426049,
-    "fdv": 1716635066044,
-    "volume": 40865956535,
+    "market_cap": 1714045797067,
+    "fdv": 1714051428573,
+    "volume": 40439766880,
     "website": [
      "http://www.bitcoin.org"
     ],
@@ -761,7 +761,7 @@
  },
  "id:hbar": "hedera-hashgraph",
  "dd:hedera-hashgraph": {
-  "t": 1790168251.933482,
+  "t": 1790169058.00588,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -775,9 +775,9 @@
    },
    "facts": {
     "name": "Hedera",
-    "market_cap": 4146150412,
-    "fdv": 4729624685,
-    "volume": 243506294,
+    "market_cap": 4125669375,
+    "fdv": 4706261419,
+    "volume": 241519937,
     "website": [
      "https://www.hedera.com/"
     ],
@@ -812,7 +812,7 @@
  "id:zcash": null,
  "id:atom": "cosmos",
  "dd:aerodrome-finance": {
-  "t": 1790168265.496307,
+  "t": 1790169069.669796,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -831,9 +831,9 @@
    },
    "facts": {
     "name": "Aerodrome Finance",
-    "market_cap": 702117969,
-    "fdv": 1402832097,
-    "volume": 71225961,
+    "market_cap": 704021967,
+    "fdv": 1406636286,
+    "volume": 71828903,
     "website": [
      "https://aerodrome.finance/"
     ],
@@ -855,7 +855,7 @@
   }
  },
  "dd:cosmos": {
-  "t": 1790168275.6018944,
+  "t": 1790169079.152514,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -873,9 +873,9 @@
    },
    "facts": {
     "name": "Cosmos Hub",
-    "market_cap": 970357315,
-    "fdv": 970357315,
-    "volume": 67093143,
+    "market_cap": 962091884,
+    "fdv": 962091884,
+    "volume": 65051175,
     "website": [
      "http://cosmos.network/"
     ],
@@ -906,7 +906,7 @@
   }
  },
  "dd:ethereum": {
-  "t": 1790168262.7762334,
+  "t": 1790169066.9698424,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -921,9 +921,9 @@
    },
    "facts": {
     "name": "Ethereum",
-    "market_cap": 332012639607,
-    "fdv": 332012639607,
-    "volume": 16622058408,
+    "market_cap": 331282597484,
+    "fdv": 331282597484,
+    "volume": 16426131679,
     "website": [
      "https://www.ethereum.org/"
     ],
@@ -943,7 +943,7 @@
   }
  },
  "dd:sui": {
-  "t": 1790168254.22382,
+  "t": 1790169060.2498655,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -957,9 +957,9 @@
    },
    "facts": {
     "name": "Sui",
-    "market_cap": 4135766911,
-    "fdv": 10095763233,
-    "volume": 976858725,
+    "market_cap": 4113764258,
+    "fdv": 10042052864,
+    "volume": 965599791,
     "website": [
      "https://sui.io/"
     ],
@@ -981,7 +981,7 @@
   }
  },
  "dd:sei-network": {
-  "t": 1790168257.082877,
+  "t": 1790169062.4789352,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -995,9 +995,9 @@
    },
    "facts": {
     "name": "Sei",
-    "market_cap": 410354195,
-    "fdv": 609436923,
-    "volume": 88505750,
+    "market_cap": 409576280,
+    "fdv": 608281605,
+    "volume": 79617762,
     "website": [
      "https://www.sei.io"
     ],
@@ -1017,7 +1017,7 @@
   }
  },
  "dd:bittensor": {
-  "t": 1790168267.5284035,
+  "t": 1790169071.6524236,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1031,9 +1031,9 @@
    },
    "facts": {
     "name": "Bittensor",
-    "market_cap": 3483542474,
-    "fdv": 6451206011,
-    "volume": 349781490,
+    "market_cap": 3467081781,
+    "fdv": 6420722295,
+    "volume": 341777005,
     "website": [
      "https://bittensor.com/"
     ],
@@ -1053,7 +1053,7 @@
   }
  },
  "dd:render-token": {
-  "t": 1790168270.250068,
+  "t": 1790169074.2113705,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -1073,9 +1073,9 @@
    },
    "facts": {
     "name": "Render",
-    "market_cap": 922638361,
-    "fdv": 948889182,
-    "volume": 70409089,
+    "market_cap": 916919612,
+    "fdv": 943007724,
+    "volume": 70262265,
     "website": [
      "http://renderfoundation.com"
     ],
@@ -1096,7 +1096,7 @@
   }
  },
  "dd:ripple": {
-  "t": 1790168272.843753,
+  "t": 1790169076.5559506,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1110,9 +1110,9 @@
    },
    "facts": {
     "name": "XRP",
-    "market_cap": 98432143559,
-    "fdv": 156519128418,
-    "volume": 6777821453,
+    "market_cap": 97964229810,
+    "fdv": 155775088417,
+    "volume": 7285814190,
     "website": [
      "https://ripple.com/currency/"
     ],

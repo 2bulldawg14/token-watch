@@ -71,8 +71,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Solana dip to $20 in September?": 0,
    "Will Solana dip to $30 in September?": 0,
+   "Will Solana dip to $20 in September?": 0,
    "Will Solana reach $200 in September?": 0,
    "Will Solana dip to $10 in September?": 0
   },
@@ -88,7 +88,7 @@
   "odds": {
    "Will Chainlink reach $20 by December 31, 2026?": 25,
    "Will Chainlink reach $16 by December 31, 2026?": 74,
-   "Will Chainlink reach $18 by December 31, 2026?": 48,
+   "Will Chainlink reach $18 by December 31, 2026?": 50,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
@@ -214,7 +214,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -366,7 +366,7 @@
   "ZEC": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false
   },
   "\u9f99\u867e": {

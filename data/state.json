@@ -56,11 +56,11 @@
  "INJ": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -214,7 +214,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -222,7 +222,7 @@
   "INJ": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false
   },
   "SOL": {
@@ -353,7 +353,7 @@
   },
   "AKT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false
   },
@@ -481,7 +481,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "HYPE": {
   "seen_news": [],

@@ -26,7 +26,7 @@ It also keeps an honest track record of every buy call and learns from its losin
 | Alerts and commands | David's Telegram bot. Its username is looked up at runtime with `getMe`. |
 | Secrets (repo Settings → Secrets → Actions) | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `COINGECKO_API_KEY` (Demo), `HELIUS_API_KEY`, `ETHERSCAN_API_KEY`. `CRYPTOPANIC_API_KEY` and `WHALE_ALERT_API_KEY` are supported but not set, because both are paid. |
 | User settings | `config.json` (weights, indicators, discovery, alerts, `wallet_tracking`, `learning`) and `watchlist.txt` (one ticker per line, `*` = starred) |
-| State the bot writes (committed each run) | `data/` (`calls.json`, `state.json`, `cache.json`, `export.json`, `wallet_trades.json`, `learning.json`, `dashboard.html`) and `docs/` (`index.html` and the PWA files) |
+| State the bot writes (committed each run) | `data/` (`calls.json`, `sells.json`, `state.json`, `cache.json`, `export.json`, `wallet_trades.json`, `learning.json`, `dashboard.html`) and `docs/` (`index.html` and the PWA files) |
 
 Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in `data/state.json` under `_prefs`, not in `config.json`.
 
@@ -90,6 +90,19 @@ Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in 
 - Alerts go out for new buys. It's a 🔥 cluster buy when 2 or more wallets buy the same token within 48 hours.
 - Each wallet gets a record, and its weight ranges from 0.5 to 1.6.
 - `wallet_view()` feeds the "wallets" score group.
+
+**Trades (buy calls → sell signals):**
+- `sell_check()` logs a sell signal (to `sells.json`) when the signal turns TRIM, SELL or AVOID, the price enters the sell zone, or it falls below the stop.
+- It fires on the transition, not while the condition simply stays true, and never on the first time a coin is seen.
+- A sell closes that coin's open buy call (`open_call()`), and a Telegram "📉 SELL SIGNAL" reports the trade result.
+- Coins with an open call that aren't on the watchlist (scanner finds) keep being checked as `source="tracked"` for up to 45 days.
+- Dashboard track record: one card per coin (BUY/SELL/OPEN rows with date and time), total profit if $X went into every buy call (the amount is editable), and summary rows for your coins vs scanner finds.
+- The top KPIs use trade returns: exit at the sell price, otherwise the current price.
+
+**Tickers vs names:**
+- `resolve_id()` matches the ticker first, then falls back to the coin's name or id (CHAINLINK→LINK, CANTON→CC, AKASH→AKT).
+- `fix_names()` rewrites names David added by name to real tickers and tells him on Telegram.
+- Failed lookups are retried daily.
 
 **Other modules:**
 - **Telegram:** `handle_commands()`. Dashboard buttons deep-link as `t.me/<bot>?start=ADD_X`, `STAR_X`, `UNSTAR_X`, `REMOVE_X`, `CHECK_X` and `FOLLOW_<addr>`.

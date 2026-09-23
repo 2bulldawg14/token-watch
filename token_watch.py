@@ -63,12 +63,34 @@ BINANCE_HOSTS = ["https://api.binance.com", "https://data-api.binance.vision"]  
 def resolve_id(sym, cache):
     """Ticker -> CoinGecko id (largest market cap with that exact ticker)."""
     key = "id:" + sym.lower()
-    if key in cache: return cache[key]
+    if cache.get(key): return cache[key]
+    if key in cache and now() - cache.get("idt:" + sym.lower(), 0) < DAY: return None     # retry failed lookups daily
     d = get_json(f"{CG}/search?query={urllib.parse.quote(sym)}", cg=True)
-    hits = [c for c in d.get("coins", []) if c.get("symbol", "").lower() == sym.lower()]
-    hits.sort(key=lambda c: c.get("market_cap_rank") or 10**9)
-    cache[key] = hits[0]["id"] if hits else None
+    coins = d.get("coins", []); rank = lambda c: c.get("market_cap_rank") or 10**9
+    hits = sorted([c for c in coins if c.get("symbol", "").lower() == sym.lower()], key=rank)
+    if not hits:   # typed a name instead of a ticker (CHAINLINK, CANTON, AKASH...): match the name/id instead
+        s_ = sym.lower().replace(" ", "")
+        hits = sorted([c for c in coins if c.get("name", "").lower().replace(" ", "") == s_ or c.get("id", "") == s_], key=rank) or \
+               sorted([c for c in coins if (c.get("name", "").lower().startswith(sym.lower()) or c.get("id", "").startswith(s_)) and rank(c) < 1000], key=rank)
+        if hits: cache["tick:" + sym.lower()] = (hits[0].get("symbol") or sym).upper()
+    cache[key] = hits[0]["id"] if hits else None; cache["idt:" + sym.lower()] = now()
     return cache[key]
+
+def fix_names(cache):
+    """Coins added by name (CANTON, CHAINLINK) get switched to their real ticker (CC, LINK), once, with a Telegram note."""
+    moved = []
+    for lst in ("added", "starred"):
+        out = []
+        for x in PREFS.get(lst, []):
+            real = cache.get("tick:" + x.lower())
+            if not real and cache.get("id:" + x.lower()) is None and x.lower() and ("id:" + x.lower()) not in cache:
+                try_get("lookup", lambda x=x: resolve_id(x, cache)); real = cache.get("tick:" + x.lower())
+            if real and real != x:
+                if lst == "added": moved.append(f"{x} → {real}")
+                x = real
+            if x not in out: out.append(x)
+        PREFS[lst] = out
+    if moved: reply("Switched coins you added by name to their tickers: " + ", ".join(moved) + ". Tip: use tickers like LINK, UNI, AKT.")
 
 def binance_daily(pair):
     for host in BINANCE_HOSTS:
@@ -805,6 +827,36 @@ def get_data(tok, cg_id):
             if LIVE.get(cg_id): data["close"][-1] = LIVE[cg_id]
     return data, depth
 
+SELLS = []   # sell signals (data/sells.json); buys are the buy calls in calls.json
+
+def open_call(sym, calls):
+    """The buy call for this coin that no sell signal has closed yet (or None)."""
+    last_sell = max([e["t"] for e in SELLS if e["symbol"] == sym] or [0])
+    op = [c for c in calls if c["symbol"] == sym and c["t"] > last_sell]
+    return min(op, key=lambda c: c["t"]) if op else None
+
+def sell_check(res, state, sym, source, cg_id, dd, calls):
+    """Log a sell signal when the signal turns TRIM/SELL, the price enters the sell zone, or it drops below the stop."""
+    st = state.setdefault("_sellst", {}).setdefault(sym, {})
+    first = not st.get("seen"); st["seen"] = True
+    bad = res["signal"] in ("TRIM", "SELL / AVOID", "AVOID (SCAM RISK)")
+    ins = bool(res.get("in_sell")); stop = (res.get("plan") or {}).get("stop"); below = bool(stop and res["price"] < stop)
+    why = []
+    if not first:
+        if bad and not st.get("bad"): why.append(f"Signal turned {res['signal']}")
+        if ins and not st.get("in_sell"): why.append(f"Entered sell zone {z(res['sell_zone'])}" + (f" · RSI {res['rsi']:.0f}" if res.get("rsi") else ""))
+        if below and not st.get("below"): why.append(f"Fell below stop-loss ${stop:.4g}")
+    st.update(bad=bad, in_sell=ins, below=below)
+    if not why: return
+    oc = open_call(sym, calls)
+    ev = {"symbol": sym, "cg_id": cg_id, "t": int(now()), "date": iso(), "price": res["price"], "why": " · ".join(why),
+          "source": source, "starred": sym in PREFS.get("starred", []), "closes": oc["id"] if oc else None}
+    SELLS.append(ev)
+    if oc:                                               # a buy call is open: tell you how that trade turned out
+        r = (res["price"] / oc["entry"] - 1) * 100
+        send(f"📉 SELL SIGNAL {sym}: {ev['why']}\nClosing the buy call from {datetime.fromtimestamp(oc['t'], timezone.utc):%b %d} at ${oc['entry']:.4g} "
+             f"→ ${res['price']:.4g} = {r:+.1f}%\n" + links_text(res, dd), "token", sym)
+
 def check_token(tok, cache, state, calls, source="watchlist", grade=None):
     sym = tok["symbol"]; print(f"\n{sym} ...")
     cg_id = tok.get("coingecko_id") or try_get("lookup", lambda: resolve_id(sym, cache))
@@ -828,7 +880,8 @@ def check_token(tok, cache, state, calls, source="watchlist", grade=None):
     ex["_source"] = source
     res = analyse(sym, data, depth, news, whales, tok.get("fundamental_grade") or grade, dd, mv, None if sym == "BTC" else BACKDROP.get("btc"), ex)
     res["cg_id"] = cg_id
-    call = None if source == "adhoc" else stamp_call(calls, res, cg_id, dd, source)
+    call = None if source in ("adhoc", "tracked") else stamp_call(calls, res, cg_id, dd, source)
+    if source != "adhoc": try_get("sell check", lambda: sell_check(res, state, sym, source, cg_id, dd, calls))
     if call:
         call["feat"] = features(res, data, source, dd); call["starred"] = sym in PREFS.get("starred", [])
         call["links"] = token_links(sym, cg_id, dd)
@@ -1307,6 +1360,7 @@ def export(results, calls, full=True):
             "chart": {"c": [round(x, 10) for x in r["closes"]], "v": [round(x) for x in (r.get("vols") or [])]}})
     out["macro"] = {"score": MACRO.get("score"), "why": MACRO.get("why", [])}
     out["wallets"] = wallets_export()
+    out["sells"] = [e for e in SELLS if now() - e["t"] < 120 * DAY]
     out["learning"] = {"rules": LEARN.get("rules", []), "mult": LEARN.get("mult", {}), "graded": LEARN.get("graded", 0),
                        "wins": LEARN.get("wins", 0), "losses": LEARN.get("losses", 0)}
     if full: save("export.json", out)
@@ -1412,11 +1466,21 @@ tr:last-child td{border:0}
 .mini{display:inline-block;font-size:.68rem;font-weight:700;text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin:3px 3px 0 0;background:var(--card2)}
 .krow{grid-column:1/-1;font-size:.78rem;font-weight:700;color:var(--mut);margin:4px 2px -2px}
 .calls td,.calls th{padding:8px 5px;font-size:.8rem}.crow{cursor:pointer}
+.amt{display:flex;align-items:center;gap:6px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:.85rem}
+.amt input{width:90px;background:var(--card2);border:1px solid var(--line);border-radius:8px;color:var(--ink);font:inherit;font-size:16px;padding:5px 8px}
+.k4{grid-template-columns:repeat(4,1fr);gap:6px}.k4 .kpi{padding:8px 9px}.k4 b{font-size:1.05rem}.k4 small{font-size:.68rem}
+.coin{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:8px 0;overflow:hidden}
+.ch{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:10px 12px;cursor:pointer}.ch .logo{width:34px;height:34px;border-radius:10px;font-size:.72rem}
+.coin .chev{display:inline-block}.coin.open .chev{transform:rotate(180deg)}
+.pl{text-align:right;font-weight:800}.pl small{display:block;font-weight:500}
+.tbody{display:none;border-top:1px solid var(--line);padding:8px 10px 12px}.coin.open .tbody{display:block}
+.tg{display:inline-block;border-radius:6px;padding:1px 6px;font-size:.68rem;font-weight:800}.tg.b{background:var(--up-bg);color:var(--up)}.tg.s{background:var(--dn-bg);color:var(--dn)}.tg.o{background:rgba(108,140,255,.16);color:var(--acc)}
+.why{font-size:.72rem;color:var(--mut);white-space:normal!important;padding-top:0!important}.res{font-weight:700;text-align:right}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none}
 </style></head><body>
 <header><div><h1>Token <span>Watch</span></h1></div><div class=upd id=upd></div></header>
 <div class=kpis id=kpis></div>
-<div class=addbox><div class=addrow><input id=addin placeholder="Ticker, e.g. TAO" autocapitalize=characters autocomplete=off spellcheck=false maxlength=15>
+<div class=addbox><div class=addrow><input id=addin placeholder="Ticker, e.g. TAO or LINK" autocapitalize=characters autocomplete=off spellcheck=false maxlength=15>
 <button class="abtn" id=addbtn>Add</button><button class="abtn alt" id=addstar>Add ⭐</button></div><div class=addnote id=addnote></div></div>
 <div id=macro></div>
 <div class=tabs id=tabs></div>
@@ -1449,10 +1513,14 @@ function bollS(c,n=20,k=2){const m=sma(c,n);return c.map((_,i)=>{if(m[i]==null)r
 const star=new Set(D.starred||[]);
 D.tokens.forEach(t=>{t.starred=star.has(t.symbol);t.c=(t.chart&&t.chart.c&&t.chart.c.length)?t.chart.c:String(t.prices||"").split("\n").map(Number).filter(x=>x>0)});
 $("#upd").innerHTML="Updated<br><b>"+esc(D.generated)+"</b>";
-const calls=[...(D.calls||[])].sort((a,b)=>b.t-a.t),rets=calls.map(c=>(c.last/c.entry-1)*100);
+const calls=[...(D.calls||[])].sort((a,b)=>b.t-a.t),SELLS=D.sells||[];
+// a buy call's trade closes at the next sell signal for that coin; otherwise it's open at today's price
+const exitOf=c=>SELLS.filter(e=>e.symbol==c.symbol&&e.t>c.t).sort((a,b)=>a.t-b.t)[0]||null;
+const tradeRet=c=>{const x=exitOf(c);return ((x?x.price:c.last)/c.entry-1)*100};
+const rets=calls.map(tradeRet);
 const buys=D.tokens.filter(t=>t.is_buy&&!/AVOID/.test(t.signal));
 // two rows at the top: your starred coins, then coins the scanner found
-const krow=(title,toks,cl)=>{const r=cl.map(c=>(c.last/c.entry-1)*100),avg=r.length?r.reduce((a,b)=>a+b,0)/r.length:null,nb=toks.filter(t=>t.is_buy&&!/AVOID/.test(t.signal)).length;
+const krow=(title,toks,cl)=>{const r=cl.map(tradeRet),avg=r.length?r.reduce((a,b)=>a+b,0)/r.length:null,nb=toks.filter(t=>t.is_buy&&!/AVOID/.test(t.signal)).length;
 return `<div class=krow>${title}</div><div class=kpi><b>${nb}</b><small>buy setups now</small></div><div class=kpi><b>${r.length?Math.round(r.filter(x=>x>0).length/r.length*100)+"%":"–"}</b><small>calls in profit${r.length?" ("+r.length+")":""}</small></div><div class=kpi><b style="color:${avg==null?"inherit":avg>=0?"var(--up)":"var(--dn)"}">${avg==null?"–":(avg>=0?"+":"")+avg.toFixed(1)+"%"}</b><small>avg call return</small></div>`};
 $("#kpis").innerHTML=krow("⭐ Your starred coins",D.tokens.filter(t=>t.starred),calls.filter(c=>c.starred||star.has(c.symbol)))+
 krow("🔎 Coins the scanner found",D.tokens.filter(t=>t.source=="discovery"),calls.filter(c=>c.source=="discovery"));
@@ -1574,27 +1642,39 @@ cxl.setAttribute("x1",x(i));cxl.setAttribute("x2",x(i));cxl.setAttribute("opacit
 tip.style.display="block";tip.innerHTML=`<b>${dd.toLocaleDateString(undefined,{month:"short",day:"numeric"})}</b> ${fmt(c[i])}${rs[i]!=null?" · RSI "+Math.round(rs[i]):""}${s50[i]?" · 50d "+fmt(s50[i]):""}`};
 const out=()=>{cxl.setAttribute("opacity",0);tip.style.display="none"};
 sv.addEventListener("mousemove",mv);sv.addEventListener("touchmove",mv,{passive:true});sv.addEventListener("touchstart",mv,{passive:true});sv.addEventListener("mouseleave",out);sv.addEventListener("touchend",()=>setTimeout(out,1500))}
-// ---------- track record: your coins vs coins the scanner found
-(function(){const C=$("#calls"),tk=Object.fromEntries(D.tokens.map(t=>[t.symbol,t]));
-const OUT={win:["WIN","var(--up)"],loss:["LOSS","var(--dn)"],flat:["FLAT","var(--mut)"]};
-function block(title,list,empty){const w=el("div","");w.append(el("div","sect",title));
-if(!list.length){w.append(el("p","mut",empty));return w}
-const rs=list.map(c=>(c.last/c.entry-1)*100),win=rs.filter(x=>x>0).length;
-w.append(el("div","kpis",`<div class=kpi><b>${list.length}</b><small>calls</small></div><div class=kpi><b>${Math.round(win/list.length*100)}%</b><small>in profit</small></div><div class=kpi><b>${(rs.reduce((a,b)=>a+b,0)/rs.length).toFixed(1)}%</b><small>average</small></div>`));
-const when=c=>{const d=new Date(c.t*1000);return [d.toLocaleDateString(undefined,{month:"2-digit",day:"2-digit"}),d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"})]};
-const tb=el("div","",`<table class=calls style="margin-top:8px"><tr><th>Date</th><th>Time</th><th>Token</th><th>Entry</th><th>Now</th><th>Return</th></tr>${list.slice(0,40).map((c,i)=>{const r=(c.last/c.entry-1)*100,L=c.links||(tk[c.symbol]||{}).links||{},o=OUT[c.outcome],[dd,tt]=when(c);
-const cg=L.coingecko||(c.cg_id?"https://www.coingecko.com/en/coins/"+c.cg_id:"https://www.coingecko.com/en/search?query="+encodeURIComponent(c.symbol)),dx=L.dexscreener||"https://dexscreener.com/search?q="+encodeURIComponent(c.symbol);
-const bz=c.buy_zone,pl=c.plan||{};
-return `<tr class=crow><td>${esc(dd)}</td><td>${esc(tt)}</td><td><b>${c.starred?"⭐":""}${esc(c.symbol)}</b> <span class=chev>▾</span>${o?`<br><small style="color:${o[1]};font-weight:700">${o[0]}</small>`:""}</td><td>${fmt(c.entry)}</td><td>${fmt(c.last)}</td><td style="color:${r>=0?"var(--up)":"var(--dn)"};font-weight:700">${r>=0?"+":""}${r.toFixed(1)}%</td></tr>`+
-`<tr class=pm style="display:none"><td colspan=6 style="white-space:normal"><div class=links style="margin:2px 0 8px"><a class=lbtn target=_blank rel=noopener href="${esc(cg)}"><i style="background:#8DC63F"></i>CoinGecko</a><a class=lbtn target=_blank rel=noopener href="${esc(dx)}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a></div>
-<small>Buy call ${esc(c.date||"")}${c.signal?" · "+esc(c.signal):""}${c.score?" · score "+c.score+"/100":""}${c.source=="discovery"?" · found by scanner":""}${bz?` · buy zone ${fmt(bz.low)}–${fmt(bz.high)}`:""}${pl.stop?` · stop ${fmt(pl.stop)}`:""}${pl.target?` · target ${fmt(pl.target)}`:""}${c.max?` · best ${((c.max/c.entry-1)*100).toFixed(0)}%, worst ${((c.min/c.entry-1)*100).toFixed(0)}%`:""}</small>
-${L.contract?`<div class=addr style="margin-top:6px"><span class=ch>${esc((L.chain||"").replace(/-/g," "))}</span><code>${esc(L.contract)}</code><button class=copy data-a="${esc(L.contract)}">Copy</button></div>`:""}
-${c.postmortem?`<p style="margin:8px 0 0"><b>Post-mortem.</b> ${c.postmortem.signs.length?"Warning signs at entry: "+c.postmortem.signs.map(esc).join("; ")+".":"No obvious warning signs at entry."}${c.postmortem.btc_chg!=null?` Bitcoin moved ${c.postmortem.btc_chg.toFixed(1)}% over the same week.`:""}</p>`:""}</td></tr>`}).join("")}</table><small class=mut>Tap a call for CoinGecko / DexScreener links and details. Times are shown in your time zone.</small>`);
-tb.querySelectorAll(".crow").forEach(r=>r.onclick=()=>{const n=r.nextElementSibling,open=n.style.display=="none";n.style.display=open?"table-row":"none";r.querySelector(".chev").style.transform=open?"rotate(180deg)":""});
-tb.querySelectorAll("button.copy").forEach(bt=>bt.onclick=e=>{e.stopPropagation();copy(bt.dataset.a)});w.append(tb);return w}
-C.append(block("⭐ Your coins (starred & watchlist)",calls.filter(c=>c.source!="discovery"),"No buy calls on your coins yet."));
-C.append(block("🔎 Coins the scanner found",calls.filter(c=>c.source=="discovery"),"No buy calls on scanner finds yet."));
-// learning
+// ---------- track record: every buy call and sell signal, per coin, with profit
+(function(){const C=$("#calls"),tk=Object.fromEntries(D.tokens.map(t=>[t.symbol,t]));let AMT=100;try{AMT=+localStorage.getItem("tw_amt")||100}catch(e){}
+const money=v=>(v>=0?"+$":"−$")+Math.abs(v).toFixed(2);
+const when=t=>{const d=new Date(t*1000);return[d.toLocaleDateString(undefined,{month:"2-digit",day:"2-digit"}),d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"})]};
+const OUT={win:"WIN",loss:"LOSS",flat:"FLAT"};
+// group buy calls into coins; each call = one trade
+const coins={};calls.slice().sort((a,b)=>a.t-b.t).forEach(c=>{const k=c.symbol;(coins[k]=coins[k]||{sym:k,calls:[],star:false,found:false,links:null}).calls.push(c);
+ const g=coins[k];g.star=g.star||!!c.starred||star.has(k);g.found=g.found||c.source=="discovery";g.links=g.links||c.links||(tk[k]||{}).links;g.name=g.name||(tk[k]||{}).name||""});
+const trades=g=>g.calls.map(c=>{const x=exitOf(c);return{c,x,exit:x?x.price:c.last,r:((x?x.price:c.last)/c.entry-1)}});
+C.innerHTML=`<div class=amt>If you'd put $<input id=amt type=number min=1 inputmode=decimal value="${AMT}"> into every buy call…</div><div id=tsum></div><div class=tabs id=ttabs></div><div id=tlist></div>
+<p class=mut style="font-size:.74rem;margin-top:10px">A trade opens at a buy call and closes at the next sell signal for that coin (signal turns TRIM or SELL, price enters the sell zone, or falls below the stop-loss). Trades with no sell signal yet are <b>OPEN</b> at today's price. Fees and slippage aren't included. Times are in your time zone.</p>`;
+let cur="all";const tt=$("#ttabs");[["all","All"],["star","⭐ Your coins"],["found","🔎 Scanner found"]].forEach(([k,n])=>{const b=el("button","tab"+(k==cur?" on":""),n);b.onclick=()=>{cur=k;[...tt.children].forEach(x=>x.classList.toggle("on",x==b));draw()};tt.append(b)});
+function stat(gs){let pl=0,n=0,w=0,op=0;gs.forEach(g=>trades(g).forEach(t=>{pl+=AMT*t.r;n++;if(t.x){if(t.r>0)w++}else op++}));return{pl,n,w,op,inv:n*AMT,closed:n-op}}
+function srow(title,gs){const s=stat(gs);return `<div class=krow>${title}</div><div class="kpis k4"><div class=kpi><b style="color:${s.pl>=0?"var(--up)":"var(--dn)"}">${s.n?money(s.pl):"–"}</b><small>total profit</small></div><div class=kpi><b>${s.inv?(s.pl/s.inv*100).toFixed(1)+"%":"–"}</b><small>return on $${s.inv.toLocaleString()}</small></div><div class=kpi><b>${s.closed?Math.round(s.w/s.closed*100)+"%":"–"}</b><small>closed trades won (${s.closed})</small></div><div class=kpi><b>${s.op}</b><small>open trades</small></div></div>`}
+function draw(){const G=Object.values(coins);$("#tsum").innerHTML=srow("⭐ Your coins",G.filter(g=>!g.found))+srow("🔎 Coins the scanner found",G.filter(g=>g.found));
+const L=$("#tlist");L.innerHTML="";const list=G.filter(g=>cur=="all"||(cur=="star"&&!g.found)||(cur=="found"&&g.found)).sort((a,b)=>Math.max(...b.calls.map(c=>c.t))-Math.max(...a.calls.map(c=>c.t)));
+if(!list.length){L.append(el("p","mut","No buy calls here yet. Every buy call and the sell signal that closes it will show up here."));return}
+list.forEach(g=>{const T=trades(g);let pl=0;T.forEach(t=>pl+=AMT*t.r);const nopen=T.filter(t=>!t.x).length,Lk=g.links||{};
+const w=el("div","coin");const rows=[];
+T.forEach(t=>{const c=t.c,[d1,t1]=when(c.t),pm=c.postmortem;
+ rows.push(`<tr><td>${d1}</td><td>${t1}</td><td><span class="tg b">BUY</span></td><td>${fmt(c.entry)}</td><td class=res>${c.outcome?`<small style="color:${c.outcome=="win"?"var(--up)":c.outcome=="loss"?"var(--dn)":"var(--mut)"};font-weight:700">${OUT[c.outcome]} at 7d</small>`:""}</td></tr>
+ <tr><td colspan=5 class=why>↳ ${esc(c.signal||"Buy call")}${c.score?" · score "+c.score:""}${c.source=="discovery"?" · found by scanner":""}${c.buy_zone?` · buy zone ${fmt(c.buy_zone.low)}–${fmt(c.buy_zone.high)}`:""}${(c.plan||{}).stop?` · stop ${fmt(c.plan.stop)}`:""}${pm?`<br>📉 Post-mortem: ${pm.signs.length?pm.signs.map(esc).join("; "):"no obvious warning signs"}${pm.btc_chg!=null?` (BTC ${pm.btc_chg.toFixed(1)}%)`:""}`:""}</td></tr>`);
+ const col=t.r>=0?"var(--up)":"var(--dn)",res=`<td class=res style="color:${col}">${t.r>=0?"+":""}${(t.r*100).toFixed(1)}%<br><small style="color:${col}">${money(AMT*t.r)}</small></td>`;
+ if(t.x){const [d2,t2]=when(t.x.t);rows.push(`<tr><td>${d2}</td><td>${t2}</td><td><span class="tg s">SELL</span></td><td>${fmt(t.x.price)}</td>${res}</tr><tr><td colspan=5 class=why>↳ ${esc(t.x.why)}</td></tr>`)}
+ else rows.push(`<tr><td colspan=2><small>now</small></td><td><span class="tg o">OPEN</span></td><td>${fmt(t.exit)}</td>${res}</tr>`)});
+w.innerHTML=`<div class=ch><div class=logo style="background:hsl(${hue(g.sym)} 55% 42%)">${esc(g.sym.slice(0,4))}</div><div><b>${g.star&&!g.found?"⭐ ":""}${esc(g.sym)}</b> <small>${esc(g.name||"")}</small><br><small>${T.length} trade${T.length==1?"":"s"}${nopen?" · "+nopen+" open":""} <span class=chev>▾</span></small></div><div class=pl style="color:${pl>=0?"var(--up)":"var(--dn)"}">${money(pl)}<small>${(pl/(AMT*T.length)*100).toFixed(1)}%</small></div></div>
+<div class=tbody><table class=calls><tr><th>Date</th><th>Time</th><th>Signal</th><th>Price</th><th style="text-align:right">Result</th></tr>${rows.join("")}</table>
+${Lk.contract?`<div class=addr style="margin-top:8px"><span class=ch>${esc((Lk.chain||"").replace(/-/g," "))}</span><code>${esc(Lk.contract)}</code><button class=copy data-a="${esc(Lk.contract)}">Copy</button></div>`:""}
+<div class=links><a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+encodeURIComponent(g.sym))}"><i style="background:#8DC63F"></i>CoinGecko</a><a class=lbtn target=_blank rel=noopener href="${esc(Lk.dexscreener||"https://dexscreener.com/search?q="+encodeURIComponent(g.sym))}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a></div></div>`;
+w.querySelector(".ch").onclick=()=>w.classList.toggle("open");w.querySelectorAll("button.copy").forEach(bt=>bt.onclick=e=>{e.stopPropagation();copy(bt.dataset.a)});L.append(w)})}
+$("#amt").oninput=()=>{AMT=+$("#amt").value||100;try{localStorage.setItem("tw_amt",AMT)}catch(e){}draw()};draw();
+})();
+(function(){// learning
 const Lr=D.learning||{};const L=$("#learn");
 if(!Lr.graded){L.append(el("p","mut","Each buy call is graded 7 days later. Losing calls get a post-mortem of the warning signs that were there at entry, and once a warning sign has lost money in 5+ calls the model lowers the score for it (or stops making those calls). Nothing graded yet."));return}
 L.append(el("div","kpis",`<div class=kpi><b>${Lr.graded}</b><small>calls graded</small></div><div class=kpi><b>${Lr.wins}</b><small>wins</small></div><div class=kpi><b>${Lr.losses}</b><small>losses</small></div>`));
@@ -1811,6 +1891,7 @@ def run_once():
     load_prefs(state)
     HIST.clear(); HIST.update(load_hist())
     CTX.clear(); CTX.update({"cache": cache, "state": state, "calls": calls})
+    SELLS[:] = load("sells.json", [])
     LEARN.clear(); LEARN.update(load("learning.json", {}))
     have = {t["symbol"] for t in wl}
     wl = [t for t in wl if t["symbol"] not in PREFS["removed"]] + [norm(x) for x in PREFS["added"] if x not in have]
@@ -1829,6 +1910,7 @@ def run_once():
             bv = market_view(pm, btc_px)
             if bv: BACKDROP["btc"] = bv; print(f"Bitcoin betting backdrop {bv['score']:.0f}/100 from {bv['n']} markets")
     handle_commands(state)   # messages sent since the last run (applies /star, /check, etc.)
+    fix_names(cache)
     if ind("wallets"): try_get("followed wallets", lambda: sync_wallets(state))
     wl = [t for t in wl if t["symbol"] not in PREFS["removed"]] + [norm(x) for x in PREFS["added"] if x not in {t["symbol"] for t in wl}]
     results = []
@@ -1837,7 +1919,15 @@ def run_once():
             r = check_token(tok, cache, state, calls)
             if r: results.append(r)
         except Exception as ex: print(f"  [error] {tok['symbol']}: {ex}")
-    try: results += discover(cache, state, calls, {t["symbol"] for t in wl})
+    have = {t["symbol"] for t in wl}
+    for sym in sorted({c["symbol"] for c in calls if c["symbol"] not in have and now() - c["t"] < 45 * DAY})[:10]:
+        if not open_call(sym, calls): continue
+        c0 = open_call(sym, calls)
+        try:
+            r = check_token({"symbol": sym, "coingecko_id": c0.get("cg_id")}, cache, state, calls, source="tracked")
+            if r: results.append(r)
+        except Exception as ex: print(f"  [error] {sym}: {ex}")
+    try: results += discover(cache, state, calls, have | {r["res"]["symbol"] for r in results})
     except Exception as ex: print(f"  [discovery error] {ex}")
     prices = dict(LIVE); prices.update({r["res"]["symbol"]: r["res"]["price"] for r in results})
     update_calls(calls, prices)
@@ -1848,7 +1938,7 @@ def run_once():
     if calls and state.get("_report_week") != wk:
         state["_report_week"] = wk; send(report_text(calls), "report")
     save_prefs(state, None)
-    save("cache.json", cache); save("state.json", state); save("calls.json", calls); save_hist()
+    save("cache.json", cache); save("state.json", state); save("calls.json", calls); save("sells.json", SELLS[-2000:]); save_hist()
     # export.json / dashboard are big; rewrite them every few hours, not every 15 minutes
     full = DEMO or now() - state.get("_export_t", 0) >= CFG.get("export_every_minutes", 240) * 60
     export(results, calls, full)

@@ -44,7 +44,8 @@
    "XRP",
    "ZEC",
    "ATOM",
-   "SHIB"
+   "SHIB",
+   "LTC"
   ],
   "removed": [
    "ETH",
@@ -106,7 +107,7 @@
  "_discovery_t": 1790164767.7296479,
  "_report_week": "2026-W39",
  "_export_t": 1790195324.694015,
- "_tg_offset": 218529256,
+ "_tg_offset": 218529259,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
@@ -380,6 +381,12 @@
    "bad": false,
    "in_sell": false,
    "below": false
+  },
+  "LTC": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
   }
  },
  "CANTON": {
@@ -520,6 +527,15 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
+  "signal": "HOLD"
+ },
+ "LTC": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
   "signal": "HOLD"
  }
 }

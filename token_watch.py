@@ -1098,6 +1098,8 @@ def main():
     path = os.path.join(HERE, "config.json")
     if not os.path.exists(path): path = os.path.join(HERE, "config.example.json")
     CFG = json.load(open(path))
+    for _k in ("coingecko_api_key", "cryptopanic_api_key", "whale_alert_api_key"):  # keys from GitHub Secrets override config.json
+        if os.environ.get(_k.upper()): CFG[_k] = os.environ[_k.upper()]
     if a.demo:
         DEMO = True; DATA = os.path.join(HERE, "data-demo"); CFG["coingecko_min_seconds"] = 0; install_demo()
         CFG["watchlist"] = [{"symbol": "INJ", "team_doxxed": True, "audited": True, "fundamental_grade": "B", "alerts": {"below": 6.5}}]

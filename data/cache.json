@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1790165142.3943589,
+  "t": 1790166992.461248,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 810848897,
-    "fdv": 810848897,
-    "volume": 195336257,
+    "market_cap": 812374377,
+    "fdv": 812374377,
+    "volume": 197496928,
     "website": [
      "https://injective.com"
     ],
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1790164722.688188,
+  "t": 1790166994.7205558,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 68776389347,
-    "fdv": 74281208915,
-    "volume": 4491031227,
+    "market_cap": 68830830171,
+    "fdv": 74340002019,
+    "volume": 4545714971,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1790164728.9866364,
+  "t": 1790166997.1725483,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 9545625307,
-    "fdv": 12759825804,
-    "volume": 586925195,
+    "market_cap": 9549724975,
+    "fdv": 12765305912,
+    "volume": 587501872,
     "website": [
      "https://chain.link/"
     ],
@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1790164764.9790685,
+  "t": 1790166999.4234383,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -237,9 +237,9 @@
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2117342548,
-    "fdv": 4348323622,
-    "volume": 203525086,
+    "market_cap": 2098229713,
+    "fdv": 4309072160,
+    "volume": 249780125,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -756,6 +756,43 @@
     "platforms": {
      "tron": "TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9"
     }
+   }
+  }
+ },
+ "id:hbar": "hedera-hashgraph",
+ "dd:hedera-hashgraph": {
+  "t": 1790167003.5209162,
+  "v": {
+   "level": "LOW",
+   "points": 1.0,
+   "flags": [
+    "Team not verified yet - check founders' real names, LinkedIn, past projects"
+   ],
+   "checks": {
+    "team": null,
+    "code": true,
+    "liquidity": true
+   },
+   "facts": {
+    "name": "Hedera",
+    "market_cap": 4170748499,
+    "fdv": 4757684382,
+    "volume": 228117787,
+    "website": [
+     "https://www.hedera.com/"
+    ],
+    "github": [
+     "https://github.com/hashgraph"
+    ],
+    "twitter": "hedera",
+    "genesis": null,
+    "categories": [
+     "Smart Contract Platform",
+     "Layer 1 (L1)",
+     "Hedera Ecosystem",
+     "GMCI Layer 1 Index"
+    ],
+    "platforms": {}
    }
   }
  }

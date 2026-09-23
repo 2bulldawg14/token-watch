@@ -1,6 +1,25 @@
 {
  "_prefs": {
-  "star_add": [],
+  "star_add": [
+   "AERO",
+   "AKASH",
+   "ATOM",
+   "BTC",
+   "CANTON",
+   "CHAINLINK",
+   "ETH",
+   "HBAR",
+   "HYPERLIQUID",
+   "ONDO",
+   "RENDER",
+   "SEI",
+   "SOL",
+   "SUI",
+   "TAO",
+   "UNISWAP",
+   "XRP",
+   "ZCASH"
+  ],
   "star_del": [],
   "alerts": {
    "watchlist": true,
@@ -8,7 +27,24 @@
    "weekly_report": true
   },
   "paused": false,
-  "added": [],
+  "added": [
+   "HBAR",
+   "SUI",
+   "SEI",
+   "CANTON",
+   "BTC",
+   "ETH",
+   "UNISWAP",
+   "AERO",
+   "AKASH",
+   "TAO",
+   "HYPERLIQUID",
+   "RENDER",
+   "CHAINLINK",
+   "XRP",
+   "ZCASH",
+   "ATOM"
+  ],
   "removed": []
  },
  "INJ": {
@@ -18,7 +54,7 @@
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "ACCUMULATE"
  },
  "SOL": {
   "seen_news": [],
@@ -56,5 +92,12 @@
  "_discovery_t": 1790164767.7296479,
  "_report_week": "2026-W39",
  "_export_t": 1790165132.9845643,
- "_tg_offset": 218529207
+ "_tg_offset": 218529230,
+ "HBAR": {
+  "seen_news": [],
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
+  "signal": "HOLD"
+ }
 }

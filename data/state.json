@@ -10,6 +10,7 @@
    "ETH",
    "HBAR",
    "HYPERLIQUID",
+   "LINK",
    "ONDO",
    "RENDER",
    "SEI",
@@ -54,7 +55,7 @@
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE"
+  "signal": "HOLD"
  },
  "SOL": {
   "seen_news": [],
@@ -92,12 +93,96 @@
  "_discovery_t": 1790164767.7296479,
  "_report_week": "2026-W39",
  "_export_t": 1790165132.9845643,
- "_tg_offset": 218529230,
+ "_tg_offset": 218529234,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "high",
   "risk": "LOW",
+  "signal": "HOLD"
+ },
+ "SUI": {
+  "seen_news": [],
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
+  "signal": "HOLD",
+  "odds": {
+   "Will Sui dip to $0.20 before 2027?": 6
+  }
+ },
+ "SEI": {
+  "seen_news": [],
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
+  "signal": "HOLD"
+ },
+ "BTC": {
+  "seen_news": [],
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "LOW",
+  "signal": "HOLD",
+  "odds": {
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6,
+   "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0
+  }
+ },
+ "ETH": {
+  "seen_news": [],
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "LOW",
+  "signal": "HOLD",
+  "odds": {
+   "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
+   "Will Ethereum dip to $2,000 by December 31, 2026?": 16,
+   "Will Ethereum dip to $1,500 in September?": 0,
+   "Will Ethereum reach $10,000 by December 31, 2026?": 1
+  }
+ },
+ "AERO": {
+  "seen_news": [],
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "MEDIUM",
+  "signal": "HOLD"
+ },
+ "TAO": {
+  "seen_news": [],
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
+  "signal": "HOLD"
+ },
+ "RENDER": {
+  "seen_news": [],
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "MEDIUM",
+  "signal": "HOLD"
+ },
+ "XRP": {
+  "seen_news": [],
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "LOW",
+  "signal": "HOLD",
+  "odds": {
+   "Will XRP dip to $0.20 in September?": 0,
+   "Will XRP reach $5.00 by December 31, 2026?": 3,
+   "Will XRP reach $3.00 in September?": 1,
+   "Will XRP reach $2.80 in September?": 1
+  }
+ },
+ "ATOM": {
+  "seen_news": [],
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "MEDIUM",
   "signal": "HOLD"
  }
 }

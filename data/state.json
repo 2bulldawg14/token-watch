@@ -58,7 +58,9 @@
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "HOLD",
+  "in_zone2": false,
+  "below_stop": false
  },
  "SOL": {
   "seen_news": [],
@@ -71,7 +73,9 @@
    "Will Solana dip to $30 in September?": 0,
    "Will Solana reach $200 in September?": 0,
    "Will Solana dip to $10 in September?": 0
-  }
+  },
+  "in_zone2": false,
+  "below_stop": false
  },
  "LINK": {
   "seen_news": [],
@@ -84,25 +88,31 @@
    "Will Chainlink reach $16 by December 31, 2026?": 74,
    "Will Chainlink reach $18 by December 31, 2026?": 48,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
-  }
+  },
+  "in_zone2": false,
+  "below_stop": false
  },
  "ONDO": {
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "HOLD",
+  "in_zone2": false,
+  "below_stop": false
  },
  "_discovery_t": 1790164767.7296479,
  "_report_week": "2026-W39",
  "_export_t": 1790165132.9845643,
- "_tg_offset": 218529235,
+ "_tg_offset": 218529239,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "HOLD",
+  "in_zone2": false,
+  "below_stop": false
  },
  "SUI": {
   "seen_news": [],
@@ -112,14 +122,18 @@
   "signal": "HOLD",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 6
-  }
+  },
+  "in_zone2": false,
+  "below_stop": false
  },
  "SEI": {
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "high",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "HOLD",
+  "in_zone2": false,
+  "below_stop": false
  },
  "BTC": {
   "seen_news": [],
@@ -132,7 +146,9 @@
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
    "Will Bitcoin dip to $50,000 by December 31, 2026?": 6,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0
-  }
+  },
+  "in_zone2": false,
+  "below_stop": false
  },
  "ETH": {
   "seen_news": [],
@@ -145,28 +161,36 @@
    "Will Ethereum dip to $2,000 by December 31, 2026?": 16,
    "Will Ethereum dip to $1,500 in September?": 0,
    "Will Ethereum reach $10,000 by December 31, 2026?": 1
-  }
+  },
+  "in_zone2": false,
+  "below_stop": false
  },
  "AERO": {
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "HOLD",
+  "in_zone2": false,
+  "below_stop": false
  },
  "TAO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "HOLD",
+  "in_zone2": false,
+  "below_stop": false
  },
  "RENDER": {
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "HOLD",
+  "in_zone2": false,
+  "below_stop": false
  },
  "XRP": {
   "seen_news": [],
@@ -179,13 +203,17 @@
    "Will XRP reach $5.00 by December 31, 2026?": 3,
    "Will XRP reach $3.00 in September?": 1,
    "Will XRP reach $2.80 in September?": 1
-  }
+  },
+  "in_zone2": false,
+  "below_stop": false
  },
  "ATOM": {
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "HOLD",
+  "in_zone2": false,
+  "below_stop": false
  }
 }

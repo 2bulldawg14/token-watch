@@ -14,10 +14,22 @@
   },
   "risk": "MEDIUM",
   "source": "discovery",
-  "last": 0.161531,
+  "last": 0.160685,
   "max": 0.16591472196691665,
-  "min": 0.161017,
+  "min": 0.160685,
   "checkpoints": {},
-  "updated": "2026-09-23 13:11 UTC"
+  "updated": "2026-09-23 13:30 UTC",
+  "links": {
+   "chain": "binance-smart-chain",
+   "contract": "0xeccbb861c0dda7efd964010085488b69317e4444",
+   "contracts": [
+    {
+     "chain": "binance-smart-chain",
+     "address": "0xeccbb861c0dda7efd964010085488b69317e4444"
+    }
+   ],
+   "coingecko": "https://www.coingecko.com/en/coins/lobster-2",
+   "dexscreener": "https://dexscreener.com/bsc/0xeccbb861c0dda7efd964010085488b69317e4444"
+  }
  }
 ]

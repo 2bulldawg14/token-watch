@@ -1,0 +1,71 @@
+{
+  "check_every_minutes": 15,
+  "export_every_minutes": 240,
+  "history_refresh_hours": 6,
+  "watchlist": [
+    {
+      "symbol": "INJ",
+      "fundamental_grade": "B",
+      "team_doxxed": true,
+      "audited": true,
+      "alerts": {
+        "below": 6.5,
+        "above": 12
+      }
+    }
+  ],
+  "discovery": {
+    "enabled": true,
+    "every_hours": 12,
+    "min_market_cap_usd": 50000000,
+    "max_market_cap_usd": 5000000000,
+    "min_volume_usd": 5000000,
+    "max_checks_per_scan": 12,
+    "require_low_risk": true
+  },
+  "scam_screen": true,
+  "call_cooldown_days": 7,
+  "telegram": {
+    "bot_token": "",
+    "chat_id": ""
+  },
+  "cryptopanic_api_key": "",
+  "whale_alert_api_key": "",
+  "coingecko_api_key": "",
+  "prediction_markets": {
+    "enabled": true,
+    "min_liquidity_usd": 2000,
+    "cache_minutes": 60,
+    "alert_move_points": 15
+  },
+  "indicators": {
+    "bollinger": true,
+    "obv": true,
+    "rsi_divergence": true,
+    "relative_strength": true,
+    "derivatives": true,
+    "fear_greed": true,
+    "market_regime": true,
+    "stablecoin_liquidity": true,
+    "tvl_trend": true,
+    "betting_markets": true
+  },
+  "weights": {
+    "technical": 0.3,
+    "flows": 0.15,
+    "derivatives": 0.1,
+    "macro": 0.1,
+    "news": 0.05,
+    "markets": 0.05,
+    "fundamental": 0.25
+  },
+  "starred": [
+    "INJ"
+  ],
+  "alerts": {
+    "watchlist": true,
+    "discovered": false,
+    "weekly_report": true
+  },
+  "listen_minutes": 12
+}

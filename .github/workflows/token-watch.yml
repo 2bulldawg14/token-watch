@@ -14,6 +14,8 @@ jobs:
     timeout-minutes: 28
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: main                # always start from the latest code and data (queued runs used to start from old copies)
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -47,5 +49,8 @@ jobs:
           git add data docs
           git diff --cached --quiet && exit 0
           git commit -m "Update $(date -u +'%Y-%m-%d %H:%M')"
-          git pull --rebase
-          git push
+          for i in 1 2 3; do                         # if another run saved in the meantime, keep this run's newer data
+            git pull --rebase -X theirs && git push && exit 0
+            git rebase --abort 2>/dev/null; sleep 5
+          done
+          exit 1

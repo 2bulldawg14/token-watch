@@ -57,11 +57,11 @@
  "INJ": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false
  },
@@ -223,7 +223,7 @@
   "INJ": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false
   },
   "SOL": {

@@ -802,6 +802,11 @@ def export(results, calls, full=True):
 def write_dashboard(out):
     """Phone-friendly dashboard with charts. Also published to docs/ so GitHub Pages can host it as a home-screen app."""
     data = dict(out); data["starred"] = sorted(PREFS.get("starred", []))
+    data["repo"] = os.environ.get("GITHUB_REPOSITORY", "")
+    tok, _ = tg_creds()
+    if tok and not DEMO:
+        me = try_get("bot name", lambda: get_json(f"https://api.telegram.org/bot{tok}/getMe"))
+        data["bot"] = ((me or {}).get("result") or {}).get("username")
     js = json.dumps(data, separators=(",", ":")).replace("</", "<\\/")
     doc = DASH_HTML.replace("__DATA__", js)
     with open(os.path.join(DATA, "dashboard.html"), "w") as f: f.write(doc)
@@ -885,10 +890,17 @@ table{width:100%;border-collapse:collapse;background:var(--card);border:1px soli
 td,th{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;font-variant-numeric:tabular-nums}th{font-size:.72rem;color:var(--mut);font-weight:600}
 tr:last-child td{border:0}
 .foot{font-size:.74rem;color:var(--mut);margin-top:18px;text-align:center}
+.addbox{margin:14px 0 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px}
+.addrow{display:flex;gap:6px}.addrow input{flex:1;min-width:0;background:var(--card2);border:1px solid var(--line);border-radius:10px;color:var(--ink);font:inherit;font-size:16px;padding:8px 10px;text-transform:uppercase}.addrow input::placeholder{text-transform:none}
+.abtn{border:0;background:var(--acc);color:#fff;border-radius:10px;padding:8px 12px;font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;white-space:nowrap}
+.abtn.alt{background:var(--card2);color:var(--ink);border:1px solid var(--line)}.addnote{font-size:.76rem;color:var(--mut);margin-top:6px}
+.acts{display:flex;gap:8px;margin-top:10px}.acts a{flex:1;text-align:center;text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid var(--line);border-radius:10px;padding:7px;background:var(--card)}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none}
 </style></head><body>
 <header><div><h1>Token <span>Watch</span></h1></div><div class=upd id=upd></div></header>
 <div class=kpis id=kpis></div>
+<div class=addbox><div class=addrow><input id=addin placeholder="Ticker, e.g. TAO" autocapitalize=characters autocomplete=off spellcheck=false maxlength=15>
+<button class="abtn" id=addbtn>Add</button><button class="abtn alt" id=addstar>Add ⭐</button></div><div class=addnote id=addnote></div></div>
 <div id=macro></div>
 <div class=tabs id=tabs></div>
 <div id=list></div>
@@ -923,6 +935,14 @@ const buys=D.tokens.filter(t=>t.is_buy&&!/AVOID/.test(t.signal));
 $("#kpis").innerHTML=[[buys.length,"buy setups now"],[rets.length?Math.round(rets.filter(x=>x>0).length/rets.length*100)+"%":"–","calls in profit"],
 [rets.length?(rets.reduce((a,b)=>a+b,0)/rets.length).toFixed(1)+"%":"–","avg call return"]].map(([b,s])=>`<div class=kpi><b>${b}</b><small>${s}</small></div>`).join("");
 if((D.macro||{}).why&&D.macro.why.length){const m=$("#macro");m.innerHTML=`<h2>Market backdrop${D.macro.score!=null?" · "+Math.round(D.macro.score)+"/100":""}</h2>`;const ch=el("div","chips");D.macro.why.forEach(w=>ch.append(el("span","chip",esc(w))));m.append(ch)}
+// ---------- add coins (opens your Telegram bot with the command ready; the next check picks it up)
+const botURL=(act,sym)=>D.bot?`https://t.me/${D.bot}?start=${act}_${encodeURIComponent(sym)}`:null;
+const ghURL=D.repo?`https://github.com/${D.repo}/edit/main/watchlist.txt`:null;
+$("#addnote").innerHTML=D.bot?"Opens your Telegram bot — tap <b>Start</b> there to confirm. New coins appear here after the next check (about 15–30 min).":
+  (ghURL?`Your bot name isn't known yet, so this opens <a href="${ghURL}" target=_blank>watchlist.txt</a> on GitHub instead.`:"Send /add TICKER to your Telegram bot.");
+function addCoin(star){const v=$("#addin").value.trim().toUpperCase().replace(/^\$/,"");if(!/^[A-Z0-9]{1,15}$/.test(v)){$("#addin").focus();return}
+const u=botURL(star?"STAR":"ADD",v)||ghURL;if(u)location.href=u;$("#addin").value=""}
+$("#addbtn").onclick=()=>addCoin(false);$("#addstar").onclick=()=>addCoin(true);$("#addin").addEventListener("keydown",e=>{if(e.key=="Enter")addCoin(false)});
 // ---------- tabs
 const TABS=[["all","All"],["buy","Buy setups"],["star","⭐ Starred"],["watch","Watchlist"],["found","Found by scanner"]];let cur="all";
 const tabs=$("#tabs");TABS.forEach(([k,n])=>{const b=el("button","tab"+(k==cur?" on":""),n);b.onclick=()=>{cur=k;[...tabs.children].forEach(x=>x.classList.toggle("on",x==b));render()};tabs.append(b)});
@@ -955,6 +975,7 @@ if(cs.length)cs.forEach(x=>{const a=el("div","addr",`<span class=ch>${esc(x.chai
 else box.append(el("div","addr",`<span class=ch>Contract</span><code>None — native coin of its own chain</code>`));
 const ln=el("div","links",`<a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+t.symbol)}"><i style="background:#8DC63F"></i>CoinGecko</a>
 <a class=lbtn target=_blank rel=noopener href="${esc(Lk.dexscreener||"https://dexscreener.com/search?q="+t.symbol)}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a>`);box.append(ln);b.append(box);
+if(D.bot){const a=el("div","acts",`<a href="${botURL(t.starred?"UNSTAR":"STAR",t.symbol)}">${t.starred?"☆ Unstar":"⭐ Star"}</a><a href="${botURL("CHECK",t.symbol)}">↻ Fresh check</a><a href="${botURL("REMOVE",t.symbol)}" style="color:var(--dn)">Remove</a>`);b.append(a)}
 // chart
 const rg=el("div","ranges");const holder=el("div");let range=180;[["3M",90],["6M",180],["1Y",365]].forEach(([n,d])=>{const x=el("button","rg"+(d==range?" on":""),n);x.onclick=()=>{range=d;[...rg.children].forEach(y=>y.classList.toggle("on",y==x));draw(holder,t,range)};rg.append(x)});
 b.append(rg,holder);draw(holder,t,range);
@@ -1139,6 +1160,8 @@ def handle_commands(state, texts=None, wait=0):
             msg = u.get("message") or {}
             if str((msg.get("chat") or {}).get("id")) == chat and msg.get("text"): texts.append(msg["text"])
     for t in texts:
+        m = re.fullmatch(r"/start(?:@\w+)?\s+(ADD|STAR|UNSTAR|REMOVE|CHECK)_([A-Za-z0-9]{1,15})", t.strip(), re.I)
+        if m: t = f"/{m.group(1).lower()} {m.group(2).upper()}"      # buttons on the dashboard open the bot with these
         parts = t.strip().split(); cmd = parts[0].lower().split("@")[0]; arg = parts[1].upper() if len(parts) > 1 else ""
         onoff = {"ON": True, "OFF": False}.get(arg)
         if cmd == "/check":
@@ -1156,11 +1179,12 @@ def handle_commands(state, texts=None, wait=0):
             st = set(PREFS["starred"]); (st.add if cmd == "/star" else st.discard)(arg); PREFS["starred"] = sorted(st)
             if cmd == "/star" and arg not in PREFS["added"] and arg not in {w["symbol"] for w in CFG_WATCH}: PREFS["added"].append(arg)
             if arg in PREFS["removed"]: PREFS["removed"].remove(arg)
-            reply(f"{'⭐ Starred' if cmd == '/star' else 'Unstarred'} {arg}.")
+            reply(f"{'⭐ Starred' if cmd == '/star' else 'Unstarred'} {arg}." + (" It shows on your dashboard after the next check." if cmd == "/star" else ""))
         elif cmd == "/add" and arg:
             if arg not in PREFS["added"]: PREFS["added"].append(arg)
             if arg in PREFS["removed"]: PREFS["removed"].remove(arg)
-            reply(f"Added {arg} to your watchlist. Reply /star {arg} to always get its alerts.")
+            reply(f"Added {arg} to your watchlist. It shows on your dashboard after the next check (about 15-30 min). Reply /star {arg} to always get its alerts.")
+            assess([arg])
         elif cmd == "/remove" and arg:
             if arg in PREFS["added"]: PREFS["added"].remove(arg)
             if arg not in PREFS["removed"]: PREFS["removed"].append(arg)

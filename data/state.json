@@ -2,14 +2,12 @@
  "_prefs": {
   "star_add": [
    "AERO",
-   "AKASH",
+   "AKT",
    "ATOM",
    "BTC",
-   "CANTON",
-   "CHAINLINK",
-   "ETH",
+   "CC",
    "HBAR",
-   "HYPERLIQUID",
+   "HYPE",
    "LINK",
    "ONDO",
    "RENDER",
@@ -17,9 +15,9 @@
    "SOL",
    "SUI",
    "TAO",
-   "UNISWAP",
+   "UNI",
    "XRP",
-   "ZCASH"
+   "ZEC"
   ],
   "star_del": [],
   "alerts": {
@@ -33,21 +31,22 @@
    "HBAR",
    "SUI",
    "SEI",
-   "CANTON",
+   "CC",
    "BTC",
-   "ETH",
-   "UNISWAP",
+   "UNI",
    "AERO",
-   "AKASH",
+   "AKT",
    "TAO",
-   "HYPERLIQUID",
+   "HYPE",
    "RENDER",
-   "CHAINLINK",
+   "LINK",
    "XRP",
-   "ZCASH",
+   "ZEC",
    "ATOM"
   ],
-  "removed": [],
+  "removed": [
+   "ETH"
+  ],
   "wallets": [],
   "unfollowed": []
  },
@@ -104,7 +103,7 @@
  "_discovery_t": 1790164767.7296479,
  "_report_week": "2026-W39",
  "_export_t": 1790165132.9845643,
- "_tg_offset": 218529239,
+ "_tg_offset": 218529244,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
@@ -138,9 +137,9 @@
  "BTC": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
@@ -215,5 +214,293 @@
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
+ },
+ "_sellst": {
+  "INJ": {
+   "seen": true,
+   "bad": false,
+   "in_sell": true,
+   "below": false
+  },
+  "SOL": {
+   "seen": true,
+   "bad": false,
+   "in_sell": true,
+   "below": false
+  },
+  "LINK": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "ONDO": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "HBAR": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "SUI": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "SEI": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "CANTON": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "BTC": {
+   "seen": true,
+   "bad": true,
+   "in_sell": true,
+   "below": false
+  },
+  "ETH": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "UNISWAP": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false
+  },
+  "AERO": {
+   "seen": true,
+   "bad": false,
+   "in_sell": true,
+   "below": false
+  },
+  "AKASH": {
+   "seen": true,
+   "bad": false,
+   "in_sell": true,
+   "below": false
+  },
+  "TAO": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "HYPERLIQUID": {
+   "seen": true,
+   "bad": true,
+   "in_sell": true,
+   "below": false
+  },
+  "RENDER": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "CHAINLINK": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false
+  },
+  "XRP": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "ZCASH": {
+   "seen": true,
+   "bad": false,
+   "in_sell": true,
+   "below": false
+  },
+  "ATOM": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "CC": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "UNI": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "AKT": {
+   "seen": true,
+   "bad": false,
+   "in_sell": true,
+   "below": false
+  },
+  "HYPE": {
+   "seen": true,
+   "bad": true,
+   "in_sell": true,
+   "below": false
+  },
+  "ZEC": {
+   "seen": true,
+   "bad": false,
+   "in_sell": true,
+   "below": false
+  },
+  "\u9f99\u867e": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  }
+ },
+ "CANTON": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "MEDIUM",
+  "signal": "HOLD"
+ },
+ "UNISWAP": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
+  "signal": "TRIM"
+ },
+ "AKASH": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
+  "signal": "HOLD"
+ },
+ "HYPERLIQUID": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "MEDIUM",
+  "signal": "TRIM",
+  "odds": {
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
+   "Will Hyperliquid dip to $16 by December 31, 2026?": 4,
+   "Will Hyperliquid dip to $12 by December 31, 2026?": 3,
+   "Will Hyperliquid dip to $20 by December 31, 2026?": 3
+  }
+ },
+ "CHAINLINK": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "LOW",
+  "signal": "TRIM",
+  "odds": {
+   "Will Chainlink reach $20 by December 31, 2026?": 25,
+   "Will Chainlink reach $16 by December 31, 2026?": 74,
+   "Will Chainlink reach $18 by December 31, 2026?": 48,
+   "Will Chainlink dip to $6 by December 31, 2026?": 10
+  }
+ },
+ "ZCASH": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
+  "signal": "HOLD",
+  "odds": {
+   "Will Zcash reach $2000 by December 31, 2026?": 59,
+   "Will Zcash dip to $100 by December 31, 2026?": 4,
+   "Will Zcash dip to $50 by December 31, 2026?": 3
+  }
+ },
+ "CC": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "MEDIUM",
+  "signal": "HOLD"
+ },
+ "UNI": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
+  "signal": "HOLD",
+  "odds": {
+   "Will UNI reach $9.50 by December 31, 2026?": 100
+  }
+ },
+ "AKT": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
+  "signal": "HOLD"
+ },
+ "HYPE": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "MEDIUM",
+  "signal": "TRIM",
+  "odds": {
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
+   "Will Hyperliquid dip to $16 by December 31, 2026?": 4,
+   "Will Hyperliquid dip to $12 by December 31, 2026?": 3,
+   "Will Hyperliquid dip to $20 by December 31, 2026?": 3
+  }
+ },
+ "ZEC": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
+  "signal": "HOLD",
+  "odds": {
+   "Will Zcash reach $2000 by December 31, 2026?": 59,
+   "Will Zcash dip to $100 by December 31, 2026?": 4,
+   "Will Zcash dip to $50 by December 31, 2026?": 3
+  }
  }
 }

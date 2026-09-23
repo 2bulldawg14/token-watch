@@ -1784,7 +1784,8 @@ def publish_now():
         g("add", "data", "docs")
         if g("diff", "--cached", "--quiet").returncode == 0: return
         g("commit", "-m", f"Live update {iso()}")
-        g("pull", "--rebase"); out = g("push")
+        if g("pull", "--rebase", "-X", "theirs").returncode != 0: g("rebase", "--abort")
+        out = g("push")
         print("  Published dashboard now." if out.returncode == 0 else f"  [skip] publish: {out.stderr.strip()[:200]}")
     except Exception as e: print(f"  [skip] publish: {e}")
 

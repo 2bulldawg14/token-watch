@@ -14,11 +14,11 @@
   },
   "risk": "MEDIUM",
   "source": "discovery",
-  "last": 0.160986,
+  "last": 0.16029,
   "max": 0.16591472196691665,
-  "min": 0.160685,
+  "min": 0.16029,
   "checkpoints": {},
-  "updated": "2026-09-23 14:12 UTC",
+  "updated": "2026-09-23 14:30 UTC",
   "links": {
    "chain": "binance-smart-chain",
    "contract": "0xeccbb861c0dda7efd964010085488b69317e4444",
@@ -68,9 +68,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 304.3,
+  "last": 297.7,
   "max": 304.3,
-  "min": 304.3,
+  "min": 297.7,
   "checkpoints": {},
   "feat": {
    "rsi": 68.67985079483194,
@@ -108,7 +108,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-09-23 14:12 UTC"
+  "updated": "2026-09-23 14:30 UTC"
  },
  {
   "id": "RENDER-1790172727",
@@ -146,9 +146,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.728,
+  "last": 1.707,
   "max": 1.728,
-  "min": 1.728,
+  "min": 1.707,
   "checkpoints": {},
   "feat": {
    "rsi": 62.858935849105414,
@@ -195,7 +195,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/render-token",
    "dexscreener": "https://dexscreener.com/solana/rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof"
   },
-  "updated": "2026-09-23 14:12 UTC"
+  "updated": "2026-09-23 14:30 UTC"
  },
  {
   "id": "ATOM-1790172735",
@@ -233,9 +233,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.758,
+  "last": 1.723,
   "max": 1.758,
-  "min": 1.758,
+  "min": 1.723,
   "checkpoints": {},
   "feat": {
    "rsi": 58.64528461681607,
@@ -290,6 +290,179 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-09-23 14:12 UTC"
+  "updated": "2026-09-23 14:30 UTC"
+ },
+ {
+  "id": "INJ-1790173810",
+  "symbol": "INJ",
+  "cg_id": "injective-protocol",
+  "t": 1790173810,
+  "date": "2026-09-23 14:30 UTC",
+  "entry": 7.802,
+  "signal": "ACCUMULATE",
+  "score": 61,
+  "buy_zone": {
+   "low": 5.21456,
+   "high": 5.926559999999999
+  },
+  "risk": "MEDIUM",
+  "plan": {
+   "zone1": {
+    "low": 5.21456,
+    "high": 5.926559999999999,
+    "strong": true,
+    "vol_level": 4.89196875
+   },
+   "zone2": {
+    "low": 4.405715000000001,
+    "high": 4.9397150000000005,
+    "strong": true
+   },
+   "stop": 4.049715000000001,
+   "target": 8.171000000000001,
+   "resistance": [],
+   "support_levels": [
+    4.89196875
+   ]
+  },
+  "source": "watchlist",
+  "last": 7.802,
+  "max": 7.802,
+  "min": 7.802,
+  "checkpoints": {},
+  "feat": {
+   "rsi": 69.78790809185007,
+   "zone": "above",
+   "pb": 0.8745685342927831,
+   "rs30": 30.536539791313523,
+   "macd": "fading",
+   "vs200": 0.7021128058790738,
+   "vs50": 0.44680819499458524,
+   "chg7": 0.4421441774491681,
+   "chg30": 0.37021426062521945,
+   "macro": 53.40142611196695,
+   "btc_bull": true,
+   "buy_ratio": 0.5027206245043319,
+   "wallets": null,
+   "risk": "MEDIUM",
+   "source": "watchlist",
+   "parts": {
+    "technical": 52.6,
+    "flows": 63.8,
+    "derivatives": null,
+    "wallets": null,
+    "macro": 53.4,
+    "news": null,
+    "fundamental": 75,
+    "markets": 52.9
+   },
+   "btc": 84148
+  },
+  "starred": true,
+  "links": {
+   "chain": "solana",
+   "contract": "1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz",
+   "contracts": [
+    {
+     "chain": "solana",
+     "address": "1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
+    },
+    {
+     "chain": "ethereum",
+     "address": "0xe28b3b32b6c345a34ff64674606124dd5aceca30"
+    },
+    {
+     "chain": "binance-smart-chain",
+     "address": "0xa2b726b1145a4773f68593cf171187d8ebe4d495"
+    },
+    {
+     "chain": "osmosis",
+     "address": "ibc/64BA6E31FE887D66C6F8F31C7B1A80C7CA179239677B4088BB55F5EA07DBE273"
+    }
+   ],
+   "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
+   "dexscreener": "https://dexscreener.com/solana/1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
+  },
+  "updated": "2026-09-23 14:30 UTC"
+ },
+ {
+  "id": "CC-1790173826",
+  "symbol": "CC",
+  "cg_id": "canton-network",
+  "t": 1790173826,
+  "date": "2026-09-23 14:30 UTC",
+  "entry": 0.108525,
+  "signal": "ACCUMULATE",
+  "score": 60,
+  "buy_zone": {
+   "low": 0.10436064205576936,
+   "high": 0.10874455754601672
+  },
+  "risk": "MEDIUM",
+  "plan": {
+   "zone1": {
+    "low": 0.10436064205576936,
+    "high": 0.10874455754601672,
+    "strong": false
+   },
+   "zone2": {
+    "low": 0.09968801483688036,
+    "high": 0.10297595145456588,
+    "strong": true
+   },
+   "stop": 0.0891160986894662,
+   "target": 0.11815654538000481,
+   "resistance": [
+    0.11815654538000481,
+    0.14026706568799358,
+    0.1497430029628459
+   ],
+   "support_levels": [
+    0.1007839937094422,
+    0.09130805643458988
+   ]
+  },
+  "source": "watchlist",
+  "last": 0.108525,
+  "max": 0.108525,
+  "min": 0.108525,
+  "checkpoints": {},
+  "feat": {
+   "rsi": 51.18692011213242,
+   "zone": "in",
+   "pb": 0.6357601288198973,
+   "rs30": -18.94083148017357,
+   "macd": "fading",
+   "vs200": -0.20122576685527194,
+   "vs50": 0.029096125446254062,
+   "chg7": 0.08201548703085648,
+   "chg30": -0.12455945208965147,
+   "macro": 53.40142611196695,
+   "btc_bull": true,
+   "buy_ratio": null,
+   "wallets": null,
+   "risk": "MEDIUM",
+   "source": "watchlist",
+   "parts": {
+    "technical": 44.2,
+    "flows": 100.0,
+    "derivatives": null,
+    "wallets": null,
+    "macro": 53.4,
+    "news": null,
+    "fundamental": null,
+    "markets": 52.9
+   },
+   "btc": 84148
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/canton-network",
+   "dexscreener": "https://dexscreener.com/search?q=CC"
+  },
+  "updated": "2026-09-23 14:30 UTC"
  }
 ]

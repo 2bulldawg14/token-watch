@@ -47,7 +47,8 @@
    "SHIB"
   ],
   "removed": [
-   "ETH"
+   "ETH",
+   "HYPERLIQUID"
   ],
   "wallets": [],
   "unfollowed": []
@@ -55,11 +56,11 @@
  "INJ": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false
  },
@@ -105,7 +106,7 @@
  "_discovery_t": 1790164767.7296479,
  "_report_week": "2026-W39",
  "_export_t": 1790165132.9845643,
- "_tg_offset": 218529246,
+ "_tg_offset": 218529255,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
@@ -169,7 +170,7 @@
  "AERO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
@@ -180,7 +181,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -221,7 +222,7 @@
   "INJ": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false
   },
   "SOL": {
@@ -456,10 +457,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "ACCUMULATE"
  },
  "UNI": {
   "seen_news": [],
@@ -502,7 +503,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {

@@ -12,7 +12,7 @@ Outputs go to ./data/: dashboard.html (open in a browser), export.json (import i
 Token Grader), calls.json (track record), state.json and cache.json.
 Standard library only. Not financial advice.
 """
-import argparse, json, math, os, random, sys, time, urllib.parse, urllib.request, html
+import argparse, json, math, os, random, subprocess, sys, time, urllib.parse, urllib.request, html
 from datetime import datetime, timezone, timedelta
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -1757,6 +1757,37 @@ def assess(syms):
         note = "" if sym in known or sym in PREFS["added"] else f"\n\nNot on your watchlist. Reply /add {sym} to track it, or /star {sym} to always get alerts."
         reply(f"{SIG_EMOJI.get(res['signal'], '⚪')} " + ("⭐ " if sym in PREFS["starred"] else "") + summary(res, r["dd"], links=True) + note)
 
+def add_now(sym, quiet=False):
+    """Check a newly added coin right away and put it on the dashboard (published within a couple of minutes)."""
+    if not CTX: reply(f"Added {sym}. It shows up after the next check."); return
+    try: r = check_token({"symbol": sym}, CTX["cache"], CTX["state"], CTX["calls"], source="watchlist")
+    except Exception as e: r = None; print(f"  [error] {sym}: {e}")
+    if not r:
+        reply(f"Added {sym}, but I couldn't find it on CoinGecko (or it has too little price history). Check the ticker, e.g. LINK not CHAINLINK."); return
+    res = CTX.setdefault("results", [])
+    res[:] = [x for x in res if x["res"]["symbol"] != r["res"]["symbol"]] + [r]
+    CTX["dirty"] = True
+    if not quiet:
+        reply(f"✅ Added {r['res']['symbol']} to your watchlist - it'll be on your dashboard in about 2 minutes.\n\n" + summary(r["res"], r["dd"], links=True)
+              + f"\n\nReply /star {r['res']['symbol']} to always get its alerts.")
+
+def publish_now():
+    """Rebuild the dashboard and push it to GitHub right away (only on GitHub Actions)."""
+    if not CTX.get("dirty") or CTX.get("results") is None: return
+    CTX["dirty"] = False
+    save_prefs(CTX["state"], None); save("state.json", CTX["state"]); save("calls.json", CTX["calls"]); save("cache.json", CTX["cache"])
+    export(CTX["results"], CTX["calls"], True)
+    if not os.environ.get("GITHUB_ACTIONS") or DEMO: return
+    g = lambda *a: subprocess.run(["git", "-c", "user.name=token-watch", "-c", "user.email=token-watch@users.noreply.github.com", *a],
+                                  cwd=HERE, capture_output=True, text=True, timeout=60)
+    try:
+        g("add", "data", "docs")
+        if g("diff", "--cached", "--quiet").returncode == 0: return
+        g("commit", "-m", f"Live update {iso()}")
+        g("pull", "--rebase"); out = g("push")
+        print("  Published dashboard now." if out.returncode == 0 else f"  [skip] publish: {out.stderr.strip()[:200]}")
+    except Exception as e: print(f"  [skip] publish: {e}")
+
 def listen(minutes):
     """After the scheduled check, keep answering Telegram messages until the next run starts."""
     tok, chat = tg_creds()
@@ -1765,6 +1796,7 @@ def listen(minutes):
     print(f"Listening for Telegram messages for {minutes} min …")
     while now() < end - 5:
         handle_commands(CTX["state"], wait=int(min(25, max(1, end - now() - 5))))
+        publish_now()                                      # coins you just added/removed/starred go live right away
         save_prefs(CTX["state"], None); save("state.json", CTX["state"]); save("calls.json", CTX["calls"]); save("cache.json", CTX["cache"])
     save_hist()
 
@@ -1853,17 +1885,20 @@ def handle_commands(state, texts=None, wait=0):
             st = set(PREFS["starred"]); (st.add if cmd == "/star" else st.discard)(arg); PREFS["starred"] = sorted(st)
             if cmd == "/star" and arg not in PREFS["added"] and arg not in {w["symbol"] for w in CFG_WATCH}: PREFS["added"].append(arg)
             if arg in PREFS["removed"]: PREFS["removed"].remove(arg)
-            reply(f"{'⭐ Starred' if cmd == '/star' else 'Unstarred'} {arg}." + (" It shows on your dashboard after the next check." if cmd == "/star" else ""))
+            reply(f"{'⭐ Starred' if cmd == '/star' else 'Unstarred'} {arg}.")
+            if cmd == "/star" and CTX.get("results") is not None and arg not in {r["res"]["symbol"] for r in CTX["results"]}: add_now(arg, quiet=True)
+            CTX["dirty"] = True
         elif cmd == "/add" and arg:
             if arg not in PREFS["added"]: PREFS["added"].append(arg)
             if arg in PREFS["removed"]: PREFS["removed"].remove(arg)
-            reply(f"Added {arg} to your watchlist. It shows on your dashboard after the next check (about 15-30 min). Reply /star {arg} to always get its alerts.")
-            assess([arg])
+            add_now(arg)
         elif cmd == "/remove" and arg:
             if arg in PREFS["added"]: PREFS["added"].remove(arg)
             if arg not in PREFS["removed"]: PREFS["removed"].append(arg)
             PREFS["starred"] = [x for x in PREFS["starred"] if x != arg]
             reply(f"Removed {arg}.")
+            if CTX.get("results") is not None: CTX["results"][:] = [r for r in CTX["results"] if r["res"]["symbol"] != arg]
+            CTX["dirty"] = True
         elif cmd in ("/discovered", "/watchlist", "/report", "/wallets") and onoff is not None:
             PREFS["alerts"][{"/discovered": "discovered", "/watchlist": "watchlist", "/report": "weekly_report", "/wallets": "wallets"}[cmd]] = onoff
             reply(f"{cmd[1:].capitalize()} alerts turned {'on' if onoff else 'off'}.")
@@ -1942,6 +1977,7 @@ def run_once():
     # export.json / dashboard are big; rewrite them every few hours, not every 15 minutes
     full = DEMO or now() - state.get("_export_t", 0) >= CFG.get("export_every_minutes", 240) * 60
     export(results, calls, full)
+    CTX["results"] = results; CTX["dirty"] = False
     if full: state["_export_t"] = now(); save("state.json", state)
     print(f"\nDashboard: {os.path.join(DATA, 'dashboard.html')}")
 

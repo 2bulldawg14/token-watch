@@ -99,6 +99,11 @@ Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in 
 - Dashboard track record: one card per coin (BUY/SELL/OPEN rows with date and time), total profit if $X went into every buy call (the amount is editable), and summary rows for your coins vs scanner finds.
 - The top KPIs use trade returns: exit at the sell price, otherwise the current price.
 
+**Instant updates:**
+- While the bot is listening, `/add`, `/remove`, `/star` and `/unstar` (including from the website buttons) run `add_now()`, which checks the coin immediately and replies in Telegram.
+- `publish_now()` then rebuilds the dashboard and git-pushes `data/` and `docs/` from inside the run, using the checkout's token. Pages shows it in about 1–2 minutes.
+- Commands sent between runs wait for the next run to start.
+
 **Tickers vs names:**
 - `resolve_id()` matches the ticker first, then falls back to the coin's name or id (CHAINLINK→LINK, CANTON→CC, AKASH→AKT).
 - `fix_names()` rewrites names David added by name to real tickers and tells him on Telegram.

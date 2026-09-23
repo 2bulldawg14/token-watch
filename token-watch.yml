@@ -1,0 +1,46 @@
+name: token-watch
+on:
+  schedule:
+    - cron: "*/15 * * * *"     # every 15 minutes (GitHub can run scheduled jobs a few minutes late when busy)
+  workflow_dispatch: {}        # "Run workflow" button for testing
+permissions:
+  contents: write
+concurrency:
+  group: token-watch           # never let two runs overlap
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Restore price history cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .hist-cache
+          key: hist-${{ github.run_id }}
+          restore-keys: hist-
+      - name: Check coins, send alerts, then answer Telegram messages until the next run
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python token_watch.py --once
+      - name: Save price history cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .hist-cache
+          key: hist-${{ github.run_id }}
+      - name: Save results and update the phone dashboard
+        if: always()
+        run: |
+          git config user.name "token-watch"
+          git config user.email "token-watch@users.noreply.github.com"
+          git add data docs
+          git diff --cached --quiet && exit 0
+          git commit -m "Update $(date -u +'%Y-%m-%d %H:%M')"
+          git pull --rebase
+          git push

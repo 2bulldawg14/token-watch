@@ -627,13 +627,41 @@ def odds_alerts(sym, mv, state):
     st["odds"] = new
     if ev: send(f"ODDS ALERT {sym}\n" + "\n".join("* " + e for e in ev), "token", sym)
 
+# ---------------------------------------------------------------- contract + links (CoinGecko, DexScreener)
+DEX_CHAINS = {"ethereum": "ethereum", "binance-smart-chain": "bsc", "solana": "solana", "base": "base",
+              "arbitrum-one": "arbitrum", "polygon-pos": "polygon", "avalanche": "avalanche", "optimistic-ethereum": "optimism",
+              "sui": "sui", "aptos": "aptos", "tron": "tron", "the-open-network": "ton", "sonic": "sonic", "linea": "linea",
+              "blast": "blast", "mantle": "mantle", "zksync": "zksync", "cronos": "cronos", "fantom": "fantom", "osmosis": "osmosis",
+              "injective": "injective", "sei-v2": "seiv2", "hyperevm": "hyperevm", "berachain": "berachain", "abstract": "abstract"}
+CHAIN_PREF = ("solana", "ethereum", "base", "binance-smart-chain", "arbitrum-one")
+def token_links(sym, cg_id, dd):
+    """Best contract + CoinGecko and DexScreener links for a token."""
+    plats = (((dd or {}).get("facts") or {}).get("platforms") or {})
+    plats = {k: v for k, v in plats.items() if k and v}
+    order = sorted(plats, key=lambda k: (k not in CHAIN_PREF, CHAIN_PREF.index(k) if k in CHAIN_PREF else 0, k not in DEX_CHAINS))
+    chain = order[0] if order else None; addr = plats.get(chain) if chain else None
+    dex = (f"https://dexscreener.com/{DEX_CHAINS[chain]}/{addr}" if chain in DEX_CHAINS
+           else "https://dexscreener.com/search?q=" + urllib.parse.quote(addr or sym))
+    return {"chain": chain, "contract": addr, "contracts": [{"chain": k, "address": plats[k]} for k in order][:4],
+            "coingecko": f"https://www.coingecko.com/en/coins/{cg_id}" if cg_id else "https://www.coingecko.com/en/search?query=" + urllib.parse.quote(sym),
+            "dexscreener": dex}
+def links_text(res, dd):
+    L = token_links(res["symbol"], res.get("cg_id"), dd)
+    name = ((dd or {}).get("facts") or {}).get("name")
+    s = f"\nTicker: {res['symbol']}" + (f" ({name})" if name else "")
+    s += f"\nContract ({L['chain']}): {L['contract']}" if L["contract"] else "\nContract: none (native coin)"
+    return s + f"\nCoinGecko: {L['coingecko']}\nDexScreener: {L['dexscreener']}"
+def is_buy(res): return res["signal"] in BUY_SIGNALS or res.get("in_zone")
+
 def z(zn): return f"${zn['low']:.4g}-${zn['high']:.4g}" if zn else "n/a"
-def summary(res, dd=None):
+def summary(res, dd=None, links=False):
     s = f"{res['symbol']} ${res['price']:.4g} -> {res['signal']}" + (f" ({res['score']:.0f}/100)" if res['score'] is not None else "")
     s += f"\nBuy zone {z(res['buy_zone'])} | Sell zone {z(res['sell_zone'])}"
     if res.get("markets"): s += "\nBetting markets:\n" + "\n".join("   " + l for l in res["markets"]["lines"][:3])
     if dd: s += f"\nScam risk {dd['level']}" + (": " + "; ".join(dd["flags"][:4]) if dd["flags"] else "")
-    return s + "\n" + "\n".join(" - " + w for w in res["why"]) + ("\nMarket: " + "; ".join(MACRO.get("why", [])) if MACRO.get("why") else "")
+    s += "\n" + "\n".join(" - " + w for w in res["why"]) + ("\nMarket: " + "; ".join(MACRO.get("why", [])) if MACRO.get("why") else "")
+    if is_buy(res) or links: s += "\n" + links_text(res, dd)
+    return s
 
 def check_alerts(tok, res, news, dd, state, call):
     st = state.setdefault(res["symbol"], {"seen_news": []}); ev = []; p = res["price"]
@@ -706,11 +734,12 @@ def check_token(tok, cache, state, calls, source="watchlist", grade=None):
         pm = try_get("betting markets", lambda: polymarket(sym, name))
         mv = market_view(pm, data["close"][-1]) if pm else None
     res = analyse(sym, data, depth, news, whales, tok.get("fundamental_grade") or grade, dd, mv, None if sym == "BTC" else BACKDROP.get("btc"), ex)
+    res["cg_id"] = cg_id
     call = None if source == "adhoc" else stamp_call(calls, res, cg_id, dd, source)
     print(summary(res, dd))
     if source == "watchlist": check_alerts(tok, res, news, dd, state, call)
     if source == "watchlist" and mv: odds_alerts(sym, mv, state)
-    return {"tok": tok, "cg_id": cg_id, "res": res, "dd": dd, "call": call, "closes": data["close"][-365:], "source": source}
+    return {"tok": tok, "cg_id": cg_id, "res": res, "dd": dd, "call": call, "closes": data["close"][-365:], "vols": (data.get("volume") or [])[-365:], "source": source}
 
 def discover(cache, state, calls, skip):
     d = CFG.get("discovery") or {}
@@ -762,60 +791,19 @@ def export(results, calls, full=True):
             "why": res["why"], "risk": dd.get("level"), "risk_flags": dd.get("flags", []), "checks": dd.get("checks", {}),
             "pressure": None if pr is None else (-2 if pr < .46 else -1 if pr < .49 else 0 if pr < .51 else 1 if pr < .54 else 2),
             "market_cap": (dd.get("facts") or {}).get("market_cap"),
-            "markets": res.get("markets"), "parts": res["parts"]})
+            "markets": res.get("markets"), "parts": res["parts"], "rsi": res.get("rsi"), "cg_id": r.get("cg_id"),
+            "links": token_links(res["symbol"], r.get("cg_id"), dd), "fdv": (dd.get("facts") or {}).get("fdv"),
+            "volume_24h": (dd.get("facts") or {}).get("volume"), "is_buy": bool(is_buy(res)), "starred": False,
+            "chart": {"c": [round(x, 10) for x in r["closes"]], "v": [round(x) for x in (r.get("vols") or [])]}})
     out["macro"] = {"score": MACRO.get("score"), "why": MACRO.get("why", [])}
     if full: save("export.json", out)
     write_dashboard(out)
 
 def write_dashboard(out):
-    """Phone-friendly dashboard. Also published to docs/ so GitHub Pages can host it as a home-screen app."""
-    e = lambda s: html.escape(str(s if s is not None else ""))
-    col = {"STRONG BUY ZONE": "#1F6F6B", "ACCUMULATE": "#5E8A35", "HOLD": "#B8831A", "TRIM": "#C2552E"}
-    star = set(PREFS.get("starred", []))
-    toks = sorted(out["tokens"], key=lambda t: (t["symbol"] not in star, t["source"] != "watchlist", -(t["score"] or 0)))
-    def card(t):
-        c = col.get(t["signal"], "#8E2C2C"); bz = t["buy_zone"]
-        why = "".join(f"<li>{e(w)}</li>" for w in t["why"][:10])
-        odds = "".join(f"<li>{e(l)}</li>" for l in ((t.get("markets") or {}).get("lines") or [])[:3])
-        return (f"<details class=card><summary><div><b class=sym>{'⭐ ' if t['symbol'] in star else ''}{e(t['symbol'])}</b>"
-                f"{' <span class=tag>found</span>' if t['source'] == 'discovery' else ''}<br><span class=px>${t['price']:.4g}</span></div>"
-                f"<div class=r><span class=pill style='background:{c}'>{e(t['signal'])}</span><br><small>{(t['score'] or 0):.0f}/100 · risk {e(t['risk'] or '?')}</small></div></summary>"
-                f"<p><small>Buy zone {'$%.4g–$%.4g' % (bz['low'], bz['high']) if bz else 'n/a'}</small></p><ul>{why}</ul>"
-                + (f"<p><b>Betting markets</b></p><ul>{odds}</ul>" if odds else "")
-                + (f"<p><b>Scam flags</b></p><ul>{''.join(f'<li>{e(f)}</li>' for f in t['risk_flags'][:5])}</ul>" if t['risk_flags'] else "")
-                + "</details>")
-    calls = sorted(out["calls"], key=lambda c: -c["t"])
-    rs = [ret(c) for c in calls]
-    stats = (f"<div class=stats><div><b>{len(calls)}</b><small>buy calls</small></div>"
-             f"<div><b>{(sum(1 for x in rs if x > 0) / len(rs) * 100 if rs else 0):.0f}%</b><small>in profit</small></div>"
-             f"<div><b>{(sum(rs) / len(rs) if rs else 0):+.1f}%</b><small>average</small></div></div>")
-    crow = "".join(f"<tr><td>{e(c['date'][5:10])}</td><td><b>{e(c['symbol'])}</b></td><td>${c['entry']:.4g}</td>"
-                   f"<td style='color:{'#1F6F6B' if ret(c) >= 0 else '#C2552E'}'><b>{ret(c):+.1f}%</b></td></tr>" for c in calls[:40])
-    macro = "".join(f"<li>{e(w)}</li>" for w in (out.get("macro") or {}).get("why", []))
-    doc = f"""<!doctype html><html lang=en><head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name=apple-mobile-web-app-capable content=yes><meta name=mobile-web-app-capable content=yes>
-<meta name=apple-mobile-web-app-title content="Token Watch"><meta name=apple-mobile-web-app-status-bar-style content=black-translucent>
-<link rel=apple-touch-icon href=icon.png><link rel=manifest href=manifest.webmanifest><meta http-equiv=refresh content=300>
-<title>Token Watch</title><style>
-:root{{--bg:#EDF0F3;--card:#fff;--ink:#18212C;--mut:#5C6978;--line:#D3D9E0}}
-@media(prefers-color-scheme:dark){{:root{{--bg:#12171E;--card:#1A212B;--ink:#E6EBF1;--mut:#95A2B2;--line:#2C3643}}}}
-*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,system-ui,sans-serif;
-padding:calc(env(safe-area-inset-top) + 12px) 14px calc(env(safe-area-inset-bottom) + 20px)}}
-h1{{font-size:1.4rem;margin:0}}h2{{font-size:1.05rem;margin:18px 0 8px}}small{{color:var(--mut)}}
-.card{{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:8px 0;padding:10px 12px}}
-summary{{list-style:none;display:flex;justify-content:space-between;gap:10px;cursor:pointer}}summary::-webkit-details-marker{{display:none}}
-.sym{{font-size:1.1rem}}.px{{font-weight:600}}.r{{text-align:right}}.pill{{color:#fff;border-radius:99px;padding:2px 9px;font-size:.8rem;font-weight:700}}
-.tag{{font-size:.7rem;border:1px solid var(--line);border-radius:99px;padding:0 6px;color:var(--mut)}}
-ul{{padding-left:1.1rem;margin:6px 0}}li{{margin:2px 0;font-size:.9rem}}
-.stats{{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}}.stats div{{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}}
-.stats b{{display:block;font-size:1.3rem}}table{{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px}}
-td{{padding:8px;border-bottom:1px solid var(--line)}}.box{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 12px}}
-</style></head><body><h1>Token Watch</h1><small>Updated {e(out['generated'])} · refreshes every 15 min · tap a coin for details</small>
-{f"<h2>Market</h2><div class=box><ul>{macro}</ul></div>" if macro else ""}
-<h2>Signals</h2>{''.join(card(t) for t in toks) or '<p>No tokens checked yet.</p>'}
-<h2>Track record</h2>{stats}<table>{crow}</table>
-<p><small>Not financial advice. Signals describe the past and are often wrong.</small></p></body></html>"""
+    """Phone-friendly dashboard with charts. Also published to docs/ so GitHub Pages can host it as a home-screen app."""
+    data = dict(out); data["starred"] = sorted(PREFS.get("starred", []))
+    js = json.dumps(data, separators=(",", ":")).replace("</", "<\\/")
+    doc = DASH_HTML.replace("__DATA__", js)
     with open(os.path.join(DATA, "dashboard.html"), "w") as f: f.write(doc)
     if DEMO: return
     docs = os.path.join(HERE, "docs"); os.makedirs(docs, exist_ok=True)
@@ -826,6 +814,224 @@ td{{padding:8px;border-bottom:1px solid var(--line)}}.box{{background:var(--card
     icon = os.path.join(docs, "icon.png")
     if not os.path.exists(icon):
         with open(icon, "wb") as f: f.write(make_icon())
+
+DASH_HTML = r'''<!doctype html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name=apple-mobile-web-app-capable content=yes><meta name=mobile-web-app-capable content=yes>
+<meta name=apple-mobile-web-app-title content="Token Watch"><meta name=apple-mobile-web-app-status-bar-style content=black-translucent>
+<meta name=theme-color content="#0E1320">
+<link rel=apple-touch-icon href=icon.png><link rel=manifest href=manifest.webmanifest>
+<title>Token Watch</title>
+<style>
+:root{--bg:#0E1320;--bg2:#141B2B;--card:#182033;--card2:#1E2840;--ink:#E8EDF5;--mut:#8C98AE;--line:#27324A;
+--up:#22C08A;--up-bg:rgba(34,192,138,.14);--dn:#F0605D;--dn-bg:rgba(240,96,93,.14);--warn:#F2B544;--acc:#6C8CFF;
+--price:#E8EDF5;--s50:#F2B544;--s200:#B07CFF;--bb:rgba(108,140,255,.13);--bbl:rgba(108,140,255,.55);--rsi:#6C8CFF;--grid:#232D43}
+@media(prefers-color-scheme:light){:root{--bg:#EEF1F6;--bg2:#E4E8F0;--card:#FFFFFF;--card2:#F4F6FA;--ink:#141A26;--mut:#5D6880;--line:#DCE1EA;
+--up:#11946A;--up-bg:rgba(17,148,106,.11);--dn:#D6423F;--dn-bg:rgba(214,66,63,.10);--warn:#B97D0B;--acc:#3F5FE0;
+--price:#141A26;--s50:#C98A10;--s200:#8B4FE0;--bb:rgba(63,95,224,.09);--bbl:rgba(63,95,224,.45);--rsi:#3F5FE0;--grid:#E6EAF1}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;
+padding:calc(env(safe-area-inset-top) + 14px) 14px calc(env(safe-area-inset-bottom) + 28px);max-width:760px;margin:0 auto}
+a{color:inherit}small,.mut{color:var(--mut)}
+header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+h1{font-size:1.5rem;margin:0;letter-spacing:-.02em}h1 span{color:var(--acc)}
+h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:22px 2px 8px;font-weight:700}
+.upd{font-size:.75rem;color:var(--mut);text-align:right}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.kpi b{display:block;font-size:1.35rem;letter-spacing:-.02em}.kpi small{font-size:.74rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:4px 10px;font-size:.78rem;color:var(--mut)}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin:14px 0 4px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:99px;padding:6px 13px;font:inherit;font-size:.85rem;white-space:nowrap;cursor:pointer}
+.tab.on{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
+.tok{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0;overflow:hidden}
+.tok.buy{border-color:color-mix(in srgb,var(--up) 55%,var(--line));box-shadow:0 0 0 1px color-mix(in srgb,var(--up) 25%,transparent)}
+.row{display:grid;grid-template-columns:38px minmax(0,1fr) 60px auto;align-items:center;gap:10px;padding:12px 12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.8rem;color:#fff}
+.nm b{font-size:1.02rem}.nm .sub{font-size:.78rem;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nm .px{font-weight:600;font-variant-numeric:tabular-nums}.chg{font-size:.78rem;font-weight:600;margin-left:6px}
+.spark{width:60px;height:30px}
+.rt{text-align:right}.pill{display:inline-block;border-radius:8px;padding:3px 7px;font-size:.68rem;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.score{font-size:.74rem;color:var(--mut);margin-top:3px}
+.badge{font-size:.66rem;border:1px solid var(--line);border-radius:6px;padding:0 5px;color:var(--mut);margin-left:4px;vertical-align:2px}
+.body{display:none;padding:0 14px 14px;border-top:1px solid var(--line)}.tok.open .body{display:block}
+.chev{transition:transform .2s;color:var(--mut)}.tok.open .chev{transform:rotate(180deg)}
+.buybox{margin:14px 0 4px;background:var(--up-bg);border:1px solid color-mix(in srgb,var(--up) 40%,transparent);border-radius:14px;padding:12px}
+.buybox h3{margin:0 0 8px;font-size:.95rem;color:var(--up)}
+.infobox{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:12px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.86rem}.kv span:nth-child(odd){color:var(--mut)}
+.addr{display:flex;align-items:center;gap:8px;margin-top:8px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.addr code{font:12px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all;flex:1}
+.addr .ch{font-size:.68rem;font-weight:700;color:var(--mut);text-transform:uppercase;white-space:nowrap}
+button.copy{border:0;background:var(--acc);color:#fff;border-radius:8px;padding:6px 10px;font:inherit;font-size:.78rem;font-weight:600;cursor:pointer}
+.links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.lbtn{display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;border-radius:11px;padding:10px;font-weight:700;font-size:.88rem;border:1px solid var(--line);background:var(--card)}
+.lbtn i{width:18px;height:18px;border-radius:50%;display:inline-block}
+.ranges{display:flex;gap:4px;justify-content:flex-end;margin:12px 0 4px}
+.rg{border:1px solid var(--line);background:transparent;color:var(--mut);border-radius:8px;padding:3px 9px;font:inherit;font-size:.75rem;cursor:pointer}.rg.on{background:var(--card2);color:var(--ink);font-weight:700}
+.chart{position:relative}.chart svg{display:block;width:100%;touch-action:pan-y}
+.tip{position:absolute;top:4px;left:8px;font-size:.74rem;background:color-mix(in srgb,var(--card) 88%,transparent);border:1px solid var(--line);border-radius:8px;padding:3px 7px;pointer-events:none;font-variant-numeric:tabular-nums;display:none}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.72rem;color:var(--mut);margin:6px 0 2px}
+.legend i{display:inline-block;width:12px;height:3px;border-radius:2px;vertical-align:middle;margin-right:4px}
+.legend i.box{height:9px;border-radius:2px}
+.plabel{font-size:.7rem;font-weight:700;color:var(--mut);margin:10px 0 0;display:flex;justify-content:space-between}
+.checks{list-style:none;padding:0;margin:8px 0 0}.checks li{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line);font-size:.87rem}
+.checks li:last-child{border:0}.dot{flex:0 0 20px;height:20px;border-radius:6px;display:grid;place-items:center;font-size:.72rem;font-weight:800}
+.dot.g{background:var(--up-bg);color:var(--up)}.dot.r{background:var(--dn-bg);color:var(--dn)}.dot.n{background:var(--card2);color:var(--mut)}
+.bars{display:grid;gap:7px;margin-top:8px}.bar{display:grid;grid-template-columns:92px 1fr 32px;gap:8px;align-items:center;font-size:.8rem}
+.bar .tr{height:7px;border-radius:9px;background:var(--card2);overflow:hidden}.bar .fl{height:100%;border-radius:9px}
+.sect{font-weight:700;font-size:.85rem;margin:16px 0 2px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:.86rem}
+td,th{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;font-variant-numeric:tabular-nums}th{font-size:.72rem;color:var(--mut);font-weight:600}
+tr:last-child td{border:0}
+.foot{font-size:.74rem;color:var(--mut);margin-top:18px;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none}
+</style></head><body>
+<header><div><h1>Token <span>Watch</span></h1></div><div class=upd id=upd></div></header>
+<div class=kpis id=kpis></div>
+<div id=macro></div>
+<div class=tabs id=tabs></div>
+<div id=list></div>
+<h2>Track record</h2><div id=calls></div>
+<p class=foot>Not financial advice. Signals describe the past and are often wrong. Always check the team and contract yourself.</p>
+<div class=toast id=toast>Copied</div>
+<script>
+const D=__DATA__;
+const $=s=>document.querySelector(s), el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt=p=>p==null?"–":p>=1000?"$"+p.toLocaleString(undefined,{maximumFractionDigits:0}):p>=1?"$"+p.toFixed(p>=100?2:3):"$"+Number(p.toPrecision(4));
+const big=n=>!n?"–":n>=1e9?"$"+(n/1e9).toFixed(2)+"B":n>=1e6?"$"+(n/1e6).toFixed(1)+"M":"$"+(n/1e3).toFixed(0)+"K";
+const SIG={"STRONG BUY ZONE":["var(--up)","#fff"],"ACCUMULATE":["var(--up-bg)","var(--up)"],"HOLD":["rgba(242,181,68,.16)","var(--warn)"],
+"TRIM":["var(--dn-bg)","var(--dn)"],"SELL / AVOID":["var(--dn)","#fff"],"AVOID (SCAM RISK)":["#7A1F1F","#fff"],"NO DATA":["var(--card2)","var(--mut)"]};
+const SHORT={"STRONG BUY ZONE":"STRONG BUY","AVOID (SCAM RISK)":"SCAM RISK","SELL / AVOID":"SELL"};
+const PART={technical:"Technicals",fundamental:"Fundamentals",flows:"Flows",derivatives:"Derivatives",macro:"Market",news:"News",markets:"Betting odds"};
+const hue=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h};
+// ---------- indicator math
+const sma=(a,n)=>a.map((_,i)=>i<n-1?null:a.slice(i-n+1,i+1).reduce((x,y)=>x+y,0)/n);
+const ema=(a,n)=>{const k=2/(n+1),o=[];let p=null;a.forEach((x,i)=>{if(x==null){o.push(null);return}if(p==null){if(i>=n-1){const w=a.slice(i-n+1,i+1);if(w.every(v=>v!=null)){p=w.reduce((s,v)=>s+v,0)/n}}o.push(p);return}p=x*k+p*(1-k);o.push(p)});return o};
+function rsiS(c,n=14){const o=Array(c.length).fill(null);if(c.length<=n)return o;let g=0,l=0;for(let i=1;i<=n;i++){const d=c[i]-c[i-1];g+=Math.max(d,0);l+=Math.max(-d,0)}g/=n;l/=n;o[n]=l?100-100/(1+g/l):100;
+for(let i=n+1;i<c.length;i++){const d=c[i]-c[i-1];g=(g*(n-1)+Math.max(d,0))/n;l=(l*(n-1)+Math.max(-d,0))/n;o[i]=l?100-100/(1+g/l):100}return o}
+function macdS(c){const e12=ema(c,12),e26=ema(c,26),line=c.map((_,i)=>e12[i]!=null&&e26[i]!=null?e12[i]-e26[i]:null);const sig=ema(line,9);return{line,sig,hist:line.map((v,i)=>v!=null&&sig[i]!=null?v-sig[i]:null)}}
+function bollS(c,n=20,k=2){const m=sma(c,n);return c.map((_,i)=>{if(m[i]==null)return null;const w=c.slice(i-n+1,i+1),sd=Math.sqrt(w.reduce((s,x)=>s+(x-m[i])**2,0)/n);return[m[i]-k*sd,m[i]+k*sd]})}
+// ---------- header
+const star=new Set(D.starred||[]);
+D.tokens.forEach(t=>{t.starred=star.has(t.symbol);t.c=(t.chart&&t.chart.c&&t.chart.c.length)?t.chart.c:String(t.prices||"").split("\n").map(Number).filter(x=>x>0)});
+$("#upd").innerHTML="Updated<br><b>"+esc(D.generated)+"</b>";
+const calls=[...(D.calls||[])].sort((a,b)=>b.t-a.t),rets=calls.map(c=>(c.last/c.entry-1)*100);
+const buys=D.tokens.filter(t=>t.is_buy&&!/AVOID/.test(t.signal));
+$("#kpis").innerHTML=[[buys.length,"buy setups now"],[rets.length?Math.round(rets.filter(x=>x>0).length/rets.length*100)+"%":"–","calls in profit"],
+[rets.length?(rets.reduce((a,b)=>a+b,0)/rets.length).toFixed(1)+"%":"–","avg call return"]].map(([b,s])=>`<div class=kpi><b>${b}</b><small>${s}</small></div>`).join("");
+if((D.macro||{}).why&&D.macro.why.length){const m=$("#macro");m.innerHTML=`<h2>Market backdrop${D.macro.score!=null?" · "+Math.round(D.macro.score)+"/100":""}</h2>`;const ch=el("div","chips");D.macro.why.forEach(w=>ch.append(el("span","chip",esc(w))));m.append(ch)}
+// ---------- tabs
+const TABS=[["all","All"],["buy","Buy setups"],["star","⭐ Starred"],["watch","Watchlist"],["found","Found by scanner"]];let cur="all";
+const tabs=$("#tabs");TABS.forEach(([k,n])=>{const b=el("button","tab"+(k==cur?" on":""),n);b.onclick=()=>{cur=k;[...tabs.children].forEach(x=>x.classList.toggle("on",x==b));render()};tabs.append(b)});
+const pass=t=>cur=="all"||(cur=="buy"&&t.is_buy)||(cur=="star"&&t.starred)||(cur=="watch"&&t.source=="watchlist")||(cur=="found"&&t.source=="discovery");
+// ---------- sparkline
+function spark(c){const a=c.slice(-30),mn=Math.min(...a),mx=Math.max(...a),W=60,H=30,up=a[a.length-1]>=a[0];
+const pts=a.map((v,i)=>[i/(a.length-1)*W,H-3-(v-mn)/((mx-mn)||1)*(H-6)]);const d=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join("");
+const col=up?"var(--up)":"var(--dn)";return `<svg class=spark viewBox="0 0 ${W} ${H}"><path d="${d} L${W} ${H} L0 ${H}Z" fill="${col}" opacity=".12"/><path d="${d}" fill=none stroke="${col}" stroke-width="1.6" stroke-linejoin=round/></svg>`}
+// ---------- list
+function render(){const L=$("#list");L.innerHTML="";const toks=D.tokens.filter(pass).sort((a,b)=>(b.starred-a.starred)||(b.is_buy-a.is_buy)||((b.score||0)-(a.score||0)));
+if(!toks.length){L.innerHTML="<p class=mut>Nothing here yet.</p>";return}toks.forEach(t=>L.append(card(t)))}
+function card(t){const c=t.c,chg=c.length>1?(c[c.length-1]/c[c.length-2]-1)*100:0,[bg,fg]=SIG[t.signal]||SIG["NO DATA"];
+const w=el("div","tok"+(t.is_buy&&!/AVOID/.test(t.signal)?" buy":""));
+const row=el("div","row",`<div class=logo style="background:hsl(${hue(t.symbol)} 55% 42%)">${esc(t.symbol.slice(0,4))}</div>
+<div class=nm><div><b>${t.starred?"⭐ ":""}${esc(t.symbol)}</b>${t.source=="discovery"?"<span class=badge>found</span>":""}</div>
+<div><span class=px>${fmt(t.price)}</span><span class=chg style="color:${chg>=0?"var(--up)":"var(--dn)"}">${chg>=0?"+":""}${chg.toFixed(1)}%</span></div>
+<div class=sub>${esc(t.name||"")}</div></div>${spark(c)}
+<div class=rt><span class=pill style="background:${bg};color:${fg}">${esc(SHORT[t.signal]||t.signal)}</span><div class=score>${t.score!=null?Math.round(t.score)+"/100":""} <span class=chev>▾</span></div></div>`);
+const body=el("div","body");let built=false;
+row.onclick=()=>{w.classList.toggle("open");if(!built){built=true;fill(body,t)}};w.append(row,body);return w}
+function copy(txt){(navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).catch(()=>{const a=el("textarea");a.value=txt;document.body.append(a);a.select();document.execCommand("copy");a.remove()}).finally(()=>{const x=$("#toast");x.style.opacity=1;setTimeout(()=>x.style.opacity=0,1100)})}
+function fill(b,t){const Lk=t.links||{},isB=t.is_buy&&!/AVOID/.test(t.signal),bz=t.buy_zone,sz=t.sell_zone;
+const box=el("div",isB?"buybox":"infobox");
+box.innerHTML=(isB?`<h3>Suggested buy · ${esc(t.symbol)}</h3>`:`<div class=sect style="margin:0 0 8px">Token info</div>`)+
+`<div class=kv><span>Ticker</span><b>${esc(t.symbol)}${t.name?" · "+esc(t.name):""}</b>
+<span>Price</span><b>${fmt(t.price)}</b><span>Buy zone</span><b>${bz?fmt(bz.low)+" – "+fmt(bz.high):"n/a"}</b>
+<span>Sell zone</span><b>${sz?fmt(sz.low)+" – "+fmt(sz.high):"n/a"}</b><span>Market cap</span><b>${big(t.market_cap)}</b><span>Scam risk</span><b style="color:${t.risk=="LOW"?"var(--up)":t.risk=="HIGH"?"var(--dn)":"var(--warn)"}">${esc(t.risk||"?")}</b></div>`;
+const cs=(Lk.contracts&&Lk.contracts.length)?Lk.contracts:[];
+if(cs.length)cs.forEach(x=>{const a=el("div","addr",`<span class=ch>${esc(x.chain.replace(/-/g," "))}</span><code>${esc(x.address)}</code>`);const bt=el("button","copy","Copy");bt.onclick=e=>{e.stopPropagation();copy(x.address)};a.append(bt);box.append(a)});
+else box.append(el("div","addr",`<span class=ch>Contract</span><code>None — native coin of its own chain</code>`));
+const ln=el("div","links",`<a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+t.symbol)}"><i style="background:#8DC63F"></i>CoinGecko</a>
+<a class=lbtn target=_blank rel=noopener href="${esc(Lk.dexscreener||"https://dexscreener.com/search?q="+t.symbol)}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a>`);box.append(ln);b.append(box);
+// chart
+const rg=el("div","ranges");const holder=el("div");let range=180;[["3M",90],["6M",180],["1Y",365]].forEach(([n,d])=>{const x=el("button","rg"+(d==range?" on":""),n);x.onclick=()=>{range=d;[...rg.children].forEach(y=>y.classList.toggle("on",y==x));draw(holder,t,range)};rg.append(x)});
+b.append(rg,holder);draw(holder,t,range);
+// signals checklist
+b.append(el("div","sect","What the signal is based on"));const ul=el("ul","checks");
+(t.why||[]).forEach(w=>{const bad=/overbought|bearish|Below|fading|sell zone|Broke|leaving|Under|crowded, squeeze-down|money leaving|upper Bollinger|High scam/i.test(w),good=/oversold|bullish|Above|improving|Inside buy|accumulat|Outperform|squeeze-up|flowing in|lower Bollinger|confirming/i.test(w);
+ul.append(el("li","",`<span class="dot ${bad?"r":good?"g":"n"}">${bad?"–":good?"+":"•"}</span><span>${esc(w)}</span>`))});b.append(ul);
+// breakdown
+const P=t.parts||{},ks=Object.keys(PART).filter(k=>P[k]!=null);if(ks.length){b.append(el("div","sect","Score breakdown"));const bs=el("div","bars");
+ks.forEach(k=>{const v=Math.round(P[k]),col=v>=60?"var(--up)":v>=45?"var(--warn)":"var(--dn)";bs.append(el("div","bar",`<span class=mut>${PART[k]}</span><div class=tr><div class=fl style="width:${v}%;background:${col}"></div></div><b>${v}</b>`))});b.append(bs)}
+const mk=((t.markets||{}).lines)||[];if(mk.length){b.append(el("div","sect","Betting markets"));const u=el("ul","checks");mk.slice(0,4).forEach(l=>u.append(el("li","",`<span class="dot n">%</span><span>${esc(l)}</span>`)));b.append(u)}
+if((t.risk_flags||[]).length){b.append(el("div","sect","Scam-check flags"));const u=el("ul","checks");t.risk_flags.slice(0,6).forEach(f=>u.append(el("li","",`<span class="dot r">!</span><span>${esc(f)}</span>`)));b.append(u)}}
+// ---------- the chart
+function draw(h,t,range){h.innerHTML="";const all=t.c,n=all.length,st=Math.max(0,n-range);
+const c=all.slice(st),s50=sma(all,50).slice(st),s200=sma(all,200).slice(st),bb=bollS(all).slice(st),rs=rsiS(all).slice(st),M=macdS(all),mh=M.hist.slice(st),ml=M.line.slice(st),msg=M.sig.slice(st);
+const vol=((t.chart||{}).v||[]).slice(-n).slice(st);
+const W=Math.max(300,h.clientWidth||340),PH=210,RH=74,MH=70,gap=16,H=PH+RH+MH+gap*2+18,padR=46,pw=W-padR,N=c.length;
+const x=i=>i/(N-1)*pw;
+let lo=Math.min(...c),hi=Math.max(...c);bb.forEach(v=>{if(v){lo=Math.min(lo,v[0]);hi=Math.max(hi,v[1])}});
+[t.buy_zone,t.sell_zone].forEach(z=>{if(z){lo=Math.min(lo,z.low);hi=Math.max(hi,z.high)}});const pad=(hi-lo)*.06;lo-=pad;hi+=pad;
+const y=v=>8+(hi-v)/(hi-lo)*(PH-16);
+const path=(a,f)=>{let d="",on=false;a.forEach((v,i)=>{if(v==null){on=false;return}d+=(on?"L":"M")+x(i).toFixed(1)+" "+f(v).toFixed(1);on=true});return d};
+let s=`<svg viewBox="0 0 ${W} ${H}" height="${H}">`;
+// grid + y labels
+for(let k=0;k<=4;k++){const v=lo+(hi-lo)*k/4,yy=y(v);s+=`<line x1=0 x2=${pw} y1=${yy} y2=${yy} stroke="var(--grid)"/><text x=${pw+5} y=${yy+3} font-size=9.5 fill="var(--mut)">${fmt(v).replace("$","")}</text>`}
+// zones
+const band=(z,col,lab)=>{if(!z)return"";const a=y(Math.min(z.high,hi)),b2=y(Math.max(z.low,lo));return `<rect x=0 y=${a} width=${pw} height=${Math.max(2,b2-a)} fill="${col}"/><text x=6 y=${a+11} font-size=9.5 font-weight=700 fill="${col.replace(/,[.\d]+\)$/,",1)")}">${lab}</text>`};
+s+=band(t.sell_zone,"rgba(240,96,93,.16)","SELL ZONE")+band(t.buy_zone,"rgba(34,192,138,.18)","BUY ZONE");
+// bollinger
+const up=bb.map(v=>v&&v[1]),dn=bb.map(v=>v&&v[0]);const f0=bb.findIndex(v=>v);
+if(f0>=0){let d="M"+x(f0)+" "+y(up[f0]);for(let i=f0+1;i<N;i++)d+="L"+x(i).toFixed(1)+" "+y(up[i]).toFixed(1);for(let i=N-1;i>=f0;i--)d+="L"+x(i).toFixed(1)+" "+y(dn[i]).toFixed(1);s+=`<path d="${d}Z" fill="var(--bb)"/>`;
+s+=`<path d="${path(up,y)}" fill=none stroke="var(--bbl)" stroke-width=.8 stroke-dasharray="3 3"/><path d="${path(dn,y)}" fill=none stroke="var(--bbl)" stroke-width=.8 stroke-dasharray="3 3"/>`}
+// volume
+if(vol.length==N){const vm=Math.max(...vol)||1;vol.forEach((v,i)=>{const hh=v/vm*38;s+=`<rect x=${(x(i)-pw/N*.4).toFixed(1)} y=${PH-hh} width=${Math.max(.8,pw/N*.8).toFixed(1)} height=${hh} fill="${i&&c[i]>=c[i-1]?"var(--up)":"var(--dn)"}" opacity=.18 />`})}
+// averages + price
+s+=`<path d="${path(s200,y)}" fill=none stroke="var(--s200)" stroke-width=1.3 /><path d="${path(s50,y)}" fill=none stroke="var(--s50)" stroke-width=1.3 />`;
+const pd=path(c,y);s+=`<path d="${pd} L${x(N-1)} ${PH} L0 ${PH}Z" fill="var(--acc)" opacity=".07"/><path d="${pd}" fill=none stroke="var(--price)" stroke-width=1.9 stroke-linejoin=round />`;
+// overbought/oversold markers on price
+rs.forEach((r,i)=>{if(r==null)return;if(r>70)s+=`<circle cx=${x(i)} cy=${y(c[i])} r=2.3 fill="var(--dn)"/>`;else if(r<30)s+=`<circle cx=${x(i)} cy=${y(c[i])} r=2.3 fill="var(--up)"/>`});
+// buy calls
+const t0=Date.now()/1000-(N-1)*86400;(D.calls||[]).filter(k=>k.symbol==t.symbol).forEach(k=>{const i=Math.round((k.t-t0)/86400);if(i<0||i>=N)return;const xx=x(i),yy=y(k.entry)+14;
+s+=`<path d="M${xx} ${yy-9} l6 9 h-12z" fill="var(--up)" stroke="var(--card)" stroke-width=1.2><title>Buy call ${esc(k.date)} at ${fmt(k.entry)}</title></path>`});
+// last price tag
+const ly=y(c[N-1]);s+=`<rect x=${pw+1} y=${ly-8} width=${padR-2} height=16 rx=4 fill="var(--acc)"/><text x=${pw+5} y=${ly+4} font-size=10 font-weight=700 fill="#fff">${fmt(c[N-1]).replace("$","")}</text>`;
+// RSI panel
+const r0=PH+gap,ry=v=>r0+(100-v)/100*RH;
+s+=`<text x=0 y=${r0-4} font-size=9.5 font-weight=700 fill="var(--mut)">RSI 14 ${rs[N-1]!=null?"· "+Math.round(rs[N-1])+(rs[N-1]>70?" OVERBOUGHT":rs[N-1]<30?" OVERSOLD":""):""}</text>`;
+s+=`<rect x=0 y=${ry(100)} width=${pw} height=${ry(70)-ry(100)} fill="rgba(240,96,93,.12)"/><rect x=0 y=${ry(30)} width=${pw} height=${ry(0)-ry(30)} fill="rgba(34,192,138,.12)"/>`;
+[30,50,70].forEach(v=>s+=`<line x1=0 x2=${pw} y1=${ry(v)} y2=${ry(v)} stroke="var(--grid)" ${v==50?'stroke-dasharray="2 3"':""}/><text x=${pw+5} y=${ry(v)+3} font-size=9 fill="var(--mut)">${v}</text>`);
+s+=`<path d="${path(rs,ry)}" fill=none stroke="var(--rsi)" stroke-width=1.5 />`;
+// MACD panel
+const m0=r0+RH+gap+10;let mm=0;[...mh,...ml,...msg].forEach(v=>{if(v!=null)mm=Math.max(mm,Math.abs(v))});mm=mm||1;const my=v=>m0+MH/2-v/mm*(MH/2-2);
+s+=`<text x=0 y=${m0-4} font-size=9.5 font-weight=700 fill="var(--mut)">MACD 12/26/9</text><line x1=0 x2=${pw} y1=${my(0)} y2=${my(0)} stroke="var(--grid)"/>`;
+mh.forEach((v,i)=>{if(v==null)return;const a=my(Math.max(v,0)),b2=my(Math.min(v,0));s+=`<rect x=${(x(i)-pw/N*.4).toFixed(1)} y=${a.toFixed(1)} width=${Math.max(.8,pw/N*.8).toFixed(1)} height=${Math.max(.5,b2-a).toFixed(1)} fill="${v>=0?"var(--up)":"var(--dn)"}" opacity=.55 />`});
+s+=`<path d="${path(ml,my)}" fill=none stroke="var(--acc)" stroke-width=1.3 /><path d="${path(msg,my)}" fill=none stroke="var(--s50)" stroke-width=1.1 />`;
+// crosshair
+s+=`<line id=cx x1=0 x2=0 y1=0 y2=${H} stroke="var(--mut)" stroke-width=.8 stroke-dasharray="2 2" opacity=0 /><rect id=hit x=0 y=0 width=${pw} height=${H} fill=transparent /></svg>`;
+const box=el("div","chart",s);const tip=el("div","tip");box.append(tip);h.append(box);
+h.append(el("div","legend",`<span><i style="background:var(--price)"></i>Price</span><span><i style="background:var(--s50)"></i>50-day avg</span><span><i style="background:var(--s200)"></i>200-day avg</span>
+<span><i class=box style="background:var(--bb);border:1px dashed var(--bbl)"></i>Bollinger bands</span><span><i class=box style="background:rgba(34,192,138,.35)"></i>Buy zone</span><span><i class=box style="background:rgba(240,96,93,.3)"></i>Sell zone</span>
+<span><i class=box style="background:var(--dn);width:7px;height:7px;border-radius:50%"></i>RSI overbought</span><span><i class=box style="background:var(--up);width:7px;height:7px;border-radius:50%"></i>RSI oversold</span><span>▲ Buy call</span>`));
+const sv=box.querySelector("svg"),cxl=sv.querySelector("#cx");
+const mv=e=>{const r=sv.getBoundingClientRect(),p=(e.touches?e.touches[0]:e),px=(p.clientX-r.left)/r.width*W;if(px<0||px>pw)return;const i=Math.max(0,Math.min(N-1,Math.round(px/pw*(N-1))));
+cxl.setAttribute("x1",x(i));cxl.setAttribute("x2",x(i));cxl.setAttribute("opacity",1);const dd=new Date((t0+i*86400)*1000);
+tip.style.display="block";tip.innerHTML=`<b>${dd.toLocaleDateString(undefined,{month:"short",day:"numeric"})}</b> ${fmt(c[i])}${rs[i]!=null?" · RSI "+Math.round(rs[i]):""}${s50[i]?" · 50d "+fmt(s50[i]):""}`};
+const out=()=>{cxl.setAttribute("opacity",0);tip.style.display="none"};
+sv.addEventListener("mousemove",mv);sv.addEventListener("touchmove",mv,{passive:true});sv.addEventListener("touchstart",mv,{passive:true});sv.addEventListener("mouseleave",out);sv.addEventListener("touchend",()=>setTimeout(out,1500))}
+// ---------- calls
+(function(){const C=$("#calls");if(!calls.length){C.innerHTML="<p class=mut>No buy calls yet. Every buy call gets stamped here with its date and price.</p>";return}
+const tk=Object.fromEntries(D.tokens.map(t=>[t.symbol,t]));
+C.innerHTML=`<table><tr><th>Date</th><th>Token</th><th>Entry</th><th>Now</th><th>Return</th></tr>${calls.slice(0,40).map(c=>{const r=(c.last/c.entry-1)*100,L=(tk[c.symbol]||{}).links;
+return `<tr><td>${esc(c.date.slice(5,10))}</td><td><b>${L?`<a href="${esc(L.dexscreener)}" target=_blank rel=noopener>${esc(c.symbol)}</a>`:esc(c.symbol)}</b></td><td>${fmt(c.entry)}</td><td>${fmt(c.last)}</td><td style="color:${r>=0?"var(--up)":"var(--dn)"};font-weight:700">${r>=0?"+":""}${r.toFixed(1)}%</td></tr>`}).join("")}</table>`})();
+render();
+let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>document.querySelectorAll(".tok.open").forEach(w=>{const r=w.querySelector(".rg.on");r&&r.click()}),250)});
+setTimeout(()=>location.reload(),15*60*1000);
+</script></body></html>
+'''
 
 def make_icon(n=180):
     """A simple app icon (navy with a teal rising bar chart), built without any image library."""
@@ -879,7 +1085,7 @@ def assess(syms):
         if not r: reply(f"Couldn't assess {sym}: not found on CoinGecko or not enough price history."); continue
         res = r["res"]
         note = "" if sym in known or sym in PREFS["added"] else f"\n\nNot on your watchlist. Reply /add {sym} to track it, or /star {sym} to always get alerts."
-        reply(f"{SIG_EMOJI.get(res['signal'], '⚪')} " + ("⭐ " if sym in PREFS["starred"] else "") + summary(res, r["dd"]) + note)
+        reply(f"{SIG_EMOJI.get(res['signal'], '⚪')} " + ("⭐ " if sym in PREFS["starred"] else "") + summary(res, r["dd"], links=True) + note)
 
 def listen(minutes):
     """After the scheduled check, keep answering Telegram messages until the next run starts."""

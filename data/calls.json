@@ -14,11 +14,11 @@
   },
   "risk": "MEDIUM",
   "source": "discovery",
-  "last": 0.161672,
+  "last": 0.160986,
   "max": 0.16591472196691665,
   "min": 0.160685,
   "checkpoints": {},
-  "updated": "2026-09-23 13:57 UTC",
+  "updated": "2026-09-23 14:12 UTC",
   "links": {
    "chain": "binance-smart-chain",
    "contract": "0xeccbb861c0dda7efd964010085488b69317e4444",
@@ -31,5 +31,265 @@
    "coingecko": "https://www.coingecko.com/en/coins/lobster-2",
    "dexscreener": "https://dexscreener.com/bsc/0xeccbb861c0dda7efd964010085488b69317e4444"
   }
+ },
+ {
+  "id": "TAO-1790172722",
+  "symbol": "TAO",
+  "cg_id": "bittensor",
+  "t": 1790172722,
+  "date": "2026-09-23 14:12 UTC",
+  "entry": 304.3,
+  "signal": "ACCUMULATE",
+  "score": 61,
+  "buy_zone": {
+   "low": 238.2445714285714,
+   "high": 257.7802857142857
+  },
+  "risk": "LOW",
+  "plan": {
+   "zone1": {
+    "low": 238.2445714285714,
+    "high": 257.7802857142857,
+    "strong": true,
+    "vol_level": 230.35
+   },
+   "zone2": {
+    "low": 207.9660714285714,
+    "high": 222.61785714285713,
+    "strong": true
+   },
+   "stop": 198.19821428571427,
+   "target": 321.61607142857144,
+   "resistance": [],
+   "support_levels": [
+    251.35000000000002,
+    230.35,
+    212.85
+   ]
+  },
+  "source": "watchlist",
+  "last": 304.3,
+  "max": 304.3,
+  "min": 304.3,
+  "checkpoints": {},
+  "feat": {
+   "rsi": 68.67985079483194,
+   "zone": "above",
+   "pb": 0.9435935895905182,
+   "rs30": 18.85966939451753,
+   "macd": "improving",
+   "vs200": 0.25160151936116115,
+   "vs50": 0.32424105277816473,
+   "chg7": 0.3707207207207208,
+   "chg30": 0.26422933111757385,
+   "macro": 53.40142611196695,
+   "btc_bull": true,
+   "buy_ratio": 0.50544390942667,
+   "wallets": null,
+   "risk": "LOW",
+   "source": "watchlist",
+   "parts": {
+    "technical": 53.7,
+    "flows": 83.8,
+    "derivatives": null,
+    "wallets": null,
+    "macro": 53.4,
+    "news": null,
+    "fundamental": null,
+    "markets": 51.9
+   },
+   "btc": 85338
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/bittensor",
+   "dexscreener": "https://dexscreener.com/search?q=TAO"
+  },
+  "updated": "2026-09-23 14:12 UTC"
+ },
+ {
+  "id": "RENDER-1790172727",
+  "symbol": "RENDER",
+  "cg_id": "render-token",
+  "t": 1790172727,
+  "date": "2026-09-23 14:12 UTC",
+  "entry": 1.728,
+  "signal": "IN BUY ZONE",
+  "score": 57,
+  "buy_zone": {
+   "low": 1.62764,
+   "high": 1.7406400000000002
+  },
+  "risk": "MEDIUM",
+  "plan": {
+   "zone1": {
+    "low": 1.62764,
+    "high": 1.7406400000000002,
+    "strong": true,
+    "vol_level": 1.56659375
+   },
+   "zone2": {
+    "low": 1.1977499999999999,
+    "high": 1.2825,
+    "strong": false
+   },
+   "stop": 1.1412499999999999,
+   "target": 1.87975,
+   "resistance": [
+    1.8441145833333332
+   ],
+   "support_levels": [
+    1.56659375
+   ]
+  },
+  "source": "watchlist",
+  "last": 1.728,
+  "max": 1.728,
+  "min": 1.728,
+  "checkpoints": {},
+  "feat": {
+   "rsi": 62.858935849105414,
+   "zone": "in",
+   "pb": 0.8326292739664273,
+   "rs30": 8.64386472929679,
+   "macd": "fading",
+   "vs200": 0.04354757864350889,
+   "vs50": 0.20608065664391306,
+   "chg7": 0.2659340659340659,
+   "chg30": 0.16207128446536645,
+   "macro": 53.40142611196695,
+   "btc_bull": true,
+   "buy_ratio": 0.48530137645496885,
+   "wallets": null,
+   "risk": "MEDIUM",
+   "source": "watchlist",
+   "parts": {
+    "technical": 53.2,
+    "flows": 68.9,
+    "derivatives": null,
+    "wallets": null,
+    "macro": 53.4,
+    "news": null,
+    "fundamental": null,
+    "markets": 51.9
+   },
+   "btc": 85338
+  },
+  "starred": true,
+  "links": {
+   "chain": "solana",
+   "contract": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
+   "contracts": [
+    {
+     "chain": "solana",
+     "address": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof"
+    },
+    {
+     "chain": "ethereum",
+     "address": "0x6de037ef9ad2725eb40118bb1702ebb27e4aeb24"
+    }
+   ],
+   "coingecko": "https://www.coingecko.com/en/coins/render-token",
+   "dexscreener": "https://dexscreener.com/solana/rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof"
+  },
+  "updated": "2026-09-23 14:12 UTC"
+ },
+ {
+  "id": "ATOM-1790172735",
+  "symbol": "ATOM",
+  "cg_id": "cosmos",
+  "t": 1790172735,
+  "date": "2026-09-23 14:12 UTC",
+  "entry": 1.758,
+  "signal": "ACCUMULATE",
+  "score": 60,
+  "buy_zone": {
+   "low": 1.6817814285714285,
+   "high": 1.7924957142857143
+  },
+  "risk": "MEDIUM",
+  "plan": {
+   "zone1": {
+    "low": 1.6817814285714285,
+    "high": 1.7924957142857143,
+    "strong": true,
+    "vol_level": 1.7889375
+   },
+   "zone2": {
+    "low": 1.5350089285714286,
+    "high": 1.618044642857143,
+    "strong": true
+   },
+   "stop": 1.4796517857142857,
+   "target": 2.0033214285714287,
+   "resistance": [
+    2.0151875
+   ],
+   "support_levels": [
+    1.5626875
+   ]
+  },
+  "source": "watchlist",
+  "last": 1.758,
+  "max": 1.758,
+  "min": 1.758,
+  "checkpoints": {},
+  "feat": {
+   "rsi": 58.64528461681607,
+   "zone": "in",
+   "pb": 0.6771712096590755,
+   "rs30": 7.866808508630152,
+   "macd": "fading",
+   "vs200": 0.028394931732828033,
+   "vs50": 0.13340382185316035,
+   "chg7": 0.15581854043392518,
+   "chg30": 0.15430072225870006,
+   "macro": 53.40142611196695,
+   "btc_bull": true,
+   "buy_ratio": 0.5096232506297754,
+   "wallets": null,
+   "risk": "MEDIUM",
+   "source": "watchlist",
+   "parts": {
+    "technical": 58.0,
+    "flows": 72.7,
+    "derivatives": null,
+    "wallets": null,
+    "macro": 53.4,
+    "news": null,
+    "fundamental": null,
+    "markets": 51.9
+   },
+   "btc": 85338
+  },
+  "starred": true,
+  "links": {
+   "chain": "binance-smart-chain",
+   "contract": "0x0eb3a705fc54725037cc9e008bdede697f62f335",
+   "contracts": [
+    {
+     "chain": "binance-smart-chain",
+     "address": "0x0eb3a705fc54725037cc9e008bdede697f62f335"
+    },
+    {
+     "chain": "osmosis",
+     "address": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+    },
+    {
+     "chain": "cosmos",
+     "address": "uatom"
+    },
+    {
+     "chain": "evmos",
+     "address": "0xc5e00d3b04563950941f7137b5afa3a534f0d6d6"
+    }
+   ],
+   "coingecko": "https://www.coingecko.com/en/coins/cosmos",
+   "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
+  },
+  "updated": "2026-09-23 14:12 UTC"
  }
 ]

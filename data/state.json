@@ -144,10 +144,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 9,
+   "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $50,000 by December 31, 2026?": 6,
-   "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false
@@ -187,7 +187,7 @@
  },
  "RENDER": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",

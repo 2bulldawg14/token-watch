@@ -1410,6 +1410,7 @@ tr:last-child td{border:0}
 .acts{display:flex;gap:8px;margin-top:10px}.acts a{flex:1;text-align:center;text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid var(--line);border-radius:10px;padding:7px;background:var(--card)}
 .plan{margin-top:10px;font-size:.84rem;line-height:1.45;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
 .mini{display:inline-block;font-size:.68rem;font-weight:700;text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin:3px 3px 0 0;background:var(--card2)}
+.krow{grid-column:1/-1;font-size:.78rem;font-weight:700;color:var(--mut);margin:4px 2px -2px}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none}
 </style></head><body>
 <header><div><h1>Token <span>Watch</span></h1></div><div class=upd id=upd></div></header>
@@ -1449,9 +1450,11 @@ D.tokens.forEach(t=>{t.starred=star.has(t.symbol);t.c=(t.chart&&t.chart.c&&t.cha
 $("#upd").innerHTML="Updated<br><b>"+esc(D.generated)+"</b>";
 const calls=[...(D.calls||[])].sort((a,b)=>b.t-a.t),rets=calls.map(c=>(c.last/c.entry-1)*100);
 const buys=D.tokens.filter(t=>t.is_buy&&!/AVOID/.test(t.signal));
-$("#kpis").innerHTML=`<div class=kpi style="grid-column:1/-1;display:flex;justify-content:space-between;align-items:center"><div><small>Right now</small><b>${buys.length} buy setup${buys.length==1?"":"s"}</b></div><small style="text-align:right">of ${D.tokens.length} coin${D.tokens.length==1?"":"s"} checked<br>tap “Buy setups” to see them</small></div>`+
-[[calls.length,"past buy calls"],[rets.length?Math.round(rets.filter(x=>x>0).length/rets.length*100)+"%":"–","of past calls in profit"],
-[rets.length?(rets.reduce((a,b)=>a+b,0)/rets.length>=0?"+":"")+(rets.reduce((a,b)=>a+b,0)/rets.length).toFixed(1)+"%":"–","avg past call return"]].map(([b,s])=>`<div class=kpi><b>${b}</b><small>${s}</small></div>`).join("");
+// two rows at the top: your starred coins, then coins the scanner found
+const krow=(title,toks,cl)=>{const r=cl.map(c=>(c.last/c.entry-1)*100),avg=r.length?r.reduce((a,b)=>a+b,0)/r.length:null,nb=toks.filter(t=>t.is_buy&&!/AVOID/.test(t.signal)).length;
+return `<div class=krow>${title}</div><div class=kpi><b>${nb}</b><small>buy setups now</small></div><div class=kpi><b>${r.length?Math.round(r.filter(x=>x>0).length/r.length*100)+"%":"–"}</b><small>calls in profit${r.length?" ("+r.length+")":""}</small></div><div class=kpi><b style="color:${avg==null?"inherit":avg>=0?"var(--up)":"var(--dn)"}">${avg==null?"–":(avg>=0?"+":"")+avg.toFixed(1)+"%"}</b><small>avg call return</small></div>`};
+$("#kpis").innerHTML=krow("⭐ Your starred coins",D.tokens.filter(t=>t.starred),calls.filter(c=>c.starred||star.has(c.symbol)))+
+krow("🔎 Coins the scanner found",D.tokens.filter(t=>t.source=="discovery"),calls.filter(c=>c.source=="discovery"));
 if((D.macro||{}).why&&D.macro.why.length){const m=$("#macro");m.innerHTML=`<h2>Market backdrop${D.macro.score!=null?" · "+Math.round(D.macro.score)+"/100":""}</h2>`;const ch=el("div","chips");D.macro.why.forEach(w=>ch.append(el("span","chip",esc(w))));m.append(ch)}
 // ---------- add coins (opens your Telegram bot with the command ready; the next check picks it up)
 const botURL=(act,sym)=>D.bot?`https://t.me/${D.bot}?start=${act}_${encodeURIComponent(sym)}`:null;

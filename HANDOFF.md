@@ -22,11 +22,11 @@ It also keeps an honest track record of every buy call and learns from its losin
 |---|---|
 | Code (public repo) | https://github.com/2bulldawg14/token-watch |
 | Dashboard (GitHub Pages, from `/docs`) | https://2bulldawg14.github.io/token-watch/ |
-| Runs | GitHub Actions: `.github/workflows/token-watch.yml` every 15 min, plus `test-telegram.yml` (manual) |
+| Runs | GitHub Actions: `.github/workflows/token-watch.yml` every 15 min, `add-coin.yml` (the dashboard's Add form) and `test-telegram.yml` (manual) |
 | Alerts and commands | David's Telegram bot. Its username is looked up at runtime with `getMe`. |
 | Secrets (repo Settings → Secrets → Actions) | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `COINGECKO_API_KEY` (Demo), `HELIUS_API_KEY`, `ETHERSCAN_API_KEY`. `CRYPTOPANIC_API_KEY` and `WHALE_ALERT_API_KEY` are supported but not set, because both are paid. |
 | User settings | `config.json` (weights, indicators, discovery, alerts, `wallet_tracking`, `learning`) and `watchlist.txt` (one ticker per line, `*` = starred) |
-| State the bot writes (committed each run) | `data/` (`calls.json`, `sells.json`, `state.json`, `cache.json`, `export.json`, `wallet_trades.json`, `learning.json`, `dashboard.html`) and `docs/` (`index.html` and the PWA files) |
+| State the bot writes (pushed when the dashboard publishes) | `data/` (`calls.json`, `sells.json`, `coins.json` (the directory: ticker → CoinGecko ID, name, contract, first seen), `state.json`, `cache.json`, `export.json`, `wallet_trades.json`, `learning.json`, `dashboard.html`) and `docs/` (`index.html` and the PWA files) |
 
 Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in `data/state.json` under `_prefs`, not in `config.json`.
 
@@ -103,6 +103,30 @@ Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in 
 - While the bot is listening, `/add`, `/remove`, `/star` and `/unstar` (including from the website buttons) run `add_now()`, which checks the coin immediately and replies in Telegram.
 - `publish_now()` then rebuilds the dashboard and git-pushes `data/` and `docs/` from inside the run, using the checkout's token. Pages shows it in about 1–2 minutes.
 - Commands sent between runs wait for the next run to start.
+
+**Adding coins from the dashboard:**
+- On a phone, the Add box goes through Telegram with a deep link.
+- On a computer it opens `.github/workflows/add-coin.yml`, a workflow_dispatch form with inputs `tickers` and `star`. That runs `token_watch.py --once --add "<tickers>" [--star]`, which appends to `watchlist.txt` and runs a full check.
+- The form shares the `token-watch` concurrency group with `cancel-in-progress: true`, so it takes over from a running check straight away.
+- Every run now publishes the dashboard as soon as its checks finish (`publish_now()` at the end of `run_once`), not after the 12-minute listening window.
+- The watchlist is de-duplicated by real ticker, and `export` de-duplicates by CoinGecko id.
+
+**Working memory between runs:**
+- `save_snapshot()` copies the state files into `.hist-cache/data`, which the workflow's cache steps carry to the next run.
+- `restore_snapshot()` uses that copy if it's newer (by `state._saved_t`) than the one in git.
+- Each run pushes to git once, when the dashboard publishes, plus once per instant add. The final workflow step only pushes if `docs/` or `watchlist.txt` weren't already published.
+- This keeps GitHub Pages under its soft limit of about 10 builds an hour.
+
+**Signal guardrails:** a buy signal is capped at HOLD when:
+- the price is in the sell zone
+- RSI is above 70
+- the price is more than 15% (or 2×ATR) above buy zone 1 (unless it's inside zone 2)
+- a learned rule blocks it
+
+**Formatting:**
+- `px()` formats prices ($84,940 · $8.185 · $0.09397, never scientific notation).
+- `usd()` shortens dollar amounts ($9.2M).
+- Always use them in Telegram text.
 
 **Tickers vs names:**
 - `resolve_id()` matches the ticker first, then falls back to the coin's name or id (CHAINLINK→LINK, CANTON→CC, AKASH→AKT).

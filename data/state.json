@@ -89,7 +89,7 @@
   "odds": {
    "Will Chainlink reach $20 by December 31, 2026?": 26,
    "Will Chainlink reach $16 by December 31, 2026?": 66,
-   "Will Chainlink reach $18 by December 31, 2026?": 40,
+   "Will Chainlink reach $18 by December 31, 2026?": 52,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
@@ -145,10 +145,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 6,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
-   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 7
   },
   "in_zone2": false,
   "below_stop": false
@@ -212,7 +212,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
@@ -539,7 +539,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE"
+  "signal": "HOLD"
  },
  "UNI": {
   "seen_news": [],
@@ -558,7 +558,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "LOW",
   "signal": "HOLD"
  },

@@ -57,11 +57,13 @@ jobs:
         run: |
           git config user.name "token-watch"
           git config user.email "token-watch@users.noreply.github.com"
-          git add data docs watchlist.txt
-          git diff --cached --quiet -- docs watchlist.txt && exit 0   # already published mid-run; working memory is kept in the cache
-          git commit -m "Update $(date -u +'%Y-%m-%d %H:%M')"
-          for i in 1 2 3; do
-            git pull --rebase -X theirs && git push && exit 0
-            git rebase --abort 2>/dev/null; sleep 5
+          git add -A docs data; [ -f watchlist.txt ] && git add watchlist.txt || true
+          if ! git diff --cached --quiet -- docs watchlist.txt; then git commit -q -m "Update $(date -u +'%Y-%m-%d %H:%M')"; fi
+          git reset -q --hard HEAD                 # working memory is kept in the cache; only unpublished commits matter here
+          git fetch -q origin main
+          [ "$(git rev-list --count origin/main..HEAD)" = "0" ] && exit 0   # everything already published
+          for i in 1 2 3 4; do                     # catch pushes that failed mid-run (e.g. GitHub "Internal Server Error")
+            git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main && exit 0
+            git rebase --abort 2>/dev/null; sleep $((i*10))
           done
           exit 1

@@ -22,7 +22,7 @@ It also keeps an honest track record of every buy call and learns from its losin
 |---|---|
 | Code (public repo) | https://github.com/2bulldawg14/token-watch |
 | Dashboard (GitHub Pages, from `/docs`) | https://2bulldawg14.github.io/token-watch/ |
-| Runs | GitHub Actions: `.github/workflows/token-watch.yml` every 15 min, `add-coin.yml` (the dashboard's Add form) and `test-telegram.yml` (manual) |
+| Runs | GitHub Actions: `.github/workflows/token-watch.yml` every 15 min, `add-coin.yml` (the dashboard's Add form), `delete-trade.yml` (its Delete button) and `test-telegram.yml` (manual) |
 | Alerts and commands | David's Telegram bot. Its username is looked up at runtime with `getMe`. |
 | Secrets (repo Settings → Secrets → Actions) | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `COINGECKO_API_KEY` (Demo), `HELIUS_API_KEY`, `ETHERSCAN_API_KEY`. `CRYPTOPANIC_API_KEY` and `WHALE_ALERT_API_KEY` are supported but not set, because both are paid. |
 | User settings | `config.json` (weights, indicators, discovery, alerts, `wallet_tracking`, `learning`) and `watchlist.txt` (one ticker per line, `*` = starred) |
@@ -141,6 +141,18 @@ Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in 
 **Instant adds:**
 - Form adds (`_form_added`) and Telegram adds made before listening starts are analyzed first, then merged into the live page with `quick_publish()`, which edits the `docs/index.html` data and pushes.
 - The page shows a "⏳ analysis in progress" card (kept in localStorage) and polls every 20 seconds until the coin appears.
+
+**Track record controls:**
+- The page has filters for coin, date range and status. Hide/Unhide is kept per device in localStorage (`tw_hidden`).
+- Delete is permanent. On a phone it goes through a Telegram deep link (`DELTRADE_<id>`, then `/deletetrade <id>`). On a computer it uses the `delete-trade.yml` form, which runs `--delete-trades`.
+- A trade ID is the buy call's unix time `t`.
+- Sell signals are only logged when they close an open buy call. This stopped the noisy repeats from coins hovering at their sell-zone edge.
+- Top stats show buy setups, calls in profit, average call return, and open calls now (average live P/L of open trades), for both starred coins and scanner finds.
+
+**Error alerts:**
+- Critical `try_get` failures (live prices, logos, market backdrop) and failed publishes are collected in `ERRORS` and sent to Telegram at the end of a run, at most once an hour per error type (`report_errors`).
+- Each workflow has an `if: failure()` step that sends a Telegram message with the run link.
+- Coin logos come from CoinGecko `/coins/markets`, are cached as `logo:<id>`, and are shown with a letter fallback.
 
 **Tickers vs names:**
 - `resolve_id()` matches the ticker first, then falls back to the coin's name or id (CHAINLINK→LINK, CANTON→CC, AKASH→AKT).

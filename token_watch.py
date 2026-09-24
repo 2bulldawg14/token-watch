@@ -72,10 +72,26 @@ def get_json(url, headers=None, timeout=20, cg=False):
         except urllib.error.HTTPError as e:
             if e.code == 429 and attempt < 2: time.sleep(30 * (attempt + 1)); continue
             raise
+ERRORS = []   # problems worth telling you about (sent to Telegram once per hour at most)
+CRITICAL = {"live prices", "logos", "market backdrop"}
 def try_get(label, fn):
     try: return fn()
     except Exception as e:
-        print(f"  [skip] {label}: {e}"); return None
+        print(f"  [skip] {label}: {e}")
+        if label in CRITICAL: ERRORS.append(f"{label}: {str(e)[:120]}")
+        return None
+
+def report_errors(state):
+    """One Telegram message per hour at most, listing problems that need attention."""
+    if not ERRORS: return
+    msgs = list(dict.fromkeys(ERRORS)); ERRORS.clear()
+    key = "|".join(sorted(m.split(":")[0] for m in msgs))
+    last = state.setdefault("_err_alert", {})
+    if now() - last.get(key, 0) < 3600: return
+    last[key] = now()
+    run = f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}" if os.environ.get("GITHUB_RUN_ID") else ""
+    send("⚠️ Token Watch needs attention:\n" + "\n".join("• " + m for m in msgs[:6])
+         + ("\nDetails: " + run if run else "") + "\nI'll keep retrying automatically; tell Claude if this keeps happening.", "system")
 
 CG = "https://api.coingecko.com/api/v3"
 BINANCE_HOSTS = ["https://api.binance.com", "https://data-api.binance.vision"]  # 2nd works from the US
@@ -879,6 +895,15 @@ def register(sym, cg_id, dd, source):
 LOGOS = {}    # CoinGecko id -> logo image URL
 SELLS = []   # sell signals (data/sells.json); buys are the buy calls in calls.json
 
+def delete_trades(ids, calls=None):
+    """Remove buy calls (trades) by their ID (the call's timestamp). Also used by the dashboard's Delete button."""
+    want = {x for x in re.split(r"[\s,]+", str(ids)) if x.isdigit()}
+    own = calls is None
+    if own: calls = load("calls.json", [])
+    before = len(calls); calls[:] = [c for c in calls if str(int(c["t"])) not in want]
+    if own: save("calls.json", calls)
+    return before - len(calls)
+
 def open_call(sym, calls):
     """The buy call for this coin that no sell signal has closed yet (or None)."""
     last_sell = max([e["t"] for e in SELLS if e["symbol"] == sym] or [0])
@@ -904,6 +929,7 @@ def sell_check(res, state, sym, source, cg_id, dd, calls):
     st.update(bad=bad, in_sell=ins, below=below, hit_t=hit_t)
     if not why: return
     oc = open_call(sym, calls)
+    if not oc: return                                    # nothing to close - don't log noise
     ev = {"symbol": sym, "cg_id": cg_id, "t": int(now()), "date": iso(), "price": res["price"], "why": " · ".join(why),
           "source": source, "starred": sym in PREFS.get("starred", []), "closes": oc["id"] if oc else None}
     SELLS.append(ev)
@@ -1619,10 +1645,14 @@ tr:last-child td{border:0}
 .tbody{display:none;border-top:1px solid var(--line);padding:8px 10px 12px}.coin.open .tbody{display:block}
 .tg{display:inline-block;border-radius:6px;padding:1px 6px;font-size:.68rem;font-weight:800}.tg.b{background:var(--up-bg);color:var(--up)}.tg.s{background:var(--dn-bg);color:var(--dn)}.tg.o{background:rgba(108,140,255,.16);color:var(--acc)}
 .why{font-size:.72rem;color:var(--mut);white-space:normal!important;padding-top:0!important}.res{font-weight:700;text-align:right}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.filters select{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:6px 8px;font:inherit;font-size:.82rem}
+.chk{display:flex;align-items:center;gap:5px;font-size:.8rem;color:var(--mut)}
+.acts2{float:right;display:inline-flex;gap:4px;margin-left:6px}.mini2{border:1px solid var(--line);background:var(--card2);color:var(--mut);border-radius:7px;padding:1px 7px;font:inherit;font-size:.7rem;cursor:pointer}.mini2.del{color:var(--dn)}
+tr.hid td{opacity:.55}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none}
 </style></head><body>
 <header><div><h1>Token <span>Watch</span></h1></div><div class=upd id=upd></div></header>
-<div class=kpis id=kpis></div>
+<div class="kpis k4" id=kpis></div>
 <div class=addbox><div class=addrow><input id=addin placeholder="Ticker, e.g. TAO" autocapitalize=characters autocomplete=off spellcheck=false maxlength=15>
 <button class="abtn" id=addbtn>Add</button><button class="abtn alt" id=addstar>Add ⭐</button></div><div class=addnote id=addnote></div></div>
 <div id=macro></div>
@@ -1667,8 +1697,11 @@ const tradeRet=c=>{const x=exitOf(c);return ((x?x.price:c.last)/c.entry-1)*100};
 const rets=calls.map(tradeRet);
 const buys=D.tokens.filter(t=>t.is_buy&&!/AVOID/.test(t.signal));
 // two rows at the top: your starred coins, then coins the scanner found
-const krow=(title,toks,cl)=>{const r=cl.map(tradeRet),avg=r.length?r.reduce((a,b)=>a+b,0)/r.length:null,nb=toks.filter(t=>t.is_buy&&!/AVOID/.test(t.signal)).length;
-return `<div class=krow>${title}</div><div class=kpi><b>${nb}</b><small>buy setups now</small></div><div class=kpi><b>${r.length?Math.round(r.filter(x=>x>0).length/r.length*100)+"%":"–"}</b><small>calls in profit${r.length?" ("+r.length+")":""}</small></div><div class=kpi><b style="color:${avg==null?"inherit":avg>=0?"var(--up)":"var(--dn)"}">${avg==null?"–":(avg>=0?"+":"")+avg.toFixed(1)+"%"}</b><small>avg call return</small></div>`};
+const DELK=(()=>{try{return new Set(JSON.parse(localStorage.getItem("tw_deleted")||"[]"))}catch(e){return new Set()}})();
+const pct=v=>v==null?"–":(v>=0?"+":"")+v.toFixed(1)+"%",col=v=>v==null?"inherit":v>=0?"var(--up)":"var(--dn)";
+const krow=(title,toks,cl0)=>{const cl=cl0.filter(c=>!DELK.has(String(Math.floor(c.t)))),r=cl.map(tradeRet),avg=r.length?r.reduce((a,b)=>a+b,0)/r.length:null,nb=toks.filter(t=>t.is_buy&&!/AVOID/.test(t.signal)).length;
+const op=cl.filter(c=>!exitOf(c)).map(c=>(c.last/c.entry-1)*100),oavg=op.length?op.reduce((a,b)=>a+b,0)/op.length:null;
+return `<div class=krow>${title}</div><div class=kpi><b>${nb}</b><small>buy setups now</small></div><div class=kpi><b>${r.length?Math.round(r.filter(x=>x>0).length/r.length*100)+"%":"–"}</b><small>calls in profit${r.length?" ("+r.length+")":""}</small></div><div class=kpi><b style="color:${col(avg)}">${pct(avg)}</b><small>avg call return</small></div><div class=kpi><b style="color:${col(oavg)}">${pct(oavg)}</b><small>open calls now${op.length?" ("+op.length+")":""}</small></div>`};
 $("#kpis").innerHTML=krow("⭐ Your starred coins",D.tokens.filter(t=>t.starred),calls.filter(c=>c.starred||star.has(c.symbol)))+
 krow("🔎 Coins the scanner found",D.tokens.filter(t=>t.source=="discovery"),calls.filter(c=>c.source=="discovery"));
 if((D.macro||{}).why&&D.macro.why.length){const m=$("#macro");m.innerHTML=`<h2>Market backdrop${D.macro.score!=null?" · "+Math.round(D.macro.score)+"/100":""}</h2>`;const ch=el("div","chips");D.macro.why.forEach(w=>ch.append(el("span","chip",esc(w))));m.append(ch)}
@@ -1809,21 +1842,41 @@ const OUT={win:"WIN",loss:"LOSS",flat:"FLAT"};
 // group buy calls into coins; each call = one trade
 const coins={};calls.slice().sort((a,b)=>a.t-b.t).forEach(c=>{const k=c.symbol;(coins[k]=coins[k]||{sym:k,calls:[],star:false,found:false,links:null}).calls.push(c);
  const g=coins[k];g.star=g.star||!!c.starred||star.has(k);g.found=g.found||c.source=="discovery";g.links=g.links||c.links||(tk[k]||{}).links;g.name=g.name||(tk[k]||{}).name||""});
-const trades=g=>g.calls.map(c=>{const x=exitOf(c);return{c,x,exit:x?x.price:c.last,r:((x?x.price:c.last)/c.entry-1)}});
-C.innerHTML=`<div class=amt>If you'd put $<input id=amt type=number min=1 inputmode=decimal value="${AMT}"> into every buy call…</div><div id=tsum></div><div class=tabs id=ttabs></div><div id=tlist></div>
+let F={coin:"",range:"all",status:"all",hidden:false};try{F=Object.assign(F,JSON.parse(localStorage.getItem("tw_f")||"{}"))}catch(e){}
+const getSet=k=>{try{return new Set(JSON.parse(localStorage.getItem(k)||"[]"))}catch(e){return new Set()}},putSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify([...v]))}catch(e){}};
+const HID=getSet("tw_hidden"),DEL=getSet("tw_deleted"),ids=new Set(calls.map(c=>String(Math.floor(c.t))));[...DEL].forEach(i=>{if(!ids.has(i))DEL.delete(i)});putSet("tw_deleted",DEL);
+const idOf=c=>String(Math.floor(c.t)),DAYS={today:0,"7d":7,"30d":30,"90d":90};
+const keep=c=>{const id=idOf(c);if(DEL.has(id))return false;if(HID.has(id)&&!F.hidden)return false;if(F.coin&&c.symbol!=F.coin)return false;
+ if(F.range!="all"){const since=F.range=="today"?new Date().setHours(0,0,0,0)/1000:Date.now()/1000-DAYS[F.range]*86400;if(c.t<since)return false}
+ if(F.status!="all"){const x=exitOf(c),r=tradeRet(c);if(F.status=="open"&&x)return false;if(F.status=="closed"&&!x)return false;if(F.status=="win"&&!(x&&r>0))return false;if(F.status=="loss"&&!(x&&r<=0))return false}return true};
+const trades=g=>g.calls.filter(keep).map(c=>{const x=exitOf(c);return{c,x,exit:x?x.price:c.last,r:((x?x.price:c.last)/c.entry-1)}});
+C.innerHTML=`<div class=amt>If you'd put $<input id=amt type=number min=1 inputmode=decimal value="${AMT}"> into every buy call…</div><div id=tsum></div><div class=tabs id=ttabs></div><div class=filters id=tfil></div><div id=tlist></div>
 <p class=mut style="font-size:.74rem;margin-top:10px">A trade opens at a buy call and closes at the next sell signal for that coin (signal turns TRIM or SELL, price enters the sell zone, or falls below the stop-loss). Trades with no sell signal yet are <b>OPEN</b> at today's price. Fees and slippage aren't included. Times are in your time zone.</p>`;
-let cur="all";const tt=$("#ttabs");[["all","All"],["star","⭐ Your coins"],["found","🔎 Scanner found"]].forEach(([k,n])=>{const b=el("button","tab"+(k==cur?" on":""),n);b.onclick=()=>{cur=k;[...tt.children].forEach(x=>x.classList.toggle("on",x==b));draw()};tt.append(b)});
+const OPENC=new Set();let cur="all";const tt=$("#ttabs");[["all","All"],["star","⭐ Your coins"],["found","🔎 Scanner found"]].forEach(([k,n])=>{const b=el("button","tab"+(k==cur?" on":""),n);b.onclick=()=>{cur=k;[...tt.children].forEach(x=>x.classList.toggle("on",x==b));draw()};tt.append(b)});
 function stat(gs){let pl=0,n=0,w=0,op=0;gs.forEach(g=>trades(g).forEach(t=>{pl+=AMT*t.r;n++;if(t.x){if(t.r>0)w++}else op++}));return{pl,n,w,op,inv:n*AMT,closed:n-op}}
 function srow(title,gs){const s=stat(gs);return `<div class=krow>${title}</div><div class="kpis k4"><div class=kpi><b style="color:${s.pl>=0?"var(--up)":"var(--dn)"}">${s.n?money(s.pl):"–"}</b><small>total profit</small></div><div class=kpi><b>${s.inv?(s.pl/s.inv*100).toFixed(1)+"%":"–"}</b><small>return on $${s.inv.toLocaleString()}</small></div><div class=kpi><b>${s.closed?Math.round(s.w/s.closed*100)+"%":"–"}</b><small>closed trades won (${s.closed})</small></div><div class=kpi><b>${s.op}</b><small>open trades</small></div></div>`}
-function draw(){const G=Object.values(coins);$("#tsum").innerHTML=srow("⭐ Your coins",G.filter(g=>!g.found))+srow("🔎 Coins the scanner found",G.filter(g=>g.found));
+const fil=$("#tfil");fil.innerHTML=`<select id=fcoin><option value="">All coins</option>${Object.keys(coins).sort().map(k=>`<option ${F.coin==k?"selected":""}>${esc(k)}</option>`).join("")}</select>
+<select id=frange>${[["all","Any date"],["today","Today"],["7d","Last 7 days"],["30d","Last 30 days"],["90d","Last 90 days"]].map(([k,n])=>`<option value=${k} ${F.range==k?"selected":""}>${n}</option>`).join("")}</select>
+<select id=fstat>${[["all","All trades"],["open","Open"],["closed","Closed"],["win","Closed in profit"],["loss","Closed at a loss"]].map(([k,n])=>`<option value=${k} ${F.status==k?"selected":""}>${n}</option>`).join("")}</select>
+<label class=chk><input type=checkbox id=fhid ${F.hidden?"checked":""}> Show hidden (${HID.size})</label>`;
+const setF=()=>{F={coin:$("#fcoin").value,range:$("#frange").value,status:$("#fstat").value,hidden:$("#fhid").checked};try{localStorage.setItem("tw_f",JSON.stringify(F))}catch(e){}draw()};
+["#fcoin","#frange","#fstat","#fhid"].forEach(q=>$(q).onchange=setF);
+function act(e){e.stopPropagation();const b=e.currentTarget,id=b.dataset.id,sym=b.dataset.sym;
+ if(b.dataset.a=="hide"){HID.has(id)?HID.delete(id):HID.add(id);putSet("tw_hidden",HID);$("#fhid").parentNode.lastChild.textContent=` Show hidden (${HID.size})`;draw();return}
+ if(!confirm(`Delete this ${sym} trade permanently from your track record? (It's removed for everyone and from the model's learning.)`))return;
+ DEL.add(id);putSet("tw_deleted",DEL);draw();const mob=/iPhone|iPad|Android|Mobile/i.test(navigator.userAgent);
+ if(mob&&D.bot)window.open(`https://t.me/${D.bot}?start=DELTRADE_${id}`,"_blank");
+ else if(D.repo){try{navigator.clipboard&&navigator.clipboard.writeText(id).catch(()=>{})}catch(e){}window.open(`https://github.com/${D.repo}/actions/workflows/delete-trade.yml`,"_blank");
+  alert(`On the GitHub page: click "Run workflow", paste the trade ID ${id} (already copied), then click the green "Run workflow". It's hidden here already.`)}}
+function draw(){const G=Object.values(coins).filter(g=>trades(g).length);$("#tsum").innerHTML=srow("⭐ Your coins",G.filter(g=>!g.found))+srow("🔎 Coins the scanner found",G.filter(g=>g.found));
 const L=$("#tlist");L.innerHTML="";const list=G.filter(g=>cur=="all"||(cur=="star"&&!g.found)||(cur=="found"&&g.found)).sort((a,b)=>Math.max(...b.calls.map(c=>c.t))-Math.max(...a.calls.map(c=>c.t)));
-if(!list.length){L.append(el("p","mut","No buy calls here yet. Every buy call and the sell signal that closes it will show up here."));return}
+if(!list.length){L.append(el("p","mut",calls.length?"No trades match these filters.":"No buy calls here yet. Every buy call and the sell signal that closes it will show up here."));return}
 list.forEach(g=>{const T=trades(g);let pl=0;T.forEach(t=>pl+=AMT*t.r);const nopen=T.filter(t=>!t.x).length,Lk=g.links||{};
 const w=el("div","coin");const rows=[];
 T.forEach(t=>{const c=t.c,[d1,t1]=when(c.t),pm=c.postmortem;
  const qty=AMT/c.entry,qf=q=>q>=1000?Math.round(q).toLocaleString():q>=1?q.toFixed(2):Number(q.toPrecision(3));
  rows.push(`<tr><td>${d1}<br><small>${t1}</small></td><td><span class="tg b">BUY</span></td><td>${fmt(c.entry)}<br><small>$${AMT.toFixed(2)} → ${qf(qty)} ${esc(g.sym)}</small></td><td class=res>${c.outcome?`<small style="color:${c.outcome=="win"?"var(--up)":c.outcome=="loss"?"var(--dn)":"var(--mut)"};font-weight:700">${OUT[c.outcome]}</small>`:""}</td></tr>
- <tr><td colspan=4 class=why>↳ ${esc(c.signal||"Buy call")}${c.score?" · score "+c.score:""}${c.source=="discovery"?" · found by scanner":""}${c.buy_zone?` · buy zone ${fmt(c.buy_zone.low)}–${fmt(c.buy_zone.high)}`:""}${(c.plan||{}).stop?` · stop ${fmt(c.plan.stop)}`:""}${pm?`<br>📉 Post-mortem: ${pm.signs.length?pm.signs.map(esc).join("; "):"no obvious warning signs"}${pm.btc_chg!=null?` (BTC ${pm.btc_chg.toFixed(1)}%)`:""}`:""}</td></tr>`);
+ <tr${HID.has(idOf(c))?' class=hid':''}><td colspan=4 class=why><span class=acts2><button class=mini2 data-a=hide data-id="${idOf(c)}" data-sym="${esc(g.sym)}">${HID.has(idOf(c))?"Unhide":"Hide"}</button><button class="mini2 del" data-a=del data-id="${idOf(c)}" data-sym="${esc(g.sym)}">Delete</button></span>↳ ${esc(c.signal||"Buy call")}${c.score?" · score "+c.score:""}${c.source=="discovery"?" · found by scanner":""}${c.buy_zone?` · buy zone ${fmt(c.buy_zone.low)}–${fmt(c.buy_zone.high)}`:""}${(c.plan||{}).stop?` · stop ${fmt(c.plan.stop)}`:""}${pm?`<br>📉 Post-mortem: ${pm.signs.length?pm.signs.map(esc).join("; "):"no obvious warning signs"}${pm.btc_chg!=null?` (BTC ${pm.btc_chg.toFixed(1)}%)`:""}`:""}</td></tr>`);
  const col=t.r>=0?"var(--up)":"var(--dn)",res=`<td class=res style="color:${col}">${t.r>=0?"+":""}${(t.r*100).toFixed(1)}%<br><small style="color:${col}">${money(AMT*t.r)}</small></td>`;
  if(t.x){const [d2,t2]=when(t.x.t),held=(t.x.t-c.t)/86400;rows.push(`<tr><td>${d2}<br><small>${t2}</small></td><td><span class="tg s">SELL</span></td><td>${fmt(t.x.price)}<br><small>${qf(AMT/c.entry)} ${esc(g.sym)} → $${(AMT*(1+t.r)).toFixed(2)}</small></td>${res}</tr><tr><td colspan=4 class=why>↳ Sell signal: ${esc(t.x.why)} · held ${held<1?Math.round(held*24)+"h":held.toFixed(0)+"d"}${c.tmax?` · best ${((c.tmax/c.entry-1)*100).toFixed(0)}%`:""}${c.sell_verdict?` · 7d later ${c.after_sell>=0?"+":""}${c.after_sell}% (${esc(c.sell_verdict)})`:""}</td></tr>`)}
  else rows.push(`<tr><td><small>now</small></td><td><span class="tg o">OPEN</span></td><td>${fmt(t.exit)}<br><small>worth $${(AMT*(1+t.r)).toFixed(2)}</small></td>${res}</tr><tr><td colspan=4 class=why>↳ Waiting for a sell signal (sell zone, TRIM/SELL, stop-loss or take-profit target)</td></tr>`)});
@@ -1831,7 +1884,7 @@ w.innerHTML=`<div class=ch>${logoHTML(g.sym,(D.logos||{})[(g.calls[0]||{}).cg_id
 <div class=tbody><table class=calls><tr><th>When</th><th>Signal</th><th>Price · amount</th><th style="text-align:right">Gain/loss</th></tr>${rows.join("")}</table>
 ${Lk.contract?`<div class=addr style="margin-top:8px"><span class=ch>${esc((Lk.chain||"").replace(/-/g," "))}</span><code>${esc(Lk.contract)}</code><button class=copy data-a="${esc(Lk.contract)}">Copy</button></div>`:""}
 <div class=links><a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+encodeURIComponent(g.sym))}"><i style="background:#8DC63F"></i>CoinGecko</a><a class=lbtn target=_blank rel=noopener href="${esc(Lk.dexscreener||"https://dexscreener.com/search?q="+encodeURIComponent(g.sym))}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a></div></div>`;
-w.querySelector(".ch").onclick=()=>w.classList.toggle("open");w.querySelectorAll("button.copy").forEach(bt=>bt.onclick=e=>{e.stopPropagation();copy(bt.dataset.a)});L.append(w)})}
+w.querySelector(".ch").onclick=()=>{w.classList.toggle("open");OPENC.has(g.sym)?OPENC.delete(g.sym):OPENC.add(g.sym)};if(OPENC.has(g.sym))w.classList.add("open");w.querySelectorAll("button.mini2").forEach(b=>b.onclick=act);w.querySelectorAll("button.copy").forEach(bt=>bt.onclick=e=>{e.stopPropagation();copy(bt.dataset.a)});L.append(w)})}
 $("#amt").oninput=()=>{AMT=+$("#amt").value||100;try{localStorage.setItem("tw_amt",AMT)}catch(e){}draw()};draw();
 })();
 (function(){// learning
@@ -1947,6 +2000,7 @@ def quick_publish(rs):
         m = re.search(r"const D=(\{.*?\});\n", cur, re.S); D_ = json.loads(m.group(1).replace("<\\/", "</"))
     except Exception as e: print(f"  [skip] quick publish: {e}"); return False
     new = [token_entry(r) for r in rs]; keys = {(t.get("cg_id") or t["symbol"]) for t in new}
+    D_["calls"] = CTX.get("calls", D_.get("calls", []))
     D_["tokens"] = new + [t for t in D_.get("tokens", []) if (t.get("cg_id") or t["symbol"]) not in keys]
     D_["generated"] = iso(); D_["coins"] = REG; D_["starred"] = sorted(PREFS.get("starred", []))
     D_["tokens"] = [{k: v for k, v in t.items() if k != "prices"} for t in D_["tokens"]]
@@ -1980,6 +2034,7 @@ def git_push():
             if out.returncode == 0: print("  Published dashboard now."); return
             print(f"  [retry {i + 1}] publish: {out.stderr.strip()[:160]}"); time.sleep(10 * (i + 1))
         print("  [skip] publish failed - the workflow's last step will push it")
+        ERRORS.append("publishing the dashboard to GitHub failed 4 times (GitHub error) - the end-of-run step will try again")
     except Exception as e: print(f"  [skip] publish: {e}")
 
 def listen(minutes):
@@ -2039,6 +2094,8 @@ def handle_commands(state, texts=None, wait=0):
     for t in texts:
         m = re.fullmatch(r"/start(?:@\w+)?\s+(ADD|STAR|UNSTAR|REMOVE|CHECK)_([A-Za-z0-9]{1,15})", t.strip(), re.I)
         if m: t = f"/{m.group(1).lower()} {m.group(2).upper()}"      # buttons on the dashboard open the bot with these
+        m = re.fullmatch(r"/start(?:@\w+)?\s+DELTRADE_([0-9]{6,12})", t.strip(), re.I)
+        if m: t = f"/deletetrade {m.group(1)}"
         m = re.fullmatch(r"/start(?:@\w+)?\s+(FOLLOW|UNFOLLOW)_([A-Za-z0-9]{32,44})", t.strip(), re.I)
         if m: t = f"/{m.group(1).lower()} {m.group(2)}"                # wallet addresses keep their exact letters
         parts = t.strip().split(); cmd = parts[0].lower().split("@")[0]; arg = parts[1].upper() if len(parts) > 1 else ""
@@ -2062,6 +2119,11 @@ def handle_commands(state, texts=None, wait=0):
             reply(f"Unfollowed {', '.join(w['name'] for w in hit)}."); continue
         if cmd == "/wallets" and onoff is None: reply(wallets_text()); continue
         if cmd in ("/lessons", "/learned"): reply(lessons_text()); continue
+        if cmd == "/deletetrade" and raw:
+            n = delete_trades(raw, CTX.get("calls") if CTX else None)
+            reply(f"🗑 Deleted {n} trade(s) from your track record." if n else "No trade with that ID."); CTX["dirty"] = bool(n) or CTX.get("dirty", False)
+            if n and not CTX.get("listening") and CTX.get("results"): quick_publish([])
+            continue
         if cmd == "/record": reply(report_text(CTX.get("calls") or load("calls.json", []))); continue
         if cmd == "/check":
             assess([a.upper().lstrip("$") for a in parts[1:]] or PREFS["starred"])
@@ -2146,6 +2208,7 @@ def run_once():
             bv = market_view(pm, btc_px)
             if bv: BACKDROP["btc"] = bv; print(f"Bitcoin betting backdrop {bv['score']:.0f}/100 from {bv['n']} markets")
     handle_commands(state)   # messages sent since the last run (applies /star, /check, etc.)
+    if CFG.get("_deleted"): reply(f"🗑 Deleted {CFG['_deleted']} trade(s) from your track record (from the dashboard).")
     if CFG.get("_form_added"): reply("⏳ Adding " + ", ".join(CFG["_form_added"]) + " from your dashboard - analyzing now, it'll be on the page in about a minute.")
     fix_names(cache)
     if ind("wallets"): try_get("followed wallets", lambda: sync_wallets(state))
@@ -2273,6 +2336,7 @@ def main():
     ap.add_argument("--test-telegram", action="store_true", help="send a test message and exit")
     ap.add_argument("--add", default="", help="tickers to add to watchlist.txt first (used by the Add-a-coin form)")
     ap.add_argument("--star", action="store_true", help="star the --add tickers")
+    ap.add_argument("--delete-trades", default="", help="trade IDs to delete from the track record (dashboard Delete button)")
     a = ap.parse_args()
     path = os.path.join(HERE, "config.json")
     if not os.path.exists(path): path = os.path.join(HERE, "config.example.json")
@@ -2286,7 +2350,9 @@ def main():
     if a.demo:
         CFG["watchlist"][0]["starred"] = True
         CFG["alerts"] = {"watchlist": True, "discovered": False, "weekly_report": True}
-    if a.add.strip() and os.environ.get("GITHUB_ACTIONS"): restore_snapshot()
+    if (a.add.strip() or a.delete_trades.strip()) and os.environ.get("GITHUB_ACTIONS"): restore_snapshot()
+    if a.delete_trades.strip():
+        n = delete_trades(a.delete_trades); print(f"Deleted {n} trade(s)"); CFG["_deleted"] = n
     if a.add.strip():
         adds = [x.upper().lstrip("$") for x in re.split(r"[\s,]+", a.add.strip()) if re.fullmatch(r"\$?[A-Za-z0-9]{1,20}", x)][:10]
         wpath = os.path.join(HERE, "watchlist.txt"); lines = open(wpath).read().splitlines() if os.path.exists(wpath) else []
@@ -2309,6 +2375,7 @@ def main():
     while True:
         run_once()
         if a.once and not a.demo: listen(CFG.get("listen_minutes", 0) if os.environ.get("GITHUB_ACTIONS") else 0)
+        if CTX.get("state") is not None: report_errors(CTX["state"]); save("state.json", CTX["state"])
         if os.environ.get("GITHUB_ACTIONS") and not DEMO: save_snapshot()
         if a.once or a.demo: break
         mins = CFG.get("check_every_minutes", 15); print(f"Next check in {mins} min. Ctrl+C to stop."); time.sleep(mins * 60)

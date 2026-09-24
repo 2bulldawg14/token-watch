@@ -212,7 +212,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
@@ -385,7 +385,7 @@
   "LTC": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false
   },
   "EDEL": {

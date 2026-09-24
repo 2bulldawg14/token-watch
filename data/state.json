@@ -73,7 +73,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will the price of Solana be above $105 on September 24?": 100,
    "Will the price of Solana be above $100 on September 24?": 100,
@@ -146,7 +146,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
@@ -203,7 +203,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will the price of XRP be above $1.20 on September 24?": 100,
    "Will the price of XRP be above $1.10 on September 24?": 100,
@@ -215,7 +215,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
@@ -232,7 +232,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -280,7 +280,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -339,7 +339,7 @@
   },
   "XRP": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -665,7 +665,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790266344.826909,
+ "_saved_t": 1790267442.392471,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

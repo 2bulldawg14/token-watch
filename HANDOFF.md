@@ -22,7 +22,7 @@ It also keeps an honest track record of every buy call and learns from its losin
 |---|---|
 | Code (public repo) | https://github.com/2bulldawg14/token-watch |
 | Dashboard (GitHub Pages, from `/docs`) | https://2bulldawg14.github.io/token-watch/ |
-| Runs | GitHub Actions: `.github/workflows/token-watch.yml` every 15 min, `add-coin.yml` (the dashboard's Add form), `delete-trade.yml` (its Delete button) and `test-telegram.yml` (manual) |
+| Runs | GitHub Actions: `.github/workflows/token-watch.yml` every 15 min, `add-coin.yml` (the dashboard's Add form), `delete-trade.yml` (its Delete button), `refresh.yml` (its Refresh button) and `test-telegram.yml` (manual) |
 | Alerts and commands | David's Telegram bot. Its username is looked up at runtime with `getMe`. |
 | Secrets (repo Settings → Secrets → Actions) | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `COINGECKO_API_KEY` (Demo), `HELIUS_API_KEY`, `ETHERSCAN_API_KEY`. `CRYPTOPANIC_API_KEY` and `WHALE_ALERT_API_KEY` are supported but not set, because both are paid. |
 | User settings | `config.json` (weights, indicators, discovery, alerts, `wallet_tracking`, `learning`) and `watchlist.txt` (one ticker per line, `*` = starred) |
@@ -153,6 +153,12 @@ Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in 
 - The two "closed trades won" / "open trades" tiles in each top summary row are tappable (`.tapk`): they set the status filter and scroll to the list.
 - Each trade renders as its own `<details class=trade>` block — a one-line summary (WIN/LOSS/OPEN, dates, result) that expands to the full BUY/SELL detail with Hide/Delete.
 - Coin logos are transparent-background circular badges (`.logo.img`), with a muted-letter fallback under the image (`onerror` removes the img). No white box.
+
+**Reorder / swipe / refresh (dashboard):**
+- Token cards: press-and-hold (~420ms) then drag to reorder. Order saved per device in `tw_order`; `render()` sorts by it first, default sort for the rest.
+- Trade rows: swipe left on the summary to reveal Hide / Delete (`.trslide` translateX; `.tractions` behind). In-panel Hide/Delete buttons remain too.
+- "Found by scanner" tab = `source != "watchlist"` (includes `tracked` coins that have an open call).
+- ↻ Refresh button (header): first re-fetches `index.html`; if newer, reloads. Else opens `refresh.yml` (workflow_dispatch, jumps the queue) and polls every 15s to auto-reload when the new run publishes. Requested-refresh survives a reload via `tw_refresh_since`.
 
 **Error alerts:**
 - Critical `try_get` failures (live prices, logos, market backdrop) and failed publishes are collected in `ERRORS` and sent to Telegram at the end of a run, at most once an hour per error type (`report_errors`).

@@ -1,24 +1,19 @@
-name: add-coin
-# The dashboard's "Add a coin" button opens this. Click "Run workflow", type the ticker(s), click "Run workflow".
+name: delete-trade
+# The dashboard's Delete button opens this. Click "Run workflow", paste the trade ID, click "Run workflow".
 on:
   workflow_dispatch:
     inputs:
-      tickers:
-        description: "Ticker(s) to add, e.g. SHIB or SHIB, PEPE"
+      trade_ids:
+        description: "Trade ID(s) to delete (the dashboard copies it for you)"
         required: true
         type: string
-      star:
-        description: "Star it (always alert me)"
-        required: false
-        type: boolean
-        default: false
 permissions:
   contents: write
 concurrency:
   group: token-watch              # shares the lane with the 15-minute check; it jumps in right away
   cancel-in-progress: true
 jobs:
-  add:
+  delete:
     runs-on: ubuntu-latest
     timeout-minutes: 28
     steps:
@@ -34,18 +29,15 @@ jobs:
           path: .hist-cache
           key: hist-${{ github.run_id }}
           restore-keys: hist-
-      - name: Add the coin, check everything, publish the dashboard, then answer Telegram
+      - name: Delete the trade(s), check everything, publish the dashboard, then answer Telegram
         env:
-          ADD_TICKERS: ${{ inputs.tickers }}
-          ADD_STAR: ${{ inputs.star }}
+          DEL_IDS: ${{ inputs.trade_ids }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
           HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
           ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
-        run: |
-          if [ "$ADD_STAR" = "true" ]; then STAR="--star"; else STAR=""; fi
-          python token_watch.py --once --add "$ADD_TICKERS" $STAR
+        run: python token_watch.py --once --delete-trades "$DEL_IDS"
       - name: Save price history cache
         if: always()
         uses: actions/cache/save@v5

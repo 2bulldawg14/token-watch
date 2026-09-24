@@ -56,3 +56,13 @@ jobs:
             git rebase --abort 2>/dev/null; sleep $((i*10))
           done
           exit 1
+      - name: Tell me on Telegram if this run failed
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=⚠️ Token Watch: the '${{ github.workflow }}' run failed and needs attention. Your dashboard may not have updated. Details: ${RUN_URL}" > /dev/null

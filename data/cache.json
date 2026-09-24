@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1790289618.8083172,
+  "t": 1790290438.7590685,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 805508753,
-    "fdv": 805508753,
-    "volume": 208131007,
+    "market_cap": 809904393,
+    "fdv": 809904393,
+    "volume": 208367633,
     "website": [
      "https://injective.com"
     ],
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1790289620.9226196,
+  "t": 1790290441.4104955,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 68413053350,
-    "fdv": 73889184666,
-    "volume": 4339916583,
+    "market_cap": 68437089426,
+    "fdv": 73915168059,
+    "volume": 4323878382,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1790289623.1785355,
+  "t": 1790290444.3435113,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 9903532940,
-    "fdv": 13238248004,
-    "volume": 663449851,
+    "market_cap": 9901974279,
+    "fdv": 13236164511,
+    "volume": 665278301,
     "website": [
      "https://chain.link/"
     ],
@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1790289625.368124,
+  "t": 1790290447.4039235,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -237,9 +237,9 @@
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2525875281,
-    "fdv": 5187315185,
-    "volume": 1037478733,
+    "market_cap": 2532632008,
+    "fdv": 5201191276,
+    "volume": 1041819774,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -384,7 +384,7 @@
   }
  },
  "dd:zcash": {
-  "t": 1790289655.9152944,
+  "t": 1790290485.6007013,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -399,9 +399,9 @@
    },
    "facts": {
     "name": "Zcash",
-    "market_cap": 26057612742,
-    "fdv": 26058873849,
-    "volume": 1236899615,
+    "market_cap": 26155960162,
+    "fdv": 26157226028,
+    "volume": 1163653291,
     "website": [
      "https://z.cash/"
     ],
@@ -421,7 +421,7 @@
   }
  },
  "dd:uniswap": {
-  "t": 1790289640.7528808,
+  "t": 1790290466.8553452,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -437,9 +437,9 @@
    },
    "facts": {
     "name": "Uniswap",
-    "market_cap": 5680981918,
-    "fdv": 8127435582,
-    "volume": 1033202914,
+    "market_cap": 5677480097,
+    "fdv": 8122425740,
+    "volume": 1030310182,
     "website": [
      "https://uniswap.org/"
     ],
@@ -473,7 +473,7 @@
   }
  },
  "dd:bitcoin": {
-  "t": 1790289638.3122056,
+  "t": 1790290464.3633192,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -486,9 +486,9 @@
    },
    "facts": {
     "name": "Bitcoin",
-    "market_cap": 1690084892036,
-    "fdv": 1690097511677,
-    "volume": 38242331295,
+    "market_cap": 1691635620308,
+    "fdv": 1691648251528,
+    "volume": 38523742706,
     "website": [
      "http://www.bitcoin.org"
     ],
@@ -597,7 +597,7 @@
   }
  },
  "dd:lobster-2": {
-  "t": 1790289671.8647602,
+  "t": 1790290505.1228292,
   "v": {
    "level": "MEDIUM",
    "points": 4.0,
@@ -616,9 +616,9 @@
    },
    "facts": {
     "name": "\u9f99\u867e (Lobster)",
-    "market_cap": 112786128,
-    "fdv": 112786128,
-    "volume": 36149665,
+    "market_cap": 116459152,
+    "fdv": 116459152,
+    "volume": 37808790,
     "website": [
      "https://x.com/i/communities/2027552765266870491"
     ],
@@ -638,7 +638,7 @@
   }
  },
  "dd:falcon-finance-ff": {
-  "t": 1790289669.6583645,
+  "t": 1790290502.0872433,
   "v": {
    "level": "MEDIUM",
    "points": 4.0,
@@ -657,9 +657,9 @@
    },
    "facts": {
     "name": "Falcon Finance",
-    "market_cap": 422876691,
-    "fdv": 1346741054,
-    "volume": 13846951,
+    "market_cap": 426905968,
+    "fdv": 1359573145,
+    "volume": 13430260,
     "website": [
      "https://falcon.finance/"
     ],
@@ -759,7 +759,7 @@
  },
  "id:hbar": "hedera-hashgraph",
  "dd:hedera-hashgraph": {
-  "t": 1790289629.5160162,
+  "t": 1790290454.6867387,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -773,9 +773,9 @@
    },
    "facts": {
     "name": "Hedera",
-    "market_cap": 4079049164,
-    "fdv": 4653080497,
-    "volume": 134411478,
+    "market_cap": 4078607927,
+    "fdv": 4652577166,
+    "volume": 133997709,
     "website": [
      "https://www.hedera.com/"
     ],
@@ -810,7 +810,7 @@
  "id:zcash": "zcash",
  "id:atom": "cosmos",
  "dd:aerodrome-finance": {
-  "t": 1790289642.9582913,
+  "t": 1790290470.3446763,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -829,9 +829,9 @@
    },
    "facts": {
     "name": "Aerodrome Finance",
-    "market_cap": 683283432,
-    "fdv": 1362988924,
-    "volume": 53200195,
+    "market_cap": 684039466,
+    "fdv": 1364497072,
+    "volume": 53232334,
     "website": [
      "https://aerodrome.finance/"
     ],
@@ -853,7 +853,7 @@
   }
  },
  "dd:cosmos": {
-  "t": 1790289658.3722415,
+  "t": 1790290488.4270556,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -871,9 +871,9 @@
    },
    "facts": {
     "name": "Cosmos Hub",
-    "market_cap": 948793917,
-    "fdv": 948813937,
-    "volume": 57083470,
+    "market_cap": 947388515,
+    "fdv": 947408506,
+    "volume": 57052045,
     "website": [
      "http://cosmos.network/"
     ],
@@ -904,7 +904,7 @@
   }
  },
  "dd:ethereum": {
-  "t": 1790289662.498124,
+  "t": 1790290493.6086395,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -919,9 +919,9 @@
    },
    "facts": {
     "name": "Ethereum",
-    "market_cap": 327330367744,
-    "fdv": 327330367744,
-    "volume": 14627917783,
+    "market_cap": 327655211416,
+    "fdv": 327655211416,
+    "volume": 14604407291,
     "website": [
      "https://www.ethereum.org/"
     ],
@@ -941,7 +941,7 @@
   }
  },
  "dd:sui": {
-  "t": 1790289631.792184,
+  "t": 1790290457.3635318,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -955,9 +955,9 @@
    },
    "facts": {
     "name": "Sui",
-    "market_cap": 4121231996,
-    "fdv": 10060282254,
-    "volume": 805845507,
+    "market_cap": 4107065302,
+    "fdv": 10025700135,
+    "volume": 795749762,
     "website": [
      "https://sui.io/"
     ],
@@ -979,7 +979,7 @@
   }
  },
  "dd:sei-network": {
-  "t": 1790289633.9234443,
+  "t": 1790290459.7393727,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -993,9 +993,9 @@
    },
    "facts": {
     "name": "Sei",
-    "market_cap": 416229565,
-    "fdv": 618162720,
-    "volume": 61025910,
+    "market_cap": 415947516,
+    "fdv": 617743835,
+    "volume": 59892640,
     "website": [
      "https://www.sei.io"
     ],
@@ -1015,7 +1015,7 @@
   }
  },
  "dd:bittensor": {
-  "t": 1790289647.118611,
+  "t": 1790290474.3946495,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1029,9 +1029,9 @@
    },
    "facts": {
     "name": "Bittensor",
-    "market_cap": 3365380986,
-    "fdv": 6232381609,
-    "volume": 340969669,
+    "market_cap": 3359301301,
+    "fdv": 6221122581,
+    "volume": 336193999,
     "website": [
      "https://bittensor.com/"
     ],
@@ -1051,7 +1051,7 @@
   }
  },
  "dd:render-token": {
-  "t": 1790289651.8230782,
+  "t": 1790290479.5378354,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -1071,9 +1071,9 @@
    },
    "facts": {
     "name": "Render",
-    "market_cap": 965395947,
-    "fdv": 992863302,
-    "volume": 84190991,
+    "market_cap": 965072237,
+    "fdv": 992530382,
+    "volume": 84425264,
     "website": [
      "http://renderfoundation.com"
     ],
@@ -1094,7 +1094,7 @@
   }
  },
  "dd:ripple": {
-  "t": 1790289653.7108922,
+  "t": 1790290482.088125,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1108,9 +1108,9 @@
    },
    "facts": {
     "name": "XRP",
-    "market_cap": 96362163854,
-    "fdv": 153227607909,
-    "volume": 4142174065,
+    "market_cap": 96485151038,
+    "fdv": 153423172551,
+    "volume": 4145340894,
     "website": [
      "https://ripple.com/currency/"
     ],
@@ -1142,7 +1142,7 @@
  "tick:zcash": "ZEC",
  "idt:zcash": 1790171746.2165124,
  "dd:canton-network": {
-  "t": 1790289636.1969306,
+  "t": 1790290462.3127978,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -1157,9 +1157,9 @@
    },
    "facts": {
     "name": "Canton",
-    "market_cap": 4463859227,
-    "fdv": 4463859227,
-    "volume": 18179735,
+    "market_cap": 4476610059,
+    "fdv": 4476610059,
+    "volume": 20307117,
     "website": [
      "https://www.canton.network/"
     ],
@@ -1176,7 +1176,7 @@
   }
  },
  "dd:akash-network": {
-  "t": 1790289644.9908962,
+  "t": 1790290472.2309008,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1189,9 +1189,9 @@
    },
    "facts": {
     "name": "Akash Network",
-    "market_cap": 203212462,
-    "fdv": 203223055,
-    "volume": 9021440,
+    "market_cap": 202344210,
+    "fdv": 202354758,
+    "volume": 9054246,
     "website": [
      "https://akash.network"
     ],
@@ -1215,7 +1215,7 @@
   }
  },
  "dd:hyperliquid": {
-  "t": 1790289649.323125,
+  "t": 1790290477.1391222,
   "v": {
    "level": "MEDIUM",
    "points": 3.0,
@@ -1231,9 +1231,9 @@
    },
    "facts": {
     "name": "Hyperliquid",
-    "market_cap": 20509632265,
-    "fdv": 88079902914,
-    "volume": 1239556831,
+    "market_cap": 20546788996,
+    "fdv": 88239474826,
+    "volume": 1245551558,
     "website": [
      "https://app.hyperliquid.xyz/trade"
     ],
@@ -1265,7 +1265,7 @@
  "id:shib": "shiba-inu",
  "idt:shib": 1790172691.1545615,
  "dd:shiba-inu": {
-  "t": 1790289627.5592074,
+  "t": 1790290451.8091455,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -1283,9 +1283,9 @@
    },
    "facts": {
     "name": "Shiba Inu",
-    "market_cap": 3403366055,
-    "fdv": 3404851041,
-    "volume": 108723212,
+    "market_cap": 3402283586,
+    "fdv": 3403768100,
+    "volume": 108700405,
     "website": [
      "https://shibatoken.com/"
     ],
@@ -1307,7 +1307,7 @@
  "id:ltc": "litecoin",
  "idt:ltc": 1790206446.5888786,
  "dd:litecoin": {
-  "t": 1790289660.3089073,
+  "t": 1790290491.1046228,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -1320,9 +1320,9 @@
    },
    "facts": {
     "name": "Litecoin",
-    "market_cap": 5507864699,
-    "fdv": 5508046476,
-    "volume": 1713660560,
+    "market_cap": 5531266590,
+    "fdv": 5531444687,
+    "volume": 1719768250,
     "website": [
      "http://litecoin.org"
     ],
@@ -1662,7 +1662,7 @@
   }
  },
  "dd:aster-2": {
-  "t": 1790289667.3829243,
+  "t": 1790290499.062127,
   "v": {
    "level": "MEDIUM",
    "points": 3.0,
@@ -1679,9 +1679,9 @@
    },
    "facts": {
     "name": "Aster",
-    "market_cap": 1925532856,
-    "fdv": 5538102244,
-    "volume": 117641522,
+    "market_cap": 1924686526,
+    "fdv": 5535668082,
+    "volume": 117479171,
     "website": [
      "https://www.asterdex.com/en"
     ],
@@ -1705,7 +1705,7 @@
  "id:qnt": "quant-network",
  "idt:qnt": 1790261248.4923754,
  "dd:quant-network": {
-  "t": 1790289664.9647865,
+  "t": 1790290496.648866,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -1724,9 +1724,9 @@
    },
    "facts": {
     "name": "Quant",
-    "market_cap": 1303241809,
-    "fdv": 1309363391,
-    "volume": 35579647,
+    "market_cap": 1305213953,
+    "fdv": 1311344797,
+    "volume": 36081400,
     "website": [
      "https://www.quant.network"
     ],

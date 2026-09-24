@@ -75,7 +75,7 @@
    "Will Solana dip to $30 in September?": 0,
    "Will Solana reach $200 in September?": 0,
    "Will Solana dip to $10 in September?": 0,
-   "Will Solana reach $600 by December 31, 2026?": 2
+   "Will Solana dip to $20 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false
@@ -89,7 +89,7 @@
   "odds": {
    "Will Chainlink reach $20 by December 31, 2026?": 26,
    "Will Chainlink reach $16 by December 31, 2026?": 66,
-   "Will Chainlink reach $18 by December 31, 2026?": 42,
+   "Will Chainlink reach $18 by December 31, 2026?": 40,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
@@ -143,7 +143,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 6,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
@@ -270,7 +270,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false
   },

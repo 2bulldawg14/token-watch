@@ -75,10 +75,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Solana dip to $30 in September?": 0,
-   "Will Solana reach $190 in September?": 0,
-   "Will Solana reach $200 in September?": 0,
-   "Will Solana dip to $10 in September?": 0
+   "Will the price of Solana be above $105 on September 24?": 100,
+   "Will the price of Solana be above $100 on September 24?": 100,
+   "Will the price of Solana be less than $60 on September 24?": 0,
+   "Will the price of Solana be above $75 on September 24?": 100
   },
   "in_zone2": false,
   "below_stop": false
@@ -90,9 +90,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $20 by December 31, 2026?": 12,
-   "Will Chainlink reach $16 by December 31, 2026?": 57,
-   "Will Chainlink reach $18 by December 31, 2026?": 32,
+   "Will Chainlink reach $16 by December 31, 2026?": 56,
+   "Will Chainlink reach $20 by December 31, 2026?": 10,
+   "Will Chainlink reach $18 by December 31, 2026?": 36,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
@@ -146,12 +146,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
-   "Will Bitcoin dip to $50,000 by December 31, 2026?": 8
+   "Will the price of Bitcoin be above $72,000 on September 24?": 100
   },
   "in_zone2": false,
   "below_stop": false
@@ -164,9 +164,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
-   "Will Ethereum reach $10,000 by December 31, 2026?": 1,
-   "Will Ethereum dip to $1,000 by December 31, 2026?": 4,
-   "Will Ethereum dip to $1,500 in September?": 0
+   "Will the price of Ethereum be above $3,000 on September 24?": 0,
+   "Will the price of Ethereum be above $2,500 on September 24?": 100,
+   "Will the price of Ethereum be above $2,100 on September 24?": 100
   },
   "in_zone2": false,
   "below_stop": false
@@ -205,10 +205,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will XRP dip to $0.20 in September?": 0,
-   "Will XRP reach $5.00 by December 31, 2026?": 2,
-   "Will XRP reach $3.00 in September?": 1,
-   "Will XRP dip to $0.40 in September?": 0
+   "Will the price of XRP be above $1.20 on September 24?": 100,
+   "Will the price of XRP be above $1.10 on September 24?": 100,
+   "Will the price of XRP be above $0.80 on September 24?": 100,
+   "Will the price of XRP be above $1.00 on September 24?": 100
   },
   "in_zone2": false,
   "below_stop": false
@@ -280,7 +280,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -665,7 +665,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790264994.3428383,
+ "_saved_t": 1790266344.826909,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

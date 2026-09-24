@@ -188,7 +188,7 @@
  },
  "RENDER": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
@@ -355,7 +355,7 @@
   "AKT": {
    "seen": true,
    "bad": true,
-   "in_sell": false,
+   "in_sell": true,
    "below": false
   },
   "HYPE": {
@@ -385,7 +385,7 @@
   "LTC": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false
   },
   "EDEL": {
@@ -587,7 +587,7 @@
   "signal": "HOLD",
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 4,
-   "Will Zcash reach $2000 by December 31, 2026?": 55,
+   "Will Zcash reach $2000 by December 31, 2026?": 53,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $700 by December 31, 2026?": 30
   }

@@ -876,6 +876,7 @@ def register(sym, cg_id, dd, source):
     if source == "watchlist": e["source"] = "watchlist"
     e["last_seen"] = iso()
 
+LOGOS = {}    # CoinGecko id -> logo image URL
 SELLS = []   # sell signals (data/sells.json); buys are the buy calls in calls.json
 
 def open_call(sym, calls):
@@ -1483,7 +1484,7 @@ def export(results, calls, full=True):
         out["tokens"].append(token_entry(r))
     out["macro"] = {"score": MACRO.get("score"), "why": MACRO.get("why", [])}
     out["wallets"] = wallets_export()
-    out["coins"] = REG
+    out["coins"] = REG; out["logos"] = LOGOS
     out["sells"] = [e for e in SELLS if now() - e["t"] < 120 * DAY]
     out["learning"] = {"rules": LEARN.get("rules", []), "mult": LEARN.get("mult", {}), "graded": LEARN.get("graded", 0),
                        "wins": LEARN.get("wins", 0), "losses": LEARN.get("losses", 0), "scorecard": LEARN.get("scorecard"), "sells": LEARN.get("sells"), "sell_soft": LEARN.get("sell_soft", [])}
@@ -1503,7 +1504,7 @@ def token_entry(r):
             "market_cap": (dd.get("facts") or {}).get("market_cap"),
             "markets": res.get("markets"), "parts": res["parts"], "rsi": res.get("rsi"), "cg_id": r.get("cg_id"),
             "links": token_links(res["symbol"], r.get("cg_id"), dd), "fdv": (dd.get("facts") or {}).get("fdv"),
-            "volume_24h": (dd.get("facts") or {}).get("volume"), "is_buy": bool(is_buy(res)), "starred": False,
+            "volume_24h": (dd.get("facts") or {}).get("volume"), "is_buy": bool(is_buy(res)), "starred": False, "logo": LOGOS.get(r.get("cg_id") or ""),
             "chart": {"c": [round(x, 10) for x in r["closes"]], "v": [round(x) for x in (r.get("vols") or [])]}})
 
 def write_dashboard(out):
@@ -1561,6 +1562,7 @@ h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mu
 .tok.buy{border-color:color-mix(in srgb,var(--up) 55%,var(--line));box-shadow:0 0 0 1px color-mix(in srgb,var(--up) 25%,transparent)}
 .row{display:grid;grid-template-columns:38px minmax(0,1fr) 60px auto;align-items:center;gap:10px;padding:12px 12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.8rem;color:#fff}
+.logo{position:relative;overflow:hidden}.logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:4px;box-sizing:border-box}
 .nm b{font-size:1.02rem}.nm .sub{font-size:.78rem;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nm .px{font-weight:600;font-variant-numeric:tabular-nums}.chg{font-size:.78rem;font-weight:600;margin-left:6px}
 .spark{width:60px;height:30px}
@@ -1644,6 +1646,7 @@ const SIG={"STRONG BUY ZONE":["var(--up)","#fff"],"ACCUMULATE":["var(--up-bg)","
 "TRIM":["var(--dn-bg)","var(--dn)"],"SELL / AVOID":["var(--dn)","#fff"],"AVOID (SCAM RISK)":["#7A1F1F","#fff"],"NO DATA":["var(--card2)","var(--mut)"]};
 const SHORT={"STRONG BUY ZONE":"STRONG BUY","AVOID (SCAM RISK)":"SCAM RISK","SELL / AVOID":"SELL"};
 const PART={wallets:"Smart wallets",technical:"Technicals",fundamental:"Fundamentals",flows:"Flows",derivatives:"Derivatives",macro:"Market",news:"News",markets:"Betting odds"};
+function logoHTML(sym,url){return `<div class=logo style="background:hsl(${hue(sym)} 55% 42%)">${esc(sym.slice(0,4))}${url?`<img src="${esc(url)}" alt="" loading=lazy onerror="this.remove()">`:""}</div>`}
 const hue=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h};
 // ---------- indicator math
 const sma=(a,n)=>a.map((_,i)=>i<n-1?null:a.slice(i-n+1,i+1).reduce((x,y)=>x+y,0)/n);
@@ -1702,7 +1705,7 @@ function render(){const L=$("#list");L.innerHTML="";const toks=D.tokens.filter(p
 if(!toks.length){L.innerHTML="<p class=mut>Nothing here yet.</p>";return}toks.forEach(t=>L.append(card(t)))}
 function card(t){const c=t.c,chg=c.length>1?(c[c.length-1]/c[c.length-2]-1)*100:0,[bg,fg]=SIG[t.signal]||SIG["NO DATA"];
 const w=el("div","tok"+(t.is_buy&&!/AVOID/.test(t.signal)?" buy":""));
-const row=el("div","row",`<div class=logo style="background:hsl(${hue(t.symbol)} 55% 42%)">${esc(t.symbol.slice(0,4))}</div>
+const row=el("div","row",`${logoHTML(t.symbol,t.logo)}
 <div class=nm><div><b>${t.starred?"⭐ ":""}${esc(t.symbol)}</b>${t.source=="discovery"?"<span class=badge>found</span>":""}</div>
 <div><span class=px>${fmt(t.price)}</span><span class=chg style="color:${chg>=0?"var(--up)":"var(--dn)"}">${chg>=0?"+":""}${chg.toFixed(1)}%</span></div>
 <div class=sub>${esc(t.name||"")}</div></div>${spark(c)}
@@ -1824,7 +1827,7 @@ T.forEach(t=>{const c=t.c,[d1,t1]=when(c.t),pm=c.postmortem;
  const col=t.r>=0?"var(--up)":"var(--dn)",res=`<td class=res style="color:${col}">${t.r>=0?"+":""}${(t.r*100).toFixed(1)}%<br><small style="color:${col}">${money(AMT*t.r)}</small></td>`;
  if(t.x){const [d2,t2]=when(t.x.t),held=(t.x.t-c.t)/86400;rows.push(`<tr><td>${d2}<br><small>${t2}</small></td><td><span class="tg s">SELL</span></td><td>${fmt(t.x.price)}<br><small>${qf(AMT/c.entry)} ${esc(g.sym)} → $${(AMT*(1+t.r)).toFixed(2)}</small></td>${res}</tr><tr><td colspan=4 class=why>↳ Sell signal: ${esc(t.x.why)} · held ${held<1?Math.round(held*24)+"h":held.toFixed(0)+"d"}${c.tmax?` · best ${((c.tmax/c.entry-1)*100).toFixed(0)}%`:""}${c.sell_verdict?` · 7d later ${c.after_sell>=0?"+":""}${c.after_sell}% (${esc(c.sell_verdict)})`:""}</td></tr>`)}
  else rows.push(`<tr><td><small>now</small></td><td><span class="tg o">OPEN</span></td><td>${fmt(t.exit)}<br><small>worth $${(AMT*(1+t.r)).toFixed(2)}</small></td>${res}</tr><tr><td colspan=4 class=why>↳ Waiting for a sell signal (sell zone, TRIM/SELL, stop-loss or take-profit target)</td></tr>`)});
-w.innerHTML=`<div class=ch><div class=logo style="background:hsl(${hue(g.sym)} 55% 42%)">${esc(g.sym.slice(0,4))}</div><div><b>${g.star&&!g.found?"⭐ ":""}${esc(g.sym)}</b> <small>${esc(g.name||"")}</small><br><small>${T.length} trade${T.length==1?"":"s"}${nopen?" · "+nopen+" open":""} <span class=chev>▾</span></small></div><div class=pl style="color:${pl>=0?"var(--up)":"var(--dn)"}">${money(pl)}<small>${(pl/(AMT*T.length)*100).toFixed(1)}%</small></div></div>
+w.innerHTML=`<div class=ch>${logoHTML(g.sym,(D.logos||{})[(g.calls[0]||{}).cg_id]||(tk[g.sym]||{}).logo)}<div><b>${g.star&&!g.found?"⭐ ":""}${esc(g.sym)}</b> <small>${esc(g.name||"")}</small><br><small>${T.length} trade${T.length==1?"":"s"}${nopen?" · "+nopen+" open":""} <span class=chev>▾</span></small></div><div class=pl style="color:${pl>=0?"var(--up)":"var(--dn)"}">${money(pl)}<small>${(pl/(AMT*T.length)*100).toFixed(1)}%</small></div></div>
 <div class=tbody><table class=calls><tr><th>When</th><th>Signal</th><th>Price · amount</th><th style="text-align:right">Gain/loss</th></tr>${rows.join("")}</table>
 ${Lk.contract?`<div class=addr style="margin-top:8px"><span class=ch>${esc((Lk.chain||"").replace(/-/g," "))}</span><code>${esc(Lk.contract)}</code><button class=copy data-a="${esc(Lk.contract)}">Copy</button></div>`:""}
 <div class=links><a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+encodeURIComponent(g.sym))}"><i style="background:#8DC63F"></i>CoinGecko</a><a class=lbtn target=_blank rel=noopener href="${esc(Lk.dexscreener||"https://dexscreener.com/search?q="+encodeURIComponent(g.sym))}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a></div></div>`;
@@ -1971,9 +1974,12 @@ def git_push():
         g("add", "--", *[x for x in ("data", "docs", "watchlist.txt") if os.path.exists(os.path.join(HERE, x))])
         if g("diff", "--cached", "--quiet").returncode == 0: return
         g("commit", "-m", f"Live update {iso()}")
-        if g("pull", "--rebase", "-X", "theirs").returncode != 0: g("rebase", "--abort")
-        out = g("push")
-        print("  Published dashboard now." if out.returncode == 0 else f"  [skip] publish: {out.stderr.strip()[:200]}")
+        for i in range(4):                               # GitHub occasionally answers "Internal Server Error": try again
+            if g("pull", "--rebase", "-X", "theirs").returncode != 0: g("rebase", "--abort")
+            out = g("push")
+            if out.returncode == 0: print("  Published dashboard now."); return
+            print(f"  [retry {i + 1}] publish: {out.stderr.strip()[:160]}"); time.sleep(10 * (i + 1))
+        print("  [skip] publish failed - the workflow's last step will push it")
     except Exception as e: print(f"  [skip] publish: {e}")
 
 def listen(minutes):
@@ -2125,6 +2131,12 @@ def run_once():
     ids = sorted({i for i in ids if i})
     LIVE.clear()
     if ids: LIVE.update({k: v for k, v in (try_get("live prices", lambda: simple_prices(ids)) or {}).items() if v})
+    need = [i for i in ids if not cache.get("logo:" + i)][:250]
+    if need:
+        mk = try_get("logos", lambda: get_json(f"{CG}/coins/markets?vs_currency=usd&ids={','.join(need)}&per_page=250", cg=True)) or []
+        for m_ in mk if isinstance(mk, list) else []:
+            if m_.get("id") and m_.get("image"): cache["logo:" + m_["id"]] = m_["image"].replace("/large/", "/small/")
+    LOGOS.clear(); LOGOS.update({k[5:]: v for k, v in cache.items() if k.startswith("logo:")})
     try_get("market backdrop", load_macro)
     BACKDROP.clear()
     if ind("betting_markets") and (CFG.get("prediction_markets") or {}).get("enabled", True):

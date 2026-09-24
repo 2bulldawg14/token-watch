@@ -14,11 +14,11 @@
   },
   "risk": "MEDIUM",
   "source": "discovery",
-  "last": 0.113946,
+  "last": 0.116872,
   "max": 0.16812,
   "min": 0.113946,
   "checkpoints": {},
-  "updated": "2026-09-24 10:15 UTC",
+  "updated": "2026-09-24 10:31 UTC",
   "links": {
    "chain": "binance-smart-chain",
    "contract": "0xeccbb861c0dda7efd964010085488b69317e4444",
@@ -68,9 +68,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 280.3,
+  "last": 278.8,
   "max": 304.3,
-  "min": 280.3,
+  "min": 278.8,
   "checkpoints": {},
   "feat": {
    "rsi": 68.67985079483194,
@@ -108,7 +108,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-09-24 10:15 UTC"
+  "updated": "2026-09-24 10:31 UTC"
  },
  {
   "id": "RENDER-1790172727",
@@ -146,7 +146,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.766,
+  "last": 1.743,
   "max": 1.788,
   "min": 1.707,
   "checkpoints": {},
@@ -195,7 +195,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/render-token",
    "dexscreener": "https://dexscreener.com/solana/rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof"
   },
-  "updated": "2026-09-24 10:15 UTC"
+  "updated": "2026-09-24 10:31 UTC"
  },
  {
   "id": "ATOM-1790172735",
@@ -233,7 +233,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.689,
+  "last": 1.683,
   "max": 1.758,
   "min": 1.676,
   "checkpoints": {},
@@ -290,7 +290,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-09-24 10:15 UTC"
+  "updated": "2026-09-24 10:31 UTC"
  },
  {
   "id": "INJ-1790173810",
@@ -326,7 +326,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.829,
+  "last": 7.858,
   "max": 8.138,
   "min": 7.574,
   "checkpoints": {},
@@ -383,7 +383,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/solana/1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
   },
-  "updated": "2026-09-24 10:15 UTC"
+  "updated": "2026-09-24 10:31 UTC"
  },
  {
   "id": "CC-1790173826",
@@ -423,7 +423,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.107115,
+  "last": 0.107067,
   "max": 0.109998,
   "min": 0.106963,
   "checkpoints": {},
@@ -463,7 +463,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-09-24 10:15 UTC"
+  "updated": "2026-09-24 10:31 UTC"
  },
  {
   "id": "FF-1790208933",
@@ -500,7 +500,7 @@
    ]
   },
   "source": "discovery",
-  "last": 0.12993,
+  "last": 0.13112,
   "max": 0.13737,
   "min": 0.12993,
   "checkpoints": {},
@@ -549,6 +549,86 @@
    "coingecko": "https://www.coingecko.com/en/coins/falcon-finance-ff",
    "dexscreener": "https://dexscreener.com/ethereum/0xfa1c09fc8b491b6a4d3ff53a10cad29381b3f949"
   },
-  "updated": "2026-09-24 10:15 UTC"
+  "updated": "2026-09-24 10:31 UTC"
+ },
+ {
+  "id": "SHIB-1790245914",
+  "symbol": "SHIB",
+  "cg_id": "shiba-inu",
+  "t": 1790245914,
+  "date": "2026-09-24 10:31 UTC",
+  "entry": 5.57e-06,
+  "signal": "IN BUY ZONE",
+  "score": 51,
+  "buy_zone": {
+   "low": 5.21035e-06,
+   "high": 5.57035e-06
+  },
+  "risk": "MEDIUM",
+  "plan": {
+   "zone1": {
+    "low": 5.21035e-06,
+    "high": 5.57035e-06,
+    "strong": false
+   },
+   "zone2": {
+    "low": 3.97e-06,
+    "high": 4.24e-06,
+    "strong": false
+   },
+   "stop": 3.79e-06,
+   "target": 6.18e-06,
+   "resistance": [
+    6.009895833333334e-06
+   ],
+   "support_levels": []
+  },
+  "source": "watchlist",
+  "last": 5.57e-06,
+  "max": 5.57e-06,
+  "min": 5.57e-06,
+  "checkpoints": {},
+  "feat": {
+   "rsi": 54.3709552611687,
+   "zone": "in",
+   "pb": 0.6459671979809257,
+   "rs30": -0.05109225088111291,
+   "macd": "fading",
+   "vs200": 0.050873998886866056,
+   "vs50": 0.08699894617696424,
+   "chg7": 0.07945736434108541,
+   "chg30": 0.05893536121673004,
+   "macro": 51.58823364555127,
+   "btc_bull": true,
+   "buy_ratio": 0.5071805151127196,
+   "wallets": null,
+   "risk": "MEDIUM",
+   "source": "watchlist",
+   "parts": {
+    "technical": 49.7,
+    "flows": 52.8,
+    "derivatives": null,
+    "wallets": null,
+    "macro": 51.6,
+    "news": null,
+    "fundamental": null,
+    "markets": 50.4
+   },
+   "btc": 83238
+  },
+  "starred": true,
+  "links": {
+   "chain": "ethereum",
+   "contract": "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
+   "contracts": [
+    {
+     "chain": "ethereum",
+     "address": "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
+    }
+   ],
+   "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
+   "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
+  },
+  "updated": "2026-09-24 10:31 UTC"
  }
 ]

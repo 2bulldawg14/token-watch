@@ -1,21 +1,30 @@
-name: token-watch
+name: add-coin
+# The dashboard's "Add a coin" button opens this. Click "Run workflow", type the ticker(s), click "Run workflow".
 on:
-  schedule:
-    - cron: "*/15 * * * *"     # every 15 minutes (GitHub can run scheduled jobs a few minutes late when busy)
-  workflow_dispatch: {}        # "Run workflow" button for testing
+  workflow_dispatch:
+    inputs:
+      tickers:
+        description: "Ticker(s) to add, e.g. SHIB or SHIB, PEPE"
+        required: true
+        type: string
+      star:
+        description: "Star it (always alert me)"
+        required: false
+        type: boolean
+        default: false
 permissions:
   contents: write
 concurrency:
-  group: token-watch           # never let two runs overlap
-  cancel-in-progress: false
+  group: token-watch              # shares the lane with the 15-minute check; it jumps in right away
+  cancel-in-progress: true
 jobs:
-  check:
+  add:
     runs-on: ubuntu-latest
     timeout-minutes: 28
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: main                # always start from the latest code and data (queued runs used to start from old copies)
+          ref: main
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -25,16 +34,18 @@ jobs:
           path: .hist-cache
           key: hist-${{ github.run_id }}
           restore-keys: hist-
-      - name: Check coins, send alerts, then answer Telegram messages until the next run
+      - name: Add the coin, check everything, publish the dashboard, then answer Telegram
         env:
+          ADD_TICKERS: ${{ inputs.tickers }}
+          ADD_STAR: ${{ inputs.star }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
-          CRYPTOPANIC_API_KEY: ${{ secrets.CRYPTOPANIC_API_KEY }}
-          WHALE_ALERT_API_KEY: ${{ secrets.WHALE_ALERT_API_KEY }}
           HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
           ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
-        run: python token_watch.py --once
+        run: |
+          if [ "$ADD_STAR" = "true" ]; then STAR="--star"; else STAR=""; fi
+          python token_watch.py --once --add "$ADD_TICKERS" $STAR
       - name: Save price history cache
         if: always()
         uses: actions/cache/save@v5

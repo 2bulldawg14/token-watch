@@ -99,7 +99,7 @@
  "ONDO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
@@ -590,7 +590,7 @@
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 6,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid reach $120 by December 31, 2026?": 40
@@ -632,5 +632,5 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790258968.3236625
+ "_saved_t": 1790259177.0280025
 }

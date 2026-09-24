@@ -104,7 +104,7 @@
   "in_zone2": false,
   "below_stop": false
  },
- "_discovery_t": 1790208891.2554145,
+ "_discovery_t": 1790253434.110741,
  "_report_week": "2026-W39",
  "_export_t": 1790240098.972644,
  "_tg_offset": 218529260,
@@ -182,7 +182,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false
  },
@@ -354,7 +354,7 @@
   },
   "AKT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false
   },
@@ -414,7 +414,7 @@
   },
   "CAP": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false
   },
@@ -457,6 +457,24 @@
   "UP": {
    "seen": true,
    "bad": true,
+   "in_sell": false,
+   "below": false
+  },
+  "\u725b\u6765": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false
+  },
+  "PONS": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false
+  },
+  "ASTER": {
+   "seen": true,
+   "bad": false,
    "in_sell": false,
    "below": false
   }
@@ -560,7 +578,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "HYPE": {
   "seen_news": [],
@@ -609,5 +627,8 @@
   "rsi_band": "high",
   "risk": "LOW",
   "signal": "HOLD"
+ },
+ "_disc_seen": {
+  "ASTER": 1790253479.3720071
  }
 }

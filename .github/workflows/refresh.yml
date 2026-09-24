@@ -1,0 +1,67 @@
+name: refresh
+# The dashboard's ↻ Refresh button opens this. Tap the green "Run workflow" for a fresh check.
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: token-watch           # never let two runs overlap
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main                # always start from the latest code and data (queued runs used to start from old copies)
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Restore price history cache
+        uses: actions/cache/restore@v5
+        with:
+          path: .hist-cache
+          key: hist-${{ github.run_id }}
+          restore-keys: hist-
+      - name: Check coins, send alerts, then answer Telegram messages until the next run
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+          CRYPTOPANIC_API_KEY: ${{ secrets.CRYPTOPANIC_API_KEY }}
+          WHALE_ALERT_API_KEY: ${{ secrets.WHALE_ALERT_API_KEY }}
+          HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+        run: python token_watch.py --once
+      - name: Save price history cache
+        if: always()
+        uses: actions/cache/save@v5
+        with:
+          path: .hist-cache
+          key: hist-${{ github.run_id }}
+      - name: Publish the dashboard if the last update didn't go out
+        if: always()
+        run: |
+          git config user.name "token-watch"
+          git config user.email "token-watch@users.noreply.github.com"
+          git add -A docs data; [ -f watchlist.txt ] && git add watchlist.txt || true
+          if ! git diff --cached --quiet -- docs watchlist.txt; then git commit -q -m "Update $(date -u +'%Y-%m-%d %H:%M')"; fi
+          git reset -q --hard HEAD                 # working memory is kept in the cache; only unpublished commits matter here
+          git fetch -q origin main
+          [ "$(git rev-list --count origin/main..HEAD)" = "0" ] && exit 0   # everything already published
+          for i in 1 2 3 4; do                     # catch pushes that failed mid-run (e.g. GitHub "Internal Server Error")
+            git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main && exit 0
+            git rebase --abort 2>/dev/null; sleep $((i*10))
+          done
+          exit 1
+      - name: Tell me on Telegram if this run failed
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=⚠️ Token Watch: the '${{ github.workflow }}' run failed and needs attention. Your dashboard may not have updated. Details: ${RUN_URL}" > /dev/null

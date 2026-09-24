@@ -1530,7 +1530,7 @@ def token_entry(r):
             "market_cap": (dd.get("facts") or {}).get("market_cap"),
             "markets": res.get("markets"), "parts": res["parts"], "rsi": res.get("rsi"), "cg_id": r.get("cg_id"),
             "links": token_links(res["symbol"], r.get("cg_id"), dd), "fdv": (dd.get("facts") or {}).get("fdv"),
-            "volume_24h": (dd.get("facts") or {}).get("volume"), "is_buy": bool(is_buy(res)), "starred": False, "logo": LOGOS.get(r.get("cg_id") or ""),
+            "volume_24h": (dd.get("facts") or {}).get("volume"), "is_buy": res["signal"] in BUY_SIGNALS, "in_zone_only": bool(is_buy(res) and res["signal"] not in BUY_SIGNALS), "starred": False, "logo": LOGOS.get(r.get("cg_id") or ""),
             "chart": {"c": [round(x, 10) for x in r["closes"]], "v": [round(x) for x in (r.get("vols") or [])]}})
 
 def write_dashboard(out):
@@ -1588,12 +1588,15 @@ h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mu
 .tok.buy{border-color:color-mix(in srgb,var(--up) 55%,var(--line));box-shadow:0 0 0 1px color-mix(in srgb,var(--up) 25%,transparent)}
 .row{display:grid;grid-template-columns:38px minmax(0,1fr) 60px auto;align-items:center;gap:10px;padding:12px 12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.8rem;color:#fff}
-.logo{position:relative;overflow:hidden}.logo.img{background:transparent}.logo .lgf{color:var(--mut);font-weight:800;font-size:.72rem}.logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.logo{position:relative;overflow:hidden}
+.logo.img{background:#0F1624;border-radius:50%}.logo .lgf{color:#8C98AE;font-weight:800;font-size:.72rem}
+.logo img{position:absolute;inset:3px;width:calc(100% - 6px);height:calc(100% - 6px);object-fit:contain}
 .nm b{font-size:1.02rem}.nm .sub{font-size:.78rem;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nm .px{font-weight:600;font-variant-numeric:tabular-nums}.chg{font-size:.78rem;font-weight:600;margin-left:6px}
 .spark{width:60px;height:30px}
 .rt{text-align:right}.pill{display:inline-block;border-radius:8px;padding:3px 7px;font-size:.68rem;font-weight:800;letter-spacing:.02em;white-space:nowrap}
 .score{font-size:.74rem;color:var(--mut);margin-top:3px}
+.badge.zone{color:var(--up)}
 .badge{font-size:.66rem;border:1px solid var(--line);border-radius:6px;padding:0 5px;color:var(--mut);margin-left:4px;vertical-align:2px}
 .body{display:none;padding:0 14px 14px;border-top:1px solid var(--line)}.tok.open .body{display:block}
 .chev{transition:transform .2s;color:var(--mut)}.tok.open .chev{transform:rotate(180deg)}
@@ -1652,13 +1655,15 @@ tr:last-child td{border:0}
 .trade[open]{border-color:var(--acc)}
 .trsum{list-style:none;position:relative;overflow:hidden;cursor:pointer}
 .trsum::-webkit-details-marker{display:none}
-.trslide{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:8px;padding:8px 10px;background:var(--card2);position:relative;z-index:1;transition:transform .18s ease;touch-action:pan-y;will-change:transform}
+.trslide{display:grid;grid-template-columns:auto auto 1fr auto;align-items:center;gap:6px;padding:8px 8px;background:var(--card2);position:relative;z-index:1;transition:transform .18s ease;touch-action:pan-y;will-change:transform}
 .tractions{position:absolute;top:0;right:0;bottom:0;display:flex;z-index:0}
 .swact{border:0;color:#fff;font:inherit;font-size:.78rem;font-weight:700;min-width:66px;cursor:pointer}
 .swact[data-a=hide]{background:#5b6472}.swact.del{background:var(--dn)}
-.swhint{font-size:.6rem;color:var(--mut);opacity:.5}
-.tg2{border-radius:6px;padding:1px 7px;font-size:.68rem;font-weight:800}
-.trwhen{color:var(--mut);font-size:.8rem}.trres{font-weight:700;text-align:right;white-space:nowrap}.trres small{font-weight:500;color:var(--mut)}
+.trbtns{display:inline-flex;gap:4px}
+.trbtn{border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:7px;padding:3px 6px;font:inherit;font-size:.64rem;font-weight:600;cursor:pointer;white-space:nowrap}
+.trbtn.del{color:var(--dn)}.trbtn:active{opacity:.6}
+.tg2{border-radius:6px;padding:1px 5px;font-size:.62rem;font-weight:800;white-space:nowrap}
+.trwhen{color:var(--mut);font-size:.72rem;white-space:nowrap}.trres{font-weight:700;text-align:right;white-space:nowrap;font-size:.86rem}.trres small{font-size:.72rem}.trres small{font-weight:500;color:var(--mut)}
 .trbody{padding:0 6px 8px}.trbody table{width:100%}
 .acts2{display:flex;gap:6px;margin-top:6px;justify-content:flex-end}.mini2{border:1px solid var(--line);background:var(--card2);color:var(--mut);border-radius:7px;padding:1px 7px;font:inherit;font-size:.7rem;cursor:pointer}.mini2.del{color:var(--dn)}
 tr.hid td{opacity:.55}
@@ -1677,7 +1682,7 @@ tr.hid td{opacity:.55}
 <button class="abtn" id=addbtn>Add</button><button class="abtn alt" id=addstar>Add ⭐</button></div><div class=addnote id=addnote></div></div>
 <div id=macro></div>
 <div class=tabs id=tabs></div>
-<div class=rehint>↕ Press and hold a coin to drag it into any order</div>
+<div class=rehint>↕ Press and hold a coin to drag it into any order · <a href="#" id=forcechk style="display:none;color:var(--acc)">force a fresh check</a></div>
 <div id=pending></div>
 <div id=list></div>
 <h2>Wallets you follow</h2><div id=wallets></div>
@@ -1709,16 +1714,12 @@ function bollS(c,n=20,k=2){const m=sma(c,n);return c.map((_,i)=>{if(m[i]==null)r
 // ---------- header
 const star=new Set(D.starred||[]);
 D.tokens.forEach(t=>{t.starred=star.has(t.symbol);t.c=(t.chart&&t.chart.c&&t.chart.c.length)?t.chart.c:String(t.prices||"").split("\n").map(Number).filter(x=>x>0)});
-function refPoll(){let n=0;const iv=setInterval(()=>{if(++n>40){clearInterval(iv);const b=$("#refresh");if(b)b.classList.remove("spin");return;}
- fetch(location.pathname+"?t="+Date.now(),{cache:"no-store"}).then(r=>r.text()).then(h=>{const m=h.match(/\"generated\":\"([^\"]+)\"/);if(m&&m[1]!==D.generated){clearInterval(iv);location.reload();}}).catch(()=>{});},15000);}
 $("#refresh").onclick=function(){const b=this;b.classList.add("spin");
  fetch(location.pathname+"?t="+Date.now(),{cache:"no-store"}).then(r=>r.text()).then(h=>{const m=h.match(/\"generated\":\"([^\"]+)\"/);
   if(m&&m[1]!==D.generated){location.reload();return;}
-  if(D.repo){try{localStorage.setItem("tw_refresh_since",D.generated)}catch(e){}window.open("https://github.com/"+D.repo+"/actions/workflows/refresh.yml","_blank");refPoll();
-   alert("A fresh check is starting. On the GitHub page that just opened, tap the green ‘Run workflow’. This page updates itself in about a minute — no need to touch it again.");}
-  else location.reload();
+  b.classList.remove("spin");const x=$("#toast");x.textContent="Already showing the newest data";x.style.opacity=1;setTimeout(()=>{x.style.opacity=0;x.textContent="Copied";},2200);
+  const f=$("#forcechk");if(f)f.style.display="";
  }).catch(()=>location.reload());};
-try{if(localStorage.getItem("tw_refresh_since")===D.generated)refPoll();else localStorage.removeItem("tw_refresh_since")}catch(e){}
 (function(){const g=Date.parse(D.generated.replace(" UTC","Z").replace(" ","T")),upd=()=>{const m=Math.round((Date.now()-g)/60000);
 $("#upd").innerHTML=`Updated<br><b style="color:${m>45?"var(--dn)":"inherit"}">${isNaN(m)?esc(D.generated):m<1?"just now":m<60?m+" min ago":Math.round(m/60)+" h ago"}</b>`+(m>45?"<br><small style=\"color:var(--dn)\">checks are delayed</small>":"")};upd();setInterval(upd,60000)})();
 const calls=[...(D.calls||[])].sort((a,b)=>b.t-a.t),SELLS=D.sells||[];
@@ -1788,7 +1789,7 @@ function startDrag(L,w,e){w.classList.add("dragging");L.classList.add("reorderin
 function card(t){const c=t.c,chg=c.length>1?(c[c.length-1]/c[c.length-2]-1)*100:0,[bg,fg]=SIG[t.signal]||SIG["NO DATA"];
 const w=el("div","tok"+(t.is_buy&&!/AVOID/.test(t.signal)?" buy":""));w.dataset.sym=t.symbol;
 const row=el("div","row",`${logoHTML(t.symbol,t.logo)}
-<div class=nm><div><b>${t.starred?"⭐ ":""}${esc(t.symbol)}</b>${t.source=="discovery"?"<span class=badge>found</span>":""}</div>
+<div class=nm><div><b>${t.starred?"⭐ ":""}${esc(t.symbol)}</b>${t.source=="discovery"?"<span class=badge>found</span>":""}${t.in_zone_only?"<span class='badge zone'>in buy zone</span>":""}</div>
 <div><span class=px>${fmt(t.price)}</span><span class=chg style="color:${chg>=0?"var(--up)":"var(--dn)"}">${chg>=0?"+":""}${chg.toFixed(1)}%</span></div>
 <div class=sub>${esc(t.name||"")}</div></div>${spark(c)}
 <div class=rt><span class=pill style="background:${bg};color:${fg}">${esc(SHORT[t.signal]||t.signal)}</span><div class=score>${t.score!=null?Math.round(t.score)+"/100":""} <span class=chev>▾</span></div></div>`);
@@ -1910,7 +1911,7 @@ const fil=$("#tfil");fil.innerHTML=`<select id=fcoin><option value="">All coins<
 <label class=chk><input type=checkbox id=fhid ${F.hidden?"checked":""}> Show hidden (${HID.size})</label>`;
 const setF=()=>{F={coin:$("#fcoin").value,range:$("#frange").value,status:$("#fstat").value,hidden:$("#fhid").checked};try{localStorage.setItem("tw_f",JSON.stringify(F))}catch(e){}draw()};
 ["#fcoin","#frange","#fstat","#fhid"].forEach(q=>$(q).onchange=setF);
-function act(e){e.stopPropagation();const b=e.currentTarget,id=b.dataset.id,sym=b.dataset.sym;
+function act(e){e.stopPropagation();e.preventDefault();const b=e.currentTarget,id=b.dataset.id,sym=b.dataset.sym;
  if(b.dataset.a=="hide"){HID.has(id)?HID.delete(id):HID.add(id);putSet("tw_hidden",HID);$("#fhid").parentNode.lastChild.textContent=` Show hidden (${HID.size})`;draw();return}
  if(!confirm(`Delete this ${sym} trade permanently from your track record? (It's removed for everyone and from the model's learning.)`))return;
  DEL.add(id);putSet("tw_deleted",DEL);draw();const mob=/iPhone|iPad|Android|Mobile/i.test(navigator.userAgent);
@@ -1927,7 +1928,7 @@ const w=el("div","coin");const qf=q=>q>=1000?Math.round(q).toLocaleString():q>=1
 // each trade is its own expandable block: tap the summary line to see the full buy/sell detail
 const blocks=T.slice().sort((a,b)=>b.c.t-a.c.t).map(t=>{const c=t.c,[d1,t1]=when(c.t),pm=c.postmortem,col=t.r>=0?"var(--up)":"var(--dn)";
  const status=t.x?(t.r>0?"WIN":"LOSS"):"OPEN",sbg=status=="WIN"?"tg b":status=="LOSS"?"tg s":"tg o";
- const sum=`<summary class=trsum><div class=tractions><button class=swact data-a=hide data-id="${idOf(c)}" data-sym="${esc(g.sym)}">${HID.has(idOf(c))?"Unhide":"Hide"}</button><button class="swact del" data-a=del data-id="${idOf(c)}" data-sym="${esc(g.sym)}">Delete</button></div><div class=trslide><span class="tg2 ${sbg}">${status}</span><span class=trwhen>${d1} → ${t.x?when(t.x.t)[0]:"now"}</span><span class=trres style="color:${col}">${t.r>=0?"+":""}${(t.r*100).toFixed(1)}%<small> ${money(AMT*t.r)}</small></span><span class=swhint>‹ swipe</span></div></summary>`;
+ const sum=`<summary class=trsum><div class=tractions><button class=swact data-a=hide data-id="${idOf(c)}" data-sym="${esc(g.sym)}">${HID.has(idOf(c))?"Unhide":"Hide"}</button><button class="swact del" data-a=del data-id="${idOf(c)}" data-sym="${esc(g.sym)}">Delete</button></div><div class=trslide><span class="tg2 ${sbg}">${status}</span><span class=trwhen>${d1} → ${t.x?when(t.x.t)[0]:"now"}</span><span class=trres style="color:${col}">${t.r>=0?"+":""}${(t.r*100).toFixed(1)}%<small> ${money(AMT*t.r)}</small></span><span class=trbtns><button class=trbtn data-a=hide data-id="${idOf(c)}" data-sym="${esc(g.sym)}">${HID.has(idOf(c))?"Unhide":"Hide"}</button><button class="trbtn del" data-a=del data-id="${idOf(c)}" data-sym="${esc(g.sym)}">Delete</button></span></div></summary>`;
  const buyrow=`<tr><td>${d1}<br><small>${t1}</small></td><td><span class="tg b">BUY</span></td><td>${fmt(c.entry)}<br><small>$${AMT.toFixed(2)} → ${qf(AMT/c.entry)} ${esc(g.sym)}</small></td><td class=res>${c.outcome?`<small style="color:${c.outcome=="win"?"var(--up)":c.outcome=="loss"?"var(--dn)":"var(--mut)"};font-weight:700">${OUT[c.outcome]}</small>`:""}</td></tr>
  <tr><td colspan=4 class=why>↳ ${esc(c.signal||"Buy call")}${c.score?" · score "+c.score:""}${c.source=="discovery"?" · found by scanner":""}${c.buy_zone?` · buy zone ${fmt(c.buy_zone.low)}–${fmt(c.buy_zone.high)}`:""}${(c.plan||{}).stop?` · stop ${fmt(c.plan.stop)}`:""}${(c.plan||{}).target?` · target ${fmt(c.plan.target)}`:""}${pm?`<br>📉 Post-mortem: ${pm.signs.length?pm.signs.map(esc).join("; "):"no obvious warning signs"}${pm.btc_chg!=null?` (BTC ${pm.btc_chg.toFixed(1)}%)`:""}`:""}</td></tr>`;
  const res=`<td class=res style="color:${col}">${t.r>=0?"+":""}${(t.r*100).toFixed(1)}%<br><small style="color:${col}">${money(AMT*t.r)}</small></td>`;
@@ -1939,7 +1940,7 @@ w.innerHTML=`<div class=ch>${logoHTML(g.sym,(D.logos||{})[(g.calls[0]||{}).cg_id
 ${Lk.contract?`<div class=addr style="margin-top:8px"><span class=ch>${esc((Lk.chain||"").replace(/-/g," "))}</span><code>${esc(Lk.contract)}</code><button class=copy data-a="${esc(Lk.contract)}">Copy</button></div>`:""}
 <div class=links><a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+encodeURIComponent(g.sym))}"><i style="background:#8DC63F"></i>CoinGecko</a><a class=lbtn target=_blank rel=noopener href="${esc(Lk.dexscreener||"https://dexscreener.com/search?q="+encodeURIComponent(g.sym))}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a></div></div>`;
 w.querySelector(".ch").onclick=()=>{w.classList.toggle("open");OPENC.has(g.sym)?OPENC.delete(g.sym):OPENC.add(g.sym)};if(OPENC.has(g.sym))w.classList.add("open");
-w.querySelectorAll("button.mini2,button.swact").forEach(b=>b.onclick=act);
+w.querySelectorAll("button.mini2,button.swact,button.trbtn").forEach(b=>b.onclick=act);
 w.querySelectorAll("button.copy").forEach(bt=>bt.onclick=e=>{e.stopPropagation();copy(bt.dataset.a)});
 w.querySelectorAll(".trade").forEach(det=>{const slide=det.querySelector(".trslide"),sum=det.querySelector(".trsum"),OPENW=132;
  let x0=null,y0=null,last=null,moved=false;const setT=px=>{slide.style.transform="translateX("+px+"px)";};
@@ -1981,6 +1982,7 @@ u.append(el("li","",`<span class="dot ${r.side=="buy"?"g":"r"}">${r.side=="buy"?
 const d=el("details","tok");d.innerHTML=`<summary class=row style="grid-template-columns:1fr auto"><b>${ks.length} coins tracked</b><span class=mut>show ▾</span></summary>
 <div style="padding:0 10px 10px"><table class=calls><tr><th>Ticker</th><th>Name</th><th>CoinGecko ID</th><th>Added</th></tr>${ks.map(k=>{const r=R[k];return `<tr><td><b>${esc(k)}</b></td><td style="white-space:normal">${esc(r.name||"")}</td><td><a href="https://www.coingecko.com/en/coins/${esc(r.cg_id||"")}" target=_blank rel=noopener style="font-family:ui-monospace,Menlo,monospace;font-size:.75rem">${esc(r.cg_id||"–")}</a></td><td>${esc((r.first_seen||"").slice(5,10))}</td></tr>`}).join("")}</table></div>`;C.append(d)})();
 render();showPending();
+{const f=$("#forcechk");if(f)f.onclick=e=>{e.preventDefault();if(D.repo)window.open("https://github.com/"+D.repo+"/actions/workflows/refresh.yml","_blank");};}
 let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>document.querySelectorAll(".tok.open").forEach(w=>{const r=w.querySelector(".rg.on");r&&r.click()}),250)});
 setTimeout(()=>location.reload(),15*60*1000);
 </script></body></html>
@@ -2327,6 +2329,15 @@ def run_once():
     save("cache.json", cache); save("state.json", state); save("calls.json", calls); save("sells.json", SELLS[-2000:]); save("coins.json", REG); save_hist()
     # export.json / dashboard are big; rewrite them every few hours, not every 15 minutes
     full = DEMO or now() - state.get("_export_t", 0) >= CFG.get("export_every_minutes", 240) * 60
+    try:
+        bad = []
+        if not results: bad.append("no coins were checked this run")
+        for r in results:
+            rr = r["res"]
+            if rr.get("price") in (None, 0): bad.append(f"{rr['symbol']}: price is {rr.get('price')}")
+            if rr["signal"] in BUY_SIGNALS and (rr.get("in_sell") or (rr.get("rsi") or 0) > 71): bad.append(f"{rr['symbol']}: buy signal while overbought/in sell zone")
+        if bad: ERRORS.append("dashboard self-check: " + "; ".join(bad[:5]))
+    except Exception as e: print(f"  [skip] self-check: {e}")
     export(results, calls, full)
     CTX["results"] = results; CTX["dirty"] = False
     if os.environ.get("GITHUB_ACTIONS") and not DEMO:  # put the fresh dashboard online now, not after the listening window

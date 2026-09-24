@@ -158,7 +158,11 @@ Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in 
 - Token cards: press-and-hold (~420ms) then drag to reorder. Order saved per device in `tw_order`; `render()` sorts by it first, default sort for the rest.
 - Trade rows: swipe left on the summary to reveal Hide / Delete (`.trslide` translateX; `.tractions` behind). In-panel Hide/Delete buttons remain too.
 - "Found by scanner" tab = `source != "watchlist"` (includes `tracked` coins that have an open call).
-- ↻ Refresh button (header): first re-fetches `index.html`; if newer, reloads. Else opens `refresh.yml` (workflow_dispatch, jumps the queue) and polls every 15s to auto-reload when the new run publishes. Requested-refresh survives a reload via `tw_refresh_since`.
+- ↻ Refresh button (header): re-fetches `index.html`; reloads if newer, otherwise shows a toast and reveals an optional `#forcechk` link to `refresh.yml`. It never navigates away on its own.
+- Each trade row has always-visible Hide / Delete buttons (`.trbtn`); swipe-left is a bonus, not the only way.
+- Logos sit on a fixed dark circle in BOTH themes — several CoinGecko logos are white symbols (e.g. `xrp-symbol-white-128.png`, Litecoin) and were invisible on the light theme without it.
+- The green "buy" ring and the "buy setups" counts use `is_buy` = signal is ACCUMULATE/STRONG BUY ZONE. A coin merely sitting in its buy zone gets an `in_zone_only` flag and a small "in buy zone" badge instead.
+- `run_once` ends with a self-check that pushes anomalies (zero prices, buy signal while overbought) into `ERRORS` so they reach Telegram.
 
 **Error alerts:**
 - Critical `try_get` failures (live prices, logos, market backdrop) and failed publishes are collected in `ERRORS` and sent to Telegram at the end of a run, at most once an hour per error type (`report_errors`).

@@ -106,7 +106,7 @@
  },
  "_discovery_t": 1790208891.2554145,
  "_report_week": "2026-W39",
- "_export_t": 1790225119.3832936,
+ "_export_t": 1790240098.972644,
  "_tg_offset": 218529260,
  "HBAR": {
   "seen_news": [],
@@ -536,10 +536,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "ACCUMULATE"
  },
  "UNI": {
   "seen_news": [],

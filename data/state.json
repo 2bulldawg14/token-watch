@@ -73,7 +73,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Solana dip to $30 in September?": 0,
    "Will Solana reach $190 in September?": 0,
@@ -90,9 +90,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $20 by December 31, 2026?": 14,
-   "Will Chainlink reach $16 by December 31, 2026?": 56,
-   "Will Chainlink reach $18 by December 31, 2026?": 32,
+   "Will Chainlink reach $16 by December 31, 2026?": 57,
+   "Will Chainlink reach $20 by December 31, 2026?": 17,
+   "Will Chainlink reach $18 by December 31, 2026?": 36,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
@@ -203,7 +203,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will XRP dip to $0.20 in September?": 0,
    "Will XRP reach $5.00 by December 31, 2026?": 2,
@@ -232,7 +232,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -339,7 +339,7 @@
   },
   "XRP": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -639,9 +639,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 4,
-   "Will Zcash reach $2000 by December 31, 2026?": 52,
+   "Will Zcash reach $2000 by December 31, 2026?": 56,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 36
+   "Will Zcash dip to $700 by December 31, 2026?": 38
   }
  },
  "SHIB": {
@@ -665,7 +665,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790277979.637546,
+ "_saved_t": 1790278780.5949402,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

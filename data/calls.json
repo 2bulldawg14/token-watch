@@ -14,11 +14,11 @@
   },
   "risk": "MEDIUM",
   "source": "discovery",
-  "last": 0.148131,
+  "last": 0.142731,
   "max": 0.16812,
   "min": 0.113946,
   "checkpoints": {},
-  "updated": "2026-09-24 14:12 UTC",
+  "updated": "2026-09-24 14:48 UTC",
   "links": {
    "chain": "binance-smart-chain",
    "contract": "0xeccbb861c0dda7efd964010085488b69317e4444",
@@ -30,7 +30,10 @@
    ],
    "coingecko": "https://www.coingecko.com/en/coins/lobster-2",
    "dexscreener": "https://dexscreener.com/bsc/0xeccbb861c0dda7efd964010085488b69317e4444"
-  }
+  },
+  "tmax": 0.16591472196691665,
+  "tmin": 0.141854,
+  "ret_open": -13.97
  },
  {
   "id": "TAO-1790172722",
@@ -68,7 +71,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 288.8,
+  "last": 289.7,
   "max": 304.3,
   "min": 278.8,
   "checkpoints": {},
@@ -108,7 +111,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-09-24 14:12 UTC"
+  "updated": "2026-09-24 14:48 UTC",
+  "tmax": 304.3,
+  "tmin": 289.7,
+  "ret_open": -4.8
  },
  {
   "id": "RENDER-1790172727",
@@ -146,8 +152,8 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.838,
-  "max": 1.838,
+  "last": 1.839,
+  "max": 1.855,
   "min": 1.707,
   "checkpoints": {},
   "feat": {
@@ -195,7 +201,21 @@
    "coingecko": "https://www.coingecko.com/en/coins/render-token",
    "dexscreener": "https://dexscreener.com/solana/rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof"
   },
-  "updated": "2026-09-24 14:12 UTC"
+  "updated": "2026-09-24 14:48 UTC",
+  "exit": {
+   "t": 1790256809,
+   "date": "2026-09-24 13:33 UTC",
+   "price": 1.838,
+   "why": "Entered sell zone $1.819-$1.938 \u00b7 RSI 68",
+   "kind": "zone"
+  },
+  "ret": 6.37,
+  "held_days": 1.0,
+  "tmax": 1.838,
+  "tmin": 1.728,
+  "gbasis": "closed",
+  "gret": 6.37,
+  "outcome": "win"
  },
  {
   "id": "ATOM-1790172735",
@@ -233,8 +253,8 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.747,
-  "max": 1.758,
+  "last": 1.77,
+  "max": 1.785,
   "min": 1.676,
   "checkpoints": {},
   "feat": {
@@ -290,7 +310,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-09-24 14:12 UTC"
+  "updated": "2026-09-24 14:48 UTC",
+  "tmax": 1.785,
+  "tmin": 1.758,
+  "ret_open": 0.68
  },
  {
   "id": "INJ-1790173810",
@@ -326,8 +349,8 @@
    ]
   },
   "source": "watchlist",
-  "last": 8.033,
-  "max": 8.139,
+  "last": 8.212,
+  "max": 8.263,
   "min": 7.574,
   "checkpoints": {},
   "feat": {
@@ -383,7 +406,21 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/solana/1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
   },
-  "updated": "2026-09-24 14:12 UTC"
+  "updated": "2026-09-24 14:48 UTC",
+  "exit": {
+   "t": 1790174772,
+   "date": "2026-09-23 14:46 UTC",
+   "price": 8.002,
+   "why": "Entered sell zone $7.815-$8.527 \u00b7 RSI 72",
+   "kind": "zone"
+  },
+  "ret": 2.56,
+  "held_days": 0.0,
+  "tmax": 8.002,
+  "tmin": 7.802,
+  "gbasis": "closed",
+  "gret": 2.56,
+  "outcome": "flat"
  },
  {
   "id": "CC-1790173826",
@@ -423,7 +460,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.109628,
+  "last": 0.109757,
   "max": 0.109998,
   "min": 0.106872,
   "checkpoints": {},
@@ -463,7 +500,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-09-24 14:12 UTC"
+  "updated": "2026-09-24 14:48 UTC",
+  "tmax": 0.109757,
+  "tmin": 0.108525,
+  "ret_open": 1.14
  },
  {
   "id": "FF-1790208933",
@@ -500,7 +540,7 @@
    ]
   },
   "source": "discovery",
-  "last": 0.13242,
+  "last": 0.13112,
   "max": 0.13737,
   "min": 0.12922,
   "checkpoints": {},
@@ -549,7 +589,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/falcon-finance-ff",
    "dexscreener": "https://dexscreener.com/ethereum/0xfa1c09fc8b491b6a4d3ff53a10cad29381b3f949"
   },
-  "updated": "2026-09-24 14:12 UTC"
+  "updated": "2026-09-24 14:48 UTC",
+  "tmax": 0.13347,
+  "tmin": 0.1311,
+  "ret_open": 0.02
  },
  {
   "id": "SHIB-1790245914",
@@ -584,8 +627,8 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 5.72e-06,
-  "max": 5.72e-06,
+  "last": 5.78e-06,
+  "max": 5.83e-06,
   "min": 5.57e-06,
   "checkpoints": {},
   "feat": {
@@ -629,7 +672,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-09-24 14:12 UTC"
+  "updated": "2026-09-24 14:48 UTC",
+  "tmax": 5.83e-06,
+  "tmin": 5.57e-06,
+  "ret_open": 3.77
  },
  {
   "id": "ASTER-1790253479",
@@ -666,8 +712,8 @@
    ]
   },
   "source": "discovery",
-  "last": 0.7073,
-  "max": 0.7073,
+  "last": 0.7031,
+  "max": 0.7116,
   "min": 0.6973,
   "checkpoints": {},
   "feat": {
@@ -711,6 +757,9 @@
    "coingecko": "https://www.coingecko.com/en/coins/aster-2",
    "dexscreener": "https://dexscreener.com/bsc/0x000ae314e2a2172a039b26378814c252734f556a"
   },
-  "updated": "2026-09-24 14:12 UTC"
+  "updated": "2026-09-24 14:48 UTC",
+  "tmax": 0.7116,
+  "tmin": 0.6973,
+  "ret_open": 0.83
  }
 ]

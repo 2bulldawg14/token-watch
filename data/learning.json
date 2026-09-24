@@ -1,8 +1,27 @@
 {
  "rules": [],
  "mult": {},
- "graded": 0,
- "t": "2026-09-24 14:12 UTC",
- "wins": 0,
+ "graded": 2,
+ "t": "2026-09-24 14:48 UTC",
+ "scorecard": {
+  "closed": 2,
+  "wins": 2,
+  "avg": 4.46,
+  "held": 0.5,
+  "gave_back": 0
+ },
+ "sells": {
+  "zone": {
+   "n": 2,
+   "reviewed": 0,
+   "early": 0,
+   "good": 0,
+   "after": null,
+   "ret": 4.46,
+   "text": "entered the sell zone"
+  }
+ },
+ "sell_soft": [],
+ "wins": 1,
  "losses": 0
 }

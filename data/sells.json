@@ -339,5 +339,49 @@
   "source": "watchlist",
   "starred": true,
   "closes": "RENDER-1790172727"
+ },
+ {
+  "symbol": "SOL",
+  "cg_id": "solana",
+  "t": 1790260175,
+  "date": "2026-09-24 14:29 UTC",
+  "price": 116.33,
+  "why": "Signal turned TRIM \u00b7 Entered sell zone $115.86-$121.37 \u00b7 RSI 65",
+  "source": "watchlist",
+  "starred": true,
+  "closes": null
+ },
+ {
+  "symbol": "XRP",
+  "cg_id": "ripple",
+  "t": 1790260214,
+  "date": "2026-09-24 14:30 UTC",
+  "price": 1.5209,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": null
+ },
+ {
+  "symbol": "ETH",
+  "cg_id": "ethereum",
+  "t": 1790260223,
+  "date": "2026-09-24 14:30 UTC",
+  "price": 2690.01,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": null
+ },
+ {
+  "symbol": "AERO",
+  "cg_id": "aerodrome-finance",
+  "t": 1790261280,
+  "date": "2026-09-24 14:48 UTC",
+  "price": 0.722135,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": null
  }
 ]

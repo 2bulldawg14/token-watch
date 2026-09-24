@@ -11,6 +11,7 @@
    "HYPE",
    "LINK",
    "ONDO",
+   "QNT",
    "RENDER",
    "SEI",
    "SHIB",
@@ -47,7 +48,8 @@
    "ATOM",
    "SHIB",
    "LTC",
-   "ETH"
+   "ETH",
+   "QNT"
   ],
   "removed": [
    "HYPERLIQUID"
@@ -99,7 +101,7 @@
  "ONDO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
@@ -108,7 +110,7 @@
  "_discovery_t": 1790253434.110741,
  "_report_week": "2026-W39",
  "_export_t": 1790254652.268781,
- "_tg_offset": 218529261,
+ "_tg_offset": 218529262,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
@@ -172,9 +174,9 @@
  "AERO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false
  },
@@ -201,7 +203,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will XRP dip to $0.20 in September?": 0,
    "Will XRP reach $3.00 in September?": 1,
@@ -225,43 +227,50 @@
    "seen": true,
    "bad": false,
    "in_sell": true,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "SOL": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "LINK": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "ONDO": {
    "seen": true,
    "bad": false,
    "in_sell": true,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "HBAR": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "SUI": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "SEI": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "CANTON": {
    "seen": true,
@@ -273,13 +282,15 @@
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "ETH": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "UNISWAP": {
    "seen": true,
@@ -289,9 +300,10 @@
   },
   "AERO": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "AKASH": {
    "seen": true,
@@ -303,7 +315,8 @@
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "HYPERLIQUID": {
    "seen": true,
@@ -315,7 +328,8 @@
    "seen": true,
    "bad": false,
    "in_sell": true,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "CHAINLINK": {
    "seen": true,
@@ -325,9 +339,10 @@
   },
   "XRP": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "ZCASH": {
    "seen": true,
@@ -339,55 +354,64 @@
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "CC": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "UNI": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "AKT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "HYPE": {
    "seen": true,
    "bad": true,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "ZEC": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "\u9f99\u867e": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "SHIB": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "LTC": {
    "seen": true,
    "bad": false,
    "in_sell": true,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "EDEL": {
    "seen": true,
@@ -453,7 +477,8 @@
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "UP": {
    "seen": true,
@@ -477,7 +502,15 @@
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
+  },
+  "QNT": {
+   "seen": true,
+   "bad": false,
+   "in_sell": true,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -579,7 +612,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "HYPE": {
   "seen_news": [],
@@ -632,5 +665,14 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790259177.0280025
+ "_saved_t": 1790261315.7983608,
+ "QNT": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "MEDIUM",
+  "signal": "HOLD"
+ }
 }

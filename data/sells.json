@@ -306,5 +306,38 @@
   "source": "watchlist",
   "starred": false,
   "closes": null
+ },
+ {
+  "symbol": "BTC",
+  "cg_id": "bitcoin",
+  "t": 1790256795,
+  "date": "2026-09-24 13:33 UTC",
+  "price": 84166.01,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": null
+ },
+ {
+  "symbol": "AERO",
+  "cg_id": "aerodrome-finance",
+  "t": 1790256800,
+  "date": "2026-09-24 13:33 UTC",
+  "price": 0.7067,
+  "why": "Entered sell zone $0.698-$0.7509 \u00b7 RSI 69",
+  "source": "watchlist",
+  "starred": true,
+  "closes": null
+ },
+ {
+  "symbol": "RENDER",
+  "cg_id": "render-token",
+  "t": 1790256809,
+  "date": "2026-09-24 13:33 UTC",
+  "price": 1.838,
+  "why": "Entered sell zone $1.819-$1.938 \u00b7 RSI 68",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "RENDER-1790172727"
  }
 ]

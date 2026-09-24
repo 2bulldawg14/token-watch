@@ -851,6 +851,9 @@ def get_data(tok, cg_id):
     pair = tok.get("binance_pair") or tok["symbol"] + "USDT"
     data = binance_daily(pair)          # Binance: live candles every run, generous free limits
     depth = None
+    if data and len(data["close"]) < 90 and cg_id:  # newly listed on Binance: too little history there, use CoinGecko's longer history
+        live = data["close"][-1]; data = None
+        LIVE.setdefault(cg_id, live)
     if data:
         depth = try_get("order book", lambda: binance_depth(data["host"], pair, data["close"][-1]))
     elif cg_id:

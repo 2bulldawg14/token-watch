@@ -57,11 +57,11 @@
  "INJ": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -106,7 +106,7 @@
  },
  "_discovery_t": 1790208891.2554145,
  "_report_week": "2026-W39",
- "_export_t": 1790195324.694015,
+ "_export_t": 1790210280.1944728,
  "_tg_offset": 218529260,
  "HBAR": {
   "seen_news": [],
@@ -143,7 +143,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 6,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
@@ -223,7 +223,7 @@
   "INJ": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false
   },
   "SOL": {
@@ -270,7 +270,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false
   },

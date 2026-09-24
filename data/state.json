@@ -109,7 +109,7 @@
  },
  "_discovery_t": 1790253434.110741,
  "_report_week": "2026-W39",
- "_export_t": 1790269844.516778,
+ "_export_t": 1790284269.2935753,
  "_tg_offset": 218529262,
  "HBAR": {
   "seen_news": [],
@@ -203,7 +203,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will XRP dip to $0.20 in September?": 0,
    "Will XRP reach $5.00 by December 31, 2026?": 2,
@@ -218,7 +218,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false
  },
@@ -339,7 +339,7 @@
   },
   "XRP": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -624,9 +624,9 @@
   "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
+   "Will Hyperliquid dip to $12 by December 31, 2026?": 3,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 4,
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 7
+   "Will Hyperliquid reach $120 by December 31, 2026?": 40
   }
  },
  "ZEC": {
@@ -665,7 +665,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790284266.5175948,
+ "_saved_t": 1790285196.8952417,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

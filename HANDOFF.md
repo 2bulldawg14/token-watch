@@ -149,6 +149,11 @@ Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in 
 - Sell signals are only logged when they close an open buy call. This stopped the noisy repeats from coins hovering at their sell-zone edge.
 - Top stats show buy setups, calls in profit, average call return, and open calls now (average live P/L of open trades), for both starred coins and scanner finds.
 
+**Track record drill-down:**
+- The two "closed trades won" / "open trades" tiles in each top summary row are tappable (`.tapk`): they set the status filter and scroll to the list.
+- Each trade renders as its own `<details class=trade>` block — a one-line summary (WIN/LOSS/OPEN, dates, result) that expands to the full BUY/SELL detail with Hide/Delete.
+- Coin logos are transparent-background circular badges (`.logo.img`), with a muted-letter fallback under the image (`onerror` removes the img). No white box.
+
 **Error alerts:**
 - Critical `try_get` failures (live prices, logos, market backdrop) and failed publishes are collected in `ERRORS` and sent to Telegram at the end of a run, at most once an hour per error type (`report_errors`).
 - Each workflow has an `if: failure()` step that sends a Telegram message with the run link.

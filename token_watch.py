@@ -1588,7 +1588,7 @@ h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mu
 .tok.buy{border-color:color-mix(in srgb,var(--up) 55%,var(--line));box-shadow:0 0 0 1px color-mix(in srgb,var(--up) 25%,transparent)}
 .row{display:grid;grid-template-columns:38px minmax(0,1fr) 60px auto;align-items:center;gap:10px;padding:12px 12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.8rem;color:#fff}
-.logo{position:relative;overflow:hidden}.logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:4px;box-sizing:border-box}
+.logo{position:relative;overflow:hidden}.logo.img{background:transparent}.logo .lgf{color:var(--mut);font-weight:800;font-size:.72rem}.logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .nm b{font-size:1.02rem}.nm .sub{font-size:.78rem;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nm .px{font-weight:600;font-variant-numeric:tabular-nums}.chg{font-size:.78rem;font-weight:600;margin-left:6px}
 .spark{width:60px;height:30px}
@@ -1647,7 +1647,15 @@ tr:last-child td{border:0}
 .why{font-size:.72rem;color:var(--mut);white-space:normal!important;padding-top:0!important}.res{font-weight:700;text-align:right}
 .filters{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.filters select{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:6px 8px;font:inherit;font-size:.82rem}
 .chk{display:flex;align-items:center;gap:5px;font-size:.8rem;color:var(--mut)}
-.acts2{float:right;display:inline-flex;gap:4px;margin-left:6px}.mini2{border:1px solid var(--line);background:var(--card2);color:var(--mut);border-radius:7px;padding:1px 7px;font:inherit;font-size:.7rem;cursor:pointer}.mini2.del{color:var(--dn)}
+.tapk{cursor:pointer}.tapk:active{opacity:.7}
+.trade{border:1px solid var(--line);border-radius:10px;margin:6px 0;background:var(--card2);overflow:hidden}
+.trade[open]{border-color:var(--acc)}
+.trsum{list-style:none;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding:8px 10px;cursor:pointer}
+.trsum::-webkit-details-marker{display:none}
+.tg2{border-radius:6px;padding:1px 7px;font-size:.68rem;font-weight:800}
+.trwhen{color:var(--mut);font-size:.8rem}.trres{font-weight:700;text-align:right;white-space:nowrap}.trres small{font-weight:500;color:var(--mut)}
+.trbody{padding:0 6px 8px}.trbody table{width:100%}
+.acts2{display:flex;gap:6px;margin-top:6px;justify-content:flex-end}.mini2{border:1px solid var(--line);background:var(--card2);color:var(--mut);border-radius:7px;padding:1px 7px;font:inherit;font-size:.7rem;cursor:pointer}.mini2.del{color:var(--dn)}
 tr.hid td{opacity:.55}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none}
 </style></head><body>
@@ -1676,7 +1684,7 @@ const SIG={"STRONG BUY ZONE":["var(--up)","#fff"],"ACCUMULATE":["var(--up-bg)","
 "TRIM":["var(--dn-bg)","var(--dn)"],"SELL / AVOID":["var(--dn)","#fff"],"AVOID (SCAM RISK)":["#7A1F1F","#fff"],"NO DATA":["var(--card2)","var(--mut)"]};
 const SHORT={"STRONG BUY ZONE":"STRONG BUY","AVOID (SCAM RISK)":"SCAM RISK","SELL / AVOID":"SELL"};
 const PART={wallets:"Smart wallets",technical:"Technicals",fundamental:"Fundamentals",flows:"Flows",derivatives:"Derivatives",macro:"Market",news:"News",markets:"Betting odds"};
-function logoHTML(sym,url){return `<div class=logo style="background:hsl(${hue(sym)} 55% 42%)">${esc(sym.slice(0,4))}${url?`<img src="${esc(url)}" alt="" loading=lazy onerror="this.remove()">`:""}</div>`}
+function logoHTML(sym,url){const l=esc(sym.slice(0,4));return url?`<div class="logo img"><span class=lgf>${l}</span><img src="${esc(url)}" alt="" loading=lazy onerror="this.remove()"></div>`:`<div class=logo style="background:hsl(${hue(sym)} 55% 42%)">${l}</div>`}
 const hue=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h};
 // ---------- indicator math
 const sma=(a,n)=>a.map((_,i)=>i<n-1?null:a.slice(i-n+1,i+1).reduce((x,y)=>x+y,0)/n);
@@ -1854,7 +1862,7 @@ C.innerHTML=`<div class=amt>If you'd put $<input id=amt type=number min=1 inputm
 <p class=mut style="font-size:.74rem;margin-top:10px">A trade opens at a buy call and closes at the next sell signal for that coin (signal turns TRIM or SELL, price enters the sell zone, or falls below the stop-loss). Trades with no sell signal yet are <b>OPEN</b> at today's price. Fees and slippage aren't included. Times are in your time zone.</p>`;
 const OPENC=new Set();let cur="all";const tt=$("#ttabs");[["all","All"],["star","⭐ Your coins"],["found","🔎 Scanner found"]].forEach(([k,n])=>{const b=el("button","tab"+(k==cur?" on":""),n);b.onclick=()=>{cur=k;[...tt.children].forEach(x=>x.classList.toggle("on",x==b));draw()};tt.append(b)});
 function stat(gs){let pl=0,n=0,w=0,op=0;gs.forEach(g=>trades(g).forEach(t=>{pl+=AMT*t.r;n++;if(t.x){if(t.r>0)w++}else op++}));return{pl,n,w,op,inv:n*AMT,closed:n-op}}
-function srow(title,gs){const s=stat(gs);return `<div class=krow>${title}</div><div class="kpis k4"><div class=kpi><b style="color:${s.pl>=0?"var(--up)":"var(--dn)"}">${s.n?money(s.pl):"–"}</b><small>total profit</small></div><div class=kpi><b>${s.inv?(s.pl/s.inv*100).toFixed(1)+"%":"–"}</b><small>return on $${s.inv.toLocaleString()}</small></div><div class=kpi><b>${s.closed?Math.round(s.w/s.closed*100)+"%":"–"}</b><small>closed trades won (${s.closed})</small></div><div class=kpi><b>${s.op}</b><small>open trades</small></div></div>`}
+function srow(title,gs){const s=stat(gs);return `<div class=krow>${title}</div><div class="kpis k4"><div class=kpi><b style="color:${s.pl>=0?"var(--up)":"var(--dn)"}">${s.n?money(s.pl):"–"}</b><small>total profit</small></div><div class=kpi><b>${s.inv?(s.pl/s.inv*100).toFixed(1)+"%":"–"}</b><small>return on $${s.inv.toLocaleString()}</small></div><div class="kpi tapk" data-fs=closed><b>${s.closed?Math.round(s.w/s.closed*100)+"%":"–"}</b><small>closed trades won (${s.closed}) ›</small></div><div class="kpi tapk" data-fs=open><b>${s.op}</b><small>open trades ›</small></div></div>`}
 const fil=$("#tfil");fil.innerHTML=`<select id=fcoin><option value="">All coins</option>${Object.keys(coins).sort().map(k=>`<option ${F.coin==k?"selected":""}>${esc(k)}</option>`).join("")}</select>
 <select id=frange>${[["all","Any date"],["today","Today"],["7d","Last 7 days"],["30d","Last 30 days"],["90d","Last 90 days"]].map(([k,n])=>`<option value=${k} ${F.range==k?"selected":""}>${n}</option>`).join("")}</select>
 <select id=fstat>${[["all","All trades"],["open","Open"],["closed","Closed"],["win","Closed in profit"],["loss","Closed at a loss"]].map(([k,n])=>`<option value=${k} ${F.status==k?"selected":""}>${n}</option>`).join("")}</select>
@@ -1868,20 +1876,25 @@ function act(e){e.stopPropagation();const b=e.currentTarget,id=b.dataset.id,sym=
  if(mob&&D.bot)window.open(`https://t.me/${D.bot}?start=DELTRADE_${id}`,"_blank");
  else if(D.repo){try{navigator.clipboard&&navigator.clipboard.writeText(id).catch(()=>{})}catch(e){}window.open(`https://github.com/${D.repo}/actions/workflows/delete-trade.yml`,"_blank");
   alert(`On the GitHub page: click "Run workflow", paste the trade ID ${id} (already copied), then click the green "Run workflow". It's hidden here already.`)}}
-function draw(){const G=Object.values(coins).filter(g=>trades(g).length);$("#tsum").innerHTML=srow("⭐ Your coins",G.filter(g=>!g.found))+srow("🔎 Coins the scanner found",G.filter(g=>g.found));
+function draw(){const Gall=Object.values(coins);$("#tsum").innerHTML=srow("⭐ Your coins",Gall.filter(g=>!g.found))+srow("🔎 Coins the scanner found",Gall.filter(g=>g.found));
+$("#tsum").querySelectorAll(".tapk").forEach(k=>k.onclick=()=>{$("#fstat").value=k.dataset.fs;setF();$("#tfil").scrollIntoView({behavior:"smooth",block:"start"})});
+const G=Object.values(coins).filter(g=>trades(g).length);
 const L=$("#tlist");L.innerHTML="";const list=G.filter(g=>cur=="all"||(cur=="star"&&!g.found)||(cur=="found"&&g.found)).sort((a,b)=>Math.max(...b.calls.map(c=>c.t))-Math.max(...a.calls.map(c=>c.t)));
 if(!list.length){L.append(el("p","mut",calls.length?"No trades match these filters.":"No buy calls here yet. Every buy call and the sell signal that closes it will show up here."));return}
 list.forEach(g=>{const T=trades(g);let pl=0;T.forEach(t=>pl+=AMT*t.r);const nopen=T.filter(t=>!t.x).length,Lk=g.links||{};
-const w=el("div","coin");const rows=[];
-T.forEach(t=>{const c=t.c,[d1,t1]=when(c.t),pm=c.postmortem;
- const qty=AMT/c.entry,qf=q=>q>=1000?Math.round(q).toLocaleString():q>=1?q.toFixed(2):Number(q.toPrecision(3));
- rows.push(`<tr><td>${d1}<br><small>${t1}</small></td><td><span class="tg b">BUY</span></td><td>${fmt(c.entry)}<br><small>$${AMT.toFixed(2)} → ${qf(qty)} ${esc(g.sym)}</small></td><td class=res>${c.outcome?`<small style="color:${c.outcome=="win"?"var(--up)":c.outcome=="loss"?"var(--dn)":"var(--mut)"};font-weight:700">${OUT[c.outcome]}</small>`:""}</td></tr>
- <tr${HID.has(idOf(c))?' class=hid':''}><td colspan=4 class=why><span class=acts2><button class=mini2 data-a=hide data-id="${idOf(c)}" data-sym="${esc(g.sym)}">${HID.has(idOf(c))?"Unhide":"Hide"}</button><button class="mini2 del" data-a=del data-id="${idOf(c)}" data-sym="${esc(g.sym)}">Delete</button></span>↳ ${esc(c.signal||"Buy call")}${c.score?" · score "+c.score:""}${c.source=="discovery"?" · found by scanner":""}${c.buy_zone?` · buy zone ${fmt(c.buy_zone.low)}–${fmt(c.buy_zone.high)}`:""}${(c.plan||{}).stop?` · stop ${fmt(c.plan.stop)}`:""}${pm?`<br>📉 Post-mortem: ${pm.signs.length?pm.signs.map(esc).join("; "):"no obvious warning signs"}${pm.btc_chg!=null?` (BTC ${pm.btc_chg.toFixed(1)}%)`:""}`:""}</td></tr>`);
- const col=t.r>=0?"var(--up)":"var(--dn)",res=`<td class=res style="color:${col}">${t.r>=0?"+":""}${(t.r*100).toFixed(1)}%<br><small style="color:${col}">${money(AMT*t.r)}</small></td>`;
- if(t.x){const [d2,t2]=when(t.x.t),held=(t.x.t-c.t)/86400;rows.push(`<tr><td>${d2}<br><small>${t2}</small></td><td><span class="tg s">SELL</span></td><td>${fmt(t.x.price)}<br><small>${qf(AMT/c.entry)} ${esc(g.sym)} → $${(AMT*(1+t.r)).toFixed(2)}</small></td>${res}</tr><tr><td colspan=4 class=why>↳ Sell signal: ${esc(t.x.why)} · held ${held<1?Math.round(held*24)+"h":held.toFixed(0)+"d"}${c.tmax?` · best ${((c.tmax/c.entry-1)*100).toFixed(0)}%`:""}${c.sell_verdict?` · 7d later ${c.after_sell>=0?"+":""}${c.after_sell}% (${esc(c.sell_verdict)})`:""}</td></tr>`)}
- else rows.push(`<tr><td><small>now</small></td><td><span class="tg o">OPEN</span></td><td>${fmt(t.exit)}<br><small>worth $${(AMT*(1+t.r)).toFixed(2)}</small></td>${res}</tr><tr><td colspan=4 class=why>↳ Waiting for a sell signal (sell zone, TRIM/SELL, stop-loss or take-profit target)</td></tr>`)});
-w.innerHTML=`<div class=ch>${logoHTML(g.sym,(D.logos||{})[(g.calls[0]||{}).cg_id]||(tk[g.sym]||{}).logo)}<div><b>${g.star&&!g.found?"⭐ ":""}${esc(g.sym)}</b> <small>${esc(g.name||"")}</small><br><small>${T.length} trade${T.length==1?"":"s"}${nopen?" · "+nopen+" open":""} <span class=chev>▾</span></small></div><div class=pl style="color:${pl>=0?"var(--up)":"var(--dn)"}">${money(pl)}<small>${(pl/(AMT*T.length)*100).toFixed(1)}%</small></div></div>
-<div class=tbody><table class=calls><tr><th>When</th><th>Signal</th><th>Price · amount</th><th style="text-align:right">Gain/loss</th></tr>${rows.join("")}</table>
+const w=el("div","coin");const qf=q=>q>=1000?Math.round(q).toLocaleString():q>=1?q.toFixed(2):Number(q.toPrecision(3));
+// each trade is its own expandable block: tap the summary line to see the full buy/sell detail
+const blocks=T.slice().sort((a,b)=>b.c.t-a.c.t).map(t=>{const c=t.c,[d1,t1]=when(c.t),pm=c.postmortem,col=t.r>=0?"var(--up)":"var(--dn)";
+ const status=t.x?(t.r>0?"WIN":"LOSS"):"OPEN",sbg=status=="WIN"?"tg b":status=="LOSS"?"tg s":"tg o";
+ const sum=`<summary class=trsum><span class="tg2 ${sbg}">${status}</span><span class=trwhen>${d1} → ${t.x?when(t.x.t)[0]:"now"}</span><span class=trres style="color:${col}">${t.r>=0?"+":""}${(t.r*100).toFixed(1)}%<small> ${money(AMT*t.r)}</small></span></summary>`;
+ const buyrow=`<tr><td>${d1}<br><small>${t1}</small></td><td><span class="tg b">BUY</span></td><td>${fmt(c.entry)}<br><small>$${AMT.toFixed(2)} → ${qf(AMT/c.entry)} ${esc(g.sym)}</small></td><td class=res>${c.outcome?`<small style="color:${c.outcome=="win"?"var(--up)":c.outcome=="loss"?"var(--dn)":"var(--mut)"};font-weight:700">${OUT[c.outcome]}</small>`:""}</td></tr>
+ <tr><td colspan=4 class=why>↳ ${esc(c.signal||"Buy call")}${c.score?" · score "+c.score:""}${c.source=="discovery"?" · found by scanner":""}${c.buy_zone?` · buy zone ${fmt(c.buy_zone.low)}–${fmt(c.buy_zone.high)}`:""}${(c.plan||{}).stop?` · stop ${fmt(c.plan.stop)}`:""}${(c.plan||{}).target?` · target ${fmt(c.plan.target)}`:""}${pm?`<br>📉 Post-mortem: ${pm.signs.length?pm.signs.map(esc).join("; "):"no obvious warning signs"}${pm.btc_chg!=null?` (BTC ${pm.btc_chg.toFixed(1)}%)`:""}`:""}</td></tr>`;
+ const res=`<td class=res style="color:${col}">${t.r>=0?"+":""}${(t.r*100).toFixed(1)}%<br><small style="color:${col}">${money(AMT*t.r)}</small></td>`;
+ let sellrow;if(t.x){const [d2,t2]=when(t.x.t),held=(t.x.t-c.t)/86400;sellrow=`<tr><td>${d2}<br><small>${t2}</small></td><td><span class="tg s">SELL</span></td><td>${fmt(t.x.price)}<br><small>${qf(AMT/c.entry)} ${esc(g.sym)} → $${(AMT*(1+t.r)).toFixed(2)}</small></td>${res}</tr><tr><td colspan=4 class=why>↳ Sell signal: ${esc(t.x.why)} · held ${held<1?Math.round(held*24)+"h":held.toFixed(0)+"d"}${c.tmax?` · best ${((c.tmax/c.entry-1)*100).toFixed(0)}%`:""}${c.sell_verdict?` · 7d later ${c.after_sell>=0?"+":""}${c.after_sell}% (${esc(c.sell_verdict)})`:""}</td></tr>`;}
+ else sellrow=`<tr><td><small>now</small></td><td><span class="tg o">OPEN</span></td><td>${fmt(t.exit)}<br><small>worth $${(AMT*(1+t.r)).toFixed(2)}</small></td>${res}</tr><tr><td colspan=4 class=why>↳ Waiting for a sell signal (sell zone, TRIM/SELL, stop-loss or take-profit target)</td></tr>`;
+ return `<details class=trade${HID.has(idOf(c))?' hid':''}>${sum}<div class=trbody><table class=calls>${buyrow}${sellrow}</table><div class=acts2><button class=mini2 data-a=hide data-id="${idOf(c)}" data-sym="${esc(g.sym)}">${HID.has(idOf(c))?"Unhide":"Hide"}</button><button class="mini2 del" data-a=del data-id="${idOf(c)}" data-sym="${esc(g.sym)}">Delete this trade</button></div></div></details>`}).join("");
+w.innerHTML=`<div class=ch>${logoHTML(g.sym,(D.logos||{})[(g.calls[0]||{}).cg_id]||(tk[g.sym]||{}).logo)}<div><b>${g.star&&!g.found?"⭐ ":""}${esc(g.sym)}</b> <small>${esc(g.name||"")}</small><br><small>${T.length} trade${T.length==1?"":"s"}${nopen?" · "+nopen+" open":""} · tap to open <span class=chev>▾</span></small></div><div class=pl style="color:${pl>=0?"var(--up)":"var(--dn)"}">${money(pl)}<small>${(pl/(AMT*T.length)*100).toFixed(1)}%</small></div></div>
+<div class=tbody>${blocks}
 ${Lk.contract?`<div class=addr style="margin-top:8px"><span class=ch>${esc((Lk.chain||"").replace(/-/g," "))}</span><code>${esc(Lk.contract)}</code><button class=copy data-a="${esc(Lk.contract)}">Copy</button></div>`:""}
 <div class=links><a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+encodeURIComponent(g.sym))}"><i style="background:#8DC63F"></i>CoinGecko</a><a class=lbtn target=_blank rel=noopener href="${esc(Lk.dexscreener||"https://dexscreener.com/search?q="+encodeURIComponent(g.sym))}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a></div></div>`;
 w.querySelector(".ch").onclick=()=>{w.classList.toggle("open");OPENC.has(g.sym)?OPENC.delete(g.sym):OPENC.add(g.sym)};if(OPENC.has(g.sym))w.classList.add("open");w.querySelectorAll("button.mini2").forEach(b=>b.onclick=act);w.querySelectorAll("button.copy").forEach(bt=>bt.onclick=e=>{e.stopPropagation();copy(bt.dataset.a)});L.append(w)})}

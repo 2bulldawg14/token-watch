@@ -128,6 +128,20 @@ Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in 
 - `usd()` shortens dollar amounts ($9.2M).
 - Always use them in Telegram text.
 
+**Trade grading (learning from real results):**
+- `track_trades()` pairs each buy call with the first sell after it. It stores `exit` and `ret` (realized %), `held_days`, and `tmax`/`tmin` while the trade is open.
+- Seven days after the sell it stores `after_sell` and `sell_verdict` (sold early / good sell / fine).
+- `grade()`: a closed trade is a win above +3% and a loss below −3%. A trade still open after 14 days is graded at today's price.
+- Rules and weight tuning use `gret`.
+- Sell kinds are zone, signal, stop and target. If zone or signal sells are "sold early" at least half the time (5 or more reviewed, avg move after the sell above +8%), they go into `LEARN.sell_soft`. After that, a zone sell also needs RSI above 70, and a signal sell needs SELL, not TRIM.
+- A trade also closes when price hits the take-profit `target` from the plan recorded with the call.
+- Telegram sends the trade result at close, a 7-day "SELL REVIEW", and post-mortems that mention gains given back.
+- The dashboard trade rows show When / Signal / Price · amount ($X → N coins, and N coins → $Y) / Gain/loss.
+
+**Instant adds:**
+- Form adds (`_form_added`) and Telegram adds made before listening starts are analyzed first, then merged into the live page with `quick_publish()`, which edits the `docs/index.html` data and pushes.
+- The page shows a "⏳ analysis in progress" card (kept in localStorage) and polls every 20 seconds until the coin appears.
+
 **Tickers vs names:**
 - `resolve_id()` matches the ticker first, then falls back to the coin's name or id (CHAINLINK→LINK, CANTON→CC, AKASH→AKT).
 - `fix_names()` rewrites names David added by name to real tickers and tells him on Telegram.

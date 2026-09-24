@@ -710,7 +710,7 @@ def report_text(calls):
     out = []
     for title, grp in (("⭐ YOUR COINS", mine), ("🔎 COINS THE SCANNER FOUND", found)):
         out.append(title + "\n" + (report_block(grp) if grp else "No calls yet."))
-    return "\n\n".join(out) + ("\n\n" + lessons_text() if LEARN.get("graded") else "")
+    return "\n\n".join(out) + ("\n\n" + lessons_text() if LEARN.get("graded") or (LEARN.get("scorecard") or {}).get("closed") else "")
 
 def report_block(calls):
     rs = [ret(c) for c in calls]; wins = sum(1 for x in rs if x > 0)
@@ -888,14 +888,19 @@ def sell_check(res, state, sym, source, cg_id, dd, calls):
     """Log a sell signal when the signal turns TRIM/SELL, the price enters the sell zone, or it drops below the stop."""
     st = state.setdefault("_sellst", {}).setdefault(sym, {})
     first = not st.get("seen"); st["seen"] = True
-    bad = res["signal"] in ("TRIM", "SELL / AVOID", "AVOID (SCAM RISK)")
-    ins = bool(res.get("in_sell")); stop = (res.get("plan") or {}).get("stop"); below = bool(stop and res["price"] < stop)
+    soft = LEARN.get("sell_soft", [])
+    bad = res["signal"] in (("SELL / AVOID", "AVOID (SCAM RISK)") if "signal" in soft else ("TRIM", "SELL / AVOID", "AVOID (SCAM RISK)"))
+    ins = bool(res.get("in_sell")) and ("zone" not in soft or (res.get("rsi") or 0) > 70)
+    stop = (res.get("plan") or {}).get("stop"); below = bool(stop and res["price"] < stop)
+    oc0 = open_call(sym, calls); tgt = ((oc0 or {}).get("plan") or {}).get("target")
+    hit_t = bool(tgt and res["price"] >= tgt)
     why = []
     if not first:
         if bad and not st.get("bad"): why.append(f"Signal turned {res['signal']}")
         if ins and not st.get("in_sell"): why.append(f"Entered sell zone {z(res['sell_zone'])}" + (f" · RSI {res['rsi']:.0f}" if res.get("rsi") else ""))
         if below and not st.get("below"): why.append(f"Fell below stop-loss {px(stop)}")
-    st.update(bad=bad, in_sell=ins, below=below)
+        if hit_t and not st.get("hit_t") and oc0: why.append(f"Hit the take-profit target {px(tgt)}")
+    st.update(bad=bad, in_sell=ins, below=below, hit_t=hit_t)
     if not why: return
     oc = open_call(sym, calls)
     ev = {"symbol": sym, "cg_id": cg_id, "t": int(now()), "date": iso(), "price": res["price"], "why": " · ".join(why),
@@ -903,8 +908,10 @@ def sell_check(res, state, sym, source, cg_id, dd, calls):
     SELLS.append(ev)
     if oc:                                               # a buy call is open: tell you how that trade turned out
         r = (res["price"] / oc["entry"] - 1) * 100
-        send(f"📉 SELL SIGNAL {sym}: {ev['why']}\nClosing the buy call from {datetime.fromtimestamp(oc['t'], timezone.utc):%b %d} at {px(oc['entry'])} "
-             f"→ {px(res['price'])} = {r:+.1f}%\n" + links_text(res, dd), "token", sym)
+        best = (max(oc.get("tmax", oc["entry"]), res["price"]) / oc["entry"] - 1) * 100
+        send(f"{'✅' if r > 0 else '📉'} SELL SIGNAL {sym}: {ev['why']}\nTrade closed: bought {datetime.fromtimestamp(oc['t'], timezone.utc):%b %d} at {px(oc['entry'])} → sold at {px(res['price'])} = "
+             f"{r:+.1f}% ({'profit' if r > 0 else 'loss'}) after {(now() - oc['t']) / DAY:.0f} days. Best point during the trade: {best:+.0f}%.\n"
+             "I'll check in 7 days whether selling here was well timed.\n" + links_text(res, dd), "token", sym)
 
 def check_token(tok, cache, state, calls, source="watchlist", grade=None):
     sym = tok["symbol"]; print(f"\n{sym} ...")
@@ -1026,16 +1033,49 @@ def learned_adjust(f):
     why = [f"Learned from past calls ({pts:+.0f} pts): " + "; ".join(f"{r['text'].split(' - ')[0]} won {r['wins']}/{r['n']}" for r in hits[:3])]
     return pts, why, block
 
+def trade_exit(c):
+    """The first sell signal for this coin after the buy call closes that trade."""
+    xs = [e for e in SELLS if e["symbol"] == c["symbol"] and e["t"] > c["t"]]
+    return min(xs, key=lambda e: e["t"]) if xs else None
+
+def sell_kind(why):
+    w = (why or "").lower()
+    return "stop" if "stop-loss" in w else "target" if "take-profit" in w else "zone" if "sell zone" in w else "signal" if "signal turned" in w else "other"
+SELL_KIND_TEXT = {"zone": "entered the sell zone", "signal": "signal turned TRIM/SELL", "stop": "fell below the stop-loss",
+                  "target": "hit the take-profit target", "other": "other"}
+
+def track_trades(calls):
+    """Close each buy call at its sell signal: realized result, days held, best/worst while open, and what price did after the sell."""
+    for c in calls:
+        x = trade_exit(c); last = c.get("last") or c["entry"]
+        if x:
+            if not c.get("exit"):
+                c["exit"] = {"t": x["t"], "date": x.get("date"), "price": x["price"], "why": x["why"], "kind": sell_kind(x["why"])}
+                c["ret"] = round((x["price"] / c["entry"] - 1) * 100, 2); c["held_days"] = round((x["t"] - c["t"]) / DAY, 1)
+                c["tmax"] = max(c.get("tmax", c["entry"]), x["price"]); c["tmin"] = min(c.get("tmin", c["entry"]), x["price"])
+            if "after_sell" not in c and now() - x["t"] >= 7 * DAY:        # did selling help? (price 7 days later vs sell price)
+                a_ = round((last / x["price"] - 1) * 100, 1); c["after_sell"] = a_
+                c["sell_verdict"] = "sold early" if a_ > 10 else "good sell" if a_ < -10 else "fine"
+        else:
+            c["tmax"] = max(c.get("tmax", c["entry"]), last); c["tmin"] = min(c.get("tmin", c["entry"]), last)
+            c["ret_open"] = round((last / c["entry"] - 1) * 100, 2)
+
 def grade(c):
-    r7 = (c.get("checkpoints") or {}).get("7")
-    if r7 is None: return None
-    dd = (c["min"] / c["entry"] - 1) * 100
-    return "loss" if r7 < -5 or (dd < -15 and r7 < 0) else "win" if r7 > 5 else "flat"
+    """Closed trades are graded on their real result (buy price -> sell price); trades still open after 14 days on today's price."""
+    if c.get("exit"):
+        r = c["ret"]; c["gbasis"] = "closed"
+        g = "win" if r > 3 else "loss" if r < -3 else "flat"
+    elif now() - c["t"] >= 14 * DAY:
+        r = c.get("ret_open", 0); dd = (c.get("tmin", c["entry"]) / c["entry"] - 1) * 100; c["gbasis"] = "open 14d"
+        g = "loss" if r < -5 or (dd < -15 and r < 0) else "win" if r > 5 else "flat"
+    else: return None
+    c["gret"] = r; return g
 
 def learn(calls, state):
     """Grade finished calls, write post-mortems for losers, rebuild the learned rules and weights."""
     lc = CFG.get("learning") or {}
     if not lc.get("enabled", True): LEARN.clear(); return
+    track_trades(calls)
     fresh = []
     for c in calls:
         if not c.get("feat") or c.get("outcome"): continue
@@ -1045,15 +1085,19 @@ def learn(calls, state):
         if g == "loss":
             f = c["feat"]; signs = [d for k, t, d in WARN_SIGNS if k != "found_coin" and t(f)]
             btc_now = LIVE.get("bitcoin"); btc_chg = (btc_now / f["btc"] - 1) * 100 if btc_now and f.get("btc") else None
-            c["postmortem"] = {"signs": signs, "btc_chg": btc_chg, "r7": c["checkpoints"]["7"], "dd": (c["min"] / c["entry"] - 1) * 100}
-    graded = [c for c in calls if c.get("outcome") and c.get("feat")]
+            best = (c.get("tmax", c["entry"]) / c["entry"] - 1) * 100
+            c["postmortem"] = {"signs": signs, "btc_chg": btc_chg, "r7": c["gret"], "dd": (c.get("tmin", c["min"]) / c["entry"] - 1) * 100,
+                               "best": best, "basis": c["gbasis"], "gave_back": best >= 10}
+    for c in calls:                                          # older graded calls: result = 7-day return
+        if c.get("outcome") and "gret" not in c and "7" in (c.get("checkpoints") or {}): c["gret"] = c["checkpoints"]["7"]
+    graded = [c for c in calls if c.get("outcome") and c.get("feat") and c.get("gret") is not None]
     n_min = lc.get("min_examples", 5)
     # 1) rules from warning signs
     rules = []
     for k, t, d in WARN_SIGNS:
         hit = [c for c in graded if t(c["feat"])]
         if len(hit) < n_min: continue
-        rets = [c["checkpoints"]["7"] for c in hit]; wins = sum(c["outcome"] == "win" for c in hit)
+        rets = [c["gret"] for c in hit]; wins = sum(c["outcome"] == "win" for c in hit)
         wr, avg = wins / len(hit), sum(rets) / len(rets)
         if wr <= 0.35 and avg < 0:
             pts = -min(12, 4 + (0.35 - wr) * 30 + min(4, -avg / 3))
@@ -1064,33 +1108,71 @@ def learn(calls, state):
     # 2) weight tuning: does each signal group's score at entry line up with the 7-day return?
     mult = {}
     for part in DEFAULT_W:
-        xs = [(c["feat"]["parts"].get(part), c["checkpoints"]["7"]) for c in graded if (c["feat"].get("parts") or {}).get(part) is not None]
+        xs = [(c["feat"]["parts"].get(part), c["gret"]) for c in graded if (c["feat"].get("parts") or {}).get(part) is not None]
         if len(xs) < lc.get("min_examples_weights", 10): continue
         mx, my = sum(x for x, _ in xs) / len(xs), sum(y for _, y in xs) / len(xs)
         sx = sum((x - mx) ** 2 for x, _ in xs) ** .5; sy = sum((y - my) ** 2 for _, y in xs) ** .5
         corr = sum((x - mx) * (y - my) for x, y in xs) / (sx * sy) if sx and sy else 0
         mult[part] = round(max(0.6, min(1.4, 1 + corr * 0.6)), 2)
-    old = LEARN.get("rules", [])
-    LEARN.clear(); LEARN.update({"rules": rules, "mult": mult, "graded": len(graded), "t": iso(),
+    # 3) closed-trade scorecard + sell review: were the sells well timed?
+    closed = [c for c in calls if c.get("exit")]
+    sc = {"closed": len(closed), "wins": sum(c["ret"] > 0 for c in closed),
+          "avg": round(sum(c["ret"] for c in closed) / len(closed), 2) if closed else None,
+          "held": round(sum(c["held_days"] for c in closed) / len(closed), 1) if closed else None,
+          "gave_back": sum((c["tmax"] / c["entry"] - 1) * 100 >= 10 and c["ret"] < 2 for c in closed)}
+    sells, soft = {}, []
+    for c in closed:
+        k = c["exit"]["kind"]; e = sells.setdefault(k, {"n": 0, "reviewed": 0, "early": 0, "good": 0, "after": 0.0, "ret": 0.0, "text": SELL_KIND_TEXT.get(k, k)})
+        e["n"] += 1; e["ret"] += c["ret"]
+        if "after_sell" in c:
+            e["reviewed"] += 1; e["after"] += c["after_sell"]; e["early"] += c["sell_verdict"] == "sold early"; e["good"] += c["sell_verdict"] == "good sell"
+    for k, e in sells.items():
+        e["ret"] = round(e["ret"] / e["n"], 2); e["after"] = round(e["after"] / e["reviewed"], 1) if e["reviewed"] else None
+        if k in ("zone", "signal") and e["reviewed"] >= n_min and e["after"] > 8 and e["early"] / e["reviewed"] >= 0.5: soft.append(k)   # these sells keep coming too early
+    old = LEARN.get("rules", []); old_soft = LEARN.get("sell_soft", [])
+    LEARN.clear(); LEARN.update({"rules": rules, "mult": mult, "graded": len(graded), "t": iso(), "scorecard": sc, "sells": sells, "sell_soft": soft,
                                  "wins": sum(c["outcome"] == "win" for c in graded), "losses": sum(c["outcome"] == "loss" for c in graded)})
+    for k in soft:
+        if k not in old_soft:
+            send(f"🧠 Sell review: exits when the coin {SELL_KIND_TEXT[k]} were usually too early - price rose {sells[k]['after']:+.0f}% on average in the 7 days after "
+                 f"({sells[k]['early']}/{sells[k]['reviewed']} trades). From now on that alone won't close a trade: "
+                 + ("it also needs RSI above 70." if k == "zone" else "the signal must fall to SELL, not just TRIM."), "report")
+    for c in calls:                                          # one-time note when a sell gets its 7-day review
+        if "after_sell" in c and not c.get("sell_reviewed"):
+            c["sell_reviewed"] = True
+            send(f"🔍 SELL REVIEW {c['symbol']}: sold {c['exit']['date'][:10] if c['exit'].get('date') else ''} at {px(c['exit']['price'])} "
+                 f"({c['ret']:+.1f}% on the trade). 7 days later it's {c['after_sell']:+.1f}% from there - {c['sell_verdict']}.", "report", c["symbol"])
     save("learning.json", LEARN)
     new_rules = [r for r in rules if r["key"] not in {o["key"] for o in old}]
     for c in fresh:
         if c["outcome"] != "loss": continue
         pm = c["postmortem"]
         msg = (f"📉 POST-MORTEM {c['symbol']} ({'found by scanner' if c.get('source') == 'discovery' else 'your coin'})\n"
-               f"Buy call {c['date'][:10]} at {px(c['entry'])} is {pm['r7']:+.1f}% after 7 days (worst {pm['dd']:+.0f}%).\n"
+               + (f"Buy call {c['date'][:10]} at {px(c['entry'])} closed at the sell signal ({c['exit']['why']}) after {c['held_days']:.0f} days: {pm['r7']:+.1f}%." if pm.get("basis") == "closed"
+                  else f"Buy call {c['date'][:10]} at {px(c['entry'])} is still open after 14 days: {pm['r7']:+.1f}%.")
+               + (f" It was up {pm['best']:+.0f}% at best - the gain was given back, so the exit came too late." if pm.get("gave_back") else f" Worst point {pm['dd']:+.0f}%.") + "\n"
                + ("Warning signs that were already there:\n" + "\n".join("• " + s for s in pm["signs"]) if pm["signs"] else "No obvious warning signs at entry - likely news or market-driven.")
                + (f"\nBitcoin moved {pm['btc_chg']:+.1f}% over the same time" + (" - the whole market fell, which the model can't fully avoid." if pm["btc_chg"] < -8 else ".") if pm["btc_chg"] is not None else ""))
         send(msg, "report", c["symbol"])
     if new_rules:
         send("🧠 The model learned from its past calls:\n" + "\n".join(f"• {r['text']}: {r['wins']}/{r['n']} won, avg {r['avg']:+.1f}% → {r['points']:+.0f} pts" + (" and no more buy calls when this shows up" if r["block"] else "") for r in new_rules), "report")
 
+def lessons_text_sc():
+    L_ = dict(LEARN); sc = L_.get("scorecard") or {}
+    return (f"Closed trades: {sc['closed']}, {sc['wins']} profitable, avg {sc['avg']:+.1f}%. Not enough graded trades yet to change the model.")
+
 def lessons_text():
-    if not LEARN.get("graded"): return "No graded calls yet. Each buy call is graded 7 days after it's made; the model starts adjusting after 5 similar examples."
+    if not LEARN.get("graded") and not (LEARN.get("scorecard") or {}).get("closed"): return "No graded trades yet. A trade is graded when a sell signal closes it (or after 14 days if still open); the model starts adjusting after 5 similar examples."
+    if not LEARN.get("graded"): return lessons_text_sc()
     s = f"🧠 Learned from {LEARN['graded']} graded calls ({LEARN['wins']} wins, {LEARN['losses']} losses):"
     s += "".join(f"\n• {r['text']}: {r['wins']}/{r['n']} won, avg {r['avg']:+.1f}% → {r['points']:+.0f} pts" + (" (blocks buy calls)" if r["block"] else "") for r in LEARN.get("rules", [])) or "\nNo rules yet - no warning sign has lost often enough to act on."
     if LEARN.get("mult"): s += "\nWeight tuning: " + ", ".join(f"{k} ×{v}" for k, v in LEARN["mult"].items())
+    sc = LEARN.get("scorecard") or {}
+    if sc.get("closed"):
+        s += (f"\n\nClosed trades: {sc['closed']}, {sc['wins']} profitable ({sc['wins']/sc['closed']*100:.0f}%), avg {sc['avg']:+.1f}%, held {sc['held']:.0f} days on average"
+              + (f", {sc['gave_back']} gave back a 10%+ gain" if sc["gave_back"] else ""))
+        for k, e in (LEARN.get("sells") or {}).items():
+            s += f"\n• Sells when it {e['text']}: {e['n']} trades, avg {e['ret']:+.1f}%" + (f"; price moved {e['after']:+.1f}% in the 7 days after ({e['early']} sold early, {e['good']} good sells)" if e.get("after") is not None else "")
     return s
 
 # ================================================================ followed wallets ("smart money")
@@ -1398,9 +1480,20 @@ def export(results, calls, full=True):
         k_ = r.get("cg_id") or r["res"]["symbol"]
         if k_ in ids_: continue
         ids_.add(k_)
+        out["tokens"].append(token_entry(r))
+    out["macro"] = {"score": MACRO.get("score"), "why": MACRO.get("why", [])}
+    out["wallets"] = wallets_export()
+    out["coins"] = REG
+    out["sells"] = [e for e in SELLS if now() - e["t"] < 120 * DAY]
+    out["learning"] = {"rules": LEARN.get("rules", []), "mult": LEARN.get("mult", {}), "graded": LEARN.get("graded", 0),
+                       "wins": LEARN.get("wins", 0), "losses": LEARN.get("losses", 0), "scorecard": LEARN.get("scorecard"), "sells": LEARN.get("sells"), "sell_soft": LEARN.get("sell_soft", [])}
+    if full: save("export.json", out)
+    write_dashboard(out)
+
+def token_entry(r):
         res, dd = r["res"], r["dd"] or {}
         pr = res["buy_ratio"]
-        out["tokens"].append({
+        return ({
             "symbol": res["symbol"], "name": (dd.get("facts") or {}).get("name") or "", "source": r["source"],
             "price": res["price"], "prices": "\n".join(f"{x:.8g}" for x in r["closes"]),
             "signal": res["signal"], "score": res["score"], "buy_zone": res["buy_zone"], "sell_zone": res["sell_zone"],
@@ -1412,18 +1505,11 @@ def export(results, calls, full=True):
             "links": token_links(res["symbol"], r.get("cg_id"), dd), "fdv": (dd.get("facts") or {}).get("fdv"),
             "volume_24h": (dd.get("facts") or {}).get("volume"), "is_buy": bool(is_buy(res)), "starred": False,
             "chart": {"c": [round(x, 10) for x in r["closes"]], "v": [round(x) for x in (r.get("vols") or [])]}})
-    out["macro"] = {"score": MACRO.get("score"), "why": MACRO.get("why", [])}
-    out["wallets"] = wallets_export()
-    out["coins"] = REG
-    out["sells"] = [e for e in SELLS if now() - e["t"] < 120 * DAY]
-    out["learning"] = {"rules": LEARN.get("rules", []), "mult": LEARN.get("mult", {}), "graded": LEARN.get("graded", 0),
-                       "wins": LEARN.get("wins", 0), "losses": LEARN.get("losses", 0)}
-    if full: save("export.json", out)
-    write_dashboard(out)
 
 def write_dashboard(out):
     """Phone-friendly dashboard with charts. Also published to docs/ so GitHub Pages can host it as a home-screen app."""
     data = dict(out); data["starred"] = sorted(PREFS.get("starred", []))
+    data["tokens"] = [{k: v for k, v in t.items() if k != "prices"} for t in out["tokens"]]
     data["repo"] = os.environ.get("GITHUB_REPOSITORY", "")
     tok, _ = tg_creds()
     if tok and not DEMO:
@@ -1539,6 +1625,7 @@ tr:last-child td{border:0}
 <button class="abtn" id=addbtn>Add</button><button class="abtn alt" id=addstar>Add ⭐</button></div><div class=addnote id=addnote></div></div>
 <div id=macro></div>
 <div class=tabs id=tabs></div>
+<div id=pending></div>
 <div id=list></div>
 <h2>Wallets you follow</h2><div id=wallets></div>
 <h2>Coin directory</h2><div id=coindir></div>
@@ -1589,8 +1676,15 @@ const formURL=D.repo?`https://github.com/${D.repo}/actions/workflows/add-coin.ym
 const mobile=/iPhone|iPad|Android|Mobile/i.test(navigator.userAgent);
 $("#addnote").innerHTML=mobile&&D.bot?"Opens your Telegram bot — tap <b>Start</b>. It's checked right away and shows here in a few minutes.":
  "Opens a short GitHub form: click <b>Run workflow</b>, check the ticker, click the green <b>Run workflow</b>. It shows here in about 3–5 minutes."+(D.bot?` On your phone this goes through Telegram instead.`:"");
+const PK="tw_pending",getP=()=>{try{return JSON.parse(localStorage.getItem(PK)||"[]")}catch(e){return[]}},setP=v=>{try{localStorage.setItem(PK,JSON.stringify(v))}catch(e){}};
+const have=new Set(D.tokens.map(t=>t.symbol));let PEND=getP().filter(p=>!have.has(p.sym)&&Date.now()-p.t<25*60000);setP(PEND);
+function showPending(){const box=$("#pending");if(!box)return;box.innerHTML="";PEND.forEach(p=>{const m=Math.max(0,Math.round((Date.now()-p.t)/60000));
+box.append(el("div","tok",`<div class=row style="grid-template-columns:38px 1fr"><div class=logo style="background:var(--card2);color:var(--mut)">⏳</div><div class=nm><b>${esc(p.sym)}</b><div class=sub style="white-space:normal">Analysis in progress… added ${m<1?"just now":m+" min ago"}. It appears here automatically — usually within 1–3 minutes${p.via=="form"?" after you click Run workflow on GitHub":""}.</div></div></div>`))})}
+async function pollPending(){if(!PEND.length)return;try{const h=await (await fetch(location.pathname+"?t="+Date.now(),{cache:"no-store"})).text();
+if(PEND.some(p=>h.includes(`"symbol":"${p.sym}"`)))location.reload()}catch(e){}showPending()}
+setInterval(pollPending,20000);
 function addCoin(star){const v=$("#addin").value.trim().toUpperCase().replace(/^\$/,"");if(!/^[A-Z0-9]{1,20}$/.test(v)){$("#addin").focus();return}
-const cmd=(star?"/star ":"/add ")+v;try{navigator.clipboard&&navigator.clipboard.writeText(mobile?cmd:v)}catch(e){}
+const cmd=(star?"/star ":"/add ")+v;PEND=PEND.filter(p=>p.sym!=v).concat([{sym:v,t:Date.now(),via:mobile&&D.bot?"tg":"form"}]);setP(PEND);setTimeout(showPending,50);try{navigator.clipboard&&navigator.clipboard.writeText(mobile?cmd:v).catch(()=>{})}catch(e){}
 if(mobile&&D.bot){window.open(botURL(star?"STAR":"ADD",v),"_blank");$("#addnote").innerHTML=`Telegram opened — tap <b>Start</b>. If nothing was sent, paste <b>${cmd}</b> (already copied) into your bot.`}
 else if(formURL){window.open(formURL,"_blank");$("#addnote").innerHTML=`On the GitHub page: click <b>Run workflow</b> → paste <b>${v}</b> (already copied)${star?" and tick <b>Star it</b>":""} → click the green <b>Run workflow</b>. ${v} shows here in about 3–5 minutes (refresh the page).`}
 else $("#addnote").innerHTML=`Send <b>${cmd}</b> to your Telegram bot.`;$("#addin").value=""}
@@ -1724,13 +1818,14 @@ if(!list.length){L.append(el("p","mut","No buy calls here yet. Every buy call an
 list.forEach(g=>{const T=trades(g);let pl=0;T.forEach(t=>pl+=AMT*t.r);const nopen=T.filter(t=>!t.x).length,Lk=g.links||{};
 const w=el("div","coin");const rows=[];
 T.forEach(t=>{const c=t.c,[d1,t1]=when(c.t),pm=c.postmortem;
- rows.push(`<tr><td>${d1}</td><td>${t1}</td><td><span class="tg b">BUY</span></td><td>${fmt(c.entry)}</td><td class=res>${c.outcome?`<small style="color:${c.outcome=="win"?"var(--up)":c.outcome=="loss"?"var(--dn)":"var(--mut)"};font-weight:700">${OUT[c.outcome]} at 7d</small>`:""}</td></tr>
- <tr><td colspan=5 class=why>↳ ${esc(c.signal||"Buy call")}${c.score?" · score "+c.score:""}${c.source=="discovery"?" · found by scanner":""}${c.buy_zone?` · buy zone ${fmt(c.buy_zone.low)}–${fmt(c.buy_zone.high)}`:""}${(c.plan||{}).stop?` · stop ${fmt(c.plan.stop)}`:""}${pm?`<br>📉 Post-mortem: ${pm.signs.length?pm.signs.map(esc).join("; "):"no obvious warning signs"}${pm.btc_chg!=null?` (BTC ${pm.btc_chg.toFixed(1)}%)`:""}`:""}</td></tr>`);
+ const qty=AMT/c.entry,qf=q=>q>=1000?Math.round(q).toLocaleString():q>=1?q.toFixed(2):Number(q.toPrecision(3));
+ rows.push(`<tr><td>${d1}<br><small>${t1}</small></td><td><span class="tg b">BUY</span></td><td>${fmt(c.entry)}<br><small>$${AMT.toFixed(2)} → ${qf(qty)} ${esc(g.sym)}</small></td><td class=res>${c.outcome?`<small style="color:${c.outcome=="win"?"var(--up)":c.outcome=="loss"?"var(--dn)":"var(--mut)"};font-weight:700">${OUT[c.outcome]}</small>`:""}</td></tr>
+ <tr><td colspan=4 class=why>↳ ${esc(c.signal||"Buy call")}${c.score?" · score "+c.score:""}${c.source=="discovery"?" · found by scanner":""}${c.buy_zone?` · buy zone ${fmt(c.buy_zone.low)}–${fmt(c.buy_zone.high)}`:""}${(c.plan||{}).stop?` · stop ${fmt(c.plan.stop)}`:""}${pm?`<br>📉 Post-mortem: ${pm.signs.length?pm.signs.map(esc).join("; "):"no obvious warning signs"}${pm.btc_chg!=null?` (BTC ${pm.btc_chg.toFixed(1)}%)`:""}`:""}</td></tr>`);
  const col=t.r>=0?"var(--up)":"var(--dn)",res=`<td class=res style="color:${col}">${t.r>=0?"+":""}${(t.r*100).toFixed(1)}%<br><small style="color:${col}">${money(AMT*t.r)}</small></td>`;
- if(t.x){const [d2,t2]=when(t.x.t);rows.push(`<tr><td>${d2}</td><td>${t2}</td><td><span class="tg s">SELL</span></td><td>${fmt(t.x.price)}</td>${res}</tr><tr><td colspan=5 class=why>↳ ${esc(t.x.why)}</td></tr>`)}
- else rows.push(`<tr><td colspan=2><small>now</small></td><td><span class="tg o">OPEN</span></td><td>${fmt(t.exit)}</td>${res}</tr>`)});
+ if(t.x){const [d2,t2]=when(t.x.t),held=(t.x.t-c.t)/86400;rows.push(`<tr><td>${d2}<br><small>${t2}</small></td><td><span class="tg s">SELL</span></td><td>${fmt(t.x.price)}<br><small>${qf(AMT/c.entry)} ${esc(g.sym)} → $${(AMT*(1+t.r)).toFixed(2)}</small></td>${res}</tr><tr><td colspan=4 class=why>↳ Sell signal: ${esc(t.x.why)} · held ${held<1?Math.round(held*24)+"h":held.toFixed(0)+"d"}${c.tmax?` · best ${((c.tmax/c.entry-1)*100).toFixed(0)}%`:""}${c.sell_verdict?` · 7d later ${c.after_sell>=0?"+":""}${c.after_sell}% (${esc(c.sell_verdict)})`:""}</td></tr>`)}
+ else rows.push(`<tr><td><small>now</small></td><td><span class="tg o">OPEN</span></td><td>${fmt(t.exit)}<br><small>worth $${(AMT*(1+t.r)).toFixed(2)}</small></td>${res}</tr><tr><td colspan=4 class=why>↳ Waiting for a sell signal (sell zone, TRIM/SELL, stop-loss or take-profit target)</td></tr>`)});
 w.innerHTML=`<div class=ch><div class=logo style="background:hsl(${hue(g.sym)} 55% 42%)">${esc(g.sym.slice(0,4))}</div><div><b>${g.star&&!g.found?"⭐ ":""}${esc(g.sym)}</b> <small>${esc(g.name||"")}</small><br><small>${T.length} trade${T.length==1?"":"s"}${nopen?" · "+nopen+" open":""} <span class=chev>▾</span></small></div><div class=pl style="color:${pl>=0?"var(--up)":"var(--dn)"}">${money(pl)}<small>${(pl/(AMT*T.length)*100).toFixed(1)}%</small></div></div>
-<div class=tbody><table class=calls><tr><th>Date</th><th>Time</th><th>Signal</th><th>Price</th><th style="text-align:right">Result</th></tr>${rows.join("")}</table>
+<div class=tbody><table class=calls><tr><th>When</th><th>Signal</th><th>Price · amount</th><th style="text-align:right">Gain/loss</th></tr>${rows.join("")}</table>
 ${Lk.contract?`<div class=addr style="margin-top:8px"><span class=ch>${esc((Lk.chain||"").replace(/-/g," "))}</span><code>${esc(Lk.contract)}</code><button class=copy data-a="${esc(Lk.contract)}">Copy</button></div>`:""}
 <div class=links><a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+encodeURIComponent(g.sym))}"><i style="background:#8DC63F"></i>CoinGecko</a><a class=lbtn target=_blank rel=noopener href="${esc(Lk.dexscreener||"https://dexscreener.com/search?q="+encodeURIComponent(g.sym))}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a></div></div>`;
 w.querySelector(".ch").onclick=()=>w.classList.toggle("open");w.querySelectorAll("button.copy").forEach(bt=>bt.onclick=e=>{e.stopPropagation();copy(bt.dataset.a)});L.append(w)})}
@@ -1738,10 +1833,14 @@ $("#amt").oninput=()=>{AMT=+$("#amt").value||100;try{localStorage.setItem("tw_am
 })();
 (function(){// learning
 const Lr=D.learning||{};const L=$("#learn");
-if(!Lr.graded){L.append(el("p","mut","Each buy call is graded 7 days later. Losing calls get a post-mortem of the warning signs that were there at entry, and once a warning sign has lost money in 5+ calls the model lowers the score for it (or stops making those calls). Nothing graded yet."));return}
+if(!Lr.graded&&!(Lr.scorecard||{}).closed){L.append(el("p","mut","Each trade is graded when a sell signal closes it (or after 14 days if it's still open). Losing trades get a post-mortem, every sell is reviewed 7 days later to see if it was well timed, and once a pattern repeats in 5+ trades the model adjusts. Nothing graded yet."));return}
 L.append(el("div","kpis",`<div class=kpi><b>${Lr.graded}</b><small>calls graded</small></div><div class=kpi><b>${Lr.wins}</b><small>wins</small></div><div class=kpi><b>${Lr.losses}</b><small>losses</small></div>`));
 const u=el("ul","checks");(Lr.rules||[]).forEach(r=>u.append(el("li","",`<span class="dot r">${Math.round(r.points)}</span><span>${esc(r.text)} — ${r.wins}/${r.n} won, avg ${r.avg.toFixed(1)}%${r.block?" · <b>no more buy calls in this setup</b>":""}</span>`)));
 if(!(Lr.rules||[]).length)u.append(el("li","",`<span class="dot n">•</span><span>No warning sign has lost often enough yet to change the model.</span>`));L.append(u);
+const SC=Lr.scorecard||{};if(SC.closed){L.append(el("div","sect","Closed trades"));L.append(el("div","kpis",`<div class=kpi><b>${SC.closed}</b><small>trades closed by a sell signal</small></div><div class=kpi><b>${Math.round(SC.wins/SC.closed*100)}%</b><small>profitable</small></div><div class=kpi><b style="color:${SC.avg>=0?"var(--up)":"var(--dn)"}">${SC.avg>=0?"+":""}${SC.avg}%</b><small>avg per trade · held ${SC.held}d</small></div>`));
+const us=el("ul","checks");Object.values(Lr.sells||{}).forEach(e=>us.append(el("li","",`<span class="dot ${e.after!=null&&e.after>8?"r":e.after!=null&&e.after<-8?"g":"n"}">↗</span><span>Sold when it ${esc(e.text)}: ${e.n} trades, avg ${e.ret>=0?"+":""}${e.ret}%${e.after!=null?` · price moved ${e.after>=0?"+":""}${e.after}% in the 7 days after (${e.early} sold early, ${e.good} good sells)`:""}</span>`)));
+if(SC.gave_back)us.append(el("li","",`<span class="dot r">!</span><span>${SC.gave_back} trade(s) were up 10%+ but gave it back before the sell signal.</span>`));
+(Lr.sell_soft||[]).forEach(k=>us.append(el("li","",`<span class="dot n">🧠</span><span>Adjusted: ${k=="zone"?"entering the sell zone now also needs RSI above 70 to close a trade":"a TRIM signal no longer closes a trade — it needs SELL"}</span>`)));L.append(us)}
 const M=Object.entries(Lr.mult||{});if(M.length)L.append(el("p","mut","Weight tuning: "+M.map(([k,v])=>(PART[k]||k)+" ×"+v).join(", ")))})();
 // ---------- followed wallets
 (function(){const W=D.wallets||{board:[],recent:[]},C=$("#wallets"),ago=t=>{const h=(Date.now()/1000-t)/3600;return h<1?Math.round(h*60)+"m":h<48?Math.round(h)+"h":Math.round(h/24)+"d"};
@@ -1757,7 +1856,7 @@ u.append(el("li","",`<span class="dot ${r.side=="buy"?"g":"r"}">${r.side=="buy"?
 (function(){const R=D.coins||{},C=$("#coindir"),ks=Object.keys(R).sort();if(!ks.length){C.append(el("p","mut","Coins appear here the first time they're checked."));return}
 const d=el("details","tok");d.innerHTML=`<summary class=row style="grid-template-columns:1fr auto"><b>${ks.length} coins tracked</b><span class=mut>show ▾</span></summary>
 <div style="padding:0 10px 10px"><table class=calls><tr><th>Ticker</th><th>Name</th><th>CoinGecko ID</th><th>Added</th></tr>${ks.map(k=>{const r=R[k];return `<tr><td><b>${esc(k)}</b></td><td style="white-space:normal">${esc(r.name||"")}</td><td><a href="https://www.coingecko.com/en/coins/${esc(r.cg_id||"")}" target=_blank rel=noopener style="font-family:ui-monospace,Menlo,monospace;font-size:.75rem">${esc(r.cg_id||"–")}</a></td><td>${esc((r.first_seen||"").slice(5,10))}</td></tr>`}).join("")}</table></div>`;C.append(d)})();
-render();
+render();showPending();
 let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>document.querySelectorAll(".tok.open").forEach(w=>{const r=w.querySelector(".rg.on");r&&r.click()}),250)});
 setTimeout(()=>location.reload(),15*60*1000);
 </script></body></html>
@@ -1833,9 +1932,26 @@ def add_now(sym, quiet=False):
     res = CTX.setdefault("results", [])
     res[:] = [x for x in res if x["res"]["symbol"] != r["res"]["symbol"]] + [r]
     CTX["dirty"] = True
+    if not CTX.get("listening"): quick_publish([r])        # run still starting up: don't wait for the other coins
     if not quiet:
-        reply(f"✅ Added {r['res']['symbol']}" + (f" ({(REG.get(r['res']['symbol']) or {}).get('name')}, CoinGecko ID: {r['cg_id']})" if r.get("cg_id") else "") + " to your watchlist - it'll be on your dashboard in about 2 minutes.\n\n" + summary(r["res"], r["dd"], links=True)
+        reply(f"✅ Added {r['res']['symbol']}" + (f" ({(REG.get(r['res']['symbol']) or {}).get('name')}, CoinGecko ID: {r['cg_id']})" if r.get("cg_id") else "") + " to your watchlist - it'll be on your dashboard in about a minute.\n\n" + summary(r["res"], r["dd"], links=True)
               + f"\n\nReply /star {r['res']['symbol']} to always get its alerts.")
+
+def quick_publish(rs):
+    """Put just-added coins on the live page right away: merge them into the current dashboard data and publish."""
+    try:
+        cur = open(os.path.join(HERE, "docs", "index.html")).read()
+        m = re.search(r"const D=(\{.*?\});\n", cur, re.S); D_ = json.loads(m.group(1).replace("<\\/", "</"))
+    except Exception as e: print(f"  [skip] quick publish: {e}"); return False
+    new = [token_entry(r) for r in rs]; keys = {(t.get("cg_id") or t["symbol"]) for t in new}
+    D_["tokens"] = new + [t for t in D_.get("tokens", []) if (t.get("cg_id") or t["symbol"]) not in keys]
+    D_["generated"] = iso(); D_["coins"] = REG; D_["starred"] = sorted(PREFS.get("starred", []))
+    D_["tokens"] = [{k: v for k, v in t.items() if k != "prices"} for t in D_["tokens"]]
+    doc = DASH_HTML.replace("__DATA__", json.dumps(D_, separators=(",", ":")).replace("</", "<\\/"))
+    for pth in (os.path.join(HERE, "docs", "index.html"), os.path.join(DATA, "dashboard.html")):
+        with open(pth, "w") as f: f.write(doc)
+    save("coins.json", REG); save_prefs(CTX["state"], None); save("state.json", CTX["state"]); save("cache.json", CTX["cache"]); save("calls.json", CTX["calls"])
+    git_push(); print("  Quick-published: " + ", ".join(r["res"]["symbol"] for r in rs)); return True
 
 def publish_now(rebuild=True):
     """Rebuild the dashboard and push it to GitHub right away (only on GitHub Actions)."""
@@ -1845,11 +1961,14 @@ def publish_now(rebuild=True):
         save_prefs(CTX["state"], None); save("state.json", CTX["state"]); save("calls.json", CTX["calls"]); save("cache.json", CTX["cache"])
         save("coins.json", REG); save("sells.json", SELLS[-2000:])
         export(CTX["results"], CTX["calls"], True)
+    git_push()
+
+def git_push():
     if not os.environ.get("GITHUB_ACTIONS") or DEMO: return
     g = lambda *a: subprocess.run(["git", "-c", "user.name=token-watch", "-c", "user.email=token-watch@users.noreply.github.com", *a],
                                   cwd=HERE, capture_output=True, text=True, timeout=60)
     try:
-        g("add", "data", "docs", "watchlist.txt")
+        g("add", "--", *[x for x in ("data", "docs", "watchlist.txt") if os.path.exists(os.path.join(HERE, x))])
         if g("diff", "--cached", "--quiet").returncode == 0: return
         g("commit", "-m", f"Live update {iso()}")
         if g("pull", "--rebase", "-X", "theirs").returncode != 0: g("rebase", "--abort")
@@ -1861,7 +1980,7 @@ def listen(minutes):
     """After the scheduled check, keep answering Telegram messages until the next run starts."""
     tok, chat = tg_creds()
     if not (tok and chat) or minutes <= 0: return
-    end = now() + minutes * 60
+    end = now() + minutes * 60; CTX["listening"] = True
     print(f"Listening for Telegram messages for {minutes} min …")
     while now() < end - 5:
         handle_commands(CTX["state"], wait=int(min(25, max(1, end - now() - 5))))
@@ -2015,7 +2134,7 @@ def run_once():
             bv = market_view(pm, btc_px)
             if bv: BACKDROP["btc"] = bv; print(f"Bitcoin betting backdrop {bv['score']:.0f}/100 from {bv['n']} markets")
     handle_commands(state)   # messages sent since the last run (applies /star, /check, etc.)
-    if CFG.get("_form_added"): reply("✅ Added from your dashboard: " + ", ".join(CFG["_form_added"]) + ". Checking now - they'll be on the dashboard in a few minutes.")
+    if CFG.get("_form_added"): reply("⏳ Adding " + ", ".join(CFG["_form_added"]) + " from your dashboard - analyzing now, it'll be on the page in about a minute.")
     fix_names(cache)
     if ind("wallets"): try_get("followed wallets", lambda: sync_wallets(state))
     wl = [t for t in wl if t["symbol"] not in PREFS["removed"]] + [norm(x) for x in PREFS["added"] if x not in {t["symbol"] for t in wl}]
@@ -2025,7 +2144,20 @@ def run_once():
         if t["symbol"] not in seen_ and t["symbol"] not in PREFS["removed"]: seen_.add(t["symbol"]); wl2.append(t)
     wl = wl2
     results = []
+    if CFG.get("_form_added"):
+        first = [t for t in wl if t["symbol"] in {cache.get("tick:" + x.lower()) or x for x in CFG["_form_added"]}]
+        for tok in first:
+            try:
+                r = check_token(tok, cache, state, calls)
+                if r:
+                    results.append(r)
+                    reply(f"✅ {r['res']['symbol']} is on your dashboard now" + (f" ({(REG.get(r['res']['symbol']) or {}).get('name')}, CoinGecko ID: {r['cg_id']})" if r.get("cg_id") else "") + ":\n\n" + summary(r["res"], r["dd"], links=True))
+                else: reply(f"Couldn't find {tok['symbol']} on CoinGecko (or it has too little price history). Check the ticker.")
+            except Exception as ex: print(f"  [error] {tok['symbol']}: {ex}")
+        if results: quick_publish(results)
+    done_ = {r["res"]["symbol"] for r in results}
     for tok in wl:
+        if tok["symbol"] in done_: continue
         try:
             r = check_token(tok, cache, state, calls)
             if r: results.append(r)

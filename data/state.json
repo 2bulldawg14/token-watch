@@ -103,11 +103,11 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
- "_discovery_t": 1790253434.110741,
+ "_discovery_t": 1790297084.5815158,
  "_report_week": "2026-W39",
  "_export_t": 1790284269.2935753,
  "_tg_offset": 218529262,
@@ -215,7 +215,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
@@ -246,7 +246,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -261,7 +261,7 @@
   "SUI": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -416,20 +416,23 @@
   "EDEL": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
-   "below": false
+   "in_sell": true,
+   "below": false,
+   "hit_t": false
   },
   "NEAR": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
-   "below": false
+   "in_sell": true,
+   "below": false,
+   "hit_t": false
   },
   "LSK": {
    "seen": true,
    "bad": true,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "CASHCAT": {
    "seen": true,
@@ -441,13 +444,15 @@
    "seen": true,
    "bad": true,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "AI": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "HNT": {
    "seen": true,
@@ -469,9 +474,10 @@
   },
   "SPX": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "FF": {
    "seen": true,
@@ -490,13 +496,15 @@
    "seen": true,
    "bad": true,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "PONS": {
    "seen": true,
    "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "ASTER": {
    "seen": true,
@@ -509,6 +517,34 @@
    "seen": true,
    "bad": true,
    "in_sell": true,
+   "below": false,
+   "hit_t": false
+  },
+  "SAGA": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "SPCXB": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "PUMP": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "MARSCOIN": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   }
@@ -624,9 +660,9 @@
   "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 3,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 4,
-   "Will Hyperliquid reach $120 by December 31, 2026?": 40
+   "Will Hyperliquid dip to $12 by December 31, 2026?": 3,
+   "Will Hyperliquid reach $200 by December 31, 2026?": 7
   }
  },
  "ZEC": {
@@ -665,7 +701,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790295392.199208,
+ "_saved_t": 1790297136.8374252,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

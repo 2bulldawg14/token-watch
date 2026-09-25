@@ -383,5 +383,27 @@
   "source": "watchlist",
   "starred": true,
   "closes": null
+ },
+ {
+  "symbol": "SUI",
+  "cg_id": "sui",
+  "t": 1790325005,
+  "date": "2026-09-25 08:30 UTC",
+  "price": 1.0309,
+  "why": "Entered sell zone $1.027-$1.1 \u00b7 RSI 70",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "SUI-1790305835"
+ },
+ {
+  "symbol": "CC",
+  "cg_id": "canton-network",
+  "t": 1790325009,
+  "date": "2026-09-25 08:30 UTC",
+  "price": 0.118269,
+  "why": "Hit the take-profit target $0.1182",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "CC-1790173826"
  }
 ]

@@ -60,7 +60,7 @@
  "INJ": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
@@ -73,7 +73,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Solana dip to $30 in September?": 0,
    "Will Solana reach $200 in September?": 0,
@@ -103,7 +103,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -161,7 +161,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 8,
    "Will Ethereum dip to $1,500 in September?": 0,
@@ -232,7 +232,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -246,7 +246,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -261,7 +261,7 @@
   "SUI": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -287,7 +287,7 @@
   },
   "ETH": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -362,7 +362,7 @@
    "bad": false,
    "in_sell": false,
    "below": false,
-   "hit_t": false
+   "hit_t": true
   },
   "UNI": {
    "seen": true,
@@ -627,7 +627,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE"
+  "signal": "HOLD"
  },
  "UNI": {
   "seen_news": [],
@@ -701,7 +701,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790323936.4333127,
+ "_saved_t": 1790325048.7549126,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

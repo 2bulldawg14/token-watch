@@ -1,27 +1,36 @@
 {
  "rules": [],
  "mult": {},
- "graded": 2,
- "t": "2026-09-25 08:12 UTC",
+ "graded": 4,
+ "t": "2026-09-25 08:30 UTC",
  "scorecard": {
-  "closed": 2,
-  "wins": 2,
-  "avg": 4.46,
-  "held": 0.5,
+  "closed": 4,
+  "wins": 4,
+  "avg": 4.96,
+  "held": 0.7,
   "gave_back": 0
  },
  "sells": {
   "zone": {
-   "n": 2,
+   "n": 3,
    "reviewed": 0,
    "early": 0,
    "good": 0,
    "after": null,
-   "ret": 4.46,
+   "ret": 3.62,
    "text": "entered the sell zone"
+  },
+  "target": {
+   "n": 1,
+   "reviewed": 0,
+   "early": 0,
+   "good": 0,
+   "after": null,
+   "ret": 8.98,
+   "text": "hit the take-profit target"
   }
  },
  "sell_soft": [],
- "wins": 1,
+ "wins": 2,
  "losses": 0
 }

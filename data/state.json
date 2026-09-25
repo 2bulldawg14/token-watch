@@ -218,7 +218,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -710,7 +710,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790365177.8834221,
+ "_saved_t": 1790366003.8122005,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

@@ -226,7 +226,7 @@
   "INJ": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -710,7 +710,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790376904.8283174,
+ "_saved_t": 1790377839.1993477,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

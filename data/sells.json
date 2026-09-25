@@ -405,5 +405,16 @@
   "source": "watchlist",
   "starred": true,
   "closes": "CC-1790173826"
+ },
+ {
+  "symbol": "SPX",
+  "cg_id": "spx6900",
+  "t": 1790334685,
+  "date": "2026-09-25 11:11 UTC",
+  "price": 0.461102,
+  "why": "Hit the take-profit target $0.4606",
+  "source": "tracked",
+  "starred": false,
+  "closes": "SPX-1790297122"
  }
 ]

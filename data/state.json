@@ -515,7 +515,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -660,9 +660,9 @@
   "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 3,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 4,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 6
+   "Will Hyperliquid reach $200 by December 31, 2026?": 6,
+   "Will Hyperliquid dip to $12 by December 31, 2026?": 3
   }
  },
  "ZEC": {
@@ -701,7 +701,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790313048.016117,
+ "_saved_t": 1790314035.1191366,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -709,6 +709,6 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  }
 }

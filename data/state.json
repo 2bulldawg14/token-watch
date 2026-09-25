@@ -366,7 +366,7 @@
   },
   "UNI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -645,7 +645,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will UNI reach $9.50 by December 31, 2026?": 100
   }
@@ -710,7 +710,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790361071.5641701,
+ "_saved_t": 1790362516.3990011,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

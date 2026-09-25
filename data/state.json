@@ -107,7 +107,7 @@
   "in_zone2": false,
   "below_stop": false
  },
- "_discovery_t": 1790297084.5815158,
+ "_discovery_t": 1790341067.4803126,
  "_report_week": "2026-W39",
  "_export_t": 1790328588.6583533,
  "_tg_offset": 218529262,
@@ -116,7 +116,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -247,7 +247,7 @@
   "ONDO": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -373,8 +373,8 @@
   },
   "AKT": {
    "seen": true,
-   "bad": true,
-   "in_sell": true,
+   "bad": false,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -436,9 +436,10 @@
   },
   "CASHCAT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "CAP": {
    "seen": true,
@@ -464,7 +465,8 @@
    "seen": true,
    "bad": true,
    "in_sell": false,
-   "below": false
+   "below": false,
+   "hit_t": false
   },
   "JST": {
    "seen": true,
@@ -477,7 +479,7 @@
    "bad": false,
    "in_sell": false,
    "below": false,
-   "hit_t": true
+   "hit_t": false
   },
   "FF": {
    "seen": true,
@@ -536,12 +538,19 @@
   },
   "PUMP": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "MARSCOIN": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "LIT": {
    "seen": true,
    "bad": true,
    "in_sell": false,
@@ -648,7 +657,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "HYPE": {
   "seen_news": [],
@@ -701,7 +710,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790339868.9805267,
+ "_saved_t": 1790341117.4169424,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

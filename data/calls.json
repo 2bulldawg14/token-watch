@@ -14,11 +14,11 @@
   },
   "risk": "MEDIUM",
   "source": "discovery",
-  "last": 0.130352,
+  "last": 0.129801,
   "max": 0.16812,
   "min": 0.103061,
   "checkpoints": {},
-  "updated": "2026-09-25 07:15 UTC",
+  "updated": "2026-09-25 07:32 UTC",
   "links": {
    "chain": "binance-smart-chain",
    "contract": "0xeccbb861c0dda7efd964010085488b69317e4444",
@@ -33,7 +33,7 @@
   },
   "tmax": 0.16591472196691665,
   "tmin": 0.103061,
-  "ret_open": -21.43
+  "ret_open": -21.77
  },
  {
   "id": "TAO-1790172722",
@@ -71,7 +71,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 295.6,
+  "last": 297.8,
   "max": 304.3,
   "min": 278.8,
   "checkpoints": {},
@@ -111,10 +111,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-09-25 07:15 UTC",
+  "updated": "2026-09-25 07:32 UTC",
   "tmax": 304.3,
   "tmin": 286.9,
-  "ret_open": -2.86
+  "ret_open": -2.14
  },
  {
   "id": "RENDER-1790172727",
@@ -152,7 +152,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.849,
+  "last": 1.856,
   "max": 1.893,
   "min": 1.707,
   "checkpoints": {},
@@ -201,7 +201,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/render-token",
    "dexscreener": "https://dexscreener.com/solana/rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof"
   },
-  "updated": "2026-09-25 07:15 UTC",
+  "updated": "2026-09-25 07:32 UTC",
   "exit": {
    "t": 1790256809,
    "date": "2026-09-24 13:33 UTC",
@@ -253,7 +253,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.781,
+  "last": 1.786,
   "max": 1.801,
   "min": 1.676,
   "checkpoints": {},
@@ -310,10 +310,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-09-25 07:15 UTC",
+  "updated": "2026-09-25 07:32 UTC",
   "tmax": 1.801,
   "tmin": 1.758,
-  "ret_open": 1.31
+  "ret_open": 1.59
  },
  {
   "id": "INJ-1790173810",
@@ -349,7 +349,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.892,
+  "last": 7.883,
   "max": 8.581,
   "min": 7.574,
   "checkpoints": {},
@@ -406,7 +406,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/solana/1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
   },
-  "updated": "2026-09-25 07:15 UTC",
+  "updated": "2026-09-25 07:32 UTC",
   "exit": {
    "t": 1790174772,
    "date": "2026-09-23 14:46 UTC",
@@ -460,8 +460,8 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.116669,
-  "max": 0.11679,
+  "last": 0.117271,
+  "max": 0.117271,
   "min": 0.106872,
   "checkpoints": {},
   "feat": {
@@ -500,10 +500,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-09-25 07:15 UTC",
-  "tmax": 0.11679,
+  "updated": "2026-09-25 07:32 UTC",
+  "tmax": 0.117271,
   "tmin": 0.108525,
-  "ret_open": 7.5
+  "ret_open": 8.06
  },
  {
   "id": "FF-1790208933",
@@ -540,7 +540,7 @@
    ]
   },
   "source": "discovery",
-  "last": 0.13632,
+  "last": 0.13561,
   "max": 0.13742,
   "min": 0.12922,
   "checkpoints": {},
@@ -589,10 +589,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/falcon-finance-ff",
    "dexscreener": "https://dexscreener.com/ethereum/0xfa1c09fc8b491b6a4d3ff53a10cad29381b3f949"
   },
-  "updated": "2026-09-25 07:15 UTC",
+  "updated": "2026-09-25 07:32 UTC",
   "tmax": 0.13742,
   "tmin": 0.13089,
-  "ret_open": 3.98
+  "ret_open": 3.44
  },
  {
   "id": "SHIB-1790245914",
@@ -627,7 +627,7 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 5.75e-06,
+  "last": 5.78e-06,
   "max": 5.85e-06,
   "min": 5.57e-06,
   "checkpoints": {},
@@ -672,10 +672,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-09-25 07:15 UTC",
+  "updated": "2026-09-25 07:32 UTC",
   "tmax": 5.85e-06,
   "tmin": 5.57e-06,
-  "ret_open": 3.23
+  "ret_open": 3.77
  },
  {
   "id": "ASTER-1790253479",
@@ -712,8 +712,8 @@
    ]
   },
   "source": "discovery",
-  "last": 0.7193,
-  "max": 0.7193,
+  "last": 0.7241,
+  "max": 0.7241,
   "min": 0.6973,
   "checkpoints": {},
   "feat": {
@@ -757,10 +757,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/aster-2",
    "dexscreener": "https://dexscreener.com/bsc/0x000ae314e2a2172a039b26378814c252734f556a"
   },
-  "updated": "2026-09-25 07:15 UTC",
-  "tmax": 0.7193,
+  "updated": "2026-09-25 07:32 UTC",
+  "tmax": 0.7241,
   "tmin": 0.6973,
-  "ret_open": 3.16
+  "ret_open": 3.84
  },
  {
   "id": "SPX-1790297122",
@@ -802,7 +802,7 @@
    ]
   },
   "source": "discovery",
-  "last": 0.439329,
+  "last": 0.43994,
   "max": 0.441301,
   "min": 0.432039,
   "checkpoints": {},
@@ -861,8 +861,8 @@
   },
   "tmax": 0.441301,
   "tmin": 0.432039,
-  "ret_open": 0.86,
-  "updated": "2026-09-25 07:15 UTC"
+  "ret_open": 1.0,
+  "updated": "2026-09-25 07:32 UTC"
  },
  {
   "id": "PUMP-1790297129",
@@ -898,7 +898,7 @@
    ]
   },
   "source": "discovery",
-  "last": 0.003865,
+  "last": 0.00388,
   "max": 0.003943,
   "min": 0.003856,
   "checkpoints": {},
@@ -945,8 +945,8 @@
   },
   "tmax": 0.003943,
   "tmin": 0.003856,
-  "ret_open": -0.26,
-  "updated": "2026-09-25 07:15 UTC"
+  "ret_open": 0.13,
+  "updated": "2026-09-25 07:32 UTC"
  },
  {
   "id": "SUI-1790305835",
@@ -982,7 +982,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.0099,
+  "last": 1.0146,
   "max": 1.0177,
   "min": 1.0099,
   "checkpoints": {},
@@ -1027,9 +1027,9 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-09-25 07:15 UTC",
+  "updated": "2026-09-25 07:32 UTC",
   "tmax": 1.0177,
   "tmin": 1.0099,
-  "ret_open": -0.14
+  "ret_open": 0.33
  }
 ]

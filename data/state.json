@@ -60,7 +60,7 @@
  "INJ": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
@@ -73,7 +73,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Solana dip to $30 in September?": 0,
    "Will Solana reach $190 in September?": 0,
@@ -92,7 +92,7 @@
   "odds": {
    "Will Chainlink reach $20 by December 31, 2026?": 17,
    "Will Chainlink reach $16 by December 31, 2026?": 56,
-   "Will Chainlink reach $18 by December 31, 2026?": 34,
+   "Will Chainlink reach $18 by December 31, 2026?": 33,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
@@ -109,7 +109,7 @@
  },
  "_discovery_t": 1790297084.5815158,
  "_report_week": "2026-W39",
- "_export_t": 1790284269.2935753,
+ "_export_t": 1790298874.2766433,
  "_tg_offset": 218529262,
  "HBAR": {
   "seen_news": [],
@@ -123,7 +123,7 @@
  "SUI": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
@@ -164,9 +164,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
+   "Will Ethereum reach $4,000 in September?": 0,
    "Will Ethereum dip to $1,500 in September?": 0,
-   "Will Ethereum reach $10,000 by December 31, 2026?": 1,
-   "Will Ethereum reach $4,000 in September?": 1
+   "Will Ethereum reach $10,000 by December 31, 2026?": 1
   },
   "in_zone2": false,
   "below_stop": false
@@ -206,19 +206,19 @@
   "signal": "HOLD",
   "odds": {
    "Will XRP dip to $0.20 in September?": 0,
-   "Will XRP reach $5.00 by December 31, 2026?": 2,
    "Will XRP dip to $0.60 in September?": 0,
-   "Will XRP reach $3.00 in September?": 1
+   "Will XRP reach $3.00 in September?": 1,
+   "Will XRP reach $2.80 in September?": 1
   },
   "in_zone2": false,
   "below_stop": false
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false
  },
@@ -232,7 +232,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -515,7 +515,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -701,7 +701,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790298872.070481,
+ "_saved_t": 1790299729.1764228,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -709,6 +709,6 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  }
 }

@@ -75,10 +75,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Solana reach $120 by December 31, 2026?": 100,
    "Will Solana dip to $30 in September?": 0,
    "Will Solana reach $200 in September?": 0,
-   "Will Solana dip to $50 in September?": 0
+   "Will Solana dip to $50 in September?": 0,
+   "Will Solana dip to $10 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false
@@ -91,8 +91,8 @@
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $16 by December 31, 2026?": 60,
-   "Will Chainlink reach $20 by December 31, 2026?": 40,
-   "Will Chainlink reach $18 by December 31, 2026?": 40,
+   "Will Chainlink reach $20 by December 31, 2026?": 42,
+   "Will Chainlink reach $18 by December 31, 2026?": 44,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
@@ -151,7 +151,7 @@
    "Will Bitcoin dip to $57,500 in September?": 0,
    "Will Bitcoin dip to $65,000 in September?": 0,
    "Will Bitcoin reach $100,000 in September?": 1,
-   "Will the price of Bitcoin be above $70,000 on September 25?": 100
+   "Will Bitcoin dip to $55,000 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false
@@ -194,7 +194,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -218,7 +218,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -247,7 +247,7 @@
   "ONDO": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -326,7 +326,7 @@
   },
   "RENDER": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -710,7 +710,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790342193.1134112,
+ "_saved_t": 1790343746.1518245,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

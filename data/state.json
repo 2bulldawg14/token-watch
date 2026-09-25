@@ -215,10 +215,10 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false
  },
@@ -710,7 +710,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790349168.4177382,
+ "_saved_t": 1790350216.7260547,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

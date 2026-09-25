@@ -90,9 +90,9 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $16 by December 31, 2026?": 62,
-   "Will Chainlink reach $20 by December 31, 2026?": 17,
-   "Will Chainlink reach $18 by December 31, 2026?": 34,
+   "Will Chainlink reach $16 by December 31, 2026?": 58,
+   "Will Chainlink reach $20 by December 31, 2026?": 16,
+   "Will Chainlink reach $18 by December 31, 2026?": 36,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
@@ -125,7 +125,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 6
   },
@@ -146,7 +146,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
@@ -174,9 +174,9 @@
  "AERO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -215,7 +215,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
@@ -280,7 +280,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -300,7 +300,7 @@
   },
   "AERO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -674,10 +674,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
+   "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash reach $2000 by December 31, 2026?": 55,
-   "Will Zcash dip to $100 by December 31, 2026?": 4,
-   "Will Zcash dip to $700 by December 31, 2026?": 37
+   "Will Zcash dip to $600 by December 31, 2026?": 20
   }
  },
  "SHIB": {
@@ -701,7 +701,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790318261.2064552,
+ "_saved_t": 1790319468.3435364,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

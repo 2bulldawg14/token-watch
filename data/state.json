@@ -88,12 +88,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $14 by December 31, 2026?": 100,
-   "Will Chainlink reach $14 in September?": 100,
-   "Will Chainlink reach $20 by December 31, 2026?": 24,
-   "Will Chainlink reach $16 by December 31, 2026?": 56
+   "Will Chainlink reach $16 by December 31, 2026?": 57,
+   "Will Chainlink reach $20 by December 31, 2026?": 34,
+   "Will Chainlink reach $18 by December 31, 2026?": 36
   },
   "in_zone2": false,
   "below_stop": false
@@ -123,7 +123,7 @@
  "SUI": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
@@ -163,8 +163,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Ethereum dip to $1,500 by December 31, 2026?": 8,
    "Will Ethereum dip to $1,500 in September?": 0,
+   "Will Ethereum dip to $1,500 by December 31, 2026?": 8,
    "Will Ethereum reach $4,000 in September?": 0,
    "Will Ethereum reach $10,000 by December 31, 2026?": 1
   },
@@ -194,7 +194,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -206,9 +206,9 @@
   "signal": "HOLD",
   "odds": {
    "Will XRP dip to $0.20 in September?": 0,
-   "Will XRP reach $5.00 by December 31, 2026?": 2,
+   "Will XRP reach $3.00 in September?": 1,
    "Will XRP dip to $0.60 in September?": 0,
-   "Will XRP reach $3.00 in September?": 0
+   "Will XRP reach $5.00 by December 31, 2026?": 2
   },
   "in_zone2": false,
   "below_stop": false
@@ -218,7 +218,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -239,7 +239,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -326,7 +326,7 @@
   },
   "RENDER": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -660,9 +660,9 @@
   "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
-   "Will Hyperliquid dip to $16 by December 31, 2026?": 4,
+   "Will Hyperliquid reach $200 by December 31, 2026?": 6,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 3,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 6
+   "Will Hyperliquid dip to $16 by December 31, 2026?": 4
   }
  },
  "ZEC": {
@@ -677,7 +677,7 @@
    "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash reach $2000 by December 31, 2026?": 55,
-   "Will Zcash dip to $700 by December 31, 2026?": 36
+   "Will Zcash dip to $700 by December 31, 2026?": 37
   }
  },
  "SHIB": {
@@ -701,7 +701,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790330354.8999102,
+ "_saved_t": 1790331381.3834739,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

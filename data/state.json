@@ -103,7 +103,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false
  },
@@ -125,7 +125,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 6
   },
@@ -218,7 +218,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -246,7 +246,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -515,7 +515,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -657,12 +657,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 3,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 4,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 7
+   "Will Hyperliquid reach $200 by December 31, 2026?": 6
   }
  },
  "ZEC": {
@@ -701,7 +701,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790304899.1773994,
+ "_saved_t": 1790305888.687733,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -709,6 +709,6 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  }
 }

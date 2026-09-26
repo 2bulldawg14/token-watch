@@ -76,9 +76,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in September?": 0,
-   "Will Solana dip to $30 in September?": 0,
-   "Will Solana dip to $50 in September?": 0,
-   "Will Solana dip to $10 in September?": 0
+   "Will Solana reach $190 in September?": 0,
+   "Will Solana reach $180 in September?": 0,
+   "Will Solana reach $170 in September?": 1
   },
   "in_zone2": false,
   "below_stop": false
@@ -91,7 +91,7 @@
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $16 by December 31, 2026?": 64,
-   "Will Chainlink reach $20 by December 31, 2026?": 36,
+   "Will Chainlink reach $20 by December 31, 2026?": 26,
    "Will Chainlink reach $18 by December 31, 2026?": 36,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
@@ -518,7 +518,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -669,10 +669,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "ACCUMULATE"
  },
  "UNI": {
   "seen_news": [],
@@ -705,8 +705,8 @@
   "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
    "Will Hyperliquid reach $200 by December 31, 2026?": 6,
+   "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 3
   }
  },
@@ -746,7 +746,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790404503.5119953,
+ "_saved_t": 1790405765.1778772,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -754,6 +754,6 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  }
 }

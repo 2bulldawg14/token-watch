@@ -88,7 +88,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $16 by December 31, 2026?": 64,
    "Will Chainlink reach $20 by December 31, 2026?": 26,
@@ -103,7 +103,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -240,14 +240,14 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -518,8 +518,8 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
-   "in_sell": false,
+   "bad": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -746,7 +746,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790408428.3551805,
+ "_saved_t": 1790409215.8683085,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -754,6 +754,6 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  }
 }

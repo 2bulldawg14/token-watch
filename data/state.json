@@ -90,10 +90,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
+   "Will Chainlink dip to $14 in September?": 100,
    "Will Chainlink reach $16 by December 31, 2026?": 60,
-   "Will Chainlink reach $20 by December 31, 2026?": 28,
-   "Will Chainlink reach $18 by December 31, 2026?": 36,
-   "Will Chainlink dip to $6 by December 31, 2026?": 9
+   "Will Chainlink reach $20 by December 31, 2026?": 30,
+   "Will Chainlink reach $18 by December 31, 2026?": 38
   },
   "in_zone2": false,
   "below_stop": false
@@ -127,8 +127,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Sui reach $1.20 before 2027?": 100,
-   "Will Sui dip to $0.20 before 2027?": 6
+   "Will Sui reach $1.80 before 2027?": 29
   },
   "in_zone2": false,
   "below_stop": false
@@ -150,9 +149,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will Bitcoin dip to $57,500 in September?": 0,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 9
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 9,
+   "Will Bitcoin dip to $57,500 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false
@@ -209,7 +208,7 @@
    "Will XRP reach $3.00 in September?": 1,
    "Will XRP dip to $0.20 in September?": 0,
    "Will XRP reach $5.00 by December 31, 2026?": 2,
-   "Will XRP dip to $0.40 in September?": 0
+   "Will XRP dip to $0.60 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false
@@ -719,8 +718,8 @@
   "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
    "Will Hyperliquid reach $200 by December 31, 2026?": 6,
+   "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 3
   }
  },
@@ -759,7 +758,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790456044.8469384,
+ "_saved_t": 1790457082.5707226,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

@@ -92,7 +92,7 @@
   "odds": {
    "Will Chainlink dip to $14 in September?": 100,
    "Will Chainlink reach $16 by December 31, 2026?": 60,
-   "Will Chainlink reach $20 by December 31, 2026?": 30,
+   "Will Chainlink reach $20 by December 31, 2026?": 26,
    "Will Chainlink reach $18 by December 31, 2026?": 38
   },
   "in_zone2": false,
@@ -161,7 +161,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
    "Will Ethereum dip to $1,500 in September?": 0,
@@ -205,10 +205,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will XRP reach $3.00 in September?": 1,
+   "Will XRP reach $3.00 in September?": 0,
    "Will XRP dip to $0.20 in September?": 0,
    "Will XRP reach $5.00 by December 31, 2026?": 2,
-   "Will XRP dip to $0.60 in September?": 0
+   "Will XRP dip to $0.40 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false
@@ -287,7 +287,7 @@
   },
   "ETH": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -409,7 +409,7 @@
   "LTC": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -682,10 +682,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "ACCUMULATE"
  },
  "UNI": {
   "seen_news": [],
@@ -732,9 +732,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash reach $2000 by December 31, 2026?": 50,
    "Will Zcash dip to $100 by December 31, 2026?": 4,
-   "Will Zcash dip to $50 by December 31, 2026?": 3
+   "Will Zcash dip to $50 by December 31, 2026?": 3,
+   "Will Zcash reach $2000 by December 31, 2026?": 50
   }
  },
  "SHIB": {
@@ -758,7 +758,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790460663.7110102,
+ "_saved_t": 1790461578.2901018,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

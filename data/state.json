@@ -103,11 +103,11 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
- "_discovery_t": 1790341067.4803126,
+ "_discovery_t": 1790385010.4911187,
  "_report_week": "2026-W39",
  "_export_t": 1790372605.484805,
  "_tg_offset": 218529262,
@@ -219,7 +219,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -247,7 +247,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -440,7 +440,7 @@
    "bad": false,
    "in_sell": false,
    "below": false,
-   "hit_t": true
+   "hit_t": false
   },
   "CAP": {
    "seen": true,
@@ -554,6 +554,41 @@
   "LIT": {
    "seen": true,
    "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "AKE": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "ZEN": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "STRK": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "CRCLB": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "CRCLX": {
+   "seen": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -711,7 +746,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790384171.2241867,
+ "_saved_t": 1790385058.8507087,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

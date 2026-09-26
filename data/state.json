@@ -103,7 +103,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -147,7 +147,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
@@ -247,8 +247,8 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
-   "in_sell": false,
+   "bad": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -281,7 +281,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -518,7 +518,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -679,7 +679,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
@@ -702,7 +702,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 6,
    "Will Hyperliquid reach $200 by December 31, 2026?": 6,
@@ -746,7 +746,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790416407.532468,
+ "_saved_t": 1790417462.95116,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -754,6 +754,6 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  }
 }

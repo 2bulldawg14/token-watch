@@ -88,7 +88,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $16 by December 31, 2026?": 60,
    "Will Chainlink reach $20 by December 31, 2026?": 24,
@@ -184,7 +184,7 @@
  "TAO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "in_zone2": false,
@@ -195,7 +195,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -240,7 +240,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -327,7 +327,7 @@
   },
   "RENDER": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -374,7 +374,7 @@
   },
   "AKT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -518,7 +518,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -683,10 +683,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE"
+  "signal": "HOLD"
  },
  "UNI": {
   "seen_news": [],
@@ -707,7 +707,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "HYPE": {
   "seen_news": [],
@@ -760,7 +760,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790445253.7156475,
+ "_saved_t": 1790446411.6814206,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -768,6 +768,6 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  }
 }

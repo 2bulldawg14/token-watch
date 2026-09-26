@@ -90,9 +90,9 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $16 by December 31, 2026?": 65,
-   "Will Chainlink reach $20 by December 31, 2026?": 27,
-   "Will Chainlink reach $18 by December 31, 2026?": 36,
+   "Will Chainlink reach $16 by December 31, 2026?": 66,
+   "Will Chainlink reach $20 by December 31, 2026?": 28,
+   "Will Chainlink reach $18 by December 31, 2026?": 39,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
@@ -127,8 +127,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Sui reach $1.20 before 2027?": 100,
-   "Will Sui dip to $0.20 before 2027?": 6
+   "Will Sui reach $1.20 before 2027?": 100
   },
   "in_zone2": false,
   "below_stop": false
@@ -248,7 +247,7 @@
   "ONDO": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -684,9 +683,9 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": true,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE"
+  "signal": "HOLD"
  },
  "UNI": {
   "seen_news": [],
@@ -734,9 +733,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 4,
-   "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash reach $2000 by December 31, 2026?": 50,
-   "Will Zcash dip to $700 by December 31, 2026?": 34
+   "Will Zcash dip to $50 by December 31, 2026?": 3,
+   "Will Zcash dip to $700 by December 31, 2026?": 37
   }
  },
  "SHIB": {
@@ -760,7 +759,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790430793.8801835,
+ "_saved_t": 1790431874.8008218,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

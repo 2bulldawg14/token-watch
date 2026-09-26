@@ -88,11 +88,11 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $16 by December 31, 2026?": 64,
-   "Will Chainlink reach $20 by December 31, 2026?": 28,
-   "Will Chainlink reach $18 by December 31, 2026?": 40,
+   "Will Chainlink reach $20 by December 31, 2026?": 26,
+   "Will Chainlink reach $18 by December 31, 2026?": 37,
    "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
@@ -240,7 +240,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -722,7 +722,7 @@
    "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash reach $2000 by December 31, 2026?": 50,
-   "Will Zcash dip to $700 by December 31, 2026?": 34
+   "Will Zcash dip to $700 by December 31, 2026?": 31
   }
  },
  "SHIB": {
@@ -746,7 +746,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790421949.863641,
+ "_saved_t": 1790422794.9646165,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

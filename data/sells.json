@@ -438,5 +438,27 @@
   "source": "tracked",
   "starred": false,
   "closes": "PUMP-1790297129"
+ },
+ {
+  "symbol": "SHIB",
+  "cg_id": "shiba-inu",
+  "t": 1790381630,
+  "date": "2026-09-26 00:13 UTC",
+  "price": 5.97e-06,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "SHIB-1790245914"
+ },
+ {
+  "symbol": "CASHCAT",
+  "cg_id": "cash-cat",
+  "t": 1790381672,
+  "date": "2026-09-26 00:14 UTC",
+  "price": 0.195552,
+  "why": "Hit the take-profit target $0.1946",
+  "source": "tracked",
+  "starred": false,
+  "closes": "CASHCAT-1790341090"
  }
 ]

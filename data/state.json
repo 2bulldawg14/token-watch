@@ -402,7 +402,7 @@
   },
   "SHIB": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -440,7 +440,7 @@
    "bad": false,
    "in_sell": false,
    "below": false,
-   "hit_t": false
+   "hit_t": true
   },
   "CAP": {
    "seen": true,
@@ -697,7 +697,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "LTC": {
   "seen_news": [],
@@ -711,7 +711,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790380357.1391954,
+ "_saved_t": 1790381676.534177,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

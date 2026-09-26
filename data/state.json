@@ -109,7 +109,7 @@
  },
  "_discovery_t": 1790385010.4911187,
  "_report_week": "2026-W39",
- "_export_t": 1790403251.559296,
+ "_export_t": 1790418404.590415,
  "_tg_offset": 218529262,
  "HBAR": {
   "seen_news": [],
@@ -147,7 +147,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
@@ -281,7 +281,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -746,7 +746,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790418402.8916547,
+ "_saved_t": 1790419232.8474078,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

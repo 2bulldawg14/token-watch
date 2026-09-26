@@ -88,7 +88,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $16 by December 31, 2026?": 64,
    "Will Chainlink reach $20 by December 31, 2026?": 26,
@@ -103,7 +103,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false
  },
@@ -240,15 +240,15 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
-   "in_sell": false,
+   "bad": true,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -519,7 +519,7 @@
   "QNT": {
    "seen": true,
    "bad": true,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -702,7 +702,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
    "Will Hyperliquid reach $200 by December 31, 2026?": 6,
@@ -746,7 +746,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790407607.0482771,
+ "_saved_t": 1790408428.3551805,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

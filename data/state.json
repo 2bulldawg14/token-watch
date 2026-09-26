@@ -410,7 +410,7 @@
   "LTC": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -519,7 +519,7 @@
   "QNT": {
    "seen": true,
    "bad": true,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -746,7 +746,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790394124.0162983,
+ "_saved_t": 1790394909.86453,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

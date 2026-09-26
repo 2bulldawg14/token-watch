@@ -103,7 +103,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -247,7 +247,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -374,7 +374,7 @@
   },
   "AKT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -693,7 +693,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "HYPE": {
   "seen_news": [],
@@ -702,7 +702,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
    "Will Hyperliquid reach $200 by December 31, 2026?": 6,
@@ -746,7 +746,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790393225.0568447,
+ "_saved_t": 1790394124.0162983,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

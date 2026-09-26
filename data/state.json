@@ -374,7 +374,7 @@
   },
   "AKT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -402,8 +402,8 @@
   },
   "SHIB": {
    "seen": true,
-   "bad": true,
-   "in_sell": true,
+   "bad": false,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -707,7 +707,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "LOW",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "HYPE": {
   "seen_news": [],
@@ -746,7 +746,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "LTC": {
   "seen_news": [],
@@ -760,7 +760,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790437335.5215573,
+ "_saved_t": 1790438126.3351643,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

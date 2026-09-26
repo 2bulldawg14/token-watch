@@ -73,7 +73,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Solana reach $200 in September?": 0,
    "Will Solana reach $190 in September?": 0,
@@ -233,7 +233,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -374,7 +374,7 @@
   },
   "AKT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -389,7 +389,7 @@
   "ZEC": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -683,17 +683,17 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
-  "rsi_band": "high",
+  "in_zone": true,
+  "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "ACCUMULATE"
  },
  "UNI": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
@@ -707,7 +707,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "HYPE": {
   "seen_news": [],
@@ -760,7 +760,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790441786.4113855,
+ "_saved_t": 1790442643.0504768,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

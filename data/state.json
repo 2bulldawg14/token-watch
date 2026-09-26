@@ -91,8 +91,8 @@
   "signal": "HOLD",
   "odds": {
    "Will Chainlink dip to $14 in September?": 100,
+   "Will Chainlink reach $20 by December 31, 2026?": 28,
    "Will Chainlink reach $16 by December 31, 2026?": 60,
-   "Will Chainlink reach $20 by December 31, 2026?": 26,
    "Will Chainlink reach $18 by December 31, 2026?": 38
   },
   "in_zone2": false,
@@ -127,7 +127,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Sui reach $1.80 before 2027?": 29
+   "Will Sui reach $1.80 before 2027?": 29,
+   "Will Sui dip to $0.20 before 2027?": 6
   },
   "in_zone2": false,
   "below_stop": false
@@ -166,7 +167,7 @@
    "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
    "Will Ethereum dip to $1,500 in September?": 0,
    "Will Ethereum reach $4,000 in September?": 0,
-   "Will Ethereum dip to $1,750 by December 31, 2026?": 8
+   "Will Ethereum dip to $1,250 by December 31, 2026?": 6
   },
   "in_zone2": false,
   "below_stop": false
@@ -758,7 +759,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790465152.1351678,
+ "_saved_t": 1790465952.3384109,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

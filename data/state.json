@@ -73,7 +73,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in September?": 0,
    "Will Solana reach $190 in September?": 0,
@@ -233,7 +233,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -402,7 +402,7 @@
   },
   "SHIB": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -746,7 +746,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "LTC": {
   "seen_news": [],
@@ -760,7 +760,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790440118.352265,
+ "_saved_t": 1790441000.5506132,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

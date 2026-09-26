@@ -91,7 +91,7 @@
   "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $16 by December 31, 2026?": 60,
-   "Will Chainlink reach $20 by December 31, 2026?": 24,
+   "Will Chainlink reach $20 by December 31, 2026?": 26,
    "Will Chainlink reach $18 by December 31, 2026?": 36,
    "Will Chainlink dip to $6 by December 31, 2026?": 9
   },
@@ -109,7 +109,7 @@
  },
  "_discovery_t": 1790428250.188373,
  "_report_week": "2026-W39",
- "_export_t": 1790432845.379104,
+ "_export_t": 1790447503.2269387,
  "_tg_offset": 218529262,
  "HBAR": {
   "seen_news": [],
@@ -147,7 +147,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin dip to $57,500 in September?": 0,
@@ -281,7 +281,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -315,7 +315,7 @@
   "TAO": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -389,7 +389,7 @@
   "ZEC": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -410,7 +410,7 @@
   "LTC": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -716,7 +716,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
    "Will Hyperliquid reach $200 by December 31, 2026?": 6,
@@ -733,10 +733,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash reach $2000 by December 31, 2026?": 50,
+   "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 39
+   "Will Zcash dip to $700 by December 31, 2026?": 36
   }
  },
  "SHIB": {
@@ -760,7 +760,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790447501.220368,
+ "_saved_t": 1790448878.2868714,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

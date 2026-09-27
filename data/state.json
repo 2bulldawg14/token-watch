@@ -73,7 +73,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in September?": 0,
    "Will Solana dip to $30 in September?": 0,
@@ -109,7 +109,7 @@
  },
  "_discovery_t": 1790514661.178082,
  "_report_week": "2026-W39",
- "_export_t": 1790521879.6638892,
+ "_export_t": 1790537125.581206,
  "_tg_offset": 218529262,
  "HBAR": {
   "seen_news": [],
@@ -232,7 +232,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -401,7 +401,7 @@
   },
   "SHIB": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -808,7 +808,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "LTC": {
   "seen_news": [],
@@ -823,7 +823,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790537123.290672,
+ "_saved_t": 1790537945.4272835,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

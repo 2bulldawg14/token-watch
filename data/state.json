@@ -103,7 +103,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false
  },
@@ -183,7 +183,7 @@
  "TAO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "in_zone2": false,
@@ -246,8 +246,8 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
-   "in_sell": true,
+   "bad": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -268,7 +268,7 @@
   "SEI": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -784,7 +784,8 @@
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid reach $200 by December 31, 2026?": 6,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 3
-  }
+  },
+  "macd_day": "2026-09-27"
  },
  "ZEC": {
   "seen_news": [],
@@ -822,7 +823,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790518260.412622,
+ "_saved_t": 1790519211.688162,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

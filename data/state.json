@@ -86,7 +86,7 @@
  "LINK": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
@@ -218,7 +218,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false
  },
@@ -409,7 +409,7 @@
   "LTC": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -786,7 +786,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790495019.3090613,
+ "_saved_t": 1790495812.6486497,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

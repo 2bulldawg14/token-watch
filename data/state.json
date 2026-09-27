@@ -103,7 +103,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false
  },
@@ -246,7 +246,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -268,7 +268,7 @@
   "SEI": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -823,7 +823,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790520079.5433826,
+ "_saved_t": 1790520875.4264083,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

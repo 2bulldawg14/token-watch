@@ -103,7 +103,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false
  },
@@ -247,7 +247,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -367,7 +367,7 @@
   },
   "UNI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -519,7 +519,7 @@
   "QNT": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -695,7 +695,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will UNI reach $15.50 by December 31, 2026?": 34
   }
@@ -759,7 +759,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790466750.2425723,
+ "_saved_t": 1790468180.2741475,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

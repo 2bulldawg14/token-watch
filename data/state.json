@@ -90,10 +90,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $20 by December 31, 2026?": 28,
-   "Will Chainlink reach $16 by December 31, 2026?": 62,
-   "Will Chainlink reach $18 by December 31, 2026?": 38,
-   "Will Chainlink dip to $6 by December 31, 2026?": 8
+   "Will Chainlink reach $20 by December 31, 2026?": 30,
+   "Will Chainlink reach $16 by December 31, 2026?": 65,
+   "Will Chainlink reach $18 by December 31, 2026?": 41,
+   "Will Chainlink dip to $6 by December 31, 2026?": 9
   },
   "in_zone2": false,
   "below_stop": false
@@ -781,8 +781,8 @@
   "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 6,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
+   "Will Hyperliquid reach $200 by December 31, 2026?": 6,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 3
   }
  },
@@ -795,9 +795,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
+   "Will Zcash reach $2000 by December 31, 2026?": 58,
    "Will Zcash dip to $100 by December 31, 2026?": 4,
-   "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 54
+   "Will Zcash dip to $50 by December 31, 2026?": 3
   }
  },
  "SHIB": {
@@ -822,7 +822,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790514706.3465192,
+ "_saved_t": 1790515620.3351011,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

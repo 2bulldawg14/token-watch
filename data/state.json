@@ -71,7 +71,7 @@
  "SOL": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
@@ -88,7 +88,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $20 by December 31, 2026?": 28,
    "Will Chainlink reach $16 by December 31, 2026?": 62,
@@ -107,7 +107,7 @@
   "in_zone2": false,
   "below_stop": false
  },
- "_discovery_t": 1790471460.7803316,
+ "_discovery_t": 1790514661.178082,
  "_report_week": "2026-W39",
  "_export_t": 1790507461.8618033,
  "_tg_offset": 218529262,
@@ -218,7 +218,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -239,7 +239,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -373,7 +373,7 @@
   },
   "AKT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -463,7 +463,7 @@
   },
   "WLFI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -633,6 +633,41 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "RHEA": {
+   "seen": true,
+   "bad": true,
+   "in_sell": true,
+   "below": false,
+   "hit_t": false
+  },
+  "UB": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "PAXG": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "ZAMA": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "USDGO": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -734,7 +769,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "HYPE": {
   "seen_news": [],
@@ -784,9 +819,10 @@
   "signal": "HOLD"
  },
  "_disc_seen": {
-  "ASTER": 1790253479.3720071
+  "ASTER": 1790253479.3720071,
+  "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790513770.958578,
+ "_saved_t": 1790514706.3465192,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

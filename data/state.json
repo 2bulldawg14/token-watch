@@ -90,9 +90,9 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $20 by December 31, 2026?": 32,
-   "Will Chainlink reach $16 by December 31, 2026?": 58,
-   "Will Chainlink reach $18 by December 31, 2026?": 42,
+   "Will Chainlink reach $20 by December 31, 2026?": 30,
+   "Will Chainlink reach $16 by December 31, 2026?": 60,
+   "Will Chainlink reach $18 by December 31, 2026?": 39,
    "Will Chainlink dip to $6 by December 31, 2026?": 9
   },
   "in_zone2": false,
@@ -149,9 +149,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
+   "Will Bitcoin dip to $57,500 in September?": 0,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
-   "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $57,500 in September?": 0
+   "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0
   },
   "in_zone2": false,
   "below_stop": false
@@ -762,7 +762,7 @@
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 54
+   "Will Zcash reach $2000 by December 31, 2026?": 55
   }
  },
  "SHIB": {
@@ -786,7 +786,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790493180.3847582,
+ "_saved_t": 1790494135.2289803,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

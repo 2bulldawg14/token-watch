@@ -73,7 +73,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in September?": 0,
    "Will Solana dip to $30 in September?": 0,
@@ -88,11 +88,11 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $20 by December 31, 2026?": 22,
-   "Will Chainlink reach $16 by December 31, 2026?": 65,
-   "Will Chainlink reach $18 by December 31, 2026?": 42,
+   "Will Chainlink reach $16 by December 31, 2026?": 61,
+   "Will Chainlink reach $18 by December 31, 2026?": 44,
    "Will Chainlink dip to $6 by December 31, 2026?": 9
   },
   "in_zone2": false,
@@ -218,7 +218,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -232,14 +232,14 @@
   },
   "SOL": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -518,7 +518,7 @@
   "QNT": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -778,7 +778,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 3,
@@ -798,7 +798,7 @@
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 58
+   "Will Zcash reach $2000 by December 31, 2026?": 56
   }
  },
  "SHIB": {
@@ -823,7 +823,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790533913.051714,
+ "_saved_t": 1790535324.8812516,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

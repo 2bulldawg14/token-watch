@@ -91,7 +91,7 @@
   "signal": "HOLD",
   "odds": {
    "Will Chainlink dip to $14 in September?": 100,
-   "Will Chainlink reach $20 by December 31, 2026?": 28,
+   "Will Chainlink reach $20 by December 31, 2026?": 31,
    "Will Chainlink reach $16 by December 31, 2026?": 60,
    "Will Chainlink reach $18 by December 31, 2026?": 38
   },
@@ -127,7 +127,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Sui reach $1.80 before 2027?": 29,
+   "Will Sui reach $1.80 before 2027?": 30,
    "Will Sui dip to $0.20 before 2027?": 6
   },
   "in_zone2": false,
@@ -166,7 +166,7 @@
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
    "Will Ethereum dip to $1,500 in September?": 0,
-   "Will Ethereum reach $4,000 in September?": 0,
+   "Will Ethereum dip to $1,750 by December 31, 2026?": 8,
    "Will Ethereum dip to $1,250 by December 31, 2026?": 6
   },
   "in_zone2": false,
@@ -518,8 +518,8 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
-   "in_sell": false,
+   "bad": true,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -719,8 +719,8 @@
   "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 5,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 6,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
+   "Will Hyperliquid reach $200 by December 31, 2026?": 6,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 3
   }
  },
@@ -735,7 +735,7 @@
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 50
+   "Will Zcash reach $2000 by December 31, 2026?": 53
   }
  },
  "SHIB": {
@@ -759,7 +759,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790468180.2741475,
+ "_saved_t": 1790470003.5672238,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -767,6 +767,6 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  }
 }

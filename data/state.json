@@ -518,7 +518,7 @@
   "QNT": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -787,7 +787,7 @@
  "_disc_seen": {
   "ASTER": 1790253479.3720071
  },
- "_saved_t": 1790483542.3866787,
+ "_saved_t": 1790484842.3674047,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

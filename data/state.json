@@ -149,7 +149,7 @@
   "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 9,
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will the price of Bitcoin be above $70,000 on September 27?": 100
   },
@@ -268,7 +268,7 @@
   "SEI": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -314,7 +314,7 @@
   "TAO": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -374,7 +374,7 @@
   "AKT": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -463,7 +463,7 @@
   },
   "WLFI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -755,7 +755,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
@@ -823,7 +823,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790520875.4264083,
+ "_saved_t": 1790521877.8405488,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

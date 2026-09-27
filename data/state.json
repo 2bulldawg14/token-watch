@@ -103,7 +103,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -194,7 +194,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -246,8 +246,8 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
-   "in_sell": false,
+   "bad": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -326,7 +326,7 @@
   },
   "RENDER": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -374,7 +374,7 @@
   "AKT": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -518,7 +518,7 @@
   "QNT": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -823,7 +823,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790529958.5532923,
+ "_saved_t": 1790530802.6854959,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

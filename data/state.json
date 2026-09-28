@@ -79,8 +79,8 @@
   "rsi_band": "mid",
   "hit_below": false,
   "hit_above": false,
-  "risk": "MEDIUM",
-  "signal": "HOLD",
+  "risk": null,
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false
  },
@@ -88,7 +88,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in September?": 0,
@@ -102,14 +102,13 @@
  "LINK": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $20 by December 31, 2026?": 21,
-   "Will Chainlink reach $16 by December 31, 2026?": 66,
-   "Will Chainlink reach $18 by December 31, 2026?": 42,
-   "Will Chainlink dip to $6 by December 31, 2026?": 9
+   "Will Chainlink reach $16 by December 31, 2026?": 68,
+   "Will Chainlink reach $20 by December 31, 2026?": 32,
+   "Will Chainlink reach $18 by December 31, 2026?": 42
   },
   "in_zone2": false,
   "below_stop": false
@@ -117,15 +116,15 @@
  "ONDO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
-  "risk": "MEDIUM",
-  "signal": "TRIM",
+  "rsi_band": "mid",
+  "risk": null,
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
  "_discovery_t": 1790557892.4689043,
  "_report_week": "2026-W40",
- "_export_t": 1790551568.2762873,
+ "_export_t": 1790633642.7563996,
  "_tg_offset": 218529287,
  "HBAR": {
   "seen_news": [],
@@ -250,21 +249,21 @@
   "SOL": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
-   "in_sell": true,
+   "bad": false,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -848,7 +847,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790633640.3735242,
+ "_saved_t": 1790634884.8946586,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -858,5 +857,8 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 0
+ "_wl_cursor": 4,
+ "_err_alert": {
+  "dashboard self-check|live prices": 1790633642.7575617
+ }
 }

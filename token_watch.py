@@ -22,6 +22,10 @@ DAY = 86400
 BUY_SIGNALS = ("STRONG BUY ZONE", "ACCUMULATE")
 STABLES = {"usdt", "usdc", "dai", "fdusd", "tusd", "usde", "usds", "pyusd", "busd", "usdd", "frax", "eurc", "wbtc", "weth", "steth", "wsteth"}
 DEMO = False
+STOCKS = set()   # tickers you've told me are stocks, not coins (kept in data/state.json)
+def is_stock(sym):
+    s = str(sym).upper().lstrip("$")
+    return s in STOCKS or (REG.get(s) or {}).get("kind") == "stock"
 
 # ================================================================ helpers
 def now(): return time.time()
@@ -72,6 +76,214 @@ def get_json(url, headers=None, timeout=20, cg=False):
         except urllib.error.HTTPError as e:
             if e.code == 429 and attempt < 2: time.sleep(30 * (attempt + 1)); continue
             raise
+def get_text(url, timeout=25):
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=timeout) as r: return r.read().decode("utf-8", "replace")
+
+# ================================================================ STOCKS
+# Daily history: Stooq (free, no key). Live quote + fundamentals: Finnhub (free key, 60 calls/min).
+FINN = "https://finnhub.io/api/v1"
+def fh(path, **q):
+    k = CFG.get("finnhub_api_key")
+    if not k: return None
+    q["token"] = k
+    return get_json(f"{FINN}{path}?" + urllib.parse.urlencode(q))
+
+def stooq_daily(sym):
+    """Daily OHLCV history, same shape as binance_daily."""
+    q = sym.lower() if sym.startswith("^") else sym.lower() + ".us"
+    txt = get_text(f"https://stooq.com/q/d/l/?s={urllib.parse.quote(q)}&i=d")
+    lines = [l for l in txt.strip().splitlines() if l]
+    if len(lines) < 2 or not lines[0].lower().startswith("date"): return None
+    hdr = [x.strip().lower() for x in lines[0].split(",")]
+    try: di, oi, hi, li, ci, vi = (hdr.index(x) for x in ("date", "open", "high", "low", "close", "volume"))
+    except ValueError: return None
+    O, H, L, C, V = [], [], [], [], []
+    for row in lines[1:]:
+        f = row.split(",")
+        if len(f) <= vi: continue
+        try: o, h, l_, c, v = float(f[oi]), float(f[hi]), float(f[li]), float(f[ci]), float(f[vi] or 0)
+        except ValueError: continue
+        if c <= 0: continue
+        O.append(o); H.append(h); L.append(l_); C.append(c); V.append(v)
+    if len(C) < 30: return None
+    n = 400
+    return {"close": C[-n:], "high": H[-n:], "low": L[-n:], "volume": V[-n:], "taker_buy": None, "src": "Stooq"}
+
+def stooq_quote(sym):
+    """Latest price from Stooq (fallback when there's no Finnhub key)."""
+    txt = get_text(f"https://stooq.com/q/l/?s={urllib.parse.quote(sym.lower())}.us&f=sd2t2ohlcv&h&e=csv")
+    lines = [l for l in txt.strip().splitlines() if l]
+    if len(lines) < 2: return None
+    hdr = [x.strip().lower() for x in lines[0].split(",")]; f = lines[1].split(",")
+    try: c = float(f[hdr.index("close")])
+    except (ValueError, IndexError): return None
+    return c if c > 0 else None
+
+def stock_quote(sym):
+    q = try_get("stock quote", lambda: fh("/quote", symbol=sym)) if CFG.get("finnhub_api_key") else None
+    c = (q or {}).get("c")
+    if c: return float(c)
+    return try_get("stock quote (Stooq)", lambda: stooq_quote(sym))
+
+def _nth_dow(year, month, dow, nth):
+    """The nth <dow> of a month, as a date (dow: Monday=0)."""
+    d = datetime(year, month, 1, tzinfo=timezone.utc)
+    d += timedelta(days=(dow - d.weekday()) % 7 + 7 * (nth - 1))
+    return d
+
+def et_offset(d):
+    """US Eastern offset from UTC: -4 during daylight saving, -5 otherwise."""
+    start = _nth_dow(d.year, 3, 6, 2) + timedelta(hours=7)     # 2nd Sunday in March, 2am ET
+    end = _nth_dow(d.year, 11, 6, 1) + timedelta(hours=6)      # 1st Sunday in November, 2am ET
+    return -4 if start <= d < end else -5
+
+def market_open(t=None):
+    """Roughly: is the US stock market open now? (weekday, 9:30am-4pm Eastern; holidays aren't checked)"""
+    u = datetime.fromtimestamp(t or now(), timezone.utc)
+    d = u + timedelta(hours=et_offset(u))
+    if d.weekday() >= 5: return False
+    mins = d.hour * 60 + d.minute
+    return 9 * 60 + 30 <= mins <= 16 * 60
+
+def stock_quality(sym, tok):
+    """Stock stand-in for the crypto scam screen: quality flags + facts, same shape as due_diligence()."""
+    flags, checks, pts, facts = [], {}, 0.0, {"name": tok.get("name") or sym}
+    prof = try_get("company profile", lambda: fh("/stock/profile2", symbol=sym)) or {}
+    met = (try_get("company metrics", lambda: fh("/stock/metric", symbol=sym, metric="all")) or {}).get("metric") or {}
+    if prof.get("name"): facts["name"] = prof["name"]
+    facts["logo"] = prof.get("logo"); facts["industry"] = prof.get("finnhubIndustry")
+    mcap = (prof.get("marketCapitalization") or 0) * 1e6      # Finnhub reports millions
+    facts["market_cap"] = mcap or None
+    g = lambda k: met.get(k) if isinstance(met.get(k), (int, float)) else None
+    facts["pe"] = g("peTTM") or g("peBasicExclExtraTTM"); facts["pb"] = g("pbAnnual")
+    facts["rev_growth"] = g("revenueGrowthTTMYoy"); facts["eps_growth"] = g("epsGrowthTTMYoy")
+    facts["margin"] = g("netProfitMarginTTM"); facts["de"] = g("totalDebt/totalEquityAnnual")
+    facts["roe"] = g("roeTTM"); facts["w52high"] = g("52WeekHigh"); facts["w52low"] = g("52WeekLow")
+    facts["div"] = g("dividendYieldIndicatedAnnual")
+    def flag(p, msg, check=None, ok=None):
+        nonlocal pts
+        pts += p
+        if msg: flags.append((p, msg))
+        if check: checks[check] = ok
+    if mcap and mcap < CFG.get("min_stock_market_cap_usd", 3e8):
+        flag(2, f"Small company ({usd(mcap)} market cap) - thinner trading, bigger swings")
+    elif mcap: checks["size"] = True
+    m = facts["margin"]
+    if m is not None:
+        if m < 0: flag(1.5, f"Not profitable (net margin {m:.0f}%)", "profitable", False)
+        else: checks["profitable"] = True
+    de = facts["de"]
+    if de is not None and de > 2: flag(1, f"High debt (debt/equity {de:.1f})", "debt", False)
+    elif de is not None: checks["debt"] = True
+    rg = facts["rev_growth"]
+    if rg is not None and rg < -10: flag(1, f"Revenue shrinking ({rg:.0f}% year over year)")
+    pe = facts["pe"]
+    if pe is not None and pe > 80: flag(1, f"Very expensive (P/E {pe:.0f})")
+    if not CFG.get("finnhub_api_key"):
+        flag(0, "No Finnhub key set, so fundamentals aren't checked - technicals only")
+    ed = try_get("earnings date", lambda: next_earnings(sym))
+    facts["earnings"] = ed
+    if ed and 0 <= ed["days"] <= CFG.get("earnings_warn_days", 7):
+        flag(1.5, f"Earnings in {ed['days']} day(s) ({ed['date']}) - results can move the price sharply", "earnings", False)
+    level = "HIGH" if pts >= 5 else "MEDIUM" if pts >= 2 else "LOW"
+    return {"level": level, "points": round(pts, 1), "flags": [m for _, m in sorted(flags, key=lambda x: -x[0])],
+            "checks": checks, "facts": facts}
+
+def next_earnings(sym):
+    if not CFG.get("finnhub_api_key"): return None
+    today = datetime.now(timezone.utc).date()
+    d = fh("/calendar/earnings", symbol=sym, **{"from": str(today), "to": str(today + timedelta(days=90))}) or {}
+    rows = sorted((d.get("earningsCalendar") or []), key=lambda r: r.get("date") or "")
+    if not rows: return None
+    r0 = rows[0]
+    try: days = (datetime.strptime(r0["date"], "%Y-%m-%d").date() - today).days
+    except Exception: return None
+    return {"date": r0["date"], "days": days}
+
+def stock_news(sym):
+    if not CFG.get("finnhub_api_key"): return None
+    today = datetime.now(timezone.utc).date()
+    rows = fh("/company-news", symbol=sym, **{"from": str(today - timedelta(days=7)), "to": str(today)}) or []
+    out = []
+    for n in rows[:20]:
+        t = (n.get("headline") or "")
+        low = t.lower(); f = sum(v for k, v in NEWS_FLAGS.items() if k in low)
+        out.append({"id": str(n.get("id") or t[:40]), "title": t, "url": n.get("url") or "", "flag": f, "pos": 0, "neg": 0})
+    return out or None
+
+def stock_exists(sym):
+    """Is this a real US-listed ticker? Returns the company name, or None."""
+    if not CFG.get("stocks", True): return None
+    if CFG.get("finnhub_api_key"):
+        p = try_get("ticker lookup", lambda: fh("/stock/profile2", symbol=sym))
+        if isinstance(p, dict) and p.get("ticker"): return p.get("name") or p["ticker"]
+        if isinstance(p, dict): return None          # Finnhub answered "not a ticker"
+    return sym if try_get("ticker lookup (Stooq)", lambda: stooq_quote(sym)) else None
+
+def classify(sym, cache):
+    """Work out whether a ticker means a coin or a stock. Returns (kind, coingecko_id, company_name)."""
+    s = str(sym).upper().lstrip("$")
+    known = (REG.get(s) or {}).get("kind")
+    if s in STOCKS or known == "stock": return "stock", None, (REG.get(s) or {}).get("name")
+    if known == "crypto": return "crypto", (REG.get(s) or {}).get("cg_id"), None
+    cg = try_get("lookup", lambda: resolve_id(s, cache))
+    stk = stock_exists(s)
+    if cg and stk: return "both", cg, stk
+    if stk: return "stock", None, stk
+    if cg: return "crypto", cg, None
+    return None, None, None
+
+def stock_grade(dd):
+    """Letter grade from a company's fundamentals; feeds the "fundamental" part of the score."""
+    f = (dd or {}).get("facts") or {}
+    pts, n = 0.0, 0
+    for v, bad, good in ((f.get("margin"), 0, 15), (f.get("roe"), 0, 18),
+                         (f.get("rev_growth"), -5, 15), (f.get("eps_growth"), -10, 15)):
+        if v is not None: n += 1; pts += lin(v, bad, good)
+    pe = f.get("pe")
+    if pe is not None and pe > 0: n += 1; pts += lin(pe, 60, 12)
+    de = f.get("de")
+    if de is not None: n += 1; pts += lin(de, 3, 0.3)
+    if not n: return None
+    sc = pts / n
+    return "A" if sc >= 80 else "B" if sc >= 62 else "C" if sc >= 45 else "D" if sc >= 30 else "F"
+
+def stock_macro():
+    """US market backdrop for stocks: S&P 500 trend and the VIX."""
+    spy = try_get("S&P 500 history", lambda: stooq_daily("spy"))
+    if not spy: return
+    c = spy["close"]; MACRO["spy_close"] = c
+    parts, why = [], []
+    s50, s200 = sma(c, 50), sma(c, 200)
+    if s50 and s200:
+        sc = 75 if c[-1] > s50 > s200 else 55 if c[-1] > s200 else 40 if s50 > s200 else 25
+        MACRO["spy_bull"] = c[-1] > s200; parts.append(sc)
+        why.append(f"US market: S&P 500 {'above' if c[-1] > s200 else 'below'} its 200-day average"
+                   + (" (uptrend)" if sc == 75 else " (downtrend)" if sc == 25 else ""))
+    r = rsi(c)
+    if r is not None: parts.append(lin(r, 80, 30)); why.append(f"S&P 500 RSI {r:.0f}")
+    vx = try_get("VIX", lambda: stooq_daily("^vix"))
+    if vx:
+        v = vx["close"][-1]; parts.append(lin(v, 32, 13))
+        why.append(f"VIX {v:.0f} (" + ("calm" if v < 16 else "nervous" if v < 25 else "fearful") + ")")
+    MACRO["stock_score"] = sum(parts) / len(parts) if parts else None
+    MACRO["stock_why"] = why
+    if why: print("Stock backdrop: " + "; ".join(why))
+
+def stock_data(tok):
+    """Daily history from Stooq (cached), with today's live quote patched in."""
+    sym = tok["symbol"]; key = "stk:" + sym
+    h = HIST.get(key)
+    if not h or now() - h["t"] > CFG.get("stock_history_refresh_hours", 6) * 3600:
+        fresh = try_get("Stooq history", lambda: stooq_daily(sym))
+        if fresh: h = HIST[key] = {"t": now(), "d": fresh}
+    if not h: return None, None
+    data = {k: (list(v) if isinstance(v, list) else v) for k, v in h["d"].items()}
+    q = LIVE.get(key) or stock_quote(sym)
+    if q: LIVE[key] = q; data["close"][-1] = q
+    return data, None
+
 ERRORS = []   # problems worth telling you about (sent to Telegram once per hour at most)
 CRITICAL = {"live prices", "logos", "market backdrop"}
 def try_get(label, fn):
@@ -91,7 +303,7 @@ def report_errors(state):
     last[key] = now()
     run = f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}" if os.environ.get("GITHUB_RUN_ID") else ""
     send("⚠️ Token Watch needs attention:\n" + "\n".join("• " + m for m in msgs[:6])
-         + ("\nDetails: " + run if run else "") + "\nI'll keep retrying automatically; tell Claude if this keeps happening.", "system")
+         + ("\nDetails: " + run if run else "") + "\nI'll keep retrying automatically; tell Claude if this keeps happening.", "system", owner_only=True)
 
 CG = "https://api.coingecko.com/api/v3"
 BINANCE_HOSTS = ["https://api.binance.com", "https://data-api.binance.vision"]  # 2nd works from the US
@@ -503,9 +715,12 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
         dv = rsi_divergence(c, rsi_series(c))
         if dv == "bullish": t.append(82); why.append("Bullish RSI divergence: lower price low, higher RSI low")
         elif dv == "bearish": t.append(20); why.append("Bearish RSI divergence: higher price high, lower RSI high")
-    if ind("relative_strength") and MACRO.get("btc_close") and sym != "BTC" and len(c) >= 31:
-        b = MACRO["btc_close"]; rs30 = (c[-1] / c[-31] - b[-1] / b[-31]) * 100; ex["_rs30"] = rs30
-        t.append(lin(rs30, -25, 25)); why.append(f"{'Outperforming' if rs30 > 0 else 'Underperforming'} Bitcoin by {abs(rs30):.0f}% over 30 days")
+    _stk = ex.get("_kind") == "stock"
+    _bench = MACRO.get("spy_close") if _stk else MACRO.get("btc_close")
+    _bname = "the S&P 500" if _stk else "Bitcoin"
+    if ind("relative_strength") and _bench and len(_bench) >= 31 and sym not in ("BTC", "SPY") and len(c) >= 31:
+        b = _bench; rs30 = (c[-1] / c[-31] - b[-1] / b[-31]) * 100; ex["_rs30"] = rs30
+        t.append(lin(rs30, -25, 25)); why.append(f"{'Outperforming' if rs30 > 0 else 'Underperforming'} {_bname} by {abs(rs30):.0f}% over 30 days")
     parts["technical"] = sum(t) / len(t) if t else None
     ratio = None
     if data.get("taker_buy"):
@@ -536,7 +751,7 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
     wv = ex.get("wallets")
     parts["wallets"] = wv["score"] if wv else None                 # followed wallets ("smart money"); only counts when they traded it
     if wv: why.append(wv["why"])
-    parts["macro"] = MACRO.get("score")
+    parts["macro"] = MACRO.get("stock_score") if _stk else MACRO.get("score")
     if news:
         flag = sum(n["flag"] for n in news[:15]); pos = sum(n["pos"] for n in news); neg = sum(n["neg"] for n in news)
         parts["news"] = max(0, min(100, 0.5 * (lin(pos/(pos+neg), 0.3, 0.8) if pos+neg else 50) + 0.5 * (50 + flag * 8)))
@@ -574,11 +789,16 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
     if signal in BUY_SIGNALS and blocked:
         signal = "HOLD"; why.insert(0, "Capped at HOLD: this setup has lost money repeatedly in past calls (see Learned)")
     if dd and dd["level"] == "HIGH":
-        signal = "AVOID (SCAM RISK)"; why.insert(0, "High scam risk: " + "; ".join(dd["flags"][:3]))
+        if _stk:
+            if signal in BUY_SIGNALS: signal = "HOLD"
+            why.insert(0, "Capped at HOLD: quality concerns - " + "; ".join(dd["flags"][:3]))
+        else:
+            signal = "AVOID (SCAM RISK)"; why.insert(0, "High scam risk: " + "; ".join(dd["flags"][:3]))
     return {"symbol": sym, "price": price, "rsi": r, "macd": m, "atr": a, "sma50": s50, "sma200": s200, "buy_zone": bz,
             "sell_zone": sz, "in_zone": in_zone, "parts": parts, "score": score, "signal": signal, "why": why,
             "buy_ratio": ratio, "src": data.get("src"), "markets": mv, "pb": ex.get("_pb"), "rs30": ex.get("_rs30"),
-            "in_sell": in_sell, "blocked": blocked, "plan": plan, "in_zone2": in_zone2, "vnodes": nodes}
+            "in_sell": in_sell, "blocked": blocked, "plan": plan, "in_zone2": in_zone2, "vnodes": nodes,
+            "kind": "stock" if _stk else "crypto"}
 
 # ================================================================ extra indicators (all free, all optional)
 DEFAULT_IND = {"bollinger": True, "obv": True, "rsi_divergence": True, "relative_strength": True,
@@ -693,18 +913,20 @@ def load_macro():
             parts.append(lin(sc, -2, 3)); why.append(f"Stablecoin supply {sc:+.1f}% in 30 days ({'money flowing in' if sc > 0 else 'money leaving'})")
     MACRO["score"] = sum(parts) / len(parts) if parts else None; MACRO["why"] = why
     if why: print("Market backdrop: " + "; ".join(why))
+    if any(t.get("kind") == "stock" for t in CFG_WATCH) or STOCKS: try_get("stock backdrop", stock_macro)
 
 # ================================================================ track record
 def stamp_call(calls, res, cg_id, dd, source):
     if not is_buy(res): return None
     if res["rsi"] is not None and res["rsi"] > 70: return None   # don't stamp buys into overbought moves
-    if dd and dd["level"] == "HIGH": return None
+    if dd and dd["level"] == "HIGH" and res.get("kind") != "stock": return None
     cool = CFG.get("call_cooldown_days", 7) * DAY
     if any(c["symbol"] == res["symbol"] and now() - c["t"] < cool for c in calls): return None
     call = {"id": f"{res['symbol']}-{int(now())}", "symbol": res["symbol"], "cg_id": cg_id, "t": int(now()), "date": iso(),
             "entry": res["price"], "signal": res["signal"] if res["signal"] in BUY_SIGNALS else "IN BUY ZONE",
             "score": round(res["score"] or 0), "buy_zone": res["buy_zone"], "risk": dd["level"] if dd else None, "plan": res.get("plan"),
-            "source": source, "last": res["price"], "max": res["price"], "min": res["price"], "checkpoints": {}}
+            "source": source, "last": res["price"], "max": res["price"], "min": res["price"], "checkpoints": {},
+            "kind": res.get("kind") or "crypto", "by": added_by(res["symbol"])}
     calls.append(call); return call
 
 def update_calls(calls, prices):
@@ -757,17 +979,45 @@ def alert_allowed(kind, sym=None):
     if sym and sym in PREFS["starred"]: return True          # starred: always
     return a["watchlist"]
 
-def send(text, kind="system", sym=None):
+def tg_post(tok, chat, text):
+    try:
+        body = urllib.parse.urlencode({"chat_id": str(chat), "text": text[:4000], "disable_web_page_preview": "true"}).encode()
+        urllib.request.urlopen(urllib.request.Request(f"https://api.telegram.org/bot{tok}/sendMessage", data=body, headers=UA), timeout=15)
+        return True
+    except Exception as e:
+        print(f"  [telegram failed -> {chat}] {e}"); return False
+
+# ---------------------------------------------------------------- people on the distribution list
+def members(): return PREFS.get("members", [])
+def member_by_chat(cid):
+    cid = str(cid)
+    return next((m for m in members() if str(m.get("chat_id")) == cid), None)
+def member_by_name(name):
+    n = (name or "").strip().lower()
+    return next((m for m in members() if m["name"].lower() == n), None)
+def owner_name(): return CFG.get("owner_name", "You")
+def is_owner(cid):
+    _, own = tg_creds(); return str(cid) == str(own)
+def person_name(cid):
+    if is_owner(cid): return owner_name()
+    m = member_by_chat(cid); return m["name"] if m else None
+def added_by(sym): return (PREFS.get("added_by") or {}).get(str(sym).upper())
+def set_added_by(sym, who):
+    if who: PREFS.setdefault("added_by", {})[str(sym).upper()] = who
+
+def send(text, kind="system", sym=None, owner_only=False):
     print("\n" + text + "\n")
-    if not alert_allowed(kind, sym):
-        print("  (Telegram muted for this kind of alert)"); return
     if sym and sym in PREFS.get("starred", []): text = "⭐ " + text
     tok, chat = tg_creds()
-    if tok and chat and not DEMO:
-        try:
-            body = urllib.parse.urlencode({"chat_id": chat, "text": text[:4000], "disable_web_page_preview": "true"}).encode()
-            urllib.request.urlopen(urllib.request.Request(f"https://api.telegram.org/bot{tok}/sendMessage", data=body, headers=UA), timeout=15)
-        except Exception as e: print(f"  [telegram failed] {e}")
+    if DEMO or not tok: return
+    if chat and alert_allowed(kind, sym): tg_post(tok, chat, text)
+    if owner_only or kind == "system": return
+    who = added_by(sym) if sym else None
+    for m in list(members()):
+        mode = m.get("mode", "all")
+        if mode == "off": continue
+        if mode == "mine" and (not who or who.lower() != m["name"].lower()): continue
+        tg_post(tok, m["chat_id"], text)
 
 BACKDROP = {}
 
@@ -788,8 +1038,13 @@ DEX_CHAINS = {"ethereum": "ethereum", "binance-smart-chain": "bsc", "solana": "s
               "blast": "blast", "mantle": "mantle", "zksync": "zksync", "cronos": "cronos", "fantom": "fantom", "osmosis": "osmosis",
               "injective": "injective", "sei-v2": "seiv2", "hyperevm": "hyperevm", "berachain": "berachain", "abstract": "abstract"}
 CHAIN_PREF = ("solana", "ethereum", "base", "binance-smart-chain", "arbitrum-one")
-def token_links(sym, cg_id, dd):
-    """Best contract + CoinGecko and DexScreener links for a token."""
+def token_links(sym, cg_id, dd, kind=None):
+    """Best contract + CoinGecko and DexScreener links for a coin, or Yahoo/TradingView for a stock."""
+    if (kind or ("stock" if is_stock(sym) else "crypto")) == "stock":
+        q = urllib.parse.quote(sym)
+        return {"kind": "stock", "chain": None, "contract": None, "contracts": [],
+                "yahoo": f"https://finance.yahoo.com/quote/{q}", "tradingview": f"https://www.tradingview.com/symbols/{q}/",
+                "coingecko": f"https://finance.yahoo.com/quote/{q}", "dexscreener": f"https://www.tradingview.com/symbols/{q}/"}
     plats = (((dd or {}).get("facts") or {}).get("platforms") or {})
     plats = {k: v for k, v in plats.items() if k and v}
     order = sorted(plats, key=lambda k: (k not in CHAIN_PREF, CHAIN_PREF.index(k) if k in CHAIN_PREF else 0, k not in DEX_CHAINS))
@@ -800,9 +1055,11 @@ def token_links(sym, cg_id, dd):
             "coingecko": f"https://www.coingecko.com/en/coins/{cg_id}" if cg_id else "https://www.coingecko.com/en/search?query=" + urllib.parse.quote(sym),
             "dexscreener": dex}
 def links_text(res, dd):
-    L = token_links(res["symbol"], res.get("cg_id"), dd)
+    L = token_links(res["symbol"], res.get("cg_id"), dd, res.get("kind"))
     name = ((dd or {}).get("facts") or {}).get("name")
     s = f"\nTicker: {res['symbol']}" + (f" ({name})" if name else "")
+    if L.get("kind") == "stock":
+        return s + f"\nYahoo Finance: {L['yahoo']}\nTradingView: {L['tradingview']}"
     s += f"\nContract ({L['chain']}): {L['contract']}" if L["contract"] else "\nContract: none (native coin)"
     return s + f"\nCoinGecko: {L['coingecko']}\nDexScreener: {L['dexscreener']}"
 def is_buy(res): return res["signal"] in BUY_SIGNALS or ((res.get("in_zone") or res.get("in_zone2")) and not res.get("in_sell") and not res.get("blocked") and res["signal"] not in ("SELL / AVOID", "AVOID (SCAM RISK)", "TRIM"))
@@ -817,8 +1074,11 @@ def summary(res, dd=None, links=False):
               + (f", ½ in zone 2 {z(pl['zone2'])}{' (strong)' if pl['zone2'].get('strong') else ''}" if pl.get("zone2") else "")
               + (f"; stop below {px(pl['stop'])}" if pl.get("stop") else "") + (f"; take profit near {px(pl['target'])}" if pl.get("target") else ""))
     if res.get("markets"): s += "\nBetting markets:\n" + "\n".join("   " + l for l in res["markets"]["lines"][:3])
-    if dd: s += f"\nScam risk {dd['level']}" + (": " + "; ".join(dd["flags"][:4]) if dd["flags"] else "")
-    s += "\n" + "\n".join(" - " + w for w in res["why"]) + ("\nMarket: " + "; ".join(MACRO.get("why", [])) if MACRO.get("why") else "")
+    if dd:
+        s += (f"\nQuality check: {dd['level']} risk" if res.get("kind") == "stock" else f"\nScam risk {dd['level']}") \
+             + (": " + "; ".join(dd["flags"][:4]) if dd["flags"] else "")
+    mw = MACRO.get("stock_why") if res.get("kind") == "stock" else MACRO.get("why")
+    s += "\n" + "\n".join(" - " + w for w in res["why"]) + ("\nMarket: " + "; ".join(mw) if mw else "")
     if is_buy(res) or links: s += "\n" + links_text(res, dd)
     return s
 
@@ -859,7 +1119,12 @@ def check_alerts(tok, res, news, dd, state, call):
 # ================================================================ watchlist + discovery
 def norm(tok):
     if isinstance(tok, str): tok = {"symbol": tok}
-    tok["symbol"] = tok["symbol"].upper().strip(); return tok
+    s = str(tok["symbol"]).upper().strip().lstrip("$")
+    for pre, k in (("STOCK:", "stock"), ("STK:", "stock"), ("CRYPTO:", "crypto"), ("COIN:", "crypto")):
+        if s.startswith(pre): s = s[len(pre):].strip(); tok.setdefault("kind", k)
+    tok["symbol"] = s
+    if not tok.get("kind"): tok["kind"] = "stock" if is_stock(s) else "crypto"; tok["_auto"] = True
+    return tok
 
 HIST, LIVE = {}, {}   # daily-history cache (kept between runs) and this run's live prices
 
@@ -885,10 +1150,12 @@ def get_data(tok, cg_id):
 
 REG = {}     # every coin ever added or called: ticker -> CoinGecko ID, name, contract (data/coins.json)
 
-def register(sym, cg_id, dd, source):
+def register(sym, cg_id, dd, source, kind="crypto"):
     e = REG.setdefault(sym, {"first_seen": iso(), "source": source})
-    L = token_links(sym, cg_id, dd); f = (dd or {}).get("facts") or {}
+    L = token_links(sym, cg_id, dd, kind); f = (dd or {}).get("facts") or {}
     e.update({k: v for k, v in {"cg_id": cg_id, "name": f.get("name"), "chain": L.get("chain"), "contract": L.get("contract")}.items() if v})
+    e["kind"] = kind
+    if added_by(sym): e["by"] = added_by(sym)
     if source == "watchlist": e["source"] = "watchlist"
     e["last_seen"] = iso()
 
@@ -940,7 +1207,28 @@ def sell_check(res, state, sym, source, cg_id, dd, calls):
              f"{r:+.1f}% ({'profit' if r > 0 else 'loss'}) after {(now() - oc['t']) / DAY:.0f} days. Best point during the trade: {best:+.0f}%.\n"
              "I'll check in 7 days whether selling here was well timed.\n" + links_text(res, dd), "token", sym)
 
+def check_stock(tok, cache, state, calls, source="watchlist", grade=None):
+    sym = tok["symbol"]; print(f"\n{sym} (stock) ...")
+    data, _ = stock_data(tok)
+    if not data or len(data["close"]) < 30: print("  No price history for that ticker."); return None
+    dd = try_get("quality screen", lambda: stock_quality(sym, tok))
+    news = try_get("news", lambda: stock_news(sym))
+    ex = {"_source": source, "_kind": "stock"}
+    res = analyse(sym, data, None, news, None, tok.get("fundamental_grade") or grade or stock_grade(dd), dd, None, None, ex)
+    res["cg_id"] = None
+    if source in ("watchlist", "tracked", "discovery"): register(sym, None, dd, source, kind="stock")
+    call = None if source in ("adhoc", "tracked") else stamp_call(calls, res, None, dd, source)
+    if source != "adhoc": try_get("sell check", lambda: sell_check(res, state, sym, source, None, dd, calls))
+    if call:
+        call["feat"] = features(res, data, source, dd); call["starred"] = sym in PREFS.get("starred", [])
+        call["links"] = token_links(sym, None, dd, "stock")
+    print(summary(res, dd))
+    if source == "watchlist" and (market_open() or call): check_alerts(tok, res, news, dd, state, call)
+    return {"tok": tok, "cg_id": None, "res": res, "dd": dd, "call": call, "closes": data["close"][-365:],
+            "vols": (data.get("volume") or [])[-365:], "source": source}
+
 def check_token(tok, cache, state, calls, source="watchlist", grade=None):
+    if norm(tok).get("kind") == "stock": return check_stock(tok, cache, state, calls, source, grade)
     sym = tok["symbol"]; print(f"\n{sym} ...")
     cg_id = tok.get("coingecko_id") or (REG.get(sym) or {}).get("cg_id") or try_get("lookup", lambda: resolve_id(sym, cache))
     if not cg_id: print("  Not found on CoinGecko."); return None
@@ -1508,7 +1796,9 @@ def export(results, calls, full=True):
         if k_ in ids_: continue
         ids_.add(k_)
         out["tokens"].append(token_entry(r))
-    out["macro"] = {"score": MACRO.get("score"), "why": MACRO.get("why", [])}
+    out["macro"] = {"score": MACRO.get("score"), "why": MACRO.get("why", []),
+                    "stock_score": MACRO.get("stock_score"), "stock_why": MACRO.get("stock_why", [])}
+    out["market_open"] = market_open() if (MACRO.get("stock_why") or STOCKS) else None
     out["wallets"] = wallets_export()
     out["coins"] = REG; out["logos"] = LOGOS
     out["sells"] = [e for e in SELLS if now() - e["t"] < 120 * DAY]
@@ -1522,6 +1812,7 @@ def token_entry(r):
         pr = res["buy_ratio"]
         return ({
             "symbol": res["symbol"], "name": (dd.get("facts") or {}).get("name") or "", "source": r["source"],
+            "kind": res.get("kind") or "crypto", "by": added_by(res["symbol"]), "facts": (dd.get("facts") or {}) if res.get("kind") == "stock" else None,
             "price": res["price"], "prices": "\n".join(f"{x:.8g}" for x in r["closes"]),
             "signal": res["signal"], "score": res["score"], "buy_zone": res["buy_zone"], "sell_zone": res["sell_zone"],
             "plan": res.get("plan"), "vnodes": res.get("vnodes"), "in_zone2": res.get("in_zone2"),
@@ -1529,8 +1820,8 @@ def token_entry(r):
             "pressure": None if pr is None else (-2 if pr < .46 else -1 if pr < .49 else 0 if pr < .51 else 1 if pr < .54 else 2),
             "market_cap": (dd.get("facts") or {}).get("market_cap"),
             "markets": res.get("markets"), "parts": res["parts"], "rsi": res.get("rsi"), "cg_id": r.get("cg_id"),
-            "links": token_links(res["symbol"], r.get("cg_id"), dd), "fdv": (dd.get("facts") or {}).get("fdv"),
-            "volume_24h": (dd.get("facts") or {}).get("volume"), "is_buy": res["signal"] in BUY_SIGNALS, "in_zone_only": bool(is_buy(res) and res["signal"] not in BUY_SIGNALS), "starred": False, "logo": LOGOS.get(r.get("cg_id") or ""),
+            "links": token_links(res["symbol"], r.get("cg_id"), dd, res.get("kind")), "fdv": (dd.get("facts") or {}).get("fdv"),
+            "volume_24h": (dd.get("facts") or {}).get("volume"), "is_buy": res["signal"] in BUY_SIGNALS, "in_zone_only": bool(is_buy(res) and res["signal"] not in BUY_SIGNALS), "starred": False, "logo": LOGOS.get(r.get("cg_id") or "") or ((dd.get("facts") or {}).get("logo") if res.get("kind") == "stock" else None),
             "chart": {"c": [round(x, 10) for x in r["closes"]], "v": [round(x) for x in (r.get("vols") or [])]}})
 
 def write_dashboard(out):
@@ -1597,6 +1888,8 @@ h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mu
 .rt{text-align:right}.pill{display:inline-block;border-radius:8px;padding:3px 7px;font-size:.68rem;font-weight:800;letter-spacing:.02em;white-space:nowrap}
 .score{font-size:.74rem;color:var(--mut);margin-top:3px}
 .badge.zone{color:var(--up)}
+.badge.stk{color:var(--acc);border-color:var(--acc)}
+.badge.who{color:var(--warn);border-color:var(--warn)}
 .badge{font-size:.66rem;border:1px solid var(--line);border-radius:6px;padding:0 5px;color:var(--mut);margin-left:4px;vertical-align:2px}
 .body{display:none;padding:0 14px 14px;border-top:1px solid var(--line)}.tok.open .body{display:block}
 .chev{transition:transform .2s;color:var(--mut)}.tok.open .chev{transform:rotate(180deg)}
@@ -1674,19 +1967,23 @@ tr.hid td{opacity:.55}
 .refbtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;width:38px;height:38px;font-size:1.2rem;cursor:pointer;line-height:1;display:grid;place-items:center}
 .refbtn:active{background:var(--card2)}.refbtn.spin{animation:spin 1s linear infinite;color:var(--acc)}
 @keyframes spin{to{transform:rotate(360deg)}}
+.addkind{display:flex;gap:12px;flex-wrap:wrap;margin-top:7px;font-size:.78rem;color:var(--mut)}
+.sect2{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin-top:6px}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none}
 </style></head><body>
 <header><div><h1>Token <span>Watch</span></h1></div><div class=hdr><button id=refresh class=refbtn title="Refresh data">↻</button><div class=upd id=upd></div></div></header>
 <div class="kpis k4" id=kpis></div>
-<div class=addbox><div class=addrow><input id=addin placeholder="Ticker, e.g. TAO" autocapitalize=characters autocomplete=off spellcheck=false maxlength=15>
-<button class="abtn" id=addbtn>Add</button><button class="abtn alt" id=addstar>Add ⭐</button></div><div class=addnote id=addnote></div></div>
+<div class=addbox><div class=addrow><input id=addin placeholder="Ticker, e.g. TAO or AAPL" autocapitalize=characters autocomplete=off spellcheck=false maxlength=15>
+<button class="abtn" id=addbtn>Add</button><button class="abtn alt" id=addstar>Add ⭐</button></div>
+<div class=addkind><label class=chk><input type=radio name=akind value="" checked> Work it out for me</label><label class=chk><input type=radio name=akind value=crypto> Coin</label><label class=chk><input type=radio name=akind value=stock> Stock</label></div>
+<div class=addnote id=addnote></div></div>
 <div id=macro></div>
 <div class=tabs id=tabs></div>
 <div class=rehint>↕ Press and hold a coin to drag it into any order · <a href="#" id=forcechk style="display:none;color:var(--acc)">force a fresh check</a></div>
 <div id=pending></div>
 <div id=list></div>
 <h2>Wallets you follow</h2><div id=wallets></div>
-<h2>Coin directory</h2><div id=coindir></div>
+<h2>Coin &amp; stock directory</h2><div id=coindir></div>
 <h2>Track record</h2><div id=calls></div>
 <h2>What the model has learned</h2><div id=learn></div>
 <p class=foot>Not financial advice. Signals describe the past and are often wrong. Always check the team and contract yourself.</p>
@@ -1697,7 +1994,7 @@ const $=s=>document.querySelector(s), el=(t,c,h)=>{const e=document.createElemen
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const fmt=p=>p==null?"–":p>=1000?"$"+p.toLocaleString(undefined,{maximumFractionDigits:0}):p>=100?"$"+p.toFixed(2):p>=1e-4?"$"+String(Number(p.toPrecision(4))):"$"+p.toFixed(12).replace(/0+$/,"");
-const big=n=>!n?"–":n>=1e9?"$"+(n/1e9).toFixed(2)+"B":n>=1e6?"$"+(n/1e6).toFixed(1)+"M":"$"+(n/1e3).toFixed(0)+"K";
+const big=n=>!n?"–":n>=1e12?"$"+(n/1e12).toFixed(2)+"T":n>=1e9?"$"+(n/1e9).toFixed(2)+"B":n>=1e6?"$"+(n/1e6).toFixed(1)+"M":"$"+(n/1e3).toFixed(0)+"K";
 const SIG={"STRONG BUY ZONE":["var(--up)","#fff"],"ACCUMULATE":["var(--up-bg)","var(--up)"],"HOLD":["rgba(242,181,68,.16)","var(--warn)"],
 "TRIM":["var(--dn-bg)","var(--dn)"],"SELL / AVOID":["var(--dn)","#fff"],"AVOID (SCAM RISK)":["#7A1F1F","#fff"],"NO DATA":["var(--card2)","var(--mut)"]};
 const SHORT={"STRONG BUY ZONE":"STRONG BUY","AVOID (SCAM RISK)":"SCAM RISK","SELL / AVOID":"SELL"};
@@ -1728,6 +2025,10 @@ const exitOf=c=>SELLS.filter(e=>e.symbol==c.symbol&&e.t>c.t).sort((a,b)=>a.t-b.t
 const tradeRet=c=>{const x=exitOf(c);return ((x?x.price:c.last)/c.entry-1)*100};
 const rets=calls.map(tradeRet);
 const buys=D.tokens.filter(t=>t.is_buy&&!/AVOID/.test(t.signal));
+const isStk=t=>t.kind=="stock";const HASST=D.tokens.some(isStk)||calls.some(c=>c.kind=="stock");
+const BYOF={};D.tokens.forEach(t=>{if(t.by)BYOF[t.symbol]=t.by});Object.entries(D.coins||{}).forEach(([k,v])=>{if(v.by&&!BYOF[k])BYOF[k]=v.by});calls.forEach(c=>{if(c.by&&!BYOF[c.symbol])BYOF[c.symbol]=c.by});
+const whoOf=sym=>BYOF[sym]||null;
+const PEOPLE=[...new Set(Object.values(BYOF))].sort();
 // two rows at the top: your starred coins, then coins the scanner found
 const DELK=(()=>{try{return new Set(JSON.parse(localStorage.getItem("tw_deleted")||"[]"))}catch(e){return new Set()}})();
 const pct=v=>v==null?"–":(v>=0?"+":"")+v.toFixed(1)+"%",col=v=>v==null?"inherit":v>=0?"var(--up)":"var(--dn)";
@@ -1735,8 +2036,11 @@ const krow=(title,toks,cl0)=>{const cl=cl0.filter(c=>!DELK.has(String(Math.floor
 const op=cl.filter(c=>!exitOf(c)).map(c=>(c.last/c.entry-1)*100),oavg=op.length?op.reduce((a,b)=>a+b,0)/op.length:null;
 return `<div class=krow>${title}</div><div class=kpi><b>${nb}</b><small>buy setups now</small></div><div class=kpi><b>${r.length?Math.round(r.filter(x=>x>0).length/r.length*100)+"%":"–"}</b><small>calls in profit${r.length?" ("+r.length+")":""}</small></div><div class=kpi><b style="color:${col(avg)}">${pct(avg)}</b><small>avg call return</small></div><div class=kpi><b style="color:${col(oavg)}">${pct(oavg)}</b><small>open calls now${op.length?" ("+op.length+")":""}</small></div>`};
 $("#kpis").innerHTML=krow("⭐ Your starred coins",D.tokens.filter(t=>t.starred),calls.filter(c=>c.starred||star.has(c.symbol)))+
-krow("🔎 Coins the scanner found",D.tokens.filter(t=>t.source=="discovery"),calls.filter(c=>c.source=="discovery"));
-if((D.macro||{}).why&&D.macro.why.length){const m=$("#macro");m.innerHTML=`<h2>Market backdrop${D.macro.score!=null?" · "+Math.round(D.macro.score)+"/100":""}</h2>`;const ch=el("div","chips");D.macro.why.forEach(w=>ch.append(el("span","chip",esc(w))));m.append(ch)}
+krow("🔎 Coins the scanner found",D.tokens.filter(t=>t.source=="discovery"),calls.filter(c=>c.source=="discovery"))+
+(HASST?krow("📈 Your stocks",D.tokens.filter(isStk),calls.filter(c=>c.kind=="stock")):"");
+if((D.macro||{}).why&&D.macro.why.length){const m=$("#macro");m.innerHTML=`<h2>Market backdrop${D.macro.score!=null?" · "+Math.round(D.macro.score)+"/100":""}</h2>`;const ch=el("div","chips");D.macro.why.forEach(w=>ch.append(el("span","chip",esc(w))));m.append(ch);
+ if((D.macro.stock_why||[]).length){m.append(el("h2","",`US stock backdrop${D.macro.stock_score!=null?" · "+Math.round(D.macro.stock_score)+"/100":""}`));const c2=el("div","chips");D.macro.stock_why.forEach(w=>c2.append(el("span","chip",esc(w))));m.append(c2);
+  if(D.market_open!=null)m.append(el("div","addnote",D.market_open?"The US market is open right now.":"The US market is closed right now, so stock prices stay put until it reopens."))}}
 // ---------- add coins (opens your Telegram bot with the command ready; the next check picks it up)
 const botURL=(act,sym)=>D.bot?`https://t.me/${D.bot}?start=${act}_${encodeURIComponent(sym)}`:null;
 const ghURL=D.repo?`https://github.com/${D.repo}/edit/main/watchlist.txt`:null;
@@ -1751,16 +2055,18 @@ box.append(el("div","tok",`<div class=row style="grid-template-columns:38px 1fr"
 async function pollPending(){if(!PEND.length)return;try{const h=await (await fetch(location.pathname+"?t="+Date.now(),{cache:"no-store"})).text();
 if(PEND.some(p=>h.includes(`"symbol":"${p.sym}"`)))location.reload()}catch(e){}showPending()}
 setInterval(pollPending,20000);
-function addCoin(star){const v=$("#addin").value.trim().toUpperCase().replace(/^\$/,"");if(!/^[A-Z0-9]{1,20}$/.test(v)){$("#addin").focus();return}
-const cmd=(star?"/star ":"/add ")+v;PEND=PEND.filter(p=>p.sym!=v).concat([{sym:v,t:Date.now(),via:mobile&&D.bot?"tg":"form"}]);setP(PEND);setTimeout(showPending,50);try{navigator.clipboard&&navigator.clipboard.writeText(mobile?cmd:v).catch(()=>{})}catch(e){}
-if(mobile&&D.bot){window.open(botURL(star?"STAR":"ADD",v),"_blank");$("#addnote").innerHTML=`Telegram opened — tap <b>Start</b>. If nothing was sent, paste <b>${cmd}</b> (already copied) into your bot.`}
-else if(formURL){window.open(formURL,"_blank");$("#addnote").innerHTML=`On the GitHub page: click <b>Run workflow</b> → paste <b>${v}</b> (already copied)${star?" and tick <b>Star it</b>":""} → click the green <b>Run workflow</b>. ${v} shows here in about 3–5 minutes (refresh the page).`}
+function addCoin(star){const v=$("#addin").value.trim().toUpperCase().replace(/^\$/,"");if(!/^[A-Z0-9.\-]{1,20}$/.test(v)){$("#addin").focus();return}
+const kd=(document.querySelector("input[name=akind]:checked")||{}).value||"";
+const cmd=star?"/star "+v:(kd=="stock"?"/stock "+v:kd=="crypto"?"/coin "+v:"/add "+v);
+const formV=kd=="stock"?"STOCK:"+v:kd=="crypto"?"CRYPTO:"+v:v;PEND=PEND.filter(p=>p.sym!=v).concat([{sym:v,t:Date.now(),via:mobile&&D.bot?"tg":"form"}]);setP(PEND);setTimeout(showPending,50);try{navigator.clipboard&&navigator.clipboard.writeText(mobile?cmd:formV).catch(()=>{})}catch(e){}
+if(mobile&&D.bot){window.open(botURL(star?"STAR":(kd=="stock"?"STOCK":kd=="crypto"?"COIN":"ADD"),v),"_blank");$("#addnote").innerHTML=`Telegram opened — tap <b>Start</b>. If nothing was sent, paste <b>${cmd}</b> (already copied) into your bot.`}
+else if(formURL){window.open(formURL,"_blank");$("#addnote").innerHTML=`On the GitHub page: click <b>Run workflow</b> → paste <b>${formV}</b> (already copied)${star?" and tick <b>Star it</b>":""} → click the green <b>Run workflow</b>. ${v} shows here in about 3–5 minutes (refresh the page).`}
 else $("#addnote").innerHTML=`Send <b>${cmd}</b> to your Telegram bot.`;$("#addin").value=""}
 $("#addbtn").onclick=()=>addCoin(false);$("#addstar").onclick=()=>addCoin(true);$("#addin").addEventListener("keydown",e=>{if(e.key=="Enter")addCoin(false)});
 // ---------- tabs
-const TABS=[["all","All"],["buy","Buy setups"],["star","⭐ Starred"],["watch","Watchlist"],["found","Found by scanner"]];let cur="all";
+const TABS=[["all","All"],["buy","Buy setups"],["star","⭐ Starred"]].concat(HASST?[["stocks","📈 Stocks"],["crypto","🪙 Crypto"]]:[]).concat(PEOPLE.length>1?PEOPLE.map(p=>["by:"+p,"\uD83D\uDC64 "+p]):[]).concat([["watch","Watchlist"],["found","Found by scanner"]]);let cur="all";
 const tabs=$("#tabs");TABS.forEach(([k,n])=>{const b=el("button","tab"+(k==cur?" on":""),n);b.onclick=()=>{cur=k;[...tabs.children].forEach(x=>x.classList.toggle("on",x==b));render()};tabs.append(b)});
-const pass=t=>cur=="all"||(cur=="buy"&&t.is_buy&&!/AVOID/.test(t.signal))||(cur=="star"&&t.starred)||(cur=="watch"&&t.source=="watchlist")||(cur=="found"&&t.source!="watchlist");
+const pass=t=>cur=="all"||(cur=="buy"&&t.is_buy&&!/AVOID/.test(t.signal))||(cur=="star"&&t.starred)||(cur=="stocks"&&isStk(t))||(cur=="crypto"&&!isStk(t))||(cur.slice(0,3)=="by:"&&whoOf(t.symbol)==cur.slice(3))||(cur=="watch"&&t.source=="watchlist")||(cur=="found"&&t.source!="watchlist");
 // ---------- sparkline
 function spark(c){const a=c.slice(-30),mn=Math.min(...a),mx=Math.max(...a),W=60,H=30,up=a[a.length-1]>=a[0];
 const pts=a.map((v,i)=>[i/(a.length-1)*W,H-3-(v-mn)/((mx-mn)||1)*(H-6)]);const d=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join("");
@@ -1789,7 +2095,7 @@ function startDrag(L,w,e){w.classList.add("dragging");L.classList.add("reorderin
 function card(t){const c=t.c,chg=c.length>1?(c[c.length-1]/c[c.length-2]-1)*100:0,[bg,fg]=SIG[t.signal]||SIG["NO DATA"];
 const w=el("div","tok"+(t.is_buy&&!/AVOID/.test(t.signal)?" buy":""));w.dataset.sym=t.symbol;
 const row=el("div","row",`${logoHTML(t.symbol,t.logo)}
-<div class=nm><div><b>${t.starred?"⭐ ":""}${esc(t.symbol)}</b>${t.source=="discovery"?"<span class=badge>found</span>":""}${t.in_zone_only?"<span class='badge zone'>in buy zone</span>":""}</div>
+<div class=nm><div><b>${t.starred?"⭐ ":""}${esc(t.symbol)}</b>${t.kind=="stock"?"<span class='badge stk'>stock</span>":""}${PEOPLE.length>1&&whoOf(t.symbol)?"<span class='badge who'>\uD83D\uDC64 "+esc(whoOf(t.symbol))+"</span>":""}${t.source=="discovery"?"<span class=badge>found</span>":""}${t.in_zone_only?"<span class='badge zone'>in buy zone</span>":""}</div>
 <div><span class=px>${fmt(t.price)}</span><span class=chg style="color:${chg>=0?"var(--up)":"var(--dn)"}">${chg>=0?"+":""}${chg.toFixed(1)}%</span></div>
 <div class=sub>${esc(t.name||"")}</div></div>${spark(c)}
 <div class=rt><span class=pill style="background:${bg};color:${fg}">${esc(SHORT[t.signal]||t.signal)}</span><div class=score>${t.score!=null?Math.round(t.score)+"/100":""} <span class=chev>▾</span></div></div>`);
@@ -1798,18 +2104,27 @@ row.onclick=()=>{if(w.dataset.drag)return;w.classList.toggle("open");if(!built){
 function copy(txt){(navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).catch(()=>{const a=el("textarea");a.value=txt;document.body.append(a);a.select();document.execCommand("copy");a.remove()}).finally(()=>{const x=$("#toast");x.style.opacity=1;setTimeout(()=>x.style.opacity=0,1100)})}
 function fill(b,t){const Lk=t.links||{},isB=t.is_buy&&!/AVOID/.test(t.signal),bz=t.buy_zone,sz=t.sell_zone;
 const box=el("div",isB?"buybox":"infobox");
-box.innerHTML=(isB?`<h3>Suggested buy · ${esc(t.symbol)}</h3>`:`<div class=sect style="margin:0 0 8px">Token info</div>`)+
-`<div class=kv><span>Ticker</span><b>${esc(t.symbol)}${t.name?" · "+esc(t.name):""}</b><span>CoinGecko ID</span><b style="font-family:ui-monospace,Menlo,monospace;font-size:.82rem">${esc(t.cg_id||"–")}</b>
+box.innerHTML=(isB?`<h3>Suggested buy · ${esc(t.symbol)}</h3>`:`<div class=sect style="margin:0 0 8px">${isStk(t)?"Stock":"Token"} info</div>`)+
+`<div class=kv><span>Ticker</span><b>${esc(t.symbol)}${t.name?" · "+esc(t.name):""}</b><span>${isStk(t)?"Industry":"CoinGecko ID"}</span><b style="${isStk(t)?"":"font-family:ui-monospace,Menlo,monospace;"}font-size:.82rem">${esc(isStk(t)?((t.facts||{}).industry||"–"):(t.cg_id||"–"))}</b>
 <span>Price</span><b>${fmt(t.price)}</b><span>Buy zone ${(t.plan||{}).zone2?"1":""}</span><b>${bz?fmt(bz.low)+" – "+fmt(bz.high):"n/a"}${(t.plan||{}).zone1&&t.plan.zone1.strong?" 💪":""}</b>
 ${(t.plan||{}).zone2?`<span>Buy zone 2</span><b>${fmt(t.plan.zone2.low)+" – "+fmt(t.plan.zone2.high)}${t.plan.zone2.strong?" 💪":""}</b>`:""}
 ${(t.plan||{}).stop?`<span>Stop-loss</span><b style="color:var(--dn)">below ${fmt(t.plan.stop)}</b>`:""}
 ${(t.plan||{}).target?`<span>Take profit</span><b style="color:var(--up)">near ${fmt(t.plan.target)}</b>`:""}
-<span>Sell zone</span><b>${sz?fmt(sz.low)+" – "+fmt(sz.high):"n/a"}</b><span>Market cap</span><b>${big(t.market_cap)}</b><span>Scam risk</span><b style="color:${t.risk=="LOW"?"var(--up)":t.risk=="HIGH"?"var(--dn)":"var(--warn)"}">${esc(t.risk||"?")}</b></div>`;
+<span>Sell zone</span><b>${sz?fmt(sz.low)+" – "+fmt(sz.high):"n/a"}</b>${whoOf(t.symbol)?`<span>Added by</span><b>\uD83D\uDC64 ${esc(whoOf(t.symbol))}</b>`:""}<span>Market cap</span><b>${big(t.market_cap)}</b><span>${isStk(t)?"Quality flags":"Scam risk"}</span><b style="color:${t.risk=="LOW"?"var(--up)":t.risk=="HIGH"?"var(--dn)":"var(--warn)"}">${esc(t.risk||"?")}</b></div>`;
+if(isStk(t)){const f=t.facts||{},n1=v=>v==null?null:(v>=0?"+":"")+Number(v).toFixed(1)+"%",n2=v=>v==null?null:Number(v).toFixed(1);
+ const rows=[["P/E ratio",n2(f.pe)],["Net margin",n1(f.margin)],["Revenue growth (1y)",n1(f.rev_growth)],["Earnings growth (1y)",n1(f.eps_growth)],
+  ["Return on equity",n1(f.roe)],["Debt / equity",n2(f.de)],["52-week range",f.w52low!=null&&f.w52high!=null?fmt(f.w52low)+" – "+fmt(f.w52high):null],
+  ["Dividend yield",f.div?Number(f.div).toFixed(2)+"%":null],["Next earnings",f.earnings?f.earnings.date+" ("+f.earnings.days+" day"+(f.earnings.days==1?"":"s")+" away)":null]].filter(x=>x[1]!=null);
+ if(rows.length)box.append(el("div","kv","<span class=sect2 style=\"grid-column:1/-1\">Company numbers</span>"+rows.map(([k,v])=>`<span>${k}</span><b>${esc(v)}</b>`).join("")));}
 const TP=t.plan||{};if(TP.zone1){box.append(el("div","plan",`<b>Plan:</b> buy ${TP.zone2?"½":"your position"} in zone 1 (${fmt(TP.zone1.low)}–${fmt(TP.zone1.high)})${TP.zone2?`, ½ in zone 2 (${fmt(TP.zone2.low)}–${fmt(TP.zone2.high)})`:""}${TP.stop?`; exit if it closes below ${fmt(TP.stop)}`:""}${TP.target?`; take profit near ${fmt(TP.target)}`:""}. <span class=mut>💪 = heavy trading happened at that price (stronger support).</span>`))}
-const cs=(Lk.contracts&&Lk.contracts.length)?Lk.contracts:[];
-if(cs.length)cs.forEach(x=>{const a=el("div","addr",`<span class=ch>${esc(x.chain.replace(/-/g," "))}</span><code>${esc(x.address)}</code>`);const bt=el("button","copy","Copy");bt.onclick=e=>{e.stopPropagation();copy(x.address)};a.append(bt);box.append(a)});
+const cs=(isStk(t)||!Lk.contracts)?[]:Lk.contracts;
+if(isStk(t)){}
+else if(cs.length)cs.forEach(x=>{const a=el("div","addr",`<span class=ch>${esc(x.chain.replace(/-/g," "))}</span><code>${esc(x.address)}</code>`);const bt=el("button","copy","Copy");bt.onclick=e=>{e.stopPropagation();copy(x.address)};a.append(bt);box.append(a)});
 else box.append(el("div","addr",`<span class=ch>Contract</span><code>None — native coin of its own chain</code>`));
-const ln=el("div","links",`<a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+t.symbol)}"><i style="background:#8DC63F"></i>CoinGecko</a>
+const ln=el("div","links",isStk(t)
+?`<a class=lbtn target=_blank rel=noopener href="${esc(Lk.yahoo||"https://finance.yahoo.com/quote/"+encodeURIComponent(t.symbol))}"><i style="background:#6001D2"></i>Yahoo Finance</a>
+<a class=lbtn target=_blank rel=noopener href="${esc(Lk.tradingview||"https://www.tradingview.com/symbols/"+encodeURIComponent(t.symbol)+"/")}"><i style="background:#2962FF"></i>TradingView</a>`
+:`<a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+t.symbol)}"><i style="background:#8DC63F"></i>CoinGecko</a>
 <a class=lbtn target=_blank rel=noopener href="${esc(Lk.dexscreener||"https://dexscreener.com/search?q="+t.symbol)}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a>`);box.append(ln);b.append(box);
 if(D.bot){const a=el("div","acts",`<a href="${botURL(t.starred?"UNSTAR":"STAR",t.symbol)}">${t.starred?"☆ Unstar":"⭐ Star"}</a><a href="${botURL("CHECK",t.symbol)}">↻ Fresh check</a><a href="${botURL("REMOVE",t.symbol)}" style="color:var(--dn)">Remove</a>`);b.append(a)}
 // chart
@@ -1890,27 +2205,29 @@ const money=v=>(v>=0?"+$":"−$")+Math.abs(v).toFixed(2);
 const when=t=>{const d=new Date(t*1000);return[d.toLocaleDateString(undefined,{month:"2-digit",day:"2-digit"}),d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"})]};
 const OUT={win:"WIN",loss:"LOSS",flat:"FLAT"};
 // group buy calls into coins; each call = one trade
-const coins={};calls.slice().sort((a,b)=>a.t-b.t).forEach(c=>{const k=c.symbol;(coins[k]=coins[k]||{sym:k,calls:[],star:false,found:false,links:null}).calls.push(c);
- const g=coins[k];g.star=g.star||!!c.starred||star.has(k);g.found=g.found||c.source=="discovery";g.links=g.links||c.links||(tk[k]||{}).links;g.name=g.name||(tk[k]||{}).name||""});
-let F={coin:"",range:"all",status:"all",hidden:false};try{F=Object.assign(F,JSON.parse(localStorage.getItem("tw_f")||"{}"))}catch(e){}
+const coins={};calls.slice().sort((a,b)=>a.t-b.t).forEach(c=>{const k=c.symbol;(coins[k]=coins[k]||{sym:k,calls:[],star:false,found:false,links:null,stock:false}).calls.push(c);
+ const g=coins[k];g.star=g.star||!!c.starred||star.has(k);g.found=g.found||c.source=="discovery";g.links=g.links||c.links||(tk[k]||{}).links;g.name=g.name||(tk[k]||{}).name||"";
+ g.stock=g.stock||c.kind=="stock"||(tk[k]||{}).kind=="stock"});
+let F={coin:"",range:"all",status:"all",hidden:false,who:""};try{F=Object.assign(F,JSON.parse(localStorage.getItem("tw_f")||"{}"))}catch(e){}
 const getSet=k=>{try{return new Set(JSON.parse(localStorage.getItem(k)||"[]"))}catch(e){return new Set()}},putSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify([...v]))}catch(e){}};
 const HID=getSet("tw_hidden"),DEL=getSet("tw_deleted"),ids=new Set(calls.map(c=>String(Math.floor(c.t))));[...DEL].forEach(i=>{if(!ids.has(i))DEL.delete(i)});putSet("tw_deleted",DEL);
 const idOf=c=>String(Math.floor(c.t)),DAYS={today:0,"7d":7,"30d":30,"90d":90};
-const keep=c=>{const id=idOf(c);if(DEL.has(id))return false;if(HID.has(id)&&!F.hidden)return false;if(F.coin&&c.symbol!=F.coin)return false;
+const keep=c=>{const id=idOf(c);if(DEL.has(id))return false;if(HID.has(id)&&!F.hidden)return false;if(F.coin&&c.symbol!=F.coin)return false;if(F.who&&whoOf(c.symbol)!=F.who)return false;
  if(F.range!="all"){const since=F.range=="today"?new Date().setHours(0,0,0,0)/1000:Date.now()/1000-DAYS[F.range]*86400;if(c.t<since)return false}
  if(F.status!="all"){const x=exitOf(c),r=tradeRet(c);if(F.status=="open"&&x)return false;if(F.status=="closed"&&!x)return false;if(F.status=="win"&&!(x&&r>0))return false;if(F.status=="loss"&&!(x&&r<=0))return false}return true};
 const trades=g=>g.calls.filter(keep).map(c=>{const x=exitOf(c);return{c,x,exit:x?x.price:c.last,r:((x?x.price:c.last)/c.entry-1)}});
 C.innerHTML=`<div class=amt>If you'd put $<input id=amt type=number min=1 inputmode=decimal value="${AMT}"> into every buy call…</div><div id=tsum></div><div class=tabs id=ttabs></div><div class=filters id=tfil></div><div id=tlist></div>
 <p class=mut style="font-size:.74rem;margin-top:10px">A trade opens at a buy call and closes at the next sell signal for that coin (signal turns TRIM or SELL, price enters the sell zone, or falls below the stop-loss). Trades with no sell signal yet are <b>OPEN</b> at today's price. Fees and slippage aren't included. Times are in your time zone.</p>`;
-const OPENC=new Set();let cur="all";const tt=$("#ttabs");[["all","All"],["star","⭐ Your coins"],["found","🔎 Scanner found"]].forEach(([k,n])=>{const b=el("button","tab"+(k==cur?" on":""),n);b.onclick=()=>{cur=k;[...tt.children].forEach(x=>x.classList.toggle("on",x==b));draw()};tt.append(b)});
+const OPENC=new Set();let cur="all";const tt=$("#ttabs");[["all","All"],["star","⭐ Your coins"],["found","🔎 Scanner found"]].concat(HASST?[["stocks","📈 Stocks"],["crypto","🪙 Crypto"]]:[]).concat(PEOPLE.length>1?PEOPLE.map(p=>["by:"+p,"👤 "+p]):[]).forEach(([k,n])=>{const b=el("button","tab"+(k==cur?" on":""),n);b.onclick=()=>{cur=k;[...tt.children].forEach(x=>x.classList.toggle("on",x==b));draw()};tt.append(b)});
 function stat(gs){let pl=0,n=0,w=0,op=0;gs.forEach(g=>trades(g).forEach(t=>{pl+=AMT*t.r;n++;if(t.x){if(t.r>0)w++}else op++}));return{pl,n,w,op,inv:n*AMT,closed:n-op}}
 function srow(title,gs){const s=stat(gs);return `<div class=krow>${title}</div><div class="kpis k4"><div class=kpi><b style="color:${s.pl>=0?"var(--up)":"var(--dn)"}">${s.n?money(s.pl):"–"}</b><small>total profit</small></div><div class=kpi><b>${s.inv?(s.pl/s.inv*100).toFixed(1)+"%":"–"}</b><small>return on $${s.inv.toLocaleString()}</small></div><div class="kpi tapk" data-fs=closed><b>${s.closed?Math.round(s.w/s.closed*100)+"%":"–"}</b><small>closed trades won (${s.closed}) ›</small></div><div class="kpi tapk" data-fs=open><b>${s.op}</b><small>open trades ›</small></div></div>`}
 const fil=$("#tfil");fil.innerHTML=`<select id=fcoin><option value="">All coins</option>${Object.keys(coins).sort().map(k=>`<option ${F.coin==k?"selected":""}>${esc(k)}</option>`).join("")}</select>
 <select id=frange>${[["all","Any date"],["today","Today"],["7d","Last 7 days"],["30d","Last 30 days"],["90d","Last 90 days"]].map(([k,n])=>`<option value=${k} ${F.range==k?"selected":""}>${n}</option>`).join("")}</select>
 <select id=fstat>${[["all","All trades"],["open","Open"],["closed","Closed"],["win","Closed in profit"],["loss","Closed at a loss"]].map(([k,n])=>`<option value=${k} ${F.status==k?"selected":""}>${n}</option>`).join("")}</select>
+${PEOPLE.length>1?`<select id=fwho><option value="">Anyone</option>${PEOPLE.map(p=>`<option ${F.who==p?"selected":""}>${esc(p)}</option>`).join("")}</select>`:""}
 <label class=chk><input type=checkbox id=fhid ${F.hidden?"checked":""}> Show hidden (${HID.size})</label>`;
-const setF=()=>{F={coin:$("#fcoin").value,range:$("#frange").value,status:$("#fstat").value,hidden:$("#fhid").checked};try{localStorage.setItem("tw_f",JSON.stringify(F))}catch(e){}draw()};
-["#fcoin","#frange","#fstat","#fhid"].forEach(q=>$(q).onchange=setF);
+const setF=()=>{F={coin:$("#fcoin").value,range:$("#frange").value,status:$("#fstat").value,hidden:$("#fhid").checked,who:($("#fwho")||{}).value||""};try{localStorage.setItem("tw_f",JSON.stringify(F))}catch(e){}draw()};
+["#fcoin","#frange","#fstat","#fhid","#fwho"].forEach(q=>{const e=$(q);if(e)e.onchange=setF});
 function act(e){e.stopPropagation();e.preventDefault();const b=e.currentTarget,id=b.dataset.id,sym=b.dataset.sym;
  if(b.dataset.a=="hide"){HID.has(id)?HID.delete(id):HID.add(id);putSet("tw_hidden",HID);$("#fhid").parentNode.lastChild.textContent=` Show hidden (${HID.size})`;draw();return}
  if(!confirm(`Delete this ${sym} trade permanently from your track record? (It's removed for everyone and from the model's learning.)`))return;
@@ -1918,10 +2235,10 @@ function act(e){e.stopPropagation();e.preventDefault();const b=e.currentTarget,i
  if(mob&&D.bot)window.open(`https://t.me/${D.bot}?start=DELTRADE_${id}`,"_blank");
  else if(D.repo){try{navigator.clipboard&&navigator.clipboard.writeText(id).catch(()=>{})}catch(e){}window.open(`https://github.com/${D.repo}/actions/workflows/delete-trade.yml`,"_blank");
   alert(`On the GitHub page: click "Run workflow", paste the trade ID ${id} (already copied), then click the green "Run workflow". It's hidden here already.`)}}
-function draw(){const Gall=Object.values(coins);$("#tsum").innerHTML=srow("⭐ Your coins",Gall.filter(g=>!g.found))+srow("🔎 Coins the scanner found",Gall.filter(g=>g.found));
+function draw(){const Gall=Object.values(coins);$("#tsum").innerHTML=srow("⭐ Your coins",Gall.filter(g=>!g.found))+srow("🔎 Coins the scanner found",Gall.filter(g=>g.found))+(HASST?srow("📈 Your stocks",Gall.filter(g=>g.stock)):"")+(cur.slice(0,3)=="by:"?srow("👤 Added by "+esc(cur.slice(3)),Gall.filter(g=>whoOf(g.sym)==cur.slice(3))):"");
 $("#tsum").querySelectorAll(".tapk").forEach(k=>k.onclick=()=>{$("#fstat").value=k.dataset.fs;setF();$("#tfil").scrollIntoView({behavior:"smooth",block:"start"})});
 const G=Object.values(coins).filter(g=>trades(g).length);
-const L=$("#tlist");L.innerHTML="";const list=G.filter(g=>cur=="all"||(cur=="star"&&!g.found)||(cur=="found"&&g.found)).sort((a,b)=>Math.max(...b.calls.map(c=>c.t))-Math.max(...a.calls.map(c=>c.t)));
+const L=$("#tlist");L.innerHTML="";const list=G.filter(g=>cur=="all"||(cur=="star"&&!g.found)||(cur=="found"&&g.found)||(cur=="stocks"&&g.stock)||(cur=="crypto"&&!g.stock)||(cur.slice(0,3)=="by:"&&whoOf(g.sym)==cur.slice(3))).sort((a,b)=>Math.max(...b.calls.map(c=>c.t))-Math.max(...a.calls.map(c=>c.t)));
 if(!list.length){L.append(el("p","mut",calls.length?"No trades match these filters.":"No buy calls here yet. Every buy call and the sell signal that closes it will show up here."));return}
 list.forEach(g=>{const T=trades(g);let pl=0;T.forEach(t=>pl+=AMT*t.r);const nopen=T.filter(t=>!t.x).length,Lk=g.links||{};
 const w=el("div","coin");const qf=q=>q>=1000?Math.round(q).toLocaleString():q>=1?q.toFixed(2):Number(q.toPrecision(3));
@@ -1938,7 +2255,9 @@ const blocks=T.slice().sort((a,b)=>b.c.t-a.c.t).map(t=>{const c=t.c,[d1,t1]=when
 w.innerHTML=`<div class=ch>${logoHTML(g.sym,(D.logos||{})[(g.calls[0]||{}).cg_id]||(tk[g.sym]||{}).logo)}<div><b>${g.star&&!g.found?"⭐ ":""}${esc(g.sym)}</b> <small>${esc(g.name||"")}</small><br><small>${T.length} trade${T.length==1?"":"s"}${nopen?" · "+nopen+" open":""} · tap to open <span class=chev>▾</span></small></div><div class=pl style="color:${pl>=0?"var(--up)":"var(--dn)"}">${money(pl)}<small>${(pl/(AMT*T.length)*100).toFixed(1)}%</small></div></div>
 <div class=tbody>${blocks}
 ${Lk.contract?`<div class=addr style="margin-top:8px"><span class=ch>${esc((Lk.chain||"").replace(/-/g," "))}</span><code>${esc(Lk.contract)}</code><button class=copy data-a="${esc(Lk.contract)}">Copy</button></div>`:""}
-<div class=links><a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+encodeURIComponent(g.sym))}"><i style="background:#8DC63F"></i>CoinGecko</a><a class=lbtn target=_blank rel=noopener href="${esc(Lk.dexscreener||"https://dexscreener.com/search?q="+encodeURIComponent(g.sym))}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a></div></div>`;
+<div class=links>${g.stock
+?`<a class=lbtn target=_blank rel=noopener href="${esc(Lk.yahoo||"https://finance.yahoo.com/quote/"+encodeURIComponent(g.sym))}"><i style="background:#6001D2"></i>Yahoo Finance</a><a class=lbtn target=_blank rel=noopener href="${esc(Lk.tradingview||"https://www.tradingview.com/symbols/"+encodeURIComponent(g.sym)+"/")}"><i style="background:#2962FF"></i>TradingView</a>`
+:`<a class=lbtn target=_blank rel=noopener href="${esc(Lk.coingecko||"https://www.coingecko.com/en/search?query="+encodeURIComponent(g.sym))}"><i style="background:#8DC63F"></i>CoinGecko</a><a class=lbtn target=_blank rel=noopener href="${esc(Lk.dexscreener||"https://dexscreener.com/search?q="+encodeURIComponent(g.sym))}"><i style="background:linear-gradient(135deg,#222,#777)"></i>DexScreener</a>`}</div></div>`;
 w.querySelector(".ch").onclick=()=>{w.classList.toggle("open");OPENC.has(g.sym)?OPENC.delete(g.sym):OPENC.add(g.sym)};if(OPENC.has(g.sym))w.classList.add("open");
 w.querySelectorAll("button.mini2,button.swact,button.trbtn").forEach(b=>b.onclick=act);
 w.querySelectorAll("button.copy").forEach(bt=>bt.onclick=e=>{e.stopPropagation();copy(bt.dataset.a)});
@@ -1979,8 +2298,8 @@ if(W.recent.length){C.append(el("div","sect","Latest wallet trades"));const u=el
 u.append(el("li","",`<span class="dot ${r.side=="buy"?"g":"r"}">${r.side=="buy"?"B":"S"}</span><span style="flex:1"><b>${esc(r.wname)}</b> ${r.side=="buy"?"bought":"sold"} <a href="${esc(r.url)}" target=_blank rel=noopener><b>${esc(r.symbol)}</b></a> $${Number(r.usd).toLocaleString()} <small>· ${esc(r.chain)} · ${ago(r.t)} ago</small>${r.cluster>1?` <span class=pill style="background:var(--warn);color:#111">🔥 ${r.cluster} wallets</span>`:""}</span><small style="color:${ch>=0?"var(--up)":"var(--dn)"};font-weight:700">${ch>=0?"+":""}${ch.toFixed(0)}%</small>`))});C.append(u)}})();
 // ---------- coin directory: every coin ever added, with its ticker and CoinGecko ID
 (function(){const R=D.coins||{},C=$("#coindir"),ks=Object.keys(R).sort();if(!ks.length){C.append(el("p","mut","Coins appear here the first time they're checked."));return}
-const d=el("details","tok");d.innerHTML=`<summary class=row style="grid-template-columns:1fr auto"><b>${ks.length} coins tracked</b><span class=mut>show ▾</span></summary>
-<div style="padding:0 10px 10px"><table class=calls><tr><th>Ticker</th><th>Name</th><th>CoinGecko ID</th><th>Added</th></tr>${ks.map(k=>{const r=R[k];return `<tr><td><b>${esc(k)}</b></td><td style="white-space:normal">${esc(r.name||"")}</td><td><a href="https://www.coingecko.com/en/coins/${esc(r.cg_id||"")}" target=_blank rel=noopener style="font-family:ui-monospace,Menlo,monospace;font-size:.75rem">${esc(r.cg_id||"–")}</a></td><td>${esc((r.first_seen||"").slice(5,10))}</td></tr>`}).join("")}</table></div>`;C.append(d)})();
+const d=el("details","tok");d.innerHTML=`<summary class=row style="grid-template-columns:1fr auto"><b>${ks.length} tickers tracked</b><span class=mut>show ▾</span></summary>
+<div style="padding:0 10px 10px"><table class=calls><tr><th>Ticker</th><th>Name</th><th>Type</th><th>Added by</th><th>ID / link</th><th>Added</th></tr>${ks.map(k=>{const r=R[k],st=r.kind=="stock";return `<tr><td><b>${esc(k)}</b></td><td style="white-space:normal">${esc(r.name||"")}</td><td>${st?"📈 stock":"🪙 coin"}</td><td>${esc(r.by||"–")}</td><td>${st?`<a href="https://finance.yahoo.com/quote/${encodeURIComponent(k)}" target=_blank rel=noopener style="font-size:.75rem">Yahoo</a>`:`<a href="https://www.coingecko.com/en/coins/${esc(r.cg_id||"")}" target=_blank rel=noopener style="font-family:ui-monospace,Menlo,monospace;font-size:.75rem">${esc(r.cg_id||"–")}</a>`}</td><td>${esc((r.first_seen||"").slice(5,10))}</td></tr>`}).join("")}</table></div>`;C.append(d)})();
 render();showPending();
 {const f=$("#forcechk");if(f)f.onclick=e=>{e.preventDefault();if(D.repo)window.open("https://github.com/"+D.repo+"/actions/workflows/refresh.yml","_blank");};}
 let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>document.querySelectorAll(".tok.open").forEach(w=>{const r=w.querySelector(".rg.on");r&&r.click()}),250)});
@@ -2011,7 +2330,14 @@ HELP = """Token Watch commands:
 /check TAO - assess any coin (or just send TAO or $tao)
 /star INJ - always alert me about INJ
 /unstar INJ - stop forcing alerts for INJ
-/add INJ - add to the watchlist
+/add INJ - add to the watchlist (I'll ask if the ticker could be a stock too)
+/stock AAPL - add a stock
+/coin LINK - add a coin (when the ticker means both)
+/stocks - the stocks you're watching
+/invite Ian - add someone to the alert list (owner)
+/people - who's on the list (owner) · /kick Ian - remove them
+/mine - what you've added · /mine on|off - only alert me about mine
+/mute · /unmute · /leave - your own alert settings
 /remove INJ - remove from the watchlist
 /discovered on|off - alerts for coins the scanner finds
 /watchlist on|off - alerts for non-starred watchlist coins
@@ -2030,6 +2356,29 @@ Replies usually arrive within a minute."""
 CTX = {}
 SIG_EMOJI = {"STRONG BUY ZONE": "🟢", "ACCUMULATE": "🟢", "HOLD": "🟡", "TRIM": "🟠", "SELL / AVOID": "🔴", "AVOID (SCAM RISK)": "⛔"}
 
+def mark_kind(sym, kind):
+    """Remember that this ticker is a stock (or a coin), so every later check uses the right data."""
+    sym = sym.upper().lstrip("$")
+    if kind == "stock":
+        STOCKS.add(sym)
+        if sym not in PREFS.setdefault("stocks", []): PREFS["stocks"].append(sym)
+    else:
+        STOCKS.discard(sym); PREFS["stocks"] = [x for x in PREFS.get("stocks", []) if x.upper() != sym]
+    if REG.get(sym): REG[sym]["kind"] = kind
+
+def want_kind(sym, verb="check"):
+    """Crypto or stock? Returns the kind, or None after asking you which one you meant."""
+    kind, cg, name = classify(sym, (CTX.get("cache") if CTX else None) or {})
+    if kind == "both":
+        reply(f"\u2753 {sym} could be two different things:\n"
+              f"\u2022 the stock {name}\n\u2022 a coin on CoinGecko ({cg})\n\n"
+              f"Which did you mean? Reply /stock {sym} for the stock, or /coin {sym} for the coin.")
+        return None
+    if not kind:
+        reply(f"I couldn't find {sym} as a coin on CoinGecko or as a US-listed stock. Check the ticker.")
+        return None
+    return kind
+
 def assess(syms):
     """On-demand check requested from Telegram. Doesn't stamp buy calls."""
     syms = [x for x in dict.fromkeys(syms) if x][:10]
@@ -2039,28 +2388,35 @@ def assess(syms):
     known = {t["symbol"]: t for t in CFG_WATCH}
     for sym in syms:
         tok = dict(known.get(sym) or {"symbol": sym})
+        if not tok.get("kind") and not is_stock(sym):
+            k = want_kind(sym)
+            if not k: continue
+            tok["kind"] = k
         try:
             r = check_token(tok, CTX["cache"], CTX["state"], CTX["calls"], source="adhoc")
         except Exception as e:
             r = None; print(f"  [error] {sym}: {e}")
-        if not r: reply(f"Couldn't assess {sym}: not found on CoinGecko or not enough price history."); continue
+        if not r: reply(f"Couldn't assess {sym}: no price history found for it."); continue
         res = r["res"]
         note = "" if sym in known or sym in PREFS["added"] else f"\n\nNot on your watchlist. Reply /add {sym} to track it, or /star {sym} to always get alerts."
         reply(f"{SIG_EMOJI.get(res['signal'], '⚪')} " + ("⭐ " if sym in PREFS["starred"] else "") + summary(res, r["dd"], links=True) + note)
 
-def add_now(sym, quiet=False):
-    """Check a newly added coin right away and put it on the dashboard (published within a couple of minutes)."""
+def add_now(sym, quiet=False, kind=None):
+    """Check something just added right away and put it on the dashboard (published within a couple of minutes)."""
     if not CTX: reply(f"Added {sym}. It shows up after the next check."); return
-    try: r = check_token({"symbol": sym}, CTX["cache"], CTX["state"], CTX["calls"], source="watchlist")
+    tok = {"symbol": sym}
+    if kind: tok["kind"] = kind
+    try: r = check_token(tok, CTX["cache"], CTX["state"], CTX["calls"], source="watchlist")
     except Exception as e: r = None; print(f"  [error] {sym}: {e}")
     if not r:
-        reply(f"Added {sym}, but I couldn't find it on CoinGecko (or it has too little price history). Check the ticker, e.g. LINK not CHAINLINK."); return
+        reply(f"Added {sym}, but I couldn't find enough price history for it." +
+              ("" if kind == "stock" else " Check the ticker, e.g. LINK not CHAINLINK.")); return
     res = CTX.setdefault("results", [])
     res[:] = [x for x in res if x["res"]["symbol"] != r["res"]["symbol"]] + [r]
     CTX["dirty"] = True
     if not CTX.get("listening"): quick_publish([r])        # run still starting up: don't wait for the other coins
     if not quiet:
-        reply(f"✅ Added {r['res']['symbol']}" + (f" ({(REG.get(r['res']['symbol']) or {}).get('name')}, CoinGecko ID: {r['cg_id']})" if r.get("cg_id") else "") + " to your watchlist - it'll be on your dashboard in about a minute.\n\n" + summary(r["res"], r["dd"], links=True)
+        reply(f"✅ Added {r['res']['symbol']}" + (f" ({(REG.get(r['res']['symbol']) or {}).get('name')}, CoinGecko ID: {r['cg_id']})" if r.get("cg_id") else (f" ({(REG.get(r['res']['symbol']) or {}).get('name')} – stock)" if r["res"].get("kind") == "stock" else "")) + " to your watchlist - it'll be on your dashboard in about a minute.\n\n" + summary(r["res"], r["dd"], links=True)
               + f"\n\nReply /star {r['res']['symbol']} to always get its alerts.")
 
 def quick_publish(rs):
@@ -2131,38 +2487,81 @@ def load_prefs(state):
                    "weekly_report": cfg_alerts.get("weekly_report", True), "wallets": cfg_alerts.get("wallets", True), **saved.get("alerts", {})},
         "paused": saved.get("paused", False), "added": saved.get("added", []), "removed": saved.get("removed", []),
         "wallets": saved.get("wallets", []), "unfollowed": saved.get("unfollowed", []),
+        "stocks": saved.get("stocks", []), "members": saved.get("members", []),
+        "invites": saved.get("invites", {}),
+        "added_by": {**{k.upper(): v for k, v in (CFG.get("added_by") or {}).items()}, **saved.get("added_by", {})},
     })
+    STOCKS.clear()
+    STOCKS.update(x.upper() for x in CFG.get("stocks_watchlist", []))
+    STOCKS.update(x.upper() for x in PREFS["stocks"])
+    STOCKS.update(t["symbol"] for t in CFG_WATCH if t.get("kind") == "stock")
 
 def save_prefs(state, base):
     base_star = set(s.upper() for s in CFG.get("starred", [])) | {t["symbol"] for t in CFG_WATCH if t.get("starred")}
     cur = set(PREFS["starred"])
     state["_prefs"] = {"star_add": sorted(cur - base_star), "star_del": sorted(base_star - cur),
                        "alerts": PREFS["alerts"], "paused": PREFS["paused"], "added": PREFS["added"], "removed": PREFS["removed"],
-                       "wallets": PREFS.get("wallets", []), "unfollowed": PREFS.get("unfollowed", [])}
+                       "wallets": PREFS.get("wallets", []), "unfollowed": PREFS.get("unfollowed", []),
+                       "stocks": sorted({x.upper() for x in PREFS.get("stocks", [])}),
+                       "members": PREFS.get("members", []), "invites": PREFS.get("invites", {}),
+                       "added_by": PREFS.get("added_by", {})}
+
+CUR = {}     # who sent the message being handled right now
+
+def bot_name():
+    if CTX.get("_bot"): return CTX["_bot"]
+    tok, _ = tg_creds()
+    if not tok or DEMO: return None
+    me = try_get("bot name", lambda: get_json(f"https://api.telegram.org/bot{tok}/getMe"))
+    CTX["_bot"] = ((me or {}).get("result") or {}).get("username")
+    return CTX["_bot"]
 
 def reply(text):
     tok, chat = tg_creds()
-    if not (tok and chat) or DEMO: print("[reply] " + text); return
-    try:
-        body = urllib.parse.urlencode({"chat_id": chat, "text": text}).encode()
-        urllib.request.urlopen(urllib.request.Request(f"https://api.telegram.org/bot{tok}/sendMessage", data=body, headers=UA), timeout=15)
-    except Exception as e: print(f"  [telegram failed] {e}")
+    to = CUR.get("chat") or chat
+    if not (tok and to) or DEMO: print("[reply] " + text); return
+    tg_post(tok, to, text)
+
+def tell_owner(text):
+    tok, chat = tg_creds()
+    if tok and chat and not DEMO: tg_post(tok, chat, text)
 
 def handle_commands(state, texts=None, wait=0):
     """Reads messages you sent the bot since the last check and applies them."""
+    tok, chat = tg_creds()
     if texts is None:
-        tok, chat = tg_creds()
         if not (tok and chat): return
         try:
             d = get_json(f"https://api.telegram.org/bot{tok}/getUpdates?offset={state.get('_tg_offset', 0)}&timeout={wait}", timeout=wait + 15)
         except Exception as e: print(f"  [skip] Telegram commands: {e}"); return
-        texts = []
+        msgs = []
         for u in d.get("result", []):
             state["_tg_offset"] = u["update_id"] + 1
             msg = u.get("message") or {}
-            if str((msg.get("chat") or {}).get("id")) == chat and msg.get("text"): texts.append(msg["text"])
-    for t in texts:
-        m = re.fullmatch(r"/start(?:@\w+)?\s+(ADD|STAR|UNSTAR|REMOVE|CHECK)_([A-Za-z0-9]{1,15})", t.strip(), re.I)
+            cid = str((msg.get("chat") or {}).get("id") or "")
+            if cid and msg.get("text"): msgs.append((cid, msg["text"], (msg.get("from") or {}).get("first_name") or ""))
+    else:
+        msgs = [(chat, x, "") for x in texts]
+    for cid, t, fname in msgs:
+        CUR.clear(); CUR.update({"chat": cid, "name": person_name(cid), "first": fname})
+        if not is_owner(cid) and not member_by_chat(cid):
+            mj = re.fullmatch(r"/(?:start|join)(?:@\w+)?\s+(?:JOIN[_ ])?([A-Za-z0-9]{5,12})", t.strip(), re.I)
+            code = mj.group(1).upper() if mj else None
+            inv = (PREFS.get("invites") or {}).pop(code, None) if code else None
+            if inv:
+                nm = (inv.get("name") or fname or "Guest").strip()[:24]
+                PREFS.setdefault("members", []).append({"chat_id": cid, "name": nm, "mode": "all", "added": iso()})
+                CUR["name"] = nm
+                reply(f"\U0001F44B Hi {nm} - you're on the Token Watch list. You'll get the same buy and sell alerts.\n\n"
+                      "Send a ticker (or /add TAO, /stock AAPL) to have it tracked. Anything you add is labelled with your name on the website.\n"
+                      "/mine on - only alert me about what I added\n/mute - pause alerts\n/leave - take me off the list\n/help - everything I can do")
+                tell_owner(f"\u2705 {nm} joined your Token Watch list.")
+            elif code:
+                reply("That invite link has already been used, or it's no longer valid. Ask for a new one.")
+            else:
+                reply("This is a private Token Watch bot. Ask the owner for an invite link.")
+            continue
+        m = re.fullmatch(r"/start(?:@\w+)?\s+(ADD|STAR|UNSTAR|REMOVE|CHECK|STOCK|COIN)_([A-Za-z0-9.\-]{1,15})", t.strip(), re.I)
         if m: t = f"/{m.group(1).lower()} {m.group(2).upper()}"      # buttons on the dashboard open the bot with these
         m = re.fullmatch(r"/start(?:@\w+)?\s+DELTRADE_([0-9]{6,12})", t.strip(), re.I)
         if m: t = f"/deletetrade {m.group(1)}"
@@ -2171,6 +2570,51 @@ def handle_commands(state, texts=None, wait=0):
         parts = t.strip().split(); cmd = parts[0].lower().split("@")[0]; arg = parts[1].upper() if len(parts) > 1 else ""
         onoff = {"ON": True, "OFF": False}.get(arg)
         raw = parts[1] if len(parts) > 1 else ""
+        owner = is_owner(cid)
+        if cmd in ("/star", "/unstar", "/remove", "/follow", "/unfollow", "/pause", "/resume", "/discovered",
+                   "/watchlist", "/report", "/wallets", "/deletetrade", "/invite", "/people", "/kick") and not owner:
+            reply("Only the owner can do that. You can send /add TICKER, /stock TICKER, /check TICKER, /record, /mine, /mute or /leave."); continue
+        MODES = {"all": "all alerts", "mine": "only what they added", "off": "muted"}
+        if cmd == "/invite" and owner:
+            nm = " ".join(parts[1:]).strip()[:24]
+            if not nm: reply("Send /invite Ian - I'll give you a link to pass on to them."); continue
+            code = "".join(random.choice("ABCDEFGHJKLMNPQRSTUVWXYZ23456789") for _ in range(7))
+            PREFS.setdefault("invites", {})[code] = {"name": nm, "t": int(now())}
+            bn = bot_name()
+            reply(f"\U0001F517 Invite link for {nm} - send it to them, it works once:\n"
+                  + (f"https://t.me/{bn}?start=JOIN_{code}" if bn else f"Ask them to message this bot: /join {code}")
+                  + f"\n\nWhen they tap Start they get the same alerts you do, and anything they add appears on the website under \"{nm}\".")
+            continue
+        if cmd == "/people" and owner:
+            ms = members()
+            reply("\U0001F465 On your distribution list:\n" + ("\n".join(f"\u2022 {m['name']} - {MODES.get(m.get('mode', 'all'))}" for m in ms) if ms else "Nobody yet.")
+                  + ("\n\nPending invites: " + ", ".join(f"{v['name']}" for v in (PREFS.get("invites") or {}).values()) if PREFS.get("invites") else "")
+                  + "\n\n/invite <name> to add someone, /kick <name> to remove them.")
+            continue
+        if cmd == "/kick" and owner:
+            m2 = member_by_name(" ".join(parts[1:]))
+            if not m2: reply("No one on the list by that name. /people shows them."); continue
+            PREFS["members"] = [x for x in members() if x is not m2]
+            reply(f"Removed {m2['name']} from the list."); continue
+        if cmd in ("/mute", "/unmute", "/leave") or (cmd == "/mine" and onoff is not None):
+            if owner:
+                if cmd == "/mute": PREFS["paused"] = True; reply("Paused. Send /unmute or /resume to turn alerts back on.")
+                elif cmd == "/unmute": PREFS["paused"] = False; reply("Alerts are back on.")
+                else: reply("That one's for people on your distribution list.")
+                continue
+            m2 = member_by_chat(cid)
+            if cmd == "/leave":
+                PREFS["members"] = [x for x in members() if str(x.get("chat_id")) != str(cid)]
+                reply("You're off the list. Ask for a new invite link if you'd like back on.")
+                tell_owner(f"{(m2 or {}).get('name', 'Someone')} left your Token Watch list."); continue
+            m2["mode"] = "off" if cmd == "/mute" else "mine" if (cmd == "/mine" and onoff) else "all"
+            reply({"off": "Muted. Send /unmute when you want alerts again.",
+                   "mine": "From now on I'll only alert you about tickers you added. Send /mine off for everything.",
+                   "all": "You'll get all the alerts again."}[m2["mode"]]); continue
+        if cmd == "/mine":
+            me_ = CUR.get("name") or ""
+            mine = sorted(k for k, v in (PREFS.get("added_by") or {}).items() if v and v.lower() == me_.lower())
+            reply((f"You've added: " + ", ".join(mine)) if mine else "You haven't added anything yet. Send /add TAO or /stock AAPL."); continue
         if cmd == "/follow":
             if not wkind(raw): reply("Send /follow <wallet address> <nickname>, e.g. /follow 7xKX…abc Sniper1 (Solana or 0x… EVM address)."); continue
             name = " ".join(parts[2:])[:30] or f"Wallet {raw[:4]}…{raw[-4:]}"
@@ -2209,15 +2653,27 @@ def handle_commands(state, texts=None, wait=0):
                   + f"\nWallet-buy alerts: {'on' if a.get('wallets', True) else 'off'} ({len(followed())} wallets followed)")
         elif cmd in ("/star", "/unstar") and arg:
             st = set(PREFS["starred"]); (st.add if cmd == "/star" else st.discard)(arg); PREFS["starred"] = sorted(st)
-            if cmd == "/star" and arg not in PREFS["added"] and arg not in {w["symbol"] for w in CFG_WATCH}: PREFS["added"].append(arg)
+            if cmd == "/star" and arg not in PREFS["added"] and arg not in {w["symbol"] for w in CFG_WATCH}: PREFS["added"].append(arg); set_added_by(arg, CUR.get("name"))
             if arg in PREFS["removed"]: PREFS["removed"].remove(arg)
             reply(f"{'⭐ Starred' if cmd == '/star' else 'Unstarred'} {arg}.")
             if cmd == "/star" and CTX.get("results") is not None and arg not in {r["res"]["symbol"] for r in CTX["results"]}: add_now(arg, quiet=True)
             CTX["dirty"] = True
-        elif cmd == "/add" and arg:
+        elif cmd in ("/stock", "/coin") and arg:
+            k = "stock" if cmd == "/stock" else "crypto"
+            mark_kind(arg, k); set_added_by(arg, CUR.get("name"))
             if arg not in PREFS["added"]: PREFS["added"].append(arg)
             if arg in PREFS["removed"]: PREFS["removed"].remove(arg)
-            add_now(arg)
+            add_now(arg, kind=k)
+        elif cmd == "/stocks":
+            reply("\U0001F4C8 Stocks you're watching: " + (", ".join(sorted(STOCKS)) or "none yet. Send /stock AAPL to add one.")
+                  + ("\nThe US market is open right now." if market_open() else "\nThe US market is closed right now, so stock prices won't move."))
+        elif cmd == "/add" and arg:
+            k = want_kind(arg, "add")
+            if not k: continue
+            mark_kind(arg, k); set_added_by(arg, CUR.get("name"))
+            if arg not in PREFS["added"]: PREFS["added"].append(arg)
+            if arg in PREFS["removed"]: PREFS["removed"].remove(arg)
+            add_now(arg, kind=k)
         elif cmd == "/remove" and arg:
             if arg in PREFS["added"]: PREFS["added"].remove(arg)
             if arg not in PREFS["removed"]: PREFS["removed"].append(arg)
@@ -2231,6 +2687,7 @@ def handle_commands(state, texts=None, wait=0):
         elif cmd == "/pause": PREFS["paused"] = True; reply("Paused. Reply /resume to turn alerts back on.")
         elif cmd == "/resume": PREFS["paused"] = False; reply("Alerts are back on.")
         else: reply("I didn't understand that. " + HELP)
+    CUR.clear()
 
 CFG_WATCH = []
 
@@ -2254,11 +2711,13 @@ def run_once():
     CTX.clear(); CTX.update({"cache": cache, "state": state, "calls": calls})
     SELLS[:] = load("sells.json", [])
     REG.clear(); REG.update(load("coins.json", {}))
+    for t in wl:                                         # now that we know which tickers are stocks, re-check each one
+        if t.pop("_auto", None): t.pop("kind", None); norm(t)
     LEARN.clear(); LEARN.update(load("learning.json", {}))
     have = {t["symbol"] for t in wl}
     wl = [t for t in wl if t["symbol"] not in PREFS["removed"]] + [norm(x) for x in PREFS["added"] if x not in have]
     save_prefs(state, None)
-    ids = [t.get("coingecko_id") or try_get("lookup", lambda t=t: resolve_id(t["symbol"], cache)) for t in wl]
+    ids = [t.get("coingecko_id") or (None if t.get("kind") == "stock" else try_get("lookup", lambda t=t: resolve_id(t["symbol"], cache))) for t in wl]
     ids += [c.get("cg_id") for c in calls] + ["bitcoin"]
     ids = sorted({i for i in ids if i})
     LIVE.clear()
@@ -2285,7 +2744,7 @@ def run_once():
     wl = [t for t in wl if t["symbol"] not in PREFS["removed"]] + [norm(x) for x in PREFS["added"] if x not in {t["symbol"] for t in wl}]
     seen_ = set(); wl2 = []                              # one entry per coin (CHAINLINK and LINK are the same coin)
     for t in wl:
-        t["symbol"] = cache.get("tick:" + t["symbol"].lower()) or t["symbol"]
+        if t.get("kind") != "stock": t["symbol"] = cache.get("tick:" + t["symbol"].lower()) or t["symbol"]
         if t["symbol"] not in seen_ and t["symbol"] not in PREFS["removed"]: seen_.add(t["symbol"]); wl2.append(t)
     wl = wl2
     results = []
@@ -2358,7 +2817,7 @@ def save_hist():
 
 # ---------------------------------------------------------------- demo (offline)
 def install_demo():
-    global get_json, binance_daily, binance_depth
+    global get_json, binance_daily, binance_depth, get_text, fh
     random.seed(3)
     def series(start, n=365, turn=250):
         p, c = start, []
@@ -2405,7 +2864,35 @@ def install_demo():
             return {"result": {"0xabc": {"is_honeypot": "0", "sell_tax": "0.25", "buy_tax": "0.05", "is_open_source": "0", "is_mintable": "1",
                     "holders": [{"percent": "0.4"}, {"percent": "0.2"}], "lp_holders": [{"percent": "1", "is_locked": "0"}]}}}
         raise RuntimeError("no demo data for " + url)
-    get_json = fake_json; binance_daily = fake_klines
+    # ---- fake stock data (Stooq CSV + Finnhub JSON), so --demo exercises the stock path too
+    STK = {"aapl": series(80, turn=300), "spy": series(300, turn=280), "^vix": [random.uniform(13, 23) for _ in range(365)]}
+    def fake_text(url, timeout=25):
+        q = urllib.parse.unquote(urllib.parse.parse_qs(urllib.parse.urlparse(url).query).get("s", [""])[0])
+        k = q[:-3] if q.endswith(".us") else q
+        if k not in STK: raise RuntimeError("no demo stock data for " + k)
+        c = STK[k]
+        if "/q/l/" in url: return f"Symbol,Date,Time,Open,High,Low,Close,Volume\n{k},2026-01-01,20:00:00,1,1,1,{c[-1]:.4f},100"
+        rows = ["Date,Open,High,Low,Close,Volume"]
+        d0 = datetime(2025, 1, 2, tzinfo=timezone.utc)
+        for i, x in enumerate(c):
+            rows.append(f"{(d0 + timedelta(days=i)).date()},{x*0.995:.4f},{x*1.012:.4f},{x*0.988:.4f},{x:.4f},{int(random.uniform(2e7, 9e7))}")
+        return "\n".join(rows)
+    def fake_fh(path, **q):
+        if path == "/stock/profile2":
+            return {"ticker": "AAPL", "name": "Apple Inc", "finnhubIndustry": "Technology", "marketCapitalization": 3.4e6}
+        if path == "/stock/metric":
+            return {"metric": {"peTTM": 32.5, "pbAnnual": 48.0, "revenueGrowthTTMYoy": 6.2, "epsGrowthTTMYoy": 11.4,
+                               "netProfitMarginTTM": 24.9, "totalDebt/totalEquityAnnual": 1.4, "roeTTM": 147.0,
+                               "52WeekHigh": STK["aapl"][-1] * 1.3, "52WeekLow": STK["aapl"][-1] * 0.7,
+                               "dividendYieldIndicatedAnnual": 0.45}}
+        if path == "/quote": return {"c": STK["aapl"][-1]}
+        if path == "/calendar/earnings":
+            return {"earningsCalendar": [{"date": str((datetime.now(timezone.utc) + timedelta(days=12)).date())}]}
+        if path == "/company-news":
+            return [{"id": 1, "headline": "Apple announces a new partnership and product launch", "url": "https://example.com/1"},
+                    {"id": 2, "headline": "Apple hit with a lawsuit over app store fees", "url": "https://example.com/2"}]
+        return None
+    get_json = fake_json; binance_daily = fake_klines; get_text = fake_text; fh = fake_fh
     binance_depth = lambda host, pair, price: {"bid_usd": 420e3, "ask_usd": 380e3}
 
 def main():
@@ -2415,16 +2902,20 @@ def main():
     ap.add_argument("--test-telegram", action="store_true", help="send a test message and exit")
     ap.add_argument("--add", default="", help="tickers to add to watchlist.txt first (used by the Add-a-coin form)")
     ap.add_argument("--star", action="store_true", help="star the --add tickers")
+    ap.add_argument("--kind", default="", choices=["", "crypto", "stock"], help="treat the --add tickers as stocks")
     ap.add_argument("--delete-trades", default="", help="trade IDs to delete from the track record (dashboard Delete button)")
     a = ap.parse_args()
     path = os.path.join(HERE, "config.json")
     if not os.path.exists(path): path = os.path.join(HERE, "config.example.json")
     CFG = json.load(open(path))
-    for _k in ("coingecko_api_key", "cryptopanic_api_key", "whale_alert_api_key", "helius_api_key", "etherscan_api_key"):  # keys from GitHub Secrets override config.json
+    for _k in ("coingecko_api_key", "cryptopanic_api_key", "whale_alert_api_key", "helius_api_key", "etherscan_api_key", "finnhub_api_key"):  # keys from GitHub Secrets override config.json
         if os.environ.get(_k.upper()): CFG[_k] = os.environ[_k.upper()]
     if a.demo:
         DEMO = True; DATA = os.path.join(HERE, "data-demo"); CFG["coingecko_min_seconds"] = 0; install_demo()
-        CFG["watchlist"] = [{"symbol": "INJ", "team_doxxed": True, "audited": True, "fundamental_grade": "B", "alerts": {"below": 6.5}}]
+        CFG["watchlist"] = [{"symbol": "INJ", "team_doxxed": True, "audited": True, "fundamental_grade": "B", "alerts": {"below": 6.5}},
+                            {"symbol": "AAPL", "kind": "stock"}]
+        CFG["finnhub_api_key"] = "demo"; CFG["owner_name"] = "David"
+        CFG["added_by"] = {"INJ": "David", "AAPL": "David", "GOOD": "Ian", "RUG": "Ian"}
     if a.report: print(report_text(load("calls.json", []))); return
     if a.demo:
         CFG["watchlist"][0]["starred"] = True
@@ -2433,7 +2924,11 @@ def main():
     if a.delete_trades.strip():
         n = delete_trades(a.delete_trades); print(f"Deleted {n} trade(s)"); CFG["_deleted"] = n
     if a.add.strip():
-        adds = [x.upper().lstrip("$") for x in re.split(r"[\s,]+", a.add.strip()) if re.fullmatch(r"\$?[A-Za-z0-9]{1,20}", x)][:10]
+        raw_adds = [x.upper().lstrip("$") for x in re.split(r"[\s,]+", a.add.strip())
+                    if re.fullmatch(r"(?:STOCK:|CRYPTO:)?\$?[A-Za-z0-9.\-]{1,20}", x)][:10]
+        as_stock = {x.split(":", 1)[1] for x in raw_adds if x.startswith("STOCK:")}
+        if a.kind == "stock": as_stock |= {x.split(":", 1)[-1] for x in raw_adds}
+        adds = [x.split(":", 1)[-1] for x in raw_adds]
         wpath = os.path.join(HERE, "watchlist.txt"); lines = open(wpath).read().splitlines() if os.path.exists(wpath) else []
         have = {l.split("#")[0].strip().lstrip("*").upper() for l in lines}
         for x in adds:
@@ -2442,7 +2937,9 @@ def main():
             else: lines.append(("*" if a.star else "") + x)
         open(wpath, "w").write("\n".join(lines) + "\n")
         st_ = load("state.json", {}); pr = st_.get("_prefs") or {}
-        pr["removed"] = [x for x in pr.get("removed", []) if x not in adds]; st_["_prefs"] = pr; save("state.json", st_)
+        pr["removed"] = [x for x in pr.get("removed", []) if x not in adds]
+        if as_stock: pr["stocks"] = sorted({x.upper() for x in pr.get("stocks", [])} | as_stock)
+        st_["_prefs"] = pr; save("state.json", st_)
         print("Added from the form: " + ", ".join(adds))
         if adds: CFG["_form_added"] = adds
     if a.test_telegram:

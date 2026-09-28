@@ -4,9 +4,9 @@ Read this first when you pick this project up in a new conversation. It describe
 
 ## What this is
 
-A personal crypto signal bot for David. Every 15 minutes it:
+A personal signal bot for David, covering **crypto and US stocks**. Every 15 minutes it:
 
-- checks a watchlist of coins
+- checks a watchlist of coins and stocks
 - scans for new candidates
 - screens each one for scams
 - scores buy and sell setups
@@ -24,7 +24,7 @@ It also keeps an honest track record of every buy call and learns from its losin
 | Dashboard (GitHub Pages, from `/docs`) | https://2bulldawg14.github.io/token-watch/ |
 | Runs | GitHub Actions: `.github/workflows/token-watch.yml` every 15 min, `add-coin.yml` (the dashboard's Add form), `delete-trade.yml` (its Delete button), `refresh.yml` (its Refresh button) and `test-telegram.yml` (manual) |
 | Alerts and commands | David's Telegram bot. Its username is looked up at runtime with `getMe`. |
-| Secrets (repo Settings → Secrets → Actions) | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `COINGECKO_API_KEY` (Demo), `HELIUS_API_KEY`, `ETHERSCAN_API_KEY`. `CRYPTOPANIC_API_KEY` and `WHALE_ALERT_API_KEY` are supported but not set, because both are paid. |
+| Secrets (repo Settings → Secrets → Actions) | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `COINGECKO_API_KEY` (Demo), `HELIUS_API_KEY`, `ETHERSCAN_API_KEY`, `FINNHUB_API_KEY`. `CRYPTOPANIC_API_KEY` and `WHALE_ALERT_API_KEY` are supported but not set, because both are paid. |
 | User settings | `config.json` (weights, indicators, discovery, alerts, `wallet_tracking`, `learning`) and `watchlist.txt` (one ticker per line, `*` = starred) |
 | State the bot writes (pushed when the dashboard publishes) | `data/` (`calls.json`, `sells.json`, `coins.json` (the directory: ticker → CoinGecko ID, name, contract, first seen), `state.json`, `cache.json`, `export.json`, `wallet_trades.json`, `learning.json`, `dashboard.html`) and `docs/` (`index.html` and the PWA files) |
 
@@ -37,7 +37,7 @@ Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in 
 1. Clone the public repo into the workspace (no auth needed to read).
 2. Edit `token_watch.py`. It's a single file that uses only the standard library.
 3. Test offline with `python3 token_watch.py --demo`. That writes `data-demo/dashboard.html` using fake data.
-4. Screenshot the dashboard with Playwright at 390×844, in both dark and light mode. Check for JS `pageerror`s before shipping.
+4. Screenshot the dashboard with Playwright at 390×844, in both dark and light mode. Check for JS `pageerror`s before shipping. `--demo` includes a fake stock (AAPL) and fake people (David, Ian), so the stock and person tabs are exercised offline.
 5. Upload through the browser, since the cloud workspace can't push:
    - open `https://github.com/2bulldawg14/token-watch/upload/main` (or `/upload/main/.github/workflows` for workflow files)
    - use `file_upload` on the hidden file input
@@ -179,12 +179,36 @@ Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in 
 - **Dashboard:** the `DASH_HTML` template near the end of the file, filled by `write_dashboard()`. It has inline JS, SVG charts (price, 50/200-day averages, Bollinger bands, zones, stop and target, volume nodes, RSI, MACD), tabs, an Add-coin box, a Follow box, a wallets leaderboard, a track record split into "Your coins" and "Scanner found", and a learning section.
 - **Links:** `token_links()` for the contract (preferring Solana, then ETH, Base, BSC, Arbitrum), CoinGecko and DexScreener. These appear on every buy suggestion and every call.
 
+## Stocks
+
+Stocks live alongside coins in the same watchlist, scoring and track record.
+
+- **Data:** daily OHLCV from **Stooq** (free, no key, `stooq_daily`); live quote, company profile, metrics, earnings date and news from **Finnhub** (`FINNHUB_API_KEY`, free tier, 60 calls/min). Finnhub's free plan does **not** include `/stock/candle`, which is why Stooq supplies the history.
+- **Which is it?** `norm()` sets `tok["kind"]` to `crypto` or `stock`. A ticker is a stock if it's in `PREFS["stocks"]` (set by `/stock`, the dashboard's Stock radio, or `--kind stock`) or `REG[sym]["kind"] == "stock"`. `classify()` looks a new ticker up on both CoinGecko and Finnhub; when both match, the bot asks in Telegram ("Reply /stock AAPL or /coin AAPL") and adds nothing until you answer.
+- **Pipeline:** `check_token()` hands stocks to `check_stock()`, which uses `stock_data()`, `stock_quality()` (the stand-in for the scam screen: small cap, unprofitable, high debt, shrinking revenue, very high P/E, earnings within 7 days) and `stock_news()`. Crypto-only groups (derivatives, TVL, wallets, order book, betting markets) are simply absent, so the weights redistribute.
+- **Differences inside `analyse()`** (all keyed off `ex["_kind"] == "stock"`): relative strength is measured against the S&P 500 instead of Bitcoin; `parts["macro"]` uses `MACRO["stock_score"]` (S&P 500 trend, S&P RSI, VIX — see `stock_macro()`); a HIGH quality score caps the signal at HOLD instead of calling it a scam; the `fundamental` group comes from `stock_grade()` (margin, ROE, revenue and earnings growth, P/E, debt/equity → A–F).
+- **Market hours:** `market_open()` (weekday 9:30am–4pm Eastern, with a real DST rule; holidays aren't checked). Stock alerts are held back while the market is closed unless a new buy call was stamped.
+- **Links:** Yahoo Finance and TradingView replace CoinGecko and DexScreener.
+- **On the dashboard:** a `stock` badge, 📈 Stocks / 🪙 Crypto tabs, a "Your stocks" KPI row and track-record row, a Company numbers panel (P/E, margin, growth, ROE, debt/equity, 52-week range, dividend, next earnings) and a US stock backdrop section.
+
+## Distribution list (other people)
+
+- `PREFS["members"]` = `[{chat_id, name, mode, added}]`, where `mode` is `all`, `mine` or `off`. Kept in `data/state.json` under `_prefs`.
+- **Owner only** (the chat in `TELEGRAM_CHAT_ID`): `/invite <name>` mints a one-time code and returns a `t.me/<bot>?start=JOIN_<code>` link; `/people` lists everyone; `/kick <name>` removes someone. Every admin command (`/star`, `/remove`, `/follow`, `/pause`, `/deletetrade`, `/discovered`, …) is refused for anyone else.
+- **Members** can add and check tickers, see `/record`, and control their own alerts with `/mine on|off`, `/mute`, `/unmute`, `/leave`.
+- `handle_commands()` now reads every chat, not just the owner's. `CUR` holds who sent the message being handled; `reply()` answers them, `tell_owner()` messages David. Unknown chats get a polite refusal unless they present a valid invite code.
+- **Attribution:** `PREFS["added_by"]` maps ticker → person. It's written by `/add`, `/stock`, `/coin` and `/star`, copied onto `REG[sym]["by"]`, every buy call, and each dashboard token. The dashboard builds a 👤 tab per person, shows an "Added by" badge and row, and adds a person dropdown to the track-record filters. `send()` uses it to honour a member's `mine` mode.
+- System and error messages (`kind="system"`, `owner_only=True`) never go to members.
+
 ## Telegram commands
 
 | Command | What it does |
 |---|---|
 | `/check [TICKER]`, or just send `TAO` / `$tao` | Fresh assessment |
 | `/add` · `/remove` · `/star` · `/unstar` TICKER | Manage the watchlist |
+| `/stock AAPL` · `/coin LINK` · `/stocks` | Add a stock, add a coin when the ticker means both, list stocks |
+| `/invite <name>` · `/people` · `/kick <name>` | The distribution list (owner only) |
+| `/mine` · `/mine on\|off` · `/mute` · `/unmute` · `/leave` | A member's own settings |
 | `/follow <address> <nickname>` · `/unfollow` · `/wallets` · `/wallets on\|off` | Followed wallets |
 | `/record` · `/lessons` · `/status` | Track record, what the model learned, settings |
 | `/discovered on\|off` · `/watchlist on\|off` · `/report on\|off` · `/pause` · `/resume` | Alert settings |

@@ -134,21 +134,24 @@
   "name": "Render",
   "chain": "solana",
   "contract": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
-  "last_seen": "2026-09-28 01:43 UTC"
+  "last_seen": "2026-09-28 23:40 UTC",
+  "kind": "crypto"
  },
  "XRP": {
   "first_seen": "2026-09-24 13:59 UTC",
   "source": "watchlist",
   "cg_id": "ripple",
   "name": "XRP",
-  "last_seen": "2026-09-28 01:43 UTC"
+  "last_seen": "2026-09-28 23:40 UTC",
+  "kind": "crypto"
  },
  "ZEC": {
   "first_seen": "2026-09-24 13:59 UTC",
   "source": "watchlist",
   "cg_id": "zcash",
   "name": "Zcash",
-  "last_seen": "2026-09-28 01:43 UTC"
+  "last_seen": "2026-09-28 23:41 UTC",
+  "kind": "crypto"
  },
  "ATOM": {
   "first_seen": "2026-09-24 13:59 UTC",
@@ -157,14 +160,16 @@
   "name": "Cosmos Hub",
   "chain": "binance-smart-chain",
   "contract": "0x0eb3a705fc54725037cc9e008bdede697f62f335",
-  "last_seen": "2026-09-28 01:43 UTC"
+  "last_seen": "2026-09-28 23:43 UTC",
+  "kind": "crypto"
  },
  "LTC": {
   "first_seen": "2026-09-24 13:59 UTC",
   "source": "watchlist",
   "cg_id": "litecoin",
   "name": "Litecoin",
-  "last_seen": "2026-09-28 01:43 UTC"
+  "last_seen": "2026-09-28 23:44 UTC",
+  "kind": "crypto"
  },
  "ASTER": {
   "first_seen": "2026-09-24 13:59 UTC",
@@ -207,7 +212,8 @@
   "name": "Hyperliquid",
   "chain": "hyperliquid",
   "contract": "0x0d01dc56dcaaca66ad901c959b4011ec",
-  "last_seen": "2026-09-28 01:43 UTC"
+  "last_seen": "2026-09-28 23:38 UTC",
+  "kind": "crypto"
  },
  "QNT": {
   "first_seen": "2026-09-24 14:48 UTC",

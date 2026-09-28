@@ -247,6 +247,8 @@ Stocks live alongside coins in the same watchlist, scoring and track record.
 
 ## Run timing (important)
 
+**The schedule is every 20 minutes, not 15, and that is deliberate.** A run costs about 12 minutes of wall clock (2-3 for checkout, Python setup and cache restore, then the script, then saving the cache and publishing). Against a 15-minute cron that left the lane roughly 80% occupied, so runs queued, started 10+ minutes late, had no working time left, and did only the minimum. At 20 minutes the lane has real headroom: runs start on time and get through the whole watchlist. The refresh you actually get went from "a few coins every two hours" to "everything every twenty minutes" by making the schedule *less* frequent.
+
 GitHub keeps at most one run of a workflow waiting in line. If a run is still going when the next two come due, GitHub cancels the running one with *"Canceling since a higher priority waiting request for token-watch exists"* - and nothing gets published. That happened once when the checks plus a 12-minute Telegram window ran past the 15-minute cron.
 
 So every run must finish inside the check interval:

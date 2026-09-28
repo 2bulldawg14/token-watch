@@ -1,5 +1,5 @@
 {
-  "check_every_minutes": 15,
+  "check_every_minutes": 20,
   "export_every_minutes": 240,
   "history_refresh_hours": 6,
   "watchlist": [
@@ -67,7 +67,7 @@
     "discovered": false,
     "weekly_report": true
   },
-  "listen_minutes": 4,
+  "listen_minutes": 6,
   "owner_name": "David",
   "stocks": true,
   "stock_history_refresh_hours": 6,
@@ -79,7 +79,7 @@
   "insider_min_usd": 50000,
   "insider_cluster": 3,
   "short_interest": true,
-  "run_budget_minutes": 8,
+  "run_budget_minutes": 12,
   "congress": true,
   "congress_days": 365,
   "congress_recent_days": 120,
@@ -88,5 +88,5 @@
   "run_margin_seconds": 180,
   "publish_reserve_minutes": 1.5,
   "discovery_reserve_minutes": 3,
-  "min_coins_per_run": 4
+  "min_coins_per_run": 6
 }

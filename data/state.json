@@ -49,13 +49,29 @@
    "SHIB",
    "LTC",
    "ETH",
-   "QNT"
+   "QNT",
+   "LAES"
   ],
   "removed": [
    "HYPERLIQUID"
   ],
   "wallets": [],
-  "unfollowed": []
+  "unfollowed": [],
+  "stocks": [
+   "LAES"
+  ],
+  "members": [
+   {
+    "chat_id": "8889974111",
+    "name": "Ian",
+    "mode": "all",
+    "added": "2026-09-28 22:12 UTC"
+   }
+  ],
+  "invites": {},
+  "added_by": {
+   "LAES": "David"
+  }
  },
  "INJ": {
   "seen_news": [],
@@ -110,7 +126,7 @@
  "_discovery_t": 1790557892.4689043,
  "_report_week": "2026-W40",
  "_export_t": 1790551568.2762873,
- "_tg_offset": 218529264,
+ "_tg_offset": 218529287,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
@@ -832,7 +848,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790559812.5725975,
+ "_saved_t": 1790633640.3735242,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -841,5 +857,6 @@
   "rsi_band": "high",
   "risk": "MEDIUM",
   "signal": "HOLD"
- }
+ },
+ "_wl_cursor": 0
 }

@@ -2788,10 +2788,16 @@ def listen(minutes):
     the whole run - checks, publishing and this listening window - has to fit inside the check interval.
     """
     tok, chat = tg_creds()
-    budget = CFG.get("run_budget_minutes", max(4, CFG.get("check_every_minutes", 15) - 4)) * 60
-    left = (budget - (now() - START_T)) / 60
+    # Two ceilings, whichever is tighter: the clock (the next run is due on a fixed 15-minute grid,
+    # so aim to be finished before it) and a plain budget from when this run started.
+    iv = max(5, CFG.get("check_every_minutes", 15)) * 60
+    margin = CFG.get("run_margin_seconds", 180)       # room for saving the cache and the final publish step
+    to_tick = (iv - (now() % iv) - margin) / 60
+    budget = (CFG.get("run_budget_minutes", 8) * 60 - (now() - START_T)) / 60
+    left = min(to_tick, budget)
     if left < minutes:
-        print(f"  Shortening the Telegram window to {max(0, left):.1f} min so this run finishes before the next one is due.")
+        print(f"  Shortening the Telegram window to {max(0, left):.1f} min "
+              f"({to_tick:.1f} min until the next run is due, {budget:.1f} min of this run's budget left).")
         minutes = left
     if not (tok and chat) or minutes <= 0.25: return
     end = now() + minutes * 60; CTX["listening"] = True

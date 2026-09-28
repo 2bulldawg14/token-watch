@@ -79,10 +79,11 @@
   "insider_min_usd": 50000,
   "insider_cluster": 3,
   "short_interest": true,
-  "run_budget_minutes": 11,
+  "run_budget_minutes": 8,
   "congress": true,
   "congress_days": 365,
   "congress_recent_days": 120,
   "congress_cluster": 3,
-  "congress_refresh_hours": 24
+  "congress_refresh_hours": 24,
+  "run_margin_seconds": 180
 }

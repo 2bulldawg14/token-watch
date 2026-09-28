@@ -4,9 +4,15 @@ on:
   workflow_dispatch:
     inputs:
       tickers:
-        description: "Ticker(s) to add, e.g. SHIB or SHIB, PEPE"
+        description: "Ticker(s) to add, e.g. SHIB or AAPL (or SHIB, PEPE)"
         required: true
         type: string
+      kind:
+        description: "Is this a coin or a stock?"
+        required: false
+        type: choice
+        default: "work it out for me"
+        options: ["work it out for me", "coin", "stock"]
       star:
         description: "Star it (always alert me)"
         required: false
@@ -38,14 +44,17 @@ jobs:
         env:
           ADD_TICKERS: ${{ inputs.tickers }}
           ADD_STAR: ${{ inputs.star }}
+          ADD_KIND: ${{ inputs.kind }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
           HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
           ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
         run: |
           if [ "$ADD_STAR" = "true" ]; then STAR="--star"; else STAR=""; fi
-          python token_watch.py --once --add "$ADD_TICKERS" $STAR
+          case "$ADD_KIND" in stock) KIND="--kind stock";; coin) KIND="--kind crypto";; *) KIND="";; esac
+          python token_watch.py --once --add "$ADD_TICKERS" $STAR $KIND
       - name: Save price history cache
         if: always()
         uses: actions/cache/save@v5

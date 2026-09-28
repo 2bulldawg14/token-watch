@@ -12,7 +12,7 @@ Outputs go to ./data/: dashboard.html (open in a browser), export.json (import i
 Token Grader), calls.json (track record), state.json and cache.json.
 Standard library only. Not financial advice.
 """
-import argparse, json, math, os, random, subprocess, sys, time, urllib.parse, urllib.request, html
+import argparse, base64, hashlib, hmac, json, math, os, random, subprocess, sys, time, urllib.parse, urllib.request, html
 from datetime import datetime, timezone, timedelta
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -1242,6 +1242,20 @@ def tg_post(tok, chat, text):
         print(f"  [telegram failed -> {chat}] {e}"); return False
 
 # ---------------------------------------------------------------- people on the distribution list
+def invite_code(name):
+    """A signed invite link carries the person's name, so any run can check it without having stored anything."""
+    tok, _ = tg_creds()
+    nm = re.sub(r"[^A-Za-z0-9]", "", str(name or ""))[:20] or "Guest"
+    sig = hmac.new((tok or "no-token").encode(), nm.lower().encode(), hashlib.sha256).hexdigest()[:8].upper()
+    return f"{nm}-{sig}", nm
+
+def invite_check(code):
+    """Returns the invited person's name if this code is genuinely one of ours, else None."""
+    m = re.fullmatch(r"([A-Za-z0-9]{1,20})-([A-F0-9]{8})", str(code or "").strip(), re.I)
+    if not m: return None
+    want, nm = invite_code(m.group(1))
+    return nm if want.split("-")[1] == m.group(2).upper() else None
+
 def members(): return PREFS.get("members", [])
 def member_by_chat(cid):
     cid = str(cid)
@@ -2858,9 +2872,10 @@ def handle_commands(state, texts=None, wait=0):
     for cid, t, fname in msgs:
         CUR.clear(); CUR.update({"chat": cid, "name": person_name(cid), "first": fname})
         if not is_owner(cid) and not member_by_chat(cid):
-            mj = re.fullmatch(r"/(?:start|join)(?:@\w+)?\s+(?:JOIN[_ ])?([A-Za-z0-9]{5,12})", t.strip(), re.I)
+            mj = re.fullmatch(r"/(?:start|join)(?:@\w+)?\s+(?:JOIN[_ ])?([A-Za-z0-9\-]{5,32})", t.strip(), re.I)
             code = mj.group(1).upper() if mj else None
-            inv = (PREFS.get("invites") or {}).pop(code, None) if code else None
+            signed = invite_check(mj.group(1)) if mj else None
+            inv = {"name": signed} if signed else ((PREFS.get("invites") or {}).pop(code, None) if code else None)
             if inv:
                 nm = (inv.get("name") or fname or "Guest").strip()[:24]
                 PREFS.setdefault("members", []).append({"chat_id": cid, "name": nm, "mode": "all", "added": iso()})
@@ -2873,6 +2888,12 @@ def handle_commands(state, texts=None, wait=0):
                 reply("That invite link has already been used, or it's no longer valid. Ask for a new one.")
             else:
                 reply("This is a private Token Watch bot. Ask the owner for an invite link.")
+            continue
+        mo = re.fullmatch(r"/(?:start|join)(?:@\w+)?\s+(?:JOIN[_ ])?([A-Za-z0-9]{1,20}-[A-F0-9]{8})", t.strip(), re.I)
+        if mo and is_owner(cid):
+            who = invite_check(mo.group(1))
+            reply(f"That's the invite link for {who} - it's for them to tap, not you. Forward it to {who} and they'll be added when they open it."
+                  if who else "That invite link wasn't made by this bot. Send /invite <name> for a fresh one.")
             continue
         m = re.fullmatch(r"/start(?:@\w+)?\s+(ADD|STAR|UNSTAR|REMOVE|CHECK|STOCK|COIN)_([A-Za-z0-9.\-]{1,15})", t.strip(), re.I)
         if m: t = f"/{m.group(1).lower()} {m.group(2).upper()}"      # buttons on the dashboard open the bot with these
@@ -2891,18 +2912,18 @@ def handle_commands(state, texts=None, wait=0):
         if cmd == "/invite" and owner:
             nm = " ".join(parts[1:]).strip()[:24]
             if not nm: reply("Send /invite Ian - I'll give you a link to pass on to them."); continue
-            code = "".join(random.choice("ABCDEFGHJKLMNPQRSTUVWXYZ23456789") for _ in range(7))
-            PREFS.setdefault("invites", {})[code] = {"name": nm, "t": int(now())}
+            code, nm = invite_code(nm)
             bn = bot_name()
-            reply(f"\U0001F517 Invite link for {nm} - send it to them, it works once:\n"
+            reply(f"\U0001F517 Invite link for {nm} - send it to them:\n"
                   + (f"https://t.me/{bn}?start=JOIN_{code}" if bn else f"Ask them to message this bot: /join {code}")
-                  + f"\n\nWhen they tap Start they get the same alerts you do, and anything they add appears on the website under \"{nm}\".")
+                  + f"\n\nWhen they tap Start they get the same alerts you do, and anything they add appears on the website under \"{nm}\"."
+                  + "\nThe link keeps working, so it's fine if they tap it twice or you send it again. /kick "
+                  + nm + " removes them.")
             continue
         if cmd == "/people" and owner:
             ms = members()
             reply("\U0001F465 On your distribution list:\n" + ("\n".join(f"\u2022 {m['name']} - {MODES.get(m.get('mode', 'all'))}" for m in ms) if ms else "Nobody yet.")
-                  + ("\n\nPending invites: " + ", ".join(f"{v['name']}" for v in (PREFS.get("invites") or {}).values()) if PREFS.get("invites") else "")
-                  + "\n\n/invite <name> to add someone, /kick <name> to remove them.")
+                  + "\n\n/invite <name> gives you a link to send them, /kick <name> removes them.")
             continue
         if cmd == "/kick" and owner:
             m2 = member_by_name(" ".join(parts[1:]))

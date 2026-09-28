@@ -44,14 +44,16 @@
   "name": "Shiba Inu",
   "chain": "ethereum",
   "contract": "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
-  "last_seen": "2026-09-28 01:42 UTC"
+  "last_seen": "2026-09-28 22:46 UTC",
+  "kind": "crypto"
  },
  "HBAR": {
   "first_seen": "2026-09-24 13:59 UTC",
   "source": "watchlist",
   "cg_id": "hedera-hashgraph",
   "name": "Hedera",
-  "last_seen": "2026-09-28 01:42 UTC"
+  "last_seen": "2026-09-28 22:47 UTC",
+  "kind": "crypto"
  },
  "SUI": {
   "first_seen": "2026-09-24 13:59 UTC",
@@ -60,14 +62,16 @@
   "name": "Sui",
   "chain": "sui",
   "contract": "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
-  "last_seen": "2026-09-28 01:42 UTC"
+  "last_seen": "2026-09-28 22:49 UTC",
+  "kind": "crypto"
  },
  "SEI": {
   "first_seen": "2026-09-24 13:59 UTC",
   "source": "watchlist",
   "cg_id": "sei-network",
   "name": "Sei",
-  "last_seen": "2026-09-28 01:42 UTC"
+  "last_seen": "2026-09-28 22:50 UTC",
+  "kind": "crypto"
  },
  "CC": {
   "first_seen": "2026-09-24 13:59 UTC",

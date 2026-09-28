@@ -67,7 +67,7 @@
     "discovered": false,
     "weekly_report": true
   },
-  "listen_minutes": 8,
+  "listen_minutes": 4,
   "owner_name": "David",
   "stocks": true,
   "stock_history_refresh_hours": 6,
@@ -85,5 +85,7 @@
   "congress_recent_days": 120,
   "congress_cluster": 3,
   "congress_refresh_hours": 24,
-  "run_margin_seconds": 180
+  "run_margin_seconds": 180,
+  "publish_reserve_minutes": 1.5,
+  "discovery_reserve_minutes": 3
 }

@@ -253,6 +253,8 @@ So every run must finish inside the check interval:
 
 - `listen()` takes the tighter of two ceilings: how long until the next run is due on the 15-minute grid (minus `run_margin_seconds`, 180, for saving the cache and the final publish step) and `run_budget_minutes` (8) from when Python started. Because scheduled runs land on a fixed grid, the clock ceiling is what actually keeps runs from overlapping - a budget measured from the start of the run misses the minutes GitHub spends on checkout, Python setup and cache restore before the script even begins, which is how a run once came to 14m02s against a 13-minute cap.
 - `listen_minutes` (8) is the most it will ever listen for.
+- `time_left()` is the single source of truth, and **the checks obey it too**: when under `publish_reserve_minutes` (1.5) remains, the run stops checking coins and goes straight to publishing, leaving the rest for the next run. `state["_wl_cursor"]` remembers where it stopped so the tail of the watchlist isn't perpetually skipped. Discovery only runs with `discovery_reserve_minutes` (3) to spare. That means **every run publishes**, however slow the data sources are that day.
+- `time_left()` returns 999 off GitHub Actions, so local and `--demo` runs are never cut short.
 - `timeout-minutes: 13` on each workflow, so a stuck run dies quickly instead of blocking the lane.
 - The dashboard is published *before* the listening window, so a cancelled run still leaves the page updated.
 

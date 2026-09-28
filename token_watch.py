@@ -2780,6 +2780,20 @@ def git_push():
         ERRORS.append("publishing the dashboard to GitHub failed 4 times (GitHub error) - the end-of-run step will try again")
     except Exception as e: print(f"  [skip] publish: {e}")
 
+def time_left():
+    """Minutes left before this run has to be finished and published.
+
+    Scheduled runs land on a fixed grid, so the next one is due at the next tick. A run that is still
+    going when the following two come due gets cancelled by GitHub and publishes nothing, so everything
+    - checks, publishing, answering Telegram - has to fit in between.
+    """
+    if DEMO or not os.environ.get("GITHUB_ACTIONS"): return 999.0   # only scheduled runs share a lane
+    iv = max(5, CFG.get("check_every_minutes", 15)) * 60
+    margin = CFG.get("run_margin_seconds", 180)       # saving the cache and the final publish step
+    to_tick = (iv - (now() % iv) - margin) / 60
+    budget = (CFG.get("run_budget_minutes", 8) * 60 - (now() - START_T)) / 60
+    return min(to_tick, budget)
+
 def listen(minutes):
     """After the scheduled check, keep answering Telegram messages - but always stop before the next run is due.
 
@@ -2790,14 +2804,9 @@ def listen(minutes):
     tok, chat = tg_creds()
     # Two ceilings, whichever is tighter: the clock (the next run is due on a fixed 15-minute grid,
     # so aim to be finished before it) and a plain budget from when this run started.
-    iv = max(5, CFG.get("check_every_minutes", 15)) * 60
-    margin = CFG.get("run_margin_seconds", 180)       # room for saving the cache and the final publish step
-    to_tick = (iv - (now() % iv) - margin) / 60
-    budget = (CFG.get("run_budget_minutes", 8) * 60 - (now() - START_T)) / 60
-    left = min(to_tick, budget)
+    left = time_left()
     if left < minutes:
-        print(f"  Shortening the Telegram window to {max(0, left):.1f} min "
-              f"({to_tick:.1f} min until the next run is due, {budget:.1f} min of this run's budget left).")
+        print(f"  Shortening the Telegram window to {max(0, left):.1f} min so this run finishes in time.")
         minutes = left
     if not (tok and chat) or minutes <= 0.25: return
     end = now() + minutes * 60; CTX["listening"] = True
@@ -3100,21 +3109,39 @@ def run_once():
             except Exception as ex: print(f"  [error] {tok['symbol']}: {ex}")
         if results: quick_publish(results)
     done_ = {r["res"]["symbol"] for r in results}
-    for tok in wl:
+    # Start where the last run stopped, so that if there isn't time for everything each coin still
+    # comes round every couple of runs instead of the tail of the list never being reached.
+    start_at = state.get("_wl_cursor", 0) % max(1, len(wl))
+    order = wl[start_at:] + wl[:start_at]
+    checked = 0
+    for tok in order:
         if tok["symbol"] in done_: continue
+        if time_left() <= CFG.get("publish_reserve_minutes", 1.5):
+            skipped = [t["symbol"] for t in order[order.index(tok):] if t["symbol"] not in done_]
+            print(f"  Out of time this run: {len(skipped)} coin(s) left for the next one ({', '.join(skipped[:6])}"
+                  + ("…" if len(skipped) > 6 else "") + ")")
+            state["_wl_cursor"] = (start_at + checked) % max(1, len(wl))
+            break
+        checked += 1
         try:
             r = check_token(tok, cache, state, calls)
             if r: results.append(r)
         except Exception as ex: print(f"  [error] {tok['symbol']}: {ex}")
+    else:
+        state["_wl_cursor"] = 0
     have = {t["symbol"] for t in wl}
     for sym in sorted({c["symbol"] for c in calls if c["symbol"] not in have and now() - c["t"] < 45 * DAY})[:10]:
+        if time_left() <= CFG.get("publish_reserve_minutes", 1.5): break
         if not open_call(sym, calls): continue
         c0 = open_call(sym, calls)
         try:
             r = check_token({"symbol": sym, "coingecko_id": c0.get("cg_id")}, cache, state, calls, source="tracked")
             if r: results.append(r)
         except Exception as ex: print(f"  [error] {sym}: {ex}")
-    try: results += discover(cache, state, calls, have | {r["res"]["symbol"] for r in results})
+    try:
+        if time_left() > CFG.get("discovery_reserve_minutes", 3):
+            results += discover(cache, state, calls, have | {r["res"]["symbol"] for r in results})
+        else: print("  Skipping the discovery scan this run - not enough time left.")
     except Exception as ex: print(f"  [discovery error] {ex}")
     prices = dict(LIVE); prices.update({r["res"]["symbol"]: r["res"]["price"] for r in results})
     update_calls(calls, prices)

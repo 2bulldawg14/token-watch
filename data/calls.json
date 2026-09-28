@@ -14,11 +14,11 @@
   },
   "risk": "MEDIUM",
   "source": "discovery",
-  "last": 0.085719,
+  "last": 0.085759,
   "max": 0.16812,
   "min": 0.085719,
   "checkpoints": {},
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "links": {
    "chain": "binance-smart-chain",
    "contract": "0xeccbb861c0dda7efd964010085488b69317e4444",
@@ -33,7 +33,7 @@
   },
   "tmax": 0.16591472196691665,
   "tmin": 0.085719,
-  "ret_open": -48.34
+  "ret_open": -48.31
  },
  {
   "id": "TAO-1790172722",
@@ -71,7 +71,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 314.1,
+  "last": 315.2,
   "max": 339.8,
   "min": 278.8,
   "checkpoints": {},
@@ -111,7 +111,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "tmax": 311.6,
   "tmin": 286.9,
   "ret_open": 0.26,
@@ -213,7 +213,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/render-token",
    "dexscreener": "https://dexscreener.com/solana/rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof"
   },
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "exit": {
    "t": 1790256809,
    "date": "2026-09-24 13:33 UTC",
@@ -265,7 +265,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.878,
+  "last": 1.879,
   "max": 1.9,
   "min": 1.676,
   "checkpoints": {},
@@ -322,10 +322,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "tmax": 1.9,
   "tmin": 1.755,
-  "ret_open": 6.83
+  "ret_open": 6.88
  },
  {
   "id": "INJ-1790173810",
@@ -361,7 +361,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.753,
+  "last": 7.781,
   "max": 8.581,
   "min": 7.574,
   "checkpoints": {},
@@ -418,7 +418,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/solana/1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
   },
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "exit": {
    "t": 1790174772,
    "date": "2026-09-23 14:46 UTC",
@@ -472,7 +472,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.14067,
+  "last": 0.140258,
   "max": 0.14067,
   "min": 0.106872,
   "checkpoints": {},
@@ -512,7 +512,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -564,7 +564,7 @@
    ]
   },
   "source": "discovery",
-  "last": 0.13002,
+  "last": 0.13059,
   "max": 0.13831,
   "min": 0.12846,
   "checkpoints": {},
@@ -613,10 +613,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/falcon-finance-ff",
    "dexscreener": "https://dexscreener.com/ethereum/0xfa1c09fc8b491b6a4d3ff53a10cad29381b3f949"
   },
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "tmax": 0.13831,
   "tmin": 0.12846,
-  "ret_open": -0.82
+  "ret_open": -0.39
  },
  {
   "id": "SHIB-1790245914",
@@ -651,7 +651,7 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 5.9e-06,
+  "last": 5.93e-06,
   "max": 6.05e-06,
   "min": 5.57e-06,
   "checkpoints": {},
@@ -696,7 +696,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "tmax": 5.97e-06,
   "tmin": 5.57e-06,
   "ret_open": 7.0,
@@ -748,7 +748,7 @@
    ]
   },
   "source": "discovery",
-  "last": 0.723,
+  "last": 0.7236,
   "max": 0.7472,
   "min": 0.6973,
   "checkpoints": {},
@@ -793,10 +793,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/aster-2",
    "dexscreener": "https://dexscreener.com/bsc/0x000ae314e2a2172a039b26378814c252734f556a"
   },
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "tmax": 0.7472,
   "tmin": 0.6973,
-  "ret_open": 3.69
+  "ret_open": 3.77
  },
  {
   "id": "SPX-1790297122",
@@ -838,7 +838,7 @@
    ]
   },
   "source": "discovery",
-  "last": 0.441497,
+  "last": 0.438718,
   "max": 0.469366,
   "min": 0.432039,
   "checkpoints": {},
@@ -898,7 +898,7 @@
   "tmax": 0.461102,
   "tmin": 0.432039,
   "ret_open": 4.47,
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "exit": {
    "t": 1790334685,
    "date": "2026-09-25 11:11 UTC",
@@ -946,7 +946,7 @@
    ]
   },
   "source": "discovery",
-  "last": 0.00515093,
+  "last": 0.00512947,
   "max": 0.00517635,
   "min": 0.003856,
   "checkpoints": {},
@@ -994,7 +994,7 @@
   "tmax": 0.004234,
   "tmin": 0.003856,
   "ret_open": 7.33,
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "exit": {
    "t": 1790341066,
    "date": "2026-09-25 12:57 UTC",
@@ -1042,7 +1042,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.2713,
+  "last": 1.2797,
   "max": 1.2801,
   "min": 1.0099,
   "checkpoints": {},
@@ -1087,7 +1087,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "tmax": 1.0309,
   "tmin": 1.0099,
   "ret_open": 0.58,
@@ -1140,8 +1140,8 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.097,
-  "max": 0.097,
+  "last": 0.09726,
+  "max": 0.09726,
   "min": 0.09231,
   "checkpoints": {},
   "feat": {
@@ -1180,7 +1180,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "tmax": 0.097,
   "tmin": 0.09231,
   "ret_open": -0.07,
@@ -1236,7 +1236,7 @@
    ]
   },
   "source": "discovery",
-  "last": 0.169921,
+  "last": 0.169439,
   "max": 0.199332,
   "min": 0.166136,
   "checkpoints": {},
@@ -1284,7 +1284,7 @@
   "tmax": 0.195552,
   "tmin": 0.175795,
   "ret_open": 7.27,
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "exit": {
    "t": 1790381672,
    "date": "2026-09-26 00:14 UTC",
@@ -1335,7 +1335,7 @@
    ]
   },
   "source": "discovery",
-  "last": 87.62,
+  "last": 87.55,
   "max": 90.24,
   "min": 87.46,
   "checkpoints": {},
@@ -1383,7 +1383,7 @@
   "tmax": 87.67,
   "tmin": 87.59,
   "ret_open": 0.0,
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "exit": {
    "t": 1790385970,
    "date": "2026-09-26 01:26 UTC",
@@ -1436,7 +1436,7 @@
    ]
   },
   "source": "discovery",
-  "last": 87.73,
+  "last": 87.69,
   "max": 90.32,
   "min": 87.49,
   "checkpoints": {},
@@ -1496,7 +1496,7 @@
   "tmax": 87.75,
   "tmin": 87.55689849119456,
   "ret_open": 0.0,
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "exit": {
    "t": 1790385972,
    "date": "2026-09-26 01:26 UTC",
@@ -1546,9 +1546,9 @@
    ]
   },
   "source": "discovery",
-  "last": 4226.01,
+  "last": 4223.67,
   "max": 4282.5,
-  "min": 4226.01,
+  "min": 4223.67,
   "checkpoints": {},
   "feat": {
    "rsi": 41.013643544975416,
@@ -1592,9 +1592,9 @@
    "dexscreener": "https://dexscreener.com/ethereum/0x68749665ff8d2d112fa859aa293f07a622782f38"
   },
   "tmax": 4282.5,
-  "tmin": 4226.01,
-  "ret_open": -1.27,
-  "updated": "2026-09-28 01:12 UTC"
+  "tmin": 4223.67,
+  "ret_open": -1.33,
+  "updated": "2026-09-28 01:28 UTC"
  },
  {
   "id": "PAXG-1790514698",
@@ -1631,9 +1631,9 @@
    "support_levels": []
   },
   "source": "discovery",
-  "last": 4224.51,
+  "last": 4221.01,
   "max": 4278.6,
-  "min": 4224.51,
+  "min": 4221.01,
   "checkpoints": {},
   "feat": {
    "rsi": 40.563754928645224,
@@ -1676,10 +1676,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/pax-gold",
    "dexscreener": "https://dexscreener.com/ethereum/0x45804880de22913dafe09f4980848ece6ecbaf78"
   },
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "tmax": 4278.6,
-  "tmin": 4224.51,
-  "ret_open": -1.25
+  "tmin": 4221.01,
+  "ret_open": -1.33
  },
  {
   "id": "WLFI-1790514703",
@@ -1715,7 +1715,7 @@
    ]
   },
   "source": "discovery",
-  "last": 0.058418,
+  "last": 0.058178,
   "max": 0.05941,
   "min": 0.0576,
   "checkpoints": {},
@@ -1771,7 +1771,7 @@
   "tmax": 0.0579,
   "tmin": 0.0576,
   "ret_open": 0.0,
-  "updated": "2026-09-28 01:12 UTC",
+  "updated": "2026-09-28 01:28 UTC",
   "exit": {
    "t": 1790521874,
    "date": "2026-09-27 15:11 UTC",

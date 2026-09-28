@@ -1,7 +1,7 @@
 name: token-watch
 on:
   schedule:
-    - cron: "*/15 * * * *"     # every 15 minutes (GitHub can run scheduled jobs a few minutes late when busy)
+    - cron: "*/20 * * * *"     # every 20 minutes: a 15-minute cron left runs queueing behind each other
   workflow_dispatch: {}        # "Run workflow" button for testing
 permissions:
   contents: write
@@ -11,7 +11,7 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 13
+    timeout-minutes: 17
     steps:
       - uses: actions/checkout@v5
         with:

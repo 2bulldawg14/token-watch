@@ -1,27 +1,28 @@
 {
  "rules": [],
  "mult": {
-  "technical": 0.99,
-  "macro": 0.97,
-  "markets": 0.89
+  "technical": 0.94,
+  "flows": 1.13,
+  "macro": 0.93,
+  "markets": 0.9
  },
- "graded": 12,
- "t": "2026-09-28 00:47 UTC",
+ "graded": 13,
+ "t": "2026-09-28 01:12 UTC",
  "scorecard": {
-  "closed": 12,
-  "wins": 11,
-  "avg": 4.46,
-  "held": 0.7,
+  "closed": 13,
+  "wins": 12,
+  "avg": 4.2,
+  "held": 0.8,
   "gave_back": 0
  },
  "sells": {
   "zone": {
-   "n": 4,
+   "n": 5,
    "reviewed": 0,
    "early": 0,
    "good": 0,
    "after": null,
-   "ret": 3.32,
+   "ret": 2.87,
    "text": "entered the sell zone"
   },
   "target": {

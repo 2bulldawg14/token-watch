@@ -78,14 +78,16 @@
   "source": "watchlist",
   "cg_id": "canton-network",
   "name": "Canton",
-  "last_seen": "2026-09-28 01:42 UTC"
+  "last_seen": "2026-09-28 23:21 UTC",
+  "kind": "crypto"
  },
  "BTC": {
   "first_seen": "2026-09-24 13:59 UTC",
   "source": "watchlist",
   "cg_id": "bitcoin",
   "name": "Bitcoin",
-  "last_seen": "2026-09-28 01:42 UTC"
+  "last_seen": "2026-09-28 23:23 UTC",
+  "kind": "crypto"
  },
  "UNI": {
   "first_seen": "2026-09-24 13:59 UTC",
@@ -94,7 +96,8 @@
   "name": "Uniswap",
   "chain": "ethereum",
   "contract": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
-  "last_seen": "2026-09-28 01:42 UTC"
+  "last_seen": "2026-09-28 23:24 UTC",
+  "kind": "crypto"
  },
  "AERO": {
   "first_seen": "2026-09-24 13:59 UTC",
@@ -103,7 +106,8 @@
   "name": "Aerodrome Finance",
   "chain": "base",
   "contract": "0x940181a94a35a4569e4529a3cdfb74e38fd98631",
-  "last_seen": "2026-09-28 01:43 UTC"
+  "last_seen": "2026-09-28 23:27 UTC",
+  "kind": "crypto"
  },
  "AKT": {
   "first_seen": "2026-09-24 13:59 UTC",
@@ -112,14 +116,16 @@
   "name": "Akash Network",
   "chain": "osmosis",
   "contract": "ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4",
-  "last_seen": "2026-09-28 01:43 UTC"
+  "last_seen": "2026-09-28 23:30 UTC",
+  "kind": "crypto"
  },
  "TAO": {
   "first_seen": "2026-09-24 13:59 UTC",
   "source": "watchlist",
   "cg_id": "bittensor",
   "name": "Bittensor",
-  "last_seen": "2026-09-28 01:43 UTC"
+  "last_seen": "2026-09-28 23:32 UTC",
+  "kind": "crypto"
  },
  "RENDER": {
   "first_seen": "2026-09-24 13:59 UTC",

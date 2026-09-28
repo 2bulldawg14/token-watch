@@ -160,13 +160,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
-  "signal": "TRIM",
+  "risk": null,
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 8,
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8
   },
   "in_zone2": false,
   "below_stop": false
@@ -191,7 +191,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "high",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -200,7 +200,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -296,7 +296,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -376,7 +376,7 @@
   "CC": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -769,8 +769,8 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
-  "risk": "MEDIUM",
+  "rsi_band": "mid",
+  "risk": null,
   "signal": "HOLD"
  },
  "UNI": {
@@ -779,7 +779,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will UNI reach $15.50 by December 31, 2026?": 34
@@ -791,7 +791,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD"
  },
  "HYPE": {
@@ -847,7 +847,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790635841.5691025,
+ "_saved_t": 1790638346.7724073,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -857,7 +857,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 8,
+ "_wl_cursor": 14,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790634886.81819

@@ -201,6 +201,15 @@ Stocks live alongside coins in the same watchlist, scoring and track record.
 - `short_view(sym)` calls `/stock/short-interest`, which is **premium on Finnhub**. On the free plan it returns nothing and the `shorts` group stays `None` - the code is there so it switches on by itself if the plan is ever upgraded. Institutional 13F positions are premium too and aren't used.
 - The dashboard shows an "Insider trading" panel inside the stock's card (bought vs sold, the reasons, and a table of who traded what) plus a 🔥 insiders buying / insiders selling badge on the card itself.
 
+### Congressional trading (stocks)
+
+`congress_view(sym, industry)` scores trades that members of Congress must disclose under the STOCK Act (group `congress`, weight 0.08).
+
+- **Data, free, no key, tried in order:** the House and Senate Stock Watcher bulk JSON files (`CONGRESS_SRC`), fetched at most once a day into the history cache and indexed by ticker; if neither answers, `congress_ticker()` falls back to bargo.ai's free per-ticker endpoint (optional `congress_api_key`). `_crow()` normalises both shapes, keeping only real purchases and sales; `money_range()` turns "$1,001 - $15,000" into a low/high pair, and the midpoint is what gets totalled.
+- **Committee oversight:** `committees()` pulls `committee-membership-current.json` and `committees-current.json` from unitedstates/congress-legislators (free, refreshed weekly). `_cname()` matches people across sources on last name plus first initial. `oversees()` matches the member's committees against the company's Finnhub industry through `COMMITTEE_SECTORS`. A purchase by someone who oversees the industry scores 94 and gets its own Telegram alert; three or more members buying with few sales scores 88.
+- **Confidence:** one member trading barely moves the score - the buy/sell ratio is scaled by how many different people traded, so a single sale lands near 40 rather than 0.
+- Disclosures are filed up to 45 days after the trade, so this is slow information. The dashboard panel and the alert both say so.
+
 ## Distribution list (other people)
 
 - `PREFS["members"]` = `[{chat_id, name, mode, added}]`, where `mode` is `all`, `mine` or `off`. Kept in `data/state.json` under `_prefs`.
@@ -235,3 +244,16 @@ Stocks live alongside coins in the same watchlist, scoring and track record.
 
 - Free news from RSS feeds (CoinDesk, Cointelegraph) to replace CryptoPanic.
 - A native iOS app. The PWA is the current approach.
+
+## Run timing (important)
+
+GitHub keeps at most one run of a workflow waiting in line. If a run is still going when the next two come due, GitHub cancels the running one with *"Canceling since a higher priority waiting request for token-watch exists"* - and nothing gets published. That happened once when the checks plus a 12-minute Telegram window ran past the 15-minute cron.
+
+So every run must finish inside the check interval:
+
+- `run_budget_minutes` (11) caps the whole run. `listen()` shortens its Telegram window to whatever is left of that budget, so slow checks eat into listening rather than into the deadline.
+- `listen_minutes` (8) is the most it will ever listen for.
+- `timeout-minutes: 13` on each workflow, so a stuck run dies quickly instead of blocking the lane.
+- The dashboard is published *before* the listening window, so a cancelled run still leaves the page updated.
+
+If the dashboard stops updating, check **Actions → token-watch** for runs marked *cancelled* - that's this failure, not a crash, and it won't show up as a failed run or trigger the failure alert.

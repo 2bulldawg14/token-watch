@@ -22,6 +22,7 @@ DAY = 86400
 BUY_SIGNALS = ("STRONG BUY ZONE", "ACCUMULATE")
 STABLES = {"usdt", "usdc", "dai", "fdusd", "tusd", "usde", "usds", "pyusd", "busd", "usdd", "frax", "eurc", "wbtc", "weth", "steth", "wsteth"}
 DEMO = False
+START_T = time.time()   # when this run began; every run must finish before the next one is due
 STOCKS = set()   # tickers you've told me are stocks, not coins (kept in data/state.json)
 def is_stock(sym):
     s = str(sym).upper().lstrip("$")
@@ -349,6 +350,170 @@ def short_view(sym):
         sc = lin(chg, 25, -25)                       # shorts piling in is a warning; shorts covering is a tailwind
         why[-1] += " (" + ("shorts building" if chg > 5 else "shorts covering" if chg < -5 else "little changed") + ")"
     return {"score": sc, "why": why, "shares": si, "chg": chg, "date": cur.get("settlementDate")}
+
+# ---------------------------------------------------------------- Congress (STOCK Act disclosures)
+# Members of Congress must report their own and their family's stock trades within 45 days.
+# Free sources, tried in order; whichever answers is used. No key needed.
+CONGRESS_SRC = [("House Stock Watcher", "https://house-stock-watcher-data.s3-us-west-2.amazonaws.com/data/all_transactions.json", "house"),
+                ("Senate Stock Watcher", "https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions.json", "senate")]
+BARGO = "https://www.bargo.ai/free-apis/congress/v1"
+
+def money_range(txt):
+    """'$1,001 - $15,000' -> (1001, 15000). Also handles 'Over $50,000,000' and plain numbers."""
+    nums = [int(x.replace(",", "")) for x in re.findall(r"\$?\s*([0-9][0-9,]*)", str(txt or ""))]
+    if not nums: return None, None
+    return (nums[0], nums[1]) if len(nums) > 1 else (nums[0], nums[0])
+
+def _cdate(x):
+    """Dates come as YYYY-MM-DD or MM/DD/YYYY; normalise to YYYY-MM-DD."""
+    x = str(x or "").strip()
+    m = re.fullmatch(r"(\d{4})[-/](\d{1,2})[-/](\d{1,2})", x)
+    if m: return f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
+    m = re.fullmatch(r"(\d{1,2})[-/](\d{1,2})[-/](\d{4})", x)
+    return f"{m.group(3)}-{int(m.group(1)):02d}-{int(m.group(2)):02d}" if m else ""
+
+def _crow(r, chamber):
+    t = str(r.get("ticker") or "").upper().strip().lstrip("$")
+    if not t or t in ("--", "N/A", "NONE"): return None
+    kind = str(r.get("type") or "").lower()
+    side = "buy" if "purchase" in kind or kind == "buy" else "sell" if "sale" in kind or kind == "sell" else None
+    if not side: return None
+    lo, hi = money_range(r.get("amount"))
+    return {"ticker": t, "side": side, "chamber": chamber,
+            "name": re.sub(r"^(Hon\.|Mr\.|Mrs\.|Ms\.|Dr\.)\s+", "", str(r.get("representative") or r.get("senator") or r.get("member") or "").strip()).title(),
+            "low": lo, "high": hi, "mid": (lo + hi) / 2 if lo and hi else (lo or 0),
+            "date": _cdate(r.get("transaction_date")), "disclosed": _cdate(r.get("disclosure_date")),
+            "owner": str(r.get("owner") or "").title(), "link": r.get("ptr_link") or ""}
+
+def congress_load():
+    """All congressional stock trades from the last year, indexed by ticker. Refreshed once a day."""
+    h = HIST.get("congress")
+    if h and now() - h["t"] < CFG.get("congress_refresh_hours", 24) * 3600: return h["d"]
+    cutoff = str((datetime.now(timezone.utc) - timedelta(days=CFG.get("congress_days", 365))).date())
+    idx, got = {}, []
+    for label, url, chamber in CONGRESS_SRC:
+        rows = try_get(label, lambda u=url: get_json(u, timeout=90))
+        if not isinstance(rows, list) or not rows: continue
+        n = 0
+        for r in rows:
+            if not isinstance(r, dict): continue
+            e = _crow(r, chamber)
+            if not e or e["date"] < cutoff: continue
+            idx.setdefault(e["ticker"], []).append(e); n += 1
+        if n: got.append(f"{label}: {n}")
+    if not idx: return None
+    for v in idx.values(): v.sort(key=lambda e: e["date"], reverse=True)
+    print("Congress trades - " + "; ".join(got))
+    HIST["congress"] = {"t": now(), "d": idx}
+    return idx
+
+def congress_ticker(sym):
+    """Fallback for one ticker when the bulk files aren't reachable."""
+    h = HIST.get("cg1:" + sym)
+    if h and now() - h["t"] < CFG.get("congress_refresh_hours", 24) * 3600: return h["d"]
+    url = f"{BARGO}/trades/{urllib.parse.quote(sym)}"
+    if CFG.get("congress_api_key"): url += "?key=" + urllib.parse.quote(CFG["congress_api_key"])
+    d = try_get("Congress trades", lambda: get_json(url, timeout=40))
+    rows = (d or {}).get("trades") or (d or {}).get("data") or (d if isinstance(d, list) else [])
+    out = []
+    for r in rows if isinstance(rows, list) else []:
+        e = _crow({**r, "ticker": r.get("ticker") or sym}, str(r.get("chamber") or "").lower() or "house")
+        if e: out.append(e)
+    out.sort(key=lambda e: e["date"], reverse=True)
+    HIST["cg1:" + sym] = {"t": now(), "d": out}
+    return out
+
+# ---- which committees each member sits on (unitedstates/congress-legislators, free)
+US_LEG = "https://unitedstates.github.io/congress-legislators"
+COMMITTEE_SECTORS = {
+    "armed services": ["aerospace", "defense"],
+    "intelligence": ["aerospace", "defense", "technology"],
+    "homeland security": ["defense", "technology"],
+    "energy and commerce": ["health", "pharma", "biotech", "telecom", "media", "technology", "energy", "utilities"],
+    "energy and natural resources": ["energy", "oil", "gas", "utilities", "mining"],
+    "financial services": ["bank", "financial", "insurance", "capital market", "real estate"],
+    "banking, housing": ["bank", "financial", "insurance", "real estate"],
+    "health, education": ["health", "pharma", "biotech", "medical", "education"],
+    "commerce, science": ["technology", "telecom", "media", "transport", "airline", "aerospace", "retail"],
+    "science, space": ["technology", "semiconductor", "aerospace", "communication"],
+    "transportation and infrastructure": ["airline", "transport", "logistics", "auto", "machinery", "construction"],
+    "agriculture": ["food", "beverage", "agriculture", "tobacco", "chemical"],
+    "veterans": ["health", "pharma"],
+    "small business": [],
+}
+
+def committees():
+    """member name -> the committees they sit on. Refreshed weekly."""
+    h = HIST.get("committees")
+    if h and now() - h["t"] < 7 * DAY: return h["d"]
+    mem = try_get("committee membership", lambda: get_json(f"{US_LEG}/committee-membership-current.json", timeout=45))
+    lst = try_get("committee list", lambda: get_json(f"{US_LEG}/committees-current.json", timeout=45))
+    if not isinstance(mem, dict) or not isinstance(lst, list): return None
+    names = {c.get("thomas_id"): c.get("name") for c in lst if c.get("thomas_id")}
+    for c in lst:
+        for sub in c.get("subcommittees") or []:
+            if c.get("thomas_id") and sub.get("thomas_id"):
+                names[c["thomas_id"] + sub["thomas_id"]] = c.get("name", "") + " - " + sub.get("name", "")
+    out = {}
+    for cid, people in mem.items():
+        cname = names.get(cid)
+        if not cname: continue
+        for p in people if isinstance(people, list) else []:
+            nm = _cname(p.get("name"))
+            if nm: out.setdefault(nm, set()).add(cname)
+    out = {k: sorted(v) for k, v in out.items()}
+    HIST["committees"] = {"t": now(), "d": out}
+    return out
+
+def _cname(n):
+    """Match names across sources: last name plus first initial, lowercase."""
+    n = re.sub(r"[^A-Za-z \-]", " ", str(n or "")).strip()
+    parts = [p for p in n.split() if len(p) > 1 and p.lower() not in ("hon", "mr", "mrs", "ms", "dr", "jr", "sr", "ii", "iii", "iv")]
+    if len(parts) < 2: return ""
+    return (parts[-1] + " " + parts[0][0]).lower()
+
+def oversees(member, industry):
+    """Does this member sit on a committee that oversees this industry? Returns the committee names."""
+    cm = committees() or {}
+    ind = str(industry or "").lower()
+    if not ind: return []
+    hits = []
+    for c in cm.get(_cname(member), []):
+        cl = c.lower()
+        for key, words in COMMITTEE_SECTORS.items():
+            if key in cl and any(w in ind for w in words): hits.append(c); break
+    return sorted(set(hits))
+
+def congress_view(sym, industry=None):
+    """Recent trades in this stock by members of Congress, flagging anyone who oversees the industry."""
+    if not CFG.get("congress", True): return None
+    idx = congress_load()
+    rows = idx.get(sym.upper(), []) if idx is not None else congress_ticker(sym)
+    if not rows: return None
+    recent_days = CFG.get("congress_recent_days", 120)
+    since = str((datetime.now(timezone.utc) - timedelta(days=recent_days)).date())
+    rec = [r for r in rows if r["date"] >= since]
+    for r in rec: r["oversight"] = oversees(r["name"], industry)
+    buys = [r for r in rec if r["side"] == "buy"]; sells = [r for r in rec if r["side"] == "sell"]
+    bv = sum(r["mid"] for r in buys); sv = sum(r["mid"] for r in sells)
+    nb = {r["name"] for r in buys}; ns = {r["name"] for r in sells}
+    ov = sorted({r["name"] for r in buys if r.get("oversight")})
+    parts, why = [], []
+    if bv or sv:
+        ratio = bv / (bv + sv) if (bv + sv) else 0.5
+        conf = min(1.0, (len(nb) + len(ns)) / 3.0)     # one member trading says much less than several
+        parts.append(max(0.0, min(100.0, 50 + (ratio - 0.5) * 2 * 42 * conf)))
+        why.append(f"\U0001F3DB\uFE0F Congress: {len(nb)} member{'s' if len(nb) != 1 else ''} bought (~{usd(bv)}) and {len(ns)} sold (~{usd(sv)}) in the last {recent_days} days")
+    if len(nb) >= CFG.get("congress_cluster", 3) and sv < bv * 0.4:
+        parts.append(88); why.append(f"{len(nb)} different members of Congress bought and few sold")
+    if ov:
+        parts.append(94)
+        who = ", ".join(f"{n} ({'; '.join(next(r['oversight'] for r in buys if r['name'] == n)[:2])})" for n in ov[:3])
+        why.append(f"\u26A0\uFE0F Bought by {'a member' if len(ov) == 1 else 'members'} who sit{'s' if len(ov) == 1 else ''} on a committee overseeing this industry: {who}")
+    if not parts: return None
+    return {"score": sum(parts) / len(parts), "why": why, "rows": rec[:12], "buyers": sorted(nb), "sellers": sorted(ns),
+            "buy_usd": bv, "sell_usd": sv, "oversight": ov, "days": recent_days,
+            "cluster": len(nb) >= CFG.get("congress_cluster", 3) and sv < bv * 0.4}
 
 def stock_data(tok):
     """Daily history from Stooq (cached), with today's live quote patched in."""
@@ -833,6 +998,9 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
     sv = ex.get("shorts")
     parts["shorts"] = sv["score"] if sv else None
     if sv: why += sv["why"]
+    cv = ex.get("congress")
+    parts["congress"] = cv["score"] if cv else None
+    if cv: why += cv["why"]
     wv = ex.get("wallets")
     parts["wallets"] = wv["score"] if wv else None                 # followed wallets ("smart money"); only counts when they traded it
     if wv: why.append(wv["why"])
@@ -883,14 +1051,14 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
             "sell_zone": sz, "in_zone": in_zone, "parts": parts, "score": score, "signal": signal, "why": why,
             "buy_ratio": ratio, "src": data.get("src"), "markets": mv, "pb": ex.get("_pb"), "rs30": ex.get("_rs30"),
             "in_sell": in_sell, "blocked": blocked, "plan": plan, "in_zone2": in_zone2, "vnodes": nodes,
-            "kind": "stock" if _stk else "crypto", "insider": ex.get("insider"), "shorts": ex.get("shorts")}
+            "kind": "stock" if _stk else "crypto", "insider": ex.get("insider"), "shorts": ex.get("shorts"), "congress": ex.get("congress")}
 
 # ================================================================ extra indicators (all free, all optional)
 DEFAULT_IND = {"bollinger": True, "obv": True, "rsi_divergence": True, "relative_strength": True,
                "derivatives": True, "fear_greed": True, "market_regime": True, "stablecoin_liquidity": True,
                "tvl_trend": True, "betting_markets": True, "wallets": True}
 DEFAULT_W = {"technical": .30, "flows": .15, "derivatives": .10, "macro": .10, "news": .05, "markets": .05, "fundamental": .25, "wallets": .10,
-             "insiders": .15, "shorts": .05}       # stocks only; None for coins, so the other weights just absorb it
+             "insiders": .15, "shorts": .05, "congress": .08}       # stocks only; None for coins, so the other weights just absorb it
 def ind(k): return (CFG.get("indicators") or {}).get(k, DEFAULT_IND[k])
 MACRO = {}
 
@@ -1302,6 +1470,7 @@ def check_stock(tok, cache, state, calls, source="watchlist", grade=None):
     ex = {"_source": source, "_kind": "stock"}
     if CFG.get("insiders", True): ex["insider"] = try_get("insider trades", lambda: insider_view(sym))
     ex["shorts"] = try_get("short interest", lambda: short_view(sym))
+    ex["congress"] = try_get("Congress trades", lambda: congress_view(sym, (dd.get("facts") or {}).get("industry") if dd else None))
     res = analyse(sym, data, None, news, None, tok.get("fundamental_grade") or grade or stock_grade(dd), dd, None, None, ex)
     res["cg_id"] = None
     if source in ("watchlist", "tracked", "discovery"): register(sym, None, dd, source, kind="stock")
@@ -1322,6 +1491,17 @@ def check_stock(tok, cache, state, calls, source="watchlist", grade=None):
                  + "\n".join(f"  {r['date']} {r['name']} {'bought' if r['side'] == 'buy' else 'sold'} {r['shares']:,} shares at {px(r['price'])} ({usd(r['value'])})" for r in iv["rows"][:5])
                  + "\n\n" + summary(res, dd), "token", sym)
         elif not (iv["cluster"] or iv["dump"]): st["_ins"] = tag
+    cv = ex.get("congress")
+    if cv and source == "watchlist" and (cv["oversight"] or cv["cluster"]):
+        st = state.setdefault(sym, {"seen_news": []})
+        tag = ",".join(cv["oversight"] or cv["buyers"])
+        if st.get("_cong") != tag:
+            st["_cong"] = tag
+            send("\U0001F3DB\uFE0F CONGRESS BUYING " + sym + f" ({(dd.get('facts') or {}).get('name') or sym})\n"
+                 + "\n".join("\u2022 " + w for w in cv["why"]) + "\n\n"
+                 + "\n".join(f"  {r['date']} {r['name']} ({r['chamber'].title()}) {'bought' if r['side'] == 'buy' else 'sold'} {usd(r['low'])}-{usd(r['high'])}"
+                              + (" \u2014 oversees this industry" if r.get("oversight") else "") for r in cv["rows"][:5])
+                 + "\n\nDisclosures are filed up to 45 days after the trade, so this is slow-moving information.\n\n" + summary(res, dd), "token", sym)
     if source == "watchlist" and (market_open() or call): check_alerts(tok, res, news, dd, state, call)
     return {"tok": tok, "cg_id": None, "res": res, "dd": dd, "call": call, "closes": data["close"][-365:],
             "vols": (data.get("volume") or [])[-365:], "source": source}
@@ -1918,7 +2098,7 @@ def token_entry(r):
             "why": res["why"], "risk": dd.get("level"), "risk_flags": dd.get("flags", []), "checks": dd.get("checks", {}),
             "pressure": None if pr is None else (-2 if pr < .46 else -1 if pr < .49 else 0 if pr < .51 else 1 if pr < .54 else 2),
             "market_cap": (dd.get("facts") or {}).get("market_cap"),
-            "markets": res.get("markets"), "insider": res.get("insider"), "shorts": res.get("shorts"), "parts": res["parts"], "rsi": res.get("rsi"), "cg_id": r.get("cg_id"),
+            "markets": res.get("markets"), "insider": res.get("insider"), "shorts": res.get("shorts"), "congress": res.get("congress"), "parts": res["parts"], "rsi": res.get("rsi"), "cg_id": r.get("cg_id"),
             "links": token_links(res["symbol"], r.get("cg_id"), dd, res.get("kind")), "fdv": (dd.get("facts") or {}).get("fdv"),
             "volume_24h": (dd.get("facts") or {}).get("volume"), "is_buy": res["signal"] in BUY_SIGNALS, "in_zone_only": bool(is_buy(res) and res["signal"] not in BUY_SIGNALS), "starred": False, "logo": LOGOS.get(r.get("cg_id") or "") or ((dd.get("facts") or {}).get("logo") if res.get("kind") == "stock" else None),
             "chart": {"c": [round(x, 10) for x in r["closes"]], "v": [round(x) for x in (r.get("vols") or [])]}})
@@ -1991,6 +2171,7 @@ h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mu
 .badge.who{color:var(--warn);border-color:var(--warn)}
 .badge.ins{color:var(--up);border-color:var(--up)}
 .badge.sell{color:var(--dn);border-color:var(--dn)}
+.badge.cong{color:var(--warn);border-color:var(--warn)}
 .badge{font-size:.66rem;border:1px solid var(--line);border-radius:6px;padding:0 5px;color:var(--mut);margin-left:4px;vertical-align:2px}
 .body{display:none;padding:0 14px 14px;border-top:1px solid var(--line)}.tok.open .body{display:block}
 .chev{transition:transform .2s;color:var(--mut)}.tok.open .chev{transform:rotate(180deg)}
@@ -2103,7 +2284,7 @@ const big=n=>!n?"–":n>=1e12?"$"+(n/1e12).toFixed(2)+"T":n>=1e9?"$"+(n/1e9).toF
 const SIG={"STRONG BUY ZONE":["var(--up)","#fff"],"ACCUMULATE":["var(--up-bg)","var(--up)"],"HOLD":["rgba(242,181,68,.16)","var(--warn)"],
 "TRIM":["var(--dn-bg)","var(--dn)"],"SELL / AVOID":["var(--dn)","#fff"],"AVOID (SCAM RISK)":["#7A1F1F","#fff"],"NO DATA":["var(--card2)","var(--mut)"]};
 const SHORT={"STRONG BUY ZONE":"STRONG BUY","AVOID (SCAM RISK)":"SCAM RISK","SELL / AVOID":"SELL"};
-const PART={wallets:"Smart wallets",technical:"Technicals",fundamental:"Fundamentals",flows:"Flows",derivatives:"Derivatives",macro:"Market",news:"News",markets:"Betting odds",insiders:"Insider trading",shorts:"Short interest"};
+const PART={wallets:"Smart wallets",technical:"Technicals",fundamental:"Fundamentals",flows:"Flows",derivatives:"Derivatives",macro:"Market",news:"News",markets:"Betting odds",insiders:"Insider trading",shorts:"Short interest",congress:"Congress trades"};
 function logoHTML(sym,url){const l=esc(sym.slice(0,4));return url?`<div class="logo img"><span class=lgf>${l}</span><img src="${esc(url)}" alt="" loading=lazy onerror="this.remove()"></div>`:`<div class=logo style="background:hsl(${hue(sym)} 55% 42%)">${l}</div>`}
 const hue=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h};
 // ---------- indicator math
@@ -2200,7 +2381,7 @@ function startDrag(L,w,e){w.classList.add("dragging");L.classList.add("reorderin
 function card(t){const c=t.c,chg=c.length>1?(c[c.length-1]/c[c.length-2]-1)*100:0,[bg,fg]=SIG[t.signal]||SIG["NO DATA"];
 const w=el("div","tok"+(t.is_buy&&!/AVOID/.test(t.signal)?" buy":""));w.dataset.sym=t.symbol;
 const row=el("div","row",`${logoHTML(t.symbol,t.logo)}
-<div class=nm><div><b>${t.starred?"⭐ ":""}${esc(t.symbol)}</b>${t.kind=="stock"?"<span class='badge stk'>stock</span>":""}${(t.insider||{}).cluster?"<span class='badge ins'>\uD83D\uDD25 insiders buying</span>":(t.insider||{}).dump?"<span class='badge sell'>insiders selling</span>":""}${PEOPLE.length>1&&whoOf(t.symbol)?"<span class='badge who'>\uD83D\uDC64 "+esc(whoOf(t.symbol))+"</span>":""}${t.source=="discovery"?"<span class=badge>found</span>":""}${t.in_zone_only?"<span class='badge zone'>in buy zone</span>":""}</div>
+<div class=nm><div><b>${t.starred?"⭐ ":""}${esc(t.symbol)}</b>${t.kind=="stock"?"<span class='badge stk'>stock</span>":""}${(t.insider||{}).cluster?"<span class='badge ins'>\uD83D\uDD25 insiders buying</span>":(t.insider||{}).dump?"<span class='badge sell'>insiders selling</span>":""}${((t.congress||{}).oversight||[]).length?"<span class='badge cong'>\uD83C\uDFDB\uFE0F oversight buy</span>":(t.congress||{}).cluster?"<span class='badge cong'>\uD83C\uDFDB\uFE0F congress buying</span>":""}${PEOPLE.length>1&&whoOf(t.symbol)?"<span class='badge who'>\uD83D\uDC64 "+esc(whoOf(t.symbol))+"</span>":""}${t.source=="discovery"?"<span class=badge>found</span>":""}${t.in_zone_only?"<span class='badge zone'>in buy zone</span>":""}</div>
 <div><span class=px>${fmt(t.price)}</span><span class=chg style="color:${chg>=0?"var(--up)":"var(--dn)"}">${chg>=0?"+":""}${chg.toFixed(1)}%</span></div>
 <div class=sub>${esc(t.name||"")}</div></div>${spark(c)}
 <div class=rt><span class=pill style="background:${bg};color:${fg}">${esc(SHORT[t.signal]||t.signal)}</span><div class=score>${t.score!=null?Math.round(t.score)+"/100":""} <span class=chev>▾</span></div></div>`);
@@ -2228,6 +2409,14 @@ if(isStk(t)){const f=t.facts||{},n1=v=>v==null?null:(v>=0?"+":"")+Number(v).toFi
   ${(IV.why||[]).map(w=>`<div class=inwhy>${esc(w)}</div>`).join("")}
   ${(IV.rows||[]).length?`<table class=calls style="margin-top:6px"><tr><th>Date</th><th>Insider</th><th>Trade</th><th style="text-align:right">Value</th></tr>${IV.rows.map(r=>`<tr><td>${esc((r.date||"").slice(5))}</td><td style="white-space:normal">${esc(r.name)}</td><td><span class="tg ${r.side=="buy"?"b":"s"}">${r.side=="buy"?"BOUGHT":"SOLD"}</span> ${r.shares.toLocaleString()}</td><td style="text-align:right">${big(r.value)}</td></tr>`).join("")}</table>`:""}
   <div class=mut style="font-size:.7rem;margin-top:6px">Open-market buys and sales reported to the SEC on Form 4. Insiders sell for all sorts of reasons; several of them buying at once is the meaningful part.</div>`;
+  box.append(q);}
+ const CV=t.congress;
+ if(CV){const q=el("div","insbox");
+  q.innerHTML=`<div class=sect2 style="margin-bottom:6px">Congress ${CV.oversight&&CV.oversight.length?"\uD83C\uDFDB\uFE0F":""}</div>
+  <div class=insum><span class=up>Bought ~${big(CV.buy_usd)}</span><span class=dn>Sold ~${big(CV.sell_usd)}</span><span class=mut>last ${CV.days} days</span></div>
+  ${(CV.why||[]).map(w=>`<div class=inwhy>${esc(w)}</div>`).join("")}
+  ${(CV.rows||[]).length?`<table class=calls style="margin-top:6px"><tr><th>Date</th><th>Member</th><th>Trade</th><th style="text-align:right">Amount</th></tr>${CV.rows.map(r=>`<tr><td>${esc((r.date||"").slice(5))}</td><td style="white-space:normal">${esc(r.name)}<br><small class=mut>${esc((r.chamber||"").replace(/^./,c=>c.toUpperCase()))}${(r.oversight||[]).length?" \u00b7 \uD83C\uDFDB\uFE0F "+esc(r.oversight[0].replace(/^(House|Senate|Joint)?\s*(Select |Permanent Select )?Committee on /i,"")):""}</small></td><td><span class="tg ${r.side=="buy"?"b":"s"}">${r.side=="buy"?"BOUGHT":"SOLD"}</span></td><td style="text-align:right">${big(r.low)}–${big(r.high)}</td></tr>`).join("")}</table>`:""}
+  <div class=mut style="font-size:.7rem;margin-top:6px">Trades members of Congress must disclose under the STOCK Act. They have up to 45 days to file, so this is slow information, and amounts are only reported as ranges. 🏛️ marks someone on a committee that oversees this industry.</div>`;
   box.append(q);}
  if(t.shorts){box.append(el("div","inwhy",esc((t.shorts.why||[])[0]||"")));}}
 const TP=t.plan||{};if(TP.zone1){box.append(el("div","plan",`<b>Plan:</b> buy ${TP.zone2?"½":"your position"} in zone 1 (${fmt(TP.zone1.low)}–${fmt(TP.zone1.high)})${TP.zone2?`, ½ in zone 2 (${fmt(TP.zone2.low)}–${fmt(TP.zone2.high)})`:""}${TP.stop?`; exit if it closes below ${fmt(TP.stop)}`:""}${TP.target?`; take profit near ${fmt(TP.target)}`:""}. <span class=mut>💪 = heavy trading happened at that price (stronger support).</span>`))}
@@ -2578,9 +2767,19 @@ def git_push():
     except Exception as e: print(f"  [skip] publish: {e}")
 
 def listen(minutes):
-    """After the scheduled check, keep answering Telegram messages until the next run starts."""
+    """After the scheduled check, keep answering Telegram messages - but always stop before the next run is due.
+
+    GitHub only lets one run of a workflow wait in line. If a run is still going when the next two come
+    due, GitHub cancels it ("a higher priority waiting request exists") and nothing gets published, so
+    the whole run - checks, publishing and this listening window - has to fit inside the check interval.
+    """
     tok, chat = tg_creds()
-    if not (tok and chat) or minutes <= 0: return
+    budget = CFG.get("run_budget_minutes", max(4, CFG.get("check_every_minutes", 15) - 4)) * 60
+    left = (budget - (now() - START_T)) / 60
+    if left < minutes:
+        print(f"  Shortening the Telegram window to {max(0, left):.1f} min so this run finishes before the next one is due.")
+        minutes = left
+    if not (tok and chat) or minutes <= 0.25: return
     end = now() + minutes * 60; CTX["listening"] = True
     print(f"Listening for Telegram messages for {minutes} min …")
     while now() < end - 5:
@@ -2974,6 +3173,19 @@ def install_demo():
             if q == "injective":
                 return {"events": [{"markets": [mk("Injective ETF approved in 2026?", ["Yes", "No"], 0.41, 12000)]}]}
             return {"events": []}
+        if "stock-watcher" in url:
+            dd_ = lambda n: str((datetime.now(timezone.utc) - timedelta(days=n)).date())
+            if "house-stock-watcher" in url:
+                return [{"ticker": "AAPL", "type": "purchase", "amount": "$15,001 - $50,000", "transaction_date": dd_(18), "disclosure_date": dd_(4), "representative": "Hon. Ro Khanna", "owner": "joint", "ptr_link": "https://example.com/ptr1"},
+                        {"ticker": "AAPL", "type": "purchase", "amount": "$1,001 - $15,000", "transaction_date": dd_(31), "disclosure_date": dd_(9), "representative": "Hon. Josh Gottheimer", "owner": "self", "ptr_link": "https://example.com/ptr2"},
+                        {"ticker": "AAPL", "type": "sale_partial", "amount": "$1,001 - $15,000", "transaction_date": dd_(52), "disclosure_date": dd_(20), "representative": "Hon. Someone Else", "owner": "self"}]
+            return [{"ticker": "AAPL", "type": "Purchase", "amount": "$100,001 - $250,000", "transaction_date": dd_(22), "disclosure_date": dd_(7), "senator": "Maria Cantwell", "owner": "Self", "ptr_link": "https://example.com/ptr3"}]
+        if "committees-current" in url:
+            return [{"thomas_id": "HSIF", "name": "House Committee on Energy and Commerce", "type": "house"},
+                    {"thomas_id": "SSCM", "name": "Senate Committee on Commerce, Science, and Transportation", "type": "senate"},
+                    {"thomas_id": "HSBA", "name": "House Committee on Financial Services", "type": "house"}]
+        if "committee-membership-current" in url:
+            return {"HSIF": [{"name": "Ro Khanna"}], "SSCM": [{"name": "Maria Cantwell"}], "HSBA": [{"name": "Josh Gottheimer"}]}
         if "gopluslabs" in url:
             return {"result": {"0xabc": {"is_honeypot": "0", "sell_tax": "0.25", "buy_tax": "0.05", "is_open_source": "0", "is_mintable": "1",
                     "holders": [{"percent": "0.4"}, {"percent": "0.2"}], "lp_holders": [{"percent": "1", "is_locked": "0"}]}}}

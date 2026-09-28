@@ -271,6 +271,85 @@ def stock_macro():
     MACRO["stock_why"] = why
     if why: print("Stock backdrop: " + "; ".join(why))
 
+def insider_view(sym):
+    """Who inside the company has been buying or selling its own stock (SEC Form 4), plus Finnhub's insider sentiment."""
+    if not CFG.get("finnhub_api_key"): return None
+    today = datetime.now(timezone.utc).date()
+    days = CFG.get("insider_days", 180)
+    tx = (fh("/stock/insider-transactions", symbol=sym, **{"from": str(today - timedelta(days=days)), "to": str(today)}) or {}).get("data") or []
+    buys = sells = 0.0; nb, ns = set(), set(); rows = []
+    recent_days = CFG.get("insider_recent_days", 90)
+    rb, rs, rnb, rns = 0.0, 0.0, set(), set()
+    for r in tx:
+        code = str(r.get("transactionCode") or "").upper()
+        ch = r.get("change") or 0
+        prc = r.get("transactionPrice") or 0
+        if code not in ("P", "S") or not ch or not prc: continue      # P = open-market buy, S = open-market sale
+        val = abs(float(ch)) * float(prc)
+        who = (r.get("name") or "an insider").title()
+        when = r.get("transactionDate") or r.get("filingDate") or ""
+        fresh = when >= str(today - timedelta(days=recent_days))
+        if code == "P":
+            buys += val; nb.add(who)
+            if fresh: rb += val; rnb.add(who)
+        else:
+            sells += val; ns.add(who)
+            if fresh: rs += val; rns.add(who)
+        rows.append({"name": who, "side": "buy" if code == "P" else "sell", "shares": int(abs(float(ch))),
+                     "price": float(prc), "value": val, "date": when})
+    rows.sort(key=lambda x: x["date"], reverse=True)
+    sent = (fh("/stock/insider-sentiment", symbol=sym, **{"from": str(today - timedelta(days=150)), "to": str(today)}) or {}).get("data") or []
+    mspr = None
+    if sent:
+        last = sorted(sent, key=lambda r: (r.get("year") or 0, r.get("month") or 0))[-3:]
+        vals = [r["mspr"] for r in last if isinstance(r.get("mspr"), (int, float))]
+        if vals: mspr = sum(vals) / len(vals)
+    parts, why = [], []
+    total = buys + sells
+    floor = CFG.get("insider_min_usd", 50000)
+    cluster = len(rnb) >= CFG.get("insider_cluster", 3) and rs < rb * 0.25
+    dump = len(rns) >= 3 and rb < rs * 0.25
+    if total >= floor:
+        ratio = buys / total
+        parts.append(lin(ratio, 0.15, 0.85))
+        if rb or rs:
+            why.append(f"Insiders bought {usd(rb)} and sold {usd(rs)} in the last {recent_days} days"
+                       + (f" ({len(rnb)} buyer{'s' if len(rnb) != 1 else ''}, {len(rns)} seller{'s' if len(rns) != 1 else ''})" if rnb or rns else ""))
+        else:
+            why.append(f"Insiders bought {usd(buys)} and sold {usd(sells)} over the last {days} days")
+    elif rows:
+        why.append("Only small insider trades recently - not enough to read anything into")
+    if mspr is not None:
+        parts.append(lin(mspr, -60, 60))
+        why.append(f"Insider sentiment {mspr:+.0f} (Finnhub's buy/sell score, -100 to 100)")
+    if cluster:
+        parts.append(92); why.append(f"\U0001F525 Cluster buying: {len(rnb)} different insiders bought and barely any sold - historically the strongest insider signal")
+    if dump:
+        parts.append(12); why.append(f"{len(rns)} different insiders sold and almost none bought")
+    if not parts: return None
+    return {"score": sum(parts) / len(parts), "why": why, "rows": rows[:12], "cluster": cluster, "dump": dump,
+            "buys": buys, "sells": sells, "rbuys": rb, "rsells": rs, "buyers": sorted(rnb), "sellers": sorted(rns),
+            "mspr": mspr, "days": days, "recent_days": recent_days}
+
+def short_view(sym):
+    """Short interest, if the Finnhub plan includes it. Free plans get nothing here, and that's fine."""
+    if not CFG.get("finnhub_api_key") or not CFG.get("short_interest", True): return None
+    today = datetime.now(timezone.utc).date()
+    d = fh("/stock/short-interest", symbol=sym, **{"from": str(today - timedelta(days=120)), "to": str(today)})
+    rows = (d or {}).get("data") or []
+    if not rows: return None
+    rows = sorted(rows, key=lambda r: r.get("settlementDate") or "")
+    cur = rows[-1]; si = cur.get("shortInterest")
+    if not si: return None
+    prev = rows[-2].get("shortInterest") if len(rows) > 1 else None
+    chg = (si / prev - 1) * 100 if prev else None
+    why = [f"Short interest {si/1e6:.1f}M shares" + (f", {chg:+.0f}% since the last report" if chg is not None else "")]
+    sc = 50.0
+    if chg is not None:
+        sc = lin(chg, 25, -25)                       # shorts piling in is a warning; shorts covering is a tailwind
+        why[-1] += " (" + ("shorts building" if chg > 5 else "shorts covering" if chg < -5 else "little changed") + ")"
+    return {"score": sc, "why": why, "shares": si, "chg": chg, "date": cur.get("settlementDate")}
+
 def stock_data(tok):
     """Daily history from Stooq (cached), with today's live quote patched in."""
     sym = tok["symbol"]; key = "stk:" + sym
@@ -748,6 +827,12 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
             dp.append(65 if oc > 0.05 and pc > 0 else 35 if oc > 0.05 and pc < 0 else 55 if oc < -0.05 and pc < 0 else 50)
             why.append(f"Open interest {oc*100:+.0f}% in 7 days while price {pc*100:+.0f}%" + (" (new money confirming the move)" if oc > 0.05 and pc > 0 else " (shorts piling in)" if oc > 0.05 and pc < 0 else ""))
     parts["derivatives"] = sum(dp) / len(dp) if dp else None
+    iv = ex.get("insider")
+    parts["insiders"] = iv["score"] if iv else None
+    if iv: why += iv["why"]
+    sv = ex.get("shorts")
+    parts["shorts"] = sv["score"] if sv else None
+    if sv: why += sv["why"]
     wv = ex.get("wallets")
     parts["wallets"] = wv["score"] if wv else None                 # followed wallets ("smart money"); only counts when they traded it
     if wv: why.append(wv["why"])
@@ -798,13 +883,14 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
             "sell_zone": sz, "in_zone": in_zone, "parts": parts, "score": score, "signal": signal, "why": why,
             "buy_ratio": ratio, "src": data.get("src"), "markets": mv, "pb": ex.get("_pb"), "rs30": ex.get("_rs30"),
             "in_sell": in_sell, "blocked": blocked, "plan": plan, "in_zone2": in_zone2, "vnodes": nodes,
-            "kind": "stock" if _stk else "crypto"}
+            "kind": "stock" if _stk else "crypto", "insider": ex.get("insider"), "shorts": ex.get("shorts")}
 
 # ================================================================ extra indicators (all free, all optional)
 DEFAULT_IND = {"bollinger": True, "obv": True, "rsi_divergence": True, "relative_strength": True,
                "derivatives": True, "fear_greed": True, "market_regime": True, "stablecoin_liquidity": True,
                "tvl_trend": True, "betting_markets": True, "wallets": True}
-DEFAULT_W = {"technical": .30, "flows": .15, "derivatives": .10, "macro": .10, "news": .05, "markets": .05, "fundamental": .25, "wallets": .10}
+DEFAULT_W = {"technical": .30, "flows": .15, "derivatives": .10, "macro": .10, "news": .05, "markets": .05, "fundamental": .25, "wallets": .10,
+             "insiders": .15, "shorts": .05}       # stocks only; None for coins, so the other weights just absorb it
 def ind(k): return (CFG.get("indicators") or {}).get(k, DEFAULT_IND[k])
 MACRO = {}
 
@@ -1214,6 +1300,8 @@ def check_stock(tok, cache, state, calls, source="watchlist", grade=None):
     dd = try_get("quality screen", lambda: stock_quality(sym, tok))
     news = try_get("news", lambda: stock_news(sym))
     ex = {"_source": source, "_kind": "stock"}
+    if CFG.get("insiders", True): ex["insider"] = try_get("insider trades", lambda: insider_view(sym))
+    ex["shorts"] = try_get("short interest", lambda: short_view(sym))
     res = analyse(sym, data, None, news, None, tok.get("fundamental_grade") or grade or stock_grade(dd), dd, None, None, ex)
     res["cg_id"] = None
     if source in ("watchlist", "tracked", "discovery"): register(sym, None, dd, source, kind="stock")
@@ -1223,6 +1311,17 @@ def check_stock(tok, cache, state, calls, source="watchlist", grade=None):
         call["feat"] = features(res, data, source, dd); call["starred"] = sym in PREFS.get("starred", [])
         call["links"] = token_links(sym, None, dd, "stock")
     print(summary(res, dd))
+    iv = ex.get("insider")
+    if iv and source == "watchlist":
+        st = state.setdefault(sym, {"seen_news": []})
+        tag = ("cluster" if iv["cluster"] else "dump" if iv["dump"] else "") + "|" + ",".join(iv["buyers"] + iv["sellers"])
+        if (iv["cluster"] or iv["dump"]) and st.get("_ins") != tag:
+            st["_ins"] = tag
+            send(("\U0001F525 INSIDER BUYING " if iv["cluster"] else "\u26A0\uFE0F INSIDER SELLING ") + sym + f" ({(dd.get('facts') or {}).get('name') or sym})\n"
+                 + "\n".join("\u2022 " + w for w in iv["why"]) + "\n\n"
+                 + "\n".join(f"  {r['date']} {r['name']} {'bought' if r['side'] == 'buy' else 'sold'} {r['shares']:,} shares at {px(r['price'])} ({usd(r['value'])})" for r in iv["rows"][:5])
+                 + "\n\n" + summary(res, dd), "token", sym)
+        elif not (iv["cluster"] or iv["dump"]): st["_ins"] = tag
     if source == "watchlist" and (market_open() or call): check_alerts(tok, res, news, dd, state, call)
     return {"tok": tok, "cg_id": None, "res": res, "dd": dd, "call": call, "closes": data["close"][-365:],
             "vols": (data.get("volume") or [])[-365:], "source": source}
@@ -1819,7 +1918,7 @@ def token_entry(r):
             "why": res["why"], "risk": dd.get("level"), "risk_flags": dd.get("flags", []), "checks": dd.get("checks", {}),
             "pressure": None if pr is None else (-2 if pr < .46 else -1 if pr < .49 else 0 if pr < .51 else 1 if pr < .54 else 2),
             "market_cap": (dd.get("facts") or {}).get("market_cap"),
-            "markets": res.get("markets"), "parts": res["parts"], "rsi": res.get("rsi"), "cg_id": r.get("cg_id"),
+            "markets": res.get("markets"), "insider": res.get("insider"), "shorts": res.get("shorts"), "parts": res["parts"], "rsi": res.get("rsi"), "cg_id": r.get("cg_id"),
             "links": token_links(res["symbol"], r.get("cg_id"), dd, res.get("kind")), "fdv": (dd.get("facts") or {}).get("fdv"),
             "volume_24h": (dd.get("facts") or {}).get("volume"), "is_buy": res["signal"] in BUY_SIGNALS, "in_zone_only": bool(is_buy(res) and res["signal"] not in BUY_SIGNALS), "starred": False, "logo": LOGOS.get(r.get("cg_id") or "") or ((dd.get("facts") or {}).get("logo") if res.get("kind") == "stock" else None),
             "chart": {"c": [round(x, 10) for x in r["closes"]], "v": [round(x) for x in (r.get("vols") or [])]}})
@@ -1890,6 +1989,8 @@ h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mu
 .badge.zone{color:var(--up)}
 .badge.stk{color:var(--acc);border-color:var(--acc)}
 .badge.who{color:var(--warn);border-color:var(--warn)}
+.badge.ins{color:var(--up);border-color:var(--up)}
+.badge.sell{color:var(--dn);border-color:var(--dn)}
 .badge{font-size:.66rem;border:1px solid var(--line);border-radius:6px;padding:0 5px;color:var(--mut);margin-left:4px;vertical-align:2px}
 .body{display:none;padding:0 14px 14px;border-top:1px solid var(--line)}.tok.open .body{display:block}
 .chev{transition:transform .2s;color:var(--mut)}.tok.open .chev{transform:rotate(180deg)}
@@ -1967,6 +2068,10 @@ tr.hid td{opacity:.55}
 .refbtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;width:38px;height:38px;font-size:1.2rem;cursor:pointer;line-height:1;display:grid;place-items:center}
 .refbtn:active{background:var(--card2)}.refbtn.spin{animation:spin 1s linear infinite;color:var(--acc)}
 @keyframes spin{to{transform:rotate(360deg)}}
+.insbox{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:9px 10px;margin-top:9px}
+.insum{display:flex;gap:10px;flex-wrap:wrap;font-size:.82rem;font-weight:700;margin-bottom:4px}
+.insum .up{color:var(--up)}.insum .dn{color:var(--dn)}.insum .mut{font-weight:400}
+.inwhy{font-size:.76rem;color:var(--mut);margin:2px 0}
 .addkind{display:flex;gap:12px;flex-wrap:wrap;margin-top:7px;font-size:.78rem;color:var(--mut)}
 .sect2{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin-top:6px}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none}
@@ -1998,7 +2103,7 @@ const big=n=>!n?"–":n>=1e12?"$"+(n/1e12).toFixed(2)+"T":n>=1e9?"$"+(n/1e9).toF
 const SIG={"STRONG BUY ZONE":["var(--up)","#fff"],"ACCUMULATE":["var(--up-bg)","var(--up)"],"HOLD":["rgba(242,181,68,.16)","var(--warn)"],
 "TRIM":["var(--dn-bg)","var(--dn)"],"SELL / AVOID":["var(--dn)","#fff"],"AVOID (SCAM RISK)":["#7A1F1F","#fff"],"NO DATA":["var(--card2)","var(--mut)"]};
 const SHORT={"STRONG BUY ZONE":"STRONG BUY","AVOID (SCAM RISK)":"SCAM RISK","SELL / AVOID":"SELL"};
-const PART={wallets:"Smart wallets",technical:"Technicals",fundamental:"Fundamentals",flows:"Flows",derivatives:"Derivatives",macro:"Market",news:"News",markets:"Betting odds"};
+const PART={wallets:"Smart wallets",technical:"Technicals",fundamental:"Fundamentals",flows:"Flows",derivatives:"Derivatives",macro:"Market",news:"News",markets:"Betting odds",insiders:"Insider trading",shorts:"Short interest"};
 function logoHTML(sym,url){const l=esc(sym.slice(0,4));return url?`<div class="logo img"><span class=lgf>${l}</span><img src="${esc(url)}" alt="" loading=lazy onerror="this.remove()"></div>`:`<div class=logo style="background:hsl(${hue(sym)} 55% 42%)">${l}</div>`}
 const hue=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h};
 // ---------- indicator math
@@ -2095,7 +2200,7 @@ function startDrag(L,w,e){w.classList.add("dragging");L.classList.add("reorderin
 function card(t){const c=t.c,chg=c.length>1?(c[c.length-1]/c[c.length-2]-1)*100:0,[bg,fg]=SIG[t.signal]||SIG["NO DATA"];
 const w=el("div","tok"+(t.is_buy&&!/AVOID/.test(t.signal)?" buy":""));w.dataset.sym=t.symbol;
 const row=el("div","row",`${logoHTML(t.symbol,t.logo)}
-<div class=nm><div><b>${t.starred?"⭐ ":""}${esc(t.symbol)}</b>${t.kind=="stock"?"<span class='badge stk'>stock</span>":""}${PEOPLE.length>1&&whoOf(t.symbol)?"<span class='badge who'>\uD83D\uDC64 "+esc(whoOf(t.symbol))+"</span>":""}${t.source=="discovery"?"<span class=badge>found</span>":""}${t.in_zone_only?"<span class='badge zone'>in buy zone</span>":""}</div>
+<div class=nm><div><b>${t.starred?"⭐ ":""}${esc(t.symbol)}</b>${t.kind=="stock"?"<span class='badge stk'>stock</span>":""}${(t.insider||{}).cluster?"<span class='badge ins'>\uD83D\uDD25 insiders buying</span>":(t.insider||{}).dump?"<span class='badge sell'>insiders selling</span>":""}${PEOPLE.length>1&&whoOf(t.symbol)?"<span class='badge who'>\uD83D\uDC64 "+esc(whoOf(t.symbol))+"</span>":""}${t.source=="discovery"?"<span class=badge>found</span>":""}${t.in_zone_only?"<span class='badge zone'>in buy zone</span>":""}</div>
 <div><span class=px>${fmt(t.price)}</span><span class=chg style="color:${chg>=0?"var(--up)":"var(--dn)"}">${chg>=0?"+":""}${chg.toFixed(1)}%</span></div>
 <div class=sub>${esc(t.name||"")}</div></div>${spark(c)}
 <div class=rt><span class=pill style="background:${bg};color:${fg}">${esc(SHORT[t.signal]||t.signal)}</span><div class=score>${t.score!=null?Math.round(t.score)+"/100":""} <span class=chev>▾</span></div></div>`);
@@ -2115,7 +2220,16 @@ if(isStk(t)){const f=t.facts||{},n1=v=>v==null?null:(v>=0?"+":"")+Number(v).toFi
  const rows=[["P/E ratio",n2(f.pe)],["Net margin",n1(f.margin)],["Revenue growth (1y)",n1(f.rev_growth)],["Earnings growth (1y)",n1(f.eps_growth)],
   ["Return on equity",n1(f.roe)],["Debt / equity",n2(f.de)],["52-week range",f.w52low!=null&&f.w52high!=null?fmt(f.w52low)+" – "+fmt(f.w52high):null],
   ["Dividend yield",f.div?Number(f.div).toFixed(2)+"%":null],["Next earnings",f.earnings?f.earnings.date+" ("+f.earnings.days+" day"+(f.earnings.days==1?"":"s")+" away)":null]].filter(x=>x[1]!=null);
- if(rows.length)box.append(el("div","kv","<span class=sect2 style=\"grid-column:1/-1\">Company numbers</span>"+rows.map(([k,v])=>`<span>${k}</span><b>${esc(v)}</b>`).join("")));}
+ if(rows.length)box.append(el("div","kv","<span class=sect2 style=\"grid-column:1/-1\">Company numbers</span>"+rows.map(([k,v])=>`<span>${k}</span><b>${esc(v)}</b>`).join("")));
+ const IV=t.insider;
+ if(IV){const q=el("div","insbox");
+  q.innerHTML=`<div class=sect2 style="margin-bottom:6px">Insider trading${IV.cluster?" \uD83D\uDD25":""}</div>
+  <div class=insum><span class=up>Bought ${big(IV.rbuys)}</span><span class=dn>Sold ${big(IV.rsells)}</span><span class=mut>last ${IV.recent_days} days</span></div>
+  ${(IV.why||[]).map(w=>`<div class=inwhy>${esc(w)}</div>`).join("")}
+  ${(IV.rows||[]).length?`<table class=calls style="margin-top:6px"><tr><th>Date</th><th>Insider</th><th>Trade</th><th style="text-align:right">Value</th></tr>${IV.rows.map(r=>`<tr><td>${esc((r.date||"").slice(5))}</td><td style="white-space:normal">${esc(r.name)}</td><td><span class="tg ${r.side=="buy"?"b":"s"}">${r.side=="buy"?"BOUGHT":"SOLD"}</span> ${r.shares.toLocaleString()}</td><td style="text-align:right">${big(r.value)}</td></tr>`).join("")}</table>`:""}
+  <div class=mut style="font-size:.7rem;margin-top:6px">Open-market buys and sales reported to the SEC on Form 4. Insiders sell for all sorts of reasons; several of them buying at once is the meaningful part.</div>`;
+  box.append(q);}
+ if(t.shorts){box.append(el("div","inwhy",esc((t.shorts.why||[])[0]||"")));}}
 const TP=t.plan||{};if(TP.zone1){box.append(el("div","plan",`<b>Plan:</b> buy ${TP.zone2?"½":"your position"} in zone 1 (${fmt(TP.zone1.low)}–${fmt(TP.zone1.high)})${TP.zone2?`, ½ in zone 2 (${fmt(TP.zone2.low)}–${fmt(TP.zone2.high)})`:""}${TP.stop?`; exit if it closes below ${fmt(TP.stop)}`:""}${TP.target?`; take profit near ${fmt(TP.target)}`:""}. <span class=mut>💪 = heavy trading happened at that price (stronger support).</span>`))}
 const cs=(isStk(t)||!Lk.contracts)?[]:Lk.contracts;
 if(isStk(t)){}
@@ -2888,6 +3002,18 @@ def install_demo():
         if path == "/quote": return {"c": STK["aapl"][-1]}
         if path == "/calendar/earnings":
             return {"earningsCalendar": [{"date": str((datetime.now(timezone.utc) + timedelta(days=12)).date())}]}
+        if path == "/stock/insider-transactions":
+            d0 = datetime.now(timezone.utc).date(); p0 = STK["aapl"][-1]
+            return {"data": [
+                {"name": "COOK TIMOTHY", "transactionCode": "P", "change": 12000, "transactionPrice": round(p0 * .97, 2), "transactionDate": str(d0 - timedelta(days=9))},
+                {"name": "MAESTRI LUCA", "transactionCode": "P", "change": 4200, "transactionPrice": round(p0 * .95, 2), "transactionDate": str(d0 - timedelta(days=21))},
+                {"name": "ADAMS KATHERINE", "transactionCode": "P", "change": 3100, "transactionPrice": round(p0 * .94, 2), "transactionDate": str(d0 - timedelta(days=28))},
+                {"name": "WILLIAMS JEFFREY", "transactionCode": "S", "change": -900, "transactionPrice": round(p0 * 1.01, 2), "transactionDate": str(d0 - timedelta(days=40))}]}
+        if path == "/stock/insider-sentiment":
+            n_ = datetime.now(timezone.utc)
+            return {"data": [{"year": n_.year, "month": n_.month, "mspr": 48.2, "change": 19300},
+                             {"year": n_.year, "month": max(1, n_.month - 1), "mspr": 31.0, "change": 7200}]}
+        if path == "/stock/short-interest": return None      # premium on Finnhub's paid plans only
         if path == "/company-news":
             return [{"id": 1, "headline": "Apple announces a new partnership and product launch", "url": "https://example.com/1"},
                     {"id": 2, "headline": "Apple hit with a lawsuit over app store fees", "url": "https://example.com/2"}]

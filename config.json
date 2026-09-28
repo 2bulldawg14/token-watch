@@ -72,5 +72,11 @@
   "stocks": true,
   "stock_history_refresh_hours": 6,
   "earnings_warn_days": 7,
-  "min_stock_market_cap_usd": 300000000
+  "min_stock_market_cap_usd": 300000000,
+  "insiders": true,
+  "insider_days": 180,
+  "insider_recent_days": 90,
+  "insider_min_usd": 50000,
+  "insider_cluster": 3,
+  "short_interest": true
 }

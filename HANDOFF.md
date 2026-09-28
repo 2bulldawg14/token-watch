@@ -191,6 +191,16 @@ Stocks live alongside coins in the same watchlist, scoring and track record.
 - **Links:** Yahoo Finance and TradingView replace CoinGecko and DexScreener.
 - **On the dashboard:** a `stock` badge, 📈 Stocks / 🪙 Crypto tabs, a "Your stocks" KPI row and track-record row, a Company numbers panel (P/E, margin, growth, ROE, debt/equity, 52-week range, dividend, next earnings) and a US stock backdrop section.
 
+### Insider trading (stocks)
+
+`insider_view(sym)` reads two free Finnhub endpoints and becomes its own score group (`insiders`, weight 0.15; `None` for coins so the other weights absorb it):
+
+- `/stock/insider-transactions` - SEC Form 4 filings over `insider_days` (180). Only open-market buys (`transactionCode` `P`) and sales (`S`) count; option grants and tax withholding are ignored. It totals dollars bought and sold, counts distinct people on each side, and keeps the 12 most recent rows for the dashboard.
+- `/stock/insider-sentiment` - Finnhub's monthly MSPR score (-100 to 100), averaged over the last 3 months.
+- **Cluster buying** (`insider_cluster`, default 3 different buyers in the last `insider_recent_days` with sales under a quarter of buys) scores 92 and fires its own Telegram alert, deduplicated per set of names in `state[sym]["_ins"]`. The mirror case, three or more sellers and almost no buyers, scores 12.
+- `short_view(sym)` calls `/stock/short-interest`, which is **premium on Finnhub**. On the free plan it returns nothing and the `shorts` group stays `None` - the code is there so it switches on by itself if the plan is ever upgraded. Institutional 13F positions are premium too and aren't used.
+- The dashboard shows an "Insider trading" panel inside the stock's card (bought vs sold, the reasons, and a table of who traded what) plus a 🔥 insiders buying / insiders selling badge on the card itself.
+
 ## Distribution list (other people)
 
 - `PREFS["members"]` = `[{chat_id, name, mode, added}]`, where `mode` is `all`, `mine` or `off`. Kept in `data/state.json` under `_prefs`.

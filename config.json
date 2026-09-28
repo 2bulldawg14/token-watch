@@ -87,5 +87,6 @@
   "congress_refresh_hours": 24,
   "run_margin_seconds": 180,
   "publish_reserve_minutes": 1.5,
-  "discovery_reserve_minutes": 3
+  "discovery_reserve_minutes": 3,
+  "min_coins_per_run": 4
 }

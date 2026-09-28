@@ -255,6 +255,7 @@ So every run must finish inside the check interval:
 - `listen_minutes` (8) is the most it will ever listen for.
 - `time_left()` is the single source of truth, and **the checks obey it too**: when under `publish_reserve_minutes` (1.5) remains, the run stops checking coins and goes straight to publishing, leaving the rest for the next run. `state["_wl_cursor"]` remembers where it stopped so the tail of the watchlist isn't perpetually skipped. Discovery only runs with `discovery_reserve_minutes` (3) to spare. That means **every run publishes**, however slow the data sources are that day.
 - `time_left()` returns 999 off GitHub Actions, so local and `--demo` runs are never cut short.
+- **A partial run must not empty the page.** `export()` merges `prev_tokens()` (parsed back out of the published `docs/index.html`) into its results: coins refreshed this run replace their old entry, coins there wasn't time for keep their last reading marked `stale`, and coins in `PREFS["removed"]` drop out. `min_coins_per_run` (4) also guarantees some progress even when a run starts with almost no time left - without it, a run that queued for 13 minutes once published a dashboard with zero coins on it.
 - `timeout-minutes: 13` on each workflow, so a stuck run dies quickly instead of blocking the lane.
 - The dashboard is published *before* the listening window, so a cancelled run still leaves the page updated.
 

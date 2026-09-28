@@ -2081,6 +2081,14 @@ def wallets_export():
     return {"board": board, "recent": recent}
 
 # ================================================================ outputs
+def prev_tokens():
+    """What was on the dashboard last time, so a run that only refreshed some coins keeps the rest."""
+    try:
+        cur = open(os.path.join(HERE, "docs", "index.html")).read()
+        m = re.search(r"const D=(\{.*?\});\n", cur, re.S)
+        return json.loads(m.group(1).replace("<\\/", "</")).get("tokens") or []
+    except Exception: return []
+
 def export(results, calls, full=True):
     out = {"generated": iso(), "tokens": [], "calls": calls}
     ids_ = set()
@@ -2088,7 +2096,13 @@ def export(results, calls, full=True):
         k_ = r.get("cg_id") or r["res"]["symbol"]
         if k_ in ids_: continue
         ids_.add(k_)
-        out["tokens"].append(token_entry(r))
+        e = token_entry(r); e["checked"] = int(now())
+        out["tokens"].append(e)
+    gone = set(PREFS.get("removed", []))
+    for t in prev_tokens():                              # coins this run had no time for: show the last reading
+        if (t.get("cg_id") or t.get("symbol")) in ids_ or t.get("symbol") in gone: continue
+        ids_.add(t.get("cg_id") or t.get("symbol"))
+        out["tokens"].append({**t, "stale": True})
     out["macro"] = {"score": MACRO.get("score"), "why": MACRO.get("why", []),
                     "stock_score": MACRO.get("stock_score"), "stock_why": MACRO.get("stock_why", [])}
     out["market_open"] = market_open() if (MACRO.get("stock_why") or STOCKS) else None
@@ -3116,7 +3130,7 @@ def run_once():
     checked = 0
     for tok in order:
         if tok["symbol"] in done_: continue
-        if time_left() <= CFG.get("publish_reserve_minutes", 1.5):
+        if checked >= CFG.get("min_coins_per_run", 4) and time_left() <= CFG.get("publish_reserve_minutes", 1.5):
             skipped = [t["symbol"] for t in order[order.index(tok):] if t["symbol"] not in done_]
             print(f"  Out of time this run: {len(skipped)} coin(s) left for the next one ({', '.join(skipped[:6])}"
                   + ("…" if len(skipped) > 6 else "") + ")")
@@ -3157,7 +3171,7 @@ def run_once():
     full = DEMO or now() - state.get("_export_t", 0) >= CFG.get("export_every_minutes", 240) * 60
     try:
         bad = []
-        if not results: bad.append("no coins were checked this run")
+        if not results and not prev_tokens(): bad.append("no coins were checked this run")
         for r in results:
             rr = r["res"]
             if rr.get("price") in (None, 0): bad.append(f"{rr['symbol']}: price is {rr.get('price')}")

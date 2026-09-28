@@ -3126,7 +3126,11 @@ def run_once():
     # Start where the last run stopped, so that if there isn't time for everything each coin still
     # comes round every couple of runs instead of the tail of the list never being reached.
     start_at = state.get("_wl_cursor", 0) % max(1, len(wl))
-    order = wl[start_at:] + wl[:start_at]
+    rotated = wl[start_at:] + wl[:start_at]
+    brand_new = [t for t in rotated if t["symbol"] not in REG]     # just added: check these first, not in a fortnight
+    new_syms = {t["symbol"] for t in brand_new}
+    order = brand_new + [t for t in rotated if t["symbol"] not in new_syms]
+    if brand_new: print("  New since the last run, checking first: " + ", ".join(sorted(new_syms)))
     checked = 0
     for tok in order:
         if tok["symbol"] in done_: continue
@@ -3134,7 +3138,8 @@ def run_once():
             skipped = [t["symbol"] for t in order[order.index(tok):] if t["symbol"] not in done_]
             print(f"  Out of time this run: {len(skipped)} coin(s) left for the next one ({', '.join(skipped[:6])}"
                   + ("…" if len(skipped) > 6 else "") + ")")
-            state["_wl_cursor"] = (start_at + checked) % max(1, len(wl))
+            done_syms = {r["res"]["symbol"] for r in results}
+            state["_wl_cursor"] = (start_at + sum(1 for t in rotated if t["symbol"] in done_syms)) % max(1, len(wl))
             break
         checked += 1
         try:

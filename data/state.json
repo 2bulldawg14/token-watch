@@ -109,13 +109,13 @@
  "LINK": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
-  "risk": null,
+  "rsi_band": "mid",
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $16 by December 31, 2026?": 70,
+   "Will Chainlink reach $18 by December 31, 2026?": 42,
+   "Will Chainlink reach $16 by December 31, 2026?": 65,
    "Will Chainlink reach $20 by December 31, 2026?": 26,
-   "Will Chainlink reach $18 by December 31, 2026?": 39,
    "Will Chainlink dip to $6 by December 31, 2026?": 9
   },
   "in_zone2": false,
@@ -125,7 +125,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -266,7 +266,7 @@
   "LINK": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790649961.7805798,
+ "_saved_t": 1790650919.1602397,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -890,7 +890,7 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 22,
+ "_wl_cursor": 5,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790648725.6470122

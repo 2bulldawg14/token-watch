@@ -1,17 +1,17 @@
 {
  "rules": [],
  "mult": {
-  "technical": 0.94,
+  "technical": 1.02,
   "flows": 1.13,
-  "macro": 0.93,
+  "macro": 0.69,
   "markets": 0.9
  },
- "graded": 13,
- "t": "2026-09-29 20:03 UTC",
+ "graded": 14,
+ "t": "2026-09-29 20:27 UTC",
  "scorecard": {
-  "closed": 13,
+  "closed": 14,
   "wins": 12,
-  "avg": 4.2,
+  "avg": 3.65,
   "held": 0.8,
   "gave_back": 0
  },
@@ -35,16 +35,16 @@
    "text": "hit the take-profit target"
   },
   "signal": {
-   "n": 5,
+   "n": 6,
    "reviewed": 0,
    "early": 0,
    "good": 0,
    "after": null,
-   "ret": 3.28,
+   "ret": 2.16,
    "text": "signal turned TRIM/SELL"
   }
  },
  "sell_soft": [],
  "wins": 6,
- "losses": 0
+ "losses": 1
 }

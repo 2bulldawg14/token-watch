@@ -184,7 +184,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
@@ -242,8 +242,8 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "HOLD",
+  "risk": "MEDIUM",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -848,12 +848,12 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
+   "Will Zcash reach $2000 by December 31, 2026?": 52,
    "Will Zcash dip to $100 by December 31, 2026?": 4,
-   "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 53
+   "Will Zcash dip to $50 by December 31, 2026?": 3
   },
   "macd_day": "2026-09-28"
  },
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790715977.681106,
+ "_saved_t": 1790717124.8303845,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -890,7 +890,7 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 17,
+ "_wl_cursor": 1,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790714931.476387

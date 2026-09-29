@@ -240,9 +240,9 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
@@ -833,7 +833,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
    "HYPE Up or Down - September 29, 12PM ET": 0
   },
@@ -877,7 +877,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790705041.952892,
+ "_saved_t": 1790706607.8239052,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -887,7 +887,7 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 13,
+ "_wl_cursor": 19,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790702725.9518955

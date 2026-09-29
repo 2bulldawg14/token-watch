@@ -147,7 +147,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 4
@@ -863,7 +863,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "macd_day": "2026-09-29"
  },
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790698092.4269416,
+ "_saved_t": 1790699514.294753,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -890,10 +890,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 3,
+ "_wl_cursor": 9,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790694389.0012617
+  "live prices": 1790698119.5583196
  },
  "SPCX": {
   "seen_news": [

@@ -51,7 +51,8 @@
    "ETH",
    "QNT",
    "LAES",
-   "SPCX"
+   "SPCX",
+   "RKLB"
   ],
   "removed": [
    "HYPERLIQUID"
@@ -60,6 +61,7 @@
   "unfollowed": [],
   "stocks": [
    "LAES",
+   "RKLB",
    "SPCX"
   ],
   "members": [
@@ -73,7 +75,8 @@
   "invites": {},
   "added_by": {
    "LAES": "David",
-   "SPCX": "David"
+   "SPCX": "David",
+   "RKLB": "David"
   }
  },
  "INJ": {
@@ -129,7 +132,7 @@
  "_discovery_t": 1790557892.4689043,
  "_report_week": "2026-W40",
  "_export_t": 1790633642.7563996,
- "_tg_offset": 218529288,
+ "_tg_offset": 218529289,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
@@ -709,6 +712,13 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "RKLB": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -865,7 +875,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790641977.3489873,
+ "_saved_t": 1790643439.6666174,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -887,5 +897,9 @@
  "LAES": {
   "seen_news": [],
   "_ins": "|Enguent Jean-Pierre"
+ },
+ "RKLB": {
+  "seen_news": [],
+  "_ins": "dump|Beck Peter,Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C."
  }
 }

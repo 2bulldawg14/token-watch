@@ -95,7 +95,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in September?": 0,
@@ -109,8 +109,8 @@
  "LINK": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
-  "risk": "LOW",
+  "rsi_band": "high",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 42,
@@ -266,7 +266,7 @@
   "LINK": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790668730.669141,
+ "_saved_t": 1790670582.5757911,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -890,10 +890,10 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 1,
+ "_wl_cursor": 7,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790664868.5783207
+  "live prices": 1790668733.4327164
  },
  "SPCX": {
   "seen_news": [],

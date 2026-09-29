@@ -85,7 +85,7 @@
   "rsi_band": "mid",
   "hit_below": false,
   "hit_above": false,
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
@@ -99,8 +99,8 @@
   "signal": "HOLD",
   "odds": {
    "Will Solana dip to $30 in September?": 0,
-   "Will Solana reach $200 in September?": 0,
    "Will Solana dip to $50 in September?": 0,
+   "Will Solana reach $200 in September?": 0,
    "Will Solana dip to $10 in September?": 0
   },
   "in_zone2": false,
@@ -111,12 +111,12 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 42,
-   "Will Chainlink reach $16 by December 31, 2026?": 72,
-   "Will Chainlink reach $20 by December 31, 2026?": 33,
-   "Will Chainlink dip to $6 by December 31, 2026?": 8
+   "Will Chainlink reach $16 by December 31, 2026?": 66,
+   "Will Chainlink reach $20 by December 31, 2026?": 26,
+   "Will Chainlink dip to $6 by December 31, 2026?": 10
   },
   "in_zone2": false,
   "below_stop": false
@@ -185,12 +185,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
    "Will Ethereum reach $4,000 in September?": 0,
    "Will Ethereum dip to $1,500 in September?": 0,
-   "Will Ethereum dip to $1,000 by December 31, 2026?": 4
+   "Will the price of Ethereum be above $2,400 on September 29?": 100
   },
   "in_zone2": false,
   "below_stop": false,
@@ -265,7 +265,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -313,7 +313,7 @@
   },
   "ETH": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790681204.663305,
+ "_saved_t": 1790682300.787359,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -890,10 +890,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 20,
+ "_wl_cursor": 6,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790676576.2675605
+  "live prices": 1790681206.4471133
  },
  "SPCX": {
   "seen_news": [],

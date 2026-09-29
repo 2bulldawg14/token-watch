@@ -200,8 +200,8 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "high",
-  "risk": "MEDIUM",
-  "signal": "HOLD",
+  "risk": null,
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false
  },
@@ -209,7 +209,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -233,7 +233,7 @@
    "Will XRP reach $3.00 in September?": 0,
    "Will XRP dip to $0.20 in September?": 0,
    "Will XRP reach $2.80 in September?": 0,
-   "Will XRP reach $5.00 by December 31, 2026?": 4
+   "Will XRP reach $5.00 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false
@@ -326,8 +326,8 @@
   },
   "AERO": {
    "seen": true,
-   "bad": false,
-   "in_sell": false,
+   "bad": true,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -832,8 +832,8 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "SELL / AVOID",
+  "risk": "MEDIUM",
+  "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790675375.0860138,
+ "_saved_t": 1790676573.8099148,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -890,7 +890,7 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 11,
+ "_wl_cursor": 17,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790672850.5901444

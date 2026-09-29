@@ -90,11 +90,34 @@ def fh(path, **q):
     q["token"] = k
     return get_json(f"{FINN}{path}?" + urllib.parse.urlencode(q))
 
+YAHOO_IX = {"^VIX": "^VIX", "^SPX": "^GSPC"}
+def yahoo_daily(sym, rng="1y"):
+    """Daily OHLCV from Yahoo Finance (free, no key). First choice: Stooq blocks some cloud IPs."""
+    q = YAHOO_IX.get(sym.upper(), sym.upper())
+    d = get_json(f"https://query1.finance.yahoo.com/v8/finance/chart/{urllib.parse.quote(q)}"
+                 f"?range={rng}&interval=1d&includePrePost=false", timeout=30)
+    res = ((d or {}).get("chart") or {}).get("result") or []
+    if not res: return None
+    r0 = res[0]; qt = ((r0.get("indicators") or {}).get("quote") or [{}])[0]
+    C, H, L, V = qt.get("close") or [], qt.get("high") or [], qt.get("low") or [], qt.get("volume") or []
+    out = {"close": [], "high": [], "low": [], "volume": []}
+    for i, c in enumerate(C):
+        if c is None or c <= 0: continue
+        out["close"].append(float(c))
+        out["high"].append(float(H[i] if i < len(H) and H[i] else c))
+        out["low"].append(float(L[i] if i < len(L) and L[i] else c))
+        out["volume"].append(float(V[i] if i < len(V) and V[i] else 0))
+    if len(out["close"]) < 30: return None
+    out["taker_buy"] = None; out["src"] = "Yahoo"
+    return {k: (v[-400:] if isinstance(v, list) else v) for k, v in out.items()}
+
 def stooq_daily(sym):
     """Daily OHLCV history, same shape as binance_daily."""
     q = sym.lower() if sym.startswith("^") else sym.lower() + ".us"
     txt = get_text(f"https://stooq.com/q/d/l/?s={urllib.parse.quote(q)}&i=d")
     lines = [l for l in txt.strip().splitlines() if l]
+    if lines and "exceeded" in lines[0].lower():
+        raise RuntimeError("Stooq is rate-limiting this server (" + lines[0].strip()[:60] + ")")
     if len(lines) < 2 or not lines[0].lower().startswith("date"): return None
     hdr = [x.strip().lower() for x in lines[0].split(",")]
     try: di, oi, hi, li, ci, vi = (hdr.index(x) for x in ("date", "open", "high", "low", "close", "volume"))
@@ -125,6 +148,8 @@ def stock_quote(sym):
     q = try_get("stock quote", lambda: fh("/quote", symbol=sym)) if CFG.get("finnhub_api_key") else None
     c = (q or {}).get("c")
     if c: return float(c)
+    y = try_get("stock quote (Yahoo)", lambda: yahoo_daily(sym, "5d"))
+    if y: return y["close"][-1]
     return try_get("stock quote (Stooq)", lambda: stooq_quote(sym))
 
 def _nth_dow(year, month, dow, nth):
@@ -252,7 +277,7 @@ def stock_grade(dd):
 
 def stock_macro():
     """US market backdrop for stocks: S&P 500 trend and the VIX."""
-    spy = try_get("S&P 500 history", lambda: stooq_daily("spy"))
+    spy = try_get("S&P 500 history", lambda: yahoo_daily("SPY")) or try_get("S&P 500 history (Stooq)", lambda: stooq_daily("spy"))
     if not spy: return
     c = spy["close"]; MACRO["spy_close"] = c
     parts, why = [], []
@@ -264,7 +289,7 @@ def stock_macro():
                    + (" (uptrend)" if sc == 75 else " (downtrend)" if sc == 25 else ""))
     r = rsi(c)
     if r is not None: parts.append(lin(r, 80, 30)); why.append(f"S&P 500 RSI {r:.0f}")
-    vx = try_get("VIX", lambda: stooq_daily("^vix"))
+    vx = try_get("VIX", lambda: yahoo_daily("^VIX")) or try_get("VIX (Stooq)", lambda: stooq_daily("^vix"))
     if vx:
         v = vx["close"][-1]; parts.append(lin(v, 32, 13))
         why.append(f"VIX {v:.0f} (" + ("calm" if v < 16 else "nervous" if v < 25 else "fearful") + ")")
@@ -520,9 +545,11 @@ def stock_data(tok):
     sym = tok["symbol"]; key = "stk:" + sym
     h = HIST.get(key)
     if not h or now() - h["t"] > CFG.get("stock_history_refresh_hours", 6) * 3600:
-        fresh = try_get("Stooq history", lambda: stooq_daily(sym))
+        fresh = try_get("price history (Yahoo)", lambda: yahoo_daily(sym)) or try_get("price history (Stooq)", lambda: stooq_daily(sym))
         if fresh: h = HIST[key] = {"t": now(), "d": fresh}
-    if not h: return None, None
+    if not h:
+        ERRORS.append(f"{sym}: couldn't get any price history (tried Yahoo Finance and Stooq) - it may not be a US-listed ticker")
+        return None, None
     data = {k: (list(v) if isinstance(v, list) else v) for k, v in h["d"].items()}
     q = LIVE.get(key) or stock_quote(sym)
     if q: LIVE[key] = q; data["close"][-1] = q
@@ -1478,7 +1505,10 @@ def sell_check(res, state, sym, source, cg_id, dd, calls):
 def check_stock(tok, cache, state, calls, source="watchlist", grade=None):
     sym = tok["symbol"]; print(f"\n{sym} (stock) ...")
     data, _ = stock_data(tok)
-    if not data or len(data["close"]) < 30: print("  No price history for that ticker."); return None
+    if not data or len(data["close"]) < 30:
+        print("  No price history for that ticker.")
+        if source == "watchlist": ERRORS.append(f"{sym}: not enough price history to score it yet")
+        return None
     dd = try_get("quality screen", lambda: stock_quality(sym, tok))
     news = try_get("news", lambda: stock_news(sym))
     ex = {"_source": source, "_kind": "stock"}

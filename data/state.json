@@ -98,10 +98,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
+   "Will Solana reach $600 by December 31, 2026?": 0,
+   "Will Solana dip to $40 by December 31, 2026?": 4,
    "Will Solana dip to $30 in September?": 0,
-   "Will Solana dip to $50 in September?": 0,
-   "Will Solana reach $200 in September?": 0,
-   "Will Solana dip to $10 in September?": 0
+   "Will Solana dip to $50 by December 31, 2026?": 6
   },
   "in_zone2": false,
   "below_stop": false
@@ -877,7 +877,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790702667.1155713,
+ "_saved_t": 1790703919.7040567,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -887,10 +887,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 22,
+ "_wl_cursor": 6,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790698119.5583196
+  "live prices": 1790702725.9518955
  },
  "SPCX": {
   "seen_news": [
@@ -930,7 +930,16 @@
    "142497079",
    "142496383",
    "142495667",
-   "142497983"
+   "142497983",
+   "142498459",
+   "142498460",
+   "142498016",
+   "142498464",
+   "142498465",
+   "142498082",
+   "142498466",
+   "142498463",
+   "142498458"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -983,7 +992,8 @@
    "142496375",
    "142496377",
    "142496886",
-   "142496809"
+   "142496809",
+   "142498474"
   ],
   "_ins": "dump|Beck Peter,Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,

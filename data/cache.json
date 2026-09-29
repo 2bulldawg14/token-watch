@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1790634788.041698,
+  "t": 1790640007.3139157,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 11244820188,
-    "fdv": 15031173149,
-    "volume": 1298126865,
+    "market_cap": 11562683568,
+    "fdv": 15456067404,
+    "volume": 1382259411,
     "website": [
      "https://chain.link/"
     ],
@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1790559762.5000072,
+  "t": 1790640012.129126,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -237,9 +237,9 @@
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2806518592,
-    "fdv": 5763664034,
-    "volume": 378287932,
+    "market_cap": 2523449099,
+    "fdv": 5182332609,
+    "volume": 723158673,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -1265,17 +1265,16 @@
  "id:shib": "shiba-inu",
  "idt:shib": 1790172691.1545615,
  "dd:shiba-inu": {
-  "t": 1790559764.9113548,
+  "t": 1790640105.238247,
   "v": {
-   "level": "MEDIUM",
-   "points": 2.0,
+   "level": "LOW",
+   "points": 1.0,
    "flags": [
-    "Team not verified yet - check founders' real names, LinkedIn, past projects",
-    "No public code repository"
+    "Team not verified yet - check founders' real names, LinkedIn, past projects"
    ],
    "checks": {
     "team": null,
-    "code": false,
+    "code": true,
     "tax": true,
     "owner": true,
     "holders": true,
@@ -1283,13 +1282,15 @@
    },
    "facts": {
     "name": "Shiba Inu",
-    "market_cap": 3468481273,
-    "fdv": 3469994750,
-    "volume": 88150990,
+    "market_cap": 3347046042,
+    "fdv": 3348506532,
+    "volume": 107433831,
     "website": [
      "https://shibatoken.com/"
     ],
-    "github": [],
+    "github": [
+     "https://github.com/shibaone"
+    ],
     "twitter": "shibarium_",
     "genesis": null,
     "categories": [

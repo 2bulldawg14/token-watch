@@ -80,7 +80,7 @@
   "hit_below": false,
   "hit_above": false,
   "risk": null,
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -106,9 +106,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $16 by December 31, 2026?": 68,
-   "Will Chainlink reach $20 by December 31, 2026?": 32,
-   "Will Chainlink reach $18 by December 31, 2026?": 42
+   "Will Chainlink reach $16 by December 31, 2026?": 70,
+   "Will Chainlink reach $20 by December 31, 2026?": 26,
+   "Will Chainlink reach $18 by December 31, 2026?": 39,
+   "Will Chainlink dip to $6 by December 31, 2026?": 9
   },
   "in_zone2": false,
   "below_stop": false
@@ -117,7 +118,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -175,7 +176,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
@@ -533,7 +534,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -831,7 +832,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD"
  },
  "LTC": {
@@ -847,19 +848,19 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790639044.7604845,
+ "_saved_t": 1790640107.8430912,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "high",
-  "risk": "MEDIUM",
-  "signal": "HOLD"
+  "risk": null,
+  "signal": "TRIM"
  },
- "_wl_cursor": 20,
+ "_wl_cursor": 4,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790634886.81819
+  "live prices": 1790639077.7220001
  }
 }

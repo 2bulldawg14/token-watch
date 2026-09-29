@@ -184,13 +184,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
+   "Will Ethereum reach $4,000 in September?": 0,
    "Will Ethereum dip to $1,500 in September?": 0,
-   "Will Ethereum dip to $1,750 by December 31, 2026?": 7,
-   "Will Ethereum dip to $1,250 by December 31, 2026?": 6
+   "Will Ethereum dip to $1,600 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -873,24 +873,24 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD"
  },
  "_disc_seen": {
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790653679.6536262,
+ "_saved_t": 1790654717.0736263,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "high",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 17,
+ "_wl_cursor": 2,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790652446.15012

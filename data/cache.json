@@ -904,7 +904,7 @@
   }
  },
  "dd:ethereum": {
-  "t": 1790559800.118361,
+  "t": 1790654495.7947552,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -919,9 +919,9 @@
    },
    "facts": {
     "name": "Ethereum",
-    "market_cap": 325649261561,
-    "fdv": 325649665154,
-    "volume": 9421246574,
+    "market_cap": 325258133647,
+    "fdv": 325258133647,
+    "volume": 15850823204,
     "website": [
      "https://www.ethereum.org/"
     ],
@@ -1308,7 +1308,7 @@
  "id:ltc": "litecoin",
  "idt:ltc": 1790206446.5888786,
  "dd:litecoin": {
-  "t": 1790639041.324873,
+  "t": 1790654463.5201488,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -1321,9 +1321,9 @@
    },
    "facts": {
     "name": "Litecoin",
-    "market_cap": 5364726142,
-    "fdv": 5364936841,
-    "volume": 622778941,
+    "market_cap": 5265432736,
+    "fdv": 5265610716,
+    "volume": 615812274,
     "website": [
      "http://litecoin.org"
     ],
@@ -1706,7 +1706,7 @@
  "id:qnt": "quant-network",
  "idt:qnt": 1790261248.4923754,
  "dd:quant-network": {
-  "t": 1790559802.6084816,
+  "t": 1790654528.4109051,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -1725,16 +1725,16 @@
    },
    "facts": {
     "name": "Quant",
-    "market_cap": 3829360541,
-    "fdv": 3847347795,
-    "volume": 1412713684,
+    "market_cap": 3466648004,
+    "fdv": 3482931527,
+    "volume": 1059588897,
     "website": [
      "https://www.quant.network"
     ],
     "github": [
      "https://github.com/quantnetwork/Overledger-Interfaces"
     ],
-    "twitter": "quant_network",
+    "twitter": "quantnetwork",
     "genesis": "2018-06-25",
     "categories": [
      "Infrastructure",

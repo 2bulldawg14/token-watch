@@ -230,7 +230,7 @@
   "risk": null,
   "signal": "HOLD",
   "odds": {
-   "Will XRP reach $5.00 by December 31, 2026?": 3,
+   "Will XRP reach $5.00 by December 31, 2026?": 4,
    "Will XRP dip to $0.20 in September?": 0,
    "Will XRP dip to $0.20 by December 31, 2026?": 1,
    "Will XRP reach $3.00 in September?": 0
@@ -242,8 +242,8 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "risk": null,
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -832,7 +832,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
@@ -848,7 +848,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Zcash reach $2000 by December 31, 2026?": 52,
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790719327.0385122,
+ "_saved_t": 1790720820.1531901,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -890,10 +890,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 13,
+ "_wl_cursor": 19,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790714931.476387
+  "live prices": 1790719397.7482362
  },
  "SPCX": {
   "seen_news": [

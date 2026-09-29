@@ -543,7 +543,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790668025.7523324,
+ "_saved_t": 1790668730.669141,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -888,9 +888,9 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
- "_wl_cursor": 20,
+ "_wl_cursor": 1,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790664868.5783207

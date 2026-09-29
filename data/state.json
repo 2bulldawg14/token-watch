@@ -85,7 +85,7 @@
   "rsi_band": "mid",
   "hit_below": false,
   "hit_above": false,
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
@@ -95,7 +95,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Solana dip to $30 in September?": 0,
@@ -109,14 +109,14 @@
  "LINK": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 43,
+   "Will Chainlink reach $18 by December 31, 2026?": 48,
    "Will Chainlink reach $16 by December 31, 2026?": 66,
-   "Will Chainlink reach $20 by December 31, 2026?": 25,
-   "Will Chainlink dip to $6 by December 31, 2026?": 9
+   "Will Chainlink reach $20 by December 31, 2026?": 27,
+   "Will Chainlink dip to $6 by December 31, 2026?": 8
   },
   "in_zone2": false,
   "below_stop": false
@@ -125,14 +125,14 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
  "_discovery_t": 1790557892.4689043,
  "_report_week": "2026-W40",
- "_export_t": 1790678877.7137938,
+ "_export_t": 1790694333.9510953,
  "_tg_offset": 218529289,
  "HBAR": {
   "seen_news": [],
@@ -158,8 +158,8 @@
  "SEI": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
-  "risk": null,
+  "rsi_band": "mid",
+  "risk": "LOW",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -259,14 +259,14 @@
   "SOL": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "LINK": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -863,7 +863,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "macd_day": "2026-09-29"
  },
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790694331.1516066,
+ "_saved_t": 1790695755.9225898,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -890,10 +890,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 22,
+ "_wl_cursor": 9,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790689858.962659
+  "live prices": 1790694389.0012617
  },
  "SPCX": {
   "seen_news": [
@@ -916,7 +916,23 @@
    "142471168",
    "142471438",
    "142471236",
-   "142474061"
+   "142474061",
+   "142496372",
+   "139663512",
+   "142495794",
+   "142495768",
+   "142496382",
+   "142496375",
+   "142495763",
+   "142496377",
+   "142495944",
+   "142495929",
+   "142495849",
+   "142497448",
+   "142496886",
+   "142497079",
+   "142496383",
+   "142495667"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -930,7 +946,8 @@
   "seen_news": [
    "142380403",
    "142373389",
-   "142344577"
+   "142344577",
+   "142495512"
   ],
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,
@@ -964,7 +981,11 @@
    "142417444",
    "142492886",
    "142473930",
-   "142474063"
+   "142474063",
+   "142496375",
+   "142496377",
+   "142496886",
+   "142496809"
   ],
   "_ins": "dump|Beck Peter,Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,

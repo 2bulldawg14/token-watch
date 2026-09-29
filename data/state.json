@@ -50,7 +50,8 @@
    "LTC",
    "ETH",
    "QNT",
-   "LAES"
+   "LAES",
+   "SPCX"
   ],
   "removed": [
    "HYPERLIQUID"
@@ -58,7 +59,8 @@
   "wallets": [],
   "unfollowed": [],
   "stocks": [
-   "LAES"
+   "LAES",
+   "SPCX"
   ],
   "members": [
    {
@@ -70,7 +72,8 @@
   ],
   "invites": {},
   "added_by": {
-   "LAES": "David"
+   "LAES": "David",
+   "SPCX": "David"
   }
  },
  "INJ": {
@@ -126,7 +129,7 @@
  "_discovery_t": 1790557892.4689043,
  "_report_week": "2026-W40",
  "_export_t": 1790633642.7563996,
- "_tg_offset": 218529287,
+ "_tg_offset": 218529288,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
@@ -692,6 +695,13 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "SPCX": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -848,7 +858,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790640107.8430912,
+ "_saved_t": 1790641329.262215,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -862,5 +872,9 @@
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790639077.7220001
+ },
+ "SPCX": {
+  "seen_news": [],
+  "_ins": "|Shotwell Gwynne"
  }
 }

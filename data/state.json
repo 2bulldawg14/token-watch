@@ -702,6 +702,13 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "LAES": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -842,7 +849,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD"
  },
  "LTC": {
@@ -858,7 +865,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790641329.262215,
+ "_saved_t": 1790641977.3489873,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -868,7 +875,7 @@
   "risk": null,
   "signal": "TRIM"
  },
- "_wl_cursor": 4,
+ "_wl_cursor": 10,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790639077.7220001
@@ -876,5 +883,9 @@
  "SPCX": {
   "seen_news": [],
   "_ins": "|Shotwell Gwynne"
+ },
+ "LAES": {
+  "seen_news": [],
+  "_ins": "|Enguent Jean-Pierre"
  }
 }

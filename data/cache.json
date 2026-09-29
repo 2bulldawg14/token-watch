@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1790659374.9860501,
+  "t": 1790663358.217608,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 69340130829,
-    "fdv": 74891816234,
-    "volume": 3855578595,
+    "market_cap": 69926974488,
+    "fdv": 75525639354,
+    "volume": 3731307506,
     "website": [
      "https://solana.com/"
     ],
@@ -904,7 +904,7 @@
   }
  },
  "dd:ethereum": {
-  "t": 1790659152.015782,
+  "t": 1790663136.0011294,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -919,9 +919,9 @@
    },
    "facts": {
     "name": "Ethereum",
-    "market_cap": 325789107370,
-    "fdv": 325789107370,
-    "volume": 15532604564,
+    "market_cap": 328731627365,
+    "fdv": 328731627365,
+    "volume": 15359345790,
     "website": [
      "https://www.ethereum.org/"
     ],
@@ -1707,7 +1707,7 @@
  "id:qnt": "quant-network",
  "idt:qnt": 1790261248.4923754,
  "dd:quant-network": {
-  "t": 1790659245.5896258,
+  "t": 1790663230.1026266,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -1726,9 +1726,9 @@
    },
    "facts": {
     "name": "Quant",
-    "market_cap": 3593134620,
-    "fdv": 3610012275,
-    "volume": 1110059471,
+    "market_cap": 3576529764,
+    "fdv": 3593329423,
+    "volume": 1092279190,
     "website": [
      "https://www.quant.network"
     ],
@@ -2754,5 +2754,7 @@
   }
  },
  "id:spcx": "spacex-robinhood-tokenized-stock",
- "idt:spcx": 1790644735.4148583
+ "idt:spcx": 1790644735.4148583,
+ "id:rklb": "rocket-lab-corporation-robinhood-tokenized-stock",
+ "idt:rklb": 1790662913.5869887
 }

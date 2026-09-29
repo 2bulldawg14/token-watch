@@ -1063,9 +1063,13 @@ def analyse(sym, data, depth, news, whales, grade, dd, mv=None, backdrop=None, e
     in_sell = bool(sz and price >= sz["low"])
     if signal in BUY_SIGNALS and (in_sell or (r is not None and r > 70)):
         signal = "HOLD"; why.insert(0, "Capped at HOLD: " + ("price is in the sell zone" if in_sell else f"RSI {r:.0f} is overbought") + " - wait for a pullback toward the buy zone")
-    far = bz and a and price > bz["high"] and (price - bz["high"] > 2 * a or price > bz["high"] * 1.15) and not in_zone2
+    # "Accumulate" has to mean accumulate somewhere sensible. Well above the buy zone it's just chasing,
+    # so cap it at HOLD: 8% above zone 1, or more than 1.5 ATR above it, whichever comes first.
+    over = (price / bz["high"] - 1) if bz else 0
+    far = bool(bz and price > bz["high"] and not in_zone2
+               and (over > CFG.get("max_over_zone", 0.08) or (a and price - bz["high"] > 1.5 * a)))
     if signal in BUY_SIGNALS and far:
-        signal = "HOLD"; why.insert(0, f"Capped at HOLD: price is {(price / bz['high'] - 1) * 100:.0f}% above buy zone 1 ({px(bz['low'])}-{px(bz['high'])}) - wait for a pullback")
+        signal = "HOLD"; why.insert(0, f"Capped at HOLD: {px(price)} is {over * 100:.0f}% above buy zone 1 ({px(bz['low'])}-{px(bz['high'])}) - too far above it to call this accumulating; wait for a pullback")
     if signal in BUY_SIGNALS and blocked:
         signal = "HOLD"; why.insert(0, "Capped at HOLD: this setup has lost money repeatedly in past calls (see Learned)")
     if dd and dd["level"] == "HIGH":

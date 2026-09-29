@@ -73,7 +73,7 @@ Telegram changes made with `/add`, `/star`, `/follow` and similar are stored in 
 - `analyse()` scores these signal groups: technical, flows, derivatives, macro, news, markets, fundamental and wallets. Each group is 0–100.
   - The groups are combined into one weighted score using `DEFAULT_W`, which `config.weights` overrides and learning multiplies.
   - The learned adjustment is then applied.
-  - **Guardrails:** the signal is capped at HOLD if the price is in the sell zone, RSI is above 70, or a learned rule blocks it. It's forced to AVOID if the scam risk is HIGH.
+  - **Guardrails:** the signal is capped at HOLD if the price is in the sell zone, RSI is above 70, a learned rule blocks it, or the price is more than `max_over_zone` (8%) or 1.5 ATR above buy zone 1 without being in zone 2. That last one was 15%/2 ATR and let TAO show ACCUMULATE at $303 against a $240-265 buy zone - 14.5% above it, which is chasing, not accumulating. It's forced to AVOID if the scam risk is HIGH.
 - `is_buy()` decides what counts as a buy setup: a buy signal, or being inside zone 1 or zone 2 without being capped.
 
 **Learning (`learn()`):**

@@ -95,13 +95,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Solana reach $200 in September?": 0,
    "Will Solana dip to $30 in September?": 0,
-   "Will Solana reach $190 in September?": 0,
-   "Will Solana dip to $50 in September?": 0
+   "Will Solana reach $200 in September?": 0,
+   "Will Solana dip to $50 in September?": 0,
+   "Will Solana reach $190 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false
@@ -125,7 +125,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -185,12 +185,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
-   "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
+   "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
    "Will Ethereum reach $4,000 in September?": 0,
    "Will Ethereum dip to $1,500 in September?": 0,
-   "Will Ethereum dip to $1,600 in September?": 0
+   "Will Ethereum dip to $1,000 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -313,7 +313,7 @@
   },
   "ETH": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -880,20 +880,20 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790672812.2036264,
+ "_saved_t": 1790674116.8434305,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "high",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 20,
+ "_wl_cursor": 5,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790668733.4327164
+  "live prices": 1790672850.5901444
  },
  "SPCX": {
   "seen_news": [],

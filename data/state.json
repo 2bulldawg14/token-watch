@@ -95,13 +95,11 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
-   "Will Solana reach $600 by December 31, 2026?": 0,
-   "Will Solana dip to $40 by December 31, 2026?": 4,
-   "Will Solana dip to $30 in September?": 0,
-   "Will Solana dip to $50 by December 31, 2026?": 6
+   "Will GPT Sol 6.1+ debut at an output token price of at least $40 by June 30, 2027?": 0,
+   "Will GPT Sol 6.1+ debut at an output token price of at least $10 by June 30, 2027?": 100
   },
   "in_zone2": false,
   "below_stop": false
@@ -184,7 +182,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
@@ -877,7 +875,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790706607.8239052,
+ "_saved_t": 1790707874.082942,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -887,10 +885,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 19,
+ "_wl_cursor": 2,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790702725.9518955
+  "live prices": 1790706610.5946972
  },
  "SPCX": {
   "seen_news": [
@@ -939,7 +937,14 @@
    "142498082",
    "142498466",
    "142498463",
-   "142498458"
+   "142498458",
+   "142499626",
+   "142499622",
+   "142499627",
+   "142499623",
+   "142499284",
+   "142499625",
+   "142499372"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -993,7 +998,8 @@
    "142496377",
    "142496886",
    "142496809",
-   "142498474"
+   "142498474",
+   "142499627"
   ],
   "_ins": "dump|Beck Peter,Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,

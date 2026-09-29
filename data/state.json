@@ -115,8 +115,8 @@
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 42,
    "Will Chainlink reach $16 by December 31, 2026?": 64,
-   "Will Chainlink reach $20 by December 31, 2026?": 30,
-   "Will Chainlink dip to $6 by December 31, 2026?": 8
+   "Will Chainlink reach $20 by December 31, 2026?": 24,
+   "Will Chainlink dip to $6 by December 31, 2026?": 9
   },
   "in_zone2": false,
   "below_stop": false
@@ -132,7 +132,7 @@
  },
  "_discovery_t": 1790557892.4689043,
  "_report_week": "2026-W40",
- "_export_t": 1790648690.1428463,
+ "_export_t": 1790663363.2079298,
  "_tg_offset": 218529289,
  "HBAR": {
   "seen_news": [],
@@ -147,7 +147,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 6
@@ -159,7 +159,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "high",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790663360.4390213,
+ "_saved_t": 1790664802.1459177,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -890,7 +890,7 @@
   "risk": "MEDIUM",
   "signal": "TRIM"
  },
- "_wl_cursor": 2,
+ "_wl_cursor": 8,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790660792.2380068

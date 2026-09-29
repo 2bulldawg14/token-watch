@@ -95,12 +95,12 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in September?": 0,
-   "Will Solana reach $190 in September?": 0,
    "Will Solana dip to $30 in September?": 0,
+   "Will Solana reach $190 in September?": 0,
    "Will Solana dip to $50 in September?": 0
   },
   "in_zone2": false,
@@ -110,13 +110,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 42,
-   "Will Chainlink reach $16 by December 31, 2026?": 65,
-   "Will Chainlink reach $20 by December 31, 2026?": 26,
-   "Will Chainlink dip to $6 by December 31, 2026?": 9
+   "Will Chainlink reach $16 by December 31, 2026?": 64,
+   "Will Chainlink reach $20 by December 31, 2026?": 30,
+   "Will Chainlink dip to $6 by December 31, 2026?": 8
   },
   "in_zone2": false,
   "below_stop": false
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790658331.5843978,
+ "_saved_t": 1790659566.746254,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -890,7 +890,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 20,
+ "_wl_cursor": 5,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790657183.2576406

@@ -1051,19 +1051,18 @@
   }
  },
  "dd:render-token": {
-  "t": 1790559789.410631,
+  "t": 1790657956.2841241,
   "v": {
    "level": "MEDIUM",
-   "points": 4.5,
+   "points": 3.5,
    "flags": [
     "Top 10 wallets hold 94% (may include exchanges)",
     "Team not verified yet - check founders' real names, LinkedIn, past projects",
-    "No public code repository",
     "Upgradeable contract (rules can change)"
    ],
    "checks": {
     "team": null,
-    "code": false,
+    "code": true,
     "tax": true,
     "owner": true,
     "holders": false,
@@ -1071,13 +1070,15 @@
    },
    "facts": {
     "name": "Render",
-    "market_cap": 1056010910,
-    "fdv": 1086056434,
-    "volume": 92000075,
+    "market_cap": 988298645,
+    "fdv": 1016417626,
+    "volume": 94156485,
     "website": [
      "http://renderfoundation.com"
     ],
-    "github": [],
+    "github": [
+     "https://github.com/rendernetwork"
+    ],
     "twitter": "rendernetwork",
     "genesis": null,
     "categories": [

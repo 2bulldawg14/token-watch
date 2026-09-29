@@ -265,7 +265,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.759,
+  "last": 1.755,
   "max": 1.9,
   "min": 1.676,
   "checkpoints": {},
@@ -322,10 +322,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-09-29 12:55 UTC",
+  "updated": "2026-09-29 14:09 UTC",
   "tmax": 1.9,
   "tmin": 1.691,
-  "ret_open": 0.06
+  "ret_open": -0.17
  },
  {
   "id": "INJ-1790173810",
@@ -361,7 +361,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.684,
+  "last": 7.688,
   "max": 8.581,
   "min": 7.234,
   "checkpoints": {},
@@ -418,7 +418,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/solana/1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
   },
-  "updated": "2026-09-29 12:55 UTC",
+  "updated": "2026-09-29 14:09 UTC",
   "exit": {
    "t": 1790174772,
    "date": "2026-09-23 14:46 UTC",
@@ -651,7 +651,7 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 5.88e-06,
+  "last": 5.84e-06,
   "max": 6.05e-06,
   "min": 5.56e-06,
   "checkpoints": {},
@@ -696,7 +696,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-09-29 13:29 UTC",
+  "updated": "2026-09-29 14:09 UTC",
   "tmax": 5.97e-06,
   "tmin": 5.57e-06,
   "ret_open": 7.0,
@@ -1042,7 +1042,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.1732,
+  "last": 1.1554,
   "max": 1.2801,
   "min": 1.0099,
   "checkpoints": {},
@@ -1087,7 +1087,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-09-29 13:29 UTC",
+  "updated": "2026-09-29 14:09 UTC",
   "tmax": 1.0309,
   "tmin": 1.0099,
   "ret_open": 0.58,
@@ -1140,7 +1140,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.11422,
+  "last": 0.11273,
   "max": 0.12387,
   "min": 0.09231,
   "checkpoints": {},
@@ -1180,7 +1180,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-09-29 13:29 UTC",
+  "updated": "2026-09-29 14:09 UTC",
   "tmax": 0.097,
   "tmin": 0.09231,
   "ret_open": -0.07,
@@ -1821,9 +1821,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 72.19,
+  "last": 71.37,
   "max": 72.19,
-  "min": 72.19,
+  "min": 71.37,
   "checkpoints": {},
   "kind": "stock",
   "by": "David",
@@ -1869,9 +1869,9 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-09-29 12:55 UTC",
+  "updated": "2026-09-29 14:09 UTC",
   "tmax": 72.19,
-  "tmin": 72.19,
-  "ret_open": 0.0
+  "tmin": 71.37,
+  "ret_open": -1.14
  }
 ]

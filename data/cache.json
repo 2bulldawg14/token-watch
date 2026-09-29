@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1790678490.1973946,
+  "t": 1790690604.337706,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 758178421,
-    "fdv": 758178421,
-    "volume": 131946591,
+    "market_cap": 773103422,
+    "fdv": 773103422,
+    "volume": 134361593,
     "website": [
      "https://injective.com"
     ],
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1790686420.1801355,
+  "t": 1790690640.2371504,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 70845203651,
-    "fdv": 76517392491,
-    "volume": 3665666402,
+    "market_cap": 71172702159,
+    "fdv": 76871112313,
+    "volume": 3819044494,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1790686453.0772183,
+  "t": 1790690643.9991453,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 11415719196,
-    "fdv": 15259617227,
-    "volume": 1390739252,
+    "market_cap": 11330256361,
+    "fdv": 15145377368,
+    "volume": 1323376025,
     "website": [
      "https://chain.link/"
     ],
@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1790686547.280327,
+  "t": 1790690677.9825087,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -237,9 +237,9 @@
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2530824092,
-    "fdv": 5197478412,
-    "volume": 441725000,
+    "market_cap": 2514142484,
+    "fdv": 5163219889,
+    "volume": 429930657,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -853,7 +853,7 @@
   }
  },
  "dd:cosmos": {
-  "t": 1790559795.9556293,
+  "t": 1790690556.5301948,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -871,9 +871,9 @@
    },
    "facts": {
     "name": "Cosmos Hub",
-    "market_cap": 997505086,
-    "fdv": 997505795,
-    "volume": 69836549,
+    "market_cap": 938221509,
+    "fdv": 938231235,
+    "volume": 80072782,
     "website": [
      "http://cosmos.network/"
     ],
@@ -904,7 +904,7 @@
   }
  },
  "dd:ethereum": {
-  "t": 1790686227.1098018,
+  "t": 1790690562.7424676,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -919,9 +919,9 @@
    },
    "facts": {
     "name": "Ethereum",
-    "market_cap": 334204957404,
-    "fdv": 334204957404,
-    "volume": 16349310468,
+    "market_cap": 333060773279,
+    "fdv": 333060773279,
+    "volume": 16499904663,
     "website": [
      "https://www.ethereum.org/"
     ],
@@ -941,7 +941,7 @@
   }
  },
  "dd:sui": {
-  "t": 1790660507.7178097,
+  "t": 1790690866.6994863,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -955,9 +955,9 @@
    },
    "facts": {
     "name": "Sui",
-    "market_cap": 4553731809,
-    "fdv": 11116051548,
-    "volume": 1403759790,
+    "market_cap": 4753563317,
+    "fdv": 11603857471,
+    "volume": 1302337473,
     "website": [
      "https://sui.io/"
     ],
@@ -1309,7 +1309,7 @@
  "id:ltc": "litecoin",
  "idt:ltc": 1790206446.5888786,
  "dd:litecoin": {
-  "t": 1790654463.5201488,
+  "t": 1790690560.0452933,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -1322,9 +1322,9 @@
    },
    "facts": {
     "name": "Litecoin",
-    "market_cap": 5265432736,
-    "fdv": 5265610716,
-    "volume": 615812274,
+    "market_cap": 5308841209,
+    "fdv": 5309018945,
+    "volume": 474613024,
     "website": [
      "http://litecoin.org"
     ],
@@ -1707,7 +1707,7 @@
  "id:qnt": "quant-network",
  "idt:qnt": 1790261248.4923754,
  "dd:quant-network": {
-  "t": 1790668630.633009,
+  "t": 1790690595.743147,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -1726,9 +1726,9 @@
    },
    "facts": {
     "name": "Quant",
-    "market_cap": 3846734250,
-    "fdv": 3864803112,
-    "volume": 1181085649,
+    "market_cap": 3682251536,
+    "fdv": 3699547790,
+    "volume": 866977201,
     "website": [
      "https://www.quant.network"
     ],

@@ -190,7 +190,7 @@
    "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
    "Will Ethereum dip to $1,500 in September?": 0,
    "Will Ethereum reach $4,000 in September?": 0,
-   "Will the price of Ethereum be above $2,400 on September 29?": 100
+   "Will Ethereum dip to $1,000 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -218,7 +218,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -227,13 +227,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will XRP dip to $0.20 in September?": 0,
    "Will XRP reach $3.00 in September?": 0,
-   "Will XRP reach $5.00 by December 31, 2026?": 4,
-   "Will XRP reach $2.80 in September?": 0
+   "Will XRP reach $2.80 in September?": 0,
+   "Will XRP reach $5.00 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false
@@ -242,8 +242,8 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
-  "signal": "HOLD",
+  "risk": null,
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -832,8 +832,8 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
-  "signal": "TRIM",
+  "risk": null,
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
@@ -880,17 +880,17 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790692416.2004972,
+ "_saved_t": 1790694331.1516066,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "high",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 14,
+ "_wl_cursor": 22,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790689858.962659

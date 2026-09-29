@@ -426,7 +426,21 @@ def congress_load():
             if not e or e["date"] < cutoff: continue
             idx.setdefault(e["ticker"], []).append(e); n += 1
         if n: got.append(f"{label}: {n}")
-    if not idx: return None
+    if not idx:                                          # the bulk files are the best source but they come and go
+        url = f"{BARGO}/trades?limit=1000"
+        if CFG.get("congress_api_key"): url += "&key=" + urllib.parse.quote(CFG["congress_api_key"])
+        d = try_get("Congress trades", lambda: get_json(url, timeout=45))
+        rows = (d or {}).get("trades") if isinstance(d, dict) else (d if isinstance(d, list) else None)
+        for r in rows or []:
+            e = _crow(r, str(r.get("chamber") or "house").lower())
+            if not e or e["date"] < cutoff: continue
+            idx.setdefault(e["ticker"], []).append(e)
+        if idx: got.append(f"Congress feed: {sum(len(v) for v in idx.values())}")
+    if not idx:
+        ERRORS.append("no congressional trade data available right now - the free sources are offline or rate-limited, "
+                      "so stock scores are running without it")
+        HIST["congress"] = {"t": now(), "d": {}}          # remember the miss so we don't retry every single run
+        return {}
     for v in idx.values(): v.sort(key=lambda e: e["date"], reverse=True)
     print("Congress trades - " + "; ".join(got))
     HIST["congress"] = {"t": now(), "d": idx}
@@ -513,7 +527,7 @@ def congress_view(sym, industry=None):
     """Recent trades in this stock by members of Congress, flagging anyone who oversees the industry."""
     if not CFG.get("congress", True): return None
     idx = congress_load()
-    rows = idx.get(sym.upper(), []) if idx is not None else congress_ticker(sym)
+    rows = idx.get(sym.upper(), []) if idx else []
     if not rows: return None
     recent_days = CFG.get("congress_recent_days", 120)
     since = str((datetime.now(timezone.utc) - timedelta(days=recent_days)).date())

@@ -95,7 +95,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $600 by December 31, 2026?": 0,
@@ -184,13 +184,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "TRIM",
+  "risk": "LOW",
+  "signal": "HOLD",
   "odds": {
-   "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
-   "Will Ethereum dip to $1,000 by December 31, 2026?": 4,
-   "Will Ethereum dip to $800 by December 31, 2026?": 3,
-   "Will Ethereum reach $10,000 by December 31, 2026?": 1
+   "Will Ethereum reach $4,000 in September?": 0,
+   "Will Ethereum dip to $2,500 in September?": 1,
+   "Will Ethereum dip to $1,500 in September?": 0,
+   "Will Ethereum reach $3,200 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -260,7 +260,7 @@
   "SOL": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -314,7 +314,7 @@
   },
   "ETH": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -874,24 +874,24 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD"
  },
  "_disc_seen": {
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790773867.8972514,
+ "_saved_t": 1790775343.8808603,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "high",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 18,
+ "_wl_cursor": 2,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790771669.2082849
@@ -950,7 +950,27 @@
    "142499623",
    "142499284",
    "142499625",
-   "142499372"
+   "142499372",
+   "142514669",
+   "142514670",
+   "142514678",
+   "142513041",
+   "142513102",
+   "142513849",
+   "142513110",
+   "142513850",
+   "142513112",
+   "142512515",
+   "142512526",
+   "142512165",
+   "142512138",
+   "142512163",
+   "142511646",
+   "142509232",
+   "142508624",
+   "142509239",
+   "142502165",
+   "142502793"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1005,7 +1025,10 @@
    "142496886",
    "142496809",
    "142498474",
-   "142499627"
+   "142499627",
+   "142513052",
+   "142512668",
+   "142509316"
   ],
   "_ins": "dump|Beck Peter,Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
@@ -1013,6 +1036,6 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  }
 }

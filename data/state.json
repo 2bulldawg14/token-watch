@@ -110,7 +110,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 50,
@@ -188,9 +188,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
-   "Will Ethereum reach $4,000 in September?": 0,
-   "Will Ethereum dip to $1,500 in September?": 0,
-   "Will Ethereum reach $3,200 in September?": 0
+   "Will Ethereum dip to $1,000 by December 31, 2026?": 4,
+   "Will Ethereum dip to $800 by December 31, 2026?": 3,
+   "Will Ethereum reach $4,000 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -241,10 +241,10 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -878,7 +878,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790755794.0783277,
+ "_saved_t": 1790756991.7592182,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -888,7 +888,7 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 18,
+ "_wl_cursor": 3,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790754632.7438304

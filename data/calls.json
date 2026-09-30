@@ -269,10 +269,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.754,
+  "last": 1.716,
   "max": 1.9,
   "min": 1.676,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": -2.39
+  },
   "feat": {
    "rsi": 58.64528461681607,
    "zone": "in",
@@ -326,10 +328,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-09-30 13:35 UTC",
+  "updated": "2026-09-30 14:50 UTC",
   "tmax": 1.9,
   "tmin": 1.691,
-  "ret_open": -0.23
+  "ret_open": -2.39
  },
  {
   "id": "INJ-1790173810",
@@ -436,7 +438,10 @@
   "tmin": 7.802,
   "gbasis": "closed",
   "gret": 2.56,
-  "outcome": "flat"
+  "outcome": "flat",
+  "after_sell": -4.2,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "CC-1790173826",
@@ -1902,5 +1907,92 @@
    "basis": "closed",
    "gave_back": false
   }
+ },
+ {
+  "id": "ATOM-1790779558",
+  "symbol": "ATOM",
+  "cg_id": "cosmos",
+  "t": 1790779558,
+  "date": "2026-09-30 14:45 UTC",
+  "entry": 1.716,
+  "signal": "ACCUMULATE",
+  "score": 63,
+  "buy_zone": {
+   "low": 1.5757007142857142,
+   "high": 1.699057857142857
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 1.5757007142857142,
+    "high": 1.699057857142857,
+    "strong": true,
+    "vol_level": 1.5626875
+   },
+   "zone2": {
+    "low": 1.1811607142857143,
+    "high": 1.2736785714285714,
+    "strong": false
+   },
+   "stop": 1.1194821428571429,
+   "target": 1.7889375,
+   "resistance": [
+    1.7889375,
+    2.0151875
+   ],
+   "support_levels": [
+    1.5626875
+   ]
+  },
+  "source": "watchlist",
+  "last": 1.716,
+  "max": 1.716,
+  "min": 1.716,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 51.35651456196787,
+   "zone": "above",
+   "pb": 0.5224361795124791,
+   "rs30": 10.424387696524985,
+   "macd": "fading",
+   "vs200": 0.004513285215039575,
+   "vs50": 0.06813400226573885,
+   "chg7": 0.010600706713780994,
+   "chg30": 0.1673469387755102,
+   "macro": 54.63377356579256,
+   "btc_bull": true,
+   "buy_ratio": 0.504717449983147,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 56.5,
+    "flows": 78.3,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 54.6,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/cosmos",
+   "dexscreener": "https://dexscreener.com/search?q=ATOM"
+  },
+  "updated": "2026-09-30 14:50 UTC",
+  "tmax": 1.716,
+  "tmin": 1.716,
+  "ret_open": 0.0
  }
 ]

@@ -188,9 +188,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Ethereum reach $4,000 in September?": 0,
-   "Will Ethereum dip to $2,500 in September?": 1,
    "Will Ethereum dip to $1,500 in September?": 0,
-   "Will Ethereum reach $3,200 in September?": 0
+   "Will Ethereum dip to $2,500 in September?": 1,
+   "Will Ethereum dip to $1,600 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -241,7 +241,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
   "signal": "ACCUMULATE",
@@ -874,14 +874,14 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD"
  },
  "_disc_seen": {
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790778777.4105334,
+ "_saved_t": 1790779841.534159,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -891,7 +891,7 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 17,
+ "_wl_cursor": 23,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790775361.000648

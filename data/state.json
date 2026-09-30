@@ -95,13 +95,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will Solana dip to $40 in September?": 0,
-   "Will Solana dip to $40 by December 31, 2026?": 4,
    "Will Solana dip to $30 in September?": 0,
-   "Will Solana dip to $50 in September?": 0
+   "Will Solana dip to $50 in September?": 0,
+   "Will Solana dip to $20 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false
@@ -110,13 +110,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 48,
-   "Will Chainlink reach $16 by December 31, 2026?": 68,
+   "Will Chainlink reach $18 by December 31, 2026?": 50,
+   "Will Chainlink reach $16 by December 31, 2026?": 76,
    "Will Chainlink reach $20 by December 31, 2026?": 26,
-   "Will Chainlink dip to $6 by December 31, 2026?": 9
+   "Will Chainlink dip to $6 by December 31, 2026?": 8
   },
   "in_zone2": false,
   "below_stop": false
@@ -125,7 +125,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -138,7 +138,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -881,7 +881,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790743654.2100132,
+ "_saved_t": 1790744696.2271595,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -891,7 +891,7 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 22,
+ "_wl_cursor": 7,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790741140.035475

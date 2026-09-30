@@ -98,10 +98,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Solana dip to $120 September 28-October 4?": 100,
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana dip to $40 in September?": 0,
-   "Will Solana dip to $40 by December 31, 2026?": 4
+   "Will Solana dip to $40 by December 31, 2026?": 4,
+   "Will Solana dip to $30 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false
@@ -125,7 +125,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -861,7 +861,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "macd_day": "2026-09-30"
  },
@@ -878,7 +878,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790797125.243283,
+ "_saved_t": 1790798567.1563835,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -888,7 +888,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 0,
+ "_wl_cursor": 6,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790794579.231217

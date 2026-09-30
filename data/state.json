@@ -833,7 +833,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
@@ -849,7 +849,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Zcash reach $2000 by December 31, 2026?": 51,
@@ -881,7 +881,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790767527.1957264,
+ "_saved_t": 1790768727.6839628,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -891,10 +891,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 12,
+ "_wl_cursor": 18,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790762952.5806208
+  "live prices": 1790767564.9158044
  },
  "SPCX": {
   "seen_news": [

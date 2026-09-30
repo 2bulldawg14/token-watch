@@ -199,7 +199,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -810,7 +810,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will UNI reach $15.50 by December 31, 2026?": 34
@@ -832,7 +832,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
    "HYPE Up or Down - September 29, 8PM ET": 100
@@ -877,7 +877,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790732910.8466866,
+ "_saved_t": 1790733818.2576609,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -887,10 +887,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 9,
+ "_wl_cursor": 16,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790728427.868295
+  "live prices": 1790732912.62866
  },
  "SPCX": {
   "seen_news": [

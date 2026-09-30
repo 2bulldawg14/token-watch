@@ -187,8 +187,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Ethereum reach $4,000 in September?": 0,
    "Will Ethereum dip to $1,500 in September?": 0,
+   "Will Ethereum reach $4,000 in September?": 0,
    "Will Ethereum dip to $2,500 in September?": 1,
    "Will Ethereum dip to $2,300 in September?": 0
   },
@@ -878,17 +878,17 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790795556.435878,
+ "_saved_t": 1790797125.243283,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "high",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 19,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790794579.231217
@@ -986,7 +986,17 @@
    "142521185",
    "142521182",
    "142519304",
-   "142521183"
+   "142521183",
+   "142521905",
+   "142521900",
+   "142521969",
+   "142522282",
+   "142521987",
+   "142522288",
+   "142522177",
+   "142521970",
+   "142521943",
+   "142522478"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,

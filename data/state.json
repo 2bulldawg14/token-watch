@@ -125,7 +125,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -878,7 +878,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790756991.7592182,
+ "_saved_t": 1790758271.8112404,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -888,7 +888,7 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 3,
+ "_wl_cursor": 9,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790754632.7438304

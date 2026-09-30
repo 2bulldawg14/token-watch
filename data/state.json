@@ -132,7 +132,7 @@
  },
  "_discovery_t": 1790557892.4689043,
  "_report_week": "2026-W40",
- "_export_t": 1790725348.1189055,
+ "_export_t": 1790740022.3045871,
  "_tg_offset": 218529289,
  "HBAR": {
   "seen_news": [],
@@ -159,7 +159,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -861,9 +861,9 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
-  "macd_day": "2026-09-29"
+  "macd_day": "2026-09-30"
  },
  "LTC": {
   "seen_news": [],
@@ -878,7 +878,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790740019.8535943,
+ "_saved_t": 1790741074.4451468,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -888,7 +888,7 @@
   "risk": null,
   "signal": "TRIM"
  },
- "_wl_cursor": 3,
+ "_wl_cursor": 9,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790737462.427648

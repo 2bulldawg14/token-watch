@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1790736099.6174126,
+  "t": 1790740607.9624512,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -232,13 +232,14 @@
     "code": true,
     "tax": true,
     "owner": false,
-    "holders": false
+    "holders": false,
+    "liquidity": true
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2422686530,
-    "fdv": 4975399506,
-    "volume": 332095763,
+    "market_cap": 2420745998,
+    "fdv": 4971414295,
+    "volume": 323305973,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -978,7 +979,7 @@
   }
  },
  "dd:sei-network": {
-  "t": 1790714620.297284,
+  "t": 1790740890.400358,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -992,9 +993,9 @@
    },
    "facts": {
     "name": "Sei",
-    "market_cap": 497563039,
-    "fdv": 738955008,
-    "volume": 123254134,
+    "market_cap": 493785288,
+    "fdv": 733344487,
+    "volume": 107113183,
     "website": [
      "https://www.sei.io"
     ],
@@ -1265,7 +1266,7 @@
  "id:shib": "shiba-inu",
  "idt:shib": 1790172691.1545615,
  "dd:shiba-inu": {
-  "t": 1790695535.3056068,
+  "t": 1790740701.0170848,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1282,9 +1283,9 @@
    },
    "facts": {
     "name": "Shiba Inu",
-    "market_cap": 3424328302,
-    "fdv": 3425822627,
-    "volume": 106084015,
+    "market_cap": 3384272870,
+    "fdv": 3385749987,
+    "volume": 101191792,
     "website": [
      "https://shibatoken.com/"
     ],

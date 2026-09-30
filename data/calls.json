@@ -486,7 +486,9 @@
   "last": 0.12424299032716257,
   "max": 0.14067,
   "min": 0.106872,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": 14.48
+  },
   "feat": {
    "rsi": 51.18692011213242,
    "zone": "in",
@@ -523,7 +525,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-09-30 14:06 UTC",
+  "updated": "2026-09-30 15:49 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -1053,7 +1055,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.1807,
+  "last": 1.1674,
   "max": 1.2801,
   "min": 1.0099,
   "checkpoints": {},
@@ -1098,7 +1100,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-09-30 14:06 UTC",
+  "updated": "2026-09-30 15:49 UTC",
   "tmax": 1.0309,
   "tmin": 1.0099,
   "ret_open": 0.58,
@@ -1151,7 +1153,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.10814,
+  "last": 0.10791,
   "max": 0.12387,
   "min": 0.09231,
   "checkpoints": {},
@@ -1191,7 +1193,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-09-30 14:06 UTC",
+  "updated": "2026-09-30 15:49 UTC",
   "tmax": 0.097,
   "tmin": 0.09231,
   "ret_open": -0.07,

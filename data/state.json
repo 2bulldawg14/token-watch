@@ -150,7 +150,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Sui dip to $0.20 before 2027?": 4
+   "Will Sui dip to $0.20 before 2027?": 5
   },
   "in_zone2": false,
   "below_stop": false
@@ -811,7 +811,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will UNI reach $15.50 by December 31, 2026?": 34
@@ -881,7 +881,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790781124.7411275,
+ "_saved_t": 1790783390.5718343,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -891,7 +891,7 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 5,
+ "_wl_cursor": 12,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790779905.3385746

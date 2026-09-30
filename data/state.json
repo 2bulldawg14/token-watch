@@ -95,7 +95,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $600 by December 31, 2026?": 0,
@@ -110,7 +110,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 48,
@@ -124,7 +124,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -187,8 +187,8 @@
   "signal": "HOLD",
   "odds": {
    "Will Ethereum reach $4,000 in September?": 0,
-   "Will Ethereum dip to $1,500 in September?": 0,
    "Will Ethereum dip to $2,500 in September?": 0,
+   "Will Ethereum dip to $1,500 in September?": 0,
    "Will Ethereum dip to $1,600 in September?": 0
   },
   "in_zone2": false,
@@ -877,7 +877,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790805956.5905907,
+ "_saved_t": 1790807191.6664155,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -887,7 +887,7 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 20,
+ "_wl_cursor": 4,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790803610.3012428

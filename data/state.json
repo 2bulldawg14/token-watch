@@ -158,8 +158,8 @@
  "SEI": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
-  "risk": "LOW",
+  "rsi_band": "high",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -881,7 +881,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790744696.2271595,
+ "_saved_t": 1790746141.2788537,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -891,10 +891,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 7,
+ "_wl_cursor": 13,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790741140.035475
+  "live prices": 1790744778.1290143
  },
  "SPCX": {
   "seen_news": [

@@ -183,7 +183,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
@@ -226,13 +226,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
+   "Will XRP reach $5.00 by December 31, 2026?": 3,
    "Will XRP dip to $0.20 in September?": 0,
    "Will XRP reach $3.00 in September?": 0,
-   "Will XRP reach $2.80 in September?": 0,
-   "Will XRP reach $5.00 by December 31, 2026?": 3
+   "Will XRP dip to $0.20 by December 31, 2026?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -240,10 +240,10 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -880,7 +880,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790749836.7443724,
+ "_saved_t": 1790751258.4800053,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -890,10 +890,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 15,
+ "_wl_cursor": 21,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790744778.1290143
+  "live prices": 1790749876.7244825
  },
  "SPCX": {
   "seen_news": [

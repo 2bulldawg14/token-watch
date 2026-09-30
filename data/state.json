@@ -227,7 +227,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will XRP reach $5.00 by December 31, 2026?": 3,
@@ -834,7 +834,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "HYPE Up or Down - September 30, 11AM ET": 100,
    "HYPE Up or Down on September 30?": 100
@@ -879,7 +879,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790789432.5349066,
+ "_saved_t": 1790790407.0578601,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -889,10 +889,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 13,
+ "_wl_cursor": 19,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790784665.5440404
+  "live prices": 1790789435.379252
  },
  "SPCX": {
   "seen_news": [

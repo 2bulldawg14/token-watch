@@ -132,7 +132,7 @@
  },
  "_discovery_t": 1790557892.4689043,
  "_report_week": "2026-W40",
- "_export_t": 1790769898.4662724,
+ "_export_t": 1790784665.5431163,
  "_tg_offset": 218529289,
  "HBAR": {
   "seen_news": [],
@@ -189,8 +189,8 @@
   "odds": {
    "Will Ethereum reach $4,000 in September?": 0,
    "Will Ethereum dip to $1,500 in September?": 0,
-   "Will Ethereum dip to $2,500 in September?": 1,
-   "Will Ethereum dip to $1,600 in September?": 0
+   "Will Ethereum dip to $2,500 in September?": 0,
+   "Will Ethereum reach $3,200 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -241,7 +241,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
   "signal": "ACCUMULATE",
@@ -879,7 +879,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790784663.326606,
+ "_saved_t": 1790785986.9375386,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -889,10 +889,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 18,
+ "_wl_cursor": 1,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790779905.3385746
+  "live prices": 1790784665.5440404
  },
  "SPCX": {
   "seen_news": [
@@ -978,7 +978,8 @@
    "142515544",
    "142515082",
    "142516476",
-   "142515086"
+   "142515086",
+   "142520621"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1045,7 +1046,7 @@
   "_ins": "dump|Beck Peter,Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM"

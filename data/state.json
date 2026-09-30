@@ -95,7 +95,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $600 by December 31, 2026?": 0,
@@ -110,7 +110,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 50,
@@ -125,7 +125,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
@@ -260,7 +260,7 @@
   "SOL": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -881,7 +881,7 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518
  },
- "_saved_t": 1790779841.534159,
+ "_saved_t": 1790781124.7411275,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -891,10 +891,10 @@
   "risk": null,
   "signal": "HOLD"
  },
- "_wl_cursor": 23,
+ "_wl_cursor": 5,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790775361.000648
+  "live prices": 1790779905.3385746
  },
  "SPCX": {
   "seen_news": [
@@ -970,7 +970,17 @@
    "142508624",
    "142509239",
    "142502165",
-   "142502793"
+   "142502793",
+   "142517404",
+   "142515534",
+   "142515487",
+   "142518534",
+   "142515541",
+   "142518535",
+   "142515544",
+   "142515082",
+   "142516476",
+   "142515086"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1028,12 +1038,16 @@
    "142499627",
    "142513052",
    "142512668",
-   "142509316"
+   "142509316",
+   "142517344",
+   "142517345",
+   "142517346",
+   "142517055"
   ],
   "_ins": "dump|Beck Peter,Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM"

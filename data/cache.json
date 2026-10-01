@@ -384,7 +384,7 @@
   }
  },
  "dd:zcash": {
-  "t": 1790846537.0106153,
+  "t": 1790849805.1034534,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -399,9 +399,9 @@
    },
    "facts": {
     "name": "Zcash",
-    "market_cap": 23948356322,
-    "fdv": 23951220121,
-    "volume": 1047219489,
+    "market_cap": 23518471984,
+    "fdv": 23521284376,
+    "volume": 1050834428,
     "website": [
      "https://z.cash/"
     ],
@@ -854,7 +854,7 @@
   }
  },
  "dd:cosmos": {
-  "t": 1790846482.7631636,
+  "t": 1790849808.6154556,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -872,9 +872,9 @@
    },
    "facts": {
     "name": "Cosmos Hub",
-    "market_cap": 942074115,
-    "fdv": 942074115,
-    "volume": 54907634,
+    "market_cap": 932425919,
+    "fdv": 932425919,
+    "volume": 51826314,
     "website": [
      "http://cosmos.network/"
     ],
@@ -905,7 +905,7 @@
   }
  },
  "dd:ethereum": {
-  "t": 1790846487.915262,
+  "t": 1790849813.039914,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -920,9 +920,9 @@
    },
    "facts": {
     "name": "Ethereum",
-    "market_cap": 328162991476,
-    "fdv": 328162991476,
-    "volume": 15621480030,
+    "market_cap": 327902286875,
+    "fdv": 327902286875,
+    "volume": 15450987413,
     "website": [
      "https://www.ethereum.org/"
     ],
@@ -1309,7 +1309,7 @@
  "id:ltc": "litecoin",
  "idt:ltc": 1790206446.5888786,
  "dd:litecoin": {
-  "t": 1790846485.4419136,
+  "t": 1790849810.7381132,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -1322,9 +1322,9 @@
    },
    "facts": {
     "name": "Litecoin",
-    "market_cap": 5228662922,
-    "fdv": 5228828281,
-    "volume": 386982368,
+    "market_cap": 5194179363,
+    "fdv": 5194350320,
+    "volume": 372648459,
     "website": [
      "http://litecoin.org"
     ],
@@ -1707,7 +1707,7 @@
  "id:qnt": "quant-network",
  "idt:qnt": 1790261248.4923754,
  "dd:quant-network": {
-  "t": 1790846490.994558,
+  "t": 1790849815.5109482,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -1726,9 +1726,9 @@
    },
    "facts": {
     "name": "Quant",
-    "market_cap": 4244780101,
-    "fdv": 4264718662,
-    "volume": 725062659,
+    "market_cap": 4170549527,
+    "fdv": 4190139413,
+    "volume": 709092007,
     "website": [
      "https://www.quant.network"
     ],

@@ -71,7 +71,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 300.3,
+  "last": 300.5,
   "max": 339.8,
   "min": 278.8,
   "checkpoints": {
@@ -113,7 +113,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-01 00:02 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "tmax": 311.6,
   "tmin": 286.9,
   "ret_open": 0.26,
@@ -166,7 +166,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.919,
+  "last": 1.905,
   "max": 2.091,
   "min": 1.707,
   "checkpoints": {
@@ -217,7 +217,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/render-token",
    "dexscreener": "https://dexscreener.com/solana/rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof"
   },
-  "updated": "2026-09-30 23:04 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "exit": {
    "t": 1790256809,
    "date": "2026-09-24 13:33 UTC",
@@ -269,7 +269,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.739,
+  "last": 1.736,
   "max": 1.9,
   "min": 1.676,
   "checkpoints": {
@@ -328,10 +328,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-09-30 23:25 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "tmax": 1.9,
   "tmin": 1.691,
-  "ret_open": -1.08
+  "ret_open": -1.25
  },
  {
   "id": "INJ-1790173810",
@@ -367,7 +367,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.415,
+  "last": 7.38,
   "max": 8.581,
   "min": 7.234,
   "checkpoints": {
@@ -426,7 +426,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/solana/1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
   },
-  "updated": "2026-09-30 23:25 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "exit": {
    "t": 1790174772,
    "date": "2026-09-23 14:46 UTC",
@@ -525,7 +525,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-10-01 00:02 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -577,10 +577,12 @@
    ]
   },
   "source": "discovery",
-  "last": 0.13067,
+  "last": 0.13006,
   "max": 0.13831,
   "min": 0.12846,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": -0.79
+  },
   "feat": {
    "rsi": 55.93336043852607,
    "zone": "above",
@@ -626,10 +628,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/falcon-finance-ff",
    "dexscreener": "https://dexscreener.com/ethereum/0xfa1c09fc8b491b6a4d3ff53a10cad29381b3f949"
   },
-  "updated": "2026-09-28 01:43 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "tmax": 0.13831,
   "tmin": 0.12846,
-  "ret_open": -0.33
+  "ret_open": -0.79
  },
  {
   "id": "SHIB-1790245914",
@@ -664,7 +666,7 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 5.76e-06,
+  "last": 5.73e-06,
   "max": 6.05e-06,
   "min": 5.56e-06,
   "checkpoints": {},
@@ -709,7 +711,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-09-30 23:43 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "tmax": 5.97e-06,
   "tmin": 5.57e-06,
   "ret_open": 7.0,
@@ -761,8 +763,8 @@
    ]
   },
   "source": "discovery",
-  "last": 0.7243,
-  "max": 0.7472,
+  "last": 0.7545,
+  "max": 0.7545,
   "min": 0.6973,
   "checkpoints": {},
   "feat": {
@@ -806,10 +808,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/aster-2",
    "dexscreener": "https://dexscreener.com/bsc/0x000ae314e2a2172a039b26378814c252734f556a"
   },
-  "updated": "2026-09-28 01:43 UTC",
-  "tmax": 0.7472,
+  "updated": "2026-10-01 00:32 UTC",
+  "tmax": 0.7545,
   "tmin": 0.6973,
-  "ret_open": 3.87
+  "ret_open": 8.2
  },
  {
   "id": "SPX-1790297122",
@@ -1055,7 +1057,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.1667,
+  "last": 1.1612,
   "max": 1.2801,
   "min": 1.0099,
   "checkpoints": {},
@@ -1100,7 +1102,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-09-30 23:43 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "tmax": 1.0309,
   "tmin": 1.0099,
   "ret_open": 0.58,
@@ -1153,7 +1155,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.10529,
+  "last": 0.10363,
   "max": 0.12387,
   "min": 0.09231,
   "checkpoints": {},
@@ -1193,7 +1195,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-09-30 23:43 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "tmax": 0.097,
   "tmin": 0.09231,
   "ret_open": -0.07,
@@ -1559,9 +1561,9 @@
    ]
   },
   "source": "discovery",
-  "last": 4217.47,
+  "last": 4143.26,
   "max": 4282.5,
-  "min": 4217.47,
+  "min": 4143.26,
   "checkpoints": {},
   "feat": {
    "rsi": 41.013643544975416,
@@ -1605,9 +1607,9 @@
    "dexscreener": "https://dexscreener.com/ethereum/0x68749665ff8d2d112fa859aa293f07a622782f38"
   },
   "tmax": 4282.5,
-  "tmin": 4217.47,
-  "ret_open": -1.47,
-  "updated": "2026-09-28 01:43 UTC"
+  "tmin": 4143.26,
+  "ret_open": -3.2,
+  "updated": "2026-10-01 00:32 UTC"
  },
  {
   "id": "PAXG-1790514698",
@@ -1644,9 +1646,9 @@
    "support_levels": []
   },
   "source": "discovery",
-  "last": 4215.68,
+  "last": 4150.81,
   "max": 4278.6,
-  "min": 4215.68,
+  "min": 4150.81,
   "checkpoints": {},
   "feat": {
    "rsi": 40.563754928645224,
@@ -1689,10 +1691,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/pax-gold",
    "dexscreener": "https://dexscreener.com/ethereum/0x45804880de22913dafe09f4980848ece6ecbaf78"
   },
-  "updated": "2026-09-28 01:43 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "tmax": 4278.6,
-  "tmin": 4215.68,
-  "ret_open": -1.46
+  "tmin": 4150.81,
+  "ret_open": -2.97
  },
  {
   "id": "WLFI-1790514703",
@@ -1882,7 +1884,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-09-30 23:25 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -1949,7 +1951,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.739,
+  "last": 1.736,
   "max": 1.751,
   "min": 1.716,
   "checkpoints": {},
@@ -1994,9 +1996,186 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/search?q=ATOM"
   },
-  "updated": "2026-09-30 23:25 UTC",
+  "updated": "2026-10-01 00:32 UTC",
   "tmax": 1.751,
   "tmin": 1.716,
-  "ret_open": 1.34
+  "ret_open": 1.17
+ },
+ {
+  "id": "CCD-1790814700",
+  "symbol": "CCD",
+  "cg_id": "concordium",
+  "t": 1790814700,
+  "date": "2026-10-01 00:31 UTC",
+  "entry": 0.0036057735471357348,
+  "signal": "IN BUY ZONE",
+  "score": 47,
+  "buy_zone": {
+   "low": 0.0035498641389612525,
+   "high": 0.0036620960956624195
+  },
+  "risk": "LOW",
+  "plan": {
+   "zone1": {
+    "low": 0.0035498641389612525,
+    "high": 0.0036620960956624195,
+    "strong": true,
+    "vol_level": 0.0035094963362722474
+   },
+   "zone2": {
+    "low": 0.0030051312674426404,
+    "high": 0.0030893052349685157,
+    "strong": false
+   },
+   "stop": 0.002949015289092057,
+   "target": 0.0037635267787545492,
+   "resistance": [
+    0.0037635267787545492,
+    0.004589125716822029,
+    0.0056052474867512355
+   ],
+   "support_levels": [
+    0.0035094963362722474
+   ]
+  },
+  "source": "discovery",
+  "last": 0.0036057735471357348,
+  "max": 0.0036057735471357348,
+  "min": 0.0036057735471357348,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 51.654149143945084,
+   "zone": "in",
+   "pb": 0.63595603709919,
+   "rs30": -12.270066508702183,
+   "macd": "fading",
+   "vs200": -0.1442602351834681,
+   "vs50": 0.007784244039345856,
+   "chg7": 0.0323231024511057,
+   "chg30": -0.044949144535361696,
+   "macro": 53.361728032232556,
+   "btc_bull": true,
+   "buy_ratio": null,
+   "wallets": null,
+   "risk": "LOW",
+   "source": "discovery",
+   "parts": {
+    "technical": 43.9,
+    "flows": 50.0,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 53.4,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": false,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/concordium",
+   "dexscreener": "https://dexscreener.com/search?q=CCD"
+  },
+  "updated": "2026-10-01 00:32 UTC",
+  "tmax": 0.0036057735471357348,
+  "tmin": 0.0036057735471357348,
+  "ret_open": 0.0
+ },
+ {
+  "id": "AI-1790814720",
+  "symbol": "AI",
+  "cg_id": "artificial-inu-3",
+  "t": 1790814720,
+  "date": "2026-10-01 00:32 UTC",
+  "entry": 0.019,
+  "signal": "IN BUY ZONE",
+  "score": 46,
+  "buy_zone": {
+   "low": 0.018024642857142857,
+   "high": 0.01924607142857143
+  },
+  "risk": "MEDIUM",
+  "plan": {
+   "zone1": {
+    "low": 0.018024642857142857,
+    "high": 0.01924607142857143,
+    "strong": true,
+    "vol_level": 0.019389583333333335
+   },
+   "zone2": {
+    "low": 0.016294642857142858,
+    "high": 0.017210714285714288,
+    "strong": false
+   },
+   "stop": 0.01568392857142857,
+   "target": 0.019389583333333335,
+   "resistance": [
+    0.019389583333333335,
+    0.021964583333333332
+   ],
+   "support_levels": []
+  },
+  "source": "discovery",
+  "last": 0.019,
+  "max": 0.019,
+  "min": 0.019,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 53.587823644386,
+   "zone": "in",
+   "pb": 0.6317339508273906,
+   "rs30": -3.3795476595616325,
+   "macd": "fading",
+   "vs200": -0.07956885067215691,
+   "vs50": 0.03655210038188761,
+   "chg7": -0.05940594059405935,
+   "chg30": 0.0439560439560438,
+   "macro": 53.361728032232556,
+   "btc_bull": true,
+   "buy_ratio": 0.4499155312129612,
+   "wallets": null,
+   "risk": "MEDIUM",
+   "source": "discovery",
+   "parts": {
+    "technical": 54.6,
+    "flows": 25.8,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 53.4,
+    "news": null,
+    "fundamental": null,
+    "markets": 50
+   },
+   "btc": null
+  },
+  "starred": false,
+  "links": {
+   "chain": "robinhood",
+   "contract": "0x2e8c31162b855a2ffa90f6f8634643ad6f111e18",
+   "contracts": [
+    {
+     "chain": "robinhood",
+     "address": "0x2e8c31162b855a2ffa90f6f8634643ad6f111e18"
+    }
+   ],
+   "coingecko": "https://www.coingecko.com/en/coins/artificial-inu-3",
+   "dexscreener": "https://dexscreener.com/search?q=0x2e8c31162b855a2ffa90f6f8634643ad6f111e18"
+  },
+  "tmax": 0.019,
+  "tmin": 0.019,
+  "ret_open": 0.0
  }
 ]

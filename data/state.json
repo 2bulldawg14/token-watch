@@ -170,7 +170,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
@@ -188,10 +188,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will the price of Ethereum be above $2,700 on October 2?": 58,
-   "Will Ethereum dip to $2,200 September 28-October 4?": 1,
+   "Will the price of Ethereum be above $2,700 on October 2?": 46,
    "Will Ethereum reach $3,300 September 28-October 4?": 1,
-   "Will the price of Ethereum be above $2,700 on October 1?": 66
+   "Will Ethereum dip to $2,200 September 28-October 4?": 1,
+   "Ethereum Up or Down on October 1?": 62
   },
   "in_zone2": false,
   "below_stop": false,
@@ -202,7 +202,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false
  },
@@ -245,7 +245,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -308,7 +308,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -328,8 +328,8 @@
   },
   "AERO": {
    "seen": true,
-   "bad": true,
-   "in_sell": true,
+   "bad": false,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -545,7 +545,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -884,7 +884,7 @@
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 52,
+   "Will Zcash reach $2000 by December 31, 2026?": 51,
    "Will Zcash dip to $700 by December 31, 2026?": 21
   },
   "macd_day": "2026-09-28"
@@ -913,7 +913,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790837890.3580425,
+ "_saved_t": 1790839405.674618,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -921,9 +921,9 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394

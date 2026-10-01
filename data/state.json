@@ -18,6 +18,7 @@
    "SOL",
    "SUI",
    "TAO",
+   "TIG",
    "UNI",
    "XRP",
    "ZEC"
@@ -52,7 +53,8 @@
    "QNT",
    "LAES",
    "SPCX",
-   "RKLB"
+   "RKLB",
+   "TIG"
   ],
   "removed": [
    "HYPERLIQUID"
@@ -76,7 +78,8 @@
   "added_by": {
    "LAES": "David",
    "SPCX": "David",
-   "RKLB": "David"
+   "RKLB": "David",
+   "TIG": "David"
   }
  },
  "INJ": {
@@ -131,10 +134,10 @@
   "in_zone2": false,
   "below_stop": false
  },
- "_discovery_t": 1790814688.2059126,
+ "_discovery_t": 1790861143.6748052,
  "_report_week": "2026-W40",
- "_export_t": 1790843959.324536,
- "_tg_offset": 218529292,
+ "_export_t": 1790859516.2016127,
+ "_tg_offset": 218529293,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
@@ -170,12 +173,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $50,000 by December 31, 2026?": 8,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 9
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8
   },
   "in_zone2": false,
   "below_stop": false,
@@ -186,7 +189,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
    "Will Ethereum dip to $1,000 by December 31, 2026?": 4,
@@ -231,8 +234,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $5.00 by December 31, 2026?": 2,
+   "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $4.00 by December 31, 2026?": 5,
    "Will XRP dip to $0.20 by December 31, 2026?": 1
   },
@@ -308,14 +311,14 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "ETH": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -387,7 +390,7 @@
   },
   "CC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -444,14 +447,14 @@
   "EDEL": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
   "NEAR": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -478,7 +481,7 @@
   },
   "AI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -752,6 +755,41 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "TIG": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "M87": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "MOVR": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "PRL": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "Q": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -832,7 +870,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "UNI": {
   "seen_news": [],
@@ -864,7 +902,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
@@ -882,7 +920,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash dip to $100 by December 31, 2026?": 3,
+   "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash reach $2000 by December 31, 2026?": 51,
    "Will Zcash dip to $700 by December 31, 2026?": 22
@@ -913,7 +951,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790859513.3730829,
+ "_saved_t": 1790861192.2318773,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -923,7 +961,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394
@@ -1108,5 +1146,14 @@
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM"
+ },
+ "TIG": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "HIGH",
+  "signal": "AVOID (SCAM RISK)"
  }
 }

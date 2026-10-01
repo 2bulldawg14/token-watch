@@ -109,8 +109,8 @@
   "odds": {
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana dip to $40 by December 31, 2026?": 4,
-   "Will Solana dip to $50 by December 31, 2026?": 6,
-   "Will Solana dip to $60 by December 31, 2026?": 8
+   "Will Solana reach $200 in October?": 2,
+   "Will Solana dip to $50 by December 31, 2026?": 6
   },
   "in_zone2": false,
   "below_stop": false,
@@ -123,9 +123,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 50,
-   "Will Chainlink reach $16 by December 31, 2026?": 71,
-   "Will Chainlink reach $20 by December 31, 2026?": 27,
+   "Will Chainlink reach $18 by December 31, 2026?": 51,
+   "Will Chainlink reach $16 by December 31, 2026?": 66,
+   "Will Chainlink reach $20 by December 31, 2026?": 30,
    "Will Chainlink dip to $14 in October?": 58
   },
   "in_zone2": false,
@@ -197,10 +197,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
-   "Will Ethereum dip to $1,000 by December 31, 2026?": 4,
-   "Will Ethereum reach $10,000 by December 31, 2026?": 1,
-   "Will Ethereum dip to $800 by December 31, 2026?": 3
+   "Will Ethereum reach $4,500 in October?": 1,
+   "Will Ethereum reach $2,800 in October?": 77,
+   "Will Ethereum dip to $1,800 in October?": 4,
+   "Will Ethereum reach $2,900 in October?": 56
   },
   "in_zone2": false,
   "below_stop": false,
@@ -926,7 +926,7 @@
   "odds": {
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 6,
+   "Will Hyperliquid reach $200 by December 31, 2026?": 5,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 2
   },
   "macd_day": "2026-09-28"
@@ -971,7 +971,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790868197.8010058,
+ "_saved_t": 1790870131.9123683,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -981,7 +981,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 0,
+ "_wl_cursor": 22,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

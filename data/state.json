@@ -170,7 +170,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
@@ -200,7 +200,7 @@
  "AERO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
@@ -231,10 +231,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will XRP reach $5.00 by December 31, 2026?": 3,
+   "Will XRP reach $5.00 by December 31, 2026?": 2,
+   "Will XRP reach $4.00 by December 31, 2026?": 4,
    "Will XRP dip to $0.20 by December 31, 2026?": 1,
-   "Will XRP reach $4.20 by December 31, 2026?": 3,
-   "Will XRP dip to $0.40 by December 31, 2026?": 2
+   "Will XRP reach $4.20 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -308,7 +308,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -913,7 +913,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790839405.674618,
+ "_saved_t": 1790841247.9170082,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

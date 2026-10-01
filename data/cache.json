@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1790819554.3063638,
+  "t": 1790820909.2786129,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 737045281,
-    "fdv": 737045281,
-    "volume": 116487899,
+    "market_cap": 739646848,
+    "fdv": 739646848,
+    "volume": 116457190,
     "website": [
      "https://injective.com"
     ],
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1790819556.5506775,
+  "t": 1790820911.9426143,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 69443353577,
-    "fdv": 74992913540,
-    "volume": 4278097239,
+    "market_cap": 69561009197,
+    "fdv": 75119976847,
+    "volume": 4346915418,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1790819560.2527075,
+  "t": 1790820914.5778291,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 10749381596,
-    "fdv": 14368910602,
-    "volume": 595227625,
+    "market_cap": 10732133105,
+    "fdv": 14345854203,
+    "volume": 594558878,
     "website": [
      "https://chain.link/"
     ],
@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1790819562.510716,
+  "t": 1790820917.3932242,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -237,9 +237,9 @@
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2464022295,
-    "fdv": 5060289542,
-    "volume": 409080989,
+    "market_cap": 2470904690,
+    "fdv": 5074423713,
+    "volume": 402092719,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -473,7 +473,7 @@
   }
  },
  "dd:bitcoin": {
-  "t": 1790819575.9295797,
+  "t": 1790820931.1198008,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -486,9 +486,9 @@
    },
    "facts": {
     "name": "Bitcoin",
-    "market_cap": 1677707788936,
-    "fdv": 1677707788936,
-    "volume": 35703686124,
+    "market_cap": 1679154113381,
+    "fdv": 1679154113381,
+    "volume": 35086516873,
     "website": [
      "http://www.bitcoin.org"
     ],
@@ -760,7 +760,7 @@
  },
  "id:hbar": "hedera-hashgraph",
  "dd:hedera-hashgraph": {
-  "t": 1790819566.9795356,
+  "t": 1790820922.422625,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -774,9 +774,9 @@
    },
    "facts": {
     "name": "Hedera",
-    "market_cap": 4558281320,
-    "fdv": 5197850410,
-    "volume": 288631325,
+    "market_cap": 4577555639,
+    "fdv": 5219829094,
+    "volume": 283305366,
     "website": [
      "https://www.hedera.com/"
     ],
@@ -942,7 +942,7 @@
   }
  },
  "dd:sui": {
-  "t": 1790819569.387288,
+  "t": 1790820924.5607595,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -956,9 +956,9 @@
    },
    "facts": {
     "name": "Sui",
-    "market_cap": 4822255251,
-    "fdv": 11771540397,
-    "volume": 1063071468,
+    "market_cap": 4837004577,
+    "fdv": 11807544772,
+    "volume": 1062751621,
     "website": [
      "https://sui.io/"
     ],
@@ -980,7 +980,7 @@
   }
  },
  "dd:sei-network": {
-  "t": 1790819571.5379915,
+  "t": 1790820926.7103996,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -994,9 +994,9 @@
    },
    "facts": {
     "name": "Sei",
-    "market_cap": 491224583,
-    "fdv": 729541460,
-    "volume": 85296068,
+    "market_cap": 495474079,
+    "fdv": 735852593,
+    "volume": 86495319,
     "website": [
      "https://www.sei.io"
     ],
@@ -1144,7 +1144,7 @@
  "tick:zcash": "ZEC",
  "idt:zcash": 1790171746.2165124,
  "dd:canton-network": {
-  "t": 1790819573.779844,
+  "t": 1790820929.015557,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -1159,9 +1159,9 @@
    },
    "facts": {
     "name": "Canton",
-    "market_cap": 5046362577,
-    "fdv": 5046362577,
-    "volume": 25877087,
+    "market_cap": 5015900484,
+    "fdv": 5015900484,
+    "volume": 23862281,
     "website": [
      "https://www.canton.network/"
     ],
@@ -1267,7 +1267,7 @@
  "id:shib": "shiba-inu",
  "idt:shib": 1790172691.1545615,
  "dd:shiba-inu": {
-  "t": 1790819564.7296097,
+  "t": 1790820920.439433,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1284,9 +1284,9 @@
    },
    "facts": {
     "name": "Shiba Inu",
-    "market_cap": 3383581852,
-    "fdv": 3385058760,
-    "volume": 92366395,
+    "market_cap": 3387980462,
+    "fdv": 3389459290,
+    "volume": 92638500,
     "website": [
      "https://shibatoken.com/"
     ],

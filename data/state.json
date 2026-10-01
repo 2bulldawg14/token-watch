@@ -101,7 +101,7 @@
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana dip to $40 by December 31, 2026?": 4,
    "Will Solana dip to $50 by December 31, 2026?": 6,
-   "Will Solana dip to $60 by December 31, 2026?": 7
+   "Will Solana dip to $60 by December 31, 2026?": 8
   },
   "in_zone2": false,
   "below_stop": false,
@@ -115,9 +115,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 50,
-   "Will Chainlink reach $16 by December 31, 2026?": 73,
-   "Will Chainlink reach $20 by December 31, 2026?": 26,
-   "Will Chainlink dip to $14 in October?": 51
+   "Will Chainlink reach $16 by December 31, 2026?": 74,
+   "Will Chainlink reach $20 by December 31, 2026?": 25,
+   "Will Chainlink dip to $14 in October?": 52
   },
   "in_zone2": false,
   "below_stop": false
@@ -188,10 +188,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will the price of Ethereum be above $2,700 on October 2?": 46,
-   "Will Ethereum reach $3,300 September 28-October 4?": 1,
-   "Will Ethereum dip to $2,200 September 28-October 4?": 1,
-   "Ethereum Up or Down on October 1?": 62
+   "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
+   "Will Ethereum reach $10,000 by December 31, 2026?": 1,
+   "Will Ethereum dip to $800 by December 31, 2026?": 3,
+   "Will Ethereum dip to $1,000 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -545,7 +545,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -913,7 +913,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790845060.1904252,
+ "_saved_t": 1790846549.4246054,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -921,9 +921,9 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
- "_wl_cursor": 18,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394

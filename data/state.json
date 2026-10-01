@@ -133,7 +133,7 @@
  },
  "_discovery_t": 1790814688.2059126,
  "_report_week": "2026-W40",
- "_export_t": 1790829537.787389,
+ "_export_t": 1790843959.324536,
  "_tg_offset": 218529291,
  "HBAR": {
   "seen_news": [],
@@ -232,9 +232,9 @@
   "signal": "HOLD",
   "odds": {
    "Will XRP reach $5.00 by December 31, 2026?": 2,
-   "Will XRP reach $4.00 by December 31, 2026?": 4,
-   "Will XRP dip to $0.20 by December 31, 2026?": 1,
-   "Will XRP reach $4.20 by December 31, 2026?": 3
+   "Will XRP reach $4.00 in October?": 0,
+   "Will XRP reach $4.00 by December 31, 2026?": 5,
+   "Will XRP dip to $0.20 by December 31, 2026?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -868,7 +868,7 @@
   "odds": {
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 7,
+   "Will Hyperliquid reach $200 by December 31, 2026?": 6,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 2
   },
   "macd_day": "2026-09-28"
@@ -885,7 +885,7 @@
    "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash reach $2000 by December 31, 2026?": 51,
-   "Will Zcash dip to $700 by December 31, 2026?": 21
+   "Will Zcash dip to $700 by December 31, 2026?": 20
   },
   "macd_day": "2026-09-28"
  },
@@ -913,7 +913,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790843957.3153548,
+ "_saved_t": 1790845060.1904252,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -923,7 +923,7 @@
   "risk": "MEDIUM",
   "signal": "TRIM"
  },
- "_wl_cursor": 12,
+ "_wl_cursor": 18,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394

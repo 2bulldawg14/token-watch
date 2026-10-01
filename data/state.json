@@ -54,7 +54,8 @@
    "LAES",
    "SPCX",
    "RKLB",
-   "TIG"
+   "TIG",
+   "XRPN"
   ],
   "removed": [
    "HYPERLIQUID"
@@ -64,7 +65,8 @@
   "stocks": [
    "LAES",
    "RKLB",
-   "SPCX"
+   "SPCX",
+   "XRPN"
   ],
   "members": [
    {
@@ -79,7 +81,8 @@
    "LAES": "David",
    "SPCX": "David",
    "RKLB": "David",
-   "TIG": "David"
+   "TIG": "David",
+   "XRPN": "David"
   }
  },
  "INJ": {
@@ -137,7 +140,7 @@
  "_discovery_t": 1790861143.6748052,
  "_report_week": "2026-W40",
  "_export_t": 1790859516.2016127,
- "_tg_offset": 218529293,
+ "_tg_offset": 218529294,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
@@ -790,6 +793,13 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "XRPN": {
+   "seen": true,
+   "bad": false,
+   "in_sell": true,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -951,7 +961,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790861192.2318773,
+ "_saved_t": 1790862898.8569748,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1155,5 +1165,23 @@
   "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)"
+ },
+ "XRPN": {
+  "seen_news": [
+   "142522686",
+   "142521474",
+   "142517349",
+   "142498700",
+   "142495225",
+   "142496389",
+   "142496934",
+   "142430508"
+  ],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "high",
+  "risk": "LOW",
+  "signal": "HOLD"
  }
 }

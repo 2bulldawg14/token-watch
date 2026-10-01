@@ -170,12 +170,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $57,500 in September?": 0,
-   "Will Bitcoin dip to $50,000 by December 31, 2026?": 8
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 8,
+   "Will Bitcoin dip to $57,500 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -308,7 +308,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -913,7 +913,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790824585.2121677,
+ "_saved_t": 1790825838.0270164,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -923,7 +923,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 12,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394

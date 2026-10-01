@@ -473,7 +473,7 @@
   }
  },
  "dd:bitcoin": {
-  "t": 1790848513.6571052,
+  "t": 1790852128.1250417,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -486,9 +486,9 @@
    },
    "facts": {
     "name": "Bitcoin",
-    "market_cap": 1683536534738,
-    "fdv": 1683536534738,
-    "volume": 37602628880,
+    "market_cap": 1686164872246,
+    "fdv": 1686164872246,
+    "volume": 37265398196,
     "website": [
      "http://www.bitcoin.org"
     ],
@@ -760,7 +760,7 @@
  },
  "id:hbar": "hedera-hashgraph",
  "dd:hedera-hashgraph": {
-  "t": 1790848504.8448834,
+  "t": 1790852117.09621,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -774,9 +774,9 @@
    },
    "facts": {
     "name": "Hedera",
-    "market_cap": 4606313072,
-    "fdv": 5252621461,
-    "volume": 292790577,
+    "market_cap": 4591186854,
+    "fdv": 5235372895,
+    "volume": 269558436,
     "website": [
      "https://www.hedera.com/"
     ],
@@ -942,7 +942,7 @@
   }
  },
  "dd:sui": {
-  "t": 1790848507.0416732,
+  "t": 1790852119.645281,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -956,9 +956,9 @@
    },
    "facts": {
     "name": "Sui",
-    "market_cap": 4751808369,
-    "fdv": 11599573490,
-    "volume": 1062708619,
+    "market_cap": 4755835008,
+    "fdv": 11609402863,
+    "volume": 1059391948,
     "website": [
      "https://sui.io/"
     ],
@@ -980,7 +980,7 @@
   }
  },
  "dd:sei-network": {
-  "t": 1790848509.2373273,
+  "t": 1790852122.3912013,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -994,9 +994,9 @@
    },
    "facts": {
     "name": "Sei",
-    "market_cap": 490308637,
-    "fdv": 728181144,
-    "volume": 83834764,
+    "market_cap": 490935040,
+    "fdv": 729111445,
+    "volume": 85379205,
     "website": [
      "https://www.sei.io"
     ],
@@ -1144,7 +1144,7 @@
  "tick:zcash": "ZEC",
  "idt:zcash": 1790171746.2165124,
  "dd:canton-network": {
-  "t": 1790848511.445044,
+  "t": 1790852124.8832953,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -1159,9 +1159,9 @@
    },
    "facts": {
     "name": "Canton",
-    "market_cap": 4909038201,
-    "fdv": 4909038201,
-    "volume": 21992096,
+    "market_cap": 4836535730,
+    "fdv": 4836535730,
+    "volume": 22510396,
     "website": [
      "https://www.canton.network/"
     ],
@@ -1267,7 +1267,7 @@
  "id:shib": "shiba-inu",
  "idt:shib": 1790172691.1545615,
  "dd:shiba-inu": {
-  "t": 1790848502.9633775,
+  "t": 1790852112.7880409,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1283,9 +1283,9 @@
    },
    "facts": {
     "name": "Shiba Inu",
-    "market_cap": 3384574867,
-    "fdv": 3386052209,
-    "volume": 88692099,
+    "market_cap": 3389231581,
+    "fdv": 3390710955,
+    "volume": 91046446,
     "website": [
      "https://shibatoken.com/"
     ],

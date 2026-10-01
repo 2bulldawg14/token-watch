@@ -98,10 +98,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana dip to $40 in September?": 0,
-   "Will Solana dip to $40 by December 31, 2026?": 4,
-   "Will Solana dip to $50 by December 31, 2026?": 6
+   "Will Solana dip to $20 in September?": 0,
+   "Will Solana dip to $10 in September?": 0,
+   "Will Solana reach $200 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -189,9 +189,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Ethereum reach $4,000 in September?": 0,
-   "Will Ethereum dip to $2,500 in September?": 0,
    "Will Ethereum dip to $1,600 in September?": 0,
-   "Will Ethereum dip to $1,500 in September?": 0
+   "Will Ethereum dip to $1,500 in September?": 0,
+   "Will Ethereum dip to $1,700 in September?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -545,7 +545,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -863,7 +863,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
@@ -883,8 +883,8 @@
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 59,
-   "Will Zcash dip to $700 by December 31, 2026?": 22
+   "Will Zcash reach $2000 by December 31, 2026?": 55,
+   "Will Zcash dip to $700 by December 31, 2026?": 21
   },
   "macd_day": "2026-09-28"
  },
@@ -912,7 +912,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790817697.189007,
+ "_saved_t": 1790819619.7266464,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -920,7 +920,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "_wl_cursor": 0,
  "_err_alert": {

@@ -113,7 +113,7 @@
    "Will Solana dip to $30 in October?": 0,
    "Will Solana reach $200 in October?": 1,
    "Will Solana dip to $20 in October?": 0,
-   "Will Solana dip to $110 in October?": 58
+   "Will Solana dip to $110 in October?": 66
   },
   "in_zone2": false,
   "below_stop": false,
@@ -128,8 +128,8 @@
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 51,
    "Will Chainlink reach $16 by December 31, 2026?": 82,
-   "Will Chainlink reach $20 by December 31, 2026?": 26,
-   "Will Chainlink dip to $14 in October?": 59
+   "Will Chainlink reach $20 by December 31, 2026?": 24,
+   "Will Chainlink reach $26 in October?": 44
   },
   "in_zone2": false,
   "below_stop": false
@@ -145,7 +145,7 @@
  },
  "_discovery_t": 1790959408.0073686,
  "_report_week": "2026-W40",
- "_export_t": 1790949442.257515,
+ "_export_t": 1790965320.5369136,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -223,7 +223,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-02"
@@ -255,7 +255,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "ACCUMULATE",
@@ -733,7 +733,7 @@
   },
   "RKLB": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -996,7 +996,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
@@ -1009,7 +1009,8 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "HOLD",
+  "macd_day": "2026-10-02"
  },
  "_disc_seen": {
   "ASTER": 1790253479.3720071,
@@ -1017,7 +1018,7 @@
   "CCD": 1790814700.3779347,
   "BLAST": 1790959422.8398664
  },
- "_saved_t": 1790965317.8289456,
+ "_saved_t": 1790966556.1580546,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1329,13 +1330,13 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "TIG": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)"

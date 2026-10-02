@@ -141,7 +141,8 @@
   "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
-  "below_stop": false
+  "below_stop": false,
+  "macd_day": "2026-10-02"
  },
  "_discovery_t": 1790959408.0073686,
  "_report_week": "2026-W40",
@@ -1018,7 +1019,7 @@
   "CCD": 1790814700.3779347,
   "BLAST": 1790959422.8398664
  },
- "_saved_t": 1790966556.1580546,
+ "_saved_t": 1790968538.1393914,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1028,7 +1029,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 0,
+ "_wl_cursor": 6,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

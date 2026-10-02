@@ -255,7 +255,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "ACCUMULATE",
@@ -733,7 +733,7 @@
   },
   "RKLB": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1017,7 +1017,7 @@
   "CCD": 1790814700.3779347,
   "BLAST": 1790959422.8398664
  },
- "_saved_t": 1790963707.9496472,
+ "_saved_t": 1790965317.8289456,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,11 @@
    "142590687",
    "142590716",
    "142590865",
-   "142591041"
+   "142591041",
+   "142591818",
+   "142592040",
+   "142591919",
+   "142592042"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1325,7 +1329,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "TIG": {
   "seen_news": [],

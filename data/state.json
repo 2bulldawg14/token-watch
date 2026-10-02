@@ -143,7 +143,7 @@
   "in_zone2": false,
   "below_stop": false
  },
- "_discovery_t": 1790909610.2515538,
+ "_discovery_t": 1790959408.0073686,
  "_report_week": "2026-W40",
  "_export_t": 1790949442.257515,
  "_tg_offset": 218529296,
@@ -187,7 +187,7 @@
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin dip to $50,000 by December 31, 2026?": 6,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 9
   },
   "in_zone2": false,
   "below_stop": false,
@@ -245,9 +245,9 @@
   "signal": "HOLD",
   "odds": {
    "Will XRP reach $4.00 in October?": 1,
+   "Will XRP reach $3.00 in October?": 1,
    "Will XRP reach $2.60 in October?": 3,
-   "Will XRP reach $2.80 in October?": 2,
-   "Will XRP reach $3.00 in October?": 3
+   "Will XRP reach $2.80 in October?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -255,7 +255,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "ACCUMULATE",
@@ -835,6 +835,27 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "SC": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "BLAST": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "UAI": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -926,8 +947,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $15.50 by December 31, 2026?": 26,
-   "Will UNI reach $11.00 by December 31, 2026?": 70
+   "Will UNI reach $15.50 by December 31, 2026?": 26
   },
   "macd_day": "2026-09-29"
  },
@@ -950,7 +970,7 @@
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
-   "Will Hyperliquid reach $100 by December 31, 2026?": 70,
+   "Will Hyperliquid reach $100 by December 31, 2026?": 71,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
    "Will Hyperliquid reach $200 by December 31, 2026?": 5
@@ -966,9 +986,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
+   "Will Zcash reach $2000 by December 31, 2026?": 47,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
-   "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 50
+   "Will Zcash dip to $50 by December 31, 2026?": 3
   },
   "macd_day": "2026-09-28"
  },
@@ -987,16 +1007,17 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD"
  },
  "_disc_seen": {
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518,
-  "CCD": 1790814700.3779347
+  "CCD": 1790814700.3779347,
+  "BLAST": 1790959422.8398664
  },
- "_saved_t": 1790957975.441268,
+ "_saved_t": 1790959453.934496,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1006,7 +1027,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 3,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1188,7 +1209,19 @@
    "142588346",
    "142588872",
    "142588757",
-   "142589546"
+   "142589546",
+   "142590660",
+   "142590671",
+   "142590866",
+   "142590867",
+   "142590711",
+   "142591066",
+   "142590677",
+   "142591145",
+   "142590687",
+   "142590716",
+   "142590865",
+   "142591041"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1283,7 +1316,8 @@
    "142564119",
    "142564120",
    "142588335",
-   "142588871"
+   "142588871",
+   "142591145"
   ],
   "_ins": "dump|Beck Peter,Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,

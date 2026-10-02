@@ -112,8 +112,8 @@
   "odds": {
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana dip to $40 by December 31, 2026?": 4,
-   "Will Solana dip to $50 by December 31, 2026?": 6,
-   "Will Solana reach $200 in October?": 2
+   "Will Solana reach $400 by December 31, 2026?": 1,
+   "Will Solana dip to $50 by December 31, 2026?": 6
   },
   "in_zone2": false,
   "below_stop": false,
@@ -124,12 +124,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 50,
-   "Will Chainlink reach $16 by December 31, 2026?": 85,
+   "Will Chainlink reach $16 by December 31, 2026?": 82,
    "Will Chainlink reach $20 by December 31, 2026?": 28,
-   "Will Chainlink dip to $14 in October?": 50
+   "Will Chainlink dip to $14 in October?": 54
   },
   "in_zone2": false,
   "below_stop": false
@@ -274,13 +274,13 @@
   "SOL": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -368,7 +368,7 @@
   "RENDER": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -947,7 +947,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
@@ -996,7 +996,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790915801.080756,
+ "_saved_t": 1790916930.3460524,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1006,7 +1006,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 12,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1257,7 +1257,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)"

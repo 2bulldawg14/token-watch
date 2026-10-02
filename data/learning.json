@@ -1,18 +1,18 @@
 {
  "rules": [],
  "mult": {
-  "technical": 0.98,
-  "flows": 1.2,
-  "macro": 0.7,
+  "technical": 1.04,
+  "flows": 1.22,
+  "macro": 0.79,
   "markets": 0.91
  },
- "graded": 15,
- "t": "2026-10-02 13:57 UTC",
+ "graded": 17,
+ "t": "2026-10-02 14:22 UTC",
  "scorecard": {
-  "closed": 15,
-  "wins": 13,
-  "avg": 3.45,
-  "held": 0.7,
+  "closed": 17,
+  "wins": 14,
+  "avg": 3.18,
+  "held": 0.8,
   "gave_back": 1
  },
  "sells": {
@@ -26,21 +26,21 @@
    "text": "entered the sell zone"
   },
   "target": {
-   "n": 3,
+   "n": 4,
    "reviewed": 2,
    "early": 0,
    "good": 0,
    "after": -0.5,
-   "ret": 7.95,
+   "ret": 6.71,
    "text": "hit the take-profit target"
   },
   "signal": {
-   "n": 7,
+   "n": 8,
    "reviewed": 1,
    "early": 1,
    "good": 0,
    "after": 42.1,
-   "ret": 1.93,
+   "ret": 1.61,
    "text": "signal turned TRIM/SELL"
   }
  },

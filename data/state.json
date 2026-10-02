@@ -113,7 +113,7 @@
    "Will Solana dip to $30 in October?": 0,
    "Will Solana reach $200 in October?": 1,
    "Will Solana dip to $20 in October?": 0,
-   "Will Solana dip to $110 in October?": 46
+   "Will the price of Solana be above $140 on October 2?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -127,8 +127,8 @@
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 50,
-   "Will Chainlink reach $16 by December 31, 2026?": 84,
-   "Will Chainlink reach $20 by December 31, 2026?": 24,
+   "Will Chainlink reach $16 by December 31, 2026?": 80,
+   "Will Chainlink reach $20 by December 31, 2026?": 22,
    "Will Chainlink dip to $14 in October?": 58
   },
   "in_zone2": false,
@@ -952,7 +952,7 @@
   "odds": {
    "Will Hyperliquid reach $100 by December 31, 2026?": 70,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid reach $200 by December 31, 2026?": 6
   },
   "macd_day": "2026-09-28"
@@ -968,8 +968,8 @@
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $300 by December 31, 2026?": 6,
-   "Will Zcash reach $2000 by December 31, 2026?": 47
+   "Will Zcash reach $2000 by December 31, 2026?": 47,
+   "Will Zcash dip to $700 by December 31, 2026?": 30
   },
   "macd_day": "2026-09-28"
  },
@@ -997,17 +997,17 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790943547.016881,
+ "_saved_t": 1790945118.9454274,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

@@ -949,10 +949,10 @@
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
+   "Will Hyperliquid reach $100 by December 31, 2026?": 66,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 5,
-   "Will Hyperliquid dip to $16 by December 31, 2026?": 2
+   "Will Hyperliquid reach $200 by December 31, 2026?": 6
   },
   "macd_day": "2026-09-28"
  },
@@ -996,7 +996,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790921970.0148978,
+ "_saved_t": 1790923530.9358952,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1006,7 +1006,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

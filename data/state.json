@@ -127,9 +127,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 51,
-   "Will Chainlink reach $16 by December 31, 2026?": 78,
+   "Will Chainlink reach $16 by December 31, 2026?": 80,
    "Will Chainlink reach $20 by December 31, 2026?": 20,
-   "Will Chainlink reach $26 in October?": 32
+   "Will Chainlink reach $26 in October?": 42
   },
   "in_zone2": false,
   "below_stop": false
@@ -224,7 +224,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-02"
@@ -969,7 +969,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
@@ -1020,7 +1020,7 @@
   "CCD": 1790814700.3779347,
   "BLAST": 1790959422.8398664
  },
- "_saved_t": 1790983986.9731557,
+ "_saved_t": 1790985065.173669,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

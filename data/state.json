@@ -56,7 +56,8 @@
    "RKLB",
    "TIG",
    "XRPN",
-   "SECZ"
+   "SECZ",
+   "FIGR"
   ],
   "removed": [
    "HYPERLIQUID"
@@ -64,6 +65,7 @@
   "wallets": [],
   "unfollowed": [],
   "stocks": [
+   "FIGR",
    "LAES",
    "RKLB",
    "SECURITIZE",
@@ -85,7 +87,8 @@
    "RKLB": "David",
    "TIG": "David",
    "XRPN": "David",
-   "SECURITIZE": "David"
+   "SECURITIZE": "David",
+   "FIGR": "David"
   }
  },
  "INJ": {
@@ -143,7 +146,7 @@
  "_discovery_t": 1790861143.6748052,
  "_report_week": "2026-W40",
  "_export_t": 1790890531.8261504,
- "_tg_offset": 218529295,
+ "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
@@ -811,6 +814,13 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "FIGR": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -972,7 +982,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790900591.8781211,
+ "_saved_t": 1790902581.649831,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1265,5 +1275,9 @@
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD"
+ },
+ "FIGR": {
+  "seen_news": [],
+  "_ins": "|Kgil Minchung,Stevens David Todd"
  }
 }

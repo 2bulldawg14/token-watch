@@ -202,8 +202,8 @@
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
    "Will Ethereum dip to $1,000 by December 31, 2026?": 4,
-   "Will Ethereum dip to $800 by December 31, 2026?": 3,
-   "Will Ethereum reach $10,000 by December 31, 2026?": 1
+   "Will Ethereum reach $10,000 by December 31, 2026?": 1,
+   "Will Ethereum dip to $800 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -996,7 +996,7 @@
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347
  },
- "_saved_t": 1790955536.3706057,
+ "_saved_t": 1790956606.4523277,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1006,7 +1006,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 20,
+ "_wl_cursor": 26,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1179,7 +1179,16 @@
    "142563677",
    "142562974",
    "142563115",
-   "142563116"
+   "142563116",
+   "142588366",
+   "142588350",
+   "142588335",
+   "142588336",
+   "142588871",
+   "142588346",
+   "142588872",
+   "142588757",
+   "142589546"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1195,7 +1204,8 @@
    "142373389",
    "142344577",
    "142495512",
-   "142527486"
+   "142527486",
+   "142588962"
   ],
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,
@@ -1271,7 +1281,9 @@
    "142573044",
    "142564118",
    "142564119",
-   "142564120"
+   "142564120",
+   "142588335",
+   "142588871"
   ],
   "_ins": "dump|Beck Peter,Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
@@ -1285,7 +1297,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)"

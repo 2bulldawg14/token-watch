@@ -560,7 +560,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1022,7 +1022,7 @@
   "CCD": 1790814700.3779347,
   "BLAST": 1790959422.8398664
  },
- "_saved_t": 1790993734.2782488,
+ "_saved_t": 1790995484.516829,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1030,9 +1030,9 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
- "_wl_cursor": 16,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

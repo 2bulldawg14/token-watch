@@ -110,10 +110,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
+   "Will Solana reach $600 by December 31, 2026?": 0,
+   "Will Solana reach $320 by December 31, 2026?": 2,
    "Will Solana reach $200 in October?": 1,
-   "Will Solana dip to $20 in October?": 0,
-   "Will Solana dip to $30 in October?": 0,
-   "Will Solana dip to $110 in October?": 58
+   "Will Solana dip to $20 in October?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -126,9 +126,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 48,
-   "Will Chainlink reach $16 by December 31, 2026?": 79,
-   "Will Chainlink reach $20 by December 31, 2026?": 26,
+   "Will Chainlink reach $18 by December 31, 2026?": 50,
+   "Will Chainlink reach $16 by December 31, 2026?": 78,
+   "Will Chainlink reach $20 by December 31, 2026?": 24,
    "Will Chainlink reach $26 in October?": 42
   },
   "in_zone2": false,
@@ -560,7 +560,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -989,7 +989,7 @@
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
-   "Will Hyperliquid reach $100 by December 31, 2026?": 68,
+   "Will Hyperliquid reach $100 by December 31, 2026?": 67,
    "Will Hyperliquid dip to $8 by December 31, 2026?": 2
   },
   "macd_day": "2026-09-28"
@@ -1003,7 +1003,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash reach $2000 by December 31, 2026?": 37,
+   "Will Zcash reach $2000 by December 31, 2026?": 36,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $700 by December 31, 2026?": 28
@@ -1037,7 +1037,7 @@
   "BLAST": 1790959422.8398664,
   "2Z": 1791006258.8478503
  },
- "_saved_t": 1791038699.066703,
+ "_saved_t": 1791053730.4770527,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1045,9 +1045,9 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
- "_wl_cursor": 0,
+ "_wl_cursor": 23,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

@@ -560,7 +560,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -964,7 +964,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $15.50 by December 31, 2026?": 26
+   "Will UNI reach $11.00 by December 31, 2026?": 74
   },
   "macd_day": "2026-09-29"
  },
@@ -987,8 +987,8 @@
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
+   "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid reach $100 by December 31, 2026?": 68,
    "Will Hyperliquid reach $200 by December 31, 2026?": 5
   },
@@ -1006,7 +1006,7 @@
    "Will Zcash reach $2000 by December 31, 2026?": 37,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $600 by December 31, 2026?": 20
+   "Will Zcash dip to $700 by December 31, 2026?": 28
   },
   "macd_day": "2026-09-28"
  },
@@ -1037,7 +1037,7 @@
   "BLAST": 1790959422.8398664,
   "2Z": 1791006258.8478503
  },
- "_saved_t": 1791006278.7691016,
+ "_saved_t": 1791008623.7758636,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1045,7 +1045,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "_wl_cursor": 0,
  "_err_alert": {

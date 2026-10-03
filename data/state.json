@@ -973,8 +973,8 @@
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid reach $100 by December 31, 2026?": 68,
    "Will Hyperliquid reach $200 by December 31, 2026?": 5
   },
@@ -992,7 +992,7 @@
    "Will Zcash reach $2000 by December 31, 2026?": 37,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 28
+   "Will Zcash dip to $600 by December 31, 2026?": 20
   },
   "macd_day": "2026-09-28"
  },
@@ -1022,7 +1022,7 @@
   "CCD": 1790814700.3779347,
   "BLAST": 1790959422.8398664
  },
- "_saved_t": 1791002155.7065144,
+ "_saved_t": 1791003269.145062,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1032,7 +1032,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1341,7 +1341,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)"

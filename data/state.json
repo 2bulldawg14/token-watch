@@ -142,7 +142,7 @@
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
-  "macd_day": "2026-10-02"
+  "macd_day": "2026-10-03"
  },
  "_discovery_t": 1790959408.0073686,
  "_report_week": "2026-W40",
@@ -369,7 +369,7 @@
   "RENDER": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -937,7 +937,8 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "HOLD",
+  "macd_day": "2026-10-03"
  },
  "UNI": {
   "seen_news": [],
@@ -1009,7 +1010,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "LOW",
   "signal": "HOLD",
   "macd_day": "2026-10-02"
@@ -1020,13 +1021,13 @@
   "CCD": 1790814700.3779347,
   "BLAST": 1790959422.8398664
  },
- "_saved_t": 1790985065.173669,
+ "_saved_t": 1790986893.5117693,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
@@ -1383,7 +1384,7 @@
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
-  "macd_day": "2026-10-02"
+  "macd_day": "2026-10-03"
  },
  "FIGR": {
   "seen_news": [

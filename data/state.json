@@ -110,10 +110,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Solana reach $200 in October?": 2,
+   "Will Solana reach $200 in October?": 1,
    "Will Solana dip to $20 in October?": 0,
    "Will Solana dip to $30 in October?": 0,
-   "Will Solana dip to $110 in October?": 58
+   "Will Solana dip to $110 in October?": 60
   },
   "in_zone2": false,
   "below_stop": false,
@@ -124,12 +124,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 51,
+   "Will Chainlink reach $18 by December 31, 2026?": 48,
    "Will Chainlink reach $16 by December 31, 2026?": 80,
-   "Will Chainlink reach $20 by December 31, 2026?": 23,
-   "Will Chainlink reach $26 in October?": 34
+   "Will Chainlink reach $20 by December 31, 2026?": 22,
+   "Will Chainlink reach $26 in October?": 40
   },
   "in_zone2": false,
   "below_stop": false
@@ -282,7 +282,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -479,7 +479,7 @@
   },
   "CASHCAT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1037,7 +1037,7 @@
   "BLAST": 1790959422.8398664,
   "2Z": 1791006258.8478503
  },
- "_saved_t": 1791008623.7758636,
+ "_saved_t": 1791011135.664591,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

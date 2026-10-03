@@ -225,7 +225,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-02"
@@ -1022,7 +1022,7 @@
   "CCD": 1790814700.3779347,
   "BLAST": 1790959422.8398664
  },
- "_saved_t": 1790997755.0718758,
+ "_saved_t": 1791000114.0642476,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

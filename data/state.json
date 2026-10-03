@@ -111,9 +111,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in October?": 2,
-   "Will Solana dip to $30 in October?": 0,
    "Will Solana dip to $20 in October?": 0,
-   "Will Solana dip to $110 in October?": 60
+   "Will Solana dip to $30 in October?": 0,
+   "Will Solana dip to $110 in October?": 58
   },
   "in_zone2": false,
   "below_stop": false,
@@ -129,7 +129,7 @@
    "Will Chainlink reach $18 by December 31, 2026?": 51,
    "Will Chainlink reach $16 by December 31, 2026?": 80,
    "Will Chainlink reach $20 by December 31, 2026?": 23,
-   "Will Chainlink reach $26 in October?": 42
+   "Will Chainlink reach $26 in October?": 34
   },
   "in_zone2": false,
   "below_stop": false
@@ -144,7 +144,7 @@
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1790959408.0073686,
+ "_discovery_t": 1791006232.8215313,
  "_report_week": "2026-W40",
  "_export_t": 1790995486.7147331,
  "_tg_offset": 218529296,
@@ -458,7 +458,7 @@
   },
   "EDEL": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -546,7 +546,7 @@
   },
   "PONS": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -560,7 +560,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -858,6 +858,20 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "2Z": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "MET": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -1020,9 +1034,10 @@
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347,
-  "BLAST": 1790959422.8398664
+  "BLAST": 1790959422.8398664,
+  "2Z": 1791006258.8478503
  },
- "_saved_t": 1791004490.0332932,
+ "_saved_t": 1791006278.7691016,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1030,7 +1045,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "_wl_cursor": 0,
  "_err_alert": {

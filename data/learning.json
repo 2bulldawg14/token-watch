@@ -1,18 +1,46 @@
 {
- "rules": [],
+ "rules": [
+  {
+   "key": "macd_weak",
+   "text": "MACD momentum was fading or turning down",
+   "n": 15,
+   "wins": 5,
+   "avg": -0.7453333333333333,
+   "points": -4.7,
+   "block": false
+  },
+  {
+   "key": "below_200",
+   "text": "Price was below its 200-day average (longer-term downtrend)",
+   "n": 8,
+   "wins": 1,
+   "avg": -5.48625,
+   "points": -12,
+   "block": true
+  },
+  {
+   "key": "found_coin",
+   "text": "A coin the scanner found (not one you picked)",
+   "n": 11,
+   "wins": 3,
+   "avg": -4.1890909090909085,
+   "points": -7.7,
+   "block": false
+  }
+ ],
  "mult": {
-  "technical": 0.72,
-  "flows": 1.22,
-  "macro": 0.9,
-  "markets": 0.92
+  "technical": 0.67,
+  "flows": 1.1,
+  "macro": 0.97,
+  "markets": 1.0
  },
- "graded": 19,
- "t": "2026-10-04 10:55 UTC",
+ "graded": 20,
+ "t": "2026-10-04 17:54 UTC",
  "scorecard": {
-  "closed": 19,
+  "closed": 20,
   "wins": 14,
-  "avg": 1.9,
-  "held": 0.7,
+  "avg": -0.8,
+  "held": 0.8,
   "gave_back": 1
  },
  "sells": {
@@ -35,16 +63,16 @@
    "text": "hit the take-profit target"
   },
   "signal": {
-   "n": 10,
-   "reviewed": 4,
+   "n": 11,
+   "reviewed": 5,
    "early": 1,
    "good": 0,
-   "after": 6.2,
-   "ret": -0.51,
+   "after": 4.2,
+   "ret": -5.2,
    "text": "signal turned TRIM/SELL"
   }
  },
  "sell_soft": [],
  "wins": 6,
- "losses": 2
+ "losses": 3
 }

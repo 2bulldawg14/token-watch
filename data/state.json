@@ -110,8 +110,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana reach $320 by December 31, 2026?": 2,
+   "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana reach $200 in October?": 1,
    "Will Solana dip to $20 in October?": 0
   },
@@ -126,10 +126,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 52,
+   "Will Chainlink reach $18 by December 31, 2026?": 51,
    "Will Chainlink reach $16 by December 31, 2026?": 79,
    "Will Chainlink reach $20 by December 31, 2026?": 23,
-   "Will Chainlink reach $26 in October?": 41
+   "Will Chainlink reach $26 in October?": 40
   },
   "in_zone2": false,
   "below_stop": false,
@@ -147,7 +147,7 @@
  },
  "_discovery_t": 1791081098.908035,
  "_report_week": "2026-W40",
- "_export_t": 1791053732.398973,
+ "_export_t": 1791081152.0770338,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -200,7 +200,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
    "Will Ethereum reach $4,500 by December 31, 2026?": 6,
@@ -331,7 +331,7 @@
   },
   "ETH": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -986,7 +986,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 72
+   "Will UNI reach $11.00 by December 31, 2026?": 71
   },
   "macd_day": "2026-09-29"
  },
@@ -1027,8 +1027,8 @@
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $600 by December 31, 2026?": 20,
-   "Will Zcash dip to $500 by December 31, 2026?": 12
+   "Will Zcash reach $2000 by December 31, 2026?": 35,
+   "Will Zcash dip to $700 by December 31, 2026?": 28
   },
   "macd_day": "2026-09-28"
  },
@@ -1060,7 +1060,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791081150.210579,
+ "_saved_t": 1791088237.8818097,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

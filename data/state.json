@@ -147,7 +147,7 @@
  },
  "_discovery_t": 1791136403.0316353,
  "_report_week": "2026-W40",
- "_export_t": 1791136454.0053928,
+ "_export_t": 1791152134.8307066,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -561,7 +561,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1067,7 +1067,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791152132.4626777,
+ "_saved_t": 1791153289.5405343,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1075,7 +1075,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "_wl_cursor": 0,
  "_err_alert": {

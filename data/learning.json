@@ -12,35 +12,35 @@
   {
    "key": "below_200",
    "text": "Price was below its 200-day average (longer-term downtrend)",
-   "n": 8,
+   "n": 9,
    "wins": 1,
-   "avg": -5.48625,
+   "avg": -5.22,
    "points": -12,
    "block": true
   },
   {
    "key": "found_coin",
    "text": "A coin the scanner found (not one you picked)",
-   "n": 11,
+   "n": 12,
    "wins": 3,
-   "avg": -4.1890909090909085,
-   "points": -7.7,
-   "block": false
+   "avg": -4.0975,
+   "points": -8.4,
+   "block": true
   }
  ],
  "mult": {
   "technical": 0.67,
-  "flows": 1.1,
+  "flows": 1.08,
   "macro": 0.97,
   "markets": 1.0
  },
- "graded": 20,
- "t": "2026-10-04 17:54 UTC",
+ "graded": 21,
+ "t": "2026-10-04 21:11 UTC",
  "scorecard": {
-  "closed": 20,
+  "closed": 21,
   "wins": 14,
-  "avg": -0.8,
-  "held": 0.8,
+  "avg": -0.91,
+  "held": 1.1,
   "gave_back": 1
  },
  "sells": {
@@ -63,16 +63,16 @@
    "text": "hit the take-profit target"
   },
   "signal": {
-   "n": 11,
+   "n": 12,
    "reviewed": 5,
    "early": 1,
    "good": 0,
    "after": 4.2,
-   "ret": -5.2,
+   "ret": -5.03,
    "text": "signal turned TRIM/SELL"
   }
  },
  "sell_soft": [],
  "wins": 6,
- "losses": 3
+ "losses": 4
 }

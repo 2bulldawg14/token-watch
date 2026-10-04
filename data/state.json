@@ -561,7 +561,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1067,7 +1067,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791154361.0244462,
+ "_saved_t": 1791155635.3774486,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1075,7 +1075,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "_wl_cursor": 0,
  "_err_alert": {

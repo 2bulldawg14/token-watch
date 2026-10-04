@@ -126,13 +126,14 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 50,
-   "Will Chainlink reach $16 by December 31, 2026?": 78,
-   "Will Chainlink reach $20 by December 31, 2026?": 24,
-   "Will Chainlink reach $26 in October?": 42
+   "Will Chainlink reach $18 by December 31, 2026?": 52,
+   "Will Chainlink reach $16 by December 31, 2026?": 79,
+   "Will Chainlink reach $20 by December 31, 2026?": 23,
+   "Will Chainlink reach $26 in October?": 41
   },
   "in_zone2": false,
-  "below_stop": false
+  "below_stop": false,
+  "macd_day": "2026-10-04"
  },
  "ONDO": {
   "seen_news": [],
@@ -144,9 +145,9 @@
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1791006232.8215313,
+ "_discovery_t": 1791081098.908035,
  "_report_week": "2026-W40",
- "_export_t": 1791025915.3437855,
+ "_export_t": 1791053732.398973,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -199,7 +200,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
    "Will Ethereum reach $4,500 by December 31, 2026?": 6,
@@ -330,7 +331,7 @@
   },
   "ETH": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -370,7 +371,7 @@
   "RENDER": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -546,7 +547,7 @@
   },
   "PONS": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -560,7 +561,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -872,6 +873,27 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "EDGE": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "US": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "DASH": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -987,10 +1009,10 @@
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid reach $100 by December 31, 2026?": 67,
-   "Will Hyperliquid dip to $8 by December 31, 2026?": 2
+   "Will Hyperliquid reach $200 by December 31, 2026?": 6
   },
   "macd_day": "2026-09-28"
  },
@@ -1003,10 +1025,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash reach $2000 by December 31, 2026?": 36,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 28
+   "Will Zcash dip to $600 by December 31, 2026?": 20,
+   "Will Zcash dip to $500 by December 31, 2026?": 12
   },
   "macd_day": "2026-09-28"
  },
@@ -1028,16 +1050,17 @@
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
-  "macd_day": "2026-10-03"
+  "macd_day": "2026-10-04"
  },
  "_disc_seen": {
   "ASTER": 1790253479.3720071,
   "PAXG": 1790514698.9565518,
   "CCD": 1790814700.3779347,
   "BLAST": 1790959422.8398664,
-  "2Z": 1791006258.8478503
+  "2Z": 1791006258.8478503,
+  "US": 1791081131.4906764
  },
- "_saved_t": 1791053730.4770527,
+ "_saved_t": 1791081150.210579,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1045,9 +1068,9 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
- "_wl_cursor": 23,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

@@ -124,12 +124,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 52,
+   "Will Chainlink reach $18 by December 31, 2026?": 50,
    "Will Chainlink reach $16 by December 31, 2026?": 78,
-   "Will Chainlink reach $20 by December 31, 2026?": 24,
-   "Will Chainlink reach $26 in October?": 12
+   "Will Chainlink reach $20 by December 31, 2026?": 22,
+   "Will Chainlink reach $26 in October?": 16
   },
   "in_zone2": false,
   "below_stop": false,
@@ -205,7 +205,7 @@
    "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
    "Will Ethereum reach $4,000 by December 31, 2026?": 14,
    "Will Ethereum reach $4,500 by December 31, 2026?": 6,
-   "Will Ethereum reach $10,000 by December 31, 2026?": 1
+   "Will Ethereum dip to $800 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -247,10 +247,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "XRP Up or Down - October 4, 4PM ET": 0,
    "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $5.00 by December 31, 2026?": 2,
-   "Will XRP dip to $0.20 by December 31, 2026?": 1
+   "Will XRP dip to $0.20 by December 31, 2026?": 1,
+   "Will XRP reach $4.00 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -283,7 +283,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -561,7 +561,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1067,7 +1067,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791150341.1339638,
+ "_saved_t": 1791152132.4626777,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1075,7 +1075,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "_wl_cursor": 0,
  "_err_alert": {

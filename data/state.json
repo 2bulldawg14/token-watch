@@ -216,7 +216,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -345,8 +345,8 @@
   },
   "AERO": {
    "seen": true,
-   "bad": true,
-   "in_sell": true,
+   "bad": false,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -1082,7 +1082,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791195481.456275,
+ "_saved_t": 1791196759.9421775,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1092,7 +1092,7 @@
   "risk": "MEDIUM",
   "signal": "TRIM"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 12,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

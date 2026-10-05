@@ -108,12 +108,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
-   "Will Solana reach $120 in October?": 100,
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana reach $320 by December 31, 2026?": 2,
-   "Will Solana reach $200 in October?": 1
+   "Will Solana reach $200 in October?": 1,
+   "Will Solana dip to $40 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -128,8 +128,8 @@
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 52,
    "Will Chainlink reach $16 by December 31, 2026?": 77,
-   "Will Chainlink reach $20 by December 31, 2026?": 19,
-   "Will Chainlink reach $26 in October?": 37
+   "Will Chainlink reach $20 by December 31, 2026?": 22,
+   "Will Chainlink reach $26 in October?": 32
   },
   "in_zone2": false,
   "below_stop": false,
@@ -140,14 +140,14 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
  "_discovery_t": 1791224735.917249,
  "_report_week": "2026-W41",
- "_export_t": 1791211425.7847903,
+ "_export_t": 1791227414.7921412,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 6
   },
@@ -188,10 +188,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
+   "Bitcoin Up or Down on October 5?": 100,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $50,000 by December 31, 2026?": 6,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8
   },
   "in_zone2": false,
   "below_stop": false,
@@ -236,7 +236,7 @@
  "RENDER": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
@@ -248,11 +248,11 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
+   "Will XRP reach $5.00 by December 31, 2026?": 1,
    "Will XRP reach $4.00 in October?": 1,
-   "Will XRP reach $5.00 by December 31, 2026?": 3,
-   "Will XRP reach $4.00 by December 31, 2026?": 4,
+   "Will XRP reach $4.00 by December 31, 2026?": 3,
    "Will XRP dip to $0.20 by December 31, 2026?": 1
   },
   "in_zone2": false,
@@ -279,7 +279,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -293,7 +293,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -307,8 +307,8 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
-   "in_sell": false,
+   "bad": true,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -374,7 +374,7 @@
   "RENDER": {
    "seen": true,
    "bad": false,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -386,7 +386,7 @@
   },
   "XRP": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -420,8 +420,8 @@
   },
   "AKT": {
    "seen": true,
-   "bad": true,
-   "in_sell": false,
+   "bad": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -1010,7 +1010,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 73
+   "Will UNI reach $11.00 by December 31, 2026?": 72
   },
   "macd_day": "2026-09-29"
  },
@@ -1019,9 +1019,9 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "macd_day": "2026-10-04"
  },
  "HYPE": {
@@ -1034,7 +1034,7 @@
   "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
+   "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
    "Will Hyperliquid dip to $8 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 2
   },
@@ -1084,7 +1084,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791227412.7731948,
+ "_saved_t": 1791235987.4396079,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

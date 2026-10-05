@@ -147,7 +147,7 @@
  },
  "_discovery_t": 1791136403.0316353,
  "_report_week": "2026-W41",
- "_export_t": 1791152134.8307066,
+ "_export_t": 1791166560.261784,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -163,7 +163,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 6
   },
@@ -184,7 +184,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
@@ -304,7 +304,7 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -324,7 +324,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -1067,7 +1067,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791166557.9432395,
+ "_saved_t": 1791167820.8649166,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1077,7 +1077,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 12,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

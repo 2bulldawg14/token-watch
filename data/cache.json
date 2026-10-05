@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1791220848.4133341,
+  "t": 1791221973.5200567,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 752007355,
-    "fdv": 752007355,
-    "volume": 86371133,
+    "market_cap": 750610516,
+    "fdv": 750610516,
+    "volume": 86304852,
     "website": [
      "https://injective.com"
     ],
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1791220850.3682706,
+  "t": 1791221975.6461995,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 70416914061,
-    "fdv": 76032318121,
-    "volume": 2678201046,
+    "market_cap": 70504380085,
+    "fdv": 76126760861,
+    "volume": 2756655042,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1791220853.8993535,
+  "t": 1791221978.2540636,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 10361353672,
-    "fdv": 13850226015,
-    "volume": 300708759,
+    "market_cap": 10387098167,
+    "fdv": 13884639189,
+    "volume": 302090109,
     "website": [
      "https://chain.link/"
     ],
@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1791220856.0766973,
+  "t": 1791221981.6459632,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -237,9 +237,9 @@
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2372354161,
-    "fdv": 4872033413,
-    "volume": 199002269,
+    "market_cap": 2374467024,
+    "fdv": 4876372537,
+    "volume": 200045179,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -760,7 +760,7 @@
  },
  "id:hbar": "hedera-hashgraph",
  "dd:hedera-hashgraph": {
-  "t": 1791220860.3078551,
+  "t": 1791221986.153077,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -774,9 +774,9 @@
    },
    "facts": {
     "name": "Hedera",
-    "market_cap": 4433986652,
-    "fdv": 5038878410,
-    "volume": 113183568,
+    "market_cap": 4436814632,
+    "fdv": 5042092189,
+    "volume": 112716081,
     "website": [
      "https://www.hedera.com/"
     ],
@@ -1267,7 +1267,7 @@
  "id:shib": "shiba-inu",
  "idt:shib": 1790172691.1545615,
  "dd:shiba-inu": {
-  "t": 1791220858.306327,
+  "t": 1791221984.182779,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1276,13 +1276,17 @@
    ],
    "checks": {
     "team": null,
-    "code": true
+    "code": true,
+    "tax": true,
+    "owner": true,
+    "holders": true,
+    "liquidity": true
    },
    "facts": {
     "name": "Shiba Inu",
-    "market_cap": 3459437145,
-    "fdv": 3460947203,
-    "volume": 108691706,
+    "market_cap": 3455317467,
+    "fdv": 3456825727,
+    "volume": 106276640,
     "website": [
      "https://shibatoken.com/"
     ],

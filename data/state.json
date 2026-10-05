@@ -124,12 +124,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 49,
-   "Will Chainlink reach $16 by December 31, 2026?": 78,
    "Will Chainlink reach $20 by December 31, 2026?": 20,
-   "Will Chainlink reach $26 in October?": 31
+   "Will Chainlink reach $18 by December 31, 2026?": 50,
+   "Will Chainlink reach $16 by December 31, 2026?": 78,
+   "Will Chainlink reach $26 in October?": 24
   },
   "in_zone2": false,
   "below_stop": false,
@@ -184,12 +184,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
    "Will Bitcoin dip to $50,000 by December 31, 2026?": 6,
-   "Will Bitcoin dip to $35,000 by December 31, 2026?": 2
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -216,7 +216,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -284,7 +284,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -325,7 +325,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -345,8 +345,8 @@
   },
   "AERO": {
    "seen": true,
-   "bad": false,
-   "in_sell": false,
+   "bad": true,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -1068,7 +1068,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791177853.56243,
+ "_saved_t": 1791179730.1730464,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1078,7 +1078,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 0,
+ "_wl_cursor": 16,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

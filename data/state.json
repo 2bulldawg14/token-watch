@@ -187,9 +187,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -248,9 +248,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will XRP reach $5.00 by December 31, 2026?": 3,
+   "Will XRP reach $5.00 by December 31, 2026?": 2,
    "Will XRP reach $4.00 in October?": 1,
-   "Will XRP reach $4.00 by December 31, 2026?": 3,
+   "Will XRP reach $4.00 by December 31, 2026?": 4,
    "Will XRP dip to $0.20 by December 31, 2026?": 1
   },
   "in_zone2": false,
@@ -306,7 +306,7 @@
   "SUI": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -1017,7 +1017,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
   "macd_day": "2026-10-04"
@@ -1047,9 +1047,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash dip to $100 by December 31, 2026?": 3,
+   "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 44,
+   "Will Zcash reach $2000 by December 31, 2026?": 43,
    "Will Zcash dip to $700 by December 31, 2026?": 28
   },
   "macd_day": "2026-09-28"
@@ -1082,7 +1082,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791205362.6432674,
+ "_saved_t": 1791207721.5165007,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1290,7 +1290,27 @@
    "142591818",
    "142592040",
    "142591919",
-   "142592042"
+   "142592042",
+   "142634387",
+   "142634185",
+   "142634385",
+   "142634172",
+   "142633477",
+   "142633478",
+   "142634234",
+   "142633163",
+   "142632014",
+   "142631581",
+   "142631582",
+   "142631254",
+   "142630810",
+   "142633834",
+   "142630383",
+   "142628728",
+   "142628143",
+   "142628161",
+   "142627578",
+   "142627752"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1299,7 +1319,7 @@
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
-  "macd_day": "2026-10-02"
+  "macd_day": "2026-10-05"
  },
  "LAES": {
   "seen_news": [
@@ -1308,7 +1328,8 @@
    "142344577",
    "142495512",
    "142527486",
-   "142588962"
+   "142588962",
+   "142593487"
   ],
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,
@@ -1316,7 +1337,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "RKLB": {
   "seen_news": [
@@ -1387,15 +1408,25 @@
    "142564120",
    "142588335",
    "142588871",
-   "142591145"
+   "142591145",
+   "142625707",
+   "142623118",
+   "142618797",
+   "142616050",
+   "142622542",
+   "142604181",
+   "142594721",
+   "142613786",
+   "142613938",
+   "142614314"
   ],
   "_ins": "dump|Beck Peter,Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "TIG": {
   "seen_news": [],
@@ -1428,7 +1459,12 @@
    "142590255",
    "142589622",
    "142591359",
-   "142592461"
+   "142592461",
+   "142617805",
+   "142596667",
+   "142596668",
+   "142596669",
+   "142576905"
   ],
   "in_zone2": false,
   "below_stop": false,
@@ -1451,7 +1487,9 @@
   "seen_news": [
    "142472441",
    "142472446",
-   "142478768"
+   "142478768",
+   "142614385",
+   "142595998"
   ],
   "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,

@@ -248,7 +248,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $5.00 by December 31, 2026?": 3,
@@ -386,7 +386,7 @@
   },
   "XRP": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -413,7 +413,7 @@
   },
   "UNI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -564,7 +564,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -809,7 +809,7 @@
   },
   "XRPN": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1008,7 +1008,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 73
   },
@@ -1071,7 +1071,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "macd_day": "2026-10-04"
@@ -1084,7 +1084,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791224785.9234304,
+ "_saved_t": 1791227412.7731948,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1092,7 +1092,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "_wl_cursor": 0,
  "_err_alert": {
@@ -1343,7 +1343,8 @@
    "142637977",
    "142637673",
    "142637978",
-   "142637684"
+   "142637684",
+   "142638088"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1463,7 +1464,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM"
+  "signal": "SELL / AVOID"
  },
  "TIG": {
   "seen_news": [],
@@ -1509,7 +1510,7 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "SECZ": {
   "seen_news": [],

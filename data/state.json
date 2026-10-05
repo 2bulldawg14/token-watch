@@ -129,7 +129,7 @@
    "Will Chainlink reach $18 by December 31, 2026?": 50,
    "Will Chainlink reach $16 by December 31, 2026?": 77,
    "Will Chainlink reach $20 by December 31, 2026?": 19,
-   "Will Chainlink reach $26 in October?": 13
+   "Will Chainlink reach $26 in October?": 38
   },
   "in_zone2": false,
   "below_stop": false,
@@ -186,7 +186,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $50,000 by December 31, 2026?": 6,
@@ -218,7 +218,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -327,7 +327,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -347,8 +347,8 @@
   },
   "AERO": {
    "seen": true,
-   "bad": true,
-   "in_sell": true,
+   "bad": false,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -564,7 +564,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -823,7 +823,7 @@
   },
   "FIGR": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1071,7 +1071,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "macd_day": "2026-10-04"
@@ -1084,7 +1084,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791213509.766191,
+ "_saved_t": 1791214924.4438078,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1092,9 +1092,9 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1344,7 +1344,8 @@
    "142495512",
    "142527486",
    "142588962",
-   "142593487"
+   "142593487",
+   "142636114"
   ],
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,
@@ -1513,6 +1514,6 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  }
 }

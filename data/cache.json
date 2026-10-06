@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1791305923.9640267,
+  "t": 1791309321.1772487,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 782226032,
-    "fdv": 782226032,
-    "volume": 99883100,
+    "market_cap": 786864511,
+    "fdv": 786864511,
+    "volume": 100166942,
     "website": [
      "https://injective.com"
     ],
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1791305926.4872594,
+  "t": 1791309323.2843812,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 70863769811,
-    "fdv": 76514658860,
-    "volume": 2523211941,
+    "market_cap": 71030685994,
+    "fdv": 76694880291,
+    "volume": 2525799568,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1791305929.1537976,
+  "t": 1791309326.0446782,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 10393223283,
-    "fdv": 13892826753,
-    "volume": 263067260,
+    "market_cap": 10455437238,
+    "fdv": 13975989375,
+    "volume": 264640990,
     "website": [
      "https://chain.link/"
     ],
@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1791305931.5054207,
+  "t": 1791309328.7030327,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -237,9 +237,9 @@
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2428456662,
-    "fdv": 4987249456,
-    "volume": 171155942,
+    "market_cap": 2420811475,
+    "fdv": 4971548762,
+    "volume": 171137297,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -854,7 +854,7 @@
   }
  },
  "dd:cosmos": {
-  "t": 1791304835.8932114,
+  "t": 1791309293.170845,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -872,9 +872,9 @@
    },
    "facts": {
     "name": "Cosmos Hub",
-    "market_cap": 957901160,
-    "fdv": 957912804,
-    "volume": 49123123,
+    "market_cap": 962258606,
+    "fdv": 962287739,
+    "volume": 49365321,
     "website": [
      "http://cosmos.network/"
     ],
@@ -905,7 +905,7 @@
   }
  },
  "dd:ethereum": {
-  "t": 1791304839.9929748,
+  "t": 1791309298.3155034,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -920,9 +920,9 @@
    },
    "facts": {
     "name": "Ethereum",
-    "market_cap": 329552172927,
-    "fdv": 329552172927,
-    "volume": 9397391243,
+    "market_cap": 329227910746,
+    "fdv": 329227910746,
+    "volume": 10250695544,
     "website": [
      "https://www.ethereum.org/"
     ],
@@ -1310,7 +1310,7 @@
  "id:ltc": "litecoin",
  "idt:ltc": 1790206446.5888786,
  "dd:litecoin": {
-  "t": 1791304837.7707217,
+  "t": 1791309295.9170108,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -1323,9 +1323,9 @@
    },
    "facts": {
     "name": "Litecoin",
-    "market_cap": 5405085680,
-    "fdv": 5405262663,
-    "volume": 231379877,
+    "market_cap": 5373750355,
+    "fdv": 5373770674,
+    "volume": 230772454,
     "website": [
      "http://litecoin.org"
     ],
@@ -1707,7 +1707,7 @@
  "id:qnt": "quant-network",
  "idt:qnt": 1790261248.4923754,
  "dd:quant-network": {
-  "t": 1791304842.509996,
+  "t": 1791309301.3518453,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -1726,9 +1726,9 @@
    },
    "facts": {
     "name": "Quant",
-    "market_cap": 3805400280,
-    "fdv": 3823274989,
-    "volume": 223111207,
+    "market_cap": 3737870093,
+    "fdv": 3755427599,
+    "volume": 221564153,
     "website": [
      "https://www.quant.network"
     ],
@@ -2929,7 +2929,7 @@
  "id:tig": "the-innovation-game",
  "idt:tig": 1790861060.9353123,
  "dd:the-innovation-game": {
-  "t": 1791304852.5893111,
+  "t": 1791309313.0531106,
   "v": {
    "level": "HIGH",
    "points": 6.5,
@@ -2949,9 +2949,9 @@
    },
    "facts": {
     "name": "The Innovation Game",
-    "market_cap": 28383122,
-    "fdv": 45821218,
-    "volume": 483841,
+    "market_cap": 28550993,
+    "fdv": 46092276,
+    "volume": 478970,
     "website": [
      "https://www.tig.foundation/"
     ],
@@ -3103,7 +3103,7 @@
  "id:secz": "securitize-corp",
  "idt:secz": 1790865592.5247884,
  "dd:securitize-corp": {
-  "t": 1791304855.3771524,
+  "t": 1791309317.3346252,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,

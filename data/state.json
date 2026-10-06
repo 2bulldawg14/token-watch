@@ -128,8 +128,8 @@
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 60,
    "Will Chainlink reach $16 by December 31, 2026?": 82,
-   "Will Chainlink reach $20 by December 31, 2026?": 19,
-   "Will Chainlink reach $26 in October?": 22
+   "Will Chainlink reach $20 by December 31, 2026?": 16,
+   "Will Chainlink reach $26 in October?": 24
   },
   "in_zone2": false,
   "below_stop": false,
@@ -186,7 +186,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Bitcoin Up or Down on October 5?": 100,
    "Will the price of Bitcoin be above $74,000 on October 7?": 100,
@@ -327,7 +327,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -406,7 +406,7 @@
   },
   "CC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1012,7 +1012,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-04"
  },
  "UNI": {
@@ -1033,7 +1033,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "LOW",
   "signal": "HOLD",
   "macd_day": "2026-10-04"
@@ -1098,7 +1098,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791312142.0951095,
+ "_saved_t": 1791314101.448735,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

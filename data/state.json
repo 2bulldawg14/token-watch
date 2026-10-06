@@ -188,10 +188,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Bitcoin Up or Down on October 5?": 100,
    "Will the price of Bitcoin be above $74,000 on October 6?": 100,
    "Will Bitcoin dip to $62,500 in October?": 2,
-   "Will Bitcoin reach $105,000 in October?": 4
+   "Bitcoin Up or Down on October 5?": 100,
+   "Will Bitcoin reach $150,000 in October?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -253,7 +253,7 @@
    "Will XRP reach $5.00 by December 31, 2026?": 1,
    "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
-   "Will XRP reach $4.00 by December 31, 2026?": 3
+   "Will XRP reach $4.00 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1049,8 +1049,8 @@
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
-   "Will Hyperliquid reach $100 by December 31, 2026?": 76,
-   "Will Hyperliquid dip to $8 by December 31, 2026?": 2
+   "Will Hyperliquid dip to $8 by December 31, 2026?": 2,
+   "Will Hyperliquid reach $100 by December 31, 2026?": 78
   },
   "macd_day": "2026-09-28"
  },
@@ -1065,7 +1065,7 @@
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 26,
+   "Will Zcash dip to $700 by December 31, 2026?": 27,
    "Will Zcash reach $2000 by December 31, 2026?": 38
   },
   "macd_day": "2026-09-28"
@@ -1098,7 +1098,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791289123.994469,
+ "_saved_t": 1791290690.4799542,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1108,7 +1108,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 8,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

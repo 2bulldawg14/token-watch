@@ -187,7 +187,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
@@ -328,7 +328,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1113,7 +1113,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791327172.1308477,
+ "_saved_t": 1791328461.8175993,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

@@ -147,7 +147,7 @@
  },
  "_discovery_t": 1791269210.4618025,
  "_report_week": "2026-W41",
- "_export_t": 1791286544.0867941,
+ "_export_t": 1791301012.9554143,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -202,7 +202,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 6,
    "Will Ethereum reach $10,000 by December 31, 2026?": 1,
@@ -334,7 +334,7 @@
   },
   "ETH": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1098,17 +1098,17 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791301010.0009654,
+ "_saved_t": 1791302161.6930807,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 18,
+ "_wl_cursor": 24,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1378,7 +1378,14 @@
    "142648362",
    "142646047",
    "142653223",
-   "142650961"
+   "142650961",
+   "142662935",
+   "142663517",
+   "142663514",
+   "142663515",
+   "142662937",
+   "142663747",
+   "142663901"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1399,7 +1406,8 @@
    "142588962",
    "142593487",
    "142636114",
-   "142641209"
+   "142641209",
+   "142664389"
   ],
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,

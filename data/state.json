@@ -126,10 +126,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 58,
+   "Will Chainlink reach $18 by December 31, 2026?": 60,
    "Will Chainlink reach $16 by December 31, 2026?": 82,
    "Will Chainlink reach $20 by December 31, 2026?": 22,
-   "Will Chainlink reach $26 in October?": 19
+   "Will Chainlink reach $26 in October?": 20
   },
   "in_zone2": false,
   "below_stop": false,
@@ -191,8 +191,8 @@
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
-   "Bitcoin Up or Down on October 5?": 100,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1113,7 +1113,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791326131.4239702,
+ "_saved_t": 1791327172.1308477,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1123,7 +1123,7 @@
   "risk": "MEDIUM",
   "signal": "TRIM"
  },
- "_wl_cursor": 2,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

@@ -189,9 +189,9 @@
   "signal": "TRIM",
   "odds": {
    "Bitcoin Up or Down on October 5?": 100,
-   "Will the price of Bitcoin be above $74,000 on October 6?": 100,
+   "Will the price of Bitcoin be above $74,000 on October 7?": 100,
    "Will Bitcoin dip to $62,500 in October?": 2,
-   "Will the price of Bitcoin be above $78,000 on October 6?": 100
+   "Will Bitcoin reach $150,000 in October?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -406,7 +406,7 @@
   },
   "CC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1012,7 +1012,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-04"
  },
  "UNI": {
@@ -1098,7 +1098,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791305937.9930494,
+ "_saved_t": 1791307167.13333,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1108,7 +1108,7 @@
   "risk": "MEDIUM",
   "signal": "TRIM"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 12,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

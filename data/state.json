@@ -186,12 +186,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
+   "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Bitcoin Up or Down on October 5?": 100,
-   "Will the price of Bitcoin be above $74,000 on October 6?": 100,
-   "Will Bitcoin dip to $62,500 in October?": 2,
-   "Will Bitcoin dip to $67,500 in October?": 6
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6,
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8
   },
   "in_zone2": false,
   "below_stop": false,
@@ -327,7 +327,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -420,7 +420,7 @@
   },
   "AKT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -1019,9 +1019,9 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-04"
  },
  "HYPE": {
@@ -1035,8 +1035,8 @@
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
-   "Will Hyperliquid dip to $8 by December 31, 2026?": 2,
-   "Will Hyperliquid reach $100 by December 31, 2026?": 76
+   "Will Hyperliquid reach $100 by December 31, 2026?": 76,
+   "Will Hyperliquid dip to $8 by December 31, 2026?": 2
   },
   "macd_day": "2026-09-28"
  },
@@ -1084,7 +1084,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791261517.1331081,
+ "_saved_t": 1791262608.3686526,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1094,7 +1094,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 9,
+ "_wl_cursor": 15,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

@@ -108,7 +108,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana reach $320 by December 31, 2026?": 2,
@@ -253,7 +253,7 @@
    "Will XRP reach $5.00 by December 31, 2026?": 1,
    "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
-   "Will XRP reach $4.00 by December 31, 2026?": 3
+   "Will XRP reach $4.00 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -261,7 +261,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "ACCUMULATE",
@@ -279,7 +279,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1033,7 +1033,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "macd_day": "2026-10-04"
@@ -1047,10 +1047,10 @@
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
-   "Will Hyperliquid dip to $92 in October?": 100,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
-   "Will Hyperliquid dip to $8 by December 31, 2026?": 2
+   "Will Hyperliquid dip to $8 by December 31, 2026?": 1,
+   "Will Hyperliquid reach $100 by December 31, 2026?": 78
   },
   "macd_day": "2026-09-28"
  },
@@ -1063,7 +1063,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash dip to $100 by December 31, 2026?": 4,
+   "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $700 by December 31, 2026?": 27,
    "Will Zcash reach $2000 by December 31, 2026?": 39
@@ -1098,7 +1098,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791310607.895329,
+ "_saved_t": 1791312142.0951095,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1108,7 +1108,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 10,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1398,7 +1398,13 @@
    "142665504",
    "142665965",
    "142665962",
-   "142665506"
+   "142665506",
+   "142667057",
+   "142667054",
+   "142666719",
+   "142667056",
+   "142666918",
+   "142666857"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,

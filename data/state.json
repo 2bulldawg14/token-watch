@@ -145,7 +145,7 @@
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1791269210.4618025,
+ "_discovery_t": 1791316415.5442376,
  "_report_week": "2026-W41",
  "_export_t": 1791301012.9554143,
  "_tg_offset": 218529296,
@@ -187,7 +187,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
@@ -251,8 +251,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will XRP reach $5.00 by December 31, 2026?": 1,
    "Will XRP reach $4.00 in October?": 1,
+   "Will XRP reach $5.00 by December 31, 2026?": 1,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
    "Will XRP reach $4.00 by December 31, 2026?": 4
   },
@@ -328,7 +328,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -407,7 +407,7 @@
   },
   "CC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -422,7 +422,7 @@
   "AKT": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -471,7 +471,7 @@
   "NEAR": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -551,7 +551,7 @@
   },
   "PONS": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -656,7 +656,7 @@
   },
   "BR": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -933,6 +933,20 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "ZIG": {
+   "seen": true,
+   "bad": true,
+   "in_sell": true,
+   "below": false,
+   "hit_t": false
+  },
+  "MINA": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -1013,7 +1027,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "macd_day": "2026-10-04"
  },
  "UNI": {
@@ -1034,7 +1048,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "macd_day": "2026-10-04"
@@ -1099,17 +1113,17 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791315330.3891532,
+ "_saved_t": 1791316462.081044,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 10,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1432,7 +1446,7 @@
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM"
@@ -1586,7 +1600,8 @@
    "142640362",
    "142664475",
    "142666337",
-   "142666222"
+   "142666222",
+   "142667424"
   ],
   "in_zone2": false,
   "below_stop": false,
@@ -1616,7 +1631,7 @@
   "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM"

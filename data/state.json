@@ -189,9 +189,9 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Bitcoin Up or Down on October 5?": 100,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
+   "Bitcoin Up or Down on October 5?": 100,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 8
   },
   "in_zone2": false,
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1113,7 +1113,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791322532.3698444,
+ "_saved_t": 1791323571.508416,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1121,9 +1121,9 @@
   "in_zone": false,
   "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
- "_wl_cursor": 22,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

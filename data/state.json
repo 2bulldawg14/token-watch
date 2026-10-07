@@ -124,7 +124,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $16 by December 31, 2026?": 84,
    "Will Chainlink reach $18 by December 31, 2026?": 44,
@@ -140,12 +140,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1791362477.2389827,
+ "_discovery_t": 1791413631.935821,
  "_report_week": "2026-W41",
  "_export_t": 1791407733.0216196,
  "_tg_offset": 218529296,
@@ -287,14 +287,14 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -470,7 +470,7 @@
   },
   "NEAR": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -551,7 +551,7 @@
   },
   "PONS": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1041,8 +1041,7 @@
   "odds": {
    "Will UNI dip to $4.00 by December 31, 2026?": 30,
    "Will UNI reach $15.50 by December 31, 2026?": 13,
-   "Will UNI reach $11.00 by December 31, 2026?": 58,
-   "Will UNI reach $12.50 by December 31, 2026?": 64
+   "Will UNI reach $11.00 by December 31, 2026?": 58
   },
   "macd_day": "2026-09-29"
  },
@@ -1116,7 +1115,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791412531.216772,
+ "_saved_t": 1791413679.8556032,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1126,7 +1125,7 @@
   "risk": "MEDIUM",
   "signal": "TRIM"
  },
- "_wl_cursor": 21,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

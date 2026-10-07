@@ -108,7 +108,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Solana reach $200 in October?": 1,
    "Will Solana dip to $20 in October?": 0,
@@ -190,7 +190,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Bitcoin Up or Down on October 5?": 100,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
@@ -206,7 +206,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will the price of Ethereum be above $2,200 on October 7?": 100,
    "Will the price of Ethereum be above $2,700 on October 7?": 0,
@@ -249,10 +249,10 @@
  },
  "XRP": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
@@ -283,7 +283,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -331,14 +331,14 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "ETH": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -390,7 +390,7 @@
   },
   "XRP": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1119,7 +1119,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791388745.8777146,
+ "_saved_t": 1791390282.3972797,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1129,7 +1129,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1137,19 +1137,6 @@
  },
  "SPCX": {
   "seen_news": [
-   "142474654",
-   "142474060",
-   "142472338",
-   "142471437",
-   "142472339",
-   "142471328",
-   "142471177",
-   "142471168",
-   "142471438",
-   "142471236",
-   "142474061",
-   "142496372",
-   "139663512",
    "142495794",
    "142495768",
    "142496382",
@@ -1436,7 +1423,20 @@
    "142695415",
    "142692059",
    "142692066",
-   "142691226"
+   "142691226",
+   "142697338",
+   "142696929",
+   "142697339",
+   "142696926",
+   "142697517",
+   "142697054",
+   "142697285",
+   "142697529",
+   "142697523",
+   "142696937",
+   "142697525",
+   "142697341",
+   "142696991"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1588,7 +1588,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)",

@@ -614,5 +614,27 @@
   "source": "tracked",
   "starred": false,
   "closes": "ASTER-1790253479"
+ },
+ {
+  "symbol": "XRP",
+  "cg_id": "ripple",
+  "t": 1791390242,
+  "date": "2026-10-07 16:24 UTC",
+  "price": 1.4376,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "XRP-1791341725"
+ },
+ {
+  "symbol": "ETH",
+  "cg_id": "ethereum",
+  "t": 1791390254,
+  "date": "2026-10-07 16:24 UTC",
+  "price": 2576.51,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "ETH-1791370615"
  }
 ]

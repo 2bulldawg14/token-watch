@@ -126,7 +126,7 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 45,
+   "Will Chainlink reach $18 by December 31, 2026?": 49,
    "Will Chainlink reach $16 by December 31, 2026?": 82,
    "Will Chainlink reach $20 by December 31, 2026?": 22,
    "Will Chainlink reach $26 in October?": 20
@@ -145,7 +145,7 @@
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1791316415.5442376,
+ "_discovery_t": 1791362477.2389827,
  "_report_week": "2026-W41",
  "_export_t": 1791348955.5791852,
  "_tg_offset": 218529296,
@@ -187,7 +187,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Bitcoin Up or Down on October 5?": 100,
@@ -237,9 +237,9 @@
  "RENDER": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-05"
@@ -251,10 +251,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $5.00 by December 31, 2026?": 1,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
-   "Will XRP dip to $0.20 by December 31, 2026?": 1
+   "Will XRP reach $4.00 in October?": 1,
+   "Will XRP reach $4.00 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -328,7 +328,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -374,7 +374,7 @@
   },
   "RENDER": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -470,8 +470,8 @@
   },
   "NEAR": {
    "seen": true,
-   "bad": false,
-   "in_sell": false,
+   "bad": true,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -498,7 +498,7 @@
   },
   "AI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -866,7 +866,7 @@
   },
   "2Z": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -943,7 +943,7 @@
   },
   "MINA": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1039,7 +1039,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 70
+   "Will UNI reach $11.00 by December 31, 2026?": 59
   },
   "macd_day": "2026-09-29"
  },
@@ -1080,8 +1080,8 @@
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 26,
-   "Will Zcash reach $2000 by December 31, 2026?": 39
+   "Will Zcash reach $2000 by December 31, 2026?": 38,
+   "Will Zcash dip to $700 by December 31, 2026?": 26
   },
   "macd_day": "2026-09-28"
  },
@@ -1113,7 +1113,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791361051.5470905,
+ "_saved_t": 1791362522.2900891,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1123,7 +1123,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

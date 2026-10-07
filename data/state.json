@@ -187,7 +187,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
@@ -222,7 +222,7 @@
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
-  "macd_day": "2026-10-06"
+  "macd_day": "2026-10-07"
  },
  "TAO": {
   "seen_news": [],
@@ -262,7 +262,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "ACCUMULATE",
@@ -328,7 +328,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1113,7 +1113,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791330767.7577422,
+ "_saved_t": 1791332693.2378573,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1545,7 +1545,7 @@
    "142665632",
    "142665814"
   ],
-  "_ins": "dump|Beck Peter,Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
+  "_ins": "dump|Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,

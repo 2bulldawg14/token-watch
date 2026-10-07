@@ -126,7 +126,7 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 54,
+   "Will Chainlink reach $18 by December 31, 2026?": 45,
    "Will Chainlink reach $16 by December 31, 2026?": 82,
    "Will Chainlink reach $20 by December 31, 2026?": 22,
    "Will Chainlink reach $26 in October?": 20
@@ -206,9 +206,9 @@
   "signal": "TRIM",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
+   "Will Ethereum dip to $1,000 by December 31, 2026?": 4,
    "Will Ethereum reach $10,000 by December 31, 2026?": 1,
-   "Will Ethereum reach $4,500 by December 31, 2026?": 6,
-   "Will Ethereum dip to $800 by December 31, 2026?": 3
+   "Will Ethereum reach $4,500 by December 31, 2026?": 6
   },
   "in_zone2": false,
   "below_stop": false,
@@ -237,16 +237,16 @@
  "RENDER": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "high",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-05"
  },
  "XRP": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
@@ -254,7 +254,7 @@
    "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $5.00 by December 31, 2026?": 1,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
-   "Will XRP reach $4.00 by December 31, 2026?": 4
+   "Will XRP dip to $0.20 by December 31, 2026?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -265,7 +265,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -374,7 +374,7 @@
   },
   "RENDER": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1039,7 +1039,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 72
+   "Will UNI reach $11.00 by December 31, 2026?": 70
   },
   "macd_day": "2026-09-29"
  },
@@ -1113,7 +1113,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791356325.0803046,
+ "_saved_t": 1791357836.4927359,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1121,9 +1121,9 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

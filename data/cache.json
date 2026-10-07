@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1791404138.6763833,
+  "t": 1791406529.8593729,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 751690161,
-    "fdv": 751690161,
-    "volume": 183422245,
+    "market_cap": 749929820,
+    "fdv": 749929820,
+    "volume": 173413186,
     "website": [
      "https://injective.com"
     ],
@@ -384,7 +384,7 @@
   }
  },
  "dd:zcash": {
-  "t": 1791402759.3412945,
+  "t": 1791406503.4162805,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -399,9 +399,9 @@
    },
    "facts": {
     "name": "Zcash",
-    "market_cap": 22560015116,
-    "fdv": 22560264329,
-    "volume": 688224930,
+    "market_cap": 22403746363,
+    "fdv": 22404059846,
+    "volume": 737420048,
     "website": [
      "https://z.cash/"
     ],
@@ -854,7 +854,7 @@
   }
  },
  "dd:cosmos": {
-  "t": 1791402762.2470012,
+  "t": 1791406506.542586,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -872,9 +872,9 @@
    },
    "facts": {
     "name": "Cosmos Hub",
-    "market_cap": 912139412,
-    "fdv": 912157404,
-    "volume": 46233370,
+    "market_cap": 915625182,
+    "fdv": 915633309,
+    "volume": 46552870,
     "website": [
      "http://cosmos.network/"
     ],
@@ -905,7 +905,7 @@
   }
  },
  "dd:ethereum": {
-  "t": 1791402767.0129337,
+  "t": 1791406511.7983289,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -920,9 +920,9 @@
    },
    "facts": {
     "name": "Ethereum",
-    "market_cap": 313437702189,
-    "fdv": 313437702189,
-    "volume": 18769853352,
+    "market_cap": 314075889067,
+    "fdv": 314075889067,
+    "volume": 18882148960,
     "website": [
      "https://www.ethereum.org/"
     ],
@@ -1016,7 +1016,7 @@
   }
  },
  "dd:bittensor": {
-  "t": 1791402749.4465766,
+  "t": 1791406493.0512094,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1030,9 +1030,9 @@
    },
    "facts": {
     "name": "Bittensor",
-    "market_cap": 3264850817,
-    "fdv": 6046208816,
-    "volume": 243503789,
+    "market_cap": 3284913165,
+    "fdv": 6083362473,
+    "volume": 245859904,
     "website": [
      "https://bittensor.com/"
     ],
@@ -1052,7 +1052,7 @@
   }
  },
  "dd:render-token": {
-  "t": 1791402754.5777845,
+  "t": 1791406498.3581417,
   "v": {
    "level": "MEDIUM",
    "points": 3.5,
@@ -1071,9 +1071,9 @@
    },
    "facts": {
     "name": "Render",
-    "market_cap": 1057761468,
-    "fdv": 1087856799,
-    "volume": 104844899,
+    "market_cap": 1054094331,
+    "fdv": 1084085325,
+    "volume": 105107152,
     "website": [
      "http://renderfoundation.com"
     ],
@@ -1096,7 +1096,7 @@
   }
  },
  "dd:ripple": {
-  "t": 1791402757.0936563,
+  "t": 1791406500.7563283,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1110,9 +1110,9 @@
    },
    "facts": {
     "name": "XRP",
-    "market_cap": 89689900967,
-    "fdv": 142134675929,
-    "volume": 2490454773,
+    "market_cap": 89676726875,
+    "fdv": 142113798492,
+    "volume": 2552948818,
     "website": [
      "https://ripple.com/currency/"
     ],
@@ -1178,7 +1178,7 @@
   }
  },
  "dd:akash-network": {
-  "t": 1791402747.2543411,
+  "t": 1791406490.8847885,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1191,9 +1191,9 @@
    },
    "facts": {
     "name": "Akash Network",
-    "market_cap": 212289002,
-    "fdv": 212291406,
-    "volume": 7586131,
+    "market_cap": 212245650,
+    "fdv": 212248614,
+    "volume": 7638031,
     "website": [
      "https://akash.network"
     ],
@@ -1217,7 +1217,7 @@
   }
  },
  "dd:hyperliquid": {
-  "t": 1791402752.0523243,
+  "t": 1791406495.7995799,
   "v": {
    "level": "MEDIUM",
    "points": 3.0,
@@ -1233,9 +1233,9 @@
    },
    "facts": {
     "name": "Hyperliquid",
-    "market_cap": 19591528260,
-    "fdv": 84137047644,
-    "volume": 916927045,
+    "market_cap": 19586729338,
+    "fdv": 84116438375,
+    "volume": 922825258,
     "website": [
      "https://app.hyperliquid.xyz/trade"
     ],
@@ -1310,7 +1310,7 @@
  "id:ltc": "litecoin",
  "idt:ltc": 1790206446.5888786,
  "dd:litecoin": {
-  "t": 1791402764.7269707,
+  "t": 1791406509.1281195,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -1323,9 +1323,9 @@
    },
    "facts": {
     "name": "Litecoin",
-    "market_cap": 5135710751,
-    "fdv": 5135738020,
-    "volume": 306272296,
+    "market_cap": 5144359846,
+    "fdv": 5144523730,
+    "volume": 304877064,
     "website": [
      "http://litecoin.org"
     ],
@@ -1707,7 +1707,7 @@
  "id:qnt": "quant-network",
  "idt:qnt": 1790261248.4923754,
  "dd:quant-network": {
-  "t": 1791402769.8776243,
+  "t": 1791406514.5727386,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -1726,9 +1726,9 @@
    },
    "facts": {
     "name": "Quant",
-    "market_cap": 3662840719,
-    "fdv": 3679539563,
-    "volume": 259632746,
+    "market_cap": 3701938432,
+    "fdv": 3718815522,
+    "volume": 256300639,
     "website": [
      "https://www.quant.network"
     ],
@@ -2931,12 +2931,12 @@
  "id:tig": "the-innovation-game",
  "idt:tig": 1790861060.9353123,
  "dd:the-innovation-game": {
-  "t": 1791402777.0621176,
+  "t": 1791406522.724617,
   "v": {
    "level": "HIGH",
    "points": 6.5,
    "flags": [
-    "Top 10 wallets hold 64% (may include exchanges)",
+    "Top 10 wallets hold 63% (may include exchanges)",
     "Only 0% of DEX liquidity is locked",
     "Owner can mint new tokens",
     "Team not verified yet - check founders' real names, LinkedIn, past projects"
@@ -2951,9 +2951,9 @@
    },
    "facts": {
     "name": "The Innovation Game",
-    "market_cap": 28412831,
-    "fdv": 45869237,
-    "volume": 515569,
+    "market_cap": 29810676,
+    "fdv": 48125896,
+    "volume": 598019,
     "website": [
      "https://www.tig.foundation/"
     ],
@@ -3105,7 +3105,7 @@
  "id:secz": "securitize-corp",
  "idt:secz": 1790865592.5247884,
  "dd:securitize-corp": {
-  "t": 1791402780.3693428,
+  "t": 1791406526.41235,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -3124,8 +3124,8 @@
    },
    "facts": {
     "name": "Securitize",
-    "market_cap": 51128346,
-    "fdv": 328655667,
+    "market_cap": 45925735,
+    "fdv": 295213012,
     "volume": 0,
     "website": [
      "https://securitize.io/"

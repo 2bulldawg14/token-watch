@@ -110,10 +110,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
+   "Will Solana reach $600 by December 31, 2026?": 0,
+   "Will Solana reach $320 by December 31, 2026?": 2,
    "Will Solana reach $200 in October?": 1,
-   "Will Solana dip to $20 in October?": 0,
-   "Will Solana dip to $30 in October?": 0,
-   "Will Solana reach $600 by December 31, 2026?": 0
+   "Will Solana dip to $40 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -124,10 +124,10 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
+   "Will Chainlink reach $18 by December 31, 2026?": 37,
    "Will Chainlink reach $16 by December 31, 2026?": 84,
-   "Will Chainlink reach $18 by December 31, 2026?": 44,
    "Will Chainlink reach $20 by December 31, 2026?": 20,
    "Will Chainlink reach $26 in October?": 24
   },
@@ -249,7 +249,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
@@ -287,7 +287,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -387,7 +387,7 @@
   },
   "XRP": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -449,7 +449,7 @@
   },
   "SHIB": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1094,7 +1094,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1115,7 +1115,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791416035.1081529,
+ "_saved_t": 1791417162.44808,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1587,7 +1587,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)",

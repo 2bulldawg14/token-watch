@@ -202,10 +202,10 @@
  },
  "ETH": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
    "Will Ethereum dip to $1,000 by December 31, 2026?": 4,
@@ -337,7 +337,7 @@
   },
   "ETH": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -812,7 +812,7 @@
   },
   "XRPN": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1118,7 +1118,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791399501.2250667,
+ "_saved_t": 1791400929.301531,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1128,7 +1128,7 @@
   "risk": "MEDIUM",
   "signal": "TRIM"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1645,7 +1645,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "SECZ": {
   "seen_news": [],

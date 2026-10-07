@@ -124,12 +124,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
+   "Will Chainlink reach $26 by December 31, 2026?": 9,
+   "Will Chainlink reach $16 by December 31, 2026?": 84,
    "Will Chainlink reach $20 by December 31, 2026?": 21,
-   "Will Chainlink dip to $6 by December 31, 2026?": 8,
-   "Will Chainlink dip to $4 by December 31, 2026?": 6,
-   "Will Chainlink reach $24 by December 31, 2026?": 10
+   "Will Chainlink reach $22 by December 31, 2026?": 16
   },
   "in_zone2": false,
   "below_stop": false,
@@ -168,8 +168,7 @@
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 4,
    "Will Sui dip to $0.40 before 2027?": 10,
-   "Will Sui reach $2.50 before 2027?": 13,
-   "Will Sui reach $3.00 before 2027?": 11
+   "Will Sui reach $2.50 before 2027?": 12
   },
   "in_zone2": false,
   "below_stop": false,
@@ -203,7 +202,7 @@
  },
  "ETH": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
@@ -249,15 +248,15 @@
  },
  "XRP": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
-   "Will XRP reach $5.00 by December 31, 2026?": 1,
-   "Will XRP reach $4.00 by December 31, 2026?": 3
+   "Will XRP reach $4.00 by December 31, 2026?": 4,
+   "Will XRP reach $5.00 by December 31, 2026?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -290,7 +289,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -568,7 +567,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1044,7 +1043,7 @@
   "odds": {
    "Will UNI reach $15.50 by December 31, 2026?": 13,
    "Will UNI dip to $4.00 by December 31, 2026?": 30,
-   "Will UNI reach $11.00 by December 31, 2026?": 59,
+   "Will UNI reach $11.00 by December 31, 2026?": 58,
    "Will UNI dip to $3.00 by December 31, 2026?": 5
   },
   "macd_day": "2026-09-29"
@@ -1069,9 +1068,9 @@
   "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
-   "Will Hyperliquid reach $88 in October?": 100,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
-   "Will Hyperliquid dip to $8 by December 31, 2026?": 1
+   "Will Hyperliquid dip to $8 by December 31, 2026?": 1,
+   "Will Hyperliquid dip to $40 by December 31, 2026?": 6
   },
   "macd_day": "2026-09-28"
  },
@@ -1087,7 +1086,7 @@
    "Will Zcash reach $2000 by December 31, 2026?": 38,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 26
+   "Will Zcash dip to $200 by December 31, 2026?": 4
   },
   "macd_day": "2026-09-28"
  },
@@ -1119,7 +1118,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791395817.0323696,
+ "_saved_t": 1791397441.0768437,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1127,9 +1126,9 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
- "_wl_cursor": 12,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1137,16 +1136,6 @@
  },
  "SPCX": {
   "seen_news": [
-   "142495794",
-   "142495768",
-   "142496382",
-   "142496375",
-   "142495763",
-   "142496377",
-   "142495944",
-   "142495929",
-   "142495849",
-   "142497448",
    "142496886",
    "142497079",
    "142496383",
@@ -1436,7 +1425,17 @@
    "142696937",
    "142697525",
    "142697341",
-   "142696991"
+   "142696991",
+   "142698678",
+   "142698303",
+   "142698304",
+   "142698392",
+   "142698306",
+   "142698308",
+   "142698324",
+   "142698675",
+   "142698676",
+   "142698393"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1574,7 +1573,10 @@
    "142668864",
    "142667935",
    "142694560",
-   "142694561"
+   "142694561",
+   "142698693",
+   "142698512",
+   "142698207"
   ],
   "_ins": "dump|Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,

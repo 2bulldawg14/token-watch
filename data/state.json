@@ -147,7 +147,7 @@
  },
  "_discovery_t": 1791413631.935821,
  "_report_week": "2026-W41",
- "_export_t": 1791407733.0216196,
+ "_export_t": 1791423420.7261584,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 6
   },
@@ -187,12 +187,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
-   "Bitcoin Up or Down on October 5?": 100,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 3,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
   },
   "in_zone2": false,
   "below_stop": false,
@@ -308,7 +308,7 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1039,9 +1039,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will UNI dip to $4.00 by December 31, 2026?": 22,
-   "Will UNI reach $15.50 by December 31, 2026?": 13,
-   "Will UNI reach $11.00 by December 31, 2026?": 57
+   "Will UNI reach $11.00 by December 31, 2026?": 58,
+   "Will UNI dip to $4.00 by December 31, 2026?": 21,
+   "Will UNI reach $15.50 by December 31, 2026?": 14,
+   "Will UNI reach $12.50 by December 31, 2026?": 53
   },
   "macd_day": "2026-09-29"
  },
@@ -1115,7 +1116,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791423417.8196878,
+ "_saved_t": 1791424561.8110607,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1125,7 +1126,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 12,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

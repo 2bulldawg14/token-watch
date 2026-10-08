@@ -205,10 +205,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Ethereum dip to $1,500 by December 31, 2026?": 7,
-   "Will Ethereum dip to $1,000 by December 31, 2026?": 4,
-   "Will Ethereum reach $10,000 by December 31, 2026?": 1,
-   "Will Ethereum dip to $800 by December 31, 2026?": 3
+   "Will Ethereum reach $2,800 in October?": 46,
+   "Will Ethereum reach $4,500 in October?": 1,
+   "Will Ethereum reach $2,900 in October?": 28,
+   "Will Ethereum dip to $2,300 in October?": 30
   },
   "in_zone2": false,
   "below_stop": false,
@@ -456,7 +456,7 @@
   },
   "LTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1105,7 +1105,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-04"
  },
  "_disc_seen": {
@@ -1116,7 +1116,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791425762.7354233,
+ "_saved_t": 1791426937.16625,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1124,9 +1124,9 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
- "_wl_cursor": 18,
+ "_wl_cursor": 24,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

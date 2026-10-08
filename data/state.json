@@ -147,7 +147,7 @@
  },
  "_discovery_t": 1791413631.935821,
  "_report_week": "2026-W41",
- "_export_t": 1791423420.7261584,
+ "_export_t": 1791438950.832599,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Sui reach $1.40 before 2027?": 64
   },
@@ -189,10 +189,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 3,
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 2,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
-   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 5
   },
   "in_zone2": false,
   "below_stop": false,
@@ -200,15 +200,15 @@
  },
  "ETH": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
-   "Will the price of Ethereum be above $3,200 on October 8?": 0,
    "Will Ethereum reach $4,500 in October?": 1,
    "Will Ethereum reach $2,800 in October?": 44,
-   "Will Ethereum reach $2,700 on October 7?": 0
+   "Will Ethereum reach $2,900 in October?": 26,
+   "Will Ethereum dip to $2,400 in October?": 55
   },
   "in_zone2": false,
   "below_stop": false,
@@ -308,7 +308,7 @@
   },
   "SUI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -335,7 +335,7 @@
   },
   "ETH": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -435,7 +435,7 @@
   },
   "ZEC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -531,7 +531,7 @@
   },
   "FF": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1040,9 +1040,9 @@
   "signal": "HOLD",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 58,
+   "Will UNI dip to $4.00 by December 31, 2026?": 20,
    "Will UNI reach $15.50 by December 31, 2026?": 14,
-   "Will UNI reach $12.50 by December 31, 2026?": 53,
-   "Will UNI dip to $4.00 by December 31, 2026?": 20
+   "Will UNI reach $12.50 by December 31, 2026?": 52
   },
   "macd_day": "2026-09-29"
  },
@@ -1079,12 +1079,12 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $700 by December 31, 2026?": 26,
-   "Will Zcash reach $2000 by December 31, 2026?": 38
+   "Will Zcash reach $2000 by December 31, 2026?": 37
   },
   "macd_day": "2026-09-28"
  },
@@ -1116,7 +1116,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791438948.8636284,
+ "_saved_t": 1791440613.7674613,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1126,7 +1126,7 @@
   "risk": "MEDIUM",
   "signal": "TRIM"
  },
- "_wl_cursor": 9,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

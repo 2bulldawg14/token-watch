@@ -147,7 +147,7 @@
  },
  "_discovery_t": 1791413631.935821,
  "_report_week": "2026-W41",
- "_export_t": 1791438950.832599,
+ "_export_t": 1791453677.3564951,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Sui reach $1.40 before 2027?": 63,
    "Will Sui dip to $0.20 before 2027?": 6
@@ -188,7 +188,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 3,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
@@ -201,7 +201,7 @@
  },
  "ETH": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
@@ -309,7 +309,7 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -436,7 +436,7 @@
   },
   "ZEC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -450,7 +450,7 @@
   },
   "SHIB": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1079,7 +1079,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
@@ -1095,7 +1095,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1116,7 +1116,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791453675.2631428,
+ "_saved_t": 1791455155.396206,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

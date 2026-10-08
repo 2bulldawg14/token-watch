@@ -110,10 +110,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Solana reach $600 by December 31, 2026?": 0,
-   "Will Solana reach $320 by December 31, 2026?": 2,
    "Will Solana reach $200 in October?": 1,
-   "Will Solana dip to $40 by December 31, 2026?": 3
+   "Will Solana reach $600 by December 31, 2026?": 0,
+   "Will Solana dip to $40 by December 31, 2026?": 3,
+   "Will Solana dip to $20 in October?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -126,10 +126,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 45,
+   "Will Chainlink reach $18 by December 31, 2026?": 44,
    "Will Chainlink reach $16 by December 31, 2026?": 82,
    "Will Chainlink reach $20 by December 31, 2026?": 20,
-   "Will Chainlink reach $26 in October?": 24
+   "Will Chainlink reach $26 in October?": 22
   },
   "in_zone2": false,
   "below_stop": false,
@@ -164,9 +164,10 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
-   "Will Sui reach $1.40 before 2027?": 64
+   "Will Sui reach $1.40 before 2027?": 63,
+   "Will Sui dip to $0.20 before 2027?": 6
   },
   "in_zone2": false,
   "below_stop": false,
@@ -308,7 +309,7 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1116,7 +1117,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791440613.7674613,
+ "_saved_t": 1791442897.5434089,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

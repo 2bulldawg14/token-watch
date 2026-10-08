@@ -3,19 +3,19 @@
   {
    "key": "above_zone",
    "text": "Price was above the buy zone - chasing instead of waiting for a pullback",
-   "n": 6,
+   "n": 8,
    "wins": 0,
-   "avg": -1.79,
+   "avg": -0.895,
    "points": -12,
-   "block": false
+   "block": true
   },
   {
    "key": "macd_weak",
    "text": "MACD momentum was fading or turning down",
-   "n": 21,
+   "n": 22,
    "wins": 5,
-   "avg": -0.8533333333333333,
-   "points": -7.6,
+   "avg": -0.6927272727272727,
+   "points": -7.9,
    "block": true
   },
   {
@@ -38,18 +38,18 @@
   }
  ],
  "mult": {
-  "technical": 0.66,
-  "flows": 1.07,
+  "technical": 0.7,
+  "flows": 1.08,
   "macro": 0.97,
   "markets": 0.99
  },
- "graded": 28,
- "t": "2026-10-08 00:23 UTC",
+ "graded": 30,
+ "t": "2026-10-08 01:02 UTC",
  "scorecard": {
-  "closed": 26,
-  "wins": 15,
-  "avg": -0.85,
-  "held": 1.7,
+  "closed": 28,
+  "wins": 17,
+  "avg": -0.66,
+  "held": 1.9,
   "gave_back": 1
  },
  "sells": {
@@ -72,12 +72,12 @@
    "text": "hit the take-profit target"
   },
   "signal": {
-   "n": 17,
+   "n": 19,
    "reviewed": 6,
    "early": 1,
    "good": 0,
    "after": 4.6,
-   "ret": -3.72,
+   "ret": -3.14,
    "text": "signal turned TRIM/SELL"
   }
  },

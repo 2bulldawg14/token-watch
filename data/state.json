@@ -205,10 +205,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
+   "Will the price of Ethereum be above $3,100 on October 9?": 0,
+   "Will the price of Ethereum be above $3,000 on October 9?": 0,
    "Will Ethereum reach $4,500 in October?": 0,
-   "Will Ethereum reach $2,800 in October?": 24,
-   "Will Ethereum dip to $2,200 in October?": 42,
-   "Will Ethereum reach $3,500 in October?": 2
+   "Will the price of Ethereum be above $3,200 on October 9?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -265,7 +265,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -400,7 +400,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1122,7 +1122,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791482175.7100751,
+ "_saved_t": 1791483591.7374976,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1130,9 +1130,9 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "SELL / AVOID"
  },
- "_wl_cursor": 18,
+ "_wl_cursor": 24,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1473,7 +1473,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID"
+  "signal": "TRIM"
  },
  "RKLB": {
   "seen_news": [

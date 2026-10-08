@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1791435281.9332802,
+  "t": 1791437810.397896,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 733866070,
-    "fdv": 733866070,
-    "volume": 125746798,
+    "market_cap": 739524143,
+    "fdv": 739524143,
+    "volume": 126575873,
     "website": [
      "https://injective.com"
     ],
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1791435284.202789,
+  "t": 1791437812.7831929,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 67672110732,
-    "fdv": 72989403754,
-    "volume": 2876959750,
+    "market_cap": 68075068454,
+    "fdv": 73424019570,
+    "volume": 2870462977,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1791435286.6568377,
+  "t": 1791437815.7312467,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -101,13 +101,14 @@
     "age": true,
     "tax": true,
     "owner": true,
-    "holders": true
+    "holders": true,
+    "liquidity": true
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 9791976927,
-    "fdv": 13089128878,
-    "volume": 344394530,
+    "market_cap": 9876351526,
+    "fdv": 13201914071,
+    "volume": 348534522,
     "website": [
      "https://chain.link/"
     ],
@@ -3104,7 +3105,7 @@
  "id:secz": "securitize-corp",
  "idt:secz": 1790865592.5247884,
  "dd:securitize-corp": {
-  "t": 1791433264.7308555,
+  "t": 1791437807.5547602,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,

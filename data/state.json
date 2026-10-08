@@ -1031,7 +1031,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
@@ -1046,7 +1046,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 46,
+   "Will UNI reach $11.00 by December 31, 2026?": 44,
    "Will UNI dip to $4.00 by December 31, 2026?": 20,
    "Will UNI reach $15.50 by December 31, 2026?": 12,
    "Will UNI reach $12.50 by December 31, 2026?": 26
@@ -1123,7 +1123,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791500197.795101,
+ "_saved_t": 1791501435.7504156,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1133,7 +1133,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 7,
+ "_wl_cursor": 13,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

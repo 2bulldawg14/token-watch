@@ -113,7 +113,7 @@
    "Will Solana reach $200 in October?": 1,
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana dip to $20 in October?": 0,
-   "Will Solana dip to $40 by December 31, 2026?": 3
+   "Will Solana reach $320 by December 31, 2026?": 2
   },
   "in_zone2": false,
   "below_stop": false,
@@ -126,7 +126,7 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 40,
+   "Will Chainlink reach $18 by December 31, 2026?": 44,
    "Will Chainlink reach $22 by December 31, 2026?": 14,
    "Will Chainlink reach $16 by December 31, 2026?": 80,
    "Will Chainlink reach $20 by December 31, 2026?": 16
@@ -140,7 +140,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -166,8 +166,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Sui reach $1.60 before 2027?": 48,
-   "Will Sui dip to $0.20 before 2027?": 6
+   "Will Sui reach $1.60 before 2027?": 48
   },
   "in_zone2": false,
   "below_stop": false,
@@ -193,7 +192,7 @@
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 3,
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
-   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 5
   },
   "in_zone2": false,
   "below_stop": false,
@@ -295,7 +294,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1032,7 +1031,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
@@ -1124,7 +1123,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791464559.0329535,
+ "_saved_t": 1791466871.1237955,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1132,7 +1131,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "SELL / AVOID"
  },
  "_wl_cursor": 0,
  "_err_alert": {
@@ -1142,26 +1141,6 @@
  },
  "SPCX": {
   "seen_news": [
-   "142496886",
-   "142497079",
-   "142496383",
-   "142495667",
-   "142497983",
-   "142498459",
-   "142498460",
-   "142498016",
-   "142498464",
-   "142498465",
-   "142498082",
-   "142498466",
-   "142498463",
-   "142498458",
-   "142499626",
-   "142499622",
-   "142499627",
-   "142499623",
-   "142499284",
-   "142499625",
    "142499372",
    "142514669",
    "142514670",
@@ -1441,7 +1420,27 @@
    "142698324",
    "142698675",
    "142698676",
-   "142698393"
+   "142698393",
+   "142726231",
+   "142725968",
+   "142725635",
+   "142725997",
+   "142725636",
+   "142725271",
+   "142725272",
+   "142725638",
+   "142723062",
+   "142721503",
+   "142720373",
+   "142719466",
+   "142718724",
+   "142720871",
+   "142713814",
+   "142713599",
+   "142710540",
+   "142710907",
+   "142708306",
+   "142708199"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1449,7 +1448,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-05"
  },
  "LAES": {
@@ -1466,7 +1465,8 @@
    "142664389",
    "142673029",
    "142669932",
-   "142673031"
+   "142673031",
+   "142706942"
   ],
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,
@@ -1582,12 +1582,17 @@
    "142694561",
    "142698693",
    "142698512",
-   "142698207"
+   "142698207",
+   "142726231",
+   "142725636",
+   "142708306",
+   "142700635",
+   "142699564"
   ],
   "_ins": "dump|Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "SELL / AVOID"
@@ -1645,7 +1650,8 @@
    "142684019",
    "142671876",
    "142671877",
-   "142699050"
+   "142699050",
+   "142701739"
   ],
   "in_zone2": false,
   "below_stop": false,
@@ -1678,7 +1684,7 @@
   "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM"

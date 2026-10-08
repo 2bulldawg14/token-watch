@@ -93,7 +93,7 @@
  },
  "INJ": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "hit_below": false,
   "hit_above": false,
@@ -108,7 +108,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Solana reach $200 in October?": 1,
    "Will Solana reach $600 by December 31, 2026?": 0,
@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Sui reach $1.60 before 2027?": 48
   },
@@ -177,7 +177,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -187,10 +187,10 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 3,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 11,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0
   },
@@ -207,8 +207,8 @@
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 8,
    "Will Ethereum reach $10,000 by December 31, 2026?": 1,
-   "Will Ethereum dip to $1,000 by December 31, 2026?": 4,
-   "Will Ethereum dip to $800 by December 31, 2026?": 3
+   "Will Ethereum dip to $800 by December 31, 2026?": 3,
+   "Will Ethereum dip to $1,000 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -280,7 +280,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -308,14 +308,14 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "SEI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -328,7 +328,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1123,7 +1123,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791502560.9737883,
+ "_saved_t": 1791503661.7013192,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1131,9 +1131,9 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
- "_wl_cursor": 19,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

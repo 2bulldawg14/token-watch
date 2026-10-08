@@ -108,12 +108,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in October?": 1,
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana dip to $20 in October?": 0,
-   "Will Solana reach $320 by December 31, 2026?": 2
+   "Will Solana reach $190 October 5-11?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -126,9 +126,9 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 44,
+   "Will Chainlink reach $18 by December 31, 2026?": 45,
    "Will Chainlink reach $22 by December 31, 2026?": 14,
-   "Will Chainlink reach $16 by December 31, 2026?": 80,
+   "Will Chainlink reach $16 by December 31, 2026?": 77,
    "Will Chainlink reach $20 by December 31, 2026?": 16
   },
   "in_zone2": false,
@@ -140,14 +140,14 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
  "_discovery_t": 1791462331.1190689,
  "_report_week": "2026-W41",
- "_export_t": 1791468098.3169599,
+ "_export_t": 1791483595.1336894,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -166,7 +166,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Sui dip to $0.20 before 2027?": 6
+   "Will Sui reach $1.60 before 2027?": 48
   },
   "in_zone2": false,
   "below_stop": false,
@@ -177,22 +177,22 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
  },
  "BTC": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 3,
-   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
   },
   "in_zone2": false,
   "below_stop": false,
@@ -236,20 +236,20 @@
  },
  "RENDER": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-08"
  },
  "XRP": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
@@ -280,7 +280,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -294,7 +294,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -315,7 +315,7 @@
   },
   "SEI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -328,7 +328,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -374,7 +374,7 @@
   },
   "RENDER": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -387,7 +387,7 @@
   },
   "XRP": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -817,7 +817,7 @@
   },
   "SECZ": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1122,7 +1122,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791483591.7374976,
+ "_saved_t": 1791485157.0954323,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1130,9 +1130,9 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "SELL / AVOID"
+  "signal": "TRIM"
  },
- "_wl_cursor": 24,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1140,16 +1140,6 @@
  },
  "SPCX": {
   "seen_news": [
-   "142515541",
-   "142518535",
-   "142515544",
-   "142515082",
-   "142516476",
-   "142515086",
-   "142520621",
-   "142521180",
-   "142520705",
-   "142520704",
    "142521187",
    "142521185",
    "142521182",
@@ -1439,7 +1429,17 @@
    "142729765",
    "142730168",
    "142729779",
-   "142729746"
+   "142729746",
+   "142731336",
+   "142730881",
+   "142731126",
+   "142731337",
+   "142730969",
+   "142730926",
+   "142730252",
+   "142731334",
+   "142730977",
+   "142731312"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1588,7 +1588,9 @@
    "142700635",
    "142699564",
    "142728057",
-   "142728058"
+   "142728058",
+   "142731349",
+   "142731337"
   ],
   "_ins": "dump|Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
@@ -1668,7 +1670,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-03"
  },
  "FIGR": {

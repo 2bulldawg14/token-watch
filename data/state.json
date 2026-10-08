@@ -124,7 +124,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 44,
    "Will Chainlink reach $22 by December 31, 2026?": 14,
@@ -140,7 +140,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -265,7 +265,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -287,14 +287,14 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -400,7 +400,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1123,7 +1123,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791466871.1237955,
+ "_saved_t": 1791468095.7615952,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1141,7 +1141,6 @@
  },
  "SPCX": {
   "seen_news": [
-   "142499372",
    "142514669",
    "142514670",
    "142514678",
@@ -1440,7 +1439,8 @@
    "142710540",
    "142710907",
    "142708306",
-   "142708199"
+   "142708199",
+   "142726743"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1684,7 +1684,7 @@
   "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM"

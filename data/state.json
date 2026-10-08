@@ -140,7 +140,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -166,7 +166,7 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Sui dip to $0.20 before 2027?": 6
+   "Will Sui reach $1.40 before 2027?": 64
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1116,7 +1116,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791437818.0944507,
+ "_saved_t": 1791438948.8636284,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1126,7 +1126,7 @@
   "risk": "MEDIUM",
   "signal": "TRIM"
  },
- "_wl_cursor": 3,
+ "_wl_cursor": 9,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

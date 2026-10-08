@@ -236,25 +236,25 @@
  },
  "RENDER": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-08"
  },
  "XRP": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
-   "Will XRP reach $5.00 by December 31, 2026?": 1,
-   "Will XRP reach $4.00 by December 31, 2026?": 3
+   "Will XRP reach $5.00 by December 31, 2026?": 4,
+   "Will XRP reach $4.00 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -374,7 +374,7 @@
   },
   "RENDER": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -387,7 +387,7 @@
   },
   "XRP": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1071,10 +1071,10 @@
   "risk": "MEDIUM",
   "signal": "SELL / AVOID",
   "odds": {
+   "Will Hyperliquid dip to $84 in October?": 100,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
-   "Will Hyperliquid dip to $8 by December 31, 2026?": 1,
-   "Will Hyperliquid dip to $16 by December 31, 2026?": 2
+   "Will Hyperliquid dip to $8 by December 31, 2026?": 1
   },
   "macd_day": "2026-09-28"
  },
@@ -1089,8 +1089,8 @@
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 36,
-   "Will Zcash dip to $700 by December 31, 2026?": 36
+   "Will Zcash dip to $700 by December 31, 2026?": 35,
+   "Will Zcash reach $2000 by December 31, 2026?": 36
   },
   "macd_day": "2026-09-28"
  },
@@ -1122,7 +1122,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791481022.2372046,
+ "_saved_t": 1791482175.7100751,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1132,7 +1132,7 @@
   "risk": "MEDIUM",
   "signal": "HOLD"
  },
- "_wl_cursor": 12,
+ "_wl_cursor": 18,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

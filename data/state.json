@@ -140,7 +140,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Sui reach $1.60 before 2027?": 48,
    "Will Sui dip to $0.20 before 2027?": 6
@@ -207,9 +207,9 @@
   "signal": "TRIM",
   "odds": {
    "Will Ethereum reach $4,500 in October?": 1,
-   "Will Ethereum reach $2,800 in October?": 40,
-   "Will Ethereum dip to $2,300 in October?": 38,
-   "Will Ethereum dip to $2,400 in October?": 60
+   "Will Ethereum dip to $2,200 in October?": 26,
+   "Will Ethereum reach $2,900 in October?": 22,
+   "Will Ethereum reach $2,800 in October?": 38
   },
   "in_zone2": false,
   "below_stop": false,
@@ -266,7 +266,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -295,7 +295,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -309,7 +309,7 @@
   },
   "SUI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -401,7 +401,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -415,7 +415,7 @@
   },
   "UNI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -436,7 +436,7 @@
   },
   "ZEC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -811,14 +811,14 @@
   },
   "XRPN": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "SECZ": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1032,7 +1032,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
@@ -1045,7 +1045,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 52,
    "Will UNI dip to $4.00 by December 31, 2026?": 20,
@@ -1076,7 +1076,7 @@
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $8 by December 31, 2026?": 1,
-   "Will Hyperliquid reach $100 by December 31, 2026?": 68
+   "Will Hyperliquid dip to $16 by December 31, 2026?": 2
   },
   "macd_day": "2026-09-28"
  },
@@ -1087,12 +1087,12 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 32,
-   "Will Zcash reach $2000 by December 31, 2026?": 35
+   "Will Zcash dip to $700 by December 31, 2026?": 30,
+   "Will Zcash reach $2000 by December 31, 2026?": 31
   },
   "macd_day": "2026-09-28"
  },
@@ -1124,7 +1124,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791462378.603801,
+ "_saved_t": 1791464559.0329535,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1661,7 +1661,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "macd_day": "2026-10-03"
  },
  "FIGR": {

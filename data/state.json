@@ -140,7 +140,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -151,7 +151,7 @@
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
@@ -192,7 +192,7 @@
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
-   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
+   "Will the price of Bitcoin be above $96,000 on October 9?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -265,7 +265,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-09"
@@ -294,7 +294,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -400,7 +400,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1100,9 +1100,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 37,
+   "Will Zcash dip to $100 by December 31, 2026?": 3,
+   "Will Zcash dip to $700 by December 31, 2026?": 34,
    "Will Zcash reach $2000 by December 31, 2026?": 37
   },
   "macd_day": "2026-09-28"
@@ -1135,7 +1135,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791551952.2025328,
+ "_saved_t": 1791553333.5280125,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1143,10 +1143,10 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1154,26 +1154,6 @@
  },
  "SPCX": {
   "seen_news": [
-   "142521187",
-   "142521185",
-   "142521182",
-   "142519304",
-   "142521183",
-   "142521905",
-   "142521900",
-   "142521969",
-   "142522282",
-   "142521987",
-   "142522288",
-   "142522177",
-   "142521970",
-   "142521943",
-   "142522478",
-   "142557624",
-   "142557819",
-   "142557626",
-   "142558159",
-   "142557671",
    "142557724",
    "142557718",
    "142556530",
@@ -1453,7 +1433,27 @@
    "142730252",
    "142731334",
    "142730977",
-   "142731312"
+   "142731312",
+   "142760726",
+   "142760515",
+   "142760756",
+   "142760671",
+   "142759432",
+   "142759433",
+   "142759434",
+   "142759436",
+   "142759437",
+   "142760559",
+   "142759438",
+   "142759439",
+   "142759440",
+   "142759441",
+   "142757494",
+   "142755042",
+   "142754508",
+   "142754504",
+   "142761140",
+   "142753490"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1479,12 +1479,14 @@
    "142673029",
    "142669932",
    "142673031",
-   "142706942"
+   "142706942",
+   "142743326",
+   "142738713"
   ],
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM"
@@ -1604,7 +1606,12 @@
    "142728057",
    "142728058",
    "142731349",
-   "142731337"
+   "142731337",
+   "142760726",
+   "142761140",
+   "142745982",
+   "142744544",
+   "142736626"
   ],
   "_ins": "dump|Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,

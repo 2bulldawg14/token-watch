@@ -140,7 +140,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -254,7 +254,7 @@
    "Will XRP reach $4.00 in October?": 1,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
    "Will XRP reach $5.00 by December 31, 2026?": 2,
-   "Will XRP reach $4.00 by December 31, 2026?": 4
+   "Will XRP reach $4.00 by December 31, 2026?": 5
   },
   "in_zone2": false,
   "below_stop": false,
@@ -294,7 +294,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -810,7 +810,7 @@
   },
   "XRPN": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1085,7 +1085,7 @@
   "risk": "MEDIUM",
   "signal": "SELL / AVOID",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $8 by December 31, 2026?": 1,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 2
@@ -1136,7 +1136,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791569845.3137438,
+ "_saved_t": 1791571355.0740354,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1147,7 +1147,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 17,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1155,18 +1155,6 @@
  },
  "SPCX": {
   "seen_news": [
-   "142560047",
-   "142559754",
-   "142560055",
-   "142559993",
-   "142559658",
-   "142561121",
-   "142560650",
-   "142561122",
-   "142560713",
-   "142560653",
-   "142561024",
-   "142561069",
    "142560984",
    "142560924",
    "142561130",
@@ -1454,7 +1442,19 @@
    "142764151",
    "142764152",
    "142764153",
-   "142764075"
+   "142764075",
+   "142765328",
+   "142765145",
+   "142765168",
+   "142765189",
+   "142765146",
+   "142765411",
+   "142765329",
+   "142765535",
+   "142765156",
+   "142765537",
+   "142765152",
+   "142765175"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1617,7 +1617,10 @@
    "142736626",
    "142761617",
    "142762055",
-   "142762793"
+   "142762793",
+   "142765537",
+   "142765266",
+   "142765310"
   ],
   "_ins": "dump|Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
@@ -1688,10 +1691,10 @@
   ],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "SECZ": {
   "seen_news": [],

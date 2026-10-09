@@ -1045,7 +1045,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
@@ -1135,7 +1135,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791536165.6661572,
+ "_saved_t": 1791537514.7990906,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1146,7 +1146,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 12,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

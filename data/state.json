@@ -124,7 +124,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 46,
    "Will Chainlink reach $22 by December 31, 2026?": 14,
@@ -187,11 +187,11 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 3,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 11,
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0
   },
   "in_zone2": false,
@@ -205,10 +205,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Ethereum dip to $1,500 by December 31, 2026?": 8,
-   "Will Ethereum reach $10,000 by December 31, 2026?": 1,
-   "Will Ethereum dip to $800 by December 31, 2026?": 3,
-   "Will Ethereum dip to $1,000 by December 31, 2026?": 4
+   "Will the price of Ethereum be above $3,000 on October 9?": 0,
+   "Will the price of Ethereum be above $3,100 on October 9?": 0,
+   "Will Ethereum reach $4,500 in October?": 1,
+   "Will the price of Ethereum be above $3,200 on October 9?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -262,10 +262,10 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -287,7 +287,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -328,7 +328,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1055,7 +1055,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
@@ -1102,7 +1102,7 @@
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 38,
+   "Will Zcash dip to $700 by December 31, 2026?": 40,
    "Will Zcash reach $2000 by December 31, 2026?": 33
   },
   "macd_day": "2026-09-28"
@@ -1114,7 +1114,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1135,7 +1135,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791505627.4946334,
+ "_saved_t": 1791507856.1516395,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1143,7 +1143,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
  "_wl_cursor": 0,

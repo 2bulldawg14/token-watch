@@ -108,7 +108,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in October?": 1,
    "Will Solana reach $600 by December 31, 2026?": 0,
@@ -126,10 +126,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 44,
+   "Will Chainlink reach $18 by December 31, 2026?": 46,
    "Will Chainlink reach $22 by December 31, 2026?": 14,
-   "Will Chainlink reach $16 by December 31, 2026?": 55,
-   "Will Chainlink reach $20 by December 31, 2026?": 15
+   "Will Chainlink reach $16 by December 31, 2026?": 62,
+   "Will Chainlink reach $20 by December 31, 2026?": 17
   },
   "in_zone2": false,
   "below_stop": false,
@@ -145,7 +145,7 @@
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1791462331.1190689,
+ "_discovery_t": 1791505569.9221225,
  "_report_week": "2026-W41",
  "_export_t": 1791499083.282915,
  "_tg_offset": 218529296,
@@ -187,7 +187,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 3,
@@ -265,7 +265,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-09-29"
@@ -280,7 +280,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -328,7 +328,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -435,7 +435,7 @@
   },
   "ZEC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -456,7 +456,7 @@
   },
   "LTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -498,7 +498,7 @@
   },
   "AI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -954,6 +954,20 @@
    "in_sell": true,
    "below": false,
    "hit_t": false
+  },
+  "QTC": {
+   "seen": true,
+   "bad": true,
+   "in_sell": true,
+   "below": false,
+   "hit_t": false
+  },
+  "MON": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -1035,21 +1049,19 @@
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
-  "macd_day": "2026-10-08"
+  "macd_day": "2026-10-09"
  },
  "UNI": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 44,
-   "Will UNI dip to $4.00 by December 31, 2026?": 20,
-   "Will UNI reach $15.50 by December 31, 2026?": 12,
-   "Will UNI reach $12.50 by December 31, 2026?": 26
+   "Will UNI reach $15.50 by December 31, 2026?": 12
   },
   "macd_day": "2026-09-29"
  },
@@ -1083,10 +1095,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
@@ -1102,7 +1114,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1112,7 +1124,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "macd_day": "2026-10-04"
  },
  "_disc_seen": {
@@ -1123,7 +1135,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791503661.7013192,
+ "_saved_t": 1791505627.4946334,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1131,7 +1143,8 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM"
+  "signal": "HOLD",
+  "macd_day": "2026-10-09"
  },
  "_wl_cursor": 0,
  "_err_alert": {

@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Sui reach $1.60 before 2027?": 48
   },
@@ -219,7 +219,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-07"
@@ -308,7 +308,7 @@
   },
   "SUI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1079,10 +1079,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
@@ -1135,7 +1135,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791545730.0239732,
+ "_saved_t": 1791546931.6964881,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1146,7 +1146,7 @@
   "signal": "SELL / AVOID",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 3,
+ "_wl_cursor": 16,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

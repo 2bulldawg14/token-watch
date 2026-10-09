@@ -129,7 +129,7 @@
    "Will Chainlink reach $18 by December 31, 2026?": 46,
    "Will Chainlink reach $16 by December 31, 2026?": 62,
    "Will Chainlink reach $20 by December 31, 2026?": 15,
-   "Will Chainlink reach $26 in October?": 37
+   "Will Chainlink reach $26 in October?": 24
   },
   "in_zone2": false,
   "below_stop": false,
@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Sui reach $1.60 before 2027?": 48
   },
@@ -265,7 +265,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-09"
@@ -308,7 +308,7 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -400,7 +400,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -1060,9 +1060,9 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 45,
-   "Will UNI reach $15.50 by December 31, 2026?": 12,
-   "Will UNI reach $14.00 by December 31, 2026?": 22
+   "Will UNI reach $11.00 by December 31, 2026?": 46,
+   "Will UNI reach $15.50 by December 31, 2026?": 11,
+   "Will UNI reach $14.00 by December 31, 2026?": 21
   },
   "macd_day": "2026-09-29"
  },
@@ -1136,7 +1136,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791567363.7597785,
+ "_saved_t": 1791568532.0619862,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1147,7 +1147,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 18,
+ "_wl_cursor": 11,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1155,18 +1155,6 @@
  },
  "SPCX": {
   "seen_news": [
-   "142530954",
-   "142530161",
-   "142529131",
-   "142558947",
-   "142558948",
-   "142560049",
-   "142559915",
-   "142560044",
-   "142559648",
-   "142560045",
-   "142559634",
-   "142559610",
    "142560047",
    "142559754",
    "142560055",
@@ -1454,7 +1442,19 @@
    "142762057",
    "142761705",
    "142761706",
-   "142761709"
+   "142761709",
+   "142764413",
+   "142764405",
+   "142764149",
+   "142763998",
+   "142763962",
+   "142764257",
+   "142764148",
+   "142761565",
+   "142764151",
+   "142764152",
+   "142764153",
+   "142764075"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1625,13 +1625,14 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID"
+  "signal": "SELL / AVOID",
+  "macd_day": "2026-10-09"
  },
  "TIG": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)",
@@ -1682,7 +1683,8 @@
    "142671877",
    "142699050",
    "142701739",
-   "142763152"
+   "142763152",
+   "142764643"
   ],
   "in_zone2": false,
   "below_stop": false,
@@ -1715,7 +1717,7 @@
   "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM"

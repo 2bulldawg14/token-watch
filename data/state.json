@@ -140,7 +140,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -177,7 +177,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -191,8 +191,8 @@
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
-   "Will the price of Bitcoin be above $96,000 on October 9?": 0
+   "Will the price of Bitcoin be above $96,000 on October 9?": 0,
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 10
   },
   "in_zone2": false,
   "below_stop": false,
@@ -265,7 +265,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-09"
@@ -294,7 +294,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -315,7 +315,7 @@
   },
   "SEI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -400,7 +400,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -810,7 +810,7 @@
   },
   "XRPN": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1135,7 +1135,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791555492.6300952,
+ "_saved_t": 1791557007.8549187,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1143,10 +1143,10 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1154,18 +1154,6 @@
  },
  "SPCX": {
   "seen_news": [
-   "142557724",
-   "142557718",
-   "142556530",
-   "142553022",
-   "142556784",
-   "142557424",
-   "142544730",
-   "142549806",
-   "142542666",
-   "142558481",
-   "142531613",
-   "142557561",
    "142530954",
    "142530161",
    "142529131",
@@ -1453,7 +1441,19 @@
    "142754508",
    "142754504",
    "142761140",
-   "142753490"
+   "142753490",
+   "142762053",
+   "142761463",
+   "142761512",
+   "142761963",
+   "142761617",
+   "142762055",
+   "142761475",
+   "142762056",
+   "142762057",
+   "142761705",
+   "142761706",
+   "142761709"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1481,7 +1481,8 @@
    "142673031",
    "142706942",
    "142743326",
-   "142738713"
+   "142738713",
+   "142761863"
   ],
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,
@@ -1611,7 +1612,9 @@
    "142761140",
    "142745982",
    "142744544",
-   "142736626"
+   "142736626",
+   "142761617",
+   "142762055"
   ],
   "_ins": "dump|Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
@@ -1625,7 +1628,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)",
@@ -1679,10 +1682,10 @@
   ],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM"
+  "signal": "HOLD"
  },
  "SECZ": {
   "seen_news": [],
@@ -1708,7 +1711,7 @@
   "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM"

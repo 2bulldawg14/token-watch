@@ -108,12 +108,12 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in October?": 1,
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana dip to $60 by December 31, 2026?": 7,
-   "Will Solana dip to $20 in October?": 0
+   "Will Solana reach $190 in October?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -128,8 +128,8 @@
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 46,
    "Will Chainlink reach $16 by December 31, 2026?": 62,
-   "Will Chainlink reach $20 by December 31, 2026?": 15,
-   "Will Chainlink reach $26 in October?": 37
+   "Will Chainlink reach $20 by December 31, 2026?": 16,
+   "Will Chainlink reach $26 in October?": 36
   },
   "in_zone2": false,
   "below_stop": false,
@@ -140,12 +140,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1791505569.9221225,
+ "_discovery_t": 1791549983.4302897,
  "_report_week": "2026-W41",
  "_export_t": 1791544533.101105,
  "_tg_offset": 218529296,
@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Sui reach $1.60 before 2027?": 48
   },
@@ -177,7 +177,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -265,7 +265,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-09"
@@ -280,7 +280,7 @@
   },
   "SOL": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -294,7 +294,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -308,14 +308,14 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "SEI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -400,7 +400,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -796,7 +796,7 @@
   },
   "PRL": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -958,7 +958,7 @@
   "QTC": {
    "seen": true,
    "bad": true,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -1060,7 +1060,7 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 46,
+   "Will UNI reach $11.00 by December 31, 2026?": 45,
    "Will UNI reach $15.50 by December 31, 2026?": 12
   },
   "macd_day": "2026-09-29"
@@ -1079,10 +1079,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
@@ -1135,7 +1135,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791548327.4982328,
+ "_saved_t": 1791550030.9439178,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1146,7 +1146,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 22,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

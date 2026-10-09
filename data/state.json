@@ -112,8 +112,8 @@
   "odds": {
    "Will Solana reach $200 in October?": 1,
    "Will Solana reach $600 by December 31, 2026?": 0,
-   "Will Solana dip to $20 in October?": 0,
-   "Will Solana reach $190 October 5-11?": 0
+   "Will Solana reach $190 October 5-11?": 0,
+   "Will Solana dip to $20 in October?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -128,7 +128,7 @@
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 44,
    "Will Chainlink reach $22 by December 31, 2026?": 14,
-   "Will Chainlink reach $16 by December 31, 2026?": 62,
+   "Will Chainlink reach $16 by December 31, 2026?": 67,
    "Will Chainlink reach $20 by December 31, 2026?": 16
   },
   "in_zone2": false,
@@ -151,7 +151,7 @@
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
@@ -205,10 +205,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will the price of Ethereum be above $3,000 on October 9?": 0,
-   "Will the price of Ethereum be above $3,100 on October 9?": 0,
-   "Will Ethereum reach $4,500 in October?": 0,
-   "Will the price of Ethereum be above $3,200 on October 9?": 0
+   "Will Ethereum dip to $1,500 by December 31, 2026?": 8,
+   "Will Ethereum reach $10,000 by December 31, 2026?": 1,
+   "Will Ethereum dip to $800 by December 31, 2026?": 3,
+   "Will Ethereum dip to $1,000 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -219,7 +219,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-07"
@@ -265,10 +265,10 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
-  "macd_day": "2026-09-29"
+  "macd_day": "2026-10-09"
  },
  "_sellst": {
   "INJ": {
@@ -348,7 +348,7 @@
   },
   "AERO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -400,7 +400,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -435,7 +435,7 @@
   },
   "ZEC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -449,7 +449,7 @@
   },
   "SHIB": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1060,8 +1060,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 47,
-   "Will UNI reach $15.50 by December 31, 2026?": 12,
+   "Will UNI reach $11.00 by December 31, 2026?": 46,
+   "Will UNI reach $15.50 by December 31, 2026?": 13,
    "Will UNI reach $12.50 by December 31, 2026?": 32
   },
   "macd_day": "2026-09-29"
@@ -1080,7 +1080,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "SELL / AVOID",
@@ -1099,7 +1099,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
@@ -1115,7 +1115,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1136,7 +1136,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791521912.3213212,
+ "_saved_t": 1791523343.0468364,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1144,10 +1144,10 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 18,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

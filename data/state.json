@@ -93,7 +93,7 @@
  },
  "INJ": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "hit_below": false,
   "hit_above": false,
@@ -147,7 +147,7 @@
  },
  "_discovery_t": 1791505569.9221225,
  "_report_week": "2026-W41",
- "_export_t": 1791499083.282915,
+ "_export_t": 1791513504.8688393,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -1136,7 +1136,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791513502.5515246,
+ "_saved_t": 1791514593.9930737,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1147,7 +1147,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 24,
+ "_wl_cursor": 1,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

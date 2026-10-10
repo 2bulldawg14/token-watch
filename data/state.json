@@ -145,13 +145,13 @@
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1791549983.4302897,
+ "_discovery_t": 1791594148.4635909,
  "_report_week": "2026-W41",
  "_export_t": 1791590015.5368106,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
@@ -265,7 +265,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-09"
@@ -400,7 +400,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -470,7 +470,7 @@
   },
   "NEAR": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -957,12 +957,26 @@
   },
   "QTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "MON": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "MNT": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "0G": {
    "seen": true,
    "bad": true,
    "in_sell": false,
@@ -1061,8 +1075,9 @@
   "signal": "HOLD",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 44,
-   "Will UNI reach $15.50 by December 31, 2026?": 11,
-   "Will UNI reach $14.00 by December 31, 2026?": 22
+   "Will UNI reach $15.50 by December 31, 2026?": 12,
+   "Will UNI reach $12.50 by December 31, 2026?": 46,
+   "Will UNI reach $14.00 by December 31, 2026?": 21
   },
   "macd_day": "2026-09-29"
  },
@@ -1074,7 +1089,7 @@
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
-  "macd_day": "2026-10-09"
+  "macd_day": "2026-10-10"
  },
  "HYPE": {
   "seen_news": [],
@@ -1136,7 +1151,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791591878.8863847,
+ "_saved_t": 1791594200.2309127,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

@@ -113,7 +113,7 @@
    "Will Solana reach $200 in October?": 1,
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana dip to $20 in October?": 0,
-   "Will Solana reach $190 in October?": 1
+   "Will Solana dip to $60 by December 31, 2026?": 6
   },
   "in_zone2": false,
   "below_stop": false,
@@ -121,15 +121,15 @@
  },
  "LINK": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 46,
-   "Will Chainlink reach $16 by December 31, 2026?": 71,
+   "Will Chainlink reach $16 by December 31, 2026?": 72,
    "Will Chainlink reach $20 by December 31, 2026?": 20,
-   "Will Chainlink reach $26 in October?": 35
+   "Will Chainlink reach $26 in October?": 36
   },
   "in_zone2": false,
   "below_stop": false,
@@ -147,7 +147,7 @@
  },
  "_discovery_t": 1791640406.7283113,
  "_report_week": "2026-W41",
- "_export_t": 1791634662.6489584,
+ "_export_t": 1791650148.6684048,
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 4
   },
@@ -190,8 +190,8 @@
   "signal": "TRIM",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
    "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
   },
   "in_zone2": false,
@@ -207,8 +207,8 @@
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 8,
    "Will Ethereum reach $10,000 by December 31, 2026?": 1,
-   "Will Ethereum dip to $800 by December 31, 2026?": 3,
-   "Will Ethereum dip to $1,000 by December 31, 2026?": 4
+   "Will Ethereum dip to $1,000 by December 31, 2026?": 4,
+   "Will Ethereum dip to $800 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -287,7 +287,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -308,7 +308,7 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -401,7 +401,7 @@
   "ATOM": {
    "seen": true,
    "bad": true,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1143,7 +1143,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1164,7 +1164,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791650146.7201483,
+ "_saved_t": 1791651327.5854988,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1172,10 +1172,10 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

@@ -265,7 +265,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-09"
@@ -400,7 +400,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -449,7 +449,7 @@
   },
   "SHIB": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1129,7 +1129,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1150,7 +1150,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791636252.7314808,
+ "_saved_t": 1791638131.7626805,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1161,7 +1161,7 @@
   "signal": "SELL / AVOID",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 0,
+ "_wl_cursor": 21,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

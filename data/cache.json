@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1791614695.376753,
+  "t": 1791616508.7017567,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 705722130,
-    "fdv": 705722130,
-    "volume": 90050697,
+    "market_cap": 704086313,
+    "fdv": 704086313,
+    "volume": 89093444,
     "website": [
      "https://injective.com"
     ],
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1791614697.343012,
+  "t": 1791616511.4680767,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 64664397382,
-    "fdv": 69798157454,
-    "volume": 2396313469,
+    "market_cap": 64661882326,
+    "fdv": 69795446810,
+    "volume": 2377526888,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1791614699.7734416,
+  "t": 1791616514.268404,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 9903159481,
-    "fdv": 12914076890,
-    "volume": 221906734,
+    "market_cap": 9872467884,
+    "fdv": 12874053941,
+    "volume": 220186616,
     "website": [
      "https://chain.link/"
     ],
@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1791614702.512108,
+  "t": 1791616518.0694025,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -237,9 +237,9 @@
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2459003641,
-    "fdv": 5049982880,
-    "volume": 204427328,
+    "market_cap": 2436002175,
+    "fdv": 5002745452,
+    "volume": 203943433,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -760,7 +760,7 @@
  },
  "id:hbar": "hedera-hashgraph",
  "dd:hedera-hashgraph": {
-  "t": 1791614707.898479,
+  "t": 1791616523.2322767,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -774,9 +774,9 @@
    },
    "facts": {
     "name": "Hedera",
-    "market_cap": 4076314763,
-    "fdv": 4632412340,
-    "volume": 100552635,
+    "market_cap": 4083391421,
+    "fdv": 4640454408,
+    "volume": 99982812,
     "website": [
      "https://www.hedera.com/"
     ],
@@ -942,7 +942,7 @@
   }
  },
  "dd:sui": {
-  "t": 1791614636.542453,
+  "t": 1791616525.6939518,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -956,9 +956,9 @@
    },
    "facts": {
     "name": "Sui",
-    "market_cap": 4545621709,
-    "fdv": 11037695962,
-    "volume": 480468006,
+    "market_cap": 4538106602,
+    "fdv": 11019447752,
+    "volume": 480718055,
     "website": [
      "https://sui.io/"
     ],
@@ -980,7 +980,7 @@
   }
  },
  "dd:sei-network": {
-  "t": 1791614639.7955537,
+  "t": 1791616528.00411,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -994,9 +994,9 @@
    },
    "facts": {
     "name": "Sei",
-    "market_cap": 457107016,
-    "fdv": 678871806,
-    "volume": 53050245,
+    "market_cap": 454837822,
+    "fdv": 675501716,
+    "volume": 53190787,
     "website": [
      "https://www.sei.io"
     ],
@@ -1144,7 +1144,7 @@
  "tick:zcash": "ZEC",
  "idt:zcash": 1790171746.2165124,
  "dd:canton-network": {
-  "t": 1791614641.96146,
+  "t": 1791616530.1340873,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -1159,9 +1159,9 @@
    },
    "facts": {
     "name": "Canton",
-    "market_cap": 4823049615,
-    "fdv": 4823169784,
-    "volume": 21636821,
+    "market_cap": 4822459808,
+    "fdv": 4822579963,
+    "volume": 21496338,
     "website": [
      "https://www.canton.network/"
     ],
@@ -1267,7 +1267,7 @@
  "id:shib": "shiba-inu",
  "idt:shib": 1790172691.1545615,
  "dd:shiba-inu": {
-  "t": 1791614705.947602,
+  "t": 1791616520.7023365,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1284,9 +1284,9 @@
    },
    "facts": {
     "name": "Shiba Inu",
-    "market_cap": 3229202910,
-    "fdv": 3230612960,
-    "volume": 68816818,
+    "market_cap": 3223590411,
+    "fdv": 3224998010,
+    "volume": 68856055,
     "website": [
      "https://shibatoken.com/"
     ],

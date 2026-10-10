@@ -203,7 +203,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 8,
    "Will Ethereum reach $10,000 by December 31, 2026?": 1,
@@ -251,10 +251,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will XRP reach $1.40 in October?": 100,
-   "Will XRP reach $1.40 October 5-11?": 100,
    "Will XRP reach $4.00 in October?": 1,
-   "Will XRP reach $8.00 by December 31, 2026?": 0
+   "Will XRP reach $8.00 by December 31, 2026?": 0,
+   "Will XRP reach $5.00 by December 31, 2026?": 3,
+   "Will XRP reach $4.20 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -265,7 +265,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-09"
@@ -400,7 +400,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": true,
    "below": false,
    "hit_t": false
@@ -1118,7 +1118,7 @@
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 30,
+   "Will Zcash dip to $700 by December 31, 2026?": 32,
    "Will Zcash reach $2000 by December 31, 2026?": 35
   },
   "macd_day": "2026-09-28"
@@ -1151,7 +1151,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791597331.5984979,
+ "_saved_t": 1791598531.8488505,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1162,7 +1162,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 14,
+ "_wl_cursor": 2,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

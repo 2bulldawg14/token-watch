@@ -121,15 +121,15 @@
  },
  "LINK": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 46,
-   "Will Chainlink reach $16 by December 31, 2026?": 72,
+   "Will Chainlink reach $16 by December 31, 2026?": 71,
    "Will Chainlink reach $20 by December 31, 2026?": 20,
-   "Will Chainlink reach $26 in October?": 25
+   "Will Chainlink reach $26 in October?": 36
   },
   "in_zone2": false,
   "below_stop": false,
@@ -151,7 +151,7 @@
  "_tg_offset": 218529296,
  "HBAR": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 4
   },
@@ -287,7 +287,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -308,7 +308,7 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -565,7 +565,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1090,7 +1090,7 @@
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 40,
    "Will UNI reach $15.50 by December 31, 2026?": 11,
-   "Will UNI reach $14.00 by December 31, 2026?": 21
+   "Will UNI reach $14.00 by December 31, 2026?": 23
   },
   "macd_day": "2026-09-29"
  },
@@ -1164,7 +1164,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791664530.1883924,
+ "_saved_t": 1791665609.6480978,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1172,10 +1172,10 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 11,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

@@ -124,12 +124,12 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $16 by December 31, 2026?": 70,
+   "Will Chainlink reach $16 by December 31, 2026?": 71,
    "Will Chainlink reach $18 by December 31, 2026?": 46,
    "Will Chainlink reach $20 by December 31, 2026?": 20,
-   "Will Chainlink reach $26 in October?": 35
+   "Will Chainlink reach $26 in October?": 32
   },
   "in_zone2": false,
   "below_stop": false,
@@ -145,7 +145,7 @@
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1791594148.4635909,
+ "_discovery_t": 1791640406.7283113,
  "_report_week": "2026-W41",
  "_export_t": 1791634662.6489584,
  "_tg_offset": 218529296,
@@ -206,9 +206,9 @@
   "signal": "TRIM",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 8,
+   "Will Ethereum reach $2,500 in October?": 100,
    "Will Ethereum reach $10,000 by December 31, 2026?": 1,
-   "Will Ethereum dip to $800 by December 31, 2026?": 3,
-   "Will Ethereum dip to $1,000 by December 31, 2026?": 4
+   "Will Ethereum reach $2,500 October 5-11?": 100
   },
   "in_zone2": false,
   "below_stop": false,
@@ -265,7 +265,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-09"
@@ -287,7 +287,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -400,7 +400,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -449,7 +449,7 @@
   },
   "SHIB": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -471,7 +471,7 @@
   "NEAR": {
    "seen": true,
    "bad": true,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -982,6 +982,20 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "PROM": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "KITE": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -1072,11 +1086,11 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 38,
+   "Will UNI reach $11.00 by December 31, 2026?": 37,
    "Will UNI reach $15.50 by December 31, 2026?": 11,
-   "Will UNI reach $14.00 by December 31, 2026?": 21
+   "Will UNI reach $14.00 by December 31, 2026?": 22
   },
   "macd_day": "2026-09-29"
  },
@@ -1115,8 +1129,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
+   "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $700 by December 31, 2026?": 37,
    "Will Zcash reach $2000 by December 31, 2026?": 36
   },
@@ -1129,7 +1143,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1150,7 +1164,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791639330.3403566,
+ "_saved_t": 1791640454.6239076,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1158,10 +1172,10 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 28,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

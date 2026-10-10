@@ -140,7 +140,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -177,7 +177,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -252,7 +252,7 @@
   "signal": "TRIM",
   "odds": {
    "Will XRP reach $4.00 in October?": 1,
-   "Will XRP reach $5.00 by December 31, 2026?": 5,
+   "Will XRP reach $5.00 by December 31, 2026?": 4,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
    "Will XRP reach $4.20 by December 31, 2026?": 3
   },
@@ -294,7 +294,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -315,7 +315,7 @@
   },
   "SEI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1088,9 +1088,9 @@
   "risk": "LOW",
   "signal": "ACCUMULATE",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 40,
-   "Will UNI reach $15.50 by December 31, 2026?": 11,
-   "Will UNI reach $14.00 by December 31, 2026?": 23
+   "Will UNI reach $14.00 by December 31, 2026?": 22,
+   "Will UNI reach $11.00 by December 31, 2026?": 39,
+   "Will UNI reach $15.50 by December 31, 2026?": 11
   },
   "macd_day": "2026-09-29"
  },
@@ -1115,8 +1115,8 @@
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
-   "Will Hyperliquid dip to $8 by December 31, 2026?": 1,
-   "Will Hyperliquid dip to $16 by December 31, 2026?": 2
+   "Will Hyperliquid reach $200 by December 31, 2026?": 4,
+   "Will Hyperliquid dip to $8 by December 31, 2026?": 1
   },
   "macd_day": "2026-09-28"
  },
@@ -1131,7 +1131,7 @@
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 37,
+   "Will Zcash dip to $700 by December 31, 2026?": 36,
    "Will Zcash reach $2000 by December 31, 2026?": 36
   },
   "macd_day": "2026-09-28"
@@ -1164,7 +1164,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791652404.1884546,
+ "_saved_t": 1791653677.1712716,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

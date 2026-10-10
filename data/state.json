@@ -226,7 +226,7 @@
  },
  "TAO": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
@@ -1117,7 +1117,7 @@
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 33,
+   "Will Zcash dip to $700 by December 31, 2026?": 32,
    "Will Zcash reach $2000 by December 31, 2026?": 35
   },
   "macd_day": "2026-09-28"
@@ -1150,7 +1150,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791608249.279615,
+ "_saved_t": 1791609525.999285,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1161,7 +1161,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 12,
+ "_wl_cursor": 18,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

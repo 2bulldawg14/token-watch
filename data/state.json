@@ -140,7 +140,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -164,7 +164,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 5
   },
@@ -187,7 +187,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
@@ -294,7 +294,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -308,7 +308,7 @@
   },
   "SUI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -328,7 +328,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1072,12 +1072,11 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 40,
-   "Will UNI reach $15.50 by December 31, 2026?": 11,
-   "Will UNI reach $12.50 by December 31, 2026?": 44,
-   "Will UNI reach $14.00 by December 31, 2026?": 22
+   "Will UNI reach $15.50 by December 31, 2026?": 10,
+   "Will UNI reach $14.00 by December 31, 2026?": 23
   },
   "macd_day": "2026-09-29"
  },
@@ -1118,7 +1117,7 @@
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 33,
+   "Will Zcash dip to $700 by December 31, 2026?": 34,
    "Will Zcash reach $2000 by December 31, 2026?": 35
   },
   "macd_day": "2026-09-28"
@@ -1151,7 +1150,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791626076.399108,
+ "_saved_t": 1791627290.024874,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

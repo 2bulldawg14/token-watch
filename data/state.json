@@ -817,7 +817,7 @@
   },
   "SECZ": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1164,7 +1164,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791659938.1522045,
+ "_saved_t": 1791660950.6360097,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1175,7 +1175,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 24,
+ "_wl_cursor": 1,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1733,7 +1733,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-03"
  },
  "FIGR": {

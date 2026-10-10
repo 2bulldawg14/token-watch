@@ -140,7 +140,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -251,8 +251,8 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will XRP reach $5.00 by December 31, 2026?": 4,
    "Will XRP reach $4.00 in October?": 1,
+   "Will XRP reach $5.00 by December 31, 2026?": 5,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
    "Will XRP reach $4.20 by December 31, 2026?": 3
   },
@@ -294,7 +294,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -401,7 +401,7 @@
   "ATOM": {
    "seen": true,
    "bad": true,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -1086,11 +1086,11 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "odds": {
-   "Will UNI reach $14.00 by December 31, 2026?": 22,
-   "Will UNI reach $11.00 by December 31, 2026?": 41,
-   "Will UNI reach $15.50 by December 31, 2026?": 10
+   "Will UNI reach $11.00 by December 31, 2026?": 40,
+   "Will UNI reach $15.50 by December 31, 2026?": 11,
+   "Will UNI reach $14.00 by December 31, 2026?": 23
   },
   "macd_day": "2026-09-29"
  },
@@ -1143,7 +1143,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1164,7 +1164,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791647629.8481495,
+ "_saved_t": 1791648856.5371602,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

@@ -4432,5 +4432,43 @@
     }
    }
   }
+ },
+ "id:ninjacat": "ninjacat-2",
+ "idt:ninjacat": 1791674029.3011968,
+ "dd:ninjacat-2": {
+  "t": 1791674062.8468142,
+  "v": {
+   "level": "MEDIUM",
+   "points": 3.5,
+   "flags": [
+    "Tiny market cap ($1.2M) - easy to manipulate",
+    "Team not verified yet - check founders' real names, LinkedIn, past projects",
+    "No public code repository"
+   ],
+   "checks": {
+    "team": null,
+    "code": false
+   },
+   "facts": {
+    "name": "ninjacat",
+    "market_cap": 1220365,
+    "fdv": 1220365,
+    "volume": 377462,
+    "website": [
+     "https://ninjacat.tech/"
+    ],
+    "github": [],
+    "twitter": "NinjaCatSF",
+    "genesis": null,
+    "categories": [
+     "Solana Ecosystem",
+     "Meme",
+     "Cat-Themed"
+    ],
+    "platforms": {
+     "solana": "9CPfv7rc6vxBd3jtovmZtf5Zy8bdvssv8c4BwzbGk147"
+    }
+   }
+  }
  }
 }

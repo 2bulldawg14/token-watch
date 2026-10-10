@@ -192,7 +192,7 @@
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
-   "Will Bitcoin dip to $50,000 by December 31, 2026?": 8
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
   },
   "in_zone2": false,
   "below_stop": false,
@@ -203,7 +203,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 8,
    "Will Ethereum reach $10,000 by December 31, 2026?": 1,
@@ -1072,12 +1072,11 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "odds": {
+   "Will UNI reach $14.00 by December 31, 2026?": 22,
    "Will UNI reach $11.00 by December 31, 2026?": 44,
-   "Will UNI reach $15.50 by December 31, 2026?": 12,
-   "Will UNI reach $12.50 by December 31, 2026?": 46,
-   "Will UNI reach $14.00 by December 31, 2026?": 21
+   "Will UNI reach $15.50 by December 31, 2026?": 12
   },
   "macd_day": "2026-09-29"
  },
@@ -1151,7 +1150,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791599812.158266,
+ "_saved_t": 1791600931.3304381,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1162,7 +1161,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 8,
+ "_wl_cursor": 21,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

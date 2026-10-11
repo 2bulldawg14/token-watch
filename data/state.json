@@ -127,7 +127,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 45,
    "Will Chainlink reach $16 by December 31, 2026?": 68,
@@ -220,7 +220,7 @@
  "AERO": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "high",
+  "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "TRIM",
   "in_zone2": false,
@@ -290,7 +290,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -404,7 +404,7 @@
   "ATOM": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -1112,9 +1112,9 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will UNI reach $14.00 by December 31, 2026?": 20,
    "Will UNI reach $11.00 by December 31, 2026?": 42,
-   "Will UNI reach $15.50 by December 31, 2026?": 12
+   "Will UNI reach $15.50 by December 31, 2026?": 11,
+   "Will UNI reach $14.00 by December 31, 2026?": 19
   },
   "macd_day": "2026-09-29"
  },
@@ -1188,7 +1188,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791737730.0432909,
+ "_saved_t": 1791738881.3364012,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1199,7 +1199,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 16,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

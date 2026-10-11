@@ -143,7 +143,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -157,7 +157,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-05"
@@ -180,7 +180,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -190,12 +190,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will Bitcoin dip to $50,000 by December 31, 2026?": 6
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 7
   },
   "in_zone2": false,
   "below_stop": false,
@@ -297,7 +297,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -318,7 +318,7 @@
   },
   "SEI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -331,7 +331,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -459,7 +459,7 @@
   },
   "LTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1105,7 +1105,7 @@
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
-  "macd_day": "2026-10-10"
+  "macd_day": "2026-10-11"
  },
  "HYPE": {
   "seen_news": [],
@@ -1156,7 +1156,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "macd_day": "2026-10-04"
  },
  "_disc_seen": {
@@ -1167,7 +1167,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791678232.861949,
+ "_saved_t": 1791680507.757285,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

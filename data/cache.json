@@ -384,7 +384,7 @@
   }
  },
  "dd:zcash": {
-  "t": 1791705272.8192952,
+  "t": 1791708922.0386617,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -399,9 +399,9 @@
    },
    "facts": {
     "name": "Zcash",
-    "market_cap": 20822326437,
-    "fdv": 20823443574,
-    "volume": 320332999,
+    "market_cap": 20932779354,
+    "fdv": 20932792837,
+    "volume": 333485141,
     "website": [
      "https://z.cash/"
     ],
@@ -855,7 +855,7 @@
   }
  },
  "dd:cosmos": {
-  "t": 1791705276.0227847,
+  "t": 1791708925.1297574,
   "v": {
    "level": "MEDIUM",
    "points": 2.5,
@@ -873,9 +873,9 @@
    },
    "facts": {
     "name": "Cosmos Hub",
-    "market_cap": 1039211143,
-    "fdv": 1039228792,
-    "volume": 99310173,
+    "market_cap": 1036536998,
+    "fdv": 1036561414,
+    "volume": 97405610,
     "website": [
      "http://cosmos.network/"
     ],
@@ -1017,7 +1017,7 @@
   }
  },
  "dd:bittensor": {
-  "t": 1791705262.9969084,
+  "t": 1791708912.639502,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1031,9 +1031,9 @@
    },
    "facts": {
     "name": "Bittensor",
-    "market_cap": 3204535080,
-    "fdv": 5934509519,
-    "volume": 111178632,
+    "market_cap": 3196489344,
+    "fdv": 5919609542,
+    "volume": 111144540,
     "website": [
      "https://bittensor.com/"
     ],
@@ -1053,7 +1053,7 @@
   }
  },
  "dd:render-token": {
-  "t": 1791705267.953482,
+  "t": 1791708917.5654745,
   "v": {
    "level": "MEDIUM",
    "points": 3.5,
@@ -1072,9 +1072,9 @@
    },
    "facts": {
     "name": "Render",
-    "market_cap": 988227077,
-    "fdv": 1016344022,
-    "volume": 40226909,
+    "market_cap": 989006168,
+    "fdv": 1017145279,
+    "volume": 38905051,
     "website": [
      "http://renderfoundation.com"
     ],
@@ -1097,7 +1097,7 @@
   }
  },
  "dd:ripple": {
-  "t": 1791705270.2605817,
+  "t": 1791708919.7890902,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1111,9 +1111,9 @@
    },
    "facts": {
     "name": "XRP",
-    "market_cap": 87912673197,
-    "fdv": 139237254239,
-    "volume": 710898158,
+    "market_cap": 88025428757,
+    "fdv": 139415837987,
+    "volume": 708769148,
     "website": [
      "https://ripple.com/currency/"
     ],
@@ -1218,7 +1218,7 @@
   }
  },
  "dd:hyperliquid": {
-  "t": 1791705265.3978422,
+  "t": 1791708915.0836434,
   "v": {
    "level": "MEDIUM",
    "points": 3.0,
@@ -1234,9 +1234,9 @@
    },
    "facts": {
     "name": "Hyperliquid",
-    "market_cap": 18848056409,
-    "fdv": 80944161122,
-    "volume": 568713289,
+    "market_cap": 18894495234,
+    "fdv": 81143595571,
+    "volume": 569439091,
     "website": [
      "https://app.hyperliquid.xyz/trade"
     ],
@@ -1311,7 +1311,7 @@
  "id:ltc": "litecoin",
  "idt:ltc": 1790206446.5888786,
  "dd:litecoin": {
-  "t": 1791705278.5856035,
+  "t": 1791708927.4582334,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -1324,9 +1324,9 @@
    },
    "facts": {
     "name": "Litecoin",
-    "market_cap": 4957101355,
-    "fdv": 4957350962,
-    "volume": 189662544,
+    "market_cap": 4946520833,
+    "fdv": 4946520833,
+    "volume": 186950508,
     "website": [
      "http://litecoin.org"
     ],
@@ -4436,12 +4436,12 @@
  "id:ninjacat": "ninjacat-2",
  "idt:ninjacat": 1791674029.3011968,
  "dd:ninjacat-2": {
-  "t": 1791707826.8054981,
+  "t": 1791708910.4834657,
   "v": {
    "level": "MEDIUM",
    "points": 3.5,
    "flags": [
-    "Tiny market cap ($1.1M) - easy to manipulate",
+    "Tiny market cap ($1.2M) - easy to manipulate",
     "Team not verified yet - check founders' real names, LinkedIn, past projects",
     "No public code repository"
    ],
@@ -4451,9 +4451,9 @@
    },
    "facts": {
     "name": "ninjacat",
-    "market_cap": 1053531,
-    "fdv": 1053531,
-    "volume": 326195,
+    "market_cap": 1209991,
+    "fdv": 1209991,
+    "volume": 344101,
     "website": [
      "https://ninjacat.tech/"
     ],

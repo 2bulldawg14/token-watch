@@ -421,7 +421,7 @@
   }
  },
  "dd:uniswap": {
-  "t": 1791705251.3708336,
+  "t": 1791707833.6217299,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -437,9 +437,9 @@
    },
    "facts": {
     "name": "Uniswap",
-    "market_cap": 4695797413,
-    "fdv": 6666206980,
-    "volume": 414165759,
+    "market_cap": 4684405519,
+    "fdv": 6650034918,
+    "volume": 412653633,
     "website": [
      "https://uniswap.org/"
     ],
@@ -473,7 +473,7 @@
   }
  },
  "dd:bitcoin": {
-  "t": 1791705328.9783885,
+  "t": 1791707831.0911095,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -486,9 +486,9 @@
    },
    "facts": {
     "name": "Bitcoin",
-    "market_cap": 1666925278720,
-    "fdv": 1666930504343,
-    "volume": 13572010983,
+    "market_cap": 1667376565484,
+    "fdv": 1667384613463,
+    "volume": 13439771791,
     "website": [
      "http://www.bitcoin.org"
     ],
@@ -812,7 +812,7 @@
  "id:zcash": "zcash",
  "id:atom": "cosmos",
  "dd:aerodrome-finance": {
-  "t": 1791705254.7599921,
+  "t": 1791707835.7077315,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -831,9 +831,9 @@
    },
    "facts": {
     "name": "Aerodrome Finance",
-    "market_cap": 966224037,
-    "fdv": 1921367898,
-    "volume": 124886549,
+    "market_cap": 970528064,
+    "fdv": 1929926644,
+    "volume": 124567572,
     "website": [
      "https://aerodrome.finance/"
     ],
@@ -1145,7 +1145,7 @@
  "tick:zcash": "ZEC",
  "idt:zcash": 1790171746.2165124,
  "dd:canton-network": {
-  "t": 1791705324.6657157,
+  "t": 1791707828.870173,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -1160,9 +1160,9 @@
    },
    "facts": {
     "name": "Canton",
-    "market_cap": 4751731396,
-    "fdv": 4751849781,
-    "volume": 9192323,
+    "market_cap": 4815900538,
+    "fdv": 4816020522,
+    "volume": 10373127,
     "website": [
      "https://www.canton.network/"
     ],
@@ -1179,7 +1179,7 @@
   }
  },
  "dd:akash-network": {
-  "t": 1791705258.6321306,
+  "t": 1791707837.6998417,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1192,9 +1192,9 @@
    },
    "facts": {
     "name": "Akash Network",
-    "market_cap": 222405732,
-    "fdv": 222418310,
-    "volume": 3669535,
+    "market_cap": 222703994,
+    "fdv": 222718281,
+    "volume": 3583001,
     "website": [
      "https://akash.network"
     ],
@@ -4436,12 +4436,12 @@
  "id:ninjacat": "ninjacat-2",
  "idt:ninjacat": 1791674029.3011968,
  "dd:ninjacat-2": {
-  "t": 1791706507.2728722,
+  "t": 1791707826.8054981,
   "v": {
    "level": "MEDIUM",
    "points": 3.5,
    "flags": [
-    "Tiny market cap ($1.0M) - easy to manipulate",
+    "Tiny market cap ($1.1M) - easy to manipulate",
     "Team not verified yet - check founders' real names, LinkedIn, past projects",
     "No public code repository"
    ],
@@ -4451,9 +4451,9 @@
    },
    "facts": {
     "name": "ninjacat",
-    "market_cap": 1040809,
-    "fdv": 1040809,
-    "volume": 318603,
+    "market_cap": 1053531,
+    "fdv": 1053531,
+    "volume": 326195,
     "website": [
      "https://ninjacat.tech/"
     ],

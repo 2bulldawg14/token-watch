@@ -116,7 +116,7 @@
    "Will Solana reach $200 in October?": 1,
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana dip to $20 in October?": 0,
-   "Will Solana reach $190 in October?": 1
+   "Will Solana dip to $60 by December 31, 2026?": 6
   },
   "in_zone2": false,
   "below_stop": false,
@@ -143,14 +143,14 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
  "_discovery_t": 1791640406.7283113,
  "_report_week": "2026-W41",
- "_export_t": 1791665611.9962535,
+ "_export_t": 1791680509.9162557,
  "_tg_offset": 218529299,
  "HBAR": {
   "seen_news": [],
@@ -297,7 +297,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1167,7 +1167,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791680507.757285,
+ "_saved_t": 1791682573.5993812,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1178,7 +1178,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 0,
+ "_wl_cursor": 5,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1791705300.17034,
+  "t": 1791706509.6105602,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 761483495,
-    "fdv": 761483495,
-    "volume": 139950013,
+    "market_cap": 759872773,
+    "fdv": 759872773,
+    "volume": 140205801,
     "website": [
      "https://injective.com"
     ],
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1791705302.7956004,
+  "t": 1791706513.658592,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 64405179567,
-    "fdv": 69494500379,
-    "volume": 1531955364,
+    "market_cap": 64386396964,
+    "fdv": 69474233568,
+    "volume": 1528516261,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1791705306.3673995,
+  "t": 1791706516.3275592,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 9857705052,
-    "fdv": 12854802676,
-    "volume": 198400094,
+    "market_cap": 9851285144,
+    "fdv": 12846430885,
+    "volume": 197455727,
     "website": [
      "https://chain.link/"
     ],
@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1791705309.9805684,
+  "t": 1791706518.8451464,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -237,9 +237,9 @@
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2360153986,
-    "fdv": 4846978276,
-    "volume": 113060909,
+    "market_cap": 2360437515,
+    "fdv": 4847560549,
+    "volume": 112368915,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -761,7 +761,7 @@
  },
  "id:hbar": "hedera-hashgraph",
  "dd:hedera-hashgraph": {
-  "t": 1791705314.2299094,
+  "t": 1791706523.5308378,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -775,9 +775,9 @@
    },
    "facts": {
     "name": "Hedera",
-    "market_cap": 4052212671,
-    "fdv": 4605022204,
-    "volume": 61481455,
+    "market_cap": 4047718627,
+    "fdv": 4599915075,
+    "volume": 61516102,
     "website": [
      "https://www.hedera.com/"
     ],
@@ -943,7 +943,7 @@
   }
  },
  "dd:sui": {
-  "t": 1791705318.2242093,
+  "t": 1791706525.7245378,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -957,9 +957,9 @@
    },
    "facts": {
     "name": "Sui",
-    "market_cap": 4518768342,
-    "fdv": 10972490513,
-    "volume": 433909632,
+    "market_cap": 4510393407,
+    "fdv": 10952154465,
+    "volume": 423422485,
     "website": [
      "https://sui.io/"
     ],
@@ -981,7 +981,7 @@
   }
  },
  "dd:sei-network": {
-  "t": 1791705322.1261325,
+  "t": 1791706528.6128497,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -995,9 +995,9 @@
    },
    "facts": {
     "name": "Sei",
-    "market_cap": 453418198,
-    "fdv": 673393363,
-    "volume": 38563692,
+    "market_cap": 452555036,
+    "fdv": 672111440,
+    "volume": 38294184,
     "website": [
      "https://www.sei.io"
     ],
@@ -1268,7 +1268,7 @@
  "id:shib": "shiba-inu",
  "idt:shib": 1790172691.1545615,
  "dd:shiba-inu": {
-  "t": 1791705312.2574582,
+  "t": 1791706521.5492108,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1285,9 +1285,9 @@
    },
    "facts": {
     "name": "Shiba Inu",
-    "market_cap": 3180433575,
-    "fdv": 3181822716,
-    "volume": 47041679,
+    "market_cap": 3177070902,
+    "fdv": 3178458575,
+    "volume": 46772099,
     "website": [
      "https://shibatoken.com/"
     ],
@@ -4436,12 +4436,12 @@
  "id:ninjacat": "ninjacat-2",
  "idt:ninjacat": 1791674029.3011968,
  "dd:ninjacat-2": {
-  "t": 1791705248.7956715,
+  "t": 1791706507.2728722,
   "v": {
    "level": "MEDIUM",
    "points": 3.5,
    "flags": [
-    "Tiny market cap ($1.1M) - easy to manipulate",
+    "Tiny market cap ($1.0M) - easy to manipulate",
     "Team not verified yet - check founders' real names, LinkedIn, past projects",
     "No public code repository"
    ],
@@ -4451,9 +4451,9 @@
    },
    "facts": {
     "name": "ninjacat",
-    "market_cap": 1118514,
-    "fdv": 1118514,
-    "volume": 333099,
+    "market_cap": 1040809,
+    "fdv": 1040809,
+    "volume": 318603,
     "website": [
      "https://ninjacat.tech/"
     ],

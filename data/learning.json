@@ -38,17 +38,17 @@
   }
  ],
  "mult": {
-  "technical": 0.73,
-  "flows": 1.1,
+  "technical": 0.82,
+  "flows": 1.08,
   "macro": 0.98,
   "markets": 0.99
  },
- "graded": 35,
- "t": "2026-10-11 16:36 UTC",
+ "graded": 36,
+ "t": "2026-10-11 16:55 UTC",
  "scorecard": {
-  "closed": 34,
-  "wins": 21,
-  "avg": -0.79,
+  "closed": 35,
+  "wins": 22,
+  "avg": -0.58,
   "held": 2.6,
   "gave_back": 1
  },
@@ -63,12 +63,12 @@
    "text": "entered the sell zone"
   },
   "signal": {
-   "n": 25,
+   "n": 26,
    "reviewed": 10,
    "early": 2,
    "good": 2,
    "after": 46.0,
-   "ret": -2.72,
+   "ret": -2.36,
    "text": "signal turned TRIM/SELL"
   },
   "target": {
@@ -82,6 +82,6 @@
   }
  },
  "sell_soft": [],
- "wins": 7,
+ "wins": 8,
  "losses": 5
 }

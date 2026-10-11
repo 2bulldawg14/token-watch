@@ -116,7 +116,7 @@
    "Will Solana reach $200 in October?": 1,
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana reach $190 in October?": 1,
-   "Will Solana reach $200 by December 31, 2026?": 6
+   "Will Solana reach $200 by December 31, 2026?": 7
   },
   "in_zone2": false,
   "below_stop": false,
@@ -130,7 +130,7 @@
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 45,
-   "Will Chainlink reach $16 by December 31, 2026?": 68,
+   "Will Chainlink reach $16 by December 31, 2026?": 67,
    "Will Chainlink reach $20 by December 31, 2026?": 20,
    "Will Chainlink reach $26 in October?": 22
   },
@@ -1174,7 +1174,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1195,7 +1195,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791749669.9541106,
+ "_saved_t": 1791750969.8364193,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1206,7 +1206,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 0,
+ "_wl_cursor": 5,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

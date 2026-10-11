@@ -473,7 +473,7 @@
   }
  },
  "dd:bitcoin": {
-  "t": 1791722697.3777945,
+  "t": 1791725774.6083994,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -486,9 +486,9 @@
    },
    "facts": {
     "name": "Bitcoin",
-    "market_cap": 1669328080828,
-    "fdv": 1669328080828,
-    "volume": 12597617317,
+    "market_cap": 1668335447728,
+    "fdv": 1668337772172,
+    "volume": 12606918960,
     "website": [
      "http://www.bitcoin.org"
     ],
@@ -761,7 +761,7 @@
  },
  "id:hbar": "hedera-hashgraph",
  "dd:hedera-hashgraph": {
-  "t": 1791722686.1527812,
+  "t": 1791725764.655541,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -775,9 +775,9 @@
    },
    "facts": {
     "name": "Hedera",
-    "market_cap": 4032192470,
-    "fdv": 4582270815,
-    "volume": 61084278,
+    "market_cap": 4041878523,
+    "fdv": 4593278255,
+    "volume": 61943595,
     "website": [
      "https://www.hedera.com/"
     ],
@@ -943,7 +943,7 @@
   }
  },
  "dd:sui": {
-  "t": 1791722689.0229678,
+  "t": 1791725767.107502,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -957,9 +957,9 @@
    },
    "facts": {
     "name": "Sui",
-    "market_cap": 4524632783,
-    "fdv": 10986730572,
-    "volume": 355980264,
+    "market_cap": 4539499940,
+    "fdv": 11022831058,
+    "volume": 349160632,
     "website": [
      "https://sui.io/"
     ],
@@ -981,7 +981,7 @@
   }
  },
  "dd:sei-network": {
-  "t": 1791722691.696671,
+  "t": 1791725769.321475,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -995,9 +995,9 @@
    },
    "facts": {
     "name": "Sei",
-    "market_cap": 456725802,
-    "fdv": 678305647,
-    "volume": 36863827,
+    "market_cap": 458323459,
+    "fdv": 680678405,
+    "volume": 36217474,
     "website": [
      "https://www.sei.io"
     ],
@@ -1145,7 +1145,7 @@
  "tick:zcash": "ZEC",
  "idt:zcash": 1790171746.2165124,
  "dd:canton-network": {
-  "t": 1791722695.1721795,
+  "t": 1791725771.8677862,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -1160,9 +1160,9 @@
    },
    "facts": {
     "name": "Canton",
-    "market_cap": 4851334855,
-    "fdv": 4851334855,
-    "volume": 10796308,
+    "market_cap": 4919816115,
+    "fdv": 4919940800,
+    "volume": 12322297,
     "website": [
      "https://www.canton.network/"
     ],
@@ -4436,12 +4436,12 @@
  "id:ninjacat": "ninjacat-2",
  "idt:ninjacat": 1791674029.3011968,
  "dd:ninjacat-2": {
-  "t": 1791724525.337832,
+  "t": 1791725762.697328,
   "v": {
    "level": "MEDIUM",
    "points": 3.5,
    "flags": [
-    "Tiny market cap ($1.4M) - easy to manipulate",
+    "Tiny market cap ($1.5M) - easy to manipulate",
     "Team not verified yet - check founders' real names, LinkedIn, past projects",
     "No public code repository"
    ],
@@ -4451,9 +4451,9 @@
    },
    "facts": {
     "name": "ninjacat",
-    "market_cap": 1400909,
-    "fdv": 1400909,
-    "volume": 332305,
+    "market_cap": 1518041,
+    "fdv": 1518041,
+    "volume": 324764,
     "website": [
      "https://ninjacat.tech/"
     ],

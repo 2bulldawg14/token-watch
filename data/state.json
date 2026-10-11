@@ -114,9 +114,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in October?": 1,
-   "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana reach $190 in October?": 1,
-   "Will Solana reach $200 by December 31, 2026?": 7
+   "Will Solana dip to $20 in October?": 0,
+   "Will Solana dip to $30 in October?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -130,7 +130,7 @@
   "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 45,
-   "Will Chainlink reach $16 by December 31, 2026?": 67,
+   "Will Chainlink reach $16 by December 31, 2026?": 68,
    "Will Chainlink reach $20 by December 31, 2026?": 20,
    "Will Chainlink reach $26 in October?": 22
   },
@@ -190,7 +190,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
@@ -254,10 +254,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
+   "Will XRP dip to $1.40 in October?": 100,
    "Will XRP reach $5.00 by December 31, 2026?": 2,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
-   "Will XRP reach $4.00 in October?": 1,
-   "Will XRP reach $4.20 by December 31, 2026?": 2
+   "Will XRP reach $4.00 in October?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -331,7 +331,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1144,7 +1144,7 @@
   "risk": "MEDIUM",
   "signal": "SELL / AVOID",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid reach $200 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $8 by December 31, 2026?": 1
@@ -1195,7 +1195,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791754566.5752761,
+ "_saved_t": 1791755717.592316,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1206,7 +1206,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 5,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1695,7 +1695,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)",

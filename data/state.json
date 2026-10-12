@@ -167,7 +167,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 4
   },
@@ -180,22 +180,22 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
  },
  "BTC": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
-   "Will the price of Bitcoin be above $96,000 on October 12?": 0
+   "Will Bitcoin reach $500,000 by December 31, 2026?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -311,14 +311,14 @@
   },
   "SUI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "SEI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -331,7 +331,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1133,7 +1133,7 @@
   "risk": null,
   "signal": "ACCUMULATE",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 40,
+   "Will UNI reach $11.00 by December 31, 2026?": 42,
    "Will UNI reach $15.50 by December 31, 2026?": 10,
    "Will UNI reach $14.00 by December 31, 2026?": 20,
    "Will UNI dip to $2.00 by December 31, 2026?": 5
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791824956.8348653,
+ "_saved_t": 1791826441.2518213,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1221,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 11,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1791820425.286352,
+  "live prices": 1791825018.8580844,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

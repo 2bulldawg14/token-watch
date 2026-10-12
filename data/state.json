@@ -813,14 +813,14 @@
   },
   "XRPN": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "SECZ": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791822452.4289088,
+ "_saved_t": 1791823826.8945668,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 22,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1791820425.286352,
@@ -1229,26 +1229,6 @@
  },
  "SPCX": {
   "seen_news": [
-   "142562974",
-   "142563115",
-   "142563116",
-   "142588366",
-   "142588350",
-   "142588335",
-   "142588336",
-   "142588871",
-   "142588346",
-   "142588872",
-   "142588757",
-   "142589546",
-   "142590660",
-   "142590671",
-   "142590866",
-   "142590867",
-   "142590711",
-   "142591066",
-   "142590677",
-   "142591145",
    "142590687",
    "142590716",
    "142590865",
@@ -1528,7 +1508,27 @@
    "142811135",
    "142812408",
    "142811081",
-   "142812409"
+   "142812409",
+   "142821490",
+   "142821699",
+   "142821585",
+   "142821586",
+   "142820068",
+   "142819908",
+   "142820396",
+   "142820027",
+   "142820156",
+   "142820033",
+   "142820399",
+   "142820410",
+   "142819824",
+   "142820400",
+   "142820028",
+   "142820407",
+   "142820340",
+   "142820154",
+   "142820036",
+   "142819794"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1563,7 +1563,7 @@
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
@@ -1706,7 +1706,10 @@
    "142795167",
    "142794266",
    "142791217",
-   "142792440"
+   "142792440",
+   "142820068",
+   "142820407",
+   "142820187"
   ],
   "_ins": "dump|Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
@@ -1723,8 +1726,8 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "HIGH",
-  "signal": "AVOID (SCAM RISK)",
+  "risk": null,
+  "signal": "TRIM",
   "macd_day": "2026-10-08"
  },
  "XRPN": {
@@ -1783,7 +1786,8 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM"
+  "signal": "HOLD",
+  "macd_day": "2026-10-12"
  },
  "SECZ": {
   "seen_news": [],
@@ -1791,8 +1795,8 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
-  "signal": "TRIM",
+  "risk": null,
+  "signal": "HOLD",
   "macd_day": "2026-10-03"
  },
  "FIGR": {

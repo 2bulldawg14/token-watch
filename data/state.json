@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W42",
- "_export_t": 1791820425.2852345,
+ "_export_t": 1791835821.2521944,
  "_tg_offset": 218529301,
  "HBAR": {
   "seen_news": [],
@@ -242,7 +242,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-08"
@@ -254,8 +254,8 @@
   "risk": null,
   "signal": "TRIM",
   "odds": {
-   "Will XRP reach $5.00 by December 31, 2026?": 2,
    "Will XRP reach $4.00 in October?": 0,
+   "Will XRP reach $5.00 by December 31, 2026?": 2,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
    "Will XRP reach $4.20 by December 31, 2026?": 2
   },
@@ -378,7 +378,7 @@
   "RENDER": {
    "seen": true,
    "bad": true,
-   "in_sell": false,
+   "in_sell": true,
    "below": false,
    "hit_t": false
   },
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791835818.8530438,
+ "_saved_t": 1791837103.52853,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 15,
+ "_wl_cursor": 20,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1791834550.519193,

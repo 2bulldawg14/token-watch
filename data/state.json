@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W42",
- "_export_t": 1791788892.9138703,
+ "_export_t": 1791803875.8454983,
  "_tg_offset": 218529301,
  "HBAR": {
   "seen_news": [],
@@ -167,7 +167,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 4
   },
@@ -180,7 +180,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -208,10 +208,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
+   "Will the price of Ethereum be above $2,200 on October 12?": 100,
    "Will Ethereum reach $4,500 in October?": 0,
-   "Will Ethereum dip to $2,400 in October?": 56,
-   "Will Ethereum reach $2,800 in October?": 38,
-   "Will Ethereum dip to $1,800 in October?": 2
+   "Will Ethereum dip to $2,400 in October?": 57,
+   "Will Ethereum reach $2,800 in October?": 36
   },
   "in_zone2": false,
   "below_stop": false,
@@ -311,14 +311,14 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "SEI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -378,7 +378,7 @@
   "RENDER": {
    "seen": true,
    "bad": true,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -438,7 +438,7 @@
   },
   "ZEC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1133,8 +1133,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 44,
-   "Will UNI reach $15.50 by December 31, 2026?": 11,
+   "Will UNI reach $11.00 by December 31, 2026?": 43,
+   "Will UNI reach $15.50 by December 31, 2026?": 12,
    "Will UNI reach $14.00 by December 31, 2026?": 20,
    "Will UNI dip to $2.00 by December 31, 2026?": 5
   },
@@ -1154,10 +1154,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
@@ -1173,7 +1173,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791803873.8563926,
+ "_saved_t": 1791805398.877327,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 5,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,

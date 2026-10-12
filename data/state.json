@@ -116,7 +116,7 @@
    "Will Solana reach $200 in October?": 1,
    "Will Solana reach $190 in October?": 1,
    "Will Solana dip to $20 in October?": 0,
-   "Solana Up or Down - October 11, 6PM ET": 100
+   "Will Solana dip to $30 in October?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -127,12 +127,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 46,
-   "Will Chainlink reach $16 by December 31, 2026?": 68,
+   "Will Chainlink reach $16 by December 31, 2026?": 67,
    "Will Chainlink reach $20 by December 31, 2026?": 20,
-   "Will Chainlink reach $26 in October?": 22
+   "Will Chainlink reach $26 in October?": 23
   },
   "in_zone2": false,
   "below_stop": false,
@@ -149,7 +149,7 @@
   "macd_day": "2026-10-03"
  },
  "_discovery_t": 1791741217.3728435,
- "_report_week": "2026-W41",
+ "_report_week": "2026-W42",
  "_export_t": 1791758175.5968764,
  "_tg_offset": 218529301,
  "HBAR": {
@@ -225,7 +225,7 @@
   "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
-  "macd_day": "2026-10-11"
+  "macd_day": "2026-10-12"
  },
  "TAO": {
   "seen_news": [],
@@ -290,7 +290,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -417,7 +417,7 @@
   },
   "UNI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1117,10 +1117,10 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 43,
-   "Will UNI reach $15.50 by December 31, 2026?": 11,
+   "Will UNI reach $15.50 by December 31, 2026?": 12,
    "Will UNI reach $14.00 by December 31, 2026?": 19
   },
   "macd_day": "2026-09-29"
@@ -1133,7 +1133,7 @@
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
-  "macd_day": "2026-10-11"
+  "macd_day": "2026-10-12"
  },
  "HYPE": {
   "seen_news": [],
@@ -1144,10 +1144,10 @@
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid reach $200 by December 31, 2026?": 4,
-   "Will Hyperliquid reach $100 by December 31, 2026?": 59
+   "Will Hyperliquid reach $100 by December 31, 2026?": 57
   },
   "macd_day": "2026-09-28"
  },
@@ -1158,7 +1158,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
@@ -1171,7 +1171,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
@@ -1195,7 +1195,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791762832.5795703,
+ "_saved_t": 1791764732.7918527,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

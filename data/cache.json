@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1791780192.2668383,
+  "t": 1791782204.4684465,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 789583457,
-    "fdv": 789583457,
-    "volume": 103632395,
+    "market_cap": 804521246,
+    "fdv": 804521246,
+    "volume": 116564329,
     "website": [
      "https://injective.com"
     ],
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1791780194.4094768,
+  "t": 1791782206.4184532,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 66259457476,
-    "fdv": 71495451698,
-    "volume": 2111019111,
+    "market_cap": 66666777407,
+    "fdv": 71934958272,
+    "volume": 2218387376,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1791780197.8651292,
+  "t": 1791782208.8952842,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 10313780266,
-    "fdv": 13449541193,
-    "volume": 256811811,
+    "market_cap": 10306761399,
+    "fdv": 13440388337,
+    "volume": 261708666,
     "website": [
      "https://chain.link/"
     ],
@@ -218,7 +218,7 @@
   }
  },
  "dd:ondo-finance": {
-  "t": 1791780200.2358804,
+  "t": 1791782211.030948,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
@@ -237,9 +237,9 @@
    },
    "facts": {
     "name": "Ondo",
-    "market_cap": 2557026894,
-    "fdv": 5251290330,
-    "volume": 217335687,
+    "market_cap": 2578049114,
+    "fdv": 5294463039,
+    "volume": 228303724,
     "website": [
      "https://ondo.foundation/"
     ],
@@ -1268,7 +1268,7 @@
  "id:shib": "shiba-inu",
  "idt:shib": 1790172691.1545615,
  "dd:shiba-inu": {
-  "t": 1791780202.7221642,
+  "t": 1791782213.986913,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -1285,9 +1285,9 @@
    },
    "facts": {
     "name": "Shiba Inu",
-    "market_cap": 3250255848,
-    "fdv": 3251675486,
-    "volume": 53294980,
+    "market_cap": 3259121941,
+    "fdv": 3260545451,
+    "volume": 54616440,
     "website": [
      "https://shibatoken.com/"
     ],
@@ -4435,12 +4435,12 @@
  "id:ninjacat": "ninjacat-2",
  "idt:ninjacat": 1791674029.3011968,
  "dd:ninjacat-2": {
-  "t": 1791780135.835819,
+  "t": 1791782202.043593,
   "v": {
    "level": "MEDIUM",
    "points": 3.5,
    "flags": [
-    "Tiny market cap ($2.0M) - easy to manipulate",
+    "Tiny market cap ($2.1M) - easy to manipulate",
     "Team not verified yet - check founders' real names, LinkedIn, past projects",
     "No public code repository"
    ],
@@ -4450,9 +4450,9 @@
    },
    "facts": {
     "name": "ninjacat",
-    "market_cap": 2047575,
-    "fdv": 2047575,
-    "volume": 541873,
+    "market_cap": 2062123,
+    "fdv": 2062123,
+    "volume": 518293,
     "website": [
      "https://ninjacat.tech/"
     ],

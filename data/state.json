@@ -166,8 +166,8 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
-  "signal": "HOLD",
+  "risk": null,
+  "signal": "TRIM",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 4
   },
@@ -179,8 +179,8 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
-  "signal": "TRIM",
+  "risk": null,
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -189,13 +189,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "TRIM",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
-   "Will Bitcoin reach $500,000 by December 31, 2026?": 0
+   "Will the price of Bitcoin be above $96,000 on October 12?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -311,14 +311,14 @@
   },
   "SUI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "SEI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1120,7 +1120,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
@@ -1130,7 +1130,7 @@
   "below_stop": false,
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "ACCUMULATE",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 40,
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791815567.1526573,
+ "_saved_t": 1791818072.3111546,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1221,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 11,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1790811863.405394,
+  "live prices": 1791815590.7325094,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

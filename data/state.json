@@ -127,12 +127,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $18 by December 31, 2026?": 42,
-   "Will Chainlink reach $16 by December 31, 2026?": 72,
+   "Will Chainlink reach $18 by December 31, 2026?": 43,
+   "Will Chainlink reach $16 by December 31, 2026?": 73,
    "Will Chainlink reach $20 by December 31, 2026?": 20,
-   "Will Chainlink reach $26 in October?": 20
+   "Will Chainlink reach $26 in October?": 18
   },
   "in_zone2": false,
   "below_stop": false,
@@ -180,7 +180,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -194,7 +194,7 @@
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 9,
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
    "Will Bitcoin reach $500,000 by December 31, 2026?": 0
   },
   "in_zone2": false,
@@ -209,9 +209,9 @@
   "signal": "TRIM",
   "odds": {
    "Will the price of Ethereum be above $2,200 on October 12?": 100,
+   "Will Ethereum dip to $2,400 in October?": 62,
    "Will Ethereum reach $4,500 in October?": 0,
-   "Will Ethereum dip to $2,400 in October?": 57,
-   "Will Ethereum reach $2,800 in October?": 36
+   "Will Ethereum reach $2,800 in October?": 34
   },
   "in_zone2": false,
   "below_stop": false,
@@ -268,7 +268,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-09"
@@ -290,7 +290,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -318,7 +318,7 @@
   },
   "SEI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -378,7 +378,7 @@
   "RENDER": {
    "seen": true,
    "bad": true,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -403,7 +403,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1133,8 +1133,8 @@
   "risk": "LOW",
   "signal": "ACCUMULATE",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 43,
-   "Will UNI reach $15.50 by December 31, 2026?": 12,
+   "Will UNI reach $11.00 by December 31, 2026?": 40,
+   "Will UNI reach $15.50 by December 31, 2026?": 10,
    "Will UNI reach $14.00 by December 31, 2026?": 20,
    "Will UNI dip to $2.00 by December 31, 2026?": 5
   },
@@ -1159,7 +1159,7 @@
   "risk": "MEDIUM",
   "signal": "SELL / AVOID",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
    "Will Hyperliquid reach $200 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $8 by December 31, 2026?": 1
@@ -1170,7 +1170,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791811107.976632,
+ "_saved_t": 1791813237.8407655,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 5,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1790811863.405394,
@@ -1229,26 +1229,6 @@
  },
  "SPCX": {
   "seen_news": [
-   "142560984",
-   "142560924",
-   "142561130",
-   "142586612",
-   "142586435",
-   "142586019",
-   "142582860",
-   "142587985",
-   "142583461",
-   "142576965",
-   "142588702",
-   "142582972",
-   "142573663",
-   "142569306",
-   "142569307",
-   "142564101",
-   "142563729",
-   "142563674",
-   "142563695",
-   "142563677",
    "142562974",
    "142563115",
    "142563116",
@@ -1528,7 +1508,27 @@
    "142765156",
    "142765537",
    "142765152",
-   "142765175"
+   "142765175",
+   "142819008",
+   "142819235",
+   "142818995",
+   "142819071",
+   "142817862",
+   "142817857",
+   "142817858",
+   "142816630",
+   "142819372",
+   "142815584",
+   "142819306",
+   "142816301",
+   "142815251",
+   "142811636",
+   "142811535",
+   "142812207",
+   "142811135",
+   "142812408",
+   "142811081",
+   "142812409"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
@@ -1563,11 +1563,11 @@
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
-  "macd_day": "2026-10-09"
+  "macd_day": "2026-10-12"
  },
  "RKLB": {
   "seen_news": [
@@ -1695,7 +1695,18 @@
    "142762793",
    "142765537",
    "142765266",
-   "142765310"
+   "142765310",
+   "142819433",
+   "142814355",
+   "142814134",
+   "142808592",
+   "142806426",
+   "142806519",
+   "142806523",
+   "142795167",
+   "142794266",
+   "142791217",
+   "142792440"
   ],
   "_ins": "dump|Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
@@ -1704,7 +1715,7 @@
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "SELL / AVOID",
-  "macd_day": "2026-10-09"
+  "macd_day": "2026-10-12"
  },
  "TIG": {
   "seen_news": [],
@@ -1763,14 +1774,16 @@
    "142701739",
    "142763152",
    "142764643",
-   "142765952"
+   "142765952",
+   "142809474",
+   "142795887"
   ],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD"
+  "signal": "TRIM"
  },
  "SECZ": {
   "seen_news": [],
@@ -1791,7 +1804,9 @@
    "142595998",
    "142694332",
    "142669850",
-   "142665500"
+   "142665500",
+   "142813159",
+   "142766346"
   ],
   "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,

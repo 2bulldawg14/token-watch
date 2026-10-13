@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W42",
- "_export_t": 1791912438.2893667,
+ "_export_t": 1791928923.114773,
  "_tg_offset": 218529301,
  "HBAR": {
   "seen_news": [],
@@ -205,13 +205,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "TRIM",
+  "risk": "LOW",
+  "signal": "HOLD",
   "odds": {
    "Will Ethereum reach $4,500 in October?": 0,
    "Will Ethereum dip to $1,900 in October?": 5,
    "Will Ethereum reach $2,800 in October?": 28,
-   "Will Ethereum dip to $2,300 in October?": 38
+   "Will Ethereum dip to $2,400 in October?": 66
   },
   "in_zone2": false,
   "below_stop": false,
@@ -338,7 +338,7 @@
   },
   "ETH": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -729,7 +729,7 @@
   },
   "SPCX": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1196,7 +1196,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "macd_day": "2026-10-04"
  },
  "_disc_seen": {
@@ -1207,21 +1207,21 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791928920.3062487,
+ "_saved_t": 1791930830.5277689,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 19,
+ "_wl_cursor": 26,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1791923996.7889566,
+  "live prices": 1791928923.1161313,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

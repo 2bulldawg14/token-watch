@@ -1977,7 +1977,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 64.1,
+  "last": 64.22,
   "max": 76.31,
   "min": 63.9,
   "checkpoints": {
@@ -2027,7 +2027,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-13 19:20 UTC",
+  "updated": "2026-10-13 22:33 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -3751,7 +3751,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 2501.22,
+  "last": 2510.87,
   "max": 2583.55,
   "min": 2412.92,
   "checkpoints": {},
@@ -3796,7 +3796,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-13 18:39 UTC",
+  "updated": "2026-10-13 22:33 UTC",
   "tmax": 2581.12,
   "tmin": 2560.52,
   "ret_open": -0.44,
@@ -4632,5 +4632,89 @@
   "tmax": 279.3,
   "tmin": 275.8,
   "ret_open": 0.11
+ },
+ {
+  "id": "LTC-1791930549",
+  "symbol": "LTC",
+  "cg_id": "litecoin",
+  "t": 1791930549,
+  "date": "2026-10-13 22:29 UTC",
+  "entry": 61.42,
+  "signal": "ACCUMULATE",
+  "score": 63,
+  "buy_zone": {
+   "low": 58.44527142857143,
+   "high": 61.28098571428572
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 58.44527142857143,
+    "high": 61.28098571428572,
+    "strong": false
+   },
+   "zone2": {
+    "low": 53.82648809523809,
+    "high": 55.95327380952381,
+    "strong": true
+   },
+   "stop": 52.408630952380946,
+   "target": 74.29107142857143,
+   "resistance": [],
+   "support_levels": [
+    54.53541666666666,
+    44.86125
+   ]
+  },
+  "source": "watchlist",
+  "last": 61.42,
+  "max": 61.42,
+  "min": 61.42,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 43.781470265455226,
+   "zone": "above",
+   "pb": 0.06344768343918576,
+   "rs30": 5.64790398209043,
+   "macd": "fading",
+   "vs200": 0.18565935169026915,
+   "vs50": 0.038303281930953226,
+   "chg7": -0.10972604725322499,
+   "chg30": 0.14248511904761907,
+   "macro": 57.24216059533128,
+   "btc_bull": true,
+   "buy_ratio": 0.4844997113587179,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 63.4,
+    "flows": 64.6,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 57.2,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": false,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/litecoin",
+   "dexscreener": "https://dexscreener.com/search?q=LTC"
+  },
+  "updated": "2026-10-13 22:33 UTC",
+  "tmax": 61.42,
+  "tmin": 61.42,
+  "ret_open": 0.0
  }
 ]

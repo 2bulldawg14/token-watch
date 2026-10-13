@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W42",
- "_export_t": 1791851887.9138834,
+ "_export_t": 1791867282.9032037,
  "_tg_offset": 218529301,
  "HBAR": {
   "seen_news": [],
@@ -190,7 +190,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
@@ -331,7 +331,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1128,10 +1128,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 36,
    "Will UNI reach $15.50 by December 31, 2026?": 10,
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791867280.4065337,
+ "_saved_t": 1791869488.214974,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1221,10 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 11,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1791863619.3997068,
+  "live prices": 1791867314.2021778,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

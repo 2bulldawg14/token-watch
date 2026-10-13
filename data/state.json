@@ -205,13 +205,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "odds": {
    "Will Ethereum dip to $1,900 in October?": 4,
-   "Will Ethereum dip to $2,300 in October?": 40,
-   "Will Ethereum reach $2,800 in October?": 28,
-   "Will Ethereum reach $4,500 in October?": 0
+   "Will Ethereum reach $4,500 in October?": 0,
+   "Will Ethereum dip to $1,800 in October?": 2,
+   "Will Ethereum reach $3,600 in October?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791883822.8573763,
+ "_saved_t": 1791885141.2245057,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 19,
+ "_wl_cursor": 26,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1791881795.7866046,

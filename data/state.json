@@ -205,7 +205,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "TRIM",
   "odds": {
    "Will Ethereum dip to $1,900 in October?": 4,
@@ -254,8 +254,8 @@
   "risk": null,
   "signal": "TRIM",
   "odds": {
-   "Will XRP reach $5.00 by December 31, 2026?": 2,
    "Will XRP reach $4.00 in October?": 0,
+   "Will XRP reach $5.00 by December 31, 2026?": 2,
    "Will XRP reach $8.00 by December 31, 2026?": 0,
    "Will XRP reach $4.20 by December 31, 2026?": 2
   },
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791870806.9252157,
+ "_saved_t": 1791873300.925147,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 16,
+ "_wl_cursor": 21,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1791867314.2021778,

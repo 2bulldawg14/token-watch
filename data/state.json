@@ -251,7 +251,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "TRIM",
   "odds": {
    "Will XRP reach $4.00 in October?": 0,
@@ -378,7 +378,7 @@
   "RENDER": {
    "seen": true,
    "bad": false,
-   "in_sell": true,
+   "in_sell": false,
    "below": false,
    "hit_t": false
   },
@@ -1159,10 +1159,7 @@
   "risk": null,
   "signal": "SELL / AVOID",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 4,
-   "Will Hyperliquid dip to $8 by December 31, 2026?": 1
+   "HYPE Up or Down - October 12, 7PM ET": 0
   },
   "macd_day": "2026-09-28"
  },
@@ -1210,7 +1207,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791849121.8921592,
+ "_saved_t": 1791850096.5349472,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1218,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 13,
+ "_wl_cursor": 18,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1791847785.6787012,

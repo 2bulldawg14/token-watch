@@ -252,11 +252,11 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
-   "Will XRP reach $5.00 by December 31, 2026?": 2,
    "Will XRP reach $4.00 in October?": 0,
-   "Will XRP reach $8.00 by December 31, 2026?": 0,
+   "Will XRP reach $5.00 by December 31, 2026?": 2,
+   "Will XRP reach $8.00 by December 31, 2026?": 1,
    "Will XRP reach $4.20 by December 31, 2026?": 2
   },
   "in_zone2": false,
@@ -268,7 +268,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-13"
@@ -390,7 +390,7 @@
   },
   "XRP": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -438,7 +438,7 @@
   },
   "ZEC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1156,13 +1156,10 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
-  "signal": "SELL / AVOID",
+  "risk": null,
+  "signal": "TRIM",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 4,
-   "Will Hyperliquid dip to $8 by December 31, 2026?": 1
+   "HYPE Up or Down - October 13, 4PM ET": 100
   },
   "macd_day": "2026-09-28"
  },
@@ -1173,7 +1170,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
@@ -1210,7 +1207,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791926339.484361,
+ "_saved_t": 1791928920.3062487,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1218,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 14,
+ "_wl_cursor": 19,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1791923996.7889566,

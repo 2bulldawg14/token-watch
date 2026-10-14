@@ -503,7 +503,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.12450619337830812,
+  "last": 0.12114898518113816,
   "max": 0.14067,
   "min": 0.106872,
   "checkpoints": {
@@ -545,7 +545,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-10-14 08:23 UTC",
+  "updated": "2026-10-14 12:19 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -1136,7 +1136,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.063,
+  "last": 1.0642,
   "max": 1.2801,
   "min": 1.004,
   "checkpoints": {
@@ -1183,7 +1183,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-10-14 08:23 UTC",
+  "updated": "2026-10-14 12:19 UTC",
   "tmax": 1.0309,
   "tmin": 1.0099,
   "ret_open": 0.58,
@@ -4274,7 +4274,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.441,
+  "last": 7.373,
   "max": 7.866,
   "min": 6.991,
   "checkpoints": {},
@@ -4336,7 +4336,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/ethereum/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
   },
-  "updated": "2026-10-14 08:23 UTC",
+  "updated": "2026-10-14 12:19 UTC",
   "tmax": 7.866,
   "tmin": 7.31,
   "ret_open": 5.31,
@@ -4925,8 +4925,8 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.063,
-  "max": 1.0635,
+  "last": 1.0642,
+  "max": 1.0642,
   "min": 1.06,
   "checkpoints": {},
   "kind": "crypto",
@@ -4970,9 +4970,96 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/search?q=SUI"
   },
-  "updated": "2026-10-14 08:23 UTC",
-  "tmax": 1.0635,
+  "updated": "2026-10-14 12:19 UTC",
+  "tmax": 1.0642,
   "tmin": 1.06,
-  "ret_open": -0.05
+  "ret_open": 0.07
+ },
+ {
+  "id": "SEI-1791980087",
+  "symbol": "SEI",
+  "cg_id": "sei-network",
+  "t": 1791980087,
+  "date": "2026-10-14 12:14 UTC",
+  "entry": 0.06488,
+  "signal": "ACCUMULATE",
+  "score": 60,
+  "buy_zone": {
+   "low": 0.056238699999999996,
+   "high": 0.0607887
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 0.056238699999999996,
+    "high": 0.0607887,
+    "strong": true,
+    "vol_level": 0.061926875000000006
+   },
+   "zone2": {
+    "low": 0.047708125000000004,
+    "high": 0.051120625,
+    "strong": true
+   },
+   "stop": 0.045433125000000005,
+   "target": 0.067964375,
+   "resistance": [
+    0.067964375
+   ],
+   "support_levels": [
+    0.061926875000000006,
+    0.048845625000000004
+   ]
+  },
+  "source": "watchlist",
+  "last": 0.06488,
+  "max": 0.06488,
+  "min": 0.06488,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 50.068638929914,
+   "zone": "above",
+   "pb": 0.1560510392474196,
+   "rs30": 38.35764196295042,
+   "macd": "improving",
+   "vs200": 0.19986277771561878,
+   "vs50": 0.1307824498659722,
+   "chg7": -0.058345428156749035,
+   "chg30": 0.454056476916181,
+   "macro": 55.61972025249184,
+   "btc_bull": true,
+   "buy_ratio": 0.4857531013851507,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 69.4,
+    "flows": 49.7,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 55.6,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/sei-network",
+   "dexscreener": "https://dexscreener.com/search?q=SEI"
+  },
+  "updated": "2026-10-14 12:19 UTC",
+  "tmax": 0.06488,
+  "tmin": 0.06488,
+  "ret_open": 0.0
  }
 ]

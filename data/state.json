@@ -167,7 +167,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 4
   },
@@ -195,7 +195,7 @@
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
    "Will Bitcoin reach $500,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 9
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1130,11 +1130,11 @@
   "below_stop": false,
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $14.00 by December 31, 2026?": 20,
-   "Will UNI reach $11.00 by December 31, 2026?": 35,
+   "Will UNI reach $12.50 by December 31, 2026?": 21,
+   "Will UNI reach $11.00 by December 31, 2026?": 30,
    "Will UNI reach $15.50 by December 31, 2026?": 8,
    "Will UNI dip to $2.00 by December 31, 2026?": 5
   },
@@ -1207,7 +1207,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791935775.7818115,
+ "_saved_t": 1791938688.37919,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1218,7 +1218,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 11,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1791933328.8778005,

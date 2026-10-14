@@ -545,7 +545,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-10-14 12:19 UTC",
+  "updated": "2026-10-14 16:46 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -1136,7 +1136,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.0642,
+  "last": 1.0211,
   "max": 1.2801,
   "min": 1.004,
   "checkpoints": {
@@ -1183,7 +1183,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-10-14 12:19 UTC",
+  "updated": "2026-10-14 16:46 UTC",
   "tmax": 1.0309,
   "tmin": 1.0099,
   "ret_open": 0.58,
@@ -3607,7 +3607,10 @@
   "held_days": 0.6,
   "gbasis": "closed",
   "gret": -1.59,
-  "outcome": "flat"
+  "outcome": "flat",
+  "after_sell": -6.0,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "INJ-1791366935",
@@ -3820,7 +3823,10 @@
   "held_days": 0.2,
   "gbasis": "closed",
   "gret": -0.14,
-  "outcome": "flat"
+  "outcome": "flat",
+  "after_sell": -5.2,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "HBAR-1791380308",
@@ -4278,7 +4284,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.373,
+  "last": 7.269,
   "max": 7.866,
   "min": 6.991,
   "checkpoints": {},
@@ -4340,7 +4346,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/ethereum/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
   },
-  "updated": "2026-10-14 12:19 UTC",
+  "updated": "2026-10-14 16:46 UTC",
   "tmax": 7.866,
   "tmin": 7.31,
   "ret_open": 5.31,
@@ -4929,9 +4935,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.0642,
+  "last": 1.0211,
   "max": 1.0642,
-  "min": 1.06,
+  "min": 1.0211,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -4974,10 +4980,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/search?q=SUI"
   },
-  "updated": "2026-10-14 12:19 UTC",
+  "updated": "2026-10-14 16:46 UTC",
   "tmax": 1.0642,
-  "tmin": 1.06,
-  "ret_open": 0.07
+  "tmin": 1.0211,
+  "ret_open": -3.99
  },
  {
   "id": "SEI-1791980087",
@@ -5016,9 +5022,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.06488,
+  "last": 0.06255,
   "max": 0.06488,
-  "min": 0.06488,
+  "min": 0.06255,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -5061,10 +5067,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/sei-network",
    "dexscreener": "https://dexscreener.com/search?q=SEI"
   },
-  "updated": "2026-10-14 12:19 UTC",
+  "updated": "2026-10-14 16:46 UTC",
   "tmax": 0.06488,
-  "tmin": 0.06488,
-  "ret_open": 0.0
+  "tmin": 0.06255,
+  "ret_open": -3.59
  },
  {
   "id": "RENDER-1791983857",
@@ -5324,6 +5330,90 @@
   "updated": "2026-10-14 16:09 UTC",
   "tmax": 0.08425,
   "tmin": 0.08425,
+  "ret_open": 0.0
+ },
+ {
+  "id": "BTC-1791996296",
+  "symbol": "BTC",
+  "cg_id": "bitcoin",
+  "t": 1791996296,
+  "date": "2026-10-14 16:44 UTC",
+  "entry": 81950.66,
+  "signal": "IN BUY ZONE",
+  "score": 59,
+  "buy_zone": {
+   "low": 80665.4296142857,
+   "high": 82797.65675714285
+  },
+  "risk": "LOW",
+  "plan": {
+   "zone1": {
+    "low": 80665.4296142857,
+    "high": 82797.65675714285,
+    "strong": false
+   },
+   "zone2": {
+    "low": 76689.16696428572,
+    "high": 78288.33732142858,
+    "strong": true
+   },
+   "stop": 75623.05339285714,
+   "target": 86862.61321428572,
+   "resistance": [],
+   "support_levels": [
+    77222.22375,
+    64274.20125
+   ]
+  },
+  "source": "watchlist",
+  "last": 81950.66,
+  "max": 81950.66,
+  "min": 81950.66,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 47.65543158357689,
+   "zone": "in",
+   "pb": 0.12247791329179117,
+   "rs30": null,
+   "macd": "fading",
+   "vs200": 0.13435131858471894,
+   "vs50": 0.009263394348198117,
+   "chg7": -0.016456075546126492,
+   "chg30": 0.04810702141638212,
+   "macro": 55.3783116561618,
+   "btc_bull": true,
+   "buy_ratio": 0.5073845901831865,
+   "wallets": null,
+   "risk": "LOW",
+   "source": "watchlist",
+   "parts": {
+    "technical": 61.6,
+    "flows": 61.7,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 55.4,
+    "news": null,
+    "fundamental": null,
+    "markets": 46.5
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/bitcoin",
+   "dexscreener": "https://dexscreener.com/search?q=BTC"
+  },
+  "updated": "2026-10-14 16:46 UTC",
+  "tmax": 81950.66,
+  "tmin": 81950.66,
   "ret_open": 0.0
  }
 ]

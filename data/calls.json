@@ -545,7 +545,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-10-14 20:05 UTC",
+  "updated": "2026-10-14 23:57 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -3002,7 +3002,10 @@
   "held_days": 5.2,
   "gbasis": "closed",
   "gret": -2.5,
-  "outcome": "flat"
+  "outcome": "flat",
+  "after_sell": -6.8,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "TAO-1790966516",
@@ -4284,7 +4287,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.092,
+  "last": 7.178,
   "max": 7.866,
   "min": 6.991,
   "checkpoints": {},
@@ -4346,7 +4349,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/ethereum/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
   },
-  "updated": "2026-10-14 20:37 UTC",
+  "updated": "2026-10-14 23:57 UTC",
   "tmax": 7.866,
   "tmin": 7.31,
   "ret_open": 5.31,
@@ -5366,9 +5369,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 81909.01,
+  "last": 81668.01,
   "max": 81950.66,
-  "min": 81909.01,
+  "min": 81668.01,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -5411,10 +5414,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/bitcoin",
    "dexscreener": "https://dexscreener.com/search?q=BTC"
   },
-  "updated": "2026-10-14 20:37 UTC",
+  "updated": "2026-10-14 23:57 UTC",
   "tmax": 81950.66,
-  "tmin": 81909.01,
-  "ret_open": -0.05
+  "tmin": 81668.01,
+  "ret_open": -0.34
  },
  {
   "id": "SPCX-1792003053",

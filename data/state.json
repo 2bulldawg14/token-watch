@@ -229,7 +229,7 @@
  },
  "TAO": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
   "signal": "ACCUMULATE",
@@ -1133,10 +1133,10 @@
   "risk": null,
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $12.50 by December 31, 2026?": 21,
-   "Will UNI reach $11.00 by December 31, 2026?": 30,
+   "Will UNI reach $11.00 by December 31, 2026?": 29,
    "Will UNI reach $15.50 by December 31, 2026?": 8,
-   "Will UNI dip to $2.00 by December 31, 2026?": 5
+   "Will UNI dip to $2.00 by December 31, 2026?": 5,
+   "Will UNI reach $14.00 by December 31, 2026?": 17
   },
   "macd_day": "2026-09-29"
  },
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1791950786.902851,
+ "_saved_t": 1791952811.5197883,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 9,
+ "_wl_cursor": 14,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1791947816.0557876,

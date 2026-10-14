@@ -713,9 +713,9 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 5.16e-06,
+  "last": 5.05e-06,
   "max": 6.05e-06,
-  "min": 5.12e-06,
+  "min": 5.05e-06,
   "checkpoints": {
    "7": 2.87
   },
@@ -760,7 +760,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-14 11:38 UTC",
+  "updated": "2026-10-14 16:09 UTC",
   "tmax": 5.97e-06,
   "tmin": 5.57e-06,
   "ret_open": 7.0,
@@ -1239,9 +1239,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.08637,
+  "last": 0.08425,
   "max": 0.12387,
-  "min": 0.08637,
+  "min": 0.08425,
   "checkpoints": {
    "7": 10.55
   },
@@ -1281,7 +1281,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-14 11:38 UTC",
+  "updated": "2026-10-14 16:09 UTC",
   "tmax": 0.097,
   "tmin": 0.09231,
   "ret_open": -0.07,
@@ -2935,9 +2935,9 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 5.16e-06,
+  "last": 5.05e-06,
   "max": 6e-06,
-  "min": 5.12e-06,
+  "min": 5.05e-06,
   "checkpoints": {
    "7": -3.58
   },
@@ -2987,7 +2987,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-14 11:38 UTC",
+  "updated": "2026-10-14 16:09 UTC",
   "tmax": 6e-06,
   "tmin": 5.36e-06,
   "ret_open": -2.86,
@@ -3858,10 +3858,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.08637,
+  "last": 0.08425,
   "max": 0.09615,
-  "min": 0.08637,
-  "checkpoints": {},
+  "min": 0.08425,
+  "checkpoints": {
+   "7": -9.7
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -3903,10 +3905,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-14 11:38 UTC",
+  "updated": "2026-10-14 16:09 UTC",
   "tmax": 0.09615,
-  "tmin": 0.08637,
-  "ret_open": -7.43
+  "tmin": 0.08425,
+  "ret_open": -9.7
  },
  {
   "id": "ATOM-1791447812",
@@ -4058,7 +4060,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 12.917,
+  "last": 12.459,
   "max": 13.488,
   "min": 12.17,
   "checkpoints": {},
@@ -4120,7 +4122,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/chainlink",
    "dexscreener": "https://dexscreener.com/solana/LinkhB3afbBKb2EQQu7s7umdZceV3wcvAUJhQAfQ23L"
   },
-  "updated": "2026-10-14 11:38 UTC",
+  "updated": "2026-10-14 16:09 UTC",
   "tmax": 12.961,
   "tmin": 12.935,
   "ret_open": 0.0,
@@ -4174,9 +4176,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 5.16e-06,
+  "last": 5.05e-06,
   "max": 5.53e-06,
-  "min": 5.16e-06,
+  "min": 5.05e-06,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -4224,7 +4226,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-14 11:38 UTC",
+  "updated": "2026-10-14 16:09 UTC",
   "tmax": 5.51e-06,
   "tmin": 5.44e-06,
   "ret_open": -0.55,
@@ -4390,9 +4392,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 104.5,
+  "last": 103.84,
   "max": 113.23,
-  "min": 104.5,
+  "min": 103.84,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -4435,7 +4437,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/solana",
    "dexscreener": "https://dexscreener.com/search?q=SOL"
   },
-  "updated": "2026-10-14 15:20 UTC",
+  "updated": "2026-10-14 16:09 UTC",
   "tmax": 112.56,
   "tmin": 110.28,
   "ret_open": 1.46,
@@ -4844,9 +4846,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.4645,
+  "last": 0.4462,
   "max": 0.4712,
-  "min": 0.4645,
+  "min": 0.4462,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -4889,10 +4891,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/ondo-finance",
    "dexscreener": "https://dexscreener.com/search?q=ONDO"
   },
-  "updated": "2026-10-14 11:38 UTC",
+  "updated": "2026-10-14 16:09 UTC",
   "tmax": 0.4712,
-  "tmin": 0.4645,
-  "ret_open": -0.81
+  "tmin": 0.4462,
+  "ret_open": -4.72
  },
  {
   "id": "SUI-1791938309",
@@ -5235,6 +5237,93 @@
   "updated": "2026-10-14 14:07 UTC",
   "tmax": 2441.41,
   "tmin": 2441.41,
+  "ret_open": 0.0
+ },
+ {
+  "id": "HBAR-1791994145",
+  "symbol": "HBAR",
+  "cg_id": "hedera-hashgraph",
+  "t": 1791994145,
+  "date": "2026-10-14 16:09 UTC",
+  "entry": 0.08425,
+  "signal": "ACCUMULATE",
+  "score": 66,
+  "buy_zone": {
+   "low": 0.08054932142857144,
+   "high": 0.08588503571428571
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 0.08054932142857144,
+    "high": 0.08588503571428571,
+    "strong": true,
+    "vol_level": 0.08026302083333334
+   },
+   "zone2": {
+    "low": 0.06920638392857142,
+    "high": 0.07320816964285713,
+    "strong": true
+   },
+   "stop": 0.06653852678571429,
+   "target": 0.08998572916666667,
+   "resistance": [
+    0.08998572916666667
+   ],
+   "support_levels": [
+    0.08026302083333334,
+    0.0705403125
+   ]
+  },
+  "source": "watchlist",
+  "last": 0.08425,
+  "max": 0.08425,
+  "min": 0.08425,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 41.56185442851507,
+   "zone": "in",
+   "pb": 0.1048325309117246,
+   "rs30": 3.995947599080396,
+   "macd": "fading",
+   "vs200": 0.028903957769140787,
+   "vs50": -0.027423763875805696,
+   "chg7": -0.09262250942380179,
+   "chg30": 0.0841590528889462,
+   "macro": 55.3783116561618,
+   "btc_bull": true,
+   "buy_ratio": 0.5302600277540779,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 62.5,
+    "flows": 78.5,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 55.4,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
+   "dexscreener": "https://dexscreener.com/search?q=HBAR"
+  },
+  "updated": "2026-10-14 16:09 UTC",
+  "tmax": 0.08425,
+  "tmin": 0.08425,
   "ret_open": 0.0
  }
 ]

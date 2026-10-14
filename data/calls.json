@@ -1980,9 +1980,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 61.81,
+  "last": 59.22,
   "max": 76.31,
-  "min": 61.81,
+  "min": 59.22,
   "checkpoints": {
    "7": 1.15
   },
@@ -2030,7 +2030,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-14 14:37 UTC",
+  "updated": "2026-10-14 18:43 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -4766,7 +4766,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 14.34,
+  "last": 15.37,
   "max": 16.48,
   "min": 14.34,
   "checkpoints": {},
@@ -4814,10 +4814,10 @@
    "coingecko": "https://finance.yahoo.com/quote/XRPN",
    "dexscreener": "https://www.tradingview.com/symbols/XRPN/"
   },
-  "updated": "2026-10-14 15:20 UTC",
+  "updated": "2026-10-14 18:43 UTC",
   "tmax": 16.48,
   "tmin": 14.34,
-  "ret_open": -12.99
+  "ret_open": -6.74
  },
  {
   "id": "ONDO-1791935589",
@@ -5414,6 +5414,95 @@
   "updated": "2026-10-14 16:46 UTC",
   "tmax": 81950.66,
   "tmin": 81950.66,
+  "ret_open": 0.0
+ },
+ {
+  "id": "SPCX-1792003053",
+  "symbol": "SPCX",
+  "cg_id": null,
+  "t": 1792003053,
+  "date": "2026-10-14 18:37 UTC",
+  "entry": 151.56,
+  "signal": "IN BUY ZONE",
+  "score": 50,
+  "buy_zone": {
+   "low": 145.0065681400844,
+   "high": 151.79549658072335
+  },
+  "risk": "LOW",
+  "plan": {
+   "zone1": {
+    "low": 145.0065681400844,
+    "high": 151.79549658072335,
+    "strong": true,
+    "vol_level": 148.87531344095865
+   },
+   "zone2": {
+    "low": 137.11058153424943,
+    "high": 142.20227786472864,
+    "strong": true
+   },
+   "stop": 133.71611731392997,
+   "target": 223.9427672794887,
+   "resistance": [],
+   "support_levels": [
+    148.87531344095865,
+    138.80781364440918,
+    116.15593910217285
+   ]
+  },
+  "source": "watchlist",
+  "last": 151.56,
+  "max": 151.56,
+  "min": 151.56,
+  "checkpoints": {},
+  "kind": "stock",
+  "by": "David",
+  "feat": {
+   "rsi": 47.729721956560184,
+   "zone": "in",
+   "pb": null,
+   "rs30": 5.785960722879202,
+   "macd": "down",
+   "vs200": null,
+   "vs50": 0.03310207194000614,
+   "chg7": -0.11415042817185095,
+   "chg30": 0.06559800712033925,
+   "macro": 55.3783116561618,
+   "btc_bull": true,
+   "buy_ratio": null,
+   "wallets": null,
+   "risk": "LOW",
+   "source": "watchlist",
+   "parts": {
+    "technical": 54.6,
+    "flows": null,
+    "derivatives": null,
+    "insiders": 24.5,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 66.1,
+    "news": 50.0,
+    "fundamental": 55,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": false,
+  "links": {
+   "kind": "stock",
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "yahoo": "https://finance.yahoo.com/quote/SPCX",
+   "tradingview": "https://www.tradingview.com/symbols/SPCX/",
+   "coingecko": "https://finance.yahoo.com/quote/SPCX",
+   "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
+  },
+  "updated": "2026-10-14 18:43 UTC",
+  "tmax": 151.56,
+  "tmin": 151.56,
   "ret_open": 0.0
  }
 ]

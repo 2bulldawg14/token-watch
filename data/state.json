@@ -154,19 +154,19 @@
  "_tg_offset": 218529301,
  "HBAR": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-05"
  },
  "SUI": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "ACCUMULATE",
   "odds": {
    "Will Sui dip to $0.20 before 2027?": 4
@@ -180,7 +180,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -1120,7 +1120,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792073451.4191537,
+ "_saved_t": 1792075809.6069036,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 4,
+ "_wl_cursor": 9,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792070297.2922146,

@@ -548,7 +548,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-10-15 10:24 UTC",
+  "updated": "2026-10-15 14:50 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -719,7 +719,7 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 4.99e-06,
+  "last": 5.02e-06,
   "max": 6.05e-06,
   "min": 4.91e-06,
   "checkpoints": {
@@ -766,7 +766,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-15 14:10 UTC",
+  "updated": "2026-10-15 14:50 UTC",
   "tmax": 5.97e-06,
   "tmin": 5.57e-06,
   "ret_open": 7.0,
@@ -1142,7 +1142,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.9876,
+  "last": 0.9989,
   "max": 1.2801,
   "min": 0.9876,
   "checkpoints": {
@@ -1189,7 +1189,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-10-15 10:24 UTC",
+  "updated": "2026-10-15 14:50 UTC",
   "tmax": 1.0309,
   "tmin": 1.0099,
   "ret_open": 0.58,
@@ -1245,7 +1245,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.08161,
+  "last": 0.08232,
   "max": 0.12387,
   "min": 0.08094,
   "checkpoints": {
@@ -1287,7 +1287,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-15 10:24 UTC",
+  "updated": "2026-10-15 14:50 UTC",
   "tmax": 0.097,
   "tmin": 0.09231,
   "ret_open": -0.07,
@@ -2958,7 +2958,7 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 4.99e-06,
+  "last": 5.02e-06,
   "max": 6e-06,
   "min": 4.91e-06,
   "checkpoints": {
@@ -3010,7 +3010,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-15 14:10 UTC",
+  "updated": "2026-10-15 14:50 UTC",
   "tmax": 6e-06,
   "tmin": 5.36e-06,
   "ret_open": -2.86,
@@ -3896,7 +3896,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.08161,
+  "last": 0.08232,
   "max": 0.09615,
   "min": 0.08094,
   "checkpoints": {
@@ -3943,10 +3943,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-15 10:24 UTC",
+  "updated": "2026-10-15 14:50 UTC",
   "tmax": 0.09615,
   "tmin": 0.08094,
-  "ret_open": -12.53
+  "ret_open": -11.77
  },
  {
   "id": "ATOM-1791447812",
@@ -4182,7 +4182,10 @@
   "held_days": 0.0,
   "gbasis": "closed",
   "gret": 0.2,
-  "outcome": "flat"
+  "outcome": "flat",
+  "after_sell": -7.2,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "SHIB-1791591815",
@@ -4221,7 +4224,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 4.99e-06,
+  "last": 5.02e-06,
   "max": 5.53e-06,
   "min": 4.91e-06,
   "checkpoints": {},
@@ -4271,7 +4274,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-15 14:10 UTC",
+  "updated": "2026-10-15 14:50 UTC",
   "tmax": 5.51e-06,
   "tmin": 5.44e-06,
   "ret_open": -0.55,
@@ -4974,7 +4977,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.9876,
+  "last": 0.9989,
   "max": 1.0642,
   "min": 0.9876,
   "checkpoints": {},
@@ -5019,10 +5022,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/search?q=SUI"
   },
-  "updated": "2026-10-15 10:24 UTC",
+  "updated": "2026-10-15 14:50 UTC",
   "tmax": 1.0642,
   "tmin": 0.9876,
-  "ret_open": -7.14
+  "ret_open": -6.07
  },
  {
   "id": "SEI-1791980087",
@@ -5061,7 +5064,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.0589,
+  "last": 0.05989,
   "max": 0.06488,
   "min": 0.0589,
   "checkpoints": {},
@@ -5106,10 +5109,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/sei-network",
    "dexscreener": "https://dexscreener.com/search?q=SEI"
   },
-  "updated": "2026-10-15 10:24 UTC",
+  "updated": "2026-10-15 14:50 UTC",
   "tmax": 0.06488,
   "tmin": 0.0589,
-  "ret_open": -9.22
+  "ret_open": -7.69
  },
  {
   "id": "RENDER-1791983857",
@@ -5321,7 +5324,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.08161,
+  "last": 0.08232,
   "max": 0.08455,
   "min": 0.08094,
   "checkpoints": {},
@@ -5366,10 +5369,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-15 10:24 UTC",
+  "updated": "2026-10-15 14:50 UTC",
   "tmax": 0.08455,
   "tmin": 0.08094,
-  "ret_open": -3.13
+  "ret_open": -2.29
  },
  {
   "id": "BTC-1791996296",

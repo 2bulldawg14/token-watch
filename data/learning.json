@@ -29,28 +29,28 @@
   }
  ],
  "mult": {
-  "technical": 0.74,
+  "technical": 0.76,
   "flows": 1.01,
   "macro": 1.01,
   "markets": 1.03
  },
- "graded": 41,
- "t": "2026-10-15 17:23 UTC",
+ "graded": 42,
+ "t": "2026-10-15 18:02 UTC",
  "scorecard": {
-  "closed": 39,
-  "wins": 24,
-  "avg": -0.43,
-  "held": 2.6,
+  "closed": 40,
+  "wins": 25,
+  "avg": -0.24,
+  "held": 2.5,
   "gave_back": 1
  },
  "sells": {
   "zone": {
-   "n": 6,
+   "n": 7,
    "reviewed": 5,
    "early": 1,
    "good": 0,
    "after": 4.4,
-   "ret": 4.44,
+   "ret": 4.84,
    "text": "entered the sell zone"
   },
   "signal": {
@@ -73,6 +73,6 @@
   }
  },
  "sell_soft": [],
- "wins": 9,
+ "wins": 10,
  "losses": 8
 }

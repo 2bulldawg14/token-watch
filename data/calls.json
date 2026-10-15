@@ -390,7 +390,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.268,
+  "last": 7.167,
   "max": 8.581,
   "min": 6.46,
   "checkpoints": {
@@ -449,7 +449,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/solana/1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
   },
-  "updated": "2026-10-15 09:43 UTC",
+  "updated": "2026-10-15 14:10 UTC",
   "exit": {
    "t": 1790174772,
    "date": "2026-09-23 14:46 UTC",
@@ -719,7 +719,7 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 4.95e-06,
+  "last": 4.99e-06,
   "max": 6.05e-06,
   "min": 4.91e-06,
   "checkpoints": {
@@ -766,7 +766,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-15 10:24 UTC",
+  "updated": "2026-10-15 14:10 UTC",
   "tmax": 5.97e-06,
   "tmin": 5.57e-06,
   "ret_open": 7.0,
@@ -2476,7 +2476,21 @@
   "updated": "2026-10-12 13:53 UTC",
   "tmax": 0.110375,
   "tmin": 0.02762799,
-  "ret_open": -55.32
+  "ret_open": -55.32,
+  "gbasis": "open 14d",
+  "gret": -55.32,
+  "outcome": "loss",
+  "postmortem": {
+   "signs": [
+    "Scam check was MEDIUM risk"
+   ],
+   "btc_chg": null,
+   "r7": -55.32,
+   "dd": -69.63656845182491,
+   "best": 21.303205811563775,
+   "basis": "open 14d",
+   "gave_back": true
+  }
  },
  {
   "id": "PONS-1790909645",
@@ -2944,7 +2958,7 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 4.95e-06,
+  "last": 4.99e-06,
   "max": 6e-06,
   "min": 4.91e-06,
   "checkpoints": {
@@ -2996,7 +3010,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-15 10:24 UTC",
+  "updated": "2026-10-15 14:10 UTC",
   "tmax": 6e-06,
   "tmin": 5.36e-06,
   "ret_open": -2.86,
@@ -3663,7 +3677,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.268,
+  "last": 7.167,
   "max": 8.232,
   "min": 6.46,
   "checkpoints": {
@@ -3727,7 +3741,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/solana/1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
   },
-  "updated": "2026-10-15 09:43 UTC",
+  "updated": "2026-10-15 14:10 UTC",
   "tmax": 8.188,
   "tmin": 6.46,
   "ret_open": 10.04,
@@ -4089,10 +4103,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 12.11,
+  "last": 12.026,
   "max": 13.488,
   "min": 11.989,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": -7.03
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -4151,7 +4167,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/chainlink",
    "dexscreener": "https://dexscreener.com/solana/LinkhB3afbBKb2EQQu7s7umdZceV3wcvAUJhQAfQ23L"
   },
-  "updated": "2026-10-15 09:43 UTC",
+  "updated": "2026-10-15 14:10 UTC",
   "tmax": 12.961,
   "tmin": 12.935,
   "ret_open": 0.0,
@@ -4205,7 +4221,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 4.95e-06,
+  "last": 4.99e-06,
   "max": 5.53e-06,
   "min": 4.91e-06,
   "checkpoints": {},
@@ -4255,7 +4271,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-15 10:24 UTC",
+  "updated": "2026-10-15 14:10 UTC",
   "tmax": 5.51e-06,
   "tmin": 5.44e-06,
   "ret_open": -0.55,
@@ -4421,7 +4437,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 103.03,
+  "last": 102.16,
   "max": 113.23,
   "min": 101.47,
   "checkpoints": {},
@@ -4466,7 +4482,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/solana",
    "dexscreener": "https://dexscreener.com/search?q=SOL"
   },
-  "updated": "2026-10-15 09:43 UTC",
+  "updated": "2026-10-15 14:10 UTC",
   "tmax": 112.56,
   "tmin": 110.28,
   "ret_open": 1.46,
@@ -4875,7 +4891,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.4314,
+  "last": 0.4317,
   "max": 0.4712,
   "min": 0.427,
   "checkpoints": {},
@@ -4920,10 +4936,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/ondo-finance",
    "dexscreener": "https://dexscreener.com/search?q=ONDO"
   },
-  "updated": "2026-10-15 09:43 UTC",
+  "updated": "2026-10-15 14:10 UTC",
   "tmax": 0.4712,
   "tmin": 0.427,
-  "ret_open": -7.88
+  "ret_open": -7.82
  },
  {
   "id": "SUI-1791938309",
@@ -5562,9 +5578,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.268,
+  "last": 7.167,
   "max": 7.716,
-  "min": 7.248,
+  "min": 7.167,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -5607,10 +5623,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/search?q=INJ"
   },
-  "updated": "2026-10-15 09:43 UTC",
+  "updated": "2026-10-15 14:10 UTC",
   "tmax": 7.716,
-  "tmin": 7.248,
-  "ret_open": -5.81
+  "tmin": 7.167,
+  "ret_open": -7.12
  },
  {
   "id": "XRP-1792037202",

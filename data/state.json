@@ -205,7 +205,7 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will Ethereum dip to $1,500 by December 31, 2026?": 9,
@@ -1195,7 +1195,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "macd_day": "2026-10-04"
  },
@@ -1207,7 +1207,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792025045.1020982,
+ "_saved_t": 1792027496.661129,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1218,7 +1218,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 18,
+ "_wl_cursor": 26,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792022271.3389056,

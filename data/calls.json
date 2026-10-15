@@ -277,7 +277,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.764,
+  "last": 1.742,
   "max": 2.08,
   "min": 1.614,
   "checkpoints": {
@@ -336,7 +336,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-10-14 21:18 UTC",
+  "updated": "2026-10-15 01:24 UTC",
   "tmax": 1.9,
   "tmin": 1.614,
   "ret_open": 2.96,
@@ -2030,7 +2030,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-14 22:03 UTC",
+  "updated": "2026-10-15 01:24 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -2100,7 +2100,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.764,
+  "last": 1.742,
   "max": 2.08,
   "min": 1.614,
   "checkpoints": {
@@ -2147,7 +2147,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/search?q=ATOM"
   },
-  "updated": "2026-10-14 21:18 UTC",
+  "updated": "2026-10-15 01:24 UTC",
   "tmax": 1.83,
   "tmin": 1.614,
   "ret_open": 5.48,
@@ -3105,7 +3105,10 @@
   "held_days": 5.3,
   "gbasis": "closed",
   "gret": 2.68,
-  "outcome": "flat"
+  "outcome": "flat",
+  "after_sell": -7.3,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "2Z-1791006258",
@@ -3511,7 +3514,10 @@
   "held_days": 2.8,
   "gbasis": "closed",
   "gret": 0.9,
-  "outcome": "flat"
+  "outcome": "flat",
+  "after_sell": -14.2,
+  "sell_verdict": "good sell",
+  "sell_reviewed": true
  },
  {
   "id": "XRP-1791341725",
@@ -3764,7 +3770,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 2420.37,
+  "last": 2417.34,
   "max": 2583.55,
   "min": 2412.92,
   "checkpoints": {
@@ -3811,7 +3817,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-14 22:03 UTC",
+  "updated": "2026-10-15 01:24 UTC",
   "tmax": 2581.12,
   "tmin": 2560.52,
   "ret_open": -0.44,
@@ -3955,7 +3961,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.764,
+  "last": 1.742,
   "max": 2.08,
   "min": 1.65,
   "checkpoints": {},
@@ -4017,7 +4023,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-10-14 21:18 UTC",
+  "updated": "2026-10-15 01:24 UTC",
   "tmax": 1.815,
   "tmin": 1.769,
   "ret_open": 2.32,
@@ -4687,7 +4693,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 59.57,
+  "last": 59.23,
   "max": 61.58,
   "min": 59.22,
   "checkpoints": {},
@@ -4732,10 +4738,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/litecoin",
    "dexscreener": "https://dexscreener.com/search?q=LTC"
   },
-  "updated": "2026-10-14 22:03 UTC",
+  "updated": "2026-10-15 01:24 UTC",
   "tmax": 61.58,
   "tmin": 59.22,
-  "ret_open": -3.01
+  "ret_open": -3.57
  },
  {
   "id": "XRPN-1791932890",
@@ -5198,9 +5204,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 2420.37,
+  "last": 2417.34,
   "max": 2441.41,
-  "min": 2420.37,
+  "min": 2417.34,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -5243,10 +5249,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-14 22:03 UTC",
+  "updated": "2026-10-15 01:24 UTC",
   "tmax": 2441.41,
-  "tmin": 2420.37,
-  "ret_open": -0.86
+  "tmin": 2417.34,
+  "ret_open": -0.99
  },
  {
   "id": "HBAR-1791994145",
@@ -5503,7 +5509,7 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-14 22:03 UTC",
+  "updated": "2026-10-15 01:24 UTC",
   "tmax": 152.16,
   "tmin": 151.56,
   "ret_open": 0.4

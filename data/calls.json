@@ -1986,9 +1986,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 59.18,
+  "last": 52.82,
   "max": 76.31,
-  "min": 59.18,
+  "min": 52.82,
   "checkpoints": {
    "7": 1.15
   },
@@ -2036,7 +2036,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-15 13:18 UTC",
+  "updated": "2026-10-15 17:23 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -2734,7 +2734,7 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 25.05,
+  "last": 26.59,
   "max": 29.39,
   "min": 25.05,
   "checkpoints": {
@@ -2784,7 +2784,7 @@
    "coingecko": "https://finance.yahoo.com/quote/FIGR",
    "dexscreener": "https://www.tradingview.com/symbols/FIGR/"
   },
-  "updated": "2026-10-15 13:18 UTC",
+  "updated": "2026-10-15 17:23 UTC",
   "tmax": 29.39,
   "tmin": 28.54,
   "ret_open": 0.0,
@@ -4808,7 +4808,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 15.26,
+  "last": 15.66,
   "max": 16.48,
   "min": 14.34,
   "checkpoints": {},
@@ -4856,10 +4856,33 @@
    "coingecko": "https://finance.yahoo.com/quote/XRPN",
    "dexscreener": "https://www.tradingview.com/symbols/XRPN/"
   },
-  "updated": "2026-10-15 13:18 UTC",
+  "updated": "2026-10-15 17:23 UTC",
   "tmax": 16.48,
   "tmin": 14.34,
-  "ret_open": -7.4
+  "ret_open": -7.4,
+  "exit": {
+   "t": 1792084811,
+   "date": "2026-10-15 17:20 UTC",
+   "price": 15.66,
+   "why": "Signal turned TRIM",
+   "kind": "signal"
+  },
+  "ret": -4.98,
+  "held_days": 1.8,
+  "gbasis": "closed",
+  "gret": -4.98,
+  "outcome": "loss",
+  "postmortem": {
+   "signs": [
+    "MACD momentum was fading or turning down"
+   ],
+   "btc_chg": null,
+   "r7": -4.98,
+   "dd": -12.985436893203882,
+   "best": 0.0,
+   "basis": "closed",
+   "gave_back": false
+  }
  },
  {
   "id": "ONDO-1791935589",

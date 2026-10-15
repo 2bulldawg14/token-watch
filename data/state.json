@@ -813,7 +813,7 @@
   },
   "XRPN": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792082158.0223324,
+ "_saved_t": 1792085011.3001451,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 24,
+ "_wl_cursor": 29,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792080475.5157356,
@@ -1727,13 +1727,33 @@
    "142863232",
    "142855929",
    "142854566",
-   "142885580"
+   "142885580",
+   "142919150",
+   "142919582",
+   "142917051",
+   "142919166",
+   "142919562",
+   "142919585",
+   "142917052",
+   "142917054",
+   "142915621",
+   "142917056",
+   "142915667",
+   "142914742",
+   "142919047",
+   "142911691",
+   "142912368",
+   "142913508",
+   "142916401",
+   "142917930",
+   "142906452",
+   "142917931"
   ],
   "_ins": "dump|Clevenger Marvin Bradford,Kampani Arjun,Klein Frank,Ricupati Agostino,Spice Adam C.",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
-  "rsi_band": "mid",
+  "in_zone": false,
+  "rsi_band": "low",
   "risk": "LOW",
   "signal": "TRIM",
   "macd_day": "2026-10-12"
@@ -1800,14 +1820,17 @@
    "142795887",
    "142828801",
    "142828802",
-   "142849071"
+   "142849071",
+   "142917771",
+   "142911295",
+   "142917772"
   ],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-12",
   "_ins": "|"
  },
@@ -1834,13 +1857,15 @@
    "142813159",
    "142766346",
    "140380096",
-   "142872637"
+   "142872637",
+   "142916140",
+   "140083906"
   ],
   "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
-  "rsi_band": "low",
+  "in_zone": false,
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM"
  }

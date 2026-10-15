@@ -203,12 +203,12 @@
  },
  "ETH": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Ethereum dip to $1,500 by December 31, 2026?": 10,
+   "Will Ethereum dip to $1,500 by December 31, 2026?": 8,
    "Will Ethereum reach $10,000 by December 31, 2026?": 1,
    "Will Ethereum reach $4,500 by December 31, 2026?": 4,
    "Will Ethereum dip to $800 by December 31, 2026?": 3
@@ -1196,10 +1196,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "macd_day": "2026-10-04"
  },
  "_disc_seen": {
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792080473.5095134,
+ "_saved_t": 1792082158.0223324,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,34 +1221,14 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 19,
+ "_wl_cursor": 24,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792075812.152849,
+  "live prices": 1792080475.5157356,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {
   "seen_news": [
-   "142662193",
-   "142661502",
-   "142662195",
-   "142661938",
-   "142662644",
-   "142658129",
-   "142657074",
-   "142655827",
-   "142655554",
-   "142657680",
-   "142652193",
-   "142650026",
-   "142648362",
-   "142646047",
-   "142653223",
-   "142650961",
-   "142662935",
-   "142663517",
-   "142663514",
-   "142663515",
    "142662937",
    "142663747",
    "142663901",
@@ -1528,16 +1508,36 @@
    "142885133",
    "142885111",
    "142885139",
-   "142885115"
+   "142885115",
+   "142919256",
+   "142919151",
+   "142919144",
+   "142919164",
+   "142919517",
+   "142919557",
+   "142919258",
+   "142919259",
+   "142917035",
+   "142919562",
+   "142917036",
+   "142916310",
+   "142914742",
+   "142919563",
+   "142915213",
+   "142915621",
+   "142915667",
+   "142914139",
+   "142913479",
+   "142915657"
   ],
   "_ins": "|Shotwell Gwynne",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
-  "macd_day": "2026-10-14"
+  "macd_day": "2026-10-15"
  },
  "LAES": {
   "seen_news": [
@@ -1562,7 +1562,9 @@
    "142829520",
    "142848230",
    "142829521",
-   "142856679"
+   "142856679",
+   "142916117",
+   "142895354"
   ],
   "_ins": "|Enguent Jean-Pierre",
   "in_zone2": false,

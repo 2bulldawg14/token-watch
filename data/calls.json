@@ -351,7 +351,10 @@
    "kind": "signal"
   },
   "ret": 3.24,
-  "held_days": 14.9
+  "held_days": 14.9,
+  "after_sell": -6.2,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "INJ-1790173810",
@@ -2033,7 +2036,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-15 09:09 UTC",
+  "updated": "2026-10-15 13:18 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -2165,7 +2168,10 @@
   "held_days": 7.9,
   "gbasis": "closed",
   "gret": 5.77,
-  "outcome": "win"
+  "outcome": "win",
+  "after_sell": -6.2,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "CCD-1790814700",
@@ -2764,7 +2770,7 @@
    "coingecko": "https://finance.yahoo.com/quote/FIGR",
    "dexscreener": "https://www.tradingview.com/symbols/FIGR/"
   },
-  "updated": "2026-10-15 09:43 UTC",
+  "updated": "2026-10-15 13:18 UTC",
   "tmax": 29.39,
   "tmin": 28.54,
   "ret_open": 0.0,
@@ -4043,7 +4049,10 @@
   "held_days": 0.2,
   "gbasis": "closed",
   "gret": 2.6,
-  "outcome": "flat"
+  "outcome": "flat",
+  "after_sell": -6.2,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "LINK-1791468025",
@@ -4828,7 +4837,7 @@
    "coingecko": "https://finance.yahoo.com/quote/XRPN",
    "dexscreener": "https://www.tradingview.com/symbols/XRPN/"
   },
-  "updated": "2026-10-15 09:09 UTC",
+  "updated": "2026-10-15 13:18 UTC",
   "tmax": 16.48,
   "tmin": 14.34,
   "ret_open": -7.4

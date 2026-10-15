@@ -151,7 +151,7 @@
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W42",
  "_export_t": 1792070297.2911303,
- "_tg_offset": 218529301,
+ "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
   "in_zone": true,
@@ -249,9 +249,9 @@
  },
  "XRP": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will XRP reach $5.00 by December 31, 2026?": 2,
@@ -265,10 +265,10 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-14"
@@ -403,7 +403,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1154,15 +1154,15 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
+   "Will Hyperliquid reach $200 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 2,
-   "Will Hyperliquid dip to $8 by December 31, 2026?": 1,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 4
+   "Will Hyperliquid dip to $8 by December 31, 2026?": 1
   },
   "macd_day": "2026-09-28"
  },
@@ -1170,7 +1170,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
   "signal": "HOLD",
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792078079.3790216,
+ "_saved_t": 1792080473.5095134,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 14,
+ "_wl_cursor": 19,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792075812.152849,

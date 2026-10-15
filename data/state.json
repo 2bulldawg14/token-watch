@@ -110,7 +110,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in October?": 0,
@@ -140,10 +140,10 @@
  },
  "ONDO": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "ACCUMULATE",
+  "risk": "MEDIUM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -156,7 +156,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
@@ -1207,7 +1207,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792041461.0237818,
+ "_saved_t": 1792044153.5172808,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1218,10 +1218,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 28,
+ "_wl_cursor": 5,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792037205.6948028,
+  "live prices": 1792041463.379748,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

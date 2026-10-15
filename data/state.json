@@ -205,7 +205,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Ethereum reach $4,500 by December 31, 2026?": 4,
@@ -267,7 +267,7 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792105983.6170769,
+ "_saved_t": 1792108514.0922341,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 18,
+ "_wl_cursor": 23,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792103914.1998205,

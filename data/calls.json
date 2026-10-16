@@ -1986,9 +1986,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 52.51,
+  "last": 50.94,
   "max": 76.31,
-  "min": 52.51,
+  "min": 50.94,
   "checkpoints": {
    "7": 1.15
   },
@@ -2036,7 +2036,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-16 15:19 UTC",
+  "updated": "2026-10-16 19:20 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -4823,7 +4823,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 15.77,
+  "last": 15.01,
   "max": 16.48,
   "min": 14.34,
   "checkpoints": {},
@@ -4871,7 +4871,7 @@
    "coingecko": "https://finance.yahoo.com/quote/XRPN",
    "dexscreener": "https://www.tradingview.com/symbols/XRPN/"
   },
-  "updated": "2026-10-16 16:04 UTC",
+  "updated": "2026-10-16 19:20 UTC",
   "tmax": 16.48,
   "tmin": 14.34,
   "ret_open": -7.4,
@@ -5544,9 +5544,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 145.35,
+  "last": 143.66,
   "max": 152.16,
-  "min": 145.35,
+  "min": 143.66,
   "checkpoints": {},
   "kind": "stock",
   "by": "David",
@@ -5592,10 +5592,33 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-16 15:19 UTC",
+  "updated": "2026-10-16 19:20 UTC",
   "tmax": 152.16,
-  "tmin": 145.35,
-  "ret_open": -4.1
+  "tmin": 143.66,
+  "ret_open": -4.1,
+  "exit": {
+   "t": 1792178089,
+   "date": "2026-10-16 19:14 UTC",
+   "price": 143.66,
+   "why": "Signal turned TRIM",
+   "kind": "signal"
+  },
+  "ret": -5.21,
+  "held_days": 2.0,
+  "gbasis": "closed",
+  "gret": -5.21,
+  "outcome": "loss",
+  "postmortem": {
+   "signs": [
+    "MACD momentum was fading or turning down"
+   ],
+   "btc_chg": null,
+   "r7": -5.21,
+   "dd": -5.212457112694646,
+   "best": 0.39588281868565556,
+   "basis": "closed",
+   "gave_back": false
+  }
  },
  {
   "id": "INJ-1792005598",
@@ -6032,7 +6055,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/securitize-corp",
    "dexscreener": "https://dexscreener.com/search?q=SECZ"
   },
-  "updated": "2026-10-16 16:04 UTC",
+  "updated": "2026-10-16 19:20 UTC",
   "tmax": 11.34,
   "tmin": 11.34,
   "ret_open": 0.0

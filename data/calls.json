@@ -73,7 +73,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 288.1,
+  "last": 287.2,
   "max": 339.8,
   "min": 256.6,
   "checkpoints": {
@@ -115,7 +115,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-16 06:44 UTC",
+  "updated": "2026-10-16 10:07 UTC",
   "tmax": 311.6,
   "tmin": 286.9,
   "ret_open": 0.26,
@@ -3081,7 +3081,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 288.1,
+  "last": 287.2,
   "max": 308.8,
   "min": 256.6,
   "checkpoints": {
@@ -3128,7 +3128,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-16 06:44 UTC",
+  "updated": "2026-10-16 10:07 UTC",
   "tmax": 308.8,
   "tmin": 284.1,
   "ret_open": 2.75,
@@ -4341,7 +4341,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.487,
+  "last": 7.419,
   "max": 7.866,
   "min": 6.877,
   "checkpoints": {},
@@ -4403,7 +4403,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/ethereum/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
   },
-  "updated": "2026-10-16 06:02 UTC",
+  "updated": "2026-10-16 10:07 UTC",
   "tmax": 7.866,
   "tmin": 7.31,
   "ret_open": 5.31,
@@ -4657,7 +4657,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 288.1,
+  "last": 287.2,
   "max": 288.1,
   "min": 259.9,
   "checkpoints": {},
@@ -4702,10 +4702,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-16 06:44 UTC",
+  "updated": "2026-10-16 10:07 UTC",
   "tmax": 288.1,
   "tmin": 259.9,
-  "ret_open": 3.26
+  "ret_open": 2.94
  },
  {
   "id": "LTC-1791930549",
@@ -5851,7 +5851,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/akash-network",
    "dexscreener": "https://dexscreener.com/search?q=AKT"
   },
-  "updated": "2026-10-16 06:44 UTC",
+  "updated": "2026-10-16 10:07 UTC",
   "tmax": 0.6522971007188273,
   "tmin": 0.6522971007188273,
   "ret_open": 0.0
@@ -6023,6 +6023,95 @@
   "updated": "2026-10-16 08:09 UTC",
   "tmax": 11.34,
   "tmin": 11.34,
+  "ret_open": 0.0
+ },
+ {
+  "id": "HYPE-1792145242",
+  "symbol": "HYPE",
+  "cg_id": "hyperliquid",
+  "t": 1792145242,
+  "date": "2026-10-16 10:07 UTC",
+  "entry": 81.26,
+  "signal": "IN BUY ZONE",
+  "score": 45,
+  "buy_zone": {
+   "low": 80.34861136866915,
+   "high": 82.19472796329703
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 80.34861136866915,
+    "high": 82.19472796329703,
+    "strong": true,
+    "vol_level": 79.55597083642813
+   },
+   "zone2": {
+    "low": 73.01356709455298,
+    "high": 74.39815454052389,
+    "strong": true
+   },
+   "stop": 72.09050879723904,
+   "target": 84.42067051100267,
+   "resistance": [
+    84.42067051100267,
+    94.15006986015175
+   ],
+   "support_levels": [
+    79.55597083642813,
+    73.47509624320995,
+    67.39422164999178
+   ]
+  },
+  "source": "watchlist",
+  "last": 81.26,
+  "max": 81.26,
+  "min": 81.26,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 41.76235903316928,
+   "zone": "in",
+   "pb": 0.1612968662230447,
+   "rs30": -3.8510240818346197,
+   "macd": "improving",
+   "vs200": 0.2804735340688038,
+   "vs50": -0.05560551725571761,
+   "chg7": -0.03417627246008492,
+   "chg30": 0.03870138592867822,
+   "macro": 54.53118055329304,
+   "btc_bull": true,
+   "buy_ratio": null,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 64.9,
+    "flows": 10.5,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 54.5,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/hyperliquid",
+   "dexscreener": "https://dexscreener.com/search?q=HYPE"
+  },
+  "updated": "2026-10-16 10:07 UTC",
+  "tmax": 81.26,
+  "tmin": 81.26,
   "ret_open": 0.0
  }
 ]

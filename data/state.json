@@ -222,7 +222,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-12"
@@ -351,7 +351,7 @@
   },
   "AERO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1130,13 +1130,13 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI dip to $4.00 by December 31, 2026?": 22,
-   "Will UNI reach $12.50 by December 31, 2026?": 20,
    "Will UNI reach $11.00 by December 31, 2026?": 30,
-   "Will UNI reach $15.50 by December 31, 2026?": 10
+   "Will UNI reach $12.50 by December 31, 2026?": 24,
+   "Will UNI reach $15.50 by December 31, 2026?": 9,
+   "Will UNI dip to $2.00 by December 31, 2026?": 4
   },
   "macd_day": "2026-09-29"
  },
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792128061.160778,
+ "_saved_t": 1792130552.058271,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1221,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 7,
+ "_wl_cursor": 12,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792123561.8833616,
+  "live prices": 1792128063.3916152,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

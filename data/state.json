@@ -154,7 +154,7 @@
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
   "signal": "ACCUMULATE",
@@ -180,7 +180,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792113846.1447773,
+ "_saved_t": 1792116125.8155236,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1221,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 4,
+ "_wl_cursor": 9,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792108585.2019768,
+  "live prices": 1792113880.2706532,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

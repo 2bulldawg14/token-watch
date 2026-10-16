@@ -254,10 +254,10 @@
   "risk": null,
   "signal": "HOLD",
   "odds": {
-   "Will XRP reach $5.00 by December 31, 2026?": 3,
-   "Will XRP reach $1.60 in October?": 16,
    "Will XRP reach $4.00 in October?": 0,
-   "Will XRP reach $8.00 by December 31, 2026?": 2
+   "Will XRP reach $5.00 by December 31, 2026?": 3,
+   "Will XRP reach $8.00 by December 31, 2026?": 2,
+   "Will XRP reach $1.60 in October?": 14
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1172,13 +1172,13 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Zcash reach $2000 by December 31, 2026?": 27,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 36
+   "Will Zcash dip to $700 by December 31, 2026?": 26,
+   "Will Zcash reach $2000 by December 31, 2026?": 25
   },
   "macd_day": "2026-09-28"
  },
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792145243.4715214,
+ "_saved_t": 1792147208.333354,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,7 +1221,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 15,
+ "_wl_cursor": 20,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792142624.59543,

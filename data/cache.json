@@ -4,7 +4,7 @@
  "id:link": "chainlink",
  "id:ondo": "ondo-finance",
  "dd:injective-protocol": {
-  "t": 1791933166.774218,
+  "t": 1792166447.2035868,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -22,9 +22,9 @@
    },
    "facts": {
     "name": "Injective",
-    "market_cap": 810562197,
-    "fdv": 810562197,
-    "volume": 198782075,
+    "market_cap": 897960360,
+    "fdv": 897960360,
+    "volume": 330812106,
     "website": [
      "https://injective.com"
     ],
@@ -42,7 +42,7 @@
     "platforms": {
      "ethereum": "0xe28b3b32b6c345a34ff64674606124dd5aceca30",
      "cosmos": "ibc/64BA6E31FE887D66C6F8F31C7B1A80C7CA179239677B4088BB55F5EA07DBE273",
-     "terra-2": "ibc/25BC59386BB65725F735EFC0C369BB717AA8B5DAD846EAF9CBF5D0F18F207211",
+     "injective": "inj",
      "osmosis": "ibc/64BA6E31FE887D66C6F8F31C7B1A80C7CA179239677B4088BB55F5EA07DBE273",
      "secret": "secret14706vxakdzkz9a36872cs62vpl5qd84kpwvpew",
      "binance-smart-chain": "0xa2b726b1145a4773f68593cf171187d8ebe4d495",
@@ -52,7 +52,7 @@
   }
  },
  "dd:solana": {
-  "t": 1792140011.9321911,
+  "t": 1792166540.3248932,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -66,9 +66,9 @@
    },
    "facts": {
     "name": "Solana",
-    "market_cap": 62800169854,
-    "fdv": 67764063118,
-    "volume": 3219237724,
+    "market_cap": 61150233463,
+    "fdv": 65983713439,
+    "volume": 2740418012,
     "website": [
      "https://solana.com/"
     ],
@@ -88,7 +88,7 @@
   }
  },
  "dd:chainlink": {
-  "t": 1792113656.665727,
+  "t": 1792166576.2557893,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -106,9 +106,9 @@
    },
    "facts": {
     "name": "Chainlink",
-    "market_cap": 9585769297,
-    "fdv": 12500188650,
-    "volume": 432458000,
+    "market_cap": 9448411600,
+    "fdv": 12321069263,
+    "volume": 251093987,
     "website": [
      "https://chain.link/"
     ],

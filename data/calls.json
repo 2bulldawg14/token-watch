@@ -548,7 +548,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-10-16 13:31 UTC",
+  "updated": "2026-10-16 17:21 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -4341,7 +4341,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.431,
+  "last": 7.127,
   "max": 7.866,
   "min": 6.877,
   "checkpoints": {},
@@ -4403,7 +4403,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/ethereum/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
   },
-  "updated": "2026-10-16 13:31 UTC",
+  "updated": "2026-10-16 17:21 UTC",
   "tmax": 7.866,
   "tmin": 7.31,
   "ret_open": 5.31,
@@ -5446,7 +5446,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 81981.94,
+  "last": 81118.2,
   "max": 82580.0,
   "min": 81012.98,
   "checkpoints": {},
@@ -5491,10 +5491,22 @@
    "coingecko": "https://www.coingecko.com/en/coins/bitcoin",
    "dexscreener": "https://dexscreener.com/search?q=BTC"
   },
-  "updated": "2026-10-16 13:31 UTC",
+  "updated": "2026-10-16 17:21 UTC",
   "tmax": 82580.0,
   "tmin": 81012.98,
-  "ret_open": 0.04
+  "ret_open": 0.04,
+  "exit": {
+   "t": 1792170920,
+   "date": "2026-10-16 17:15 UTC",
+   "price": 81118.2,
+   "why": "Signal turned TRIM",
+   "kind": "signal"
+  },
+  "ret": -1.02,
+  "held_days": 2.0,
+  "gbasis": "closed",
+  "gret": -1.02,
+  "outcome": "flat"
  },
  {
   "id": "SPCX-1792003053",
@@ -5851,7 +5863,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/akash-network",
    "dexscreener": "https://dexscreener.com/search?q=AKT"
   },
-  "updated": "2026-10-16 14:15 UTC",
+  "updated": "2026-10-16 17:21 UTC",
   "tmax": 0.6522971007188273,
   "tmin": 0.6522971007188273,
   "ret_open": 0.0

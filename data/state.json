@@ -142,8 +142,8 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "ACCUMULATE",
+  "risk": "MEDIUM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -166,10 +166,10 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "ACCUMULATE",
   "odds": {
-   "Will Sui reach $1.60 before 2027?": 26
+   "Will Sui reach $1.60 before 2027?": 25
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792233138.4627717,
+ "_saved_t": 1792235556.2034981,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1221,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 2,
+ "_wl_cursor": 7,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792228537.131435,
+  "live prices": 1792233209.4547832,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

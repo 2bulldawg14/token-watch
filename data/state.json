@@ -166,11 +166,10 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Sui reach $1.80 before 2027?": 20,
-   "Will Sui reach $1.60 before 2027?": 24,
    "Will Sui reach $1.40 before 2027?": 36
   },
   "in_zone2": false,
@@ -194,10 +193,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will the price of Bitcoin be above $94,000 on October 17?": 0,
-   "Will the price of Bitcoin be above $74,000 on October 17?": 100,
-   "Will Bitcoin reach $150,000 in October?": 0,
-   "Will Bitcoin reach $102,500 in October?": 1
+   "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
+   "Will Bitcoin reach $500,000 by December 31, 2026?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1132,12 +1131,12 @@
   "below_stop": false,
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 32,
-   "Will UNI reach $12.50 by December 31, 2026?": 20,
    "Will UNI dip to $4.00 by December 31, 2026?": 24,
+   "Will UNI reach $12.50 by December 31, 2026?": 16,
    "Will UNI reach $15.50 by December 31, 2026?": 10
   },
   "macd_day": "2026-09-29"
@@ -1212,7 +1211,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792259842.7010443,
+ "_saved_t": 1792261932.3919454,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,10 +1222,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 11,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792256234.2461414,
+  "live prices": 1792259844.641465,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

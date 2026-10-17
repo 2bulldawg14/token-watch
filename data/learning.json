@@ -3,11 +3,11 @@
   {
    "key": "macd_weak",
    "text": "MACD momentum was fading or turning down",
-   "n": 29,
-   "wins": 7,
-   "avg": -0.6896551724137931,
-   "points": -7.5,
-   "block": true
+   "n": 30,
+   "wins": 8,
+   "avg": -0.3106666666666667,
+   "points": -6.6,
+   "block": false
   },
   {
    "key": "below_200",
@@ -38,17 +38,17 @@
   }
  ],
  "mult": {
-  "technical": 0.77,
+  "technical": 0.79,
   "flows": 1.01,
-  "macro": 1.0,
+  "macro": 1.01,
   "markets": 1.02
  },
- "graded": 46,
- "t": "2026-10-17 08:00 UTC",
+ "graded": 47,
+ "t": "2026-10-17 08:35 UTC",
  "scorecard": {
-  "closed": 43,
-  "wins": 25,
-  "avg": -0.38,
+  "closed": 44,
+  "wins": 26,
+  "avg": -0.13,
   "held": 2.4,
   "gave_back": 1
  },
@@ -72,16 +72,16 @@
    "text": "signal turned TRIM/SELL"
   },
   "target": {
-   "n": 4,
+   "n": 5,
    "reviewed": 4,
    "early": 0,
    "good": 1,
    "after": -5.6,
-   "ret": 6.71,
+   "ret": 7.5,
    "text": "hit the take-profit target"
   }
  },
  "sell_soft": [],
- "wins": 10,
+ "wins": 11,
  "losses": 10
 }

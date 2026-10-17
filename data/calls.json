@@ -73,7 +73,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 273.9,
+  "last": 276.2,
   "max": 339.8,
   "min": 256.6,
   "checkpoints": {
@@ -115,7 +115,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-17 01:27 UTC",
+  "updated": "2026-10-17 04:37 UTC",
   "tmax": 311.6,
   "tmin": 286.9,
   "ret_open": 0.26,
@@ -3081,7 +3081,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 273.9,
+  "last": 276.2,
   "max": 308.8,
   "min": 256.6,
   "checkpoints": {
@@ -3128,7 +3128,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-17 01:27 UTC",
+  "updated": "2026-10-17 04:37 UTC",
   "tmax": 308.8,
   "tmin": 284.1,
   "ret_open": 2.75,
@@ -4343,10 +4343,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.305,
+  "last": 7.31,
   "max": 7.866,
   "min": 6.877,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": -1.06
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -4405,7 +4407,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/ethereum/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
   },
-  "updated": "2026-10-17 00:41 UTC",
+  "updated": "2026-10-17 04:37 UTC",
   "tmax": 7.866,
   "tmin": 7.31,
   "ret_open": 5.31,
@@ -4659,7 +4661,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 273.9,
+  "last": 276.2,
   "max": 288.1,
   "min": 259.9,
   "checkpoints": {},
@@ -4704,10 +4706,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-17 01:27 UTC",
+  "updated": "2026-10-17 04:37 UTC",
   "tmax": 288.1,
   "tmin": 259.9,
-  "ret_open": -1.83
+  "ret_open": -1.0
  },
  {
   "id": "LTC-1791930549",
@@ -5888,7 +5890,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/akash-network",
    "dexscreener": "https://dexscreener.com/search?q=AKT"
   },
-  "updated": "2026-10-17 00:41 UTC",
+  "updated": "2026-10-17 04:37 UTC",
   "tmax": 0.6941795860233098,
   "tmin": 0.6522971007188273,
   "ret_open": 6.42
@@ -6101,7 +6103,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 79.86,
+  "last": 79.84,
   "max": 81.26,
   "min": 79.27,
   "checkpoints": {},
@@ -6146,7 +6148,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hyperliquid",
    "dexscreener": "https://dexscreener.com/search?q=HYPE"
   },
-  "updated": "2026-10-17 01:27 UTC",
+  "updated": "2026-10-17 04:37 UTC",
   "tmax": 81.26,
   "tmin": 80.84,
   "ret_open": 0.0,
@@ -6265,5 +6267,90 @@
   "tmax": 12.35,
   "tmin": 12.288,
   "ret_open": 0.12
+ },
+ {
+  "id": "UNI-1792211365",
+  "symbol": "UNI",
+  "cg_id": "uniswap",
+  "t": 1792211365,
+  "date": "2026-10-17 04:29 UTC",
+  "entry": 7.31,
+  "signal": "ACCUMULATE",
+  "score": 60,
+  "buy_zone": {
+   "low": 6.596767857142857,
+   "high": 7.177696428571428
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 6.596767857142857,
+    "high": 7.177696428571428,
+    "strong": false
+   },
+   "zone2": {
+    "low": 4.296367857142857,
+    "high": 4.732064285714286,
+    "strong": false
+   },
+   "stop": 3.013931547619048,
+   "target": 9.055062500000002,
+   "resistance": [
+    9.055062500000002
+   ],
+   "support_levels": [
+    3.3043958333333334
+   ]
+  },
+  "source": "watchlist",
+  "last": 7.31,
+  "max": 7.31,
+  "min": 7.31,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 44.144072702059226,
+   "zone": "above",
+   "pb": 0.25182182030888994,
+   "rs30": -12.887376212837765,
+   "macd": "improving",
+   "vs200": 0.6458033141210373,
+   "vs50": -0.0379604234553409,
+   "chg7": -0.03676373698774549,
+   "chg30": -0.06185831622176596,
+   "macro": 57.94697796203935,
+   "btc_bull": true,
+   "buy_ratio": 0.48929366919010436,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 56.8,
+    "flows": 69.8,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 57.9,
+    "news": null,
+    "fundamental": null,
+    "markets": 50
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/uniswap",
+   "dexscreener": "https://dexscreener.com/search?q=UNI"
+  },
+  "updated": "2026-10-17 04:37 UTC",
+  "tmax": 7.31,
+  "tmin": 7.31,
+  "ret_open": 0.0
  }
 ]

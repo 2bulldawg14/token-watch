@@ -252,12 +252,12 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
+   "Will XRP reach $1.30 October 12-18?": 100,
    "Will XRP reach $5.00 by December 31, 2026?": 3,
    "Will XRP reach $8.00 by December 31, 2026?": 2,
-   "Will the price of XRP be above $1.30 on October 17?": 0,
    "Will XRP reach $4.00 in October?": 0
   },
   "in_zone2": false,
@@ -266,10 +266,10 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-14"
@@ -404,7 +404,7 @@
   },
   "ATOM": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1211,7 +1211,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792264613.6818962,
+ "_saved_t": 1792266786.761528,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1222,10 +1222,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 16,
+ "_wl_cursor": 21,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792259844.641465,
+  "live prices": 1792264615.5173123,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

@@ -241,9 +241,9 @@
  },
  "RENDER": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
@@ -253,13 +253,13 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will XRP reach $5.00 by December 31, 2026?": 3,
    "Will XRP reach $8.00 by December 31, 2026?": 2,
-   "Will XRP reach $4.00 in October?": 0,
-   "Will XRP reach $1.60 in October?": 10
+   "Will the price of XRP be above $1.30 on October 17?": 0,
+   "Will XRP reach $4.00 in October?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1158,7 +1158,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
@@ -1212,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792251516.050932,
+ "_saved_t": 1792253503.9617984,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,10 +1223,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 14,
+ "_wl_cursor": 20,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792247589.0885582,
+  "live prices": 1792251518.016737,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

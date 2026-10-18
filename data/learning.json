@@ -3,11 +3,11 @@
   {
    "key": "macd_weak",
    "text": "MACD momentum was fading or turning down",
-   "n": 31,
+   "n": 32,
    "wins": 8,
-   "avg": -0.3583870967741936,
-   "points": -6.9,
-   "block": false
+   "avg": -1.651875,
+   "points": -7.6,
+   "block": true
   },
   {
    "key": "below_200",
@@ -30,21 +30,21 @@
   {
    "key": "found_coin",
    "text": "A coin the scanner found (not one you picked)",
-   "n": 18,
+   "n": 19,
    "wins": 3,
-   "avg": -7.386111111111112,
-   "points": -12.0,
+   "avg": -9.194736842105264,
+   "points": -12,
    "block": true
   }
  ],
  "mult": {
-  "technical": 0.79,
-  "flows": 1.01,
+  "technical": 0.77,
+  "flows": 1.1,
   "macro": 1.01,
-  "markets": 1.02
+  "markets": 1.01
  },
- "graded": 48,
- "t": "2026-10-18 01:59 UTC",
+ "graded": 49,
+ "t": "2026-10-18 02:34 UTC",
  "scorecard": {
   "closed": 45,
   "wins": 26,
@@ -83,5 +83,5 @@
  },
  "sell_soft": [],
  "wins": 11,
- "losses": 10
+ "losses": 11
 }

@@ -2036,7 +2036,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-17 23:32 UTC",
+  "updated": "2026-10-18 02:34 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -3455,7 +3455,21 @@
   "updated": "2026-10-12 13:53 UTC",
   "tmax": 0.03431049,
   "tmin": 0.01030176,
-  "ret_open": -41.75
+  "ret_open": -41.75,
+  "gbasis": "open 14d",
+  "gret": -41.75,
+  "outcome": "loss",
+  "postmortem": {
+   "signs": [
+    "MACD momentum was fading or turning down"
+   ],
+   "btc_chg": null,
+   "r7": -41.75,
+   "dd": -47.63488100145534,
+   "best": 74.40446018431572,
+   "basis": "open 14d",
+   "gave_back": true
+  }
  },
  {
   "id": "ZEC-1791175510",
@@ -3808,7 +3822,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 2393.11,
+  "last": 2412.67,
   "max": 2583.55,
   "min": 2367.28,
   "checkpoints": {
@@ -3855,7 +3869,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-17 23:08 UTC",
+  "updated": "2026-10-18 02:34 UTC",
   "tmax": 2581.12,
   "tmin": 2560.52,
   "ret_open": -0.44,
@@ -5282,7 +5296,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 2393.11,
+  "last": 2412.67,
   "max": 2478.37,
   "min": 2367.28,
   "checkpoints": {},
@@ -5327,10 +5341,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-17 23:08 UTC",
+  "updated": "2026-10-18 02:34 UTC",
   "tmax": 2478.37,
   "tmin": 2367.28,
-  "ret_open": -1.98
+  "ret_open": -1.18
  },
  {
   "id": "HBAR-1791994145",
@@ -5599,7 +5613,7 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-17 23:32 UTC",
+  "updated": "2026-10-18 02:34 UTC",
   "tmax": 152.16,
   "tmin": 143.66,
   "ret_open": -4.1,

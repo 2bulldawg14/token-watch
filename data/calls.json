@@ -2036,7 +2036,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-18 17:55 UTC",
+  "updated": "2026-10-18 20:58 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -3822,9 +3822,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 2374.42,
+  "last": 2346.25,
   "max": 2583.55,
-  "min": 2367.28,
+  "min": 2346.25,
   "checkpoints": {
    "7": -5.37
   },
@@ -3869,7 +3869,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-18 17:14 UTC",
+  "updated": "2026-10-18 20:58 UTC",
   "tmax": 2581.12,
   "tmin": 2560.52,
   "ret_open": -0.44,
@@ -5304,9 +5304,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 2374.42,
+  "last": 2346.25,
   "max": 2478.37,
-  "min": 2367.28,
+  "min": 2346.25,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -5349,10 +5349,33 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-18 17:14 UTC",
+  "updated": "2026-10-18 20:58 UTC",
   "tmax": 2478.37,
-  "tmin": 2367.28,
-  "ret_open": -2.74
+  "tmin": 2346.25,
+  "ret_open": -2.74,
+  "exit": {
+   "t": 1792356814,
+   "date": "2026-10-18 20:53 UTC",
+   "price": 2346.25,
+   "why": "Signal turned TRIM",
+   "kind": "signal"
+  },
+  "ret": -3.9,
+  "held_days": 4.3,
+  "gbasis": "closed",
+  "gret": -3.9,
+  "outcome": "loss",
+  "postmortem": {
+   "signs": [
+    "Price was above the buy zone - chasing instead of waiting for a pullback"
+   ],
+   "btc_chg": null,
+   "r7": -3.9,
+   "dd": -3.8977476130596656,
+   "best": 1.513879274681429,
+   "basis": "closed",
+   "gave_back": false
+  }
  },
  {
   "id": "HBAR-1791994145",
@@ -5621,7 +5644,7 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-18 17:55 UTC",
+  "updated": "2026-10-18 20:58 UTC",
   "tmax": 152.16,
   "tmin": 143.66,
   "ret_open": -4.1,

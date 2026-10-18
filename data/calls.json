@@ -390,7 +390,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 8.069,
+  "last": 8.07,
   "max": 9.224,
   "min": 6.46,
   "checkpoints": {
@@ -449,7 +449,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/solana/1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
   },
-  "updated": "2026-10-18 14:32 UTC",
+  "updated": "2026-10-18 18:33 UTC",
   "exit": {
    "t": 1790174772,
    "date": "2026-09-23 14:46 UTC",
@@ -766,7 +766,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-18 15:11 UTC",
+  "updated": "2026-10-18 18:33 UTC",
   "tmax": 5.97e-06,
   "tmin": 5.57e-06,
   "ret_open": 7.0,
@@ -2799,7 +2799,7 @@
    "coingecko": "https://finance.yahoo.com/quote/FIGR",
    "dexscreener": "https://www.tradingview.com/symbols/FIGR/"
   },
-  "updated": "2026-10-18 14:32 UTC",
+  "updated": "2026-10-18 18:33 UTC",
   "tmax": 29.39,
   "tmin": 28.54,
   "ret_open": 0.0,
@@ -3025,7 +3025,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-18 15:11 UTC",
+  "updated": "2026-10-18 18:33 UTC",
   "tmax": 6e-06,
   "tmin": 5.36e-06,
   "ret_open": -2.86,
@@ -3706,7 +3706,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 8.069,
+  "last": 8.07,
   "max": 9.224,
   "min": 6.46,
   "checkpoints": {
@@ -3770,7 +3770,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/solana/1NJMqVM4PadjuzYmeB7zV7q7DV8oB3ExaQCd9x6KsLz"
   },
-  "updated": "2026-10-18 14:32 UTC",
+  "updated": "2026-10-18 18:33 UTC",
   "tmax": 8.188,
   "tmin": 6.46,
   "ret_open": 10.04,
@@ -4132,9 +4132,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 11.809,
+  "last": 11.763,
   "max": 13.488,
-  "min": 11.809,
+  "min": 11.763,
   "checkpoints": {
    "7": -7.03
   },
@@ -4196,7 +4196,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/chainlink",
    "dexscreener": "https://dexscreener.com/solana/LinkhB3afbBKb2EQQu7s7umdZceV3wcvAUJhQAfQ23L"
   },
-  "updated": "2026-10-18 15:11 UTC",
+  "updated": "2026-10-18 18:33 UTC",
   "tmax": 12.961,
   "tmin": 12.935,
   "ret_open": 0.0,
@@ -4305,7 +4305,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-18 15:11 UTC",
+  "updated": "2026-10-18 18:33 UTC",
   "tmax": 5.51e-06,
   "tmin": 5.44e-06,
   "ret_open": -0.55,
@@ -4479,10 +4479,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 102.52,
+  "last": 102.3,
   "max": 113.23,
   "min": 101.47,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": -7.24
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -4524,7 +4526,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/solana",
    "dexscreener": "https://dexscreener.com/search?q=SOL"
   },
-  "updated": "2026-10-18 15:11 UTC",
+  "updated": "2026-10-18 18:33 UTC",
   "tmax": 112.56,
   "tmin": 110.28,
   "ret_open": 1.46,
@@ -4959,9 +4961,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.4295,
+  "last": 0.4253,
   "max": 0.473,
-  "min": 0.427,
+  "min": 0.4253,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -5004,10 +5006,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/ondo-finance",
    "dexscreener": "https://dexscreener.com/search?q=ONDO"
   },
-  "updated": "2026-10-18 15:11 UTC",
+  "updated": "2026-10-18 18:33 UTC",
   "tmax": 0.473,
-  "tmin": 0.427,
-  "ret_open": -8.29
+  "tmin": 0.4253,
+  "ret_open": -9.18
  },
  {
   "id": "SUI-1791938309",
@@ -5681,7 +5683,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 8.069,
+  "last": 8.07,
   "max": 9.224,
   "min": 7.167,
   "checkpoints": {},
@@ -5726,7 +5728,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/injective-protocol",
    "dexscreener": "https://dexscreener.com/search?q=INJ"
   },
-  "updated": "2026-10-18 14:32 UTC",
+  "updated": "2026-10-18 18:33 UTC",
   "tmax": 8.272,
   "tmin": 7.167,
   "ret_open": -7.12,
@@ -6260,9 +6262,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 11.809,
+  "last": 11.763,
   "max": 12.35,
-  "min": 11.809,
+  "min": 11.763,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -6322,10 +6324,33 @@
    "coingecko": "https://www.coingecko.com/en/coins/chainlink",
    "dexscreener": "https://dexscreener.com/solana/LinkhB3afbBKb2EQQu7s7umdZceV3wcvAUJhQAfQ23L"
   },
-  "updated": "2026-10-18 15:11 UTC",
+  "updated": "2026-10-18 18:33 UTC",
   "tmax": 12.35,
-  "tmin": 11.809,
-  "ret_open": -3.9
+  "tmin": 11.763,
+  "ret_open": -3.9,
+  "exit": {
+   "t": 1792348235,
+   "date": "2026-10-18 18:30 UTC",
+   "price": 11.763,
+   "why": "Signal turned TRIM",
+   "kind": "signal"
+  },
+  "ret": -4.27,
+  "held_days": 1.9,
+  "gbasis": "closed",
+  "gret": -4.27,
+  "outcome": "loss",
+  "postmortem": {
+   "signs": [
+    "Price was above the buy zone - chasing instead of waiting for a pullback"
+   ],
+   "btc_chg": null,
+   "r7": -4.27,
+   "dd": -4.2724609375,
+   "best": 0.5045572916666519,
+   "basis": "closed",
+   "gave_back": false
+  }
  },
  {
   "id": "UNI-1792211365",
@@ -6411,5 +6436,90 @@
   "tmax": 7.311,
   "tmin": 7.009,
   "ret_open": -4.12
+ },
+ {
+  "id": "SOL-1792348142",
+  "symbol": "SOL",
+  "cg_id": "solana",
+  "t": 1792348142,
+  "date": "2026-10-18 18:29 UTC",
+  "entry": 102.3,
+  "signal": "ACCUMULATE",
+  "score": 60,
+  "buy_zone": {
+   "low": 99.36125,
+   "high": 104.39625000000001
+  },
+  "risk": "LOW",
+  "plan": {
+   "zone1": {
+    "low": 99.36125,
+    "high": 104.39625000000001,
+    "strong": true,
+    "vol_level": 102.668125
+   },
+   "zone2": {
+    "low": 86.3545,
+    "high": 90.13075,
+    "strong": true
+   },
+   "stop": 82.59520833333333,
+   "target": 123.69125,
+   "resistance": [],
+   "support_levels": [
+    85.11270833333333,
+    74.309375
+   ]
+  },
+  "source": "watchlist",
+  "last": 102.3,
+  "max": 102.3,
+  "min": 102.3,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 35.76410892778115,
+   "zone": "in",
+   "pb": 0.12795176383184653,
+   "rs30": -9.54164538532315,
+   "macd": "improving",
+   "vs200": 0.1676316082327729,
+   "vs50": -0.06429047058048742,
+   "chg7": -0.08127525819488102,
+   "chg30": -0.09244144783534425,
+   "macro": 50.620367298870654,
+   "btc_bull": true,
+   "buy_ratio": 0.5110984351736185,
+   "wallets": null,
+   "risk": "LOW",
+   "source": "watchlist",
+   "parts": {
+    "technical": 63.0,
+    "flows": 68.2,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 50.6,
+    "news": null,
+    "fundamental": null,
+    "markets": 38.4
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/solana",
+   "dexscreener": "https://dexscreener.com/search?q=SOL"
+  },
+  "updated": "2026-10-18 18:33 UTC",
+  "tmax": 102.3,
+  "tmin": 102.3,
+  "ret_open": 0.0
  }
 ]

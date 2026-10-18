@@ -253,7 +253,7 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will XRP reach $5.00 by December 31, 2026?": 3,
@@ -1201,7 +1201,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "macd_day": "2026-10-04"
  },
  "_disc_seen": {
@@ -1212,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792326943.5597644,
+ "_saved_t": 1792329749.1998978,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,7 +1223,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 15,
+ "_wl_cursor": 20,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792324574.2039535,

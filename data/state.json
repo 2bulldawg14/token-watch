@@ -240,7 +240,7 @@
  },
  "RENDER": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
   "signal": "HOLD",
@@ -266,7 +266,7 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
   "signal": "TRIM",
@@ -1173,13 +1173,13 @@
   "below_stop": false,
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 25,
-   "Will Zcash dip to $200 by December 31, 2026?": 5
+   "Will Zcash dip to $700 by December 31, 2026?": 26,
+   "Will Zcash reach $2000 by December 31, 2026?": 26
   },
   "macd_day": "2026-09-28"
  },
@@ -1211,7 +1211,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792286705.220482,
+ "_saved_t": 1792288791.489753,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1222,10 +1222,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 15,
+ "_wl_cursor": 20,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792282067.508177,
+  "live prices": 1792286738.476725,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

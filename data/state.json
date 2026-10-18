@@ -234,7 +234,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-02"
@@ -433,7 +433,7 @@
   },
   "HYPE": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1159,9 +1159,9 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
-   "HYPE Up or Down - October 18, 12AM ET": 0
+   "HYPE Up or Down - October 18, 4AM ET": 100
   },
   "macd_day": "2026-09-28"
  },
@@ -1209,7 +1209,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792312615.5799928,
+ "_saved_t": 1792314966.749156,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1220,7 +1220,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 13,
+ "_wl_cursor": 18,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792310392.909919,

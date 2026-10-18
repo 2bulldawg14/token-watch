@@ -169,7 +169,8 @@
   "risk": null,
   "signal": "ACCUMULATE",
   "odds": {
-   "Will Sui reach $1.40 before 2027?": 36
+   "Will Sui reach $1.40 before 2027?": 36,
+   "Will Sui reach $3.00 before 2027?": 5
   },
   "in_zone2": false,
   "below_stop": false,
@@ -180,7 +181,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -190,12 +191,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "odds": {
-   "Will the price of Bitcoin be above $92,000 on October 18?": 0,
    "Will the price of Bitcoin be above $94,000 on October 18?": 0,
-   "Will Bitcoin dip to $81,000 on October 17?": 100,
-   "Will Bitcoin reach $150,000 in October?": 0
+   "Will the price of Bitcoin be above $92,000 on October 18?": 0,
+   "Will Bitcoin reach $98,000 October 12-18?": 0,
+   "Will Bitcoin reach $102,500 in October?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1210,7 +1211,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792282033.5096247,
+ "_saved_t": 1792284442.3291028,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1222,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 5,
+ "_wl_cursor": 10,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792276625.083228,
+  "live prices": 1792282067.508177,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

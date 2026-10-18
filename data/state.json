@@ -124,10 +124,10 @@
  },
  "LINK": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Chainlink reach $16 by December 31, 2026?": 42,
    "Will Chainlink reach $20 by December 31, 2026?": 16,
@@ -292,7 +292,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1212,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792357095.911584,
+ "_saved_t": 1792359106.9953814,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,10 +1223,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 26,
+ "_wl_cursor": 2,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792353292.4108827,
+  "live prices": 1792357098.1352162,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

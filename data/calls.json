@@ -2036,7 +2036,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-18 13:57 UTC",
+  "updated": "2026-10-18 17:55 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -4539,7 +4539,10 @@
   "held_days": 0.1,
   "gbasis": "closed",
   "gret": 2.07,
-  "outcome": "flat"
+  "outcome": "flat",
+  "after_sell": -8.9,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "ZEC-1791813201",
@@ -4895,7 +4898,7 @@
    "coingecko": "https://finance.yahoo.com/quote/XRPN",
    "dexscreener": "https://www.tradingview.com/symbols/XRPN/"
   },
-  "updated": "2026-10-18 14:32 UTC",
+  "updated": "2026-10-18 17:55 UTC",
   "tmax": 16.48,
   "tmin": 14.34,
   "ret_open": -7.4,
@@ -5616,7 +5619,7 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-18 13:57 UTC",
+  "updated": "2026-10-18 17:55 UTC",
   "tmax": 152.16,
   "tmin": 143.66,
   "ret_open": -4.1,
@@ -6115,7 +6118,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/securitize-corp",
    "dexscreener": "https://dexscreener.com/search?q=SECZ"
   },
-  "updated": "2026-10-18 14:32 UTC",
+  "updated": "2026-10-18 17:55 UTC",
   "tmax": 11.34,
   "tmin": 9.86,
   "ret_open": -13.05

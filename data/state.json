@@ -110,7 +110,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $200 in October?": 0,
@@ -1212,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792425949.3608701,
+ "_saved_t": 1792427998.6888163,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,7 +1223,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 26,
+ "_wl_cursor": 1,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792422938.9180021,
@@ -1865,7 +1865,9 @@
    "142917771",
    "142911295",
    "142917772",
-   "142946456"
+   "142946456",
+   "142953002",
+   "142930349"
   ],
   "in_zone2": false,
   "below_stop": false,
@@ -1903,7 +1905,8 @@
    "142916140",
    "140083906",
    "142921514",
-   "142920673"
+   "142920673",
+   "142964694"
   ],
   "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,

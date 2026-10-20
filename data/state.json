@@ -140,10 +140,10 @@
  },
  "ONDO": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -1188,7 +1188,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
   "signal": "TRIM",
@@ -1212,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792512280.4173546,
+ "_saved_t": 1792514445.0126364,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,10 +1223,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 2,
+ "_wl_cursor": 7,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792507585.2391376,
+  "live prices": 1792512346.5108216,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

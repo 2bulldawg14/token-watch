@@ -108,15 +108,15 @@
  },
  "SOL": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "HOLD",
+  "risk": "LOW",
+  "signal": "ACCUMULATE",
   "odds": {
    "Will Solana reach $200 in October?": 0,
-   "Will Solana reach $190 in October?": 1,
-   "Will Solana reach $600 by December 31, 2026?": 0,
-   "Will Solana reach $180 in October?": 1
+   "Will Solana reach $190 in October?": 0,
+   "Will Solana reach $180 in October?": 1,
+   "Will Solana dip to $20 in October?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -124,15 +124,15 @@
  },
  "LINK": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $16 by December 31, 2026?": 44,
-   "Will Chainlink reach $20 by December 31, 2026?": 19,
-   "Will Chainlink reach $26 in October?": 2,
-   "Will Chainlink reach $18 by December 31, 2026?": 38
+   "Will Chainlink reach $24 by December 31, 2026?": 14,
+   "Will Chainlink reach $16 by December 31, 2026?": 42,
+   "Will Chainlink reach $20 by December 31, 2026?": 14,
+   "Will Chainlink reach $18 by December 31, 2026?": 42
   },
   "in_zone2": false,
   "below_stop": false,
@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W43",
- "_export_t": 1792493950.503673,
+ "_export_t": 1792509891.9276037,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -1212,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792509889.6481922,
+ "_saved_t": 1792512280.4173546,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,7 +1223,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 26,
+ "_wl_cursor": 2,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792507585.2391376,
@@ -1888,7 +1888,8 @@
    "142917772",
    "142946456",
    "142953002",
-   "142930349"
+   "142930349",
+   "143021664"
   ],
   "in_zone2": false,
   "below_stop": false,
@@ -1927,7 +1928,10 @@
    "140083906",
    "142921514",
    "142920673",
-   "142964694"
+   "142964694",
+   "143010481",
+   "143012653",
+   "143025071"
   ],
   "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,

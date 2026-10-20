@@ -73,7 +73,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 270.4,
+  "last": 273.4,
   "max": 339.8,
   "min": 256.1,
   "checkpoints": {
@@ -115,7 +115,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-20 14:09 UTC",
+  "updated": "2026-10-20 18:00 UTC",
   "tmax": 311.6,
   "tmin": 286.9,
   "ret_open": 0.26,
@@ -171,7 +171,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.892,
+  "last": 1.859,
   "max": 2.192,
   "min": 1.707,
   "checkpoints": {
@@ -222,7 +222,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/render-token",
    "dexscreener": "https://dexscreener.com/solana/rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof"
   },
-  "updated": "2026-10-20 14:45 UTC",
+  "updated": "2026-10-20 18:00 UTC",
   "exit": {
    "t": 1790256809,
    "date": "2026-09-24 13:33 UTC",
@@ -3081,7 +3081,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 270.4,
+  "last": 273.4,
   "max": 308.8,
   "min": 256.1,
   "checkpoints": {
@@ -3128,7 +3128,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-20 14:09 UTC",
+  "updated": "2026-10-20 18:00 UTC",
   "tmax": 308.8,
   "tmin": 284.1,
   "ret_open": 2.75,
@@ -3606,7 +3606,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.3373,
+  "last": 1.3295,
   "max": 1.48,
   "min": 1.263,
   "checkpoints": {
@@ -3653,7 +3653,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ripple",
    "dexscreener": "https://dexscreener.com/search?q=XRP"
   },
-  "updated": "2026-10-20 14:45 UTC",
+  "updated": "2026-10-20 18:00 UTC",
   "tmax": 1.48,
   "tmin": 1.4255,
   "ret_open": -2.11,
@@ -4691,10 +4691,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 270.4,
+  "last": 273.4,
   "max": 288.1,
   "min": 256.1,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": -2.01
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -4736,10 +4738,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-20 14:09 UTC",
+  "updated": "2026-10-20 18:00 UTC",
   "tmax": 288.1,
   "tmin": 256.1,
-  "ret_open": -3.08
+  "ret_open": -2.01
  },
  {
   "id": "LTC-1791930549",
@@ -5221,7 +5223,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.892,
+  "last": 1.859,
   "max": 1.982,
   "min": 1.735,
   "checkpoints": {},
@@ -5266,10 +5268,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/render-token",
    "dexscreener": "https://dexscreener.com/search?q=RENDER"
   },
-  "updated": "2026-10-20 14:45 UTC",
+  "updated": "2026-10-20 18:00 UTC",
   "tmax": 1.982,
   "tmin": 1.735,
-  "ret_open": -2.12
+  "ret_open": -3.83
  },
  {
   "id": "ETH-1791986827",
@@ -5809,7 +5811,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.3373,
+  "last": 1.3295,
   "max": 1.3432,
   "min": 1.263,
   "checkpoints": {},
@@ -5854,7 +5856,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ripple",
    "dexscreener": "https://dexscreener.com/search?q=XRP"
   },
-  "updated": "2026-10-20 14:45 UTC",
+  "updated": "2026-10-20 18:00 UTC",
   "tmax": 1.3432,
   "tmin": 1.2749,
   "ret_open": -0.93,
@@ -5955,7 +5957,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/akash-network",
    "dexscreener": "https://dexscreener.com/search?q=AKT"
   },
-  "updated": "2026-10-20 14:09 UTC",
+  "updated": "2026-10-20 18:00 UTC",
   "tmax": 0.7219926853081508,
   "tmin": 0.6522971007188273,
   "ret_open": 6.42,
@@ -6192,7 +6194,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 80.97,
+  "last": 80.3,
   "max": 81.26,
   "min": 76.55,
   "checkpoints": {},
@@ -6237,7 +6239,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hyperliquid",
    "dexscreener": "https://dexscreener.com/search?q=HYPE"
   },
-  "updated": "2026-10-20 14:09 UTC",
+  "updated": "2026-10-20 18:00 UTC",
   "tmax": 81.26,
   "tmin": 80.84,
   "ret_open": 0.0,
@@ -6632,5 +6634,89 @@
   "tmax": 1223.3,
   "tmin": 1123.89,
   "ret_open": 8.85
+ },
+ {
+  "id": "TAO-1792519028",
+  "symbol": "TAO",
+  "cg_id": "bittensor",
+  "t": 1792519028,
+  "date": "2026-10-20 17:57 UTC",
+  "entry": 273.4,
+  "signal": "IN BUY ZONE",
+  "score": 58,
+  "buy_zone": {
+   "low": 266.1013571428571,
+   "high": 286.47992857142856
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 266.1013571428571,
+    "high": 286.47992857142856,
+    "strong": false
+   },
+   "zone2": {
+    "low": 239.88935714285716,
+    "high": 255.17328571428573,
+    "strong": true
+   },
+   "stop": 204.22113095238095,
+   "target": 336.2053571428571,
+   "resistance": [],
+   "support_levels": [
+    230.88958333333335,
+    214.41041666666666
+   ]
+  },
+  "source": "watchlist",
+  "last": 273.4,
+  "max": 273.4,
+  "min": 273.4,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 47.49317056186749,
+   "zone": "in",
+   "pb": 0.30340601504560416,
+   "rs30": 2.3320235676021372,
+   "macd": "improving",
+   "vs200": 0.11599124840805919,
+   "vs50": 0.00812696352453579,
+   "chg7": -0.01619287513494061,
+   "chg30": 0.04470768055024843,
+   "macro": 53.36438934331631,
+   "btc_bull": true,
+   "buy_ratio": 0.4867009279164423,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 62.9,
+    "flows": 53.4,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 53.4,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/bittensor",
+   "dexscreener": "https://dexscreener.com/search?q=TAO"
+  },
+  "updated": "2026-10-20 18:00 UTC",
+  "tmax": 273.4,
+  "tmin": 273.4,
+  "ret_open": 0.0
  }
 ]

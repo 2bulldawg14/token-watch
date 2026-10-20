@@ -1129,14 +1129,14 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 26,
-   "Will UNI dip to $2.00 by December 31, 2026?": 4,
+   "Will UNI reach $11.00 by December 31, 2026?": 32,
    "Will UNI reach $15.50 by December 31, 2026?": 8,
+   "Will UNI dip to $2.00 by December 31, 2026?": 4,
    "Will UNI reach $14.00 by December 31, 2026?": 10
   },
   "macd_day": "2026-09-29"
@@ -1155,15 +1155,15 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
    "Will Hyperliquid reach $200 by December 31, 2026?": 3,
-   "Will Hyperliquid dip to $8 by December 31, 2026?": 1
+   "Will Hyperliquid reach $100 by December 31, 2026?": 38
   },
   "macd_day": "2026-09-28"
  },
@@ -1211,7 +1211,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792487282.2586107,
+ "_saved_t": 1792489420.0343657,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1222,10 +1222,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 10,
+ "_wl_cursor": 15,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792481670.269998,
+  "live prices": 1792487288.5349576,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

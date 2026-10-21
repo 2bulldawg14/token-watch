@@ -548,7 +548,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-10-21 15:26 UTC",
+  "updated": "2026-10-21 19:28 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -1142,7 +1142,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.0443,
+  "last": 1.0394,
   "max": 1.2801,
   "min": 0.9591,
   "checkpoints": {
@@ -1189,7 +1189,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-10-21 15:26 UTC",
+  "updated": "2026-10-21 19:28 UTC",
   "tmax": 1.0309,
   "tmin": 1.0099,
   "ret_open": 0.58,
@@ -1245,7 +1245,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.08504,
+  "last": 0.08541,
   "max": 0.12387,
   "min": 0.08094,
   "checkpoints": {
@@ -1287,7 +1287,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-21 15:26 UTC",
+  "updated": "2026-10-21 19:28 UTC",
   "tmax": 0.097,
   "tmin": 0.09231,
   "ret_open": -0.07,
@@ -3928,7 +3928,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.08504,
+  "last": 0.08541,
   "max": 0.09615,
   "min": 0.08094,
   "checkpoints": {
@@ -3975,10 +3975,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-21 15:26 UTC",
+  "updated": "2026-10-21 19:28 UTC",
   "tmax": 0.09615,
   "tmin": 0.08094,
-  "ret_open": -8.85,
+  "ret_open": -8.46,
   "gbasis": "open 14d",
   "gret": -9.46,
   "outcome": "loss",
@@ -5075,7 +5075,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.0443,
+  "last": 1.0394,
   "max": 1.0642,
   "min": 0.9591,
   "checkpoints": {
@@ -5122,10 +5122,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/search?q=SUI"
   },
-  "updated": "2026-10-21 15:26 UTC",
+  "updated": "2026-10-21 19:28 UTC",
   "tmax": 1.0642,
   "tmin": 0.9591,
-  "ret_open": -1.81
+  "ret_open": -2.27
  },
  {
   "id": "SEI-1791980087",
@@ -5164,7 +5164,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.06272,
+  "last": 0.0633,
   "max": 0.06591,
   "min": 0.0589,
   "checkpoints": {
@@ -5211,10 +5211,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/sei-network",
    "dexscreener": "https://dexscreener.com/search?q=SEI"
   },
-  "updated": "2026-10-21 15:26 UTC",
+  "updated": "2026-10-21 19:28 UTC",
   "tmax": 0.06591,
   "tmin": 0.0589,
-  "ret_open": -3.33
+  "ret_open": -2.44
  },
  {
   "id": "RENDER-1791983857",
@@ -5453,10 +5453,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.08504,
+  "last": 0.08541,
   "max": 0.08917,
   "min": 0.08094,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": 1.38
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -5498,10 +5500,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-21 15:26 UTC",
+  "updated": "2026-10-21 19:28 UTC",
   "tmax": 0.08917,
   "tmin": 0.08094,
-  "ret_open": 0.94
+  "ret_open": 1.38
  },
  {
   "id": "BTC-1791996296",
@@ -5537,10 +5539,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 84523.8,
+  "last": 84445.71,
   "max": 84523.8,
   "min": 81012.98,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": 3.04
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -5582,7 +5586,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bitcoin",
    "dexscreener": "https://dexscreener.com/search?q=BTC"
   },
-  "updated": "2026-10-21 16:09 UTC",
+  "updated": "2026-10-21 19:28 UTC",
   "tmax": 82580.0,
   "tmin": 81012.98,
   "ret_open": 0.04,
@@ -7133,8 +7137,8 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.06272,
-  "max": 0.06272,
+  "last": 0.0633,
+  "max": 0.0633,
   "min": 0.06272,
   "checkpoints": {},
   "kind": "crypto",
@@ -7178,9 +7182,96 @@
    "coingecko": "https://www.coingecko.com/en/coins/sei-network",
    "dexscreener": "https://dexscreener.com/search?q=SEI"
   },
-  "updated": "2026-10-21 15:26 UTC",
-  "tmax": 0.06272,
+  "updated": "2026-10-21 19:28 UTC",
+  "tmax": 0.0633,
   "tmin": 0.06272,
+  "ret_open": 0.92
+ },
+ {
+  "id": "HBAR-1792610545",
+  "symbol": "HBAR",
+  "cg_id": "hedera-hashgraph",
+  "t": 1792610545,
+  "date": "2026-10-21 19:22 UTC",
+  "entry": 0.08541,
+  "signal": "IN BUY ZONE",
+  "score": 57,
+  "buy_zone": {
+   "low": 0.08051572857142857,
+   "high": 0.08554501428571429
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 0.08051572857142857,
+    "high": 0.08554501428571429,
+    "strong": true,
+    "vol_level": 0.08026302083333334
+   },
+   "zone2": {
+    "low": 0.06928299107142856,
+    "high": 0.07305495535714285,
+    "strong": true
+   },
+   "stop": 0.0667683482142857,
+   "target": 0.08998572916666667,
+   "resistance": [
+    0.08998572916666667
+   ],
+   "support_levels": [
+    0.08026302083333334,
+    0.0705403125
+   ]
+  },
+  "source": "watchlist",
+  "last": 0.08541,
+  "max": 0.08541,
+  "min": 0.08541,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 44.731382204386016,
+   "zone": "in",
+   "pb": 0.2971347212957519,
+   "rs30": -6.0121685653556245,
+   "macd": "improving",
+   "vs200": 0.04447614464667771,
+   "vs50": -0.02806005749023055,
+   "chg7": 0.010888862587288495,
+   "chg30": -0.08515424164524421,
+   "macro": 49.19699932381477,
+   "btc_bull": true,
+   "buy_ratio": 0.5172356856019074,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 61.7,
+    "flows": 53.9,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 49.2,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
+   "dexscreener": "https://dexscreener.com/search?q=HBAR"
+  },
+  "updated": "2026-10-21 19:28 UTC",
+  "tmax": 0.08541,
+  "tmin": 0.08541,
   "ret_open": 0.0
  }
 ]

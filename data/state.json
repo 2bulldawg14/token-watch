@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W43",
- "_export_t": 1792540731.6228216,
+ "_export_t": 1792555564.25255,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -223,7 +223,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
@@ -231,7 +231,7 @@
  },
  "TAO": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
   "signal": "HOLD",
@@ -1161,10 +1161,10 @@
   "risk": "MEDIUM",
   "signal": "SELL / AVOID",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
-   "Will Hyperliquid reach $100 by December 31, 2026?": 44,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 3
+   "Will Hyperliquid HIP-3 open interest hit $10B in 2026?": 2,
+   "Will Hyperliquid HIP-3 open interest hit $7B in 2026?": 3,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
+   "Will Hyperliquid reach $100 by December 31, 2026?": 44
   },
   "macd_day": "2026-09-28"
  },
@@ -1212,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792555561.5730534,
+ "_saved_t": 1792557608.0950942,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,10 +1223,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 11,
+ "_wl_cursor": 16,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792550215.9795477,
+  "live prices": 1792555631.9856334,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

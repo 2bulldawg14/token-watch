@@ -1986,7 +1986,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 53.55,
+  "last": 53.44,
   "max": 76.31,
   "min": 50.84,
   "checkpoints": {
@@ -2036,7 +2036,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-21 14:11 UTC",
+  "updated": "2026-10-21 17:18 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -3825,7 +3825,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 2483.96,
+  "last": 2509.26,
   "max": 2583.55,
   "min": 2346.25,
   "checkpoints": {
@@ -3872,7 +3872,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-21 13:19 UTC",
+  "updated": "2026-10-21 17:18 UTC",
   "tmax": 2581.12,
   "tmin": 2560.52,
   "ret_open": -0.44,
@@ -5341,10 +5341,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 2483.96,
-  "max": 2483.96,
+  "last": 2509.26,
+  "max": 2509.26,
   "min": 2346.25,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": 2.78
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -5386,7 +5388,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-21 13:19 UTC",
+  "updated": "2026-10-21 17:18 UTC",
   "tmax": 2478.37,
   "tmin": 2346.25,
   "ret_open": -2.74,
@@ -5633,7 +5635,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 166.18,
+  "last": 160.69,
   "max": 166.18,
   "min": 143.66,
   "checkpoints": {},
@@ -5681,7 +5683,7 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-21 14:11 UTC",
+  "updated": "2026-10-21 17:18 UTC",
   "tmax": 152.16,
   "tmin": 143.66,
   "ret_open": -4.1,

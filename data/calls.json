@@ -766,7 +766,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-20 23:58 UTC",
+  "updated": "2026-10-21 03:21 UTC",
   "tmax": 5.97e-06,
   "tmin": 5.57e-06,
   "ret_open": 7.0,
@@ -1245,7 +1245,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.08435,
+  "last": 0.08322,
   "max": 0.12387,
   "min": 0.08094,
   "checkpoints": {
@@ -1287,7 +1287,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-20 23:58 UTC",
+  "updated": "2026-10-21 03:21 UTC",
   "tmax": 0.097,
   "tmin": 0.09231,
   "ret_open": -0.07,
@@ -3025,7 +3025,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-20 23:58 UTC",
+  "updated": "2026-10-21 03:21 UTC",
   "tmax": 6e-06,
   "tmin": 5.36e-06,
   "ret_open": -2.86,
@@ -3928,7 +3928,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.08435,
+  "last": 0.08322,
   "max": 0.09615,
   "min": 0.08094,
   "checkpoints": {
@@ -3975,10 +3975,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-20 23:58 UTC",
+  "updated": "2026-10-21 03:21 UTC",
   "tmax": 0.09615,
   "tmin": 0.08094,
-  "ret_open": -9.59
+  "ret_open": -10.8
  },
  {
   "id": "ATOM-1791447812",
@@ -4135,7 +4135,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 12.3,
+  "last": 12.348,
   "max": 13.488,
   "min": 11.683,
   "checkpoints": {
@@ -4199,7 +4199,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/chainlink",
    "dexscreener": "https://dexscreener.com/solana/LinkhB3afbBKb2EQQu7s7umdZceV3wcvAUJhQAfQ23L"
   },
-  "updated": "2026-10-20 23:15 UTC",
+  "updated": "2026-10-21 03:21 UTC",
   "tmax": 12.961,
   "tmin": 12.935,
   "ret_open": 0.0,
@@ -4308,7 +4308,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-20 23:58 UTC",
+  "updated": "2026-10-21 03:21 UTC",
   "tmax": 5.51e-06,
   "tmin": 5.44e-06,
   "ret_open": -0.55,
@@ -4482,7 +4482,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 106.27,
+  "last": 106.24,
   "max": 113.23,
   "min": 101.47,
   "checkpoints": {
@@ -4529,7 +4529,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/solana",
    "dexscreener": "https://dexscreener.com/search?q=SOL"
   },
-  "updated": "2026-10-21 02:36 UTC",
+  "updated": "2026-10-21 03:21 UTC",
   "tmax": 112.56,
   "tmin": 110.28,
   "ret_open": 1.46,
@@ -4975,10 +4975,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.4536,
+  "last": 0.4514,
   "max": 0.473,
   "min": 0.4253,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": -3.61
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -5020,10 +5022,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/ondo-finance",
    "dexscreener": "https://dexscreener.com/search?q=ONDO"
   },
-  "updated": "2026-10-20 23:15 UTC",
+  "updated": "2026-10-21 03:21 UTC",
   "tmax": 0.473,
   "tmin": 0.4253,
-  "ret_open": -3.14
+  "ret_open": -3.61
  },
  {
   "id": "SUI-1791938309",
@@ -5428,7 +5430,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.08435,
+  "last": 0.08322,
   "max": 0.08917,
   "min": 0.08094,
   "checkpoints": {},
@@ -5473,10 +5475,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-20 23:58 UTC",
+  "updated": "2026-10-21 03:21 UTC",
   "tmax": 0.08917,
   "tmin": 0.08094,
-  "ret_open": 0.12
+  "ret_open": -1.22
  },
  {
   "id": "BTC-1791996296",
@@ -6299,7 +6301,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 12.3,
+  "last": 12.348,
   "max": 12.35,
   "min": 11.683,
   "checkpoints": {},
@@ -6361,7 +6363,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/chainlink",
    "dexscreener": "https://dexscreener.com/solana/LinkhB3afbBKb2EQQu7s7umdZceV3wcvAUJhQAfQ23L"
   },
-  "updated": "2026-10-20 23:15 UTC",
+  "updated": "2026-10-21 03:21 UTC",
   "tmax": 12.35,
   "tmin": 11.763,
   "ret_open": -3.9,
@@ -6509,7 +6511,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 106.27,
+  "last": 106.24,
   "max": 106.52,
   "min": 101.54,
   "checkpoints": {},
@@ -6554,10 +6556,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/solana",
    "dexscreener": "https://dexscreener.com/search?q=SOL"
   },
-  "updated": "2026-10-21 02:36 UTC",
+  "updated": "2026-10-21 03:21 UTC",
   "tmax": 106.52,
   "tmin": 101.54,
-  "ret_open": 3.88
+  "ret_open": 3.85
  },
  {
   "id": "ZEC-1792425533",
@@ -6808,6 +6810,89 @@
   "updated": "2026-10-21 02:07 UTC",
   "tmax": 62.03,
   "tmin": 62.03,
+  "ret_open": 0.0
+ },
+ {
+  "id": "ONDO-1792552691",
+  "symbol": "ONDO",
+  "cg_id": "ondo-finance",
+  "t": 1792552691,
+  "date": "2026-10-21 03:18 UTC",
+  "entry": 0.4514,
+  "signal": "IN BUY ZONE",
+  "score": 54,
+  "buy_zone": {
+   "low": 0.43013964285714285,
+   "high": 0.46606107142857145
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 0.43013964285714285,
+    "high": 0.46606107142857145,
+    "strong": false
+   },
+   "zone2": {
+    "low": 0.3670821428571428,
+    "high": 0.39402321428571424,
+    "strong": true
+   },
+   "stop": 0.3491214285714285,
+   "target": 0.5999196428571429,
+   "resistance": [],
+   "support_levels": [
+    0.37606249999999997
+   ]
+  },
+  "source": "watchlist",
+  "last": 0.4514,
+  "max": 0.4514,
+  "min": 0.4514,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 47.8316592871052,
+   "zone": "in",
+   "pb": 0.28674275207966415,
+   "rs30": 3.038338012134034,
+   "macd": "improving",
+   "vs200": 0.23425396538948462,
+   "vs50": 0.027965020950992958,
+   "chg7": 0.013243546576879872,
+   "chg30": -0.01419523913518228,
+   "macro": 50.04326128343815,
+   "btc_bull": true,
+   "buy_ratio": 0.48525187177547985,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 63.2,
+    "flows": 44.2,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 50.0,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/ondo-finance",
+   "dexscreener": "https://dexscreener.com/search?q=ONDO"
+  },
+  "updated": "2026-10-21 03:21 UTC",
+  "tmax": 0.4514,
+  "tmin": 0.4514,
   "ret_open": 0.0
  }
 ]

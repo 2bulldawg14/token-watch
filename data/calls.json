@@ -1986,7 +1986,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 50.9,
+  "last": 53.55,
   "max": 76.31,
   "min": 50.84,
   "checkpoints": {
@@ -2036,7 +2036,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-21 10:24 UTC",
+  "updated": "2026-10-21 14:11 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -3978,7 +3978,22 @@
   "updated": "2026-10-21 11:05 UTC",
   "tmax": 0.09615,
   "tmin": 0.08094,
-  "ret_open": -9.46
+  "ret_open": -9.46,
+  "gbasis": "open 14d",
+  "gret": -9.46,
+  "outcome": "loss",
+  "postmortem": {
+   "signs": [
+    "Price was above the buy zone - chasing instead of waiting for a pullback",
+    "MACD momentum was fading or turning down"
+   ],
+   "btc_chg": null,
+   "r7": -9.46,
+   "dd": -13.247588424437296,
+   "best": 3.0546623794212246,
+   "basis": "open 14d",
+   "gave_back": false
+  }
  },
  {
   "id": "ATOM-1791447812",
@@ -4864,7 +4879,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 14.85,
+  "last": 15.76,
   "max": 16.48,
   "min": 14.34,
   "checkpoints": {
@@ -4914,7 +4929,7 @@
    "coingecko": "https://finance.yahoo.com/quote/XRPN",
    "dexscreener": "https://www.tradingview.com/symbols/XRPN/"
   },
-  "updated": "2026-10-21 10:24 UTC",
+  "updated": "2026-10-21 14:11 UTC",
   "tmax": 16.48,
   "tmin": 14.34,
   "ret_open": -7.4,
@@ -5614,8 +5629,8 @@
    ]
   },
   "source": "watchlist",
-  "last": 147.79,
-  "max": 152.16,
+  "last": 166.18,
+  "max": 166.18,
   "min": 143.66,
   "checkpoints": {},
   "kind": "stock",
@@ -5662,7 +5677,7 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-21 10:24 UTC",
+  "updated": "2026-10-21 14:11 UTC",
   "tmax": 152.16,
   "tmin": 143.66,
   "ret_open": -4.1,
@@ -6161,7 +6176,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/securitize-corp",
    "dexscreener": "https://dexscreener.com/search?q=SECZ"
   },
-  "updated": "2026-10-21 10:24 UTC",
+  "updated": "2026-10-21 14:11 UTC",
   "tmax": 11.34,
   "tmin": 9.86,
   "ret_open": -13.05
@@ -6991,5 +7006,88 @@
   "tmax": 0.8575,
   "tmin": 0.8458,
   "ret_open": 1.38
+ },
+ {
+  "id": "XRPN-1792591689",
+  "symbol": "XRPN",
+  "cg_id": null,
+  "t": 1792591689,
+  "date": "2026-10-21 14:08 UTC",
+  "entry": 15.76,
+  "signal": "IN BUY ZONE",
+  "score": 46,
+  "buy_zone": {
+   "low": 11.684873562049866,
+   "high": 19.792659263801575
+  },
+  "risk": "LOW",
+  "plan": {
+   "zone1": {
+    "low": 11.684873562049866,
+    "high": 19.792659263801575,
+    "strong": true,
+    "vol_level": 10.67057329416275
+   },
+   "zone2": null,
+   "stop": 6.616680443286896,
+   "target": 50.97305357456207,
+   "resistance": [],
+   "support_levels": [
+    10.67057329416275
+   ]
+  },
+  "source": "watchlist",
+  "last": 15.76,
+  "max": 15.76,
+  "min": 15.76,
+  "checkpoints": {},
+  "kind": "stock",
+  "by": "David",
+  "feat": {
+   "rsi": 48.556039148057984,
+   "zone": "in",
+   "pb": 0.41485437476254033,
+   "rs30": 48.58551103526929,
+   "macd": "improving",
+   "vs200": 0.40817132687082536,
+   "vs50": 0.1493733154593042,
+   "chg7": -0.0778232967064364,
+   "chg30": 0.496676201296834,
+   "macro": 48.93186352293035,
+   "btc_bull": true,
+   "buy_ratio": null,
+   "wallets": null,
+   "risk": "LOW",
+   "source": "watchlist",
+   "parts": {
+    "technical": 71.2,
+    "flows": null,
+    "derivatives": null,
+    "insiders": 0.0,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 70.3,
+    "news": 46.0,
+    "fundamental": 40,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": false,
+  "links": {
+   "kind": "stock",
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "yahoo": "https://finance.yahoo.com/quote/XRPN",
+   "tradingview": "https://www.tradingview.com/symbols/XRPN/",
+   "coingecko": "https://finance.yahoo.com/quote/XRPN",
+   "dexscreener": "https://www.tradingview.com/symbols/XRPN/"
+  },
+  "updated": "2026-10-21 14:11 UTC",
+  "tmax": 15.76,
+  "tmin": 15.76,
+  "ret_open": 0.0
  }
 ]

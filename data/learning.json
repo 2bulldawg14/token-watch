@@ -3,10 +3,10 @@
   {
    "key": "macd_weak",
    "text": "MACD momentum was fading or turning down",
-   "n": 33,
+   "n": 34,
    "wins": 8,
-   "avg": -1.6781818181818182,
-   "points": -7.8,
+   "avg": -1.907058823529412,
+   "points": -8.1,
    "block": true
   },
   {
@@ -39,12 +39,12 @@
  ],
  "mult": {
   "technical": 0.77,
-  "flows": 1.09,
+  "flows": 1.08,
   "macro": 1.0,
-  "markets": 1.01
+  "markets": 1.0
  },
- "graded": 53,
- "t": "2026-10-21 13:19 UTC",
+ "graded": 54,
+ "t": "2026-10-21 14:11 UTC",
  "scorecard": {
   "closed": 49,
   "wins": 27,
@@ -83,5 +83,5 @@
  },
  "sell_soft": [],
  "wins": 12,
- "losses": 13
+ "losses": 14
 }

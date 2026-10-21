@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W43",
- "_export_t": 1792524372.2285435,
+ "_export_t": 1792540731.6228216,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -189,10 +189,10 @@
  },
  "BTC": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
@@ -1212,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792540729.232336,
+ "_saved_t": 1792543390.9502275,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,10 +1223,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 9,
+ "_wl_cursor": 14,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792535890.3953857,
+  "live prices": 1792540731.624221,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

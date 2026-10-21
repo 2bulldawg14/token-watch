@@ -548,7 +548,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-10-21 04:06 UTC",
+  "updated": "2026-10-21 08:29 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -4363,7 +4363,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.551,
+  "last": 7.572,
   "max": 7.866,
   "min": 6.875,
   "checkpoints": {
@@ -4427,7 +4427,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/ethereum/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
   },
-  "updated": "2026-10-21 04:06 UTC",
+  "updated": "2026-10-21 08:29 UTC",
   "tmax": 7.866,
   "tmin": 7.31,
   "ret_open": 5.31,
@@ -5149,7 +5149,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.06138,
+  "last": 0.06225,
   "max": 0.06591,
   "min": 0.0589,
   "checkpoints": {},
@@ -5194,10 +5194,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/sei-network",
    "dexscreener": "https://dexscreener.com/search?q=SEI"
   },
-  "updated": "2026-10-21 04:06 UTC",
+  "updated": "2026-10-21 08:29 UTC",
   "tmax": 0.06591,
   "tmin": 0.0589,
-  "ret_open": -5.39
+  "ret_open": -4.05
  },
  {
   "id": "RENDER-1791983857",
@@ -5516,8 +5516,8 @@
    ]
   },
   "source": "watchlist",
-  "last": 82818.01,
-  "max": 83176.01,
+  "last": 83194.44,
+  "max": 83194.44,
   "min": 81012.98,
   "checkpoints": {},
   "kind": "crypto",
@@ -5561,7 +5561,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bitcoin",
    "dexscreener": "https://dexscreener.com/search?q=BTC"
   },
-  "updated": "2026-10-21 04:06 UTC",
+  "updated": "2026-10-21 08:29 UTC",
   "tmax": 82580.0,
   "tmin": 81012.98,
   "ret_open": 0.04,
@@ -6428,7 +6428,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.551,
+  "last": 7.572,
   "max": 7.611,
   "min": 6.875,
   "checkpoints": {},
@@ -6473,10 +6473,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/search?q=UNI"
   },
-  "updated": "2026-10-21 04:06 UTC",
+  "updated": "2026-10-21 08:29 UTC",
   "tmax": 7.611,
   "tmin": 6.875,
-  "ret_open": 3.3
+  "ret_open": 3.58
  },
  {
   "id": "SOL-1792348142",
@@ -6896,5 +6896,88 @@
   "tmax": 0.4576,
   "tmin": 0.4514,
   "ret_open": 1.37
+ },
+ {
+  "id": "AERO-1792571345",
+  "symbol": "AERO",
+  "cg_id": "aerodrome-finance",
+  "t": 1792571345,
+  "date": "2026-10-21 08:29 UTC",
+  "entry": 0.8458,
+  "signal": "ACCUMULATE",
+  "score": 64,
+  "buy_zone": {
+   "low": 0.7088534285714286,
+   "high": 0.7925677142857144
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 0.7088534285714286,
+    "high": 0.7925677142857144,
+    "strong": false
+   },
+   "zone2": {
+    "low": 0.3995505952380953,
+    "high": 0.46233630952380955,
+    "strong": true
+   },
+   "stop": 0.3576934523809524,
+   "target": 0.9724714285714285,
+   "resistance": [],
+   "support_levels": [
+    0.4204791666666667
+   ]
+  },
+  "source": "watchlist",
+  "last": 0.8458,
+  "max": 0.8458,
+  "min": 0.8458,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 52.62797360137647,
+   "zone": "above",
+   "pb": null,
+   "rs30": 25.072692020006116,
+   "macd": "improving",
+   "vs200": null,
+   "vs50": 0.1589762422202794,
+   "chg7": -0.06375913216736773,
+   "chg30": 0.21018743740163126,
+   "macro": 48.997849151011046,
+   "btc_bull": true,
+   "buy_ratio": 0.5098599637118219,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 71.4,
+    "flows": 61.5,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 49.0,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/aerodrome-finance",
+   "dexscreener": "https://dexscreener.com/search?q=AERO"
+  },
+  "updated": "2026-10-21 08:29 UTC",
+  "tmax": 0.8458,
+  "tmin": 0.8458,
+  "ret_open": 0.0
  }
 ]

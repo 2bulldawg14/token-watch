@@ -2036,7 +2036,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-20 22:38 UTC",
+  "updated": "2026-10-21 02:07 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -3825,7 +3825,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 2458.57,
+  "last": 2456.33,
   "max": 2583.55,
   "min": 2346.25,
   "checkpoints": {
@@ -3872,7 +3872,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-20 22:38 UTC",
+  "updated": "2026-10-21 02:07 UTC",
   "tmax": 2581.12,
   "tmin": 2560.52,
   "ret_open": -0.44,
@@ -4780,10 +4780,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 60.98,
-  "max": 61.58,
+  "last": 62.03,
+  "max": 62.03,
   "min": 57.25,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": 0.99
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -4825,10 +4827,10 @@
    "coingecko": "https://www.coingecko.com/en/coins/litecoin",
    "dexscreener": "https://dexscreener.com/search?q=LTC"
   },
-  "updated": "2026-10-20 22:03 UTC",
-  "tmax": 61.58,
+  "updated": "2026-10-21 02:07 UTC",
+  "tmax": 62.03,
   "tmin": 57.25,
-  "ret_open": -0.72
+  "ret_open": 0.99
  },
  {
   "id": "XRPN-1791932890",
@@ -5314,7 +5316,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 2458.57,
+  "last": 2456.33,
   "max": 2478.37,
   "min": 2346.25,
   "checkpoints": {},
@@ -5359,7 +5361,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-20 22:38 UTC",
+  "updated": "2026-10-21 02:07 UTC",
   "tmax": 2478.37,
   "tmin": 2346.25,
   "ret_open": -2.74,
@@ -5654,7 +5656,7 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-20 22:38 UTC",
+  "updated": "2026-10-21 02:07 UTC",
   "tmax": 152.16,
   "tmin": 143.66,
   "ret_open": -4.1,
@@ -6721,5 +6723,89 @@
   "tmax": 276.3,
   "tmin": 273.4,
   "ret_open": 0.44
+ },
+ {
+  "id": "LTC-1792548111",
+  "symbol": "LTC",
+  "cg_id": "litecoin",
+  "t": 1792548111,
+  "date": "2026-10-21 02:01 UTC",
+  "entry": 62.03,
+  "signal": "IN BUY ZONE",
+  "score": 60,
+  "buy_zone": {
+   "low": 60.172200000000004,
+   "high": 63.01220000000001
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 60.172200000000004,
+    "high": 63.01220000000001,
+    "strong": false
+   },
+   "zone2": {
+    "low": 53.82541666666666,
+    "high": 55.955416666666665,
+    "strong": true
+   },
+   "stop": 52.40541666666666,
+   "target": 74.28999999999999,
+   "resistance": [],
+   "support_levels": [
+    54.53541666666666,
+    44.86125
+   ]
+  },
+  "source": "watchlist",
+  "last": 62.03,
+  "max": 62.03,
+  "min": 62.03,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 49.5487106620331,
+   "zone": "in",
+   "pb": 0.39394247787874875,
+   "rs30": 4.174505267180184,
+   "macd": "improving",
+   "vs200": 0.19125008281905487,
+   "vs50": 0.018852800982881668,
+   "chg7": 0.046390013495276605,
+   "chg30": 0.00016123831022252233,
+   "macro": 50.04326128343815,
+   "btc_bull": true,
+   "buy_ratio": 0.5032367787946518,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 63.6,
+    "flows": 60.7,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 50.0,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": false,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/litecoin",
+   "dexscreener": "https://dexscreener.com/search?q=LTC"
+  },
+  "updated": "2026-10-21 02:07 UTC",
+  "tmax": 62.03,
+  "tmin": 62.03,
+  "ret_open": 0.0
  }
 ]

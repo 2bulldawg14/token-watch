@@ -207,7 +207,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "HOLD",
   "odds": {
    "Will Ethereum reach $10,000 by December 31, 2026?": 1,
@@ -1212,21 +1212,21 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792546154.5318432,
+ "_saved_t": 1792548421.3930404,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 19,
+ "_wl_cursor": 26,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792540731.624221,
+  "live prices": 1792546189.15163,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

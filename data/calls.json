@@ -1986,9 +1986,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 51.37,
+  "last": 50.36,
   "max": 76.31,
-  "min": 50.84,
+  "min": 50.36,
   "checkpoints": {
    "7": 1.15
   },
@@ -2036,7 +2036,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-22 15:45 UTC",
+  "updated": "2026-10-22 19:15 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -4933,7 +4933,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 15.37,
+  "last": 15.38,
   "max": 16.48,
   "min": 14.34,
   "checkpoints": {
@@ -4983,7 +4983,7 @@
    "coingecko": "https://finance.yahoo.com/quote/XRPN",
    "dexscreener": "https://www.tradingview.com/symbols/XRPN/"
   },
-  "updated": "2026-10-22 15:45 UTC",
+  "updated": "2026-10-22 19:15 UTC",
   "tmax": 16.48,
   "tmin": 14.34,
   "ret_open": -7.4,
@@ -5814,7 +5814,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 150.97,
+  "last": 144.89,
   "max": 166.18,
   "min": 143.66,
   "checkpoints": {
@@ -5864,7 +5864,7 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-22 15:45 UTC",
+  "updated": "2026-10-22 19:15 UTC",
   "tmax": 152.16,
   "tmin": 143.66,
   "ret_open": -4.1,
@@ -6374,7 +6374,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/securitize-corp",
    "dexscreener": "https://dexscreener.com/search?q=SECZ"
   },
-  "updated": "2026-10-22 15:45 UTC",
+  "updated": "2026-10-22 19:15 UTC",
   "tmax": 11.34,
   "tmin": 9.17,
   "ret_open": -13.05,
@@ -7354,7 +7354,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 15.37,
+  "last": 15.38,
   "max": 15.76,
   "min": 15.37,
   "checkpoints": {},
@@ -7402,7 +7402,7 @@
    "coingecko": "https://finance.yahoo.com/quote/XRPN",
    "dexscreener": "https://www.tradingview.com/symbols/XRPN/"
   },
-  "updated": "2026-10-22 15:45 UTC",
+  "updated": "2026-10-22 19:15 UTC",
   "tmax": 15.76,
   "tmin": 15.75,
   "ret_open": -0.06,
@@ -7978,9 +7978,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 150.97,
+  "last": 144.89,
   "max": 150.97,
-  "min": 150.97,
+  "min": 144.89,
   "checkpoints": {},
   "kind": "stock",
   "by": "David",
@@ -8026,9 +8026,32 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-22 15:45 UTC",
+  "updated": "2026-10-22 19:15 UTC",
   "tmax": 150.97,
-  "tmin": 150.97,
-  "ret_open": 0.0
+  "tmin": 144.89,
+  "ret_open": 0.0,
+  "exit": {
+   "t": 1792696156,
+   "date": "2026-10-22 19:09 UTC",
+   "price": 144.89,
+   "why": "Signal turned TRIM",
+   "kind": "signal"
+  },
+  "ret": -4.03,
+  "held_days": 0.1,
+  "gbasis": "closed",
+  "gret": -4.03,
+  "outcome": "loss",
+  "postmortem": {
+   "signs": [
+    "Weak market backdrop (Bitcoin trend, Fear & Greed, stablecoin flows)"
+   ],
+   "btc_chg": null,
+   "r7": -4.03,
+   "dd": -4.027290190104004,
+   "best": 0.0,
+   "basis": "closed",
+   "gave_back": false
+  }
  }
 ]

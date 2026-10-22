@@ -548,7 +548,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-10-22 17:07 UTC",
+  "updated": "2026-10-22 21:21 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -4387,7 +4387,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 6.959,
+  "last": 7.063,
   "max": 7.866,
   "min": 6.875,
   "checkpoints": {
@@ -4451,7 +4451,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/ethereum/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
   },
-  "updated": "2026-10-22 17:07 UTC",
+  "updated": "2026-10-22 21:21 UTC",
   "tmax": 7.866,
   "tmin": 7.31,
   "ret_open": 5.31,
@@ -5714,7 +5714,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 81228.87,
+  "last": 81527.2,
   "max": 84523.8,
   "min": 81012.98,
   "checkpoints": {
@@ -5761,7 +5761,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bitcoin",
    "dexscreener": "https://dexscreener.com/search?q=BTC"
   },
-  "updated": "2026-10-22 17:07 UTC",
+  "updated": "2026-10-22 21:21 UTC",
   "tmax": 82580.0,
   "tmin": 81012.98,
   "ret_open": 0.04,
@@ -6132,7 +6132,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.7003346561382616,
+  "last": 0.6809883162016899,
   "max": 0.737870307220898,
   "min": 0.6522971007188273,
   "checkpoints": {
@@ -6179,7 +6179,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/akash-network",
    "dexscreener": "https://dexscreener.com/search?q=AKT"
   },
-  "updated": "2026-10-22 17:42 UTC",
+  "updated": "2026-10-22 21:21 UTC",
   "tmax": 0.7219926853081508,
   "tmin": 0.6522971007188273,
   "ret_open": 6.42,
@@ -6662,7 +6662,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 6.959,
+  "last": 7.063,
   "max": 7.616,
   "min": 6.875,
   "checkpoints": {},
@@ -6707,10 +6707,34 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/search?q=UNI"
   },
-  "updated": "2026-10-22 17:07 UTC",
+  "updated": "2026-10-22 21:21 UTC",
   "tmax": 7.616,
   "tmin": 6.875,
-  "ret_open": -4.8
+  "ret_open": -4.8,
+  "exit": {
+   "t": 1792703990,
+   "date": "2026-10-22 21:19 UTC",
+   "price": 7.063,
+   "why": "Signal turned TRIM",
+   "kind": "signal"
+  },
+  "ret": -3.38,
+  "held_days": 5.7,
+  "gbasis": "closed",
+  "gret": -3.38,
+  "outcome": "loss",
+  "postmortem": {
+   "signs": [
+    "Price was above the buy zone - chasing instead of waiting for a pullback",
+    "Lagging Bitcoin by more than 10% over 30 days"
+   ],
+   "btc_chg": null,
+   "r7": -3.38,
+   "dd": -5.95075239398084,
+   "best": 4.1860465116279055,
+   "basis": "closed",
+   "gave_back": false
+  }
  },
  {
   "id": "SOL-1792348142",
@@ -7251,7 +7275,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.8008,
+  "last": 0.8032,
   "max": 0.8632,
   "min": 0.7994,
   "checkpoints": {},
@@ -7296,7 +7320,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/aerodrome-finance",
    "dexscreener": "https://dexscreener.com/search?q=AERO"
   },
-  "updated": "2026-10-22 17:42 UTC",
+  "updated": "2026-10-22 21:21 UTC",
   "tmax": 0.8632,
   "tmin": 0.7994,
   "ret_open": -3.3,
@@ -7881,7 +7905,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 81228.87,
+  "last": 81527.2,
   "max": 82845.47,
   "min": 81228.87,
   "checkpoints": {},
@@ -7926,7 +7950,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bitcoin",
    "dexscreener": "https://dexscreener.com/search?q=BTC"
   },
-  "updated": "2026-10-22 17:07 UTC",
+  "updated": "2026-10-22 21:21 UTC",
   "tmax": 82845.47,
   "tmin": 82000.0,
   "ret_open": 0.0,

@@ -164,13 +164,14 @@
  },
  "SUI": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will Sui reach $1.40 before 2027?": 36,
-   "Will Sui reach $3.00 before 2027?": 3,
+   "Will Sui reach $3.00 before 2027?": 4,
+   "Will Sui reach $1.60 before 2027?": 20,
    "Will Sui dip to $0.20 before 2027?": 4
   },
   "in_zone2": false,
@@ -195,9 +196,9 @@
   "signal": "HOLD",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
+   "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 8,
-   "Will Bitcoin reach $250,000 by December 31, 2026?": 0
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 8
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1212,7 +1213,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792632475.8825068,
+ "_saved_t": 1792634689.2601194,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,7 +1224,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 5,
+ "_wl_cursor": 10,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792629875.9654276,

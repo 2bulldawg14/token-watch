@@ -3,19 +3,19 @@
   {
    "key": "above_zone",
    "text": "Price was above the buy zone - chasing instead of waiting for a pullback",
-   "n": 19,
+   "n": 20,
    "wins": 4,
-   "avg": -0.898421052631579,
-   "points": -8.5,
+   "avg": -1.1975000000000002,
+   "points": -8.9,
    "block": true
   },
   {
    "key": "macd_weak",
    "text": "MACD momentum was fading or turning down",
-   "n": 36,
+   "n": 37,
    "wins": 8,
-   "avg": -2.060277777777778,
-   "points": -8.5,
+   "avg": -2.1905405405405403,
+   "points": -8.7,
    "block": true
   },
   {
@@ -25,6 +25,15 @@
    "wins": 1,
    "avg": -4.8,
    "points": -12,
+   "block": true
+  },
+  {
+   "key": "sell_pressure",
+   "text": "More selling than buying in the last 7 days",
+   "n": 8,
+   "wins": 1,
+   "avg": -0.1975,
+   "points": -10.8,
    "block": true
   },
   {
@@ -50,15 +59,15 @@
   "technical": 0.77,
   "flows": 1.08,
   "macro": 1.01,
-  "markets": 1.0
+  "markets": 0.99
  },
- "graded": 68,
- "t": "2026-10-22 12:05 UTC",
+ "graded": 71,
+ "t": "2026-10-22 12:46 UTC",
  "scorecard": {
-  "closed": 64,
-  "wins": 27,
-  "avg": -1.55,
-  "held": 2.9,
+  "closed": 67,
+  "wins": 28,
+  "avg": -1.6,
+  "held": 3.0,
   "gave_back": 1
  },
  "sells": {
@@ -72,12 +81,12 @@
    "text": "entered the sell zone"
   },
   "signal": {
-   "n": 52,
+   "n": 55,
    "reviewed": 28,
    "early": 2,
    "good": 6,
    "after": 10.6,
-   "ret": -3.28,
+   "ret": -3.25,
    "text": "signal turned TRIM/SELL"
   },
   "target": {
@@ -92,5 +101,5 @@
  },
  "sell_soft": [],
  "wins": 12,
- "losses": 25
+ "losses": 27
 }

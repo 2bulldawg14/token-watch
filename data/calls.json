@@ -277,7 +277,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.702,
+  "last": 1.706,
   "max": 2.08,
   "min": 1.614,
   "checkpoints": {
@@ -336,7 +336,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-10-22 10:44 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 1.9,
   "tmin": 1.614,
   "ret_open": 2.96,
@@ -2106,7 +2106,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.702,
+  "last": 1.706,
   "max": 2.08,
   "min": 1.614,
   "checkpoints": {
@@ -2153,7 +2153,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/search?q=ATOM"
   },
-  "updated": "2026-10-22 10:44 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 1.83,
   "tmin": 1.614,
   "ret_open": 5.48,
@@ -3504,7 +3504,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1255.66,
+  "last": 1237.31,
   "max": 1378.54,
   "min": 1063.89,
   "checkpoints": {
@@ -3551,7 +3551,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/zcash",
    "dexscreener": "https://dexscreener.com/search?q=ZEC"
   },
-  "updated": "2026-10-22 10:44 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 1378.54,
   "tmin": 1292.0,
   "ret_open": 0.87,
@@ -3606,7 +3606,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.3334,
+  "last": 1.325,
   "max": 1.48,
   "min": 1.263,
   "checkpoints": {
@@ -3653,7 +3653,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ripple",
    "dexscreener": "https://dexscreener.com/search?q=XRP"
   },
-  "updated": "2026-10-22 10:44 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 1.48,
   "tmin": 1.4255,
   "ret_open": -2.11,
@@ -3825,7 +3825,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 2404.15,
+  "last": 2405.66,
   "max": 2583.55,
   "min": 2346.25,
   "checkpoints": {
@@ -3872,7 +3872,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-22 11:18 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 2581.12,
   "tmin": 2560.52,
   "ret_open": -0.44,
@@ -4040,7 +4040,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.702,
+  "last": 1.706,
   "max": 2.08,
   "min": 1.633,
   "checkpoints": {
@@ -4104,7 +4104,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/bsc/0x0eb3a705fc54725037cc9e008bdede697f62f335"
   },
-  "updated": "2026-10-22 10:44 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 1.815,
   "tmin": 1.769,
   "ret_open": 2.32,
@@ -4606,7 +4606,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1255.66,
+  "last": 1237.31,
   "max": 1348.46,
   "min": 1063.89,
   "checkpoints": {
@@ -4653,7 +4653,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/zcash",
    "dexscreener": "https://dexscreener.com/search?q=ZEC"
   },
-  "updated": "2026-10-22 10:44 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 1284.11,
   "tmin": 1207.32,
   "ret_open": -3.53,
@@ -4825,7 +4825,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 59.37,
+  "last": 58.92,
   "max": 62.1,
   "min": 57.25,
   "checkpoints": {
@@ -4872,10 +4872,34 @@
    "coingecko": "https://www.coingecko.com/en/coins/litecoin",
    "dexscreener": "https://dexscreener.com/search?q=LTC"
   },
-  "updated": "2026-10-22 11:18 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 62.1,
   "tmin": 57.25,
-  "ret_open": -3.34
+  "ret_open": -3.34,
+  "exit": {
+   "t": 1792681604,
+   "date": "2026-10-22 15:06 UTC",
+   "price": 58.92,
+   "why": "Signal turned TRIM",
+   "kind": "signal"
+  },
+  "ret": -4.07,
+  "held_days": 8.7,
+  "gbasis": "closed",
+  "gret": -4.07,
+  "outcome": "loss",
+  "postmortem": {
+   "signs": [
+    "Price was above the buy zone - chasing instead of waiting for a pullback",
+    "MACD momentum was fading or turning down"
+   ],
+   "btc_chg": null,
+   "r7": -4.07,
+   "dd": -6.789319439921848,
+   "best": 1.107131227613145,
+   "basis": "closed",
+   "gave_back": false
+  }
  },
  {
   "id": "XRPN-1791932890",
@@ -5466,7 +5490,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 2404.15,
+  "last": 2405.66,
   "max": 2509.26,
   "min": 2346.25,
   "checkpoints": {
@@ -5513,7 +5537,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-22 11:18 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 2478.37,
   "tmin": 2346.25,
   "ret_open": -2.74,
@@ -5999,7 +6023,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.3334,
+  "last": 1.325,
   "max": 1.3875,
   "min": 1.263,
   "checkpoints": {
@@ -6046,7 +6070,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ripple",
    "dexscreener": "https://dexscreener.com/search?q=XRP"
   },
-  "updated": "2026-10-22 10:44 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 1.3432,
   "tmin": 1.2749,
   "ret_open": -0.93,
@@ -6202,7 +6226,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.702,
+  "last": 1.706,
   "max": 1.786,
   "min": 1.633,
   "checkpoints": {},
@@ -6247,7 +6271,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/cosmos",
    "dexscreener": "https://dexscreener.com/search?q=ATOM"
   },
-  "updated": "2026-10-22 10:44 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 1.772,
   "tmin": 1.7,
   "ret_open": 0.29,
@@ -6808,7 +6832,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1255.66,
+  "last": 1237.31,
   "max": 1348.46,
   "min": 1123.89,
   "checkpoints": {},
@@ -6853,7 +6877,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/zcash",
    "dexscreener": "https://dexscreener.com/search?q=ZEC"
   },
-  "updated": "2026-10-22 10:44 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 1270.5,
   "tmin": 1123.89,
   "ret_open": 11.95,
@@ -7009,9 +7033,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 59.37,
+  "last": 58.92,
   "max": 62.1,
-  "min": 59.37,
+  "min": 58.92,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -7054,10 +7078,31 @@
    "coingecko": "https://www.coingecko.com/en/coins/litecoin",
    "dexscreener": "https://dexscreener.com/search?q=LTC"
   },
-  "updated": "2026-10-22 11:18 UTC",
+  "updated": "2026-10-22 15:07 UTC",
   "tmax": 62.1,
-  "tmin": 59.37,
-  "ret_open": -4.29
+  "tmin": 58.92,
+  "ret_open": -4.29,
+  "exit": {
+   "t": 1792681604,
+   "date": "2026-10-22 15:06 UTC",
+   "price": 58.92,
+   "why": "Signal turned TRIM",
+   "kind": "signal"
+  },
+  "ret": -5.01,
+  "held_days": 1.5,
+  "gbasis": "closed",
+  "gret": -5.01,
+  "outcome": "loss",
+  "postmortem": {
+   "signs": [],
+   "btc_chg": null,
+   "r7": -5.01,
+   "dd": -5.013703046912788,
+   "best": 0.112848621634698,
+   "basis": "closed",
+   "gave_back": false
+  }
  },
  {
   "id": "ONDO-1792552691",

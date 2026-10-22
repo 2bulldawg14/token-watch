@@ -3,10 +3,10 @@
   {
    "key": "above_zone",
    "text": "Price was above the buy zone - chasing instead of waiting for a pullback",
-   "n": 18,
+   "n": 19,
    "wins": 4,
-   "avg": -0.6433333333333334,
-   "points": -8.0,
+   "avg": -0.898421052631579,
+   "points": -8.5,
    "block": true
   },
   {
@@ -47,18 +47,18 @@
   }
  ],
  "mult": {
-  "technical": 0.76,
+  "technical": 0.77,
   "flows": 1.08,
-  "macro": 1.02,
+  "macro": 1.01,
   "markets": 1.0
  },
- "graded": 66,
- "t": "2026-10-22 09:16 UTC",
+ "graded": 68,
+ "t": "2026-10-22 10:08 UTC",
  "scorecard": {
-  "closed": 62,
+  "closed": 64,
   "wins": 27,
-  "avg": -1.49,
-  "held": 3.0,
+  "avg": -1.55,
+  "held": 2.9,
   "gave_back": 1
  },
  "sells": {
@@ -72,7 +72,7 @@
    "text": "entered the sell zone"
   },
   "signal": {
-   "n": 50,
+   "n": 52,
    "reviewed": 28,
    "early": 2,
    "good": 6,
@@ -92,5 +92,5 @@
  },
  "sell_soft": [],
  "wins": 12,
- "losses": 24
+ "losses": 25
 }

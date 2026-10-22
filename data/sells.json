@@ -955,5 +955,27 @@
   "source": "watchlist",
   "starred": true,
   "closes": "SEI-1791980087"
+ },
+ {
+  "symbol": "BTC",
+  "cg_id": "bitcoin",
+  "t": 1792663306,
+  "date": "2026-10-22 10:01 UTC",
+  "price": 82000.0,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "BTC-1792648766"
+ },
+ {
+  "symbol": "AERO",
+  "cg_id": "aerodrome-finance",
+  "t": 1792663494,
+  "date": "2026-10-22 10:04 UTC",
+  "price": 0.7994,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "AERO-1792571345"
  }
 ]

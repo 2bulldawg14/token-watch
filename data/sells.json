@@ -922,5 +922,38 @@
   "source": "watchlist",
   "starred": false,
   "closes": "XRPN-1792591689"
+ },
+ {
+  "symbol": "HBAR",
+  "cg_id": "hedera-hashgraph",
+  "t": 1792660219,
+  "date": "2026-10-22 09:10 UTC",
+  "price": 0.08053,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "HBAR-1791380308"
+ },
+ {
+  "symbol": "SUI",
+  "cg_id": "sui",
+  "t": 1792660314,
+  "date": "2026-10-22 09:11 UTC",
+  "price": 0.9808,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "SUI-1791938309"
+ },
+ {
+  "symbol": "SEI",
+  "cg_id": "sei-network",
+  "t": 1792660412,
+  "date": "2026-10-22 09:13 UTC",
+  "price": 0.05835,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "SEI-1791980087"
  }
 ]

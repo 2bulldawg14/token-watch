@@ -1986,7 +1986,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 53.67,
+  "last": 51.37,
   "max": 76.31,
   "min": 50.84,
   "checkpoints": {
@@ -2036,7 +2036,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-22 12:05 UTC",
+  "updated": "2026-10-22 15:45 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -4933,7 +4933,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 15.75,
+  "last": 15.37,
   "max": 16.48,
   "min": 14.34,
   "checkpoints": {
@@ -4983,7 +4983,7 @@
    "coingecko": "https://finance.yahoo.com/quote/XRPN",
    "dexscreener": "https://www.tradingview.com/symbols/XRPN/"
   },
-  "updated": "2026-10-22 12:05 UTC",
+  "updated": "2026-10-22 15:45 UTC",
   "tmax": 16.48,
   "tmin": 14.34,
   "ret_open": -7.4,
@@ -5811,7 +5811,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 159.31,
+  "last": 150.97,
   "max": 166.18,
   "min": 143.66,
   "checkpoints": {
@@ -5861,7 +5861,7 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-22 11:18 UTC",
+  "updated": "2026-10-22 15:45 UTC",
   "tmax": 152.16,
   "tmin": 143.66,
   "ret_open": -4.1,
@@ -6364,7 +6364,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/securitize-corp",
    "dexscreener": "https://dexscreener.com/search?q=SECZ"
   },
-  "updated": "2026-10-22 12:05 UTC",
+  "updated": "2026-10-22 15:45 UTC",
   "tmax": 11.34,
   "tmin": 9.17,
   "ret_open": -13.05,
@@ -7344,9 +7344,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 15.75,
+  "last": 15.37,
   "max": 15.76,
-  "min": 15.75,
+  "min": 15.37,
   "checkpoints": {},
   "kind": "stock",
   "by": "David",
@@ -7392,7 +7392,7 @@
    "coingecko": "https://finance.yahoo.com/quote/XRPN",
    "dexscreener": "https://www.tradingview.com/symbols/XRPN/"
   },
-  "updated": "2026-10-22 12:05 UTC",
+  "updated": "2026-10-22 15:45 UTC",
   "tmax": 15.76,
   "tmin": 15.75,
   "ret_open": -0.06,
@@ -7932,5 +7932,93 @@
   "gbasis": "closed",
   "gret": -1.02,
   "outcome": "flat"
+ },
+ {
+  "id": "SPCX-1792683560",
+  "symbol": "SPCX",
+  "cg_id": null,
+  "t": 1792683560,
+  "date": "2026-10-22 15:39 UTC",
+  "entry": 150.97,
+  "signal": "IN BUY ZONE",
+  "score": 53,
+  "buy_zone": {
+   "low": 147.18890769696915,
+   "high": 155.39247847159248
+  },
+  "risk": "LOW",
+  "plan": {
+   "zone1": {
+    "low": 147.18890769696915,
+    "high": 155.39247847159248,
+    "strong": true,
+    "vol_level": 148.87531344095865
+   },
+   "zone2": {
+    "low": 136.75692095075334,
+    "high": 142.90959903172083,
+    "strong": true
+   },
+   "stop": 132.6551355634417,
+   "target": 223.5891066959926,
+   "resistance": [],
+   "support_levels": [
+    148.87531344095865,
+    138.80781364440918
+   ]
+  },
+  "source": "watchlist",
+  "last": 150.97,
+  "max": 150.97,
+  "min": 150.97,
+  "checkpoints": {},
+  "kind": "stock",
+  "by": "David",
+  "feat": {
+   "rsi": 48.438420118006825,
+   "zone": "in",
+   "pb": null,
+   "rs30": 1.171615053749231,
+   "macd": "improving",
+   "vs200": null,
+   "vs50": 0.011593419482244904,
+   "chg7": -0.03558191851938863,
+   "chg30": 0.018828502241347023,
+   "macro": 37.36721014302474,
+   "btc_bull": true,
+   "buy_ratio": null,
+   "wallets": null,
+   "risk": "LOW",
+   "source": "watchlist",
+   "parts": {
+    "technical": 64.8,
+    "flows": null,
+    "derivatives": null,
+    "insiders": 24.5,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 64.8,
+    "news": 54.0,
+    "fundamental": 55,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": false,
+  "links": {
+   "kind": "stock",
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "yahoo": "https://finance.yahoo.com/quote/SPCX",
+   "tradingview": "https://www.tradingview.com/symbols/SPCX/",
+   "coingecko": "https://finance.yahoo.com/quote/SPCX",
+   "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
+  },
+  "updated": "2026-10-22 15:45 UTC",
+  "tmax": 150.97,
+  "tmin": 150.97,
+  "ret_open": 0.0
  }
 ]

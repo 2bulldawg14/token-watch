@@ -73,11 +73,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 259.7,
+  "last": 257.3,
   "max": 339.8,
   "min": 256.1,
   "checkpoints": {
-   "7": -0.03
+   "7": -0.03,
+   "30": -15.45
   },
   "feat": {
    "rsi": 68.67985079483194,
@@ -115,7 +116,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-23 12:19 UTC",
+  "updated": "2026-10-23 19:33 UTC",
   "tmax": 311.6,
   "tmin": 286.9,
   "ret_open": 0.26,
@@ -3083,7 +3084,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 259.7,
+  "last": 257.3,
   "max": 308.8,
   "min": 256.1,
   "checkpoints": {
@@ -3130,7 +3131,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-23 12:19 UTC",
+  "updated": "2026-10-23 19:33 UTC",
   "tmax": 308.8,
   "tmin": 284.1,
   "ret_open": 2.75,
@@ -4389,7 +4390,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.184,
+  "last": 7.082,
   "max": 7.866,
   "min": 6.875,
   "checkpoints": {
@@ -4453,7 +4454,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/ethereum/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
   },
-  "updated": "2026-10-23 11:38 UTC",
+  "updated": "2026-10-23 19:33 UTC",
   "tmax": 7.866,
   "tmin": 7.31,
   "ret_open": 5.31,
@@ -4720,7 +4721,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 259.7,
+  "last": 257.3,
   "max": 288.1,
   "min": 256.1,
   "checkpoints": {
@@ -4767,7 +4768,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-23 12:19 UTC",
+  "updated": "2026-10-23 19:33 UTC",
   "tmax": 288.1,
   "tmin": 256.1,
   "ret_open": -4.84,
@@ -5716,7 +5717,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 81712.0,
+  "last": 81338.0,
   "max": 84523.8,
   "min": 81012.98,
   "checkpoints": {
@@ -5763,7 +5764,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bitcoin",
    "dexscreener": "https://dexscreener.com/search?q=BTC"
   },
-  "updated": "2026-10-23 11:38 UTC",
+  "updated": "2026-10-23 19:33 UTC",
   "tmax": 82580.0,
   "tmin": 81012.98,
   "ret_open": 0.04,
@@ -5778,7 +5779,10 @@
   "held_days": 2.0,
   "gbasis": "closed",
   "gret": -1.02,
-  "outcome": "flat"
+  "outcome": "flat",
+  "after_sell": 0.3,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "SPCX-1792003053",
@@ -5892,7 +5896,10 @@
    "best": 0.39588281868565556,
    "basis": "closed",
    "gave_back": false
-  }
+  },
+  "after_sell": 3.0,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "INJ-1792005598",
@@ -6181,7 +6188,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/akash-network",
    "dexscreener": "https://dexscreener.com/search?q=AKT"
   },
-  "updated": "2026-10-23 12:19 UTC",
+  "updated": "2026-10-23 19:33 UTC",
   "tmax": 0.7219926853081508,
   "tmin": 0.6522971007188273,
   "ret_open": 6.42,
@@ -6671,7 +6678,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.184,
+  "last": 7.082,
   "max": 7.616,
   "min": 6.875,
   "checkpoints": {},
@@ -6716,7 +6723,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/search?q=UNI"
   },
-  "updated": "2026-10-23 11:38 UTC",
+  "updated": "2026-10-23 19:33 UTC",
   "tmax": 7.616,
   "tmin": 6.875,
   "ret_open": -4.8,
@@ -6971,7 +6978,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 259.7,
+  "last": 257.3,
   "max": 277.1,
   "min": 256.3,
   "checkpoints": {},
@@ -7016,7 +7023,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-23 12:19 UTC",
+  "updated": "2026-10-23 19:33 UTC",
   "tmax": 277.1,
   "tmin": 262.9,
   "ret_open": -2.89,
@@ -7284,9 +7291,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.7871,
+  "last": 0.7478,
   "max": 0.8632,
-  "min": 0.7858,
+  "min": 0.7478,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -7329,7 +7336,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/aerodrome-finance",
    "dexscreener": "https://dexscreener.com/search?q=AERO"
   },
-  "updated": "2026-10-23 11:38 UTC",
+  "updated": "2026-10-23 19:33 UTC",
   "tmax": 0.8632,
   "tmin": 0.7994,
   "ret_open": -3.3,
@@ -7914,7 +7921,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 81712.0,
+  "last": 81338.0,
   "max": 82845.47,
   "min": 81228.87,
   "checkpoints": {},
@@ -7959,7 +7966,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bitcoin",
    "dexscreener": "https://dexscreener.com/search?q=BTC"
   },
-  "updated": "2026-10-23 11:38 UTC",
+  "updated": "2026-10-23 19:33 UTC",
   "tmax": 82845.47,
   "tmin": 82000.0,
   "ret_open": 0.0,

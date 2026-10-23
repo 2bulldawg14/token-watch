@@ -507,11 +507,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.11300305594865147,
+  "last": 0.10511764768945801,
   "max": 0.14067,
   "min": 0.09901426036435254,
   "checkpoints": {
-   "7": 14.48
+   "7": 14.48,
+   "30": -3.14
   },
   "feat": {
    "rsi": 51.18692011213242,
@@ -549,7 +550,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-10-23 11:38 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -720,7 +721,7 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 5.1e-06,
+  "last": 5.11e-06,
   "max": 6.05e-06,
   "min": 4.9e-06,
   "checkpoints": {
@@ -767,7 +768,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-23 14:50 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 5.97e-06,
   "tmin": 5.57e-06,
   "ret_open": 7.0,
@@ -1143,7 +1144,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.9873,
+  "last": 0.9892,
   "max": 1.2801,
   "min": 0.9591,
   "checkpoints": {
@@ -1190,7 +1191,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-10-23 11:03 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 1.0309,
   "tmin": 1.0099,
   "ret_open": 0.58,
@@ -1246,7 +1247,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.07893,
+  "last": 0.07884,
   "max": 0.12387,
   "min": 0.07873,
   "checkpoints": {
@@ -1288,7 +1289,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-23 11:03 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 0.097,
   "tmin": 0.09231,
   "ret_open": -0.07,
@@ -2974,7 +2975,7 @@
    "support_levels": []
   },
   "source": "watchlist",
-  "last": 5.1e-06,
+  "last": 5.11e-06,
   "max": 6e-06,
   "min": 4.9e-06,
   "checkpoints": {
@@ -3026,7 +3027,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-23 14:50 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 6e-06,
   "tmin": 5.36e-06,
   "ret_open": -2.86,
@@ -3929,7 +3930,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.07893,
+  "last": 0.07884,
   "max": 0.09615,
   "min": 0.07873,
   "checkpoints": {
@@ -3976,7 +3977,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-23 11:03 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 0.09615,
   "tmin": 0.08053,
   "ret_open": -11.95,
@@ -4281,7 +4282,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 5.1e-06,
+  "last": 5.11e-06,
   "max": 5.53e-06,
   "min": 4.9e-06,
   "checkpoints": {
@@ -4333,7 +4334,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/shiba-inu",
    "dexscreener": "https://dexscreener.com/ethereum/0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce"
   },
-  "updated": "2026-10-23 14:50 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 5.51e-06,
   "tmin": 5.44e-06,
   "ret_open": -0.55,
@@ -5158,7 +5159,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.9873,
+  "last": 0.9892,
   "max": 1.0642,
   "min": 0.9591,
   "checkpoints": {
@@ -5205,7 +5206,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/search?q=SUI"
   },
-  "updated": "2026-10-23 11:03 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 1.0642,
   "tmin": 0.9591,
   "ret_open": -5.72,
@@ -5270,7 +5271,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.05758,
+  "last": 0.05783,
   "max": 0.06591,
   "min": 0.05683,
   "checkpoints": {
@@ -5317,7 +5318,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sei-network",
    "dexscreener": "https://dexscreener.com/search?q=SEI"
   },
-  "updated": "2026-10-23 11:38 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 0.06591,
   "tmin": 0.05835,
   "ret_open": -7.98,
@@ -5606,7 +5607,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.07893,
+  "last": 0.07884,
   "max": 0.08917,
   "min": 0.07873,
   "checkpoints": {
@@ -5653,7 +5654,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-23 11:03 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 0.08917,
   "tmin": 0.08053,
   "ret_open": -2.49,
@@ -7488,7 +7489,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.05758,
+  "last": 0.05783,
   "max": 0.0633,
   "min": 0.05683,
   "checkpoints": {},
@@ -7533,7 +7534,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sei-network",
    "dexscreener": "https://dexscreener.com/search?q=SEI"
   },
-  "updated": "2026-10-23 11:38 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 0.0633,
   "tmin": 0.05835,
   "ret_open": -4.82,
@@ -7596,7 +7597,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.07893,
+  "last": 0.07884,
   "max": 0.08541,
   "min": 0.07873,
   "checkpoints": {},
@@ -7641,7 +7642,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hedera-hashgraph",
    "dexscreener": "https://dexscreener.com/search?q=HBAR"
   },
-  "updated": "2026-10-23 11:03 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 0.08541,
   "tmin": 0.08053,
   "ret_open": -3.82,
@@ -7701,7 +7702,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.9873,
+  "last": 0.9892,
   "max": 1.0172,
   "min": 0.971,
   "checkpoints": {},
@@ -7751,7 +7752,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-10-23 11:03 UTC",
+  "updated": "2026-10-23 15:30 UTC",
   "tmax": 1.0172,
   "tmin": 0.9808,
   "ret_open": -1.43,

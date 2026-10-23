@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W43",
- "_export_t": 1792764597.955528,
+ "_export_t": 1792784013.9506311,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -253,13 +253,13 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "TRIM",
   "odds": {
+   "XRP Up or Down - October 23, 6:30PM-6:45PM ET": 0,
    "Will XRP reach $4.00 in October?": 0,
    "Will XRP reach $8.00 by December 31, 2026?": 1,
-   "Will XRP reach $5.00 by December 31, 2026?": 2,
-   "Will XRP dip to $0.20 by December 31, 2026?": 1
+   "Will XRP reach $5.00 by December 31, 2026?": 2
   },
   "in_zone2": false,
   "below_stop": false,
@@ -267,9 +267,9 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
@@ -433,7 +433,7 @@
   },
   "HYPE": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1156,15 +1156,15 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "HOLD",
+  "risk": "MEDIUM",
+  "signal": "SELL / AVOID",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
    "Will Hyperliquid reach $200 by December 31, 2026?": 3,
-   "Will Hyperliquid reach $130 by December 31, 2026?": 6
+   "Will Hyperliquid reach $120 by December 31, 2026?": 8
   },
   "macd_day": "2026-09-28"
  },
@@ -1182,7 +1182,7 @@
    "Will Zcash dip to $700 by December 31, 2026?": 21,
    "Will Zcash reach $2000 by December 31, 2026?": 28
   },
-  "macd_day": "2026-10-21"
+  "macd_day": "2026-10-23"
  },
  "SHIB": {
   "seen_news": [],
@@ -1212,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792784011.9753554,
+ "_saved_t": 1792795707.4137185,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,10 +1223,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 14,
+ "_wl_cursor": 19,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792767040.7113442,
+  "live prices": 1792784013.952491,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

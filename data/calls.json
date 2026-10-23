@@ -73,7 +73,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 262.6,
+  "last": 259.7,
   "max": 339.8,
   "min": 256.1,
   "checkpoints": {
@@ -115,7 +115,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-23 09:08 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "tmax": 311.6,
   "tmin": 286.9,
   "ret_open": 0.26,
@@ -171,7 +171,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.789,
+  "last": 1.765,
   "max": 2.192,
   "min": 1.707,
   "checkpoints": {
@@ -222,7 +222,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/render-token",
    "dexscreener": "https://dexscreener.com/solana/rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof"
   },
-  "updated": "2026-10-23 09:08 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "exit": {
    "t": 1790256809,
    "date": "2026-09-24 13:33 UTC",
@@ -3081,7 +3081,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 262.6,
+  "last": 259.7,
   "max": 308.8,
   "min": 256.1,
   "checkpoints": {
@@ -3128,7 +3128,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-23 09:08 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "tmax": 308.8,
   "tmin": 284.1,
   "ret_open": 2.75,
@@ -3606,7 +3606,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.3265,
+  "last": 1.3187,
   "max": 1.48,
   "min": 1.263,
   "checkpoints": {
@@ -3653,7 +3653,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ripple",
    "dexscreener": "https://dexscreener.com/search?q=XRP"
   },
-  "updated": "2026-10-23 09:08 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "tmax": 1.48,
   "tmin": 1.4255,
   "ret_open": -2.11,
@@ -4718,7 +4718,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 262.6,
+  "last": 259.7,
   "max": 288.1,
   "min": 256.1,
   "checkpoints": {
@@ -4765,7 +4765,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-23 09:08 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "tmax": 288.1,
   "tmin": 256.1,
   "ret_open": -4.84,
@@ -5379,7 +5379,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.789,
+  "last": 1.765,
   "max": 1.982,
   "min": 1.735,
   "checkpoints": {
@@ -5426,7 +5426,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/render-token",
    "dexscreener": "https://dexscreener.com/search?q=RENDER"
   },
-  "updated": "2026-10-23 09:08 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "tmax": 1.982,
   "tmin": 1.735,
   "ret_open": -3.47,
@@ -6029,7 +6029,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.3265,
+  "last": 1.3187,
   "max": 1.3875,
   "min": 1.263,
   "checkpoints": {
@@ -6076,7 +6076,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ripple",
    "dexscreener": "https://dexscreener.com/search?q=XRP"
   },
-  "updated": "2026-10-23 09:08 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "tmax": 1.3432,
   "tmin": 1.2749,
   "ret_open": -0.93,
@@ -6179,7 +6179,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/akash-network",
    "dexscreener": "https://dexscreener.com/search?q=AKT"
   },
-  "updated": "2026-10-23 08:27 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "tmax": 0.7219926853081508,
   "tmin": 0.6522971007188273,
   "ret_open": 6.42,
@@ -6441,10 +6441,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 78.65,
+  "last": 77.79,
   "max": 81.91,
   "min": 76.55,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": -4.27
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -6486,7 +6488,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hyperliquid",
    "dexscreener": "https://dexscreener.com/search?q=HYPE"
   },
-  "updated": "2026-10-23 09:08 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "tmax": 81.26,
   "tmin": 80.84,
   "ret_open": 0.0,
@@ -6964,7 +6966,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 262.6,
+  "last": 259.7,
   "max": 277.1,
   "min": 256.3,
   "checkpoints": {},
@@ -7009,7 +7011,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-23 09:08 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "tmax": 277.1,
   "tmin": 262.9,
   "ret_open": -2.89,
@@ -7809,9 +7811,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.789,
+  "last": 1.765,
   "max": 1.866,
-  "min": 1.766,
+  "min": 1.765,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -7854,7 +7856,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/render-token",
    "dexscreener": "https://dexscreener.com/search?q=RENDER"
   },
-  "updated": "2026-10-23 09:08 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "tmax": 1.866,
   "tmin": 1.838,
   "ret_open": 0.0,
@@ -8116,7 +8118,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 1.3265,
+  "last": 1.3187,
   "max": 1.3265,
   "min": 1.3078,
   "checkpoints": {},
@@ -8161,7 +8163,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ripple",
    "dexscreener": "https://dexscreener.com/search?q=XRP"
   },
-  "updated": "2026-10-23 09:08 UTC",
+  "updated": "2026-10-23 12:19 UTC",
   "tmax": 1.3109,
   "tmin": 1.3078,
   "ret_open": 0.0,
@@ -8276,5 +8278,94 @@
   "gbasis": "closed",
   "gret": 4.53,
   "outcome": "win"
+ },
+ {
+  "id": "HYPE-1792757806",
+  "symbol": "HYPE",
+  "cg_id": "hyperliquid",
+  "t": 1792757806,
+  "date": "2026-10-23 12:16 UTC",
+  "entry": 77.79,
+  "signal": "IN BUY ZONE",
+  "score": 59,
+  "buy_zone": {
+   "low": 76.99440053111755,
+   "high": 78.45459655456892
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 76.99440053111755,
+    "high": 78.45459655456892,
+    "strong": false
+   },
+   "zone2": {
+    "low": 73.1100472373471,
+    "high": 74.20519425493563,
+    "strong": true
+   },
+   "stop": 72.37994922562142,
+   "target": 80.77214575507176,
+   "resistance": [
+    80.77214575507176,
+    84.42067051100267,
+    94.15006986015175
+   ],
+   "support_levels": [
+    73.47509624320995,
+    67.39422164999178,
+    60.09717213812998
+   ]
+  },
+  "source": "watchlist",
+  "last": 77.79,
+  "max": 77.79,
+  "min": 77.79,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 38.868153190341275,
+   "zone": "in",
+   "pb": 0.22106703709502812,
+   "rs30": -13.91060442571257,
+   "macd": "improving",
+   "vs200": 0.19766198989531159,
+   "vs50": -0.08970113233000698,
+   "chg7": -0.030609134102680513,
+   "chg30": -0.1723132681592272,
+   "macro": 44.13277349961434,
+   "btc_bull": true,
+   "buy_ratio": null,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 58.4,
+    "flows": 100.0,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 44.1,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/hyperliquid",
+   "dexscreener": "https://dexscreener.com/search?q=HYPE"
+  },
+  "updated": "2026-10-23 12:19 UTC",
+  "tmax": 77.79,
+  "tmin": 77.79,
+  "ret_open": 0.0
  }
 ]

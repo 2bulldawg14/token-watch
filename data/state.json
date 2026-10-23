@@ -101,17 +101,17 @@
   "hit_below": false,
   "hit_above": false,
   "risk": null,
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-22"
  },
  "SOL": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
-  "signal": "HOLD",
+  "risk": null,
+  "signal": "TRIM",
   "odds": {
    "Will Solana reach $200 in October?": 0,
    "Will Solana reach $190 in October?": 0,
@@ -124,15 +124,15 @@
  },
  "LINK": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $18 by December 31, 2026?": 39,
-   "Will Chainlink reach $16 by December 31, 2026?": 53,
-   "Will Chainlink reach $20 by December 31, 2026?": 32,
-   "Will Chainlink reach $26 in October?": 13
+   "Will Chainlink reach $16 by December 31, 2026?": 42,
+   "Will Chainlink reach $20 by December 31, 2026?": 20,
+   "Will Chainlink reach $26 in October?": 19
   },
   "in_zone2": false,
   "below_stop": false,
@@ -140,10 +140,10 @@
  },
  "ONDO": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
-  "signal": "TRIM",
+  "risk": null,
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
@@ -278,28 +278,28 @@
  "_sellst": {
   "INJ": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "SOL": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1212,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792723461.0240777,
+ "_saved_t": 1792725755.4479353,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,7 +1223,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 28,
+ "_wl_cursor": 3,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1792721486.427943,

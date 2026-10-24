@@ -510,7 +510,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.10511764768945801,
+  "last": 0.09960950911833355,
   "max": 0.14067,
   "min": 0.09901426036435254,
   "checkpoints": {
@@ -553,7 +553,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/canton-network",
    "dexscreener": "https://dexscreener.com/search?q=CC"
   },
-  "updated": "2026-10-23 15:30 UTC",
+  "updated": "2026-10-24 14:52 UTC",
   "tmax": 0.118269,
   "tmin": 0.108525,
   "ret_open": 7.72,
@@ -1148,9 +1148,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.9892,
+  "last": 0.9291,
   "max": 1.2801,
-  "min": 0.9591,
+  "min": 0.9291,
   "checkpoints": {
    "7": 16.68
   },
@@ -1195,7 +1195,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-10-23 15:30 UTC",
+  "updated": "2026-10-24 14:52 UTC",
   "tmax": 1.0309,
   "tmin": 1.0099,
   "ret_open": 0.58,
@@ -4393,9 +4393,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.082,
+  "last": 6.711,
   "max": 7.866,
-  "min": 6.875,
+  "min": 6.711,
   "checkpoints": {
    "7": -1.06
   },
@@ -4457,7 +4457,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/ethereum/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
   },
-  "updated": "2026-10-23 19:33 UTC",
+  "updated": "2026-10-24 14:52 UTC",
   "tmax": 7.866,
   "tmin": 7.31,
   "ret_open": 5.31,
@@ -5163,9 +5163,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.9892,
+  "last": 0.9291,
   "max": 1.0642,
-  "min": 0.9591,
+  "min": 0.9291,
   "checkpoints": {
    "7": -3.54
   },
@@ -5210,7 +5210,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/search?q=SUI"
   },
-  "updated": "2026-10-23 15:30 UTC",
+  "updated": "2026-10-24 14:52 UTC",
   "tmax": 1.0642,
   "tmin": 0.9591,
   "ret_open": -5.72,
@@ -5275,9 +5275,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.05783,
+  "last": 0.05336,
   "max": 0.06591,
-  "min": 0.05683,
+  "min": 0.05336,
   "checkpoints": {
    "7": -3.33
   },
@@ -5322,7 +5322,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sei-network",
    "dexscreener": "https://dexscreener.com/search?q=SEI"
   },
-  "updated": "2026-10-23 15:30 UTC",
+  "updated": "2026-10-24 14:52 UTC",
   "tmax": 0.06591,
   "tmin": 0.05835,
   "ret_open": -7.98,
@@ -5720,9 +5720,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 81338.0,
+  "last": 80260.42,
   "max": 84523.8,
-  "min": 81012.98,
+  "min": 80260.42,
   "checkpoints": {
    "7": 3.04
   },
@@ -5767,7 +5767,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bitcoin",
    "dexscreener": "https://dexscreener.com/search?q=BTC"
   },
-  "updated": "2026-10-23 19:33 UTC",
+  "updated": "2026-10-24 14:52 UTC",
   "tmax": 82580.0,
   "tmin": 81012.98,
   "ret_open": 0.04,
@@ -6311,7 +6311,10 @@
   "held_days": 1.9,
   "gbasis": "closed",
   "gret": -1.79,
-  "outcome": "flat"
+  "outcome": "flat",
+  "after_sell": 0.3,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "SECZ-1792125229",
@@ -6686,10 +6689,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.082,
+  "last": 6.711,
   "max": 7.616,
-  "min": 6.875,
-  "checkpoints": {},
+  "min": 6.711,
+  "checkpoints": {
+   "7": -8.19
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -6731,7 +6736,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/search?q=UNI"
   },
-  "updated": "2026-10-23 19:33 UTC",
+  "updated": "2026-10-24 14:52 UTC",
   "tmax": 7.616,
   "tmin": 6.875,
   "ret_open": -4.8,
@@ -7504,9 +7509,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.05783,
+  "last": 0.05336,
   "max": 0.0633,
-  "min": 0.05683,
+  "min": 0.05336,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -7549,7 +7554,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sei-network",
    "dexscreener": "https://dexscreener.com/search?q=SEI"
   },
-  "updated": "2026-10-23 15:30 UTC",
+  "updated": "2026-10-24 14:52 UTC",
   "tmax": 0.0633,
   "tmin": 0.05835,
   "ret_open": -4.82,
@@ -7717,9 +7722,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.9892,
+  "last": 0.9291,
   "max": 1.0172,
-  "min": 0.971,
+  "min": 0.9291,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -7767,7 +7772,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/sui",
    "dexscreener": "https://dexscreener.com/sui/0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI"
   },
-  "updated": "2026-10-23 15:30 UTC",
+  "updated": "2026-10-24 14:52 UTC",
   "tmax": 1.0172,
   "tmin": 0.9808,
   "ret_open": -1.43,
@@ -7929,9 +7934,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 81338.0,
+  "last": 80260.42,
   "max": 82845.47,
-  "min": 81228.87,
+  "min": 80260.42,
   "checkpoints": {},
   "kind": "crypto",
   "by": null,
@@ -7974,7 +7979,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bitcoin",
    "dexscreener": "https://dexscreener.com/search?q=BTC"
   },
-  "updated": "2026-10-23 19:33 UTC",
+  "updated": "2026-10-24 14:52 UTC",
   "tmax": 82845.47,
   "tmin": 82000.0,
   "ret_open": 0.0,

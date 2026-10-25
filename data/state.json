@@ -108,7 +108,7 @@
  },
  "SOL": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
@@ -129,9 +129,9 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $16 by December 31, 2026?": 28,
-   "Will Chainlink reach $20 by December 31, 2026?": 16,
-   "Will Chainlink reach $18 by December 31, 2026?": 26,
+   "Will Chainlink reach $16 by December 31, 2026?": 20,
+   "Will Chainlink reach $20 by December 31, 2026?": 25,
+   "Will Chainlink reach $18 by December 31, 2026?": 21,
    "Will Chainlink reach $26 in October?": 36
   },
   "in_zone2": false,
@@ -150,13 +150,13 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W43",
- "_export_t": 1792864326.3834372,
+ "_export_t": 1792881053.1928608,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
@@ -169,8 +169,8 @@
   "risk": null,
   "signal": "TRIM",
   "odds": {
-   "Will Sui reach $3.00 before 2027?": 4,
-   "Will Sui reach $1.40 before 2027?": 36
+   "Will Sui reach $1.40 before 2027?": 36,
+   "Will Sui reach $3.00 before 2027?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1187,9 +1187,9 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "macd_day": "2026-09-30"
  },
@@ -1211,7 +1211,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792881051.2027645,
+ "_saved_t": 1792888516.6745644,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1222,10 +1222,10 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 28,
+ "_wl_cursor": 6,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792872031.9783618,
+  "live prices": 1792881053.1940987,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W44",
- "_export_t": 1792961265.7899864,
+ "_export_t": 1792977251.809887,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -255,10 +255,10 @@
   "risk": null,
   "signal": "TRIM",
   "odds": {
+   "XRP Up or Down - October 26, 2:15AM-2:30AM ET": 0,
    "Will XRP reach $4.00 in October?": 0,
    "Will XRP reach $8.00 by December 31, 2026?": 1,
-   "Will XRP reach $5.00 by December 31, 2026?": 2,
-   "Will XRP reach $3.20 in October?": 0
+   "Will XRP reach $5.00 by December 31, 2026?": 2
   },
   "in_zone2": false,
   "below_stop": false,
@@ -269,7 +269,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-14"
@@ -1173,13 +1173,13 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "SELL / AVOID",
   "odds": {
-   "Will Zcash dip to $100 by December 31, 2026?": 3,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 21,
-   "Will Zcash reach $2000 by December 31, 2026?": 28
+   "Will Zcash dip to $700 by December 31, 2026?": 23,
+   "Will Zcash dip to $100 by December 31, 2026?": 3,
+   "Will Zcash dip to $200 by December 31, 2026?": 5
   },
   "macd_day": "2026-10-23"
  },
@@ -1211,7 +1211,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1792977249.8062646,
+ "_saved_t": 1792996534.3268442,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1222,10 +1222,10 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 15,
+ "_wl_cursor": 20,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792969188.9514575,
+  "live prices": 1792977309.708604,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

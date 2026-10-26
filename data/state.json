@@ -101,7 +101,7 @@
   "hit_below": false,
   "hit_above": false,
   "risk": null,
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-22"
@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W44",
- "_export_t": 1792996536.3924909,
+ "_export_t": 1793022223.7512863,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -277,7 +277,7 @@
  "_sellst": {
   "INJ": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1211,7 +1211,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793022220.7122567,
+ "_saved_t": 1793043850.3238053,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1222,10 +1222,10 @@
   "signal": "SELL / AVOID",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 26,
+ "_wl_cursor": 1,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1792996600.2700653,
+  "live prices": 1793022289.3177426,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {
@@ -1940,7 +1940,10 @@
    "142946456",
    "142953002",
    "142930349",
-   "143021664"
+   "143021664",
+   "143185376",
+   "143163933",
+   "143135022"
   ],
   "in_zone2": false,
   "below_stop": false,
@@ -1983,12 +1986,13 @@
    "143010481",
    "143012653",
    "143025071",
-   "143100153"
+   "143100153",
+   "143135858"
   ],
   "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "low",
   "risk": "LOW",
   "signal": "TRIM"

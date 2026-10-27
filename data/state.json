@@ -114,9 +114,9 @@
   "signal": "TRIM",
   "odds": {
    "Will Solana reach $200 in October?": 0,
+   "Will Solana reach $170 in October?": 0,
    "Will Solana reach $190 in October?": 0,
-   "Will Solana reach $160 in October?": 0,
-   "Will Solana reach $170 in October?": 0
+   "Will Solana reach $160 in October?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -126,7 +126,7 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $16 by December 31, 2026?": 28,
@@ -140,17 +140,17 @@
  },
  "ONDO": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "TRIM",
+  "risk": "MEDIUM",
+  "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W44",
- "_export_t": 1793113593.81307,
+ "_export_t": 1793131751.0474138,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -1189,7 +1189,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793131747.0516038,
+ "_saved_t": 1793145128.5455253,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1221,10 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 28,
+ "_wl_cursor": 5,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1793113593.814741,
+  "live prices": 1793131751.0490992,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

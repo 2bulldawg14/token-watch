@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W44",
- "_export_t": 1793043853.4793549,
+ "_export_t": 1793068663.8351867,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -221,7 +221,7 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
+  "risk": null,
   "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
@@ -1160,8 +1160,8 @@
   "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid reach $200 by December 31, 2026?": 3,
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid reach $120 by December 31, 2026?": 8
   },
   "macd_day": "2026-09-28"
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793068661.1888576,
+ "_saved_t": 1793090108.5523026,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1221,10 @@
   "signal": "SELL / AVOID",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 11,
+ "_wl_cursor": 16,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1793057555.6196294,
+  "live prices": 1793068663.8370385,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

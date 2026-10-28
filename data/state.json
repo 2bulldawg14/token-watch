@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W44",
- "_export_t": 1793163928.471296,
+ "_export_t": 1793186326.929402,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -208,10 +208,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Ethereum dip to $1,500 by December 31, 2026?": 10,
+   "Will Ethereum reach $2,800 in October?": 1,
+   "Will Ethereum dip to $1,500 by December 31, 2026?": 9,
    "Will Ethereum reach $10,000 by December 31, 2026?": 1,
-   "Will Ethereum reach $4,500 by December 31, 2026?": 4,
-   "Will Ethereum reach $4,000 by December 31, 2026?": 7
+   "Will Ethereum reach $5,000 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -249,15 +249,15 @@
  },
  "XRP": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will XRP reach $4.00 in October?": 0,
    "Will XRP reach $8.00 by December 31, 2026?": 1,
-   "Will XRP reach $5.00 by December 31, 2026?": 2,
-   "Will XRP dip to $0.20 by December 31, 2026?": 1
+   "Will XRP reach $4.00 in October?": 0,
+   "Will XRP reach $5.00 by December 31, 2026?": 3,
+   "Will XRP dip to $0.20 in October?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -265,10 +265,10 @@
  },
  "ATOM": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-14"
@@ -1173,7 +1173,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $700 by December 31, 2026?": 23,
@@ -1196,10 +1196,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "macd_day": "2026-10-04"
  },
  "_disc_seen": {
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793186324.0256443,
+ "_saved_t": 1793208249.6746886,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1221,10 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 15,
+ "_wl_cursor": 21,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1793163928.4727147,
+  "live prices": 1793186326.930815,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

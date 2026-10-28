@@ -812,12 +812,12 @@
  "id:zcash": "zcash",
  "id:atom": "cosmos",
  "dd:aerodrome-finance": {
-  "t": 1792976995.710778,
+  "t": 1793186101.4613612,
   "v": {
    "level": "MEDIUM",
    "points": 4.5,
    "flags": [
-    "Top 10 wallets hold 74% (may include exchanges)",
+    "Top 10 wallets hold 76% (may include exchanges)",
     "Owner can mint new tokens",
     "Team not verified yet - check founders' real names, LinkedIn, past projects"
    ],
@@ -831,9 +831,9 @@
    },
    "facts": {
     "name": "Aerodrome Finance",
-    "market_cap": 565902805,
-    "fdv": 1353352918,
-    "volume": 24573224,
+    "market_cap": 571028771,
+    "fdv": 1404367473,
+    "volume": 23152923,
     "website": [
      "https://aerodrome.finance/"
     ],
@@ -1218,14 +1218,13 @@
   }
  },
  "dd:hyperliquid": {
-  "t": 1793090012.7207246,
+  "t": 1793186289.7413611,
   "v": {
    "level": "MEDIUM",
-   "points": 3.0,
+   "points": 2.0,
    "flags": [
     "Team not verified yet - check founders' real names, LinkedIn, past projects",
-    "No public code repository",
-    "FDV is 4.3x market cap - heavy future dilution"
+    "No public code repository"
    ],
    "checks": {
     "team": null,
@@ -1234,9 +1233,9 @@
    },
    "facts": {
     "name": "Hyperliquid",
-    "market_cap": 17332064057,
-    "fdv": 74433636825,
-    "volume": 748776184,
+    "market_cap": 19498329592,
+    "fdv": 77497405047,
+    "volume": 740740102,
     "website": [
      "https://app.hyperliquid.xyz/trade"
     ],

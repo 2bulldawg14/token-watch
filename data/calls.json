@@ -73,7 +73,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 248.3,
+  "last": 255.7,
   "max": 339.8,
   "min": 247.4,
   "checkpoints": {
@@ -116,7 +116,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-27 08:35 UTC",
+  "updated": "2026-10-28 11:18 UTC",
   "tmax": 311.6,
   "tmin": 286.9,
   "ret_open": 0.26,
@@ -3089,7 +3089,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 248.3,
+  "last": 255.7,
   "max": 308.8,
   "min": 247.4,
   "checkpoints": {
@@ -3136,7 +3136,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-27 08:35 UTC",
+  "updated": "2026-10-28 11:18 UTC",
   "tmax": 308.8,
   "tmin": 284.1,
   "ret_open": 2.75,
@@ -4395,7 +4395,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.051,
+  "last": 7.151,
   "max": 7.866,
   "min": 6.711,
   "checkpoints": {
@@ -4459,7 +4459,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/ethereum/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
   },
-  "updated": "2026-10-27 02:37 UTC",
+  "updated": "2026-10-28 11:18 UTC",
   "tmax": 7.866,
   "tmin": 7.31,
   "ret_open": 5.31,
@@ -4726,7 +4726,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 248.3,
+  "last": 255.7,
   "max": 288.1,
   "min": 247.4,
   "checkpoints": {
@@ -4773,7 +4773,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-27 08:35 UTC",
+  "updated": "2026-10-28 11:18 UTC",
   "tmax": 288.1,
   "tmin": 256.1,
   "ret_open": -4.84,
@@ -6152,7 +6152,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.6511074438719298,
+  "last": 0.6755486276120408,
   "max": 0.737870307220898,
   "min": 0.6511074438719298,
   "checkpoints": {
@@ -6199,7 +6199,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/akash-network",
    "dexscreener": "https://dexscreener.com/search?q=AKT"
   },
-  "updated": "2026-10-27 08:35 UTC",
+  "updated": "2026-10-28 11:18 UTC",
   "tmax": 0.7219926853081508,
   "tmin": 0.6522971007188273,
   "ret_open": 6.42,
@@ -6467,7 +6467,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 77.95,
+  "last": 81.62,
   "max": 81.91,
   "min": 75.71,
   "checkpoints": {
@@ -6514,7 +6514,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hyperliquid",
    "dexscreener": "https://dexscreener.com/search?q=HYPE"
   },
-  "updated": "2026-10-27 08:35 UTC",
+  "updated": "2026-10-28 11:18 UTC",
   "tmax": 81.26,
   "tmin": 80.84,
   "ret_open": 0.0,
@@ -6700,7 +6700,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 7.051,
+  "last": 7.151,
   "max": 7.616,
   "min": 6.711,
   "checkpoints": {
@@ -6747,7 +6747,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/uniswap",
    "dexscreener": "https://dexscreener.com/search?q=UNI"
   },
-  "updated": "2026-10-27 02:37 UTC",
+  "updated": "2026-10-28 11:18 UTC",
   "tmax": 7.616,
   "tmin": 6.875,
   "ret_open": -4.8,
@@ -6970,7 +6970,10 @@
   "held_days": 1.7,
   "gbasis": "closed",
   "gret": 13.01,
-  "outcome": "win"
+  "outcome": "win",
+  "after_sell": 1.2,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "TAO-1792519028",
@@ -7006,10 +7009,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 248.3,
+  "last": 255.7,
   "max": 277.1,
   "min": 247.4,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": -6.47
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -7051,7 +7056,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/bittensor",
    "dexscreener": "https://dexscreener.com/search?q=TAO"
   },
-  "updated": "2026-10-27 08:35 UTC",
+  "updated": "2026-10-28 11:18 UTC",
   "tmax": 277.1,
   "tmin": 262.9,
   "ret_open": -2.89,
@@ -7319,10 +7324,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 0.671,
+  "last": 0.6999,
   "max": 0.8632,
   "min": 0.671,
-  "checkpoints": {},
+  "checkpoints": {
+   "7": -17.25
+  },
   "kind": "crypto",
   "by": null,
   "feat": {
@@ -7364,7 +7371,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/aerodrome-finance",
    "dexscreener": "https://dexscreener.com/search?q=AERO"
   },
-  "updated": "2026-10-27 08:35 UTC",
+  "updated": "2026-10-28 11:18 UTC",
   "tmax": 0.8632,
   "tmin": 0.7994,
   "ret_open": -3.3,
@@ -8358,8 +8365,8 @@
    ]
   },
   "source": "watchlist",
-  "last": 77.95,
-  "max": 77.95,
+  "last": 81.62,
+  "max": 81.62,
   "min": 75.71,
   "checkpoints": {},
   "kind": "crypto",
@@ -8403,7 +8410,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/hyperliquid",
    "dexscreener": "https://dexscreener.com/search?q=HYPE"
   },
-  "updated": "2026-10-27 08:35 UTC",
+  "updated": "2026-10-28 11:18 UTC",
   "tmax": 77.79,
   "tmin": 77.21,
   "ret_open": 0.0,
@@ -8502,5 +8509,94 @@
   "tmax": 8.042,
   "tmin": 7.974,
   "ret_open": -0.85
+ },
+ {
+  "id": "AKT-1793186195",
+  "symbol": "AKT",
+  "cg_id": "akash-network",
+  "t": 1793186195,
+  "date": "2026-10-28 11:16 UTC",
+  "entry": 0.6755486276120408,
+  "signal": "IN BUY ZONE",
+  "score": 47,
+  "buy_zone": {
+   "low": 0.6537282190823402,
+   "high": 0.6768887020613826
+  },
+  "risk": null,
+  "plan": {
+   "zone1": {
+    "low": 0.6537282190823402,
+    "high": 0.6768887020613826,
+    "strong": true,
+    "vol_level": 0.6825364878671227
+   },
+   "zone2": {
+    "low": 0.6250947401770148,
+    "high": 0.6424651024112966,
+    "strong": true
+   },
+   "stop": 0.6135144986874936,
+   "target": 0.7341881148124701,
+   "resistance": [
+    0.7341881148124701,
+    0.7651790909796785,
+    0.8374913687031649
+   ],
+   "support_levels": [
+    0.6308848609217754,
+    0.5689029085873587
+   ]
+  },
+  "source": "watchlist",
+  "last": 0.6755486276120408,
+  "max": 0.6755486276120408,
+  "min": 0.6755486276120408,
+  "checkpoints": {},
+  "kind": "crypto",
+  "by": null,
+  "feat": {
+   "rsi": 48.33845706706845,
+   "zone": "in",
+   "pb": 0.2832870750761628,
+   "rs30": 5.264718694796144,
+   "macd": "improving",
+   "vs200": 0.09752980101895004,
+   "vs50": 0.02430605309496392,
+   "chg7": -0.08000090860874809,
+   "chg30": 0.027274974417687448,
+   "macro": 36.831056180414585,
+   "btc_bull": true,
+   "buy_ratio": null,
+   "wallets": null,
+   "risk": null,
+   "source": "watchlist",
+   "parts": {
+    "technical": 66.5,
+    "flows": null,
+    "derivatives": null,
+    "insiders": null,
+    "shorts": null,
+    "congress": null,
+    "wallets": null,
+    "macro": 36.8,
+    "news": null,
+    "fundamental": null,
+    "markets": null
+   },
+   "btc": null
+  },
+  "starred": true,
+  "links": {
+   "chain": null,
+   "contract": null,
+   "contracts": [],
+   "coingecko": "https://www.coingecko.com/en/coins/akash-network",
+   "dexscreener": "https://dexscreener.com/search?q=AKT"
+  },
+  "updated": "2026-10-28 11:18 UTC",
+  "tmax": 0.6755486276120408,
+  "tmin": 0.6755486276120408,
+  "ret_open": 0.0
  }
 ]

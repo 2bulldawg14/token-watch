@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W44",
- "_export_t": 1793131751.0474138,
+ "_export_t": 1793163928.471296,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -221,7 +221,7 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
@@ -229,7 +229,7 @@
  },
  "TAO": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
   "signal": "TRIM",
@@ -424,7 +424,7 @@
   },
   "AKT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1134,9 +1134,9 @@
   "signal": "TRIM",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 26,
+   "Will UNI reach $14.00 by December 31, 2026?": 9,
    "Will UNI dip to $3.00 by December 31, 2026?": 6,
-   "Will UNI reach $15.50 by December 31, 2026?": 10,
-   "Will UNI reach $14.00 by December 31, 2026?": 7
+   "Will UNI reach $15.50 by December 31, 2026?": 10
   },
   "macd_day": "2026-09-29"
  },
@@ -1147,7 +1147,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "HOLD",
   "macd_day": "2026-10-12"
  },
  "HYPE": {
@@ -1160,9 +1160,9 @@
   "signal": "SELL / AVOID",
   "odds": {
    "Will Hyperliquid reach $200 by December 31, 2026?": 3,
-   "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
-   "Will Hyperliquid reach $120 by December 31, 2026?": 8
+   "Will Hyperliquid dip to $12 by December 31, 2026?": 1,
+   "Will Hyperliquid reach $150 by December 31, 2026?": 6
   },
   "macd_day": "2026-09-28"
  },
@@ -1210,7 +1210,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793163925.3337886,
+ "_saved_t": 1793186324.0256443,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1221,10 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 10,
+ "_wl_cursor": 15,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1793145156.1871638,
+  "live prices": 1793163928.4727147,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

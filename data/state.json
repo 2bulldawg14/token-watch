@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W44",
- "_export_t": 1793224565.6365447,
+ "_export_t": 1793260395.1458466,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -192,12 +192,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
-   "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will Bitcoin dip to $55,000 by December 31, 2026?": 10,
-   "Will Bitcoin reach $500,000 by December 31, 2026?": 0
+   "Will Bitcoin reach $150,000 in October?": 0,
+   "Will the price of Bitcoin be above $72,000 on October 29?": 100,
+   "Will Bitcoin dip to $70,000 in October?": 0,
+   "Will Bitcoin reach $87,500 in October?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -223,8 +223,8 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "MEDIUM",
-  "signal": "TRIM",
+  "risk": null,
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-12"
@@ -234,7 +234,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-02"
@@ -333,7 +333,7 @@
   },
   "BTC": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -353,7 +353,7 @@
   },
   "AERO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1136,11 +1136,11 @@
   "signal": "TRIM",
   "odds": {
    "Will UNI reach $11.00 by December 31, 2026?": 26,
-   "Will UNI reach $14.00 by December 31, 2026?": 9,
-   "Will UNI dip to $3.00 by December 31, 2026?": 6,
+   "Will UNI reach $14.00 by December 31, 2026?": 8,
+   "Will UNI dip to $3.00 by December 31, 2026?": 5,
    "Will UNI reach $15.50 by December 31, 2026?": 10
   },
-  "macd_day": "2026-09-29"
+  "macd_day": "2026-10-29"
  },
  "AKT": {
   "seen_news": [],
@@ -1212,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793260392.4677448,
+ "_saved_t": 1793287054.35117,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,10 +1223,10 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 9,
+ "_wl_cursor": 14,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1793238651.3865297,
+  "live prices": 1793260395.1474743,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

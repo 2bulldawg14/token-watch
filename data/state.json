@@ -156,7 +156,7 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
@@ -169,7 +169,9 @@
   "risk": null,
   "signal": "TRIM",
   "odds": {
-   "Will Sui reach $3.00 before 2027?": 4
+   "Will Sui dip to $0.60 before 2027?": 26,
+   "Will Sui reach $3.00 before 2027?": 4,
+   "Will Sui reach $1.60 before 2027?": 20
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1121,7 +1123,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
  "UNI": {
@@ -1188,8 +1190,8 @@
   "below_stop": false,
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": "LOW",
-  "signal": "TRIM",
+  "risk": null,
+  "signal": "SELL / AVOID",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1210,7 +1212,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793238619.6865375,
+ "_saved_t": 1793260392.4677448,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1221,10 +1223,10 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 4,
+ "_wl_cursor": 9,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1793224565.637945,
+  "live prices": 1793238651.3865297,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

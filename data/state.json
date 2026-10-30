@@ -109,7 +109,7 @@
  "SOL": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "low",
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
@@ -126,13 +126,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $16 by December 31, 2026?": 28,
-   "Will Chainlink reach $20 by December 31, 2026?": 22,
-   "Will Chainlink reach $18 by December 31, 2026?": 28,
-   "Will Chainlink reach $26 in October?": 5
+   "Will Chainlink reach $26 in October?": 4,
+   "Will Chainlink reach $20 by December 31, 2026?": 27,
+   "Will Chainlink reach $20 in October?": 32,
+   "Will Chainlink dip to $10 by December 31, 2026?": 50
   },
   "in_zone2": false,
   "below_stop": false,
@@ -150,13 +150,13 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W44",
- "_export_t": 1793305966.3174684,
+ "_export_t": 1793342186.7915378,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
+  "risk": null,
   "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
@@ -169,7 +169,6 @@
   "risk": null,
   "signal": "TRIM",
   "odds": {
-   "Will Sui dip to $0.60 before 2027?": 26,
    "Will Sui reach $3.00 before 2027?": 4,
    "Will Sui reach $1.60 before 2027?": 20
   },
@@ -1188,10 +1187,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "macd_day": "2026-09-30"
  },
  "LTC": {
@@ -1212,7 +1211,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793342184.6080146,
+ "_saved_t": 1793367856.1350062,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1223,10 +1222,10 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 1,
+ "_wl_cursor": 7,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1793320361.603677,
+  "live prices": 1793342217.7100039,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

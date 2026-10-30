@@ -1994,11 +1994,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 58.6,
+  "last": 59.1,
   "max": 76.31,
   "min": 50.36,
   "checkpoints": {
-   "7": 1.15
+   "7": 1.15,
+   "30": -18.13
   },
   "kind": "stock",
   "by": "David",
@@ -2044,7 +2045,7 @@
    "coingecko": "https://finance.yahoo.com/quote/RKLB",
    "dexscreener": "https://www.tradingview.com/symbols/RKLB/"
   },
-  "updated": "2026-10-28 21:56 UTC",
+  "updated": "2026-10-30 00:32 UTC",
   "tmax": 72.19,
   "tmin": 69.7,
   "ret_open": -2.66,
@@ -3833,9 +3834,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 2334.84,
+  "last": 2208.03,
   "max": 2583.55,
-  "min": 2310.48,
+  "min": 2208.03,
   "checkpoints": {
    "7": -5.37
   },
@@ -3880,7 +3881,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-28 17:24 UTC",
+  "updated": "2026-10-30 00:32 UTC",
   "tmax": 2581.12,
   "tmin": 2560.52,
   "ret_open": -0.44,
@@ -4839,9 +4840,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 58.99,
+  "last": 53.46,
   "max": 62.1,
-  "min": 56.21,
+  "min": 53.46,
   "checkpoints": {
    "7": 0.99
   },
@@ -4886,7 +4887,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/litecoin",
    "dexscreener": "https://dexscreener.com/search?q=LTC"
   },
-  "updated": "2026-10-28 17:24 UTC",
+  "updated": "2026-10-30 00:32 UTC",
   "tmax": 62.1,
   "tmin": 57.25,
   "ret_open": -3.34,
@@ -5522,9 +5523,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 2334.84,
+  "last": 2208.03,
   "max": 2509.26,
-  "min": 2310.48,
+  "min": 2208.03,
   "checkpoints": {
    "7": 2.78
   },
@@ -5569,7 +5570,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/ethereum",
    "dexscreener": "https://dexscreener.com/search?q=ETH"
   },
-  "updated": "2026-10-28 17:24 UTC",
+  "updated": "2026-10-30 00:32 UTC",
   "tmax": 2478.37,
   "tmin": 2346.25,
   "ret_open": -2.74,
@@ -5852,7 +5853,7 @@
    ]
   },
   "source": "watchlist",
-  "last": 145.23,
+  "last": 143.89,
   "max": 166.18,
   "min": 143.66,
   "checkpoints": {
@@ -5902,7 +5903,7 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-28 21:56 UTC",
+  "updated": "2026-10-30 00:32 UTC",
   "tmax": 152.16,
   "tmin": 143.66,
   "ret_open": -4.1,
@@ -6801,7 +6802,10 @@
    "best": 4.1860465116279055,
    "basis": "closed",
    "gave_back": false
-  }
+  },
+  "after_sell": 3.8,
+  "sell_verdict": "fine",
+  "sell_reviewed": true
  },
  {
   "id": "SOL-1792348142",
@@ -7149,9 +7153,9 @@
    ]
   },
   "source": "watchlist",
-  "last": 58.99,
+  "last": 53.46,
   "max": 62.1,
-  "min": 56.21,
+  "min": 53.46,
   "checkpoints": {
    "7": -4.9
   },
@@ -7196,7 +7200,7 @@
    "coingecko": "https://www.coingecko.com/en/coins/litecoin",
    "dexscreener": "https://dexscreener.com/search?q=LTC"
   },
-  "updated": "2026-10-28 17:24 UTC",
+  "updated": "2026-10-30 00:32 UTC",
   "tmax": 62.1,
   "tmin": 58.92,
   "ret_open": -4.29,
@@ -8129,10 +8133,12 @@
    ]
   },
   "source": "watchlist",
-  "last": 145.23,
+  "last": 143.89,
   "max": 150.97,
-  "min": 144.75,
-  "checkpoints": {},
+  "min": 143.89,
+  "checkpoints": {
+   "7": -4.69
+  },
   "kind": "stock",
   "by": "David",
   "feat": {
@@ -8177,7 +8183,7 @@
    "coingecko": "https://finance.yahoo.com/quote/SPCX",
    "dexscreener": "https://www.tradingview.com/symbols/SPCX/"
   },
-  "updated": "2026-10-28 21:56 UTC",
+  "updated": "2026-10-30 00:32 UTC",
   "tmax": 150.97,
   "tmin": 144.89,
   "ret_open": 0.0,

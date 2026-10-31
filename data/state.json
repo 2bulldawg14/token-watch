@@ -204,9 +204,9 @@
  },
  "ETH": {
   "seen_news": [],
-  "in_zone": true,
-  "rsi_band": "low",
-  "risk": "LOW",
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": null,
   "signal": "TRIM",
   "odds": {
    "Will Ethereum reach $4,500 by December 31, 2026?": 4,
@@ -1171,7 +1171,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $700 by December 31, 2026?": 23,
@@ -1194,7 +1194,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
   "signal": "TRIM",
@@ -1208,21 +1208,21 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793401342.5240262,
+ "_saved_t": 1793413211.8606057,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 17,
+ "_wl_cursor": 22,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1793387019.4917328,
+  "live prices": 1793401378.4047081,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

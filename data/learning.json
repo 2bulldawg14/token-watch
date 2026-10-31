@@ -30,10 +30,10 @@
   {
    "key": "weak_market",
    "text": "Weak market backdrop (Bitcoin trend, Fear & Greed, stablecoin flows)",
-   "n": 9,
+   "n": 10,
    "wins": 1,
-   "avg": -2.471111111111111,
-   "points": -12.0,
+   "avg": -3.0669999999999997,
+   "points": -12,
    "block": true
   },
   {
@@ -65,17 +65,17 @@
   }
  ],
  "mult": {
-  "technical": 0.78,
+  "technical": 0.77,
   "flows": 1.07,
   "macro": 1.01,
   "markets": 0.99
  },
- "graded": 80,
- "t": "2026-10-31 19:22 UTC",
+ "graded": 81,
+ "t": "2026-10-31 22:47 UTC",
  "scorecard": {
-  "closed": 76,
+  "closed": 77,
   "wins": 30,
-  "avg": -1.79,
+  "avg": -1.87,
   "held": 2.9,
   "gave_back": 1
  },
@@ -90,12 +90,12 @@
    "text": "entered the sell zone"
   },
   "signal": {
-   "n": 63,
+   "n": 64,
    "reviewed": 61,
    "early": 3,
    "good": 11,
    "after": 3.1,
-   "ret": -3.36,
+   "ret": -3.44,
    "text": "signal turned TRIM/SELL"
   },
   "target": {
@@ -110,5 +110,5 @@
  },
  "sell_soft": [],
  "wins": 13,
- "losses": 32
+ "losses": 33
 }

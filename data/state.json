@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W44",
- "_export_t": 1793458533.3944323,
+ "_export_t": 1793474544.3219466,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -188,7 +188,7 @@
  },
  "BTC": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
@@ -220,10 +220,10 @@
  },
  "AERO": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-12"
@@ -418,14 +418,14 @@
   },
   "UNI": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "AKT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1131,24 +1131,24 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": "LOW",
-  "signal": "HOLD",
+  "risk": null,
+  "signal": "TRIM",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 22,
-   "Will UNI reach $15.50 by December 31, 2026?": 10,
-   "Will UNI dip to $3.00 by December 31, 2026?": 13,
-   "Will UNI dip to $2.00 by December 31, 2026?": 3
+   "Will UNI reach $11.00 by December 31, 2026?": 18,
+   "Will UNI reach $15.50 by December 31, 2026?": 6,
+   "Will UNI dip to $2.00 by December 31, 2026?": 3,
+   "Will UNI dip to $3.00 by December 31, 2026?": 13
   },
-  "macd_day": "2026-10-29"
+  "macd_day": "2026-10-31"
  },
  "AKT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-10-12"
  },
  "HYPE": {
@@ -1208,7 +1208,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793474542.324895,
+ "_saved_t": 1793486847.0465698,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1219,10 +1219,10 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 9,
+ "_wl_cursor": 14,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1793458563.1214302,
+  "live prices": 1793474544.3237152,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

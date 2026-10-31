@@ -150,14 +150,14 @@
  },
  "_discovery_t": 1791784888.3459618,
  "_report_week": "2026-W44",
- "_export_t": 1793436198.2767692,
+ "_export_t": 1793458533.3944323,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-05"
@@ -181,7 +181,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": null,
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -1208,7 +1208,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793458531.2515097,
+ "_saved_t": 1793474542.324895,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1219,10 +1219,10 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 4,
+ "_wl_cursor": 9,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1793436268.7468827,
+  "live prices": 1793458563.1214302,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {

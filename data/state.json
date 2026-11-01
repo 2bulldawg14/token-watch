@@ -100,7 +100,7 @@
   "rsi_band": "mid",
   "hit_below": false,
   "hit_above": false,
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
@@ -110,13 +110,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Solana reach $200 in October?": 0,
-   "Will Solana reach $190 in October?": 0,
-   "Will Solana reach $160 in October?": 0,
-   "Will Solana reach $180 in October?": 0
+   "Will Solana reach $220 by December 31, 2026?": 4,
+   "Will Solana reach $200 by December 31, 2026?": 4,
+   "Will Solana reach $300 by December 31, 2026?": 2,
+   "Will Solana reach $180 by December 31, 2026?": 5
   },
   "in_zone2": false,
   "below_stop": false,
@@ -129,10 +129,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $20 by December 31, 2026?": 23,
+   "Will Chainlink reach $20 by December 31, 2026?": 24,
    "Will Chainlink reach $26 in October?": 5,
-   "Will Chainlink reach $20 in October?": 30,
-   "Will Chainlink dip to $6 by December 31, 2026?": 10
+   "Will Chainlink reach $20 in October?": 33,
+   "Will Chainlink dip to $10 by December 31, 2026?": 49
   },
   "in_zone2": false,
   "below_stop": false,
@@ -143,12 +143,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1791784888.3459618,
+ "_discovery_t": 1793496531.449988,
  "_report_week": "2026-W44",
  "_export_t": 1793474544.3219466,
  "_tg_offset": 218529302,
@@ -156,7 +156,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
@@ -166,7 +166,7 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "odds": {
    "Will Sui reach $3.00 before 2027?": 4,
@@ -180,7 +180,7 @@
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
@@ -206,13 +206,13 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Ethereum reach $4,500 by December 31, 2026?": 4,
-   "Will Ethereum reach $10,000 by December 31, 2026?": 1,
-   "Will Ethereum reach $5,000 by December 31, 2026?": 3,
-   "Will Ethereum reach $4,000 by December 31, 2026?": 4
+   "Will Ethereum reach $4,500 in October?": 0,
+   "Will Ethereum reach $3,000 in October?": 0,
+   "Will Ethereum reach $3,400 in October?": 0,
+   "Will Ethereum reach $2,900 in October?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -222,7 +222,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
@@ -232,7 +232,7 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
@@ -255,10 +255,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will XRP reach $4.00 in October?": 0,
    "Will XRP reach $8.00 by December 31, 2026?": 1,
    "Will XRP reach $5.00 by December 31, 2026?": 2,
-   "Will XRP dip to $0.20 by December 31, 2026?": 1
+   "Will XRP dip to $0.20 by December 31, 2026?": 1,
+   "Will XRP reach $2.60 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -268,8 +268,8 @@
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "SELL / AVOID",
+  "risk": "MEDIUM",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-14"
@@ -298,7 +298,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -611,7 +611,7 @@
   },
   "AKE": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1042,6 +1042,55 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "NINJACAT": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "PEARL": {
+   "seen": true,
+   "bad": false,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "KNTQ": {
+   "seen": true,
+   "bad": true,
+   "in_sell": true,
+   "below": false,
+   "hit_t": false
+  },
+  "BNB": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "JCT": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "RAIN": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "KMNO": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -1121,7 +1170,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
@@ -1131,13 +1180,13 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 18,
    "Will UNI reach $15.50 by December 31, 2026?": 6,
+   "Will UNI reach $11.00 by December 31, 2026?": 18,
    "Will UNI dip to $2.00 by December 31, 2026?": 3,
-   "Will UNI dip to $3.00 by December 31, 2026?": 13
+   "Will UNI dip to $3.00 by December 31, 2026?": 12
   },
   "macd_day": "2026-10-31"
  },
@@ -1147,8 +1196,8 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "TRIM",
+  "risk": "LOW",
+  "signal": "SELL / AVOID",
   "macd_day": "2026-10-12"
  },
  "HYPE": {
@@ -1157,10 +1206,13 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
-   "HYPE Up or Down - October 30, 6PM ET": 100
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 3,
+   "Will Hyperliquid reach $200 by December 31, 2026?": 4,
+   "Will Hyperliquid dip to $50 by December 31, 2026?": 6,
+   "Will Hyperliquid dip to $40 by December 31, 2026?": 6
   },
   "macd_day": "2026-09-28"
  },
@@ -1170,13 +1222,13 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash dip to $700 by December 31, 2026?": 23,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
-   "Will Zcash dip to $200 by December 31, 2026?": 5
+   "Will Zcash dip to $200 by December 31, 2026?": 5,
+   "Will Zcash dip to $700 by December 31, 2026?": 19
   },
   "macd_day": "2026-10-23"
  },
@@ -1186,7 +1238,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "macd_day": "2026-09-30"
  },
@@ -1196,7 +1248,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "LOW",
   "signal": "TRIM",
   "macd_day": "2026-10-04"
  },
@@ -1208,21 +1260,21 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793486847.0465698,
+ "_saved_t": 1793496584.4312954,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 14,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
-  "live prices": 1793474544.3237152,
+  "live prices": 1793486849.2816772,
   "SECURITIZE|SECURITIZE": 1790866042.7360966
  },
  "SPCX": {
@@ -1874,8 +1926,8 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
-  "signal": "TRIM",
+  "risk": "HIGH",
+  "signal": "AVOID (SCAM RISK)",
   "macd_day": "2026-10-08"
  },
  "XRPN": {
@@ -1957,7 +2009,7 @@
   "below_stop": false,
   "in_zone": false,
   "rsi_band": "mid",
-  "risk": null,
+  "risk": "MEDIUM",
   "signal": "SELL / AVOID",
   "macd_day": "2026-10-03"
  },
@@ -1992,6 +2044,15 @@
   "in_zone": true,
   "rsi_band": "low",
   "risk": "LOW",
+  "signal": "TRIM"
+ },
+ "NINJACAT": {
+  "seen_news": [],
+  "in_zone2": false,
+  "below_stop": false,
+  "in_zone": false,
+  "rsi_band": "mid",
+  "risk": "MEDIUM",
   "signal": "TRIM"
  }
 }

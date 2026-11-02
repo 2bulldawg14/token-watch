@@ -109,14 +109,14 @@
  "SOL": {
   "seen_news": [],
   "in_zone": true,
-  "rsi_band": "low",
+  "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
-   "Will Solana reach $600 by December 31, 2026?": 1,
    "Will Solana reach $180 in November?": 1,
+   "Will Solana reach $600 by December 31, 2026?": 1,
    "Will Solana reach $300 by December 31, 2026?": 2,
-   "Will Solana reach $200 by December 31, 2026?": 5
+   "Will Solana reach $220 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -129,10 +129,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $20 by December 31, 2026?": 15,
-   "Will Chainlink dip to $4 by December 31, 2026?": 10,
-   "Will Chainlink reach $20 in November?": 44,
-   "Will Chainlink reach $22 in November?": 43
+   "Will Chainlink reach $20 in November?": 45,
+   "Will Chainlink reach $22 in November?": 48,
+   "Will Chainlink reach $12 in November?": 56,
+   "Will Chainlink dip to $4 in November?": 40
   },
   "in_zone2": false,
   "below_stop": false,
@@ -149,7 +149,7 @@
   "macd_day": "2026-10-03"
  },
  "_discovery_t": 1793562584.141952,
- "_report_week": "2026-W44",
+ "_report_week": "2026-W45",
  "_export_t": 1793562642.0988586,
  "_tg_offset": 218529302,
  "HBAR": {
@@ -164,7 +164,7 @@
  },
  "SUI": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "SELL / AVOID",
@@ -194,8 +194,8 @@
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will Bitcoin reach $500,000 by December 31, 2026?": 0
+   "Will Bitcoin reach $500,000 by December 31, 2026?": 0,
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -206,12 +206,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
-   "Will Ethereum reach $4,500 by December 31, 2026?": 3,
+   "Will Ethereum dip to $1,500 by December 31, 2026?": 11,
    "Will Ethereum reach $10,000 by December 31, 2026?": 0,
-   "Will Ethereum reach $5,000 by December 31, 2026?": 3,
-   "Will Ethereum dip to $1,500 by December 31, 2026?": 12
+   "Will Ethereum reach $4,500 by December 31, 2026?": 3,
+   "Will Ethereum reach $5,000 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -252,12 +252,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will XRP reach $8.00 by December 31, 2026?": 1,
    "Will XRP reach $5.00 by December 31, 2026?": 3,
    "Will XRP dip to $0.20 by December 31, 2026?": 1,
-   "Will XRP reach $2.60 by December 31, 2026?": 6
+   "Will XRP reach $4.00 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1210,7 +1210,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "macd_day": "2026-10-12"
  },
  "HYPE": {
@@ -1236,12 +1236,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 3,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 22,
-   "Will Zcash dip to $700 by December 31, 2026?": 19
+   "Will Zcash dip to $700 by December 31, 2026?": 19,
+   "Will Zcash dip to $200 by December 31, 2026?": 4
   },
   "macd_day": "2026-10-23"
  },
@@ -1262,7 +1262,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "macd_day": "2026-10-04"
  },
  "_disc_seen": {
@@ -1273,7 +1273,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793575607.5397046,
+ "_saved_t": 1793587527.515571,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

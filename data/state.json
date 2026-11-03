@@ -101,7 +101,7 @@
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-22"
@@ -111,12 +111,12 @@
   "in_zone": true,
   "rsi_band": "low",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
    "Will Solana reach $600 by December 31, 2026?": 0,
    "Will Solana reach $200 by December 31, 2026?": 4,
-   "Will Solana reach $220 by December 31, 2026?": 4,
-   "Will Solana reach $300 by December 31, 2026?": 2
+   "Will Solana reach $180 in November?": 0,
+   "Will Solana reach $220 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -129,9 +129,9 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $20 in November?": 40,
-   "Will Chainlink reach $22 in November?": 42,
-   "Will Chainlink dip to $4 in November?": 36,
+   "Will Chainlink reach $20 in November?": 42,
+   "Will Chainlink reach $22 in November?": 46,
+   "Will Chainlink dip to $4 in November?": 30,
    "Will Chainlink reach $12 in November?": 57
   },
   "in_zone2": false,
@@ -143,14 +143,14 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
  "_discovery_t": 1793616323.4799383,
  "_report_week": "2026-W45",
- "_export_t": 1793616380.7719312,
+ "_export_t": 1793652119.0839944,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -276,14 +276,14 @@
  "_sellst": {
   "INJ": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
   },
   "SOL": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -297,7 +297,7 @@
   },
   "ONDO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1287,7 +1287,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793652115.8513138,
+ "_saved_t": 1793673592.2405875,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1298,7 +1298,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 0,
+ "_wl_cursor": 6,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1793486849.2816772,

@@ -109,13 +109,13 @@
  "SOL": {
   "seen_news": [],
   "in_zone": true,
-  "rsi_band": "low",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
    "Will Solana reach $600 by December 31, 2026?": 0,
-   "Will Solana reach $200 by December 31, 2026?": 4,
-   "Will Solana reach $220 by December 31, 2026?": 4,
+   "Will Solana reach $200 by December 31, 2026?": 2,
+   "Will Solana reach $220 by December 31, 2026?": 3,
    "Will Solana reach $300 by December 31, 2026?": 2
   },
   "in_zone2": false,
@@ -129,8 +129,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Chainlink reach $20 in November?": 40,
-   "Will Chainlink reach $22 in November?": 38,
+   "Will Chainlink reach $20 in November?": 44,
+   "Will Chainlink reach $22 in November?": 42,
    "Will Chainlink dip to $4 in November?": 30,
    "Will Chainlink reach $12 in November?": 57
   },
@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1793700437.9876943,
  "_report_week": "2026-W45",
- "_export_t": 1793673594.579818,
+ "_export_t": 1793700490.6494675,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -169,10 +169,8 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will Sui dip to $0.60 before 2027?": 26,
-   "Will Sui reach $1.80 before 2027?": 12,
-   "Will Sui reach $3.00 before 2027?": 5,
-   "Will Sui reach $1.60 before 2027?": 13
+   "Will Sui dip to $0.40 before 2027?": 8,
+   "Will Sui reach $3.00 before 2027?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -183,7 +181,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-06"
@@ -198,7 +196,7 @@
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0,
    "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
-   "Will the price of Bitcoin be above $90,000 on November 3?": 0
+   "Will Bitcoin reach $500,000 by December 31, 2026?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -225,7 +223,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-12"
@@ -354,7 +352,7 @@
   },
   "AERO": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1227,10 +1225,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 18,
+   "Will UNI reach $11.00 by December 31, 2026?": 24,
    "Will UNI dip to $2.00 by December 31, 2026?": 3,
    "Will UNI reach $15.50 by December 31, 2026?": 6,
-   "Will UNI dip to $3.00 by December 31, 2026?": 9
+   "Will UNI dip to $3.00 by December 31, 2026?": 11
   },
   "macd_day": "2026-10-31"
  },
@@ -1238,10 +1236,10 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "macd_day": "2026-10-12"
  },
  "HYPE": {
@@ -1280,7 +1278,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
@@ -1304,7 +1302,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793700488.4347863,
+ "_saved_t": 1793728530.6976485,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1315,7 +1313,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 0,
+ "_wl_cursor": 13,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1793486849.2816772,

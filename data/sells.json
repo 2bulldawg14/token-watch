@@ -1131,5 +1131,38 @@
   "source": "watchlist",
   "starred": true,
   "closes": "BTC-1793700365"
+ },
+ {
+  "symbol": "ONDO",
+  "cg_id": "ondo-finance",
+  "t": 1793761357,
+  "date": "2026-11-04 03:02 UTC",
+  "price": 0.3772,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "ONDO-1793728497"
+ },
+ {
+  "symbol": "SUI",
+  "cg_id": "sui",
+  "t": 1793761370,
+  "date": "2026-11-04 03:02 UTC",
+  "price": 0.861,
+  "why": "Signal turned SELL / AVOID",
+  "source": "watchlist",
+  "starred": true,
+  "closes": "SUI-1793700355"
+ },
+ {
+  "symbol": "LTC",
+  "cg_id": "litecoin",
+  "t": 1793761412,
+  "date": "2026-11-04 03:03 UTC",
+  "price": 52.24,
+  "why": "Signal turned TRIM",
+  "source": "watchlist",
+  "starred": false,
+  "closes": "LTC-1793700399"
  }
 ]

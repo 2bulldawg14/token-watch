@@ -104,19 +104,19 @@
   "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
-  "macd_day": "2026-10-22"
+  "macd_day": "2026-11-06"
  },
  "SOL": {
   "seen_news": [],
   "in_zone": true,
-  "rsi_band": "low",
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
    "Will Solana dip to $10 in November?": 0,
    "Will Solana reach $160 in November?": 1,
-   "Will Solana reach $600 by December 31, 2026?": 0,
-   "Will Solana reach $180 in November?": 0
+   "Will Solana reach $180 in November?": 0,
+   "Will Solana reach $600 by December 31, 2026?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -124,15 +124,15 @@
  },
  "LINK": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $20 in November?": 42,
-   "Will Chainlink reach $22 in November?": 42,
-   "Will Chainlink dip to $4 in November?": 32,
-   "Will Chainlink reach $12 in November?": 57
+   "Will Chainlink reach $22 by December 31, 2026?": 6,
+   "Will Chainlink reach $24 by December 31, 2026?": 6,
+   "Will Chainlink reach $18 by December 31, 2026?": 13,
+   "Will Chainlink reach $20 in November?": 44
   },
   "in_zone2": false,
   "below_stop": false,
@@ -148,16 +148,16 @@
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1793862113.0368197,
+ "_discovery_t": 1793929708.0004778,
  "_report_week": "2026-W45",
- "_export_t": 1793892294.260725,
+ "_export_t": 1793914515.1102242,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-05"
@@ -169,6 +169,7 @@
   "risk": "LOW",
   "signal": "SELL / AVOID",
   "odds": {
+   "Will Sui reach $2.50 before 2027?": 6,
    "Will Sui reach $3.00 before 2027?": 4
   },
   "in_zone2": false,
@@ -190,11 +191,11 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 5,
    "Will Bitcoin reach $500,000 by December 31, 2026?": 0
   },
   "in_zone2": false,
@@ -268,7 +269,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-10-14"
@@ -290,7 +291,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1058,7 +1059,7 @@
   },
   "KNTQ": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1174,6 +1175,13 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "SOON": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -1266,10 +1274,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
+   "Will UNI reach $15.50 by December 31, 2026?": 6,
    "Will UNI dip to $4.00 by December 31, 2026?": 12,
-   "Will UNI reach $11.00 by December 31, 2026?": 21,
-   "Will UNI dip to $2.00 by December 31, 2026?": 2,
-   "Will UNI reach $15.50 by December 31, 2026?": 6
+   "Will UNI reach $11.00 by December 31, 2026?": 20,
+   "Will UNI reach $14.00 by December 31, 2026?": 4
   },
   "macd_day": "2026-10-31"
  },
@@ -1277,7 +1285,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
@@ -1310,7 +1318,7 @@
   "odds": {
    "Will Zcash dip to $200 by December 31, 2026?": 4,
    "Will Zcash dip to $50 by December 31, 2026?": 3,
-   "Will Zcash reach $2000 by December 31, 2026?": 26,
+   "Will Zcash reach $2000 by December 31, 2026?": 22,
    "Will Zcash dip to $100 by December 31, 2026?": 3
   },
   "macd_day": "2026-11-04"
@@ -1332,7 +1340,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "macd_day": "2026-10-04"
  },
  "_disc_seen": {
@@ -1343,7 +1351,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1793914512.2682295,
+ "_saved_t": 1793929752.229332,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

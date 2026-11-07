@@ -96,7 +96,7 @@
  },
  "INJ": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "hit_below": false,
   "hit_above": false,
@@ -129,9 +129,9 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Chainlink reach $24 by December 31, 2026?": 6,
-   "Will Chainlink reach $20 by December 31, 2026?": 7,
    "Will Chainlink reach $22 by December 31, 2026?": 6,
+   "Will Chainlink reach $20 by December 31, 2026?": 7,
+   "Will Chainlink dip to $6 by December 31, 2026?": 9,
    "Will Chainlink reach $18 by December 31, 2026?": 13
   },
   "in_zone2": false,
@@ -148,7 +148,7 @@
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1793983871.5891304,
+ "_discovery_t": 1794040397.0091782,
  "_report_week": "2026-W45",
  "_export_t": 1794002348.9000416,
  "_tg_offset": 218529302,
@@ -169,10 +169,10 @@
   "risk": "LOW",
   "signal": "HOLD",
   "odds": {
+   "Will Sui dip to $0.60 before 2027?": 28,
    "Will Sui dip to $0.20 before 2027?": 3,
-   "Will Sui reach $1.40 before 2027?": 17,
-   "Will Sui dip to $0.40 before 2027?": 9,
-   "Will Sui reach $3.00 before 2027?": 4
+   "Will Sui reach $1.60 before 2027?": 10,
+   "Will Sui dip to $0.40 before 2027?": 8
   },
   "in_zone2": false,
   "below_stop": false,
@@ -180,7 +180,7 @@
  },
  "SEI": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "SELL / AVOID",
@@ -197,7 +197,7 @@
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 4,
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 3,
    "Will the price of Bitcoin be above $88,000 on November 7?": 0
   },
   "in_zone2": false,
@@ -214,7 +214,7 @@
    "Will Ethereum reach $10,000 by December 31, 2026?": 0,
    "Will Ethereum reach $5,000 by December 31, 2026?": 1,
    "Will Ethereum reach $6,000 by December 31, 2026?": 1,
-   "Will Ethereum reach $8,000 by December 31, 2026?": 1
+   "Will Ethereum reach $7,000 by December 31, 2026?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -427,7 +427,7 @@
   },
   "AKT": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -530,7 +530,7 @@
   },
   "SPX": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1198,6 +1198,20 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "ONE": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "PLUME": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -1275,7 +1289,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",
@@ -1304,7 +1318,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "macd_day": "2026-11-07"
  },
  "HYPE": {
@@ -1318,8 +1332,8 @@
   "odds": {
    "Will Hyperliquid dip to $30 by December 31, 2026?": 2,
    "Will Hyperliquid reach $200 by December 31, 2026?": 3,
-   "Will Hyperliquid dip to $40 by December 31, 2026?": 5,
-   "Will Hyperliquid reach $150 by December 31, 2026?": 5
+   "Will Hyperliquid reach $150 by December 31, 2026?": 5,
+   "Will Hyperliquid dip to $40 by December 31, 2026?": 5
   },
   "macd_day": "2026-11-06"
  },
@@ -1367,12 +1381,12 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1794016149.6920867,
+ "_saved_t": 1794040444.161925,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "HOLD",

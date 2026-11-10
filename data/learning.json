@@ -48,10 +48,10 @@
   {
    "key": "scam_medium",
    "text": "Scam check was MEDIUM risk",
-   "n": 23,
+   "n": 24,
    "wins": 8,
-   "avg": -1.6056521739130434,
-   "points": -4.6,
+   "avg": -1.61,
+   "points": -5.0,
    "block": false
   },
   {
@@ -69,14 +69,14 @@
   "flows": 1.06,
   "macro": 1.01,
   "markets": 0.98,
-  "fundamental": 1.21
+  "fundamental": 1.2
  },
- "graded": 90,
- "t": "2026-11-10 16:31 UTC",
+ "graded": 91,
+ "t": "2026-11-10 21:57 UTC",
  "scorecard": {
-  "closed": 89,
+  "closed": 90,
   "wins": 32,
-  "avg": -3.18,
+  "avg": -3.16,
   "held": 3.9,
   "gave_back": 2
  },
@@ -91,12 +91,12 @@
    "text": "entered the sell zone"
   },
   "signal": {
-   "n": 76,
+   "n": 77,
    "reviewed": 65,
    "early": 4,
    "good": 11,
    "after": 3.1,
-   "ret": -4.72,
+   "ret": -4.68,
    "text": "signal turned TRIM/SELL"
   },
   "target": {

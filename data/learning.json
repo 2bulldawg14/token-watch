@@ -72,15 +72,24 @@
   "fundamental": 1.2
  },
  "graded": 91,
- "t": "2026-11-11 17:16 UTC",
+ "t": "2026-11-11 23:33 UTC",
  "scorecard": {
-  "closed": 90,
+  "closed": 92,
   "wins": 32,
-  "avg": -3.16,
-  "held": 3.9,
-  "gave_back": 2
+  "avg": -4.94,
+  "held": 4.8,
+  "gave_back": 3
  },
  "sells": {
+  "signal": {
+   "n": 79,
+   "reviewed": 70,
+   "early": 4,
+   "good": 11,
+   "after": 2.6,
+   "ret": -6.71,
+   "text": "signal turned TRIM/SELL"
+  },
   "zone": {
    "n": 7,
    "reviewed": 7,
@@ -89,15 +98,6 @@
    "after": 3.3,
    "ret": 4.84,
    "text": "entered the sell zone"
-  },
-  "signal": {
-   "n": 77,
-   "reviewed": 70,
-   "early": 4,
-   "good": 11,
-   "after": 2.6,
-   "ret": -4.68,
-   "text": "signal turned TRIM/SELL"
   },
   "target": {
    "n": 6,

@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1794516282.8800237,
  "_report_week": "2026-W46",
- "_export_t": 1794534275.7834828,
+ "_export_t": 1794561424.4385977,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -170,9 +170,9 @@
   "signal": "SELL / AVOID",
   "odds": {
    "Will Sui dip to $0.40 before 2027?": 8,
-   "Will Sui reach $1.60 before 2027?": 11,
-   "Will Sui reach $1.40 before 2027?": 13,
-   "Will Sui reach $2.00 before 2027?": 11
+   "Will Sui reach $3.00 before 2027?": 4,
+   "Will Sui reach $1.40 before 2027?": 12,
+   "Will Sui reach $1.60 before 2027?": 9
   },
   "in_zone2": false,
   "below_stop": false,
@@ -190,15 +190,15 @@
  },
  "BTC": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "low",
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0,
-   "Will Bitcoin reach $120,000 by December 31, 2026?": 1,
-   "Will Bitcoin reach $90,000 by December 31, 2026?": 12
+   "Will Bitcoin reach $500,000 by December 31, 2026?": 0,
+   "Will Bitcoin dip to $50,000 by December 31, 2026?": 10
   },
   "in_zone2": false,
   "below_stop": false,
@@ -222,8 +222,8 @@
  },
  "AERO": {
   "seen_news": [],
-  "in_zone": true,
-  "rsi_band": "mid",
+  "in_zone": false,
+  "rsi_band": "low",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)",
   "in_zone2": false,
@@ -1368,10 +1368,10 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will UNI reach $11.00 by December 31, 2026?": 12,
-   "Will UNI reach $15.50 by December 31, 2026?": 6,
    "Will UNI reach $14.00 by December 31, 2026?": 6,
-   "Will UNI reach $12.50 by December 31, 2026?": 6
+   "Will UNI reach $15.50 by December 31, 2026?": 6,
+   "Will UNI reach $11.00 by December 31, 2026?": 12,
+   "Will UNI dip to $4.00 by December 31, 2026?": 18
   },
   "macd_day": "2026-11-09"
  },
@@ -1445,7 +1445,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1794561421.7937791,
+ "_saved_t": 1794590239.3168802,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1456,7 +1456,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 12,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1793486849.2816772,

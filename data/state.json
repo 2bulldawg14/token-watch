@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1794609869.1542306,
  "_report_week": "2026-W46",
- "_export_t": 1794650769.3128195,
+ "_export_t": 1794674341.3096914,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -165,13 +165,13 @@
  "SUI": {
   "seen_news": [],
   "in_zone": true,
-  "rsi_band": "mid",
+  "rsi_band": "low",
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Sui dip to $0.60 before 2027?": 26,
    "Will Sui reach $3.00 before 2027?": 4,
-   "Will Sui reach $1.40 before 2027?": 12,
+   "Will Sui reach $1.40 before 2027?": 10,
+   "Will Sui dip to $0.40 before 2027?": 8,
    "Will Sui reach $2.00 before 2027?": 8
   },
   "in_zone2": false,
@@ -183,7 +183,7 @@
   "in_zone": true,
   "rsi_band": "low",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-11-14"
@@ -198,7 +198,7 @@
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $500,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $35,000 by December 31, 2026?": 2
+   "Will Bitcoin reach $120,000 by December 31, 2026?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1375,7 +1375,7 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,
-  "rsi_band": "mid",
+  "rsi_band": "low",
   "risk": "MEDIUM",
   "signal": "SELL / AVOID",
   "macd_day": "2026-11-09"
@@ -1385,14 +1385,14 @@
   "in_zone2": false,
   "below_stop": false,
   "in_zone": true,
-  "rsi_band": "mid",
+  "rsi_band": "low",
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will UNI reach $15.50 by December 31, 2026?": 6,
-   "Will UNI reach $11.00 by December 31, 2026?": 6,
-   "Will UNI reach $12.50 by December 31, 2026?": 6,
-   "Will UNI reach $14.00 by December 31, 2026?": 6
+   "Will UNI reach $15.50 by December 31, 2026?": 4,
+   "Will UNI reach $11.00 by December 31, 2026?": 8,
+   "Will UNI reach $14.00 by December 31, 2026?": 5,
+   "Will UNI reach $12.50 by December 31, 2026?": 6
   },
   "macd_day": "2026-11-09"
  },
@@ -1466,7 +1466,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1794674338.939797,
+ "_saved_t": 1794689810.7931347,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1477,7 +1477,7 @@
   "signal": "TRIM",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 12,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1793486849.2816772,

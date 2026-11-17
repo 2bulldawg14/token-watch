@@ -96,7 +96,7 @@
  },
  "INJ": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "hit_below": false,
   "hit_above": false,
@@ -111,7 +111,7 @@
   "in_zone": false,
   "rsi_band": "low",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
    "Will Solana reach $180 in November?": 0,
    "Will Solana reach $170 in November?": 1,
@@ -130,9 +130,9 @@
   "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $26 by December 31, 2026?": 4,
-   "Will Chainlink reach $20 by December 31, 2026?": 6,
    "Will Chainlink dip to $4 by December 31, 2026?": 4,
-   "Will Chainlink reach $24 by December 31, 2026?": 3
+   "Will Chainlink reach $24 by December 31, 2026?": 4,
+   "Will Chainlink reach $20 by December 31, 2026?": 5
   },
   "in_zone2": false,
   "below_stop": false,
@@ -140,7 +140,7 @@
  },
  "ONDO": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "TRIM",
@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1794849109.9987218,
  "_report_week": "2026-W47",
- "_export_t": 1794849158.4038973,
+ "_export_t": 1794876817.0066376,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -164,15 +164,15 @@
  },
  "SUI": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
    "Will Sui reach $3.00 before 2027?": 4,
    "Will Sui reach $1.60 before 2027?": 4,
-   "Will Sui reach $1.40 before 2027?": 6,
-   "Will Sui reach $1.80 before 2027?": 6
+   "Will Sui reach $1.80 before 2027?": 6,
+   "Will Sui reach $1.40 before 2027?": 5
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1529,7 +1529,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1794876814.701268,
+ "_saved_t": 1794905733.7042325,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1540,7 +1540,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 0,
+ "_wl_cursor": 9,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1793486849.2816772,

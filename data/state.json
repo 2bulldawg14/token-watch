@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1794849109.9987218,
  "_report_week": "2026-W47",
- "_export_t": 1794876817.0066376,
+ "_export_t": 1794905736.0178018,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -190,14 +190,14 @@
  },
  "BTC": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "low",
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 9,
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 10,
    "Will Bitcoin reach $500,000 by December 31, 2026?": 0
   },
   "in_zone2": false,
@@ -420,7 +420,7 @@
   },
   "UNI": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1450,12 +1450,12 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "odds": {
-   "Will UNI reach $15.50 by December 31, 2026?": 5,
+   "Will UNI reach $11.00 by December 31, 2026?": 8,
    "Will UNI reach $14.00 by December 31, 2026?": 4,
-   "Will UNI reach $11.00 by December 31, 2026?": 9,
-   "Will UNI reach $12.50 by December 31, 2026?": 3
+   "Will UNI reach $15.50 by December 31, 2026?": 4,
+   "Will UNI reach $12.50 by December 31, 2026?": 4
   },
   "macd_day": "2026-11-09"
  },
@@ -1478,9 +1478,9 @@
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
+   "Will Hyperliquid reach $200 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid reach $100 by December 31, 2026?": 12,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 2,
    "Will Hyperliquid reach $150 by December 31, 2026?": 2
   },
   "macd_day": "2026-11-06"
@@ -1529,7 +1529,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1794905733.7042325,
+ "_saved_t": 1794939539.6711144,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1540,7 +1540,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 9,
+ "_wl_cursor": 15,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1793486849.2816772,

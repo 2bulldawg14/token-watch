@@ -101,7 +101,7 @@
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
-  "signal": "HOLD",
+  "signal": "ACCUMULATE",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-11-14"
@@ -114,7 +114,7 @@
   "signal": "TRIM",
   "odds": {
    "Will Solana reach $180 in November?": 0,
-   "Will Solana reach $170 in November?": 1,
+   "Will Solana reach $170 in November?": 0,
    "Will Solana reach $160 in November?": 1,
    "Will Solana reach $150 in November?": 1
   },
@@ -131,8 +131,8 @@
   "odds": {
    "Will Chainlink reach $26 by December 31, 2026?": 4,
    "Will Chainlink dip to $4 by December 31, 2026?": 2,
-   "Will Chainlink reach $22 by December 31, 2026?": 2,
-   "Will Chainlink reach $24 by December 31, 2026?": 3
+   "Will Chainlink reach $20 by December 31, 2026?": 4,
+   "Will Chainlink reach $22 by December 31, 2026?": 2
   },
   "in_zone2": false,
   "below_stop": false,
@@ -148,16 +148,16 @@
   "below_stop": false,
   "macd_day": "2026-10-03"
  },
- "_discovery_t": 1794963885.0265474,
+ "_discovery_t": 1795062688.1552017,
  "_report_week": "2026-W47",
- "_export_t": 1795023336.8004706,
+ "_export_t": 1795044936.805093,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "low",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-11-12"
@@ -170,8 +170,8 @@
   "signal": "TRIM",
   "odds": {
    "Will Sui reach $3.00 before 2027?": 4,
-   "Will Sui reach $1.60 before 2027?": 4,
-   "Will Sui reach $1.40 before 2027?": 4,
+   "Will Sui reach $2.00 before 2027?": 4,
+   "Will Sui reach $1.60 before 2027?": 5,
    "Will Sui reach $1.80 before 2027?": 6
   },
   "in_zone2": false,
@@ -186,7 +186,7 @@
   "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
-  "macd_day": "2026-11-18"
+  "macd_day": "2026-11-19"
  },
  "BTC": {
   "seen_news": [],
@@ -197,8 +197,8 @@
   "odds": {
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0,
-   "Will Bitcoin reach $500,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 11
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 11,
+   "Will Bitcoin reach $500,000 by December 31, 2026?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -206,14 +206,14 @@
  },
  "ETH": {
   "seen_news": [],
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "low",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Ethereum reach $10,000 by December 31, 2026?": 0,
-   "Will Ethereum reach $5,000 by December 31, 2026?": 1,
    "Will Ethereum reach $6,000 by December 31, 2026?": 1,
+   "Will Ethereum reach $5,000 by December 31, 2026?": 1,
    "Will Ethereum reach $4,500 by December 31, 2026?": 1
   },
   "in_zone2": false,
@@ -222,8 +222,8 @@
  },
  "AERO": {
   "seen_news": [],
-  "in_zone": true,
-  "rsi_band": "low",
+  "in_zone": false,
+  "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)",
   "in_zone2": false,
@@ -259,8 +259,8 @@
   "odds": {
    "Will XRP reach $3.00 in November?": 0,
    "Will XRP reach $8.00 by December 31, 2026?": 1,
-   "Will XRP reach $2.80 in November?": 1,
-   "Will XRP dip to $0.20 in November?": 0
+   "Will XRP reach $2.80 in November?": 0,
+   "Will XRP reach $5.00 by December 31, 2026?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -271,7 +271,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-11-16"
@@ -572,7 +572,7 @@
   },
   "QNT": {
    "seen": true,
-   "bad": true,
+   "bad": false,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1367,6 +1367,27 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "IRYS": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "FIL": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "FARTCOIN": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -1462,7 +1483,7 @@
    "Will UNI reach $15.50 by December 31, 2026?": 4,
    "Will UNI reach $12.50 by December 31, 2026?": 3,
    "Will UNI reach $14.00 by December 31, 2026?": 4,
-   "Will UNI dip to $3.00 by December 31, 2026?": 10
+   "Will UNI dip to $3.00 by December 31, 2026?": 9
   },
   "macd_day": "2026-11-09"
  },
@@ -1503,8 +1524,8 @@
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 1,
    "Will Zcash dip to $200 by December 31, 2026?": 2,
-   "Will Zcash dip to $700 by December 31, 2026?": 32,
-   "Will Zcash reach $2000 by December 31, 2026?": 7
+   "Will Zcash dip to $600 by December 31, 2026?": 24,
+   "Will Zcash dip to $700 by December 31, 2026?": 38
   },
   "macd_day": "2026-11-04"
  },
@@ -1522,8 +1543,8 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
-  "rsi_band": "low",
+  "in_zone": false,
+  "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
   "macd_day": "2026-10-04"
@@ -1536,7 +1557,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1795044934.4773934,
+ "_saved_t": 1795062737.863221,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1544,10 +1565,10 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 14,
+ "_wl_cursor": 0,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1793486849.2816772,
@@ -2246,7 +2267,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "HIGH",
   "signal": "AVOID (SCAM RISK)",

@@ -101,7 +101,7 @@
   "hit_below": false,
   "hit_above": false,
   "risk": "MEDIUM",
-  "signal": "ACCUMULATE",
+  "signal": "HOLD",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-11-14"
@@ -111,12 +111,12 @@
   "in_zone": false,
   "rsi_band": "low",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Solana reach $180 in November?": 0,
    "Will Solana reach $170 in November?": 0,
    "Will Solana reach $160 in November?": 0,
-   "Will Solana reach $150 in November?": 1
+   "Will Solana reach $140 by December 31, 2026?": 3
   },
   "in_zone2": false,
   "below_stop": false,
@@ -127,7 +127,7 @@
   "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "HOLD",
+  "signal": "TRIM",
   "odds": {
    "Will Chainlink reach $26 by December 31, 2026?": 4,
    "Will Chainlink reach $20 by December 31, 2026?": 4,
@@ -150,14 +150,14 @@
  },
  "_discovery_t": 1795125768.8975554,
  "_report_week": "2026-W47",
- "_export_t": 1795096474.0387523,
+ "_export_t": 1795125820.2214446,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
   "in_zone": true,
   "rsi_band": "low",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-11-12"
@@ -169,9 +169,9 @@
   "risk": "LOW",
   "signal": "TRIM",
   "odds": {
-   "Will Sui reach $1.40 before 2027?": 7,
-   "Will Sui reach $3.00 before 2027?": 3,
    "Will Sui reach $2.00 before 2027?": 4,
+   "Will Sui reach $3.00 before 2027?": 3,
+   "Will Sui reach $1.40 before 2027?": 7,
    "Will Sui reach $1.60 before 2027?": 5
   },
   "in_zone2": false,
@@ -181,16 +181,16 @@
  "SEI": {
   "seen_news": [],
   "in_zone": true,
-  "rsi_band": "mid",
+  "rsi_band": "low",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-11-19"
  },
  "BTC": {
   "seen_news": [],
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "low",
   "risk": "LOW",
   "signal": "TRIM",
@@ -198,7 +198,7 @@
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $500,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 11
+   "Will Bitcoin reach $90,000 by December 31, 2026?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -212,8 +212,8 @@
   "signal": "TRIM",
   "odds": {
    "Will Ethereum reach $10,000 by December 31, 2026?": 0,
-   "Will Ethereum reach $6,000 by December 31, 2026?": 1,
    "Will Ethereum reach $5,000 by December 31, 2026?": 1,
+   "Will Ethereum reach $6,000 by December 31, 2026?": 1,
    "Will Ethereum reach $4,500 by December 31, 2026?": 1
   },
   "in_zone2": false,
@@ -260,7 +260,7 @@
    "Will XRP reach $3.00 in November?": 0,
    "Will XRP reach $8.00 by December 31, 2026?": 1,
    "Will XRP reach $2.80 in November?": 0,
-   "Will XRP reach $2.60 in November?": 1
+   "Will XRP dip to $0.20 by December 31, 2026?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -293,7 +293,7 @@
   },
   "LINK": {
    "seen": true,
-   "bad": false,
+   "bad": true,
    "in_sell": false,
    "below": false,
    "hit_t": false
@@ -1465,7 +1465,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "SELL / AVOID",
@@ -1506,9 +1506,9 @@
   "risk": "MEDIUM",
   "signal": "TRIM",
   "odds": {
-   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 1,
    "Will Hyperliquid reach $100 by December 31, 2026?": 12,
+   "Will Hyperliquid reach $200 by December 31, 2026?": 1,
+   "Will Hyperliquid dip to $30 by December 31, 2026?": 4,
    "Will Hyperliquid reach $150 by December 31, 2026?": 2
   },
   "macd_day": "2026-11-06"
@@ -1557,7 +1557,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1795125818.090079,
+ "_saved_t": 1795145537.4351714,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -2357,7 +2357,7 @@
   "rsi_band": "mid",
   "risk": "MEDIUM",
   "signal": "TRIM",
-  "macd_day": "2026-11-19"
+  "macd_day": "2026-11-20"
  },
  "FIGR": {
   "seen_news": [
@@ -2418,7 +2418,7 @@
    "143803436",
    "143803437"
   ],
-  "_ins": "|Kgil Minchung",
+  "_ins": "|Kgil Minchung,Stevens David Todd",
   "in_zone2": false,
   "below_stop": false,
   "in_zone": false,

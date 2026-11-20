@@ -46,6 +46,15 @@
    "block": true
   },
   {
+   "key": "scam_medium",
+   "text": "Scam check was MEDIUM risk",
+   "n": 26,
+   "wins": 9,
+   "avg": -1.5857692307692308,
+   "points": -4.6,
+   "block": false
+  },
+  {
    "key": "found_coin",
    "text": "A coin the scanner found (not one you picked)",
    "n": 19,
@@ -56,29 +65,29 @@
   }
  ],
  "mult": {
-  "technical": 0.79,
+  "technical": 0.78,
   "flows": 1.06,
-  "macro": 1.0,
-  "markets": 0.98,
+  "macro": 1.01,
+  "markets": 0.99,
   "fundamental": 1.2
  },
- "graded": 93,
- "t": "2026-11-20 12:12 UTC",
+ "graded": 94,
+ "t": "2026-11-20 20:33 UTC",
  "scorecard": {
-  "closed": 94,
+  "closed": 95,
   "wins": 34,
-  "avg": -4.75,
+  "avg": -4.78,
   "held": 4.7,
   "gave_back": 3
  },
  "sells": {
   "signal": {
-   "n": 81,
+   "n": 82,
    "reviewed": 79,
    "early": 4,
    "good": 18,
    "after": -0.2,
-   "ret": -6.44,
+   "ret": -6.47,
    "text": "signal turned TRIM/SELL"
   },
   "zone": {
@@ -102,5 +111,5 @@
  },
  "sell_soft": [],
  "wins": 15,
- "losses": 37
+ "losses": 38
 }

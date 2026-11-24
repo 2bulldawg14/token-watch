@@ -68,26 +68,26 @@
   "technical": 0.78,
   "flows": 1.06,
   "macro": 1.01,
-  "markets": 0.99,
+  "markets": 0.98,
   "fundamental": 1.2
  },
- "graded": 94,
- "t": "2026-11-23 14:28 UTC",
+ "graded": 95,
+ "t": "2026-11-24 01:54 UTC",
  "scorecard": {
-  "closed": 95,
+  "closed": 96,
   "wins": 34,
-  "avg": -4.78,
+  "avg": -4.81,
   "held": 4.7,
   "gave_back": 3
  },
  "sells": {
   "signal": {
-   "n": 82,
+   "n": 83,
    "reviewed": 81,
    "early": 4,
    "good": 20,
    "after": -0.5,
-   "ret": -6.47,
+   "ret": -6.48,
    "text": "signal turned TRIM/SELL"
   },
   "zone": {
@@ -111,5 +111,5 @@
  },
  "sell_soft": [],
  "wins": 15,
- "losses": 38
+ "losses": 39
 }

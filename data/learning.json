@@ -37,6 +37,15 @@
    "block": true
   },
   {
+   "key": "btc_bear",
+   "text": "Bitcoin was below its 200-day average (bear regime)",
+   "n": 5,
+   "wins": 1,
+   "avg": -2.9579999999999997,
+   "points": -9.5,
+   "block": false
+  },
+  {
    "key": "sell_pressure",
    "text": "More selling than buying in the last 7 days",
    "n": 8,
@@ -48,10 +57,10 @@
   {
    "key": "scam_medium",
    "text": "Scam check was MEDIUM risk",
-   "n": 26,
+   "n": 27,
    "wins": 9,
-   "avg": -1.5857692307692308,
-   "points": -4.6,
+   "avg": -1.8,
+   "points": -5.1,
    "block": false
   },
   {
@@ -65,29 +74,29 @@
   }
  ],
  "mult": {
-  "technical": 0.78,
+  "technical": 0.79,
   "flows": 1.06,
   "macro": 1.01,
-  "markets": 0.98,
+  "markets": 0.99,
   "fundamental": 1.2
  },
- "graded": 95,
- "t": "2026-11-24 22:36 UTC",
+ "graded": 96,
+ "t": "2026-11-25 05:03 UTC",
  "scorecard": {
-  "closed": 96,
+  "closed": 97,
   "wins": 34,
-  "avg": -4.81,
-  "held": 4.7,
+  "avg": -4.84,
+  "held": 4.6,
   "gave_back": 3
  },
  "sells": {
   "signal": {
-   "n": 83,
+   "n": 84,
    "reviewed": 81,
    "early": 4,
    "good": 20,
    "after": -0.5,
-   "ret": -6.48,
+   "ret": -6.49,
    "text": "signal turned TRIM/SELL"
   },
   "zone": {
@@ -111,5 +120,5 @@
  },
  "sell_soft": [],
  "wins": 15,
- "losses": 39
+ "losses": 40
 }

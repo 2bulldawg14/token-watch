@@ -421,7 +421,7 @@
   }
  },
  "dd:uniswap": {
-  "t": 1795651474.177922,
+  "t": 1795718303.9707978,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -437,9 +437,9 @@
    },
    "facts": {
     "name": "Uniswap",
-    "market_cap": 2883309592,
-    "fdv": 4204730659,
-    "volume": 332235693,
+    "market_cap": 2817803820,
+    "fdv": 4109335470,
+    "volume": 276463642,
     "website": [
      "https://uniswap.org/"
     ],
@@ -476,7 +476,7 @@
   }
  },
  "dd:bitcoin": {
-  "t": 1795651471.6376643,
+  "t": 1795718301.5145125,
   "v": {
    "level": "LOW",
    "points": 0.0,
@@ -489,9 +489,9 @@
    },
    "facts": {
     "name": "Bitcoin",
-    "market_cap": 1214147494809,
-    "fdv": 1214152021308,
-    "volume": 38079608885,
+    "market_cap": 1218371056089,
+    "fdv": 1218371056089,
+    "volume": 26859139061,
     "website": [
      "http://www.bitcoin.org"
     ],
@@ -815,16 +815,16 @@
  "id:zcash": "zcash",
  "id:atom": "cosmos",
  "dd:aerodrome-finance": {
-  "t": 1795651477.8172731,
+  "t": 1795718306.4841764,
   "v": {
    "level": "HIGH",
    "points": 7.5,
    "flags": [
-    "Top 10 wallets hold 91% (may include exchanges)",
+    "Top 10 wallets hold 92% (may include exchanges)",
     "Only 0% of DEX liquidity is locked",
     "Owner can mint new tokens",
     "Team not verified yet - check founders' real names, LinkedIn, past projects",
-    "FDV is 8.6x market cap - heavy future dilution"
+    "FDV is 8.9x market cap - heavy future dilution"
    ],
    "checks": {
     "team": null,
@@ -836,9 +836,9 @@
    },
    "facts": {
     "name": "Aerodrome Finance",
-    "market_cap": 93311021,
-    "fdv": 805274062,
-    "volume": 20062157,
+    "market_cap": 89573338,
+    "fdv": 795551144,
+    "volume": 12379930,
     "website": [
      "https://aerodrome.finance/"
     ],
@@ -948,7 +948,7 @@
   }
  },
  "dd:sui": {
-  "t": 1795651458.8272264,
+  "t": 1795718290.3303297,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -962,9 +962,9 @@
    },
    "facts": {
     "name": "Sui",
-    "market_cap": 2763905928,
-    "fdv": 6677643997,
-    "volume": 315345983,
+    "market_cap": 2770792569,
+    "fdv": 6694282240,
+    "volume": 308465988,
     "website": [
      "https://sui.io/"
     ],
@@ -986,7 +986,7 @@
   }
  },
  "dd:sei-network": {
-  "t": 1795651462.7743573,
+  "t": 1795718293.8319252,
   "v": {
    "level": "LOW",
    "points": 1.0,
@@ -999,9 +999,9 @@
    },
    "facts": {
     "name": "Sei",
-    "market_cap": 224072820,
-    "fdv": 332781416,
-    "volume": 21980324,
+    "market_cap": 273777916,
+    "fdv": 406600865,
+    "volume": 81599236,
     "website": [
      "https://www.sei.io"
     ],
@@ -1149,7 +1149,7 @@
  "tick:zcash": "ZEC",
  "idt:zcash": 1790171746.2165124,
  "dd:canton-network": {
-  "t": 1795651465.8036206,
+  "t": 1795718297.1843843,
   "v": {
    "level": "MEDIUM",
    "points": 2.0,
@@ -1164,9 +1164,9 @@
    },
    "facts": {
     "name": "Canton",
-    "market_cap": 3117313074,
-    "fdv": 3117313074,
-    "volume": 11809340,
+    "market_cap": 3055210125,
+    "fdv": 3055210125,
+    "volume": 10456249,
     "website": [
      "https://www.canton.network/"
     ],

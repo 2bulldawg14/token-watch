@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1795651535.2239656,
  "_report_week": "2026-W48",
- "_export_t": 1795651584.9704983,
+ "_export_t": 1795682215.1508682,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -167,12 +167,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Sui reach $2.00 before 2027?": 3,
    "Will Sui reach $3.00 before 2027?": 3,
    "Will Sui reach $1.40 before 2027?": 6,
-   "Will Sui reach $1.80 before 2027?": 4
+   "Will Sui reach $1.60 before 2027?": 4
   },
   "in_zone2": false,
   "below_stop": false,
@@ -181,12 +181,12 @@
  "SEI": {
   "seen_news": [],
   "in_zone": false,
-  "rsi_band": "low",
+  "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
-  "macd_day": "2026-11-20"
+  "macd_day": "2026-11-26"
  },
  "BTC": {
   "seen_news": [],
@@ -1545,8 +1545,8 @@
   "odds": {
    "Will UNI reach $15.50 by December 31, 2026?": 3,
    "Will UNI reach $12.50 by December 31, 2026?": 3,
-   "Will UNI reach $14.00 by December 31, 2026?": 5,
-   "Will UNI reach $11.00 by December 31, 2026?": 4
+   "Will UNI reach $14.00 by December 31, 2026?": 4,
+   "Will UNI reach $11.00 by December 31, 2026?": 5
   },
   "macd_day": "2026-11-09"
  },
@@ -1620,7 +1620,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1795682213.15261,
+ "_saved_t": 1795718308.1635728,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1631,7 +1631,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 6,
+ "_wl_cursor": 12,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1793486849.2816772,

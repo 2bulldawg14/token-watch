@@ -150,7 +150,7 @@
  },
  "_discovery_t": 1795651535.2239656,
  "_report_week": "2026-W48",
- "_export_t": 1795682215.1508682,
+ "_export_t": 1795718310.2308705,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
@@ -235,7 +235,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-11-25"
@@ -248,7 +248,7 @@
   "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
-  "macd_day": "2026-10-08"
+  "macd_day": "2026-11-27"
  },
  "XRP": {
   "seen_news": [],
@@ -257,10 +257,10 @@
   "risk": "LOW",
   "signal": "SELL / AVOID",
   "odds": {
-   "Will XRP reach $8.00 by December 31, 2026?": 0,
    "Will XRP reach $3.00 in November?": 0,
-   "Will XRP reach $2.40 in November?": 0,
-   "Will XRP reach $2.80 in November?": 0
+   "Will XRP dip to $0.20 in November?": 0,
+   "Will XRP reach $2.80 in November?": 0,
+   "Will XRP reach $2.40 in November?": 0
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1554,7 +1554,7 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": true,
+  "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
   "signal": "TRIM",
@@ -1567,12 +1567,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "MEDIUM",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
-   "Will Hyperliquid reach $100 by December 31, 2026?": 6,
-   "Will Hyperliquid reach $200 by December 31, 2026?": 2,
+   "Will Hyperliquid reach $100 by December 31, 2026?": 8,
+   "Will Hyperliquid reach $200 by December 31, 2026?": 1,
    "Will Hyperliquid reach $150 by December 31, 2026?": 2,
-   "Will Hyperliquid dip to $16 by December 31, 2026?": 2
+   "Will Hyperliquid reach $120 by December 31, 2026?": 4
   },
   "macd_day": "2026-11-06"
  },
@@ -1580,15 +1580,15 @@
   "seen_news": [],
   "in_zone2": false,
   "below_stop": false,
-  "in_zone": false,
+  "in_zone": true,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "TRIM",
+  "signal": "SELL / AVOID",
   "odds": {
    "Will Zcash dip to $50 by December 31, 2026?": 2,
-   "Will Zcash reach $2000 by December 31, 2026?": 6,
+   "Will Zcash reach $2000 by December 31, 2026?": 5,
    "Will Zcash dip to $100 by December 31, 2026?": 3,
-   "Will Zcash dip to $300 by December 31, 2026?": 5
+   "Will Zcash dip to $400 by December 31, 2026?": 16
   },
   "macd_day": "2026-11-04"
  },
@@ -1620,7 +1620,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1795718308.1635728,
+ "_saved_t": 1795744615.7883492,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,
@@ -1631,7 +1631,7 @@
   "signal": "HOLD",
   "macd_day": "2026-10-09"
  },
- "_wl_cursor": 12,
+ "_wl_cursor": 18,
  "_err_alert": {
   "dashboard self-check|live prices": 1790633642.7575617,
   "live prices": 1793486849.2816772,

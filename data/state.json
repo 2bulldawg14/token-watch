@@ -114,8 +114,8 @@
   "signal": "SELL / AVOID",
   "odds": {
    "Will Solana reach $170 in November?": 0,
-   "Will Solana reach $180 in November?": 0,
    "Will Solana dip to $50 in November?": 1,
+   "Will Solana reach $180 in November?": 0,
    "Will Solana reach $160 in November?": 0
   },
   "in_zone2": false,
@@ -148,16 +148,16 @@
   "below_stop": false,
   "macd_day": "2026-11-26"
  },
- "_discovery_t": 1795776336.5841103,
+ "_discovery_t": 1795833233.4719388,
  "_report_week": "2026-W48",
- "_export_t": 1795776381.6430085,
+ "_export_t": 1795809105.1702843,
  "_tg_offset": 218529302,
  "HBAR": {
   "seen_news": [],
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-11-26"
@@ -167,12 +167,12 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "odds": {
    "Will Sui reach $2.00 before 2027?": 3,
-   "Will Sui reach $3.00 before 2027?": 2,
-   "Will Sui reach $1.40 before 2027?": 6,
-   "Will Sui reach $1.80 before 2027?": 4
+   "Will Sui reach $3.00 before 2027?": 3,
+   "Will Sui reach $1.80 before 2027?": 4,
+   "Will Sui reach $1.40 before 2027?": 6
   },
   "in_zone2": false,
   "below_stop": false,
@@ -183,7 +183,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "in_zone2": false,
   "below_stop": false,
   "macd_day": "2026-11-26"
@@ -198,7 +198,7 @@
    "Will Bitcoin reach $1,000,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $500,000 by December 31, 2026?": 0,
    "Will Bitcoin reach $250,000 by December 31, 2026?": 0,
-   "Will Bitcoin dip to $45,000 by December 31, 2026?": 11
+   "Will Bitcoin dip to $45,000 by December 31, 2026?": 12
   },
   "in_zone2": false,
   "below_stop": false,
@@ -213,8 +213,8 @@
   "odds": {
    "Will Ethereum reach $10,000 by December 31, 2026?": 0,
    "Will Ethereum reach $3,500 in November?": 0,
-   "Will Ethereum reach $3,100 in November?": 0,
-   "Will Ethereum reach $6,000 by December 31, 2026?": 1
+   "Will Ethereum reach $6,000 by December 31, 2026?": 1,
+   "Will Ethereum reach $5,000 by December 31, 2026?": 1
   },
   "in_zone2": false,
   "below_stop": false,
@@ -1472,6 +1472,20 @@
    "in_sell": false,
    "below": false,
    "hit_t": false
+  },
+  "ICNT": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
+  },
+  "BDX": {
+   "seen": true,
+   "bad": true,
+   "in_sell": false,
+   "below": false,
+   "hit_t": false
   }
  },
  "CANTON": {
@@ -1595,7 +1609,7 @@
    "Will Hyperliquid reach $150 by December 31, 2026?": 2,
    "Will Hyperliquid dip to $16 by December 31, 2026?": 2
   },
-  "macd_day": "2026-11-27"
+  "macd_day": "2026-11-28"
  },
  "ZEC": {
   "seen_news": [],
@@ -1620,7 +1634,7 @@
   "in_zone": false,
   "rsi_band": "mid",
   "risk": "LOW",
-  "signal": "SELL / AVOID",
+  "signal": "TRIM",
   "macd_day": "2026-11-26"
  },
  "LTC": {
@@ -1641,7 +1655,7 @@
   "2Z": 1791006258.8478503,
   "US": 1791081131.4906764
  },
- "_saved_t": 1795809103.006639,
+ "_saved_t": 1795833282.0924723,
  "QNT": {
   "seen_news": [],
   "in_zone2": false,

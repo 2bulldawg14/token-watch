@@ -39,10 +39,10 @@
   {
    "key": "btc_bear",
    "text": "Bitcoin was below its 200-day average (bear regime)",
-   "n": 5,
+   "n": 6,
    "wins": 1,
-   "avg": -2.9579999999999997,
-   "points": -9.5,
+   "avg": -6.246666666666667,
+   "points": -11.6,
    "block": false
   },
   {
@@ -57,10 +57,10 @@
   {
    "key": "scam_medium",
    "text": "Scam check was MEDIUM risk",
-   "n": 27,
+   "n": 28,
    "wins": 9,
-   "avg": -1.8,
-   "points": -5.1,
+   "avg": -2.546071428571429,
+   "points": -5.7,
    "block": false
   },
   {
@@ -74,14 +74,14 @@
   }
  ],
  "mult": {
-  "technical": 0.79,
-  "flows": 1.06,
-  "macro": 1.01,
-  "markets": 0.99,
-  "fundamental": 1.2
+  "technical": 0.77,
+  "flows": 1.04,
+  "macro": 1.02,
+  "markets": 1.0,
+  "fundamental": 1.07
  },
- "graded": 96,
- "t": "2026-11-28 02:34 UTC",
+ "graded": 97,
+ "t": "2026-11-28 10:53 UTC",
  "scorecard": {
   "closed": 97,
   "wins": 34,
@@ -120,5 +120,5 @@
  },
  "sell_soft": [],
  "wins": 15,
- "losses": 40
+ "losses": 41
 }
